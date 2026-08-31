@@ -1,12 +1,13 @@
 name: Şampiyonlar Ligi Tahmin Botu
 
 on:
-  # Her 30 dakikada bir otomatik çalışır
   schedule:
     - cron: "*/30 * * * *"
 
-  # İstediğimiz zaman elle de çalıştırabiliriz
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run-bot:
@@ -15,6 +16,8 @@ jobs:
     steps:
       - name: Repository'yi indir
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Python kurulumu
         uses: actions/setup-python@v5
@@ -31,3 +34,21 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
         run: python bot.py
+
+      - name: Gönderilen maçları kaydet
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -f sent_matches.json ]; then
+            git add sent_matches.json
+
+            if ! git diff --cached --quiet; then
+              git commit -m "Gönderilen maçları güncelle"
+              git push
+            else
+              echo "Kaydedilecek yeni maç yok."
+            fi
+          else
+            echo "sent_matches.json bulunamadı."
+          fi
