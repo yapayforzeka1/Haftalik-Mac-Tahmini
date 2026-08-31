@@ -26,7 +26,13 @@ jobs:
           python-version: "3.12"
 
       - name: Gerekli paketleri kur
-        run: pip install requests google-genai
+        run: |
+          pip install requests google-genai
+
+      - name: Gemini bağlantısını test et
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python gemini_test.py
 
       - name: Botu çalıştır
         env:
@@ -41,15 +47,15 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [ -f sent_matches.json ]; then
-            git add sent_matches.json
+          if [ -f match_predictions.json ]; then
+            git add match_predictions.json
 
             if ! git diff --cached --quiet; then
-              git commit -m "Gönderilen maçları güncelle"
+              git commit -m "Maç tahminlerini güncelle"
               git push
             else
-              echo "Kaydedilecek yeni maç yok."
+              echo "Kaydedilecek yeni değişiklik yok."
             fi
           else
-            echo "sent_matches.json bulunamadı."
+            echo "match_predictions.json bulunamadı."
           fi
