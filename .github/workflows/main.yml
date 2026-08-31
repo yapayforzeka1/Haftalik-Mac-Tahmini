@@ -8,19 +8,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Repository'yi indir
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Python'u kur
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Gerekli paketleri kur
-       run: pip install requests openai
+      - name: Install packages
+        run: pip install requests openai
 
-      - name: Botu çalıştır
+      - name: Run bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python bot.py
