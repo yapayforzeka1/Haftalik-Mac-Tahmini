@@ -1,19 +1,32 @@
 import os
 import requests
+from openai import OpenAI
 
-TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
-CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+# GitHub Secrets
+TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
-url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+# OpenAI bağlantısı
+client = OpenAI(api_key=OPENAI_API_KEY)
 
-message = "🤖 Şampiyonlar Ligi Tahmin Botu çalışıyor!\n\nTelegram bağlantısı başarıyla kuruldu. ⚽"
+# AI'ya test sorusu
+response = client.responses.create(
+    model="gpt-5",
+    input="Şampiyonlar Ligi nedir? Tek cümleyle cevap ver."
+)
 
-response = requests.post(
-    url,
+answer = response.output_text
+
+# Telegram'a gönder
+telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+
+requests.post(
+    telegram_url,
     data={
-        "chat_id": CHAT_ID,
-        "text": message
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": "🤖 AI TEST\n\n" + answer
     }
 )
 
-print(response.json())
+print(answer)
