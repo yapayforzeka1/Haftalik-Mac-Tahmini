@@ -17,7 +17,7 @@ jobs:
           python-version: "3.12"
 
       - name: Gerekli paketleri kur
-        run: pip install requests
+       run: pip install requests openai
 
       - name: Botu çalıştır
         env:
