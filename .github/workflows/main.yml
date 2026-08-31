@@ -1,6 +1,11 @@
-name: Telegram Bot Test
+name: Şampiyonlar Ligi Tahmin Botu
 
 on:
+  # Her 30 dakikada bir otomatik çalışır
+  schedule:
+    - cron: "*/30 * * * *"
+
+  # İstediğimiz zaman elle de çalıştırabiliriz
   workflow_dispatch:
 
 jobs:
@@ -8,18 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Repository'yi indir
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Python kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install packages
+      - name: Gerekli paketleri kur
         run: pip install requests google-genai
 
-      - name: Run bot
+      - name: Botu çalıştır
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
