@@ -2,7 +2,7 @@ name: Şampiyonlar Ligi Tahmin Botu
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
 
   workflow_dispatch:
 
