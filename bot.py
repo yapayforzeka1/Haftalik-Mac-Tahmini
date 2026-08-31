@@ -17,38 +17,62 @@ FOOTBALL_DATA_API_KEY = os.environ["FOOTBALL_DATA_API_KEY"]
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
 
-MIN_MINUTES_BEFORE = 60
+# Tahmin penceresi
+MIN_MINUTES_BEFORE = 30
 MAX_MINUTES_BEFORE = 120
 
-SENT_MATCHES_FILE = Path("sent_matches.json")
+# Maç bilgilerinin tutulacağı dosya
+MATCHES_FILE = Path("match_predictions.json")
 
 
 # ============================================================
-# GÖNDERİLMİŞ MAÇLARI OKU
+# KAYIT DOSYASINI OKU
 # ============================================================
 
-def load_sent_matches():
+def load_predictions():
 
-    if not SENT_MATCHES_FILE.exists():
-        return []
+    if not MATCHES_FILE.exists():
+        return {}
 
     try:
         with open(
-            SENT_MATCHES_FILE,
+            MATCHES_FILE,
             "r",
             encoding="utf-8"
         ) as file:
+
             return json.load(file)
 
     except (json.JSONDecodeError, OSError):
-        return []
+
+        return {}
 
 
-sent_matches = load_sent_matches()
+predictions = load_predictions()
 
 
 # ============================================================
-# TELEGRAM
+# KAYDET
+# ============================================================
+
+def save_predictions():
+
+    with open(
+        MATCHES_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            predictions,
+            file,
+            ensure_ascii=False,
+            indent=2
+        )
+
+
+# ============================================================
+# TELEGRAM MESAJI
 # ============================================================
 
 def send_telegram_message(message):
@@ -71,7 +95,7 @@ def send_telegram_message(message):
 
 
 # ============================================================
-# MAÇLARI GETİR
+# ŞAMPİYONLAR LİGİ MAÇLARINI GETİR
 # ============================================================
 
 def get_matches():
@@ -99,7 +123,7 @@ def get_matches():
 
 
 # ============================================================
-# MAÇ ZAMANINI AL
+# MAÇ ZAMANI
 # ============================================================
 
 def get_match_datetime(match):
@@ -126,10 +150,9 @@ def main():
 
     now_utc = datetime.now(timezone.utc)
 
-    found_match = False
-
     for match in matches:
 
+        # Sadece planlanmış maçlar
         if match.get("status") != "SCHEDULED":
             continue
 
@@ -154,72 +177,161 @@ def main():
             f"{minutes_until_match:.1f} dakika"
         )
 
-        # Daha önce gönderilmişse tekrar gönderme
-        if match_id in sent_matches:
+        # ====================================================
+        # MAÇTAN 30 DAKİKADAN AZ KALDIYSA ARTIK ANALİZ YOK
+        # ====================================================
+
+        if minutes_until_match < MIN_MINUTES_BEFORE:
+
             continue
 
         # ====================================================
-        # 1-2 SAAT KONTROLÜ
+        # MAÇA 2 SAATTEN FAZLA VARSA ANALİZ YOK
         # ====================================================
 
-        if (
-            MIN_MINUTES_BEFORE
-            <= minutes_until_match
-            <= MAX_MINUTES_BEFORE
-        ):
+        if minutes_until_match > MAX_MINUTES_BEFORE:
 
-            found_match = True
+            continue
+
+        # ====================================================
+        # MAÇ 1-2 SAAT İÇERİSİNDE
+        # ====================================================
+
+        if match_id not in predictions:
+
+            predictions[match_id] = {
+                "home_team": home_team,
+                "away_team": away_team,
+                "match_time": match_turkey.strftime(
+                    "%d.%m.%Y %H:%M"
+                ),
+                "last_prediction": None,
+                "last_prediction_time": None,
+                "last_message_type": None
+            }
+
+        # ====================================================
+        # ŞİMDİLİK TEST
+        # ====================================================
+
+        # Gemini henüz burada kullanılmıyor.
+        # Geçici test skoru:
+
+        new_prediction = "2-1"
+
+        previous_prediction = predictions[
+            match_id
+        ].get("last_prediction")
+
+        # ====================================================
+        # MAÇTAN TAM OLARAK 30 DAKİKA ÖNCEKİ
+        # SON TAHMİN
+        # ====================================================
+
+        final_prediction_window = (
+            25 <= minutes_until_match <= 45
+        )
+
+        if final_prediction_window:
 
             message = (
-                "⚽ ŞAMPİYONLAR LİGİ TEST\n\n"
-                f"🏟️ {home_team} - {away_team}\n\n"
+                "🏁 MAÇ ÖNCESİ SON TAHMİN\n\n"
+                f"⚽ {home_team} - {away_team}\n\n"
+                f"🎯 Tahmin: {new_prediction}\n\n"
                 f"🇹🇷 Maç saati: "
                 f"{match_turkey.strftime('%d.%m.%Y %H:%M')}\n\n"
-                f"⏰ Maça yaklaşık "
-                f"{minutes_until_match:.0f} dakika kaldı.\n\n"
-                "✅ 1-2 saatlik tahmin penceresi "
-                "başarıyla tespit edildi."
+                "⏰ Maç başlamadan yaklaşık "
+                "30 dakika önce."
             )
 
             send_telegram_message(message)
 
-            print(
-                f"Telegram mesajı gönderildi: "
-                f"{home_team} - {away_team}"
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
+
+            predictions[match_id][
+                "last_prediction_time"
+            ] = datetime.now(
+                timezone.utc
+            ).isoformat()
+
+            predictions[match_id][
+                "last_message_type"
+            ] = "final"
+
+            save_predictions()
+
+            continue
+
+        # ====================================================
+        # İLK TAHMİN
+        # ====================================================
+
+        if previous_prediction is None:
+
+            message = (
+                "⚽ ŞAMPİYONLAR LİGİ TAHMİNİ\n\n"
+                f"🏟️ {home_team} - {away_team}\n\n"
+                f"🎯 Tahmin: {new_prediction}\n\n"
+                f"🇹🇷 Maç saati: "
+                f"{match_turkey.strftime('%d.%m.%Y %H:%M')}"
             )
 
-            # Maçı kaydet
-            sent_matches.append(match_id)
+            send_telegram_message(message)
 
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
 
-    # ========================================================
-    # GÖNDERİLMİŞ MAÇLARI KAYDET
-    # ========================================================
+            predictions[match_id][
+                "last_prediction_time"
+            ] = datetime.now(
+                timezone.utc
+            ).isoformat()
 
-    with open(
-        SENT_MATCHES_FILE,
-        "w",
-        encoding="utf-8"
-    ) as file:
+            predictions[match_id][
+                "last_message_type"
+            ] = "initial"
 
-        json.dump(
-            sent_matches,
-            file,
-            ensure_ascii=False,
-            indent=2
-        )
+            save_predictions()
 
+            continue
 
-    # ========================================================
-    # UYGUN MAÇ YOKSA
-    # ========================================================
+        # ====================================================
+        # SKOR DEĞİŞTİYSE GÜNCELLE
+        # ====================================================
 
-    if not found_match:
+        if new_prediction != previous_prediction:
 
-        print(
-            "Şu anda 1-2 saat içinde başlayacak "
-            "yeni bir maç bulunamadı."
-        )
+            message = (
+                "🔄 TAHMİN GÜNCELLENDİ\n\n"
+                f"⚽ {home_team} - {away_team}\n\n"
+                f"❌ Önceki: "
+                f"{previous_prediction}\n\n"
+                f"✅ Yeni: "
+                f"{new_prediction}\n\n"
+                f"🇹🇷 Maç saati: "
+                f"{match_turkey.strftime('%d.%m.%Y %H:%M')}"
+            )
+
+            send_telegram_message(message)
+
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
+
+            predictions[match_id][
+                "last_prediction_time"
+            ] = datetime.now(
+                timezone.utc
+            ).isoformat()
+
+            predictions[match_id][
+                "last_message_type"
+            ] = "update"
+
+            save_predictions()
 
 
 # ============================================================
@@ -227,4 +339,5 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
+
     main()
