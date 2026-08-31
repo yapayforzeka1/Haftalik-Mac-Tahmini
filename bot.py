@@ -131,7 +131,7 @@ Sen profesyonel bir futbol skor tahmin uzmanısın.
 Ev sahibi: {home_team}
 Deplasman: {away_team}
 
-Maç için en olası skor tahminini belirle.
+Bu maç için en olası skor tahminini belirle.
 
 SADECE skor döndür.
 
@@ -159,8 +159,13 @@ def is_valid_prediction(prediction):
         if len(parts) != 2:
             return False
 
-        home_score = int(parts[0].strip())
-        away_score = int(parts[1].strip())
+        home_score = int(
+            parts[0].strip()
+        )
+
+        away_score = int(
+            parts[1].strip()
+        )
 
         return (
             home_score >= 0
@@ -187,10 +192,23 @@ def main():
 
     for match in matches:
 
-        if match.get("status") != "SCHEDULED":
+        status = match.get(
+            "status",
+            "UNKNOWN"
+        )
+
+        # Football-data.org gelecekteki
+        # maçları SCHEDULED veya TIMED
+        # olarak döndürebilir.
+        if status not in (
+            "SCHEDULED",
+            "TIMED"
+        ):
             continue
 
-        match_id = str(match["id"])
+        match_id = str(
+            match["id"]
+        )
 
         home_team = match[
             "homeTeam"
@@ -217,7 +235,8 @@ def main():
             f"Türkiye: "
             f"{match_turkey.strftime('%d.%m.%Y %H:%M')} | "
             f"Kalan: "
-            f"{minutes_until_match:.1f} dakika"
+            f"{minutes_until_match:.1f} dakika | "
+            f"Durum: {status}"
         )
 
         if minutes_until_match > MAX_MINUTES_BEFORE:
