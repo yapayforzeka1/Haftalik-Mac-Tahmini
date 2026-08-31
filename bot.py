@@ -9,10 +9,6 @@ from zoneinfo import ZoneInfo
 from google import genai
 
 
-# ============================================================
-# AYARLAR
-# ============================================================
-
 TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 FOOTBALL_DATA_API_KEY = os.environ["FOOTBALL_DATA_API_KEY"]
@@ -20,7 +16,6 @@ GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
 
-# GERÇEK SİSTEMDE:
 MIN_MINUTES_BEFORE = 30
 MAX_MINUTES_BEFORE = 120
 
@@ -28,19 +23,10 @@ MATCHES_FILE = Path("match_predictions.json")
 
 GEMINI_MODEL = "gemini-3.7-flash"
 
-
-# ============================================================
-# GEMINI
-# ============================================================
-
 client = genai.Client(
     api_key=GEMINI_API_KEY
 )
 
-
-# ============================================================
-# KAYIT
-# ============================================================
 
 def load_predictions():
 
@@ -53,11 +39,9 @@ def load_predictions():
             "r",
             encoding="utf-8"
         ) as file:
-
             return json.load(file)
 
     except Exception:
-
         return {}
 
 
@@ -80,10 +64,6 @@ def save_predictions():
         )
 
 
-# ============================================================
-# TELEGRAM
-# ============================================================
-
 def send_telegram_message(message):
 
     url = (
@@ -102,10 +82,6 @@ def send_telegram_message(message):
 
     response.raise_for_status()
 
-
-# ============================================================
-# FOOTBALL-DATA.ORG
-# ============================================================
 
 def get_matches():
 
@@ -132,10 +108,6 @@ def get_matches():
     )
 
 
-# ============================================================
-# MAÇ TARİHİ
-# ============================================================
-
 def get_match_datetime(match):
 
     return datetime.fromisoformat(
@@ -146,37 +118,28 @@ def get_match_datetime(match):
     )
 
 
-# ============================================================
-# GEMINI SKOR TAHMİNİ
-# ============================================================
-
 def get_prediction(
     home_team,
     away_team
 ):
 
     prompt = f"""
-Sen profesyonel bir futbol maç analiz uzmanısın.
+Sen profesyonel bir futbol skor tahmin uzmanısın.
 
 Şampiyonlar Ligi maçı:
 
-Ev sahibi:
-{home_team}
+Ev sahibi: {home_team}
+Deplasman: {away_team}
 
-Deplasman:
-{away_team}
+Maç için en olası skor tahminini belirle.
 
-Bu maç için en olası skor tahminini yap.
+SADECE skor döndür.
 
-SADECE aşağıdaki formatta cevap ver:
-
-HOME_SCORE-AWAY_SCORE
-
-Örnek:
+Format:
 
 2-1
 
-Başka hiçbir açıklama yazma.
+Başka hiçbir şey yazma.
 """
 
     response = client.models.generate_content(
@@ -184,18 +147,10 @@ Başka hiçbir açıklama yazma.
         contents=prompt
     )
 
-    prediction = response.text.strip()
-
-    return prediction
+    return response.text.strip()
 
 
-# ============================================================
-# SKOR KONTROLÜ
-# ============================================================
-
-def is_valid_prediction(
-    prediction
-):
+def is_valid_prediction(prediction):
 
     try:
 
@@ -204,30 +159,18 @@ def is_valid_prediction(
         if len(parts) != 2:
             return False
 
-        home_score = int(
-            parts[0].strip()
+        home_score = int(parts[0].strip())
+        away_score = int(parts[1].strip())
+
+        return (
+            home_score >= 0
+            and away_score >= 0
         )
-
-        away_score = int(
-            parts[1].strip()
-        )
-
-        if home_score < 0:
-            return False
-
-        if away_score < 0:
-            return False
-
-        return True
 
     except Exception:
 
         return False
 
-
-# ============================================================
-# ANA BOT
-# ============================================================
 
 def main():
 
@@ -244,15 +187,10 @@ def main():
 
     for match in matches:
 
-        if match.get(
-            "status"
-        ) != "SCHEDULED":
-
+        if match.get("status") != "SCHEDULED":
             continue
 
-        match_id = str(
-            match["id"]
-        )
+        match_id = str(match["id"])
 
         home_team = match[
             "homeTeam"
@@ -266,10 +204,8 @@ def main():
             match
         )
 
-        match_turkey = (
-            match_utc.astimezone(
-                TURKEY_TZ
-            )
+        match_turkey = match_utc.astimezone(
+            TURKEY_TZ
         )
 
         minutes_until_match = (
@@ -284,31 +220,26 @@ def main():
             f"{minutes_until_match:.1f} dakika"
         )
 
-        # ----------------------------------------------------
-        # MAÇ 2 SAATTEN UZAKSA ATLAMA
-        # ----------------------------------------------------
+        if minutes_until_match > MAX_MINUTES_BEFORE:
 
-        if (
-            minutes_until_match
-            > MAX_MINUTES_BEFORE
-        ):
+            print(
+                "Atlandı: Maça 2 saatten fazla var."
+            )
 
             continue
 
-        # ----------------------------------------------------
-        # MAÇ 30 DAKİKADAN YAKINSA ATLAMA
-        # ----------------------------------------------------
+        if minutes_until_match < MIN_MINUTES_BEFORE:
 
-        if (
-            minutes_until_match
-            < MIN_MINUTES_BEFORE
-        ):
+            print(
+                "Atlandı: Maça 30 dakikadan az kaldı."
+            )
 
             continue
 
-        # ----------------------------------------------------
-        # KAYIT OLUŞTUR
-        # ----------------------------------------------------
+        print(
+            f"ANALİZ EDİLİYOR: "
+            f"{home_team} - {away_team}"
+        )
 
         if match_id not in predictions:
 
@@ -321,10 +252,6 @@ def main():
                 "last_prediction": None,
                 "final_sent": False
             }
-
-        # ----------------------------------------------------
-        # GEMINI
-        # ----------------------------------------------------
 
         try:
 
@@ -346,16 +273,12 @@ def main():
 
             continue
 
-        # ----------------------------------------------------
-        # GEÇERSİZ TAHMİN
-        # ----------------------------------------------------
-
         if not is_valid_prediction(
             new_prediction
         ):
 
             print(
-                "Geçersiz Gemini skoru."
+                "Geçersiz Gemini tahmini."
             )
 
             continue
@@ -365,18 +288,10 @@ def main():
             .get("last_prediction")
         )
 
-        # ----------------------------------------------------
-        # 30 DAKİKA CİVARINDA SON TAHMİN
-        # ----------------------------------------------------
-
         if (
-            25
-            <= minutes_until_match
-            <= 45
+            25 <= minutes_until_match <= 45
             and
-            not predictions[
-                match_id
-            ].get(
+            not predictions[match_id].get(
                 "final_sent",
                 False
             )
@@ -385,95 +300,64 @@ def main():
             message = (
                 "🏁 MAÇ ÖNCESİ SON TAHMİN\n\n"
                 f"⚽ {home_team} - {away_team}\n\n"
-                f"🎯 Tahmin: "
-                f"{new_prediction}\n\n"
+                f"🎯 Tahmin: {new_prediction}\n\n"
                 f"🇹🇷 Maç saati: "
                 f"{match_turkey.strftime('%d.%m.%Y %H:%M')}"
             )
 
-            send_telegram_message(
-                message
-            )
+            send_telegram_message(message)
 
-            predictions[
-                match_id
-            ]["last_prediction"] = (
-                new_prediction
-            )
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
 
-            predictions[
-                match_id
-            ]["final_sent"] = True
+            predictions[match_id][
+                "final_sent"
+            ] = True
 
             save_predictions()
 
             continue
-
-        # ----------------------------------------------------
-        # İLK TAHMİN
-        # ----------------------------------------------------
 
         if previous_prediction is None:
 
             message = (
                 "⚽ ŞAMPİYONLAR LİGİ TAHMİNİ\n\n"
                 f"🏟️ {home_team} - {away_team}\n\n"
-                f"🎯 Tahmin: "
-                f"{new_prediction}\n\n"
+                f"🎯 Tahmin: {new_prediction}\n\n"
                 f"🇹🇷 Maç saati: "
                 f"{match_turkey.strftime('%d.%m.%Y %H:%M')}"
             )
 
-            send_telegram_message(
-                message
-            )
+            send_telegram_message(message)
 
-            predictions[
-                match_id
-            ]["last_prediction"] = (
-                new_prediction
-            )
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
 
             save_predictions()
 
             continue
 
-        # ----------------------------------------------------
-        # SKOR DEĞİŞTİYSE MESAJ
-        # ----------------------------------------------------
-
-        if (
-            new_prediction
-            != previous_prediction
-        ):
+        if new_prediction != previous_prediction:
 
             message = (
                 "🔄 TAHMİN GÜNCELLENDİ\n\n"
                 f"⚽ {home_team} - {away_team}\n\n"
-                f"❌ Önceki: "
-                f"{previous_prediction}\n\n"
-                f"✅ Yeni: "
-                f"{new_prediction}\n\n"
+                f"❌ Önceki: {previous_prediction}\n\n"
+                f"✅ Yeni: {new_prediction}\n\n"
                 f"🇹🇷 Maç saati: "
                 f"{match_turkey.strftime('%d.%m.%Y %H:%M')}"
             )
 
-            send_telegram_message(
-                message
-            )
+            send_telegram_message(message)
 
-            predictions[
-                match_id
-            ]["last_prediction"] = (
-                new_prediction
-            )
+            predictions[match_id][
+                "last_prediction"
+            ] = new_prediction
 
             save_predictions()
 
-
-# ============================================================
-# BAŞLAT
-# ============================================================
 
 if __name__ == "__main__":
     main()
