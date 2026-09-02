@@ -38,7 +38,7 @@ jobs:
       - name: Paketleri kur
         run: |
           python -m pip install --upgrade pip
-          pip install requests google-genai mistralai groq cohere pydantic
+          pip install requests google-genai mistralai groq cohere pydantic pillow
 
       - name: Core testleri
         run: python test_core.py
@@ -55,18 +55,20 @@ jobs:
           TEST_MODE: ${{ inputs.test_mode || false }}
         run: python bot.py
 
-      - name: Tahmin arşivini kaydet
+      - name: Arşivleri kaydet
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [ -f match_predictions.json ]; then
-            git add match_predictions.json
-
-            if ! git diff --cached --quiet; then
-              git commit -m "Haftalık maç tahminlerini güncelle"
-              git push
-            else
-              echo "Kaydedilecek yeni değişiklik yok."
+          for file in match_predictions.json weekly_reports.json weekly_schedule.json; do
+            if [ -f "$file" ]; then
+              git add "$file"
             fi
+          done
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Haftalık maç tahmin ve performans arşivlerini güncelle"
+            git push
+          else
+            echo "Kaydedilecek yeni değişiklik yok."
           fi
