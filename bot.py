@@ -17,6 +17,7 @@ from weekly_report import (
     build_general_snapshot,
     build_weekly_snapshot,
     load_weekly_reports,
+    MODEL_ORDER,
     render_general_image,
     render_weekly_image,
     save_weekly_reports,
@@ -188,6 +189,87 @@ def _planned_last_kickoff_by_matchday(matches: list[dict[str, Any]]) -> dict[int
     return result
 
 
+
+def _build_report_test_data() -> tuple[dict[str, Any], dict[str, Any]]:
+    """Build deterministic sample data for Telegram weekly-report testing.
+
+    This data is deliberately separate from the real prediction archive and is
+    never written to match_predictions.json or weekly_reports.json.
+    """
+    def record(match_id: str, matchday: int, home: str, away: str, actual_h: int, actual_a: int,
+               scores: list[str], consensus_score: str) -> dict[str, Any]:
+        votes = []
+        for model, score in zip(MODEL_ORDER, scores):
+            ph, pa = (int(x) for x in score.split("-"))
+            pred_outcome = "HOME" if ph > pa else "AWAY" if ph < pa else "DRAW"
+            actual_outcome = "HOME" if actual_h > actual_a else "AWAY" if actual_h < actual_a else "DRAW"
+            exact = score == f"{actual_h}-{actual_a}"
+            outcome_correct = pred_outcome == actual_outcome
+            points = 5 if exact or (pred_outcome == "DRAW" and actual_outcome == "DRAW") else 3 if outcome_correct else 0
+            votes.append({
+                "model": model,
+                "success": True,
+                "result": {"score": score, "outcome": pred_outcome},
+                "points": points,
+                "exact_score_correct": exact,
+                "outcome_correct": outcome_correct,
+            })
+
+        ch, ca = (int(x) for x in consensus_score.split("-"))
+        c_outcome = "HOME" if ch > ca else "AWAY" if ch < ca else "DRAW"
+        a_outcome = "HOME" if actual_h > actual_a else "AWAY" if actual_h < actual_a else "DRAW"
+        c_exact = consensus_score == f"{actual_h}-{actual_a}"
+        c_outcome_correct = c_outcome == a_outcome
+        c_points = 5 if c_exact or (c_outcome == "DRAW" and a_outcome == "DRAW") else 3 if c_outcome_correct else 0
+        return {
+            "season": SEASON,
+            "matchday": matchday,
+            "match_id": match_id,
+            "home_team": home,
+            "away_team": away,
+            "match_time": "08.09.2026 19:45",
+            "match_utc": "2026-09-08T16:45:00+00:00",
+            "actual": {"home": actual_h, "away": actual_a},
+            "ai_votes": votes,
+            "consensus": {"score": consensus_score, "outcome": c_outcome},
+            "consensus_points": c_points,
+            "exact_score_correct": c_exact,
+            "outcome_correct": c_outcome_correct,
+        }
+
+    md1 = [
+        record("test-101", 1, "Club Brugge", "Aston Villa", 3, 1, ["3-1", "2-1", "3-1", "3-1", "1-2"], "3-1"),
+        record("test-102", 1, "Real Madrid", "Inter", 2, 0, ["2-0", "2-1", "1-0", "2-0", "2-0"], "2-0"),
+        record("test-103", 1, "Arsenal", "PSG", 1, 1, ["1-1", "2-1", "0-0", "1-1", "2-2"], "1-1"),
+        record("test-104", 1, "Bayern", "Barcelona", 3, 2, ["3-2", "2-1", "3-1", "1-2", "3-2"], "3-2"),
+    ]
+    md2 = [
+        record("test-201", 2, "Liverpool", "Milan", 2, 1, ["2-1", "1-1", "2-0", "2-1", "3-1"], "2-1"),
+        record("test-202", 2, "Barcelona", "Dortmund", 1, 2, ["1-0", "1-2", "2-1", "1-2", "0-1"], "1-2"),
+        record("test-203", 2, "City", "Napoli", 2, 2, ["2-1", "1-1", "2-2", "3-2", "0-0"], "2-2"),
+        record("test-204", 2, "PSG", "Benfica", 3, 0, ["3-0", "2-0", "3-1", "3-0", "2-0"], "3-0"),
+    ]
+
+    predictions = {r["match_id"]: r for r in md1 + md2}
+    planned = [{"id": r["match_id"], "matchday": r["matchday"], "status": "FINISHED",
+                "homeTeam": {"name": r["home_team"]}, "awayTeam": {"name": r["away_team"]}} for r in md1 + md2]
+    reports = {
+        "1": build_weekly_snapshot(predictions, 1, planned),
+        "2": build_weekly_snapshot(predictions, 2, planned),
+    }
+    return predictions, reports
+
+
+def run_weekly_report_test() -> None:
+    """Send sample weekly + general images to Telegram without touching archives."""
+    predictions, reports = _build_report_test_data()
+    weekly_image = render_weekly_image(reports["2"], predictions)
+    general_image = render_general_image(reports)
+    send_telegram_photo(weekly_image, "🧪 TEST • Matchday 2 — Haftalık Performans")
+    send_telegram_photo(general_image, "🧪 TEST • Genel Performans")
+    print("✅ Haftalık + genel performans görselleri TEST olarak Telegram'a gönderildi.")
+
+
 def maybe_send_weekly_reports(predictions: dict[str, Any], matches: list[dict[str, Any]], now_utc: datetime) -> bool:
     """
     Matchday raporu, o matchday'in planlanan son maç başlangıcından 1 saat sonra hazırlanır.
@@ -241,6 +323,12 @@ def main() -> None:
     missing = [x for x in required if not os.environ.get(x)]
     if missing:
         raise RuntimeError(f"Eksik secret: {', '.join(missing)}")
+
+    report_test_mode = os.environ.get("REPORT_TEST_MODE", "false").lower() == "true"
+    if report_test_mode:
+        print("🧪 HAFTALIK RAPOR TEST MODU AKTİF")
+        run_weekly_report_test()
+        return
 
     predictions = load_predictions()
     football = FootballDataClient()
