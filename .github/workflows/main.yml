@@ -1,20 +1,22 @@
-name: Şampiyonlar Ligi Tahmin Botu
+name: Haftalık Maç Tahmini
 
 on:
   schedule:
     - cron: "*/10 * * * *"
-
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: haftalik-mac-tahmini
+  cancel-in-progress: false
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 15
     steps:
-
       - name: Repository'yi indir
         uses: actions/checkout@v4
         with:
@@ -25,32 +27,35 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Gerekli paketleri kur
+      - name: Paketleri kur
         run: |
-          pip install requests google-genai
+          python -m pip install --upgrade pip
+          pip install requests google-genai mistralai groq cohere pydantic
+
+      - name: Core testleri
+        run: python test_core.py
 
       - name: Botu çalıştır
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
         run: python bot.py
 
-      - name: Gönderilen maçları kaydet
+      - name: Tahmin arşivini kaydet
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           if [ -f match_predictions.json ]; then
             git add match_predictions.json
-
             if ! git diff --cached --quiet; then
-              git commit -m "Maç tahminlerini güncelle"
+              git commit -m "Haftalık maç tahminlerini güncelle"
               git push
             else
               echo "Kaydedilecek yeni değişiklik yok."
             fi
-          else
-            echo "match_predictions.json bulunamadı."
           fi
