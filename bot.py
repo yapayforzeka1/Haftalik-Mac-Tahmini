@@ -60,6 +60,7 @@ def send_telegram_message(message: str) -> None:
 
 
 def send_telegram_photo(path: Path, caption: str | None = None) -> None:
+    """Bot 1: maç tahmini ve maç sonucu mesajları."""
     import requests
     with path.open("rb") as photo:
         data = {"chat_id": os.environ["TELEGRAM_CHAT_ID"]}
@@ -67,6 +68,27 @@ def send_telegram_photo(path: Path, caption: str | None = None) -> None:
             data["caption"] = caption
         response = requests.post(
             f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendPhoto",
+            data=data,
+            files={"photo": photo},
+            timeout=60,
+        )
+    response.raise_for_status()
+
+
+def send_analysis_telegram_photo(path: Path, caption: str | None = None) -> None:
+    """Bot 2: haftalık ve genel AI performans raporları."""
+    import requests
+    token = os.environ.get("ANALYSIS_TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("ANALYSIS_TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        raise RuntimeError("Bot 2 secretleri eksik: ANALYSIS_TELEGRAM_BOT_TOKEN / ANALYSIS_TELEGRAM_CHAT_ID")
+
+    with path.open("rb") as photo:
+        data = {"chat_id": chat_id}
+        if caption:
+            data["caption"] = caption
+        response = requests.post(
+            f"https://api.telegram.org/bot{token}/sendPhoto",
             data=data,
             files={"photo": photo},
             timeout=60,
@@ -273,8 +295,8 @@ def run_weekly_report_test() -> None:
     predictions, reports = _build_report_test_data()
     weekly_image = render_weekly_image(reports["2"], predictions)
     general_image = render_general_image(reports)
-    send_telegram_photo(weekly_image, "🧪 TEST • Matchday 2 — Haftalık Performans")
-    send_telegram_photo(general_image, "🧪 TEST • Genel Performans")
+    send_analysis_telegram_photo(weekly_image, "🧪 TEST • Matchday 2 — Haftalık Performans")
+    send_analysis_telegram_photo(general_image, "🧪 TEST • Genel Performans")
     print("✅ Haftalık + genel performans görselleri TEST olarak Telegram'a gönderildi.")
 
 
@@ -305,12 +327,12 @@ def maybe_send_weekly_reports(predictions: dict[str, Any], matches: list[dict[st
             general_image = render_general_image(weekly_reports)
             try:
                 if not snapshot.get("weekly_photo_sent"):
-                    send_telegram_photo(weekly_image, f"🏆 Matchday {matchday} — Haftalık Performans")
+                    send_analysis_telegram_photo(weekly_image, f"🏆 Matchday {matchday} — Haftalık Performans")
                     snapshot["weekly_photo_sent"] = True
                     save_weekly_reports(weekly_reports)
 
                 if not snapshot.get("general_photo_sent"):
-                    send_telegram_photo(general_image, "🏆 Genel Performans")
+                    send_analysis_telegram_photo(general_image, "🏆 Genel Performans")
                     snapshot["general_photo_sent"] = True
                     save_weekly_reports(weekly_reports)
 
@@ -334,9 +356,9 @@ def main() -> None:
 
     report_test_mode = os.environ.get("REPORT_TEST_MODE", "false").lower() == "true"
     if report_test_mode:
-        print("🧪 HAFTALIK RAPOR TEST MODU AKTİF")
+        print("🧪 HAFTALIK RAPOR TEST MODU AKTİF — BOT 2 RAPORLARI GÖNDERİLECEK")
         run_weekly_report_test()
-        return
+        print("➡️ Bot 2 test raporu tamamlandı; Bot 1 normal/test akışına devam ediyor.")
 
     predictions = load_predictions()
     football = FootballDataClient()
