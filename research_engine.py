@@ -5,9 +5,6 @@ import re
 from datetime import datetime, timezone
 from typing import Any
 
-from google import genai
-from google.genai import types
-
 RESEARCH_MODEL = "gemini-3.7-flash"
 
 
@@ -37,7 +34,8 @@ def empty_research(reason: str) -> dict[str, Any]:
     }
 
 
-def research_match(client: genai.Client, home_team: str, away_team: str, match_context: dict[str, Any]) -> dict[str, Any]:
+def research_match(client: Any, home_team: str, away_team: str, match_context: dict[str, Any]) -> dict[str, Any]:
+    from google.genai import types
     prompt = f"""
 UEFA Champions League 2026/27 maç öncesi güncel araştırma yap.
 Maç: {home_team} - {away_team}

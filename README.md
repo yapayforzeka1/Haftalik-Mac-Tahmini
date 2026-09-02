@@ -1,16 +1,56 @@
 # Haftalık Maç Tahmini
 
-UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz ve tahmin botu.
+UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tahmin ve haftalık performans botu.
 
 ## Akış
-1. football-data.org: fikstür, puan durumu ve son maçlar.
+1. football-data.org: fikstür ve son maçlar. Champions League puan durumu endpoint'i 404 verirse analiz durmaz; standings opsiyonel kabul edilir.
 2. Gemini Google Search grounding: güncel haber, sakatlık/ceza, xG/xGA, şut, kadro ve taktik araştırması.
 3. Araştırma başarısız olsa bile sistem yapılandırılmış verilerle AI havuzuna devam eder.
 4. 5 AI bağımsız olarak tahmin üretir.
-5. En az 3/5 başarılı AI varsa konsensüs oluşturulur ve Telegram'a gönderilir.
-6. `match_predictions.json` haftalar boyunca tahmin, AI oyları, araştırma, gerçek sonuç ve performansı saklar.
-7. Bitmiş maçlar sonraki çalıştırmada otomatik sonuçlandırılır; ilk sonuçlandırmada Telegram'a sonuç mesajı gönderilir.
-8. Takım geçmişi ve AI performansı sonraki analizlere bağlam olarak verilir.
+5. En az 3/5 başarılı AI varsa konsensüs oluşturulur ve Telegram'a tek maçlık kısa tahmin gönderilir.
+6. Tahmin penceresi normalde maçtan 45-60 dakika öncesidir.
+7. `match_predictions.json` haftalar boyunca maç, 5 AI oyu, konsensüs ve gerçek sonuçları saklar.
+8. Maç tamamlandığında puanlama otomatik yapılır.
+9. Bir Matchday'in planlanan son maç başlangıcından 1 saat sonra haftalık rapor hazırlanır. Ertelenen/iptal edilen maçlar raporu bloke etmez.
+10. Haftalık rapor Telegram'a görsel olarak gönderilir. Ardından haftaları birbirinden ayrı tutan genel sezon performans görseli gönderilir.
+11. `weekly_reports.json` her haftanın bağımsız snapshot'ını sabit tutar; `weekly_schedule.json` ilk görülen Matchday program kesitini saklayarak erteleme/reschedule durumunda rapor saatinin kaymasını önler.
+
+## Kilitli puanlama sistemi
+- **5 puan:** Tam skor doğru.
+- **3 puan:** Kazanan doğru, skor yanlış.
+- **5 puan:** Tahmin beraberlik ve gerçek maç da beraberlik; skor farklı olsa bile.
+- **0 puan:** Sonuç yanlış.
+
+`2 puan` ayrı bir puan kategorisi değildir. 5 yerine 3 alınması, tam skor ile sadece sonucu bilmek arasındaki 2 puanlık farktır.
+
+## Haftalık performans kuralı
+- Her Matchday kendi içinde değerlendirilir.
+- Haftalık rapor yalnızca o haftanın maçlarını ve sonuçlarını içerir.
+- Bir haftanın raporu oluşturulduktan sonra o haftanın snapshot'ı değişmez.
+- Sonraki hafta önceki haftaya eklenmez.
+- Ayrı **Genel Performans** görseli 1. haftadan itibaren haftaları karşılaştırır ve sezon toplamını kümülatif gösterir.
+
+## Telegram tahmin formatı
+```text
+🏆 ŞAMPİYONLAR LİGİ — HAFTALIK TAHMİN
+
+Maç : Club Brugge - Aston Villa
+Kim Kazanır : Club Brugge — %80 (4/5)
+Skor : 2-1 — %80 (4/5)
+Güven oranı : %80
+```
+
+Buradaki yüzdeler gerçek kazanma olasılığı değildir; başarılı AI'ların konsensüs oranıdır. `Güven oranı` da bu aşamada kazanan konsensüs oranını gösterir.
+
+## Haftalık görsel rapor
+Haftalık raporda:
+- Maçlar kronolojik sırada gösterilir.
+- Her maçın gerçek skoru bulunur.
+- 5 AI'ın her bir tahmini ve aldığı puan gösterilir.
+- Konsensüs tahmini ve puanı gösterilir.
+- Alt bölümde haftalık AI performansı ve konsensüs performansı yer alır.
+
+Genel performans görselinde haftalar ayrı sütunlarda, sezon toplamı ve ortalama puanla birlikte karşılaştırılır.
 
 ## AI havuzu
 - Gemini 3.6 Flash
@@ -23,3 +63,6 @@ UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz ve t
 `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `FOOTBALL_DATA_API_KEY`, `GEMINI_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `COHERE_API_KEY`
 
 API anahtarları kod içine yazılmamalıdır.
+
+## Test modu
+GitHub Actions → **Run workflow** üzerinden `test_mode=true` seçilirse 45-60 dakika filtresi bypass edilir ve en yakın gelecek Champions League maçıyla Telegram testi yapılır. Test modu tahmini `match_predictions.json` içine kaydetmez.
