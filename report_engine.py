@@ -3,33 +3,17 @@ from __future__ import annotations
 from typing import Any
 
 from consensus_engine import outcome_label
+from match_report import build_match_group_message
 
 
 def build_telegram_message(record: dict[str, Any]) -> str:
-    """Short, user-facing pre-match prediction message."""
-    home = record["home_team"]
-    away = record["away_team"]
-    consensus = record["consensus"]
+    """Backward-compatible single-match wrapper for the new Telegram format."""
+    return build_match_group_message([record])
 
-    successful_ai = int(consensus.get("successful_ai") or 0)
-    outcome_votes = int(consensus.get("outcome_votes") or 0)
-    score_votes = int(consensus.get("score_votes") or 0)
-    outcome_share = int(consensus.get("outcome_share") or 0)
-    score_share = int(consensus.get("score_share") or 0)
 
-    outcome = outcome_label(consensus["outcome"], home, away)
-    score = str(consensus.get("score") or "-")
-    confidence = outcome_share
-
-    lines = [
-        "🏆 ŞAMPİYONLAR LİGİ — HAFTALIK TAHMİN",
-        "",
-        f"Maç : {home} - {away}",
-        f"Kim Kazanır : {outcome} — %{outcome_share} ({outcome_votes}/{successful_ai})",
-        f"Skor : {score} — %{score_share} ({score_votes}/{successful_ai})",
-        f"Güven oranı : %{confidence}",
-    ]
-    return "\n".join(lines)
+def build_telegram_group_message(records: list[dict[str, Any]], test_mode: bool = False) -> str:
+    """Build one written Telegram message for all matches sharing a kickoff."""
+    return build_match_group_message(records, test_mode=test_mode)
 
 
 def build_result_message(record: dict[str, Any]) -> str:

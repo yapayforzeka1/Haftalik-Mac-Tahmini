@@ -7,6 +7,7 @@ from consensus_engine import build_consensus
 from data_provider import build_team_form
 from history_engine import build_team_history, build_ai_performance, grade_record, score_prediction
 from weekly_report import build_general_snapshot, build_weekly_snapshot, render_general_image, render_weekly_image
+from match_report import build_match_group_message, render_match_group_image
 
 
 def test_consensus():
@@ -141,6 +142,33 @@ def test_weekly_report_and_general_snapshot():
             weekly_report.REPORT_DIR = old_dir
 
 
+def test_match_telegram_package():
+    base = {
+        "matchday": 1, "match_utc": "2026-09-08T16:45:00+00:00",
+        "match_time": "08.09.2026 19:45", "consensus": {
+            "successful_ai": 5, "outcome": "HOME", "outcome_votes": 4, "outcome_share": 80,
+            "score": "2-1", "score_votes": 3, "score_share": 60,
+        },
+    }
+    records = [dict(base, match_id=str(i), home_team=h, away_team=a) for i, (h, a) in enumerate([
+        ("Juventus", "Dortmund"), ("Real Madrid", "Marseille"),
+        ("Benfica", "Qarabag"), ("Tottenham", "Villarreal"),
+    ])]
+    text = build_match_group_message(records)
+    assert "4 MAÇLIK AI TAHMİN PAKETİ" in text
+    assert text.count("🤖 Kazanan:") == 4
+    assert "Puanlama maç sonucu" in text
+    import match_report
+    with tempfile.TemporaryDirectory() as tmp:
+        old_dir = match_report.REPORT_DIR
+        match_report.REPORT_DIR = Path(tmp)
+        try:
+            assert render_match_group_image(records).exists()
+            assert render_match_group_image(records[:1]).exists()
+        finally:
+            match_report.REPORT_DIR = old_dir
+
+
 if __name__ == "__main__":
     test_consensus()
     test_locked_scoring_rules()
@@ -149,4 +177,5 @@ if __name__ == "__main__":
     test_history()
     test_prompt_is_bounded()
     test_weekly_report_and_general_snapshot()
+    test_match_telegram_package()
     print("CORE TESTS OK")

@@ -7,7 +7,7 @@ UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tah
 2. Gemini Google Search grounding: güncel haber, sakatlık/ceza, xG/xGA, şut, kadro ve taktik araştırması.
 3. Araştırma başarısız olsa bile sistem yapılandırılmış verilerle AI havuzuna devam eder.
 4. 5 AI bağımsız olarak tahmin üretir.
-5. En az 3/5 başarılı AI varsa konsensüs oluşturulur ve Telegram'a tek maçlık kısa tahmin gönderilir.
+5. En az 3/5 başarılı AI varsa konsensüs oluşturulur. Aynı kickoff dakikasındaki maçlar tek Telegram yazılı paketi ve tek görsel paket halinde gönderilir; tek maçta tek kart kullanılır.
 6. Tahmin penceresi normalde maçtan 45-60 dakika öncesidir.
 7. `match_predictions.json` haftalar boyunca maç, 5 AI oyu, konsensüs ve gerçek sonuçları saklar.
 8. Maç tamamlandığında puanlama otomatik yapılır.
@@ -30,17 +30,30 @@ UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tah
 - Sonraki hafta önceki haftaya eklenmez.
 - Ayrı **Genel Performans** görseli 1. haftadan itibaren haftaları karşılaştırır ve sezon toplamını kümülatif gösterir.
 
-## Telegram tahmin formatı
-```text
-🏆 ŞAMPİYONLAR LİGİ — HAFTALIK TAHMİN
+## Telegram maç tahmin formatı
+Maç başlamadan önce Telegram'a iki parça gönderilir:
+1. Yazılı tahmin mesajı.
+2. Aynı içeriğin görsel maç kartı.
 
-Maç : Club Brugge - Aston Villa
-Kim Kazanır : Club Brugge — %80 (4/5)
-Skor : 2-1 — %80 (4/5)
-Güven oranı : %80
+Tek maç örneği:
+```text
+🏆 ŞAMPİYONLAR LİGİ 2026/27
+⚽ MAÇ TAHMİNİ
+
+📅 16.09.2026   ⏰ 19:45
+
+⚽ Juventus — Dortmund
+🤖 Kazanan: Juventus — %80 (4/5)
+🎯 Skor: 2-1 — %60 (3/5)
+📊 AI Güveni: %80
+
+ℹ️ Bu oranlar maç öncesi AI konsensüsünü gösterir.
+Puanlama maç sonucu belli olduktan sonra yapılacaktır.
 ```
 
-Buradaki yüzdeler gerçek kazanma olasılığı değildir; başarılı AI'ların konsensüs oranıdır. `Güven oranı` da bu aşamada kazanan konsensüs oranını gösterir.
+Aynı kickoff dakikasında 4 maç varsa bunlar 4 ayrı mesaj yerine tek yazılı paket ve tek 4 kartlı görsel olarak gönderilir.
+
+Buradaki yüzdeler gerçek kazanma olasılığı değildir; başarılı AI'ların konsensüs oranıdır. Maç başlamadan puan gösterilmez. Puanlama yalnızca gerçek sonuç geldikten sonra yapılır.
 
 ## Haftalık görsel rapor
 Haftalık raporda:

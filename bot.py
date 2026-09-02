@@ -11,8 +11,9 @@ from ai_pool import run_ai_pool
 from consensus_engine import build_consensus
 from data_provider import FootballDataClient, FootballDataError, build_team_form, parse_utc
 from history_engine import build_ai_performance, build_team_history, grade_record
-from report_engine import build_result_message, build_telegram_message
+from report_engine import build_result_message, build_telegram_group_message
 from research_engine import empty_research, research_match
+from match_report import kickoff_key, render_match_group_image
 from weekly_report import (
     build_general_snapshot,
     build_weekly_snapshot,
@@ -128,7 +129,8 @@ def _upcoming_matches(matches: list[dict[str, Any]], now_utc: datetime, test_mod
             candidates.append((match, minutes_until))
     if test_mode and candidates:
         candidates.sort(key=lambda item: item[1])
-        return candidates[:1]
+        nearest_key = parse_utc(candidates[0][0]["utcDate"]).strftime("%Y-%m-%dT%H:%M")
+        return [item for item in candidates if parse_utc(item[0]["utcDate"]).strftime("%Y-%m-%dT%H:%M") == nearest_key]
     return candidates
 
 
@@ -193,16 +195,17 @@ def _planned_last_kickoff_by_matchday(matches: list[dict[str, Any]]) -> dict[int
 def _build_report_test_data() -> tuple[dict[str, Any], dict[str, Any]]:
     """Build deterministic sample data for Telegram weekly-report testing.
 
-    This data is deliberately separate from the real prediction archive and is
-    never written to match_predictions.json or weekly_reports.json.
+    The sample intentionally contains the first nine chronological matches so
+    the visual layout is tested with a realistic, multi-row Matchday. This
+    data is never written to the real prediction or weekly-report archives.
     """
     def record(match_id: str, matchday: int, home: str, away: str, actual_h: int, actual_a: int,
-               scores: list[str], consensus_score: str) -> dict[str, Any]:
+               scores: list[str], consensus_score: str, kickoff: str) -> dict[str, Any]:
         votes = []
+        actual_outcome = "HOME" if actual_h > actual_a else "AWAY" if actual_h < actual_a else "DRAW"
         for model, score in zip(MODEL_ORDER, scores):
             ph, pa = (int(x) for x in score.split("-"))
             pred_outcome = "HOME" if ph > pa else "AWAY" if ph < pa else "DRAW"
-            actual_outcome = "HOME" if actual_h > actual_a else "AWAY" if actual_h < actual_a else "DRAW"
             exact = score == f"{actual_h}-{actual_a}"
             outcome_correct = pred_outcome == actual_outcome
             points = 5 if exact or (pred_outcome == "DRAW" and actual_outcome == "DRAW") else 3 if outcome_correct else 0
@@ -217,18 +220,17 @@ def _build_report_test_data() -> tuple[dict[str, Any], dict[str, Any]]:
 
         ch, ca = (int(x) for x in consensus_score.split("-"))
         c_outcome = "HOME" if ch > ca else "AWAY" if ch < ca else "DRAW"
-        a_outcome = "HOME" if actual_h > actual_a else "AWAY" if actual_h < actual_a else "DRAW"
         c_exact = consensus_score == f"{actual_h}-{actual_a}"
-        c_outcome_correct = c_outcome == a_outcome
-        c_points = 5 if c_exact or (c_outcome == "DRAW" and a_outcome == "DRAW") else 3 if c_outcome_correct else 0
+        c_outcome_correct = c_outcome == actual_outcome
+        c_points = 5 if c_exact or (c_outcome == "DRAW" and actual_outcome == "DRAW") else 3 if c_outcome_correct else 0
         return {
             "season": SEASON,
             "matchday": matchday,
             "match_id": match_id,
             "home_team": home,
             "away_team": away,
-            "match_time": "08.09.2026 19:45",
-            "match_utc": "2026-09-08T16:45:00+00:00",
+            "match_time": kickoff,
+            "match_utc": datetime.strptime(kickoff, "%d.%m.%Y %H:%M").replace(tzinfo=TURKEY_TZ).astimezone(timezone.utc).isoformat(),
             "actual": {"home": actual_h, "away": actual_a},
             "ai_votes": votes,
             "consensus": {"score": consensus_score, "outcome": c_outcome},
@@ -238,16 +240,23 @@ def _build_report_test_data() -> tuple[dict[str, Any], dict[str, Any]]:
         }
 
     md1 = [
-        record("test-101", 1, "Club Brugge", "Aston Villa", 3, 1, ["3-1", "2-1", "3-1", "3-1", "1-2"], "3-1"),
-        record("test-102", 1, "Real Madrid", "Inter", 2, 0, ["2-0", "2-1", "1-0", "2-0", "2-0"], "2-0"),
-        record("test-103", 1, "Arsenal", "PSG", 1, 1, ["1-1", "2-1", "0-0", "1-1", "2-2"], "1-1"),
-        record("test-104", 1, "Bayern", "Barcelona", 3, 2, ["3-2", "2-1", "3-1", "1-2", "3-2"], "3-2"),
+        record("test-101", 1, "Juventus", "Borussia Dortmund", 4, 1, ["3-1", "2-1", "4-1", "3-1", "4-2"], "3-1", "08.09.2026 19:45"),
+        record("test-102", 1, "Real Madrid", "Marseille", 2, 1, ["2-0", "3-1", "2-1", "1-1", "2-1"], "2-1", "08.09.2026 19:45"),
+        record("test-103", 1, "Benfica", "Qarabag", 2, 0, ["2-0", "1-0", "2-0", "2-1", "2-0"], "2-0", "08.09.2026 22:00"),
+        record("test-104", 1, "Tottenham", "Villarreal", 1, 1, ["1-1", "2-1", "1-1", "1-1", "0-1"], "1-1", "08.09.2026 22:00"),
+        record("test-105", 1, "Olympiacos", "Pafos", 2, 1, ["1-1", "2-1", "2-0", "2-1", "1-0"], "2-1", "08.09.2026 22:00"),
+        record("test-106", 1, "Ajax", "Inter", 0, 2, ["0-2", "1-2", "0-2", "0-2", "0-2"], "0-2", "08.09.2026 22:00"),
+        record("test-107", 1, "Slavia Prag", "Bodo/Glimt", 2, 2, ["1-1", "2-2", "1-2", "2-1", "1-1"], "1-1", "08.09.2026 22:00"),
+        record("test-108", 1, "Bayern Munih", "Chelsea", 3, 1, ["2-1", "3-1", "3-0", "3-1", "2-1"], "3-1", "08.09.2026 22:00"),
+        record("test-109", 1, "Liverpool", "Atletico Madrid", 3, 2, ["2-1", "3-2", "2-2", "3-1", "2-2"], "2-2", "08.09.2026 22:00"),
     ]
+
+    # A second sample week keeps the general-performance visual meaningful.
     md2 = [
-        record("test-201", 2, "Liverpool", "Milan", 2, 1, ["2-1", "1-1", "2-0", "2-1", "3-1"], "2-1"),
-        record("test-202", 2, "Barcelona", "Dortmund", 1, 2, ["1-0", "1-2", "2-1", "1-2", "0-1"], "1-2"),
-        record("test-203", 2, "City", "Napoli", 2, 2, ["2-1", "1-1", "2-2", "3-2", "0-0"], "2-2"),
-        record("test-204", 2, "PSG", "Benfica", 3, 0, ["3-0", "2-0", "3-1", "3-0", "2-0"], "3-0"),
+        record("test-201", 2, "Liverpool", "Milan", 2, 1, ["2-1", "1-1", "2-0", "2-1", "3-1"], "2-1", "13.10.2026 19:45"),
+        record("test-202", 2, "Barcelona", "Dortmund", 1, 2, ["1-0", "1-2", "2-1", "1-2", "0-1"], "1-2", "13.10.2026 22:00"),
+        record("test-203", 2, "City", "Napoli", 2, 2, ["2-1", "1-1", "2-2", "3-2", "0-0"], "2-2", "13.10.2026 22:00"),
+        record("test-204", 2, "PSG", "Benfica", 3, 0, ["3-0", "2-0", "3-1", "3-0", "2-0"], "3-0", "13.10.2026 22:00"),
     ]
 
     predictions = {r["match_id"]: r for r in md1 + md2}
@@ -258,7 +267,6 @@ def _build_report_test_data() -> tuple[dict[str, Any], dict[str, Any]]:
         "2": build_weekly_snapshot(predictions, 2, planned),
     }
     return predictions, reports
-
 
 def run_weekly_report_test() -> None:
     """Send sample weekly + general images to Telegram without touching archives."""
@@ -373,6 +381,8 @@ def main() -> None:
         from google import genai
         research_client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
+    prepared_records: list[dict[str, Any]] = []
+
     for match, minutes_until in upcoming:
         match_id = str(match["id"])
         home_team = match["homeTeam"]["name"]
@@ -410,14 +420,15 @@ def main() -> None:
                 research = research_match(research_client, home_team, away_team, {"context": context, "history": history})
             except Exception as error:
                 print(f"⚠️ Araştırma başarısız; AI yapılandırılmış verilerle devam edecek: {error}")
-                research = empty_research(str(error))
+                research = empty_research()
         else:
-            research = empty_research("GEMINI_API_KEY yok")
+            print("ℹ️ GEMINI_API_KEY yok; araştırma katmanı atlandı.")
+            research = empty_research()
 
         votes = run_ai_pool(home_team, away_team, context, research, history)
-        success_count = sum(v.success for v in votes)
-        if success_count < 3:
-            print(f"🚨 Yetersiz AI başarısı: {success_count}/5; Telegram tahmini gönderilmiyor.")
+        successful = [v for v in votes if v.success and v.result]
+        if len(successful) < 3:
+            print(f"⚠️ {home_team} - {away_team}: yalnızca {len(successful)}/5 AI başarılı; Telegram tahmini gönderilmiyor.")
             continue
 
         consensus = build_consensus(votes)
@@ -439,22 +450,32 @@ def main() -> None:
             "final_sent": False,
             "result_sent": False,
         }
+        prepared_records.append(record)
 
-        message = build_telegram_message(record)
-        if test_mode:
-            message = "🧪 TEST MODU\n\n" + message
+    # One Telegram text + one visual per kickoff group. Four simultaneous matches
+    # therefore arrive as one written package and one four-card image.
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for record in prepared_records:
+        groups.setdefault(kickoff_key(record), []).append(record)
 
+    for group_key, records in sorted(groups.items()):
+        records.sort(key=lambda r: r.get("home_team", ""))
+        message = build_telegram_group_message(records, test_mode=test_mode)
+        image_path = render_match_group_image(records, test_mode=test_mode)
         try:
             send_telegram_message(message)
+            send_telegram_photo(image_path, "🖼️ Maç tahmin görseli")
         except Exception as error:
-            print(f"⚠️ Telegram hatası: {error}")
+            print(f"⚠️ Telegram maç paketi hatası ({group_key}): {error}")
             continue
 
-        record["final_sent"] = True
-        if not test_mode:
-            predictions[match_id] = record
-            save_predictions(predictions)
-        print(f"✅ {home_team} - {away_team}: Telegram {'testi' if test_mode else '+ arşiv'} tamam.")
+        for record in records:
+            record["final_sent"] = True
+            if not test_mode:
+                predictions[record["match_id"]] = record
+        print(f"✅ {len(records)} maçlık Telegram tahmin paketi gönderildi ({group_key}).")
+
+    save_predictions(predictions)
 
     save_predictions(predictions)
 
