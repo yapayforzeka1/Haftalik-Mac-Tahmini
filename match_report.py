@@ -121,7 +121,7 @@ def build_match_group_message(records: list[dict[str, Any]], test_mode: bool = F
         score = str(c.get("score") or "-")
 
         lines.append(f"⚽ {home} — {away}")
-        lines.append(f"🤖 Kazanan: {outcome} — %{outcome_share} ({outcome_votes}/{successful})")
+        lines.append(f"🤖 AI Ortak Kararı: {outcome} — %{outcome_share} ({outcome_votes}/{successful})")
         lines.append(f"🎯 Skor: {score} — %{score_share} ({score_votes}/{successful})")
         lines.append(f"📊 AI Güveni: %{outcome_share}")
         if index != len(records) - 1:
@@ -129,7 +129,7 @@ def build_match_group_message(records: list[dict[str, Any]], test_mode: bool = F
 
     lines.extend([
         "",
-        "ℹ️ Bu oranlar maç öncesi AI konsensüsünü gösterir.",
+        "ℹ️ Bu oranlar maç öncesi yapay zekâların ortak kararını gösterir.",
         "Puanlama maç sonucu belli olduktan sonra yapılacaktır.",
     ])
     return prefix + "\n".join(lines)
@@ -164,7 +164,7 @@ def _draw_match_card(draw, box, record: dict[str, Any], compact: bool):
         _center(draw, (x1 + 115, y1 + 68, x2 - 115, y1 + 108), "AI TAHMİNİ", _font(13, True), (74, 205, 255))
         _center(draw, (x1 + 20, y1 + 128, x2 - 20, y1 + 163), f"{outcome}  •  %{outcome_share} ({outcome_votes}/{successful})", _font(18, True), (80, 225, 255))
         _center(draw, (x1 + 20, y1 + 164, x2 - 20, y1 + 200), f"Skor  {score}  •  %{score_share} ({score_votes}/{successful})", _font(17, True), (255, 215, 70))
-        draw.text((x1 + 18, y2 - 30), f"5 AI KONSENSÜSÜ  •  Güven %{outcome_share}", font=_font(12, True), fill=(205, 218, 232))
+        draw.text((x1 + 18, y2 - 30), f"AI Ortak Kararı  •  Güven %{outcome_share}", font=_font(12, True), fill=(205, 218, 232))
     else:
         _center(draw, (x1 + 15, y1 + 18, x2 - 15, y1 + 58), f"{home}   VS   {away}", _font(27, True), (242, 245, 250))
         _draw_team_badge(draw, x1 + 110, y1 + 115, home, 55)
@@ -172,7 +172,7 @@ def _draw_match_card(draw, box, record: dict[str, Any], compact: bool):
         _center(draw, (x1 + 180, y1 + 86, x2 - 180, y1 + 142), "AI TAHMİNİ", _font(15, True), (74, 205, 255))
         _center(draw, (x1 + 30, y1 + 160, x2 - 30, y1 + 205), f"Kazanan: {outcome}  •  %{outcome_share} ({outcome_votes}/{successful})", _font(22, True), (80, 225, 255))
         _center(draw, (x1 + 30, y1 + 208, x2 - 30, y1 + 250), f"Skor: {score}  •  %{score_share} ({score_votes}/{successful})", _font(21, True), (255, 215, 70))
-        draw.text((x1 + 25, y2 - 42), f"5 AI KONSENSÜSÜ   •   AI Güveni: %{outcome_share}", font=_font(15, True), fill=(205, 218, 232))
+        draw.text((x1 + 25, y2 - 42), f"AI Ortak Kararı   •   AI Güveni: %{outcome_share}", font=_font(15, True), fill=(205, 218, 232))
 
 
 def render_match_group_image(records: list[dict[str, Any]], test_mode: bool = False) -> Path:
@@ -217,7 +217,7 @@ def render_match_group_image(records: list[dict[str, Any]], test_mode: bool = Fa
             _draw_match_card(draw, (x, y, x + card_w, y + card_h), record, compact=False)
 
     footer_y = height - 66
-    draw.text((45, footer_y), "Tahminler maç başlamadan önce 5 AI analizinin konsensüsüdür. Puanlama maç sonrası yapılır.", font=_font(16, True), fill=(155, 188, 215))
+    draw.text((45, footer_y), "Tahminler maç başlamadan önce 5 AI analizinin ortak kararını gösterir. Puanlama maç sonrası yapılır.", font=_font(16, True), fill=(155, 188, 215))
     if test_mode:
         draw.text((width - 260, footer_y), "TEST MODU", font=_font(17, True), fill=(255, 210, 70))
 

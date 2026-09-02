@@ -156,7 +156,7 @@ def test_match_telegram_package():
     ])]
     text = build_match_group_message(records)
     assert "4 MAÇLIK AI TAHMİN PAKETİ" in text
-    assert text.count("🤖 Kazanan:") == 4
+    assert text.count("🤖 AI Ortak Kararı:") == 4
     assert "Puanlama maç sonucu" in text
     import match_report
     with tempfile.TemporaryDirectory() as tmp:

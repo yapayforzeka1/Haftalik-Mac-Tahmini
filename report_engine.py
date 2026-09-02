@@ -32,7 +32,7 @@ def build_result_message(record: dict[str, Any]) -> str:
         "📊 MAÇ SONUCU\n\n"
         f"⚽ {record['home_team']} - {record['away_team']}\n"
         f"🏁 Gerçek skor: {actual_score}\n"
-        f"🎯 AI konsensüs skoru: {predicted}\n"
+        f"🎯 AI Ortak Kararı skoru: {predicted}\n"
         f"🏆 Konsensüs puanı: {points if points is not None else '-'} / 5\n"
         f"{'✅ Maç sonucu doğru' if consensus.get('outcome') == actual_outcome else '❌ Maç sonucu yanlış'}\n"
         f"{'✅ Tam skor tuttu' if predicted == actual_score else '❌ Tam skor tutmadı'}"
