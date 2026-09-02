@@ -36,8 +36,35 @@ def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
     if outcome not in {"HOME", "DRAW", "AWAY"}:
         raise ValueError(f"Geçersiz outcome: {outcome}")
     score = str(result.get("score", "")).strip()
-    if not re.fullmatch(r"\d+\s*-\s*\d+", score):
+    match = re.fullmatch(r"(\d+)\s*-\s*(\d+)", score)
+    if not match:
         raise ValueError(f"Geçersiz skor: {score}")
+
+    home_goals = int(match.group(1))
+    away_goals = int(match.group(2))
+
+    # Skor sırası kesin olarak EV SAHİBİ - DEPLASMAN şeklindedir.
+    # HOME → ev sahibi daha fazla gol atmalı.
+    # AWAY → deplasman daha fazla gol atmalı.
+    # DRAW → iki takımın golü eşit olmalı.
+    if outcome == "HOME" and home_goals <= away_goals:
+        raise ValueError(
+            f"HOME tahmini ile skor uyuşmuyor: {score} "
+            f"({home} ev sahibi, {away} deplasman)"
+        )
+
+    if outcome == "AWAY" and away_goals <= home_goals:
+        raise ValueError(
+            f"AWAY tahmini ile skor uyuşmuyor: {score} "
+            f"({home} ev sahibi, {away} deplasman)"
+        )
+
+    if outcome == "DRAW" and home_goals != away_goals:
+        raise ValueError(
+            f"DRAW tahmini ile skor uyuşmuyor: {score}"
+        )
+
+    score = f"{home_goals}-{away_goals}"
     confidence = int(result.get("confidence", 0))
     if not 0 <= confidence <= 100:
         raise ValueError("confidence 0-100 aralığında olmalı.")
@@ -75,6 +102,18 @@ birlikte değerlendir. Veri yoksa tahmin uydurma.
 
 Farklı görüşler normaldir. Tahminini kısa ve somut nedenlerle savun.
 "confidence" gerçek olasılık değildir; öznel güven puanıdır.
+
+ÇOK ÖNEMLİ SKOR YÖNÜ KURALI:
+- Maç: {home} - {away}
+- İlk skor EV SAHİBİNİN gol sayısıdır: {home}
+- İkinci skor DEPLASMANIN gol sayısıdır: {away}
+- HOME seçersen skor mutlaka ev sahibi lehine olmalıdır.
+- AWAY seçersen skor mutlaka deplasman lehine olmalıdır.
+- DRAW seçersen iki skor eşit olmalıdır.
+- Örnek: {home} kazanırsa 2-1, 3-1 veya 1-0.
+- {away} kazanırsa 1-2, 0-2 veya 1-3.
+- Beraberlik ise 0-0, 1-1, 2-2 gibi eşit skor olmalıdır.
+- Skoru ASLA kazanan takımın adına göre ters çevirme.
 
 SADECE JSON:
 {{"outcome":"HOME|DRAW|AWAY","score":"2-1","confidence":0,
