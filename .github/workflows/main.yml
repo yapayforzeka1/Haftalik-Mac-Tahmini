@@ -7,7 +7,12 @@ on:
   workflow_dispatch:
     inputs:
       test_mode:
-        description: "Telegram mesajını görmek için test modu"
+        description: "Telegram maç mesajını test et"
+        required: true
+        default: false
+        type: boolean
+      report_test_mode:
+        description: "Haftalık + genel performans görsellerini test et"
         required: true
         default: false
         type: boolean
@@ -53,6 +58,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
           TEST_MODE: ${{ inputs.test_mode || false }}
+          REPORT_TEST_MODE: ${{ inputs.report_test_mode || false }}
         run: python bot.py
 
       - name: Arşivleri kaydet
