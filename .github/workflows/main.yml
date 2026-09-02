@@ -3,7 +3,14 @@ name: Haftalık Maç Tahmini
 on:
   schedule:
     - cron: "*/10 * * * *"
+
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Telegram mesajını görmek için test modu"
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -16,6 +23,7 @@ jobs:
   run-bot:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
     steps:
       - name: Repository'yi indir
         uses: actions/checkout@v4
@@ -44,14 +52,17 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
+          TEST_MODE: ${{ inputs.test_mode || false }}
         run: python bot.py
 
       - name: Tahmin arşivini kaydet
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           if [ -f match_predictions.json ]; then
             git add match_predictions.json
+
             if ! git diff --cached --quiet; then
               git commit -m "Haftalık maç tahminlerini güncelle"
               git push
