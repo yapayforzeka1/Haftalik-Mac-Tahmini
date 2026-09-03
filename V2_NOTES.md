@@ -12,3 +12,12 @@
 
 ## Not
 Gemini API anahtarının kendi 2.5 Search grounding kotası ayrıca doluysa yine 429 alınabilir. Google AI Studio'daki Rate Limits/Usage bölümünden kontrol edilmelidir.
+
+
+## V2.2 zamanlama / resmi XI
+- Normal tahmin penceresi maçtan 15–75 dakika öncesidir.
+- Tahmin, resmi ilk 11 doğrulanmadan normal modda finalize edilmez.
+- football-data.org maç detayındaki lineup verisi önce kontrol edilir; araştırma katmanı resmi kaynaklarla çapraz kontrol eder.
+- Böylece resmi XI açıklandıktan sonra AI'lar final tahmini üretir ve hedef, maçtan en geç 15 dakika önce Telegram'a göndermektir.
+- GitHub Actions schedule 5 dakikada bir kontrol eder.
+- TEST_MODE, geliştirme/test amacıyla resmi XI kapısını bypass edebilir; test tahminleri gerçek arşive yazılmaz.

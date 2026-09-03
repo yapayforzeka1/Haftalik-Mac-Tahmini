@@ -41,6 +41,26 @@ class FootballDataClient:
     def get_matches(self) -> list[dict[str, Any]]:
         return self._get(f"/competitions/{COMPETITION_CODE}/matches").get("matches", [])
 
+    def get_match_details(self, match_id: int) -> dict[str, Any]:
+        """Fetch one match with lineup details when the provider exposes them."""
+        response = requests.get(
+            f"{BASE_URL}/matches/{match_id}",
+            headers={
+                "X-Auth-Token": self.api_key,
+                "X-Unfold-Lineups": "true",
+                "X-Unfold-Bookings": "true",
+                "X-Unfold-Subs": "true",
+            },
+            timeout=REQUEST_TIMEOUT,
+        )
+        if response.status_code == 429:
+            reset = response.headers.get("X-RequestCounter-Reset", "bilinmiyor")
+            raise FootballDataError(f"football-data.org rate limit (429), reset={reset}s")
+        if response.status_code in {401, 403}:
+            raise FootballDataError(f"football-data.org yetki hatası ({response.status_code}).")
+        response.raise_for_status()
+        return response.json()
+
     def get_standings(self) -> list[dict[str, Any]]:
         """CL standings can return 404 on football-data.org; standings are optional."""
         try:

@@ -26,8 +26,9 @@ from weekly_report import (
 )
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
-MIN_MINUTES_BEFORE = 45
-MAX_MINUTES_BEFORE = 60
+MIN_MINUTES_BEFORE = 15
+MAX_MINUTES_BEFORE = 75
+LINEUP_REQUIRED = True
 MATCHES_FILE = Path("match_predictions.json")
 WEEKLY_SCHEDULE_FILE = Path("weekly_schedule.json")
 SEASON = "2026/27"
@@ -377,7 +378,7 @@ def main() -> None:
     if finished_updates:
         save_predictions(predictions)
 
-    # Weekly report check is independent from the 45-60 minute prediction window.
+    # Weekly report check is independent from the match prediction window.
     try:
         maybe_send_weekly_reports(predictions, matches, now_utc)
     except Exception as error:
@@ -387,7 +388,7 @@ def main() -> None:
     upcoming = _upcoming_matches(matches, now_utc, test_mode)
     if test_mode:
         print("🧪 TEST MODU AKTİF")
-        print("45-60 dakika filtresi bypass edilecek; en yakın gelecek maç kullanılacak.")
+        print("TEST MODU: resmi XI bekleme kuralı bypass edilir; en yakın gelecek maç kullanılabilir.")
     print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde'} {len(upcoming)} maç seçildi.")
     if not upcoming:
         save_predictions(predictions)
@@ -432,6 +433,27 @@ def main() -> None:
             context["data_warning"] = str(error)
             print(f"⚠️ Son maç verileri alınamadı: {error}")
 
+        # Official XI gate: never finalize a prediction before the official
+        # starting lineups are confirmed. Prefer the football-data match
+        # payload, then let the research layer cross-check official sources.
+        official_xi_context = None
+        try:
+            details = football.get_match_details(int(match_id))
+            lineups = details.get("lineups") or {}
+            home_xi = (lineups.get("homeTeam") or {}).get("lineup") or []
+            away_xi = (lineups.get("awayTeam") or {}).get("lineup") or []
+            if len(home_xi) >= 11 and len(away_xi) >= 11:
+                official_xi_context = {
+                    "status": "ANNOUNCED",
+                    "home": home_xi,
+                    "away": away_xi,
+                    "source": "football-data.org match lineup",
+                }
+                context["official_xi"] = official_xi_context
+        except FootballDataError as error:
+            context["official_xi_warning"] = str(error)
+            print(f"⚠️ Resmi XI football-data.org üzerinden alınamadı: {error}")
+
         history = {
             "home": build_team_history(predictions, home_team),
             "away": build_team_history(predictions, away_team),
@@ -447,6 +469,12 @@ def main() -> None:
         else:
             print("ℹ️ GEMINI_API_KEY yok; araştırma katmanı atlandı.")
             research = empty_research("GEMINI_API_KEY yok; araştırma katmanı atlandı.")
+
+        research_xi = (research.get("official_xi") or {}) if isinstance(research, dict) else {}
+        research_xi_announced = research_xi.get("status") == "ANNOUNCED"
+        if not test_mode and not (official_xi_context or research_xi_announced):
+            print(f"⏳ {home_team} - {away_team}: resmi ilk 11 henüz doğrulanmadı; tahmin ertelendi.")
+            continue
 
         votes = run_ai_pool(home_team, away_team, context, research, history)
         successful = [v for v in votes if v.success and v.result]
