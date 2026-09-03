@@ -5,7 +5,7 @@ import re
 from datetime import datetime, timezone
 from typing import Any
 
-RESEARCH_MODEL = "gemini-3.7-flash"
+RESEARCH_MODEL = "gemini-2.5-flash"
 
 
 def _extract_json(text: str) -> dict[str, Any]:
@@ -93,7 +93,26 @@ SADECE JSON:
         temperature=0.15,
         max_output_tokens=5200,
     )
-    response = client.models.generate_content(model=RESEARCH_MODEL, contents=prompt, config=config)
+    # Search grounding için Gemini 2.5 Flash kullanılır. Gemini 3.x API
+    # ücretsiz katmanda Google Search grounding sunmadığı için 429 alınabilir.
+    # 2.5 Flash Search grounding için ücretsiz günlük limit sunar.
+    import time
+
+    last_error = None
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(model=RESEARCH_MODEL, contents=prompt, config=config)
+            break
+        except Exception as error:
+            last_error = error
+            message = str(error)
+            if ("429" not in message and "RESOURCE_EXHAUSTED" not in message and
+                    "503" not in message and "UNAVAILABLE" not in message):
+                raise
+            if attempt < 2:
+                time.sleep(2 ** attempt * 2)
+    else:
+        raise last_error
     result = _extract_json(response.text or "")
     result["status"] = "OK"
     result["researched_at"] = datetime.now(timezone.utc).isoformat()
