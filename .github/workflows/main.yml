@@ -2,12 +2,12 @@ name: Haftalık Maç Tahmini
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
 
   workflow_dispatch:
     inputs:
       test_mode:
-        description: "Telegram maç mesajını test et"
+        description: "Telegram maç tahmin akışını test et"
         required: true
         default: false
         type: boolean
