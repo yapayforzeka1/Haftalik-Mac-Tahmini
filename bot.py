@@ -26,7 +26,7 @@ from weekly_report import (
 )
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
-MIN_MINUTES_BEFORE = 0
+MIN_MINUTES_BEFORE = 10
 MAX_MINUTES_BEFORE = 75
 LINEUP_REQUIRED = True
 MATCHES_FILE = Path("match_predictions.json")
@@ -469,9 +469,7 @@ def main() -> None:
             context["data_warning"] = str(error)
             print(f"⚠️ Son maç verileri alınamadı: {error}")
 
-        # Official XI gate: never finalize a prediction before the official
-        # starting lineups are confirmed. Prefer the football-data match
-        # payload, then let the research layer cross-check official sources.
+        # Official XI is optional. Continue with available data if lineups are unavailable.
         official_xi_context = None
         try:
             details = football.get_match_details(int(match_id))
@@ -506,11 +504,8 @@ def main() -> None:
             print("ℹ️ GEMINI_API_KEY yok; araştırma katmanı atlandı.")
             research = empty_research("GEMINI_API_KEY yok; araştırma katmanı atlandı.")
 
-        research_xi = (research.get("official_xi") or {}) if isinstance(research, dict) else {}
-        research_xi_announced = research_xi.get("status") == "ANNOUNCED"
-        if not test_mode and not (official_xi_context or research_xi_announced):
-            print(f"⏳ {home_team} - {away_team}: resmi ilk 11 henüz doğrulanmadı; tahmin ertelendi.")
-            continue
+        if not official_xi_context:
+            print(f"ℹ️ {home_team} - {away_team}: resmi ilk 11 yok; mevcut verilerle tahmin devam ediyor.")
 
         votes = run_ai_pool(home_team, away_team, context, research, history)
         successful = [v for v in votes if v.success and v.result]
