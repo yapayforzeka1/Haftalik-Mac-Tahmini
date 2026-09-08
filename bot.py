@@ -158,6 +158,41 @@ def _upcoming_matches(matches: list[dict[str, Any]], now_utc: datetime, test_mod
     return candidates
 
 
+def _print_prediction_window_debug(matches: list[dict[str, Any]], now_utc: datetime) -> None:
+    """Print the current time and nearest scheduled matches for window debugging."""
+    print(f"🕒 Sistem UTC zamanı: {now_utc.isoformat()}")
+    print(f"🕒 Türkiye zamanı: {now_utc.astimezone(TURKEY_TZ).isoformat()}")
+
+    upcoming = []
+    for match in matches:
+        if match.get("status") not in {"SCHEDULED", "TIMED"}:
+            continue
+        try:
+            match_utc = parse_utc(match["utcDate"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        minutes_until = (match_utc - now_utc).total_seconds() / 60
+        if minutes_until > 0:
+            upcoming.append((minutes_until, match))
+
+    upcoming.sort(key=lambda item: item[0])
+    if not upcoming:
+        print("🔎 DEBUG: Gelecek SCHEDULED/TIMED maç bulunamadı.")
+        return
+
+    print("🔎 DEBUG: En yakın gelecek maçlar:")
+    for minutes_until, match in upcoming[:10]:
+        home = (match.get("homeTeam") or {}).get("name", "?")
+        away = (match.get("awayTeam") or {}).get("name", "?")
+        status = match.get("status")
+        utc_date = match.get("utcDate")
+        local_date = parse_utc(utc_date).astimezone(TURKEY_TZ).strftime("%d.%m.%Y %H:%M")
+        print(
+            f"   • {home} - {away} | status={status} | "
+            f"UTC={utc_date} | TR={local_date} | {minutes_until:.1f} dk kaldı"
+        )
+
+
 def _load_weekly_schedule() -> dict[str, str]:
     if not WEEKLY_SCHEDULE_FILE.exists():
         return {}
@@ -385,6 +420,7 @@ def main() -> None:
         print(f"⚠️ Haftalık rapor oluşturma hatası: {error}")
 
     test_mode = os.environ.get("TEST_MODE", "false").lower() == "true"
+    _print_prediction_window_debug(matches, now_utc)
     upcoming = _upcoming_matches(matches, now_utc, test_mode)
     if test_mode:
         print("🧪 TEST MODU AKTİF")
