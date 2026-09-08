@@ -1,8 +1,3 @@
-ChatGPT:
-Evet. Aşağıdaki sürüm, gönderdiğin bot.py'nin tamamıdır ve 22:00 maçı için 20:45–21:45 arasında tahmin gönderecek şekilde düzenlenmiştir.
-
-Önemli değişiklik: GitHub Actions zaten */5 çalıştığı için bot yaklaşık olarak 20:45, 20:50, 20:55 ... 21:45 çalışır. Resmi XI doğrulanırsa ilk uygun çalışmada mesaj gönderilir. 21:45 çalışmasında hâlâ mesaj yoksa artık kontrol etmen gerekir.
-
 from __future__ import annotations
 
 import json
