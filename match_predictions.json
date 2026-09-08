@@ -227,7 +227,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -251,7 +254,10 @@
           ],
           "change_vs_previous": "None"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -275,7 +281,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -313,10 +322,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 3
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 3,
+      "away": 2,
+      "status": "FINISHED",
+      "updated_at": "2026-09-08T21:16:54.105713+00:00"
+    },
+    "consensus_points": 3,
+    "exact_score_correct": false,
+    "outcome_correct": true
   },
   "575326": {
     "season": "2026/27",
@@ -553,7 +572,10 @@
           ],
           "change_vs_previous": "Geçmiş tahmin bulunmuyor."
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Mistral Small Latest",
@@ -583,7 +605,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -607,7 +632,10 @@
           ],
           "change_vs_previous": "None"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -631,7 +659,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -674,10 +705,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 3
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 0,
+      "away": 2,
+      "status": "FINISHED",
+      "updated_at": "2026-09-08T21:16:54.105752+00:00"
+    },
+    "consensus_points": 3,
+    "exact_score_correct": false,
+    "outcome_correct": false
   },
   "575328": {
     "season": "2026/27",
@@ -904,7 +945,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Mistral Small Latest",
@@ -935,7 +979,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -960,7 +1007,10 @@
           ],
           "change_vs_previous": ""
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -984,7 +1034,10 @@
           ],
           "change_vs_previous": ""
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -1018,10 +1071,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 0
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 2,
+      "away": 3,
+      "status": "FINISHED",
+      "updated_at": "2026-09-08T21:16:54.105769+00:00"
+    },
+    "consensus_points": 0,
+    "exact_score_correct": false,
+    "outcome_correct": false
   },
   "575325": {
     "season": "2026/27",
@@ -1248,7 +1311,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Mistral Small Latest",
@@ -1278,7 +1344,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cohere Command A+",
@@ -1302,7 +1371,10 @@
           ],
           "change_vs_previous": ""
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -1326,7 +1398,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       }
     ],
     "consensus": {
@@ -1360,9 +1435,19 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 5
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 2,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-08T21:16:54.105783+00:00"
+    },
+    "consensus_points": 5,
+    "exact_score_correct": true,
+    "outcome_correct": true
   }
 }
