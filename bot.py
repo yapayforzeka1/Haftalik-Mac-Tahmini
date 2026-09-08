@@ -26,7 +26,7 @@ from weekly_report import (
 )
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
-MIN_MINUTES_BEFORE = 0
+MIN_MINUTES_BEFORE = 50
 MAX_MINUTES_BEFORE = 75
 LINEUP_REQUIRED = False
 MATCHES_FILE = Path("match_predictions.json")
@@ -425,7 +425,7 @@ def main() -> None:
     if test_mode:
         print("🧪 TEST MODU AKTİF")
         print("TEST MODU: resmi XI bekleme kuralı bypass edilir; en yakın gelecek maç kullanılabilir.")
-    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde'} {len(upcoming)} maç seçildi.")
+    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde (50–75 dk kala) (50–75 dk kala)'} {len(upcoming)} maç seçildi.")
     if not upcoming:
         save_predictions(predictions)
         return
