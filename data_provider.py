@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-import re
 from datetime import datetime, timedelta
 from typing import Any
 
@@ -14,7 +13,6 @@ import requests
 
 BASE_URL = "https://api.football-data.org/v4"
 COMPETITION_CODE = "CL"
-REQUEST_TIMEOUT = 30
 
 
 # ============================================================
@@ -22,7 +20,9 @@ REQUEST_TIMEOUT = 30
 # ============================================================
 
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
-API_FOOTBALL_TIMEOUT = 30
+
+
+REQUEST_TIMEOUT = 30
 
 
 class FootballDataError(RuntimeError):
@@ -30,16 +30,24 @@ class FootballDataError(RuntimeError):
 
 
 class FootballDataClient:
-    """football-data.org + API-Football veri istemcisi."""
+    """
+    Football data sağlayıcısı.
+
+    Birinci kaynak:
+        football-data.org
+
+    İkinci kaynak:
+        API-Football
+
+    API-Football özellikle resmi ilk 11 kontrolünde
+    yedek kaynak olarak kullanılabilir.
+    """
 
     def __init__(
         self,
         api_key: str | None = None,
+        api_football_key: str | None = None,
     ) -> None:
-
-        # ----------------------------------------------------
-        # football-data.org
-        # ----------------------------------------------------
 
         self.api_key = (
             api_key
@@ -49,41 +57,21 @@ class FootballDataClient:
             )
         )
 
+        self.api_football_key = (
+            api_football_key
+            or os.environ.get(
+                "API_FOOTBALL_KEY",
+                "",
+            )
+        )
+
         if not self.api_key:
             raise FootballDataError(
                 "FOOTBALL_DATA_API_KEY eksik."
             )
 
-        # ----------------------------------------------------
-        # API-Football
-        # ----------------------------------------------------
-
-        self.api_football_key = os.environ.get(
-            "API_FOOTBALL_KEY",
-            "",
-        )
-
-        if self.api_football_key:
-            print(
-                "✅ API_FOOTBALL_KEY bulundu; "
-                "ikinci XI kaynağı aktif."
-            )
-        else:
-            print(
-                "ℹ️ API_FOOTBALL_KEY bulunamadı; "
-                "ikinci XI kaynağı devre dışı."
-            )
-
-        # Aynı GitHub Actions çalışması içerisinde
-        # API-Football fixture listesini tekrar tekrar
-        # çekmemek için basit bir bellek cache'i.
-        self._api_football_fixtures_cache: dict[
-            str,
-            list[dict[str, Any]],
-        ] = {}
-
     # ========================================================
-    # FOOTBALL-DATA.ORG
+    # FOOTBALL-DATA.ORG REQUEST
     # ========================================================
 
     def _get(
@@ -113,7 +101,10 @@ class FootballDataClient:
                 f"(429), reset={reset}s"
             )
 
-        if response.status_code in {401, 403}:
+        if response.status_code in {
+            401,
+            403,
+        }:
 
             raise FootballDataError(
                 "football-data.org yetki hatası "
@@ -123,6 +114,10 @@ class FootballDataClient:
         response.raise_for_status()
 
         return response.json()
+
+    # ========================================================
+    # FOOTBALL-DATA.ORG MATCHES
+    # ========================================================
 
     def get_matches(
         self,
@@ -135,12 +130,21 @@ class FootballDataClient:
             [],
         )
 
+    # ========================================================
+    # FOOTBALL-DATA.ORG MATCH DETAILS
+    # ========================================================
+
     def get_match_details(
         self,
         match_id: int,
     ) -> dict[str, Any]:
 
-        """football-data.org maç detayları + lineup."""
+        """
+        Football-data.org maç detayları.
+
+        Lineup bilgisi sağlayıcı tarafından mevcutsa
+        X-Unfold-Lineups ile istenir.
+        """
 
         response = requests.get(
             f"{BASE_URL}/matches/{match_id}",
@@ -165,7 +169,10 @@ class FootballDataClient:
                 f"(429), reset={reset}s"
             )
 
-        if response.status_code in {401, 403}:
+        if response.status_code in {
+            401,
+            403,
+        }:
 
             raise FootballDataError(
                 "football-data.org yetki hatası "
@@ -177,81 +184,8 @@ class FootballDataClient:
         return response.json()
 
     # ========================================================
-    # API-FOOTBALL YARDIMCI FONKSİYONLARI
+    # API-FOOTBALL REQUEST
     # ========================================================
-
-    @staticmethod
-    def _normalize_team_name(
-        name: str,
-    ) -> str:
-
-        """
-        Takım isimlerini farklı API yazımlarına karşı
-        karşılaştırılabilir hale getirir.
-
-        Örnek:
-        Real Madrid CF
-        Real Madrid
-        -> real madrid
-        """
-
-        value = str(name or "").lower().strip()
-
-        replacements = {
-            "fc": " ",
-            "cf": " ",
-            "afc": " ",
-            "club": " ",
-            "football club": " ",
-            "calcio": " ",
-        }
-
-        for old, new in replacements.items():
-
-            value = re.sub(
-                rf"\b{re.escape(old)}\b",
-                new,
-                value,
-            )
-
-        # Türkçe / Avrupa karakterlerini basit şekilde
-        # normalize et.
-        translation = str.maketrans(
-            {
-                "ı": "i",
-                "İ": "i",
-                "ş": "s",
-                "Ş": "s",
-                "ğ": "g",
-                "Ğ": "g",
-                "ü": "u",
-                "Ü": "u",
-                "ö": "o",
-                "Ö": "o",
-                "ç": "c",
-                "Ç": "c",
-                "é": "e",
-                "è": "e",
-                "á": "a",
-                "à": "a",
-                "ó": "o",
-                "ò": "o",
-            }
-        )
-
-        value = value.translate(
-            translation
-        )
-
-        value = re.sub(
-            r"[^a-z0-9]+",
-            " ",
-            value,
-        )
-
-        return " ".join(
-            value.split()
-        )
 
     def _api_football_get(
         self,
@@ -262,18 +196,17 @@ class FootballDataClient:
         if not self.api_football_key:
 
             raise FootballDataError(
-                "API_FOOTBALL_KEY eksik."
+                "API_FOOTBALL_KEY tanımlı değil."
             )
 
         response = requests.get(
             f"{API_FOOTBALL_BASE_URL}{path}",
             headers={
-                "x-apisports-key": (
-                    self.api_football_key
-                ),
+                "x-apisports-key":
+                    self.api_football_key,
             },
             params=params or {},
-            timeout=API_FOOTBALL_TIMEOUT,
+            timeout=REQUEST_TIMEOUT,
         )
 
         if response.status_code == 429:
@@ -303,62 +236,15 @@ class FootballDataClient:
         if errors:
 
             raise FootballDataError(
-                f"API-Football API hatası: "
+                "API-Football API hatası: "
                 f"{errors}"
             )
 
         return data
 
     # ========================================================
-    # API-FOOTBALL MAÇ BULMA
+    # API-FOOTBALL MAÇ ARAMA
     # ========================================================
-
-    def _get_api_football_fixtures_for_date(
-        self,
-        match_date: str,
-    ) -> list[dict[str, Any]]:
-
-        """
-        Belirli günün API-Football maçlarını getirir.
-
-        Aynı çalışma içerisinde aynı gün için tekrar
-        API çağrısı yapılmasını önlemek amacıyla cache kullanır.
-        """
-
-        if match_date in (
-            self._api_football_fixtures_cache
-        ):
-
-            return (
-                self._api_football_fixtures_cache[
-                    match_date
-                ]
-            )
-
-        data = self._api_football_get(
-            "/fixtures",
-            params={
-                "date": match_date,
-                "timezone": "Europe/Istanbul",
-            },
-        )
-
-        fixtures = data.get(
-            "response",
-            [],
-        )
-
-        self._api_football_fixtures_cache[
-            match_date
-        ] = fixtures
-
-        print(
-            f"🔎 API-Football: "
-            f"{match_date} tarihinde "
-            f"{len(fixtures)} fixture bulundu."
-        )
-
-        return fixtures
 
     def find_api_football_fixture(
         self,
@@ -368,37 +254,57 @@ class FootballDataClient:
     ) -> dict[str, Any] | None:
 
         """
-        football-data.org maçını API-Football karşılığıyla
-        takım adı + tarih üzerinden eşleştirir.
+        API-Football üzerinde maçı bulur.
+
+        Önce tarih üzerinden fixture listesi alınır.
+        Ardından takım isimleri mümkün olduğunca
+        eşleştirilir.
         """
 
         if not self.api_football_key:
 
+            print(
+                "ℹ️ API_FOOTBALL_KEY yok; "
+                "API-Football ikinci kaynak "
+                "kullanılmayacak."
+            )
+
             return None
 
-        turkey_date = (
-            match_utc.astimezone(
-                __import__(
-                    "zoneinfo"
-                ).ZoneInfo(
-                    "Europe/Istanbul"
-                )
-            ).date().isoformat()
+        date_string = (
+            match_utc.date().isoformat()
         )
 
-        fixtures = (
-            self._get_api_football_fixtures_for_date(
-                turkey_date
+        try:
+
+            data = self._api_football_get(
+                "/fixtures",
+                {
+                    "date": date_string,
+                },
             )
+
+        except FootballDataError as error:
+
+            print(
+                f"⚠️ API-Football fixture araması "
+                f"başarısız: {error}"
+            )
+
+            return None
+
+        fixtures = data.get(
+            "response",
+            [],
         )
 
-        target_home = (
+        home_normalized = (
             self._normalize_team_name(
                 home_team
             )
         )
 
-        target_away = (
+        away_normalized = (
             self._normalize_team_name(
                 away_team
             )
@@ -414,7 +320,7 @@ class FootballDataClient:
                 {},
             )
 
-            api_home = (
+            fixture_home = (
                 teams.get(
                     "home",
                     {},
@@ -424,7 +330,7 @@ class FootballDataClient:
                 )
             )
 
-            api_away = (
+            fixture_away = (
                 teams.get(
                     "away",
                     {},
@@ -434,55 +340,45 @@ class FootballDataClient:
                 )
             )
 
-            normalized_home = (
+            fixture_home_normalized = (
                 self._normalize_team_name(
-                    api_home
+                    fixture_home
                 )
             )
 
-            normalized_away = (
+            fixture_away_normalized = (
                 self._normalize_team_name(
-                    api_away
+                    fixture_away
                 )
             )
 
             score = 0
 
             if (
-                normalized_home
-                == target_home
+                home_normalized
+                == fixture_home_normalized
             ):
                 score += 2
 
-            if (
-                normalized_away
-                == target_away
-            ):
-                score += 2
-
-            # Bir ismin diğerinin içinde geçmesi durumunda
-            # daha düşük güven puanı ver.
-            if (
-                normalized_home
-                and target_home
-                and (
-                    normalized_home
-                    in target_home
-                    or target_home
-                    in normalized_home
-                )
+            elif (
+                home_normalized
+                in fixture_home_normalized
+                or fixture_home_normalized
+                in home_normalized
             ):
                 score += 1
 
             if (
-                normalized_away
-                and target_away
-                and (
-                    normalized_away
-                    in target_away
-                    or target_away
-                    in normalized_away
-                )
+                away_normalized
+                == fixture_away_normalized
+            ):
+                score += 2
+
+            elif (
+                away_normalized
+                in fixture_away_normalized
+                or fixture_away_normalized
+                in away_normalized
             ):
                 score += 1
 
@@ -491,37 +387,20 @@ class FootballDataClient:
                 best_score = score
                 best_match = fixture
 
-        if (
-            best_match is None
-            or best_score < 4
-        ):
+        if best_match and best_score >= 3:
 
-            print(
-                f"⚠️ API-Football eşleşmesi bulunamadı: "
-                f"{home_team} - {away_team}"
-            )
-
-            return None
-
-        fixture_id = (
-            best_match.get(
-                "fixture",
-                {},
-            ).get(
-                "id"
-            )
-        )
+            return best_match
 
         print(
-            f"✅ API-Football maç eşleşti: "
-            f"{home_team} - {away_team} "
-            f"(fixture={fixture_id})"
+            f"⚠️ API-Football'da eşleşen maç "
+            f"bulunamadı: "
+            f"{home_team} - {away_team}"
         )
 
-        return best_match
+        return None
 
     # ========================================================
-    # API-FOOTBALL RESMİ İLK 11
+    # API-FOOTBALL RESMİ XI
     # ========================================================
 
     def get_api_football_lineups(
@@ -532,192 +411,275 @@ class FootballDataClient:
     ) -> dict[str, Any] | None:
 
         """
-        API-Football'dan resmi ilk 11'i getirir.
+        API-Football üzerinden resmi ilk 11'i alır.
 
         Dönen yapı:
+
         {
             "status": "ANNOUNCED",
             "home": [...],
             "away": [...],
-            "source": "api-football",
+            "source": "API-Football",
             "fixture_id": ...
         }
 
-        XI henüz açıklanmadıysa None döner.
+        XI henüz açıklanmamışsa None döner.
         """
 
         if not self.api_football_key:
 
             return None
 
+        fixture = (
+            self.find_api_football_fixture(
+                home_team,
+                away_team,
+                match_utc,
+            )
+        )
+
+        if not fixture:
+
+            return None
+
+        fixture_id = (
+            fixture.get(
+                "fixture",
+                {},
+            ).get(
+                "id"
+            )
+        )
+
+        if not fixture_id:
+
+            return None
+
         try:
-
-            fixture = (
-                self.find_api_football_fixture(
-                    home_team,
-                    away_team,
-                    match_utc,
-                )
-            )
-
-            if not fixture:
-                return None
-
-            fixture_id = (
-                fixture.get(
-                    "fixture",
-                    {},
-                ).get(
-                    "id"
-                )
-            )
-
-            if not fixture_id:
-
-                print(
-                    f"⚠️ API-Football fixture ID yok: "
-                    f"{home_team} - {away_team}"
-                )
-
-                return None
 
             data = self._api_football_get(
                 "/fixtures/lineups",
-                params={
+                {
                     "fixture": fixture_id,
                 },
             )
 
-            response = data.get(
-                "response",
-                [],
-            )
-
-            if not response:
-
-                print(
-                    f"⏳ API-Football: "
-                    f"{home_team} - {away_team} "
-                    f"için ilk 11 henüz yayınlanmamış."
-                )
-
-                return None
-
-            home_lineup: list[
-                dict[str, Any]
-            ] = []
-
-            away_lineup: list[
-                dict[str, Any]
-            ] = []
-
-            for team_data in response:
-
-                team = team_data.get(
-                    "team",
-                    {},
-                )
-
-                team_name = self._normalize_team_name(
-                    team.get(
-                        "name",
-                        "",
-                    )
-                )
-
-                starting = (
-                    team_data.get(
-                        "startXI",
-                        []
-                    )
-                    or team_data.get(
-                        "startingXI",
-                        []
-                    )
-                    or []
-                )
-
-                players = []
-
-                for item in starting:
-
-                    player = item.get(
-                        "player",
-                        {}
-                    )
-
-                    if not player:
-                        player = item
-
-                    players.append(
-                        {
-                            "player": player,
-                        }
-                    )
-
-                if (
-                    team_name
-                    == self._normalize_team_name(
-                        home_team
-                    )
-                ):
-
-                    home_lineup = players
-
-                elif (
-                    team_name
-                    == self._normalize_team_name(
-                        away_team
-                    )
-                ):
-
-                    away_lineup = players
-
-            if (
-                len(home_lineup) >= 11
-                and len(away_lineup) >= 11
-            ):
-
-                print(
-                    f"✅ API-Football resmi XI "
-                    f"doğrulandı: "
-                    f"{home_team} - {away_team}"
-                )
-
-                return {
-                    "status": "ANNOUNCED",
-                    "home": home_lineup,
-                    "away": away_lineup,
-                    "source": "api-football",
-                    "fixture_id": fixture_id,
-                }
-
-            print(
-                f"⏳ API-Football XI eksik: "
-                f"{home_team} - {away_team} "
-                f"({len(home_lineup)}/11 - "
-                f"{len(away_lineup)}/11)"
-            )
-
-            return None
-
         except FootballDataError as error:
 
             print(
-                f"⚠️ API-Football XI hatası: "
+                f"⚠️ API-Football XI alınamadı: "
                 f"{error}"
             )
 
             return None
 
-        except Exception as error:
+        lineups = data.get(
+            "response",
+            [],
+        )
+
+        if not lineups:
 
             print(
-                f"⚠️ API-Football XI beklenmeyen hata: "
-                f"{error}"
+                f"⏳ API-Football: "
+                f"{home_team} - {away_team} "
+                f"için resmi XI henüz yok."
             )
 
             return None
+
+        home_lineup = None
+        away_lineup = None
+
+        for lineup in lineups:
+
+            team = lineup.get(
+                "team",
+                {},
+            )
+
+            team_name = self._normalize_team_name(
+                team.get(
+                    "name",
+                    "",
+                )
+            )
+
+            if (
+                team_name
+                == self._normalize_team_name(
+                    home_team
+                )
+                or self._team_names_similar(
+                    team_name,
+                    home_team,
+                )
+            ):
+
+                home_lineup = lineup
+
+            elif (
+                team_name
+                == self._normalize_team_name(
+                    away_team
+                )
+                or self._team_names_similar(
+                    team_name,
+                    away_team,
+                )
+            ):
+
+                away_lineup = lineup
+
+        if not home_lineup or not away_lineup:
+
+            print(
+                f"⚠️ API-Football XI bulundu fakat "
+                f"takım eşleşmesi tamamlanamadı: "
+                f"{home_team} - {away_team}"
+            )
+
+            return None
+
+        home_start_xi = [
+            player
+            for player in home_lineup.get(
+                "startXI",
+                [],
+            )
+            if player.get("player")
+        ]
+
+        away_start_xi = [
+            player
+            for player in away_lineup.get(
+                "startXI",
+                [],
+            )
+            if player.get("player")
+        ]
+
+        if (
+            len(home_start_xi) < 11
+            or len(away_start_xi) < 11
+        ):
+
+            print(
+                f"⏳ API-Football resmi XI "
+                f"henüz tam değil: "
+                f"{len(home_start_xi)}/11 - "
+                f"{len(away_start_xi)}/11"
+            )
+
+            return None
+
+        print(
+            f"✅ API-Football resmi XI doğrulandı: "
+            f"{home_team} - {away_team}"
+        )
+
+        return {
+            "status": "ANNOUNCED",
+            "home": home_start_xi,
+            "away": away_start_xi,
+            "source": "API-Football",
+            "fixture_id": fixture_id,
+        }
+
+    # ========================================================
+    # TAKIM İSMİ NORMALİZASYONU
+    # ========================================================
+
+    @staticmethod
+    def _normalize_team_name(
+        value: str,
+    ) -> str:
+
+        value = (
+            value
+            .lower()
+            .strip()
+        )
+
+        replacements = {
+            "fc": "",
+            "cf": "",
+            "afc": "",
+            "fk": "",
+            "sk": "",
+            "real madrid cf": "real madrid",
+            "fc internazionale milano":
+                "inter milan",
+            "internazionale":
+                "inter milan",
+            "inter": "inter milan",
+            "borussia dortmund":
+                "dortmund",
+            "villarreal cf":
+                "villarreal",
+            "lille osc":
+                "lille",
+            "real betis balompie":
+                "real betis",
+            "manchester city fc":
+                "manchester city",
+            "fc porto":
+                "porto",
+        }
+
+        for old, new in replacements.items():
+
+            if value == old:
+                value = new
+
+        return (
+            " ".join(
+                value.split()
+            )
+        )
+
+    @classmethod
+    def _team_names_similar(
+        cls,
+        first: str,
+        second: str,
+    ) -> bool:
+
+        first_normalized = (
+            cls._normalize_team_name(
+                first
+            )
+        )
+
+        second_normalized = (
+            cls._normalize_team_name(
+                second
+            )
+        )
+
+        if (
+            first_normalized
+            == second_normalized
+        ):
+            return True
+
+        first_words = set(
+            first_normalized.split()
+        )
+
+        second_words = set(
+            second_normalized.split()
+        )
+
+        if not first_words or not second_words:
+            return False
+
+        overlap = (
+            first_words
+            & second_words
+        )
+
+        return bool(overlap)
 
     # ========================================================
     # STANDINGS
@@ -728,14 +690,15 @@ class FootballDataClient:
     ) -> list[dict[str, Any]]:
 
         """
-        CL standings football-data.org'da 404 dönebilir.
-        Bu durumda standings opsiyonel kabul edilir.
+        CL standings football-data.org'da
+        bulunamazsa boş döner.
         """
 
         try:
 
             return self._get(
-                f"/competitions/{COMPETITION_CODE}/standings"
+                f"/competitions/"
+                f"{COMPETITION_CODE}/standings"
             ).get(
                 "standings",
                 [],
@@ -755,9 +718,10 @@ class FootballDataClient:
             ):
 
                 print(
-                    "⚠️ football-data.org CL standings "
-                    "mevcut değil (404). "
-                    "Standings atlanacak; analiz devam edecek."
+                    "⚠️ football-data.org CL "
+                    "standings mevcut değil (404). "
+                    "Standings atlanacak; "
+                    "analiz devam edecek."
                 )
 
                 return []
@@ -783,7 +747,10 @@ class FootballDataClient:
             )
         ).isoformat()
 
-        end = before.date().isoformat()
+        end = (
+            before.date()
+            .isoformat()
+        )
 
         data = self._get(
             f"/teams/{team_id}/matches",
@@ -801,10 +768,11 @@ class FootballDataClient:
         )
 
         matches.sort(
-            key=lambda item: item.get(
-                "utcDate",
-                "",
-            ),
+            key=lambda item:
+                item.get(
+                    "utcDate",
+                    "",
+                ),
             reverse=True,
         )
 
@@ -812,7 +780,7 @@ class FootballDataClient:
 
 
 # ============================================================
-# GENEL YARDIMCI FONKSİYONLAR
+# UTC PARSE
 # ============================================================
 
 def parse_utc(
@@ -826,6 +794,10 @@ def parse_utc(
         )
     )
 
+
+# ============================================================
+# TAKIM FORMU
+# ============================================================
 
 def build_team_form(
     matches: list[dict[str, Any]],
@@ -958,10 +930,13 @@ def build_team_form(
 
     return {
         "matches": finished,
-        "last_5": "-".join(
-            item["result"]
-            for item in finished
-        ) or "N/A",
+        "last_5": (
+            "-".join(
+                item["result"]
+                for item in finished
+            )
+            or "N/A"
+        ),
         "points_last_5": points,
         "goals_for_last_5": goals_for,
         "goals_against_last_5": goals_against,
