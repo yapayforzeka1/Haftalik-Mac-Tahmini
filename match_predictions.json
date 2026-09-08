@@ -1,1 +1,1368 @@
-{}
+{
+  "575327": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575327",
+    "home_team": "Borussia Dortmund",
+    "away_team": "Villarreal CF",
+    "match_time": "08.09.2026 22:00",
+    "match_utc": "2026-09-08T19:00:00+00:00",
+    "prediction_created_at": "2026-09-08T19:00:37.489240+00:00",
+    "minutes_before_match": 0.8,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 4,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T13:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "TSG 1899 Hoffenheim",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-29T16:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "Hamburger SV",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W",
+          "points_last_5": 6,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 2,
+          "avg_goals_for": 2.5,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 2,
+            "goals_against": 0,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 0.0
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 3,
+            "goals_against": 2,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 2
+        }
+      },
+      "away": {
+        "team_id": 94,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "RC Deportivo La Coruña",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-28T19:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Deportivo Alavés",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-23T15:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Club Atlético de Madrid",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-16T15:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Racing Club de Santander",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "L-L-D-D",
+          "points_last_5": 2,
+          "goals_for_last_5": 6,
+          "goals_against_last_5": 8,
+          "avg_goals_for": 1.5,
+          "avg_goals_against": 2.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 2,
+            "goals_against": 3,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 3.0
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "0W-2D-1L",
+            "goals_for": 4,
+            "goals_against": 5,
+            "avg_goals_for": 1.33,
+            "avg_goals_against": 1.67
+          },
+          "rest_days_before_match": 3.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "official_xi_warning": "football-data.org rate limit (429), reset=bilinmiyors"
+    },
+    "history": {
+      "home": {
+        "team": "Borussia Dortmund",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Villarreal CF",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {}
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-08T19:00:13.702146+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Borussia Dortmund",
+          "away_team": "Villarreal CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Dortmund son 5 maçta ortalama 2.5 gol atarken, evinde (Hamburg'a karşı) gol yemeden 2-0 kazanarak savunma organizasyonunu korudu.",
+            "Villarreal son 5 maçta sadece 2 puan topladı (L-L-D-D) ve deplasman performansında istikrarsızlık gösterdi (3 maçta 4 gol atıp 5 yedi).",
+            "Dortmund'un ev sahibi avantajı ve Villarreal'ın deplasmandaki zayıf formu, ev sahibinin gol atmasını ve muhtemelen kazanmasını işaret ediyor.",
+            "Villarreal'ın son maçta Deportivo'ya 3-2 yenilmesi, savunma hattındaki açıkların devam ettiğini ve Dortmund'un hücum gücünün bu açıkları kullanabileceğini gösteriyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Borussia Dortmund",
+          "away_team": "Villarreal CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Dortmund ev sahibi olarak son 5 maçta ortalama 2,0 gol atıyor ve son ev sahibi maçında temiz bir performans sergiledi (2-0)",
+            "Villarreal deplasmanında son 5 maçta ortalama 1,33 gol atıyor ve ortalama 1,67 gol yiyor, bu da savunmasının zayıflığını gösteriyor",
+            "Dortmund'un son 5 maçında ortalama 2,5 gol atması ve 1,0 gol yemesi, Villarreal'in 1,5 gol atma ve 2,0 gol yeme ortalamasına üstünlük sağlıyor",
+            "Genel takım kalitesi ve Avrupa deneyimi Dortmund'u Villarreal'e tercih ettiriyor, bu da erken aşamada galibiyet beklentisini artırıyor"
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "3-1"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Borussia Dortmund",
+          "away_team": "Villarreal CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Dortmund son 5 maçta ortalama 2.5 gol attı, evinde savunması güçlü (0 gol yedi son maç)",
+            "Villarreal son 5 maçta savunma zayıf (ortalama 2.0 gol yedi) ve deplasmanda gol bulma oranı düşük",
+            "Dortmund'un dinlenme süresi (3.2 gün) rakipten daha iyi, bu da hücum temposunu artırır",
+            "Taktik olarak Dortmund yüksek pres ve kanat akıntısı kullanacak, Villarreal ise savunma hatalarını fırsata çevirebilir"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 100,
+      "average_subjective_confidence": 26,
+      "all_outcomes": {
+        "HOME": 3
+      },
+      "all_scores": {
+        "2-1": 3
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Dortmund son 5 maçta ortalama 2.5 gol atarken, evinde (Hamburg'a karşı) gol yemeden 2-0 kazanarak savunma organizasyonunu korudu.",
+          "Villarreal son 5 maçta sadece 2 puan topladı (L-L-D-D) ve deplasman performansında istikrarsızlık gösterdi (3 maçta 4 gol atıp 5 yedi).",
+          "Dortmund'un ev sahibi avantajı ve Villarreal'ın deplasmandaki zayıf formu, ev sahibinin gol atmasını ve muhtemelen kazanmasını işaret ediyor.",
+          "Villarreal'ın son maçta Deportivo'ya 3-2 yenilmesi, savunma hattındaki açıkların devam ettiğini ve Dortmund'un hücum gücünün bu açıkları kullanabileceğini gösteriyor.",
+          "Dortmund ev sahibi olarak son 5 maçta ortalama 2,0 gol atıyor ve son ev sahibi maçında temiz bir performans sergiledi (2-0)"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575326": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575326",
+    "home_team": "FC Porto",
+    "away_team": "Manchester City FC",
+    "match_time": "08.09.2026 22:00",
+    "match_utc": "2026-09-08T19:00:00+00:00",
+    "prediction_created_at": "2026-09-08T19:00:05.510522+00:00",
+    "minutes_before_match": 0.8,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 503,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T19:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Moreirense FC",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-29T17:00:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Académico de Viseu FC",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-23T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "FC Arouca",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-15T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Rio Ave FC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-09T17:00:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "FC Alverca",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W-W-W",
+          "points_last_5": 15,
+          "goals_for_last_5": 11,
+          "goals_against_last_5": 1,
+          "avg_goals_for": 2.2,
+          "avg_goals_against": 0.2,
+          "home_split_last_5": {
+            "matches": 3,
+            "record": "3W-0D-0L",
+            "goals_for": 6,
+            "goals_against": 1,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 0.33
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 5,
+            "goals_against": 0,
+            "avg_goals_for": 2.5,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 4.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 65,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T14:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Coventry City FC",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-28T19:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Crystal Palace FC",
+              "venue": "AWAY",
+              "goals_for": 4,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-23T13:00:00Z",
+              "competition": "Premier League",
+              "opponent": "AFC Bournemouth",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 7,
+          "goals_against_last_5": 2,
+          "avg_goals_for": 2.33,
+          "avg_goals_against": 0.67,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 3,
+            "goals_against": 1,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 0.5
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 4,
+            "goals_against": 1,
+            "avg_goals_for": 4.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "FC Porto",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Manchester City FC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {}
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-08T18:59:47.822625+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "FC Porto",
+          "away_team": "Manchester City FC",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 68,
+          "reasons": [
+            "Manchester City, Premier League ve Avrupa arenasındaki kadro kalitesi ve yüksek maç temposu avantajıyla öne çıkıyor.",
+            "FC Porto sezona Portekiz Ligi'nde 5'te 5 yaparak mükemmel bir giriş yapmış olsa da rakip seviyesi ciddi şekilde yükseliyor.",
+            "Dragão Stadyumu'nun zorlu atmosferi Porto'nun skor üretmesini sağlayabilir ancak Man City'nin hücum gücü galibiyete yakın taraf olmasını sağlıyor.",
+            "İki takımın da formda oluşu ve az gol yemesi kontrolün ön planda olduğu ancak City'nin kalite farkıyla 2-1 kazanacağı bir maça işaret ediyor."
+          ],
+          "score_candidates": [
+            "1-2",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "Geçmiş tahmin bulunmuyor."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "FC Porto",
+          "away_team": "Manchester City FC",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "Manchester City'nin Premier League'deki üstün teknik kadrosu ve Porto'ya kıyasla daha derin yedek havuzu, deplasmanda bile baskın oynamasını sağlar.",
+            "Porto son 5 maçında sadece 1 gol yemiş olsa da, rakipleri (Moreirense, Viseu, Arouca) Premier League standartlarındaki City savunma hattına göre daha zayıftır; City'nin gol yeme ortalaması (0.67) Porto'nunkinden (0.2) yüksektir ancak City'nin gol atma gücü (2.33) Porto'nunkine (2.2) benzer veya üzerindedir.",
+            "Porto'nun evinde güçlü olması (3W-0D-0L) ve City'nin deplasman performansının değişkenliği (1W-0D-0L ama 4-1 gibi yüksek skorlar) maçın açık kalma ihtimalini artırır.",
+            "UEFA Şampiyonlar Ligi ilk haftasında City'nin Porto'yu ezmemesi ancak deneyim ve bireysel kalite farkıyla maçı kontrol etmesi ve 1-2 gibi bir skorla galip gelmesi en olası senaryodur; Porto'nun gol atması beklenir ancak City'nin daha etkili olması muhtemeldir."
+          ],
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FC Porto",
+          "away_team": "Manchester City FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Porto'nun son 5 maçında ev sahibi olarak ortalama 2,0 gol atması ve sadece 0,33 gol yemesi, ev sahibi olarak en az iki gol atabileceğini ve skoru belirleyebilecek bir savunma gösterebileceğini gösteriyor.",
+            "Manchester City'nin kalitesi ve son deplasman maçındaki 4-1'lik galibiyetinde 4 gol atması, en az iki gol atma potansiyeline sahip olduklarını gösteriyor; ancak Porto'nun evdeki disiplinini göz önünde bulundurarak en olası sonuçta bir gol yemeleri bekleniyor.",
+            "Porto'nun evdeki savunması (son 5 maçta kalesinde sadece 1 gol) ve City'nin daha düşük tempoda oynayabileceği gerçeği, toplam gol sayısının düşük olmasını ve bir gol farkıyla sonuçlanmasını destekliyor.",
+            "Şampiyonlar Ligi grup aşaması maçlarında ev sahibi avantajı ve Porto'nun iyi formu, ev sahibi takımın bir gol üstünlüğü elde etmesi için uygun bir ortam yaratıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "1-2"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FC Porto",
+          "away_team": "Manchester City FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Porto son 5 maçta ortalama 2.2 gol attı, savunması 0.2 gol yedi; ev sahibi avantajı ve 4 gün dinlenme",
+            "City son 5 maçta ortalama 2.33 gol attı, savunması 0.67 gol yedi; deplasmanda hafif savunma zafiyeti",
+            "Porto'nun evdeki gol ortalaması 2.0, City'nin deplasmanda gol ortalaması 2.5, bu kombinasyon 2-1 olasılığını artırıyor",
+            "Her iki takım da yüksek hücum gücüne sahip, ancak Porto'nun savunma performansı daha istikrarlı, bu da City'nin tek gol atmasını sınırlayabilir"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 2,
+      "outcome_share": 50,
+      "score": "1-2",
+      "score_votes": 2,
+      "score_share": 50,
+      "average_subjective_confidence": 36,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 2
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Manchester City, Premier League ve Avrupa arenasındaki kadro kalitesi ve yüksek maç temposu avantajıyla öne çıkıyor.",
+          "FC Porto sezona Portekiz Ligi'nde 5'te 5 yaparak mükemmel bir giriş yapmış olsa da rakip seviyesi ciddi şekilde yükseliyor.",
+          "Dragão Stadyumu'nun zorlu atmosferi Porto'nun skor üretmesini sağlayabilir ancak Man City'nin hücum gücü galibiyete yakın taraf olmasını sağlıyor.",
+          "İki takımın da formda oluşu ve az gol yemesi kontrolün ön planda olduğu ancak City'nin kalite farkıyla 2-1 kazanacağı bir maça işaret ediyor.",
+          "Manchester City'nin Premier League'deki üstün teknik kadrosu ve Porto'ya kıyasla daha derin yedek havuzu, deplasmanda bile baskın oynamasını sağlar."
+        ],
+        "HOME": [
+          "Porto'nun son 5 maçında ev sahibi olarak ortalama 2,0 gol atması ve sadece 0,33 gol yemesi, ev sahibi olarak en az iki gol atabileceğini ve skoru belirleyebilecek bir savunma gösterebileceğini gösteriyor.",
+          "Manchester City'nin kalitesi ve son deplasman maçındaki 4-1'lik galibiyetinde 4 gol atması, en az iki gol atma potansiyeline sahip olduklarını gösteriyor; ancak Porto'nun evdeki disiplinini göz önünde bulundurarak en olası sonuçta bir gol yemeleri bekleniyor.",
+          "Porto'nun evdeki savunması (son 5 maçta kalesinde sadece 1 gol) ve City'nin daha düşük tempoda oynayabileceği gerçeği, toplam gol sayısının düşük olmasını ve bir gol farkıyla sonuçlanmasını destekliyor.",
+          "Şampiyonlar Ligi grup aşaması maçlarında ev sahibi avantajı ve Porto'nun iyi formu, ev sahibi takımın bir gol üstünlüğü elde etmesi için uygun bir ortam yaratıyor.",
+          "Porto son 5 maçta ortalama 2.2 gol attı, savunması 0.2 gol yedi; ev sahibi avantajı ve 4 gün dinlenme"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575328": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575328",
+    "home_team": "Lille OSC",
+    "away_team": "Real Betis Balompié",
+    "match_time": "08.09.2026 22:00",
+    "match_utc": "2026-09-08T19:00:00+00:00",
+    "prediction_created_at": "2026-09-08T19:01:10.265970+00:00",
+    "minutes_before_match": 0.8,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 521,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-03T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Toulouse FC",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-28T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Paris Saint-Germain FC",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-23T13:00:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Angers SCO",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-D-W",
+          "points_last_5": 7,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 2,
+          "avg_goals_for": 1.67,
+          "avg_goals_against": 0.67,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-1D-0L",
+            "goals_for": 2,
+            "goals_against": 2,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 3,
+            "goals_against": 0,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 5.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 90,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Madrid CF",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-29T15:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Levante UD",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 5,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-25T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Valencia CF",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-21T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Sociedad de Fútbol",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-L-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 5,
+          "avg_goals_for": 1.25,
+          "avg_goals_against": 1.25,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 2,
+            "goals_against": 0,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 0.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 3,
+            "goals_against": 5,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 2.5
+          },
+          "rest_days_before_match": 4.0,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 4
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Lille OSC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Real Betis Balompié",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {}
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-08T19:00:46.298736+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Lille OSC",
+          "away_team": "Real Betis Balompié",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Lille son maçlarında özellikle kendi sahasında PSG'ye karşı sergilediği performansla dirençli bir görüntü çizdi.",
+            "Real Betis evinde Real Madrid'i yenerek moral bulsa da deplasman formunda Levante karşısındaki 5-2'lik mağlubiyet gibi ciddi savunma zafiyetleri barındırıyor.",
+            "Lille'in 5 günlük dinlenme süresi, 4 gün dinlenen rakibine kıyasla fiziksel bir avantaj yaratıyor.",
+            "Şampiyonlar Ligi lig aşaması açılışında ev sahibi avantajını kullanmasını beklediğimiz Lille'in skoru alması muhtemel görünüyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Lille OSC",
+          "away_team": "Real Betis Balompié",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Lille, son 5 maçında ortalama 1.67 gol atarken sadece 0.67 gol yiyerek çok güçlü bir savunma ve etkili bir hücum dengesi sergiliyor; özellikle deplasman performansları (2W-0L) ev sahipliğinde daha da etkili olma potansiyeli taşıyor.",
+            "Real Betis, son 5 maçında ortalama 1.25 gol atıp 1.25 gol yiyerek daha dengesiz bir formda; Levante'ye 5-2 yenilmesi savunma zafiyetlerini ortaya koyuyor, ancak Real Madrid'e 1-0 kazanması kaliteyi gösteriyor.",
+            "Lille'ın ev sahasındaki ortalama gol üretimi (2.0) ve Betis'in deplasmandaki savunma zafiyeti (2.5 gol yeme ortalaması), Lille'ın en az 2 gol atmasını destekliyor.",
+            "Betis'in deplasmanlarda gol atabilme kapasitesi (1.5 ortalama) ve Lille'ın PSG ile berabere kalırken gol yemesi, Betis'in de skor tablosunda yer bulabileceğini gösteriyor; bu da 2-1 gibi yakın bir skoru olası kılıyor.",
+            "UEFA Şampiyonlar Ligi ilk haftasında ev sahibi avantajı ve Lille'ın daha tutarlı savunma yapısı, maçın kontrolünü ev sahibinde tutmasını sağlıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Lille OSC",
+          "away_team": "Real Betis Balompié",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 60,
+          "reasons": [
+            "Lille, ev sahibi olarak oynadığı son maçta PSG'ye karşı 2 gol attı ve genel olarak maç başına 1,67 gol ortalamasıyla hücum gücü sergiliyor.",
+            "Real Betis, son beş maçının tümünde gol attı ve deplasman maçlarında maç başına 1,5 gol ortalamasıyla skor yapabiliyor; bu nedenle gol atamama olasılığı düşük.",
+            "Betis'in deplasman savunması açıklar gösterdi (Levante'ye karşı 5 gol yedi) ve Lille'in düzenli gol atma yeteneğiyle bunu değerlendirme olasılığı yüksek.",
+            "Her iki takımın da son dönemdeki skor ortalamaları toplamda yaklaşık 3 gol öneriyor ve Lille'in ev avantajı maçı ev sahibi galibiyetine yönlendiriyor.",
+            "Her iki takım da kompakt savunma gösterdiği için skorun çok yüksek olma olasılığı düşük, bu da 2-1 skorunun makul bir sonuç olarak kalmasını sağlıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Lille OSC",
+          "away_team": "Real Betis Balompié",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Lille evinde son 5 maçta ortalama 1.67 gol attı ve savunması sadece 0.67 gol yedi, ofansif verim yüksek",
+            "Real Betis son 5 maçta deplasmanda savunma zayıf (ortalama 2.5 gol yedi) ve gol üretimi düşük (ortalama 1.25)",
+            "Lille'in ev sahibi performansı (2.0 gol atma, 2.0 gol yeme) Betis'in deplasmanda savunma zaafıyla birleştiğinde 2-1 gibi bir skor olası",
+            "Her iki takım da dinlenme günleri yeterli, rotasyon riski düşük, bu da ana kadroların sahada olmasını sağlayacak ve gol fırsatlarını artıracak"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "2-1",
+      "score_votes": 4,
+      "score_share": 100,
+      "average_subjective_confidence": 34,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 4
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Lille son maçlarında özellikle kendi sahasında PSG'ye karşı sergilediği performansla dirençli bir görüntü çizdi.",
+          "Real Betis evinde Real Madrid'i yenerek moral bulsa da deplasman formunda Levante karşısındaki 5-2'lik mağlubiyet gibi ciddi savunma zafiyetleri barındırıyor.",
+          "Lille'in 5 günlük dinlenme süresi, 4 gün dinlenen rakibine kıyasla fiziksel bir avantaj yaratıyor.",
+          "Şampiyonlar Ligi lig aşaması açılışında ev sahibi avantajını kullanmasını beklediğimiz Lille'in skoru alması muhtemel görünüyor.",
+          "Lille, son 5 maçında ortalama 1.67 gol atarken sadece 0.67 gol yiyerek çok güçlü bir savunma ve etkili bir hücum dengesi sergiliyor; özellikle deplasman performansları (2W-0L) ev sahipliğinde daha da etkili olma potansiyeli taşıyor."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575325": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575325",
+    "home_team": "Real Madrid CF",
+    "away_team": "FC Internazionale Milano",
+    "match_time": "08.09.2026 22:00",
+    "match_utc": "2026-09-08T19:00:00+00:00",
+    "prediction_created_at": "2026-09-08T18:59:39.948232+00:00",
+    "minutes_before_match": 0.8,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 86,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Betis Balompié",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-30T15:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Málaga CF",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-26T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Sociedad de Fútbol",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-22T19:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "RCD Espanyol de Barcelona",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-W-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 10,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 2.5,
+          "avg_goals_against": 0.75,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 8,
+            "goals_against": 1,
+            "avg_goals_for": 4.0,
+            "avg_goals_against": 0.5
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 2,
+            "goals_against": 2,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 4.0,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 4
+        }
+      },
+      "away": {
+        "team_id": 108,
+        "standings": {
+          "position": 3,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T16:00:00Z",
+              "competition": "Serie A",
+              "opponent": "SSC Napoli",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-30T18:45:00Z",
+              "competition": "Serie A",
+              "opponent": "Cagliari Calcio",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-22T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "AC Monza",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 8,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 2.67,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 7,
+            "goals_against": 3,
+            "avg_goals_for": 3.5,
+            "avg_goals_against": 1.5
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 1,
+            "goals_against": 0,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 3.1,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Real Madrid CF",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "FC Internazionale Milano",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {}
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-08T18:59:22.746131+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Real Madrid CF",
+          "away_team": "FC Internazionale Milano",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 62,
+          "reasons": [
+            "Real Madrid iç sahada oynadığı son lig maçlarında yüksek bir hücum verimliliği (maç başına 4.0 gol) yakaladı.",
+            "Inter Milano sezona Serie A'da 3'te 3 ile başlasa da Santiago Bernabeu deplasmanı Şampiyonlar Ligi seviyesinde en zorlu sınavı olacaktır.",
+            "Ev sahibi ekibin 4 günlük dinlenme süresi, Inter'in 3.1 günlük dinlenme süresine kıyasla fiziksel avantaj sunuyor.",
+            "İki ekibin de hücum gücü göz önüne alındığında karşılıklı gollerin olduğu ama Real Madrid'in üstünlüğüyle biten bir maç bekleniyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "3-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Real Madrid CF",
+          "away_team": "FC Internazionale Milano",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Real Madrid'in ev sahasındaki son 2 maçta ortalama 4 gol atması ve sadece 0.5 gol yemesi, ofansif üstünlüğünü ve savunma disiplinini gösteriyor.",
+            "Inter Milan'ın son 3 maçta 3 galibiyet alması ve ortalama 2.67 gol atması, deplasmanda bile gol bulma potansiyeli yüksek olduğunu işaret ediyor.",
+            "Real Madrid'in son maçta Real Betis'e deplasmanda 0-1 yenilmesi formda hafif bir dalgalanma olduğunu gösterse de, evdeki performansları bu eksiyi telafi ediyor.",
+            "İki takımın da yüksek tempolu ve golcü oyun tarzı, maçın açık bitme ihtimalini artırıyor; Real Madrid'in ev avantajı ve Inter'ın gol yeme eğilimi (son 5'te 1.0 ortalama) 2-1 skorunu en olası senaryo yapıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Real Madrid CF",
+          "away_team": "FC Internazionale Milano",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Real Madrid ortalama 4 gol/evde son 5 maçta ve sadece 1 gol yedi; bu da güçlü ev sahibi hücum gücünü gösteriyor.",
+            "Inter Milano tüm müsabakalarda ortalama 2,67 gol attı ve son 5 maçın hepsinde gol attı; deplasman maçlarında da gol bulabiliyor.",
+            "Her iki takımın da son dönemde gol üretiminde istikrarlı olması (toplam 3-4 gol) ve sağlam savunma performansı göstermesi (Real GA 0,75, Inter GA 1,0) 2-1 skorunun gerçekçi olmasını sağlıyor.",
+            "Real'in yaratıcı hücum oyuncuları ve Inter'in kompakt ancak hızlı hücum oyuncuları göz önüne alındığında, 2-1 skoru her iki takımın da gol atma potansiyelini yansıtıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Real Madrid CF",
+          "away_team": "FC Internazionale Milano",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Real Madrid son 5 maçta ortalama 2.5 gol attı ve savunması sadece 0.75 gol yedi, ev sahibi avantajı ve yüksek ofansif verimlilik skoru artırıyor.",
+            "Inter Milan son 5 maçta 2.67 gol ortalamasıyla etkili bir hücum sergiledi ancak savunması 1.0 gol ortalamasıyla Real'ın savunmasından daha zayıf.",
+            "Real Madrid'in ev split'inde son 2 maçta 4.0 ortalama gol attı ve sadece 0.5 gol yedi, bu da ev sahibi olarak yüksek skor potansiyelini gösteriyor.",
+            "Inter'in son 3 maçta sadece 1 kez konuk sahada oynadığı için ev sahibi baskısına alışık değil, bu da gol üretiminde bir miktar düşüş yaratabilir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "2-1",
+      "score_votes": 4,
+      "score_share": 100,
+      "average_subjective_confidence": 52,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 4
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Real Madrid iç sahada oynadığı son lig maçlarında yüksek bir hücum verimliliği (maç başına 4.0 gol) yakaladı.",
+          "Inter Milano sezona Serie A'da 3'te 3 ile başlasa da Santiago Bernabeu deplasmanı Şampiyonlar Ligi seviyesinde en zorlu sınavı olacaktır.",
+          "Ev sahibi ekibin 4 günlük dinlenme süresi, Inter'in 3.1 günlük dinlenme süresine kıyasla fiziksel avantaj sunuyor.",
+          "İki ekibin de hücum gücü göz önüne alındığında karşılıklı gollerin olduğu ama Real Madrid'in üstünlüğüyle biten bir maç bekleniyor.",
+          "Real Madrid'in ev sahasındaki son 2 maçta ortalama 4 gol atması ve sadece 0.5 gol yemesi, ofansif üstünlüğünü ve savunma disiplinini gösteriyor."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  }
+}
