@@ -27,7 +27,7 @@ from weekly_report import (
 )
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
-MIN_MINUTES_BEFORE = 50
+MIN_MINUTES_BEFORE = 35
 MAX_MINUTES_BEFORE = 75
 LINEUP_REQUIRED = False
 MATCHES_FILE = Path("match_predictions.json")
