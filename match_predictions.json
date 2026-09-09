@@ -3230,5 +3230,354 @@
     },
     "final_sent": true,
     "result_sent": false
+  },
+  "575333": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575333",
+    "home_team": "SSC Napoli",
+    "away_team": "Arsenal FC",
+    "match_time": "09.09.2026 22:00",
+    "match_utc": "2026-09-09T19:00:00+00:00",
+    "prediction_created_at": "2026-09-09T18:21:00.657753+00:00",
+    "minutes_before_match": 39.3,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 113,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T16:00:00Z",
+              "competition": "Serie A",
+              "opponent": "FC Internazionale Milano",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-30T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "Como 1907",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-22T18:45:00Z",
+              "competition": "Serie A",
+              "opponent": "Genoa CFC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-L-W",
+          "points_last_5": 3,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 5,
+          "avg_goals_for": 1.67,
+          "avg_goals_against": 1.67,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 1,
+            "goals_against": 2,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 4,
+            "goals_against": 3,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 1.5
+          },
+          "rest_days_before_match": 4.1,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 57,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-06T15:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Chelsea FC",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-31T19:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Aston Villa FC",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-21T19:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Coventry City FC",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 6,
+          "goals_against_last_5": 1,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 0.33,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 5,
+            "goals_against": 1,
+            "avg_goals_for": 2.5,
+            "avg_goals_against": 0.5
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 1,
+            "goals_against": 0,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 3.1,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "SSC Napoli",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Arsenal FC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T18:20:49.655886+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "SSC Napoli",
+          "away_team": "Arsenal FC",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "Arsenal, son 5 maçında 3 galibiyet alarak üstün bir formda ve gol yeme ortalaması (0.33) ile çok güçlü bir savunma sergiliyor.",
+            "Napoli, son 5 maçında 2 mağlubiyet alarak istikrarsız bir formda ve özellikle evinde Como'ya karşı 1-2 yenilerek savunma zafiyetleri gösteriyor.",
+            "Arsenal'ın Premier League'deki yüksek tempolu oyunu ve Napoli'nin son maçlardaki gol yeme eğilimi (1.67 avg GA), deplasman takımının gol bulma ihtimalini artırıyor.",
+            "Napoli'nin evindeki tek maçta 1 gol atıp 2 gol yemesi, Arsenal'ın disiplinli yapısı karşısında yeterli olmayabilir; Arsenal'ın kontratak veya pozisyon oyunu ile 2 gol bulması muhtemel."
+          ],
+          "score_candidates": [
+            "1-2",
+            "0-1",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": false,
+        "result": null,
+        "error": "Geçersiz outcome: DEPLASMAN"
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "SSC Napoli",
+          "away_team": "Arsenal FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Napoli evinde son 5 maçta ortalama 1.67 gol atıyor ve rakiplerine göre savunma zayıflığı (1.67 yeme) gösteriyor",
+            "Arsenal son 5 maçta ortalama 2.0 gol atıyor ancak savunması çok güçlü (0.33 yeme) ve deplasmanda gol bulma oranı düşük",
+            "Napoli'nin son 2 ev maçı (son 5 içinde) gol üretimi düşük, ancak bu maçta hücum hattı formda ve ev sahibi avantajı var",
+            "Arsenal'ın yoğun fikstür yükü yok, dinlenme süresi iyi; ancak Avrupa ligi kalitesi Serie A'ya göre daha yüksek, bu da Napoli'nin savunma sorunlarını artırabilir"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 2,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 1,
+      "outcome_share": 50,
+      "score": "1-2",
+      "score_votes": 1,
+      "score_share": 50,
+      "average_subjective_confidence": 39,
+      "all_outcomes": {
+        "AWAY": 1,
+        "HOME": 1
+      },
+      "all_scores": {
+        "1-2": 1,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Arsenal, son 5 maçında 3 galibiyet alarak üstün bir formda ve gol yeme ortalaması (0.33) ile çok güçlü bir savunma sergiliyor.",
+          "Napoli, son 5 maçında 2 mağlubiyet alarak istikrarsız bir formda ve özellikle evinde Como'ya karşı 1-2 yenilerek savunma zafiyetleri gösteriyor.",
+          "Arsenal'ın Premier League'deki yüksek tempolu oyunu ve Napoli'nin son maçlardaki gol yeme eğilimi (1.67 avg GA), deplasman takımının gol bulma ihtimalini artırıyor.",
+          "Napoli'nin evindeki tek maçta 1 gol atıp 2 gol yemesi, Arsenal'ın disiplinli yapısı karşısında yeterli olmayabilir; Arsenal'ın kontratak veya pozisyon oyunu ile 2 gol bulması muhtemel."
+        ],
+        "HOME": [
+          "Napoli evinde son 5 maçta ortalama 1.67 gol atıyor ve rakiplerine göre savunma zayıflığı (1.67 yeme) gösteriyor",
+          "Arsenal son 5 maçta ortalama 2.0 gol atıyor ancak savunması çok güçlü (0.33 yeme) ve deplasmanda gol bulma oranı düşük",
+          "Napoli'nin son 2 ev maçı (son 5 içinde) gol üretimi düşük, ancak bu maçta hücum hattı formda ve ev sahibi avantajı var",
+          "Arsenal'ın yoğun fikstür yükü yok, dinlenme süresi iyi; ancak Avrupa ligi kalitesi Serie A'ya göre daha yüksek, bu da Napoli'nin savunma sorunlarını artırabilir"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        },
+        {
+          "model": "Cohere Command A+",
+          "error": "Geçersiz outcome: DEPLASMAN"
+        }
+      ]
+    },
+    "prediction_mode": "NO_COMMON",
+    "final_sent": true,
+    "result_sent": false
   }
 }
