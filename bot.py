@@ -62,6 +62,19 @@ def send_telegram_message(message: str) -> None:
     response.raise_for_status()
 
 
+def send_result_telegram_message(message: str) -> None:
+    import requests
+    token = os.environ.get("TELEGRAM_RESULT_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_RESULT_CHAT_ID")
+    if not token or not chat_id:
+        raise RuntimeError("Sonuç Telegram secretleri eksik: TELEGRAM_RESULT_BOT_TOKEN / TELEGRAM_RESULT_CHAT_ID")
+
+    response = requests.post(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data={"chat_id": chat_id, "text": message},
+        timeout=30,
+    )
+    response.raise_for_status()
 
 
 def _outcome_display(outcome: str, home_team: str, away_team: str) -> tuple[str, str]:
@@ -174,7 +187,7 @@ def _build_special_prediction_message(record: dict[str, Any]) -> str:
 
 
 def send_telegram_photo(path: Path, caption: str | None = None) -> None:
-    """Bot 1: maç tahmini ve maç sonucu mesajları."""
+    """Bot 1: maç tahmini görselleri."""
     import requests
     with path.open("rb") as photo:
         data = {"chat_id": os.environ["TELEGRAM_CHAT_ID"]}
@@ -498,7 +511,13 @@ def maybe_send_weekly_reports(predictions: dict[str, Any], matches: list[dict[st
 
 
 def main() -> None:
-    required = ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "FOOTBALL_DATA_API_KEY"]
+    required = [
+        "TELEGRAM_BOT_TOKEN",
+        "TELEGRAM_CHAT_ID",
+        "TELEGRAM_RESULT_BOT_TOKEN",
+        "TELEGRAM_RESULT_CHAT_ID",
+        "FOOTBALL_DATA_API_KEY",
+    ]
     missing = [x for x in required if not os.environ.get(x)]
     if missing:
         raise RuntimeError(f"Eksik secret: {', '.join(missing)}")
@@ -518,7 +537,7 @@ def main() -> None:
     for record in finished_updates:
         if not record.get("result_sent"):
             try:
-                send_telegram_message(build_result_message(record))
+                send_result_telegram_message(build_result_message(record))
                 record["result_sent"] = True
             except Exception as error:
                 print(f"⚠️ Sonuç Telegram hatası: {error}")
