@@ -1449,5 +1449,722 @@
     "consensus_points": 5,
     "exact_score_correct": true,
     "outcome_correct": true
+  },
+  "575329": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575329",
+    "home_team": "FC Barcelona",
+    "away_team": "Feyenoord Rotterdam",
+    "match_time": "09.09.2026 19:45",
+    "match_utc": "2026-09-09T16:45:00+00:00",
+    "prediction_created_at": "2026-09-09T15:45:31.053188+00:00",
+    "minutes_before_match": 59.9,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 81,
+        "standings": {
+          "position": 7,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-06T14:15:00Z",
+              "competition": "Primera Division",
+              "opponent": "Valencia CF",
+              "venue": "AWAY",
+              "goals_for": 5,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-31T19:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Rayo Vallecano de Madrid",
+              "venue": "HOME",
+              "goals_for": 5,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-27T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Athletic Club",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-23T19:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Elche CF",
+              "venue": "AWAY",
+              "goals_for": 5,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W-W",
+          "points_last_5": 12,
+          "goals_for_last_5": 17,
+          "goals_against_last_5": 2,
+          "avg_goals_for": 4.25,
+          "avg_goals_against": 0.5,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 7,
+            "goals_against": 2,
+            "avg_goals_for": 3.5,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 10,
+            "goals_against": 0,
+            "avg_goals_for": 5.0,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 3.1,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 4
+        }
+      },
+      "away": {
+        "team_id": 675,
+        "standings": {
+          "position": 7,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T14:30:00Z",
+              "competition": "Eredivisie",
+              "opponent": "NEC",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-30T12:30:00Z",
+              "competition": "Eredivisie",
+              "opponent": "ADO Den Haag",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-23T14:45:00Z",
+              "competition": "Eredivisie",
+              "opponent": "SC Cambuur-Leeuwarden",
+              "venue": "AWAY",
+              "goals_for": 5,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-16T12:30:00Z",
+              "competition": "Eredivisie",
+              "opponent": "Go Ahead Eagles",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-09T10:15:00Z",
+              "competition": "Eredivisie",
+              "opponent": "Sparta Rotterdam",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-D-W-D-W",
+          "points_last_5": 11,
+          "goals_for_last_5": 13,
+          "goals_against_last_5": 7,
+          "avg_goals_for": 2.6,
+          "avg_goals_against": 1.4,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "0W-2D-0L",
+            "goals_for": 4,
+            "goals_against": 4,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "3W-0D-0L",
+            "goals_for": 9,
+            "goals_against": 3,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 4.1,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "FC Barcelona",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Feyenoord Rotterdam",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T15:45:17.800227+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "FC Barcelona",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "Barcelona son 5 maçında ortalama 4.25 gol atarken sadece 0.5 gol yiyerek üstün bir hücum formu ve savunma istikrarı sergiliyor.",
+            "Feyenoord deplasman maçlarında güçlü (son 3 deplasman galibiyet, ortalama 3 gol) ancak Barcelona'nın evdeki hücum gücü (ortalama 3.5 gol) onları baskılayacak.",
+            "Barcelona'nın son maçlarda Valencia ve Elche karşısındaki 5-0'lık skorları, Feyenoord'un savunma hattında (son 5 maçta 1.4 gol yeme ortalaması) ciddi sorunlar yaratacağını gösteriyor.",
+            "Feyenoord'un evinde 2 beraberlik alması, deplasmandaki agresif oyun tarzının Barcelona'nın derin savunmasına karşı tam olarak işe yaramayabileceğine işaret ediyor; ancak Feyenoord'un gol atma potansiyeli (son 5'te 2.6 gol) en az bir gol bulmasını muhtemel kılıyor."
+          ],
+          "score_candidates": [
+            "3-1",
+            "4-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FC Barcelona",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Barcelona evde ortalama 3,5 gol atıyor ve son beş maçında sadece 2 gol yiyor, bu da güçlü hücum ve yeterli savunma istikrarı gösteriyor.",
+            "Feyenoord deplasmanda ortalama 3 gol atıyor ve sadece 1 gol yiyor; bu da Barcelona'ya karşı gol bulabileceklerini gösteriyor.",
+            "Her iki takım da son beş maçta yüksek gol üretimi sergiledi (Barcelona 4,25 ort., Feyenoord 2,6 ort.), bu da skorun birkaç gol içerebileceğine işaret ediyor.",
+            "Barcelona ev avantajına sahip ve genel olarak daha kaliteli bir takım olarak değerlendiriliyor; bu da onları favori yapıyor ve muhtemel galibiyetle ev sahibi galibiyet öngörülüyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "3-1",
+            "1-1"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FC Barcelona",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "Barcelona son 5 maçta ortalama 4.25 gol attı ve savunması sadece 0.5 gol yedi, ofansif gücü yüksek",
+            "Feyenoord son 5 maçta ortalama 2.6 gol attı ancak savunması 1.4 gol yedi, Avrupa seviyesinde savunma zayıf",
+            "Barcelona ev sahibi avantajı ve 3 gün dinlenme süresi, Feyenoord ise 4 gün dinlenmiş olsa da deplasmanda zorlanıyor",
+            "İki takımın stil karşılaştırması: Barcelona topa sahip olma ve yüksek presle rakibi zorlayacak, Feyenoord ise kontra atakla sınırlı fırsatlar yaratacak"
+          ],
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": "3-1",
+      "score_votes": 2,
+      "score_share": 67,
+      "average_subjective_confidence": 22,
+      "all_outcomes": {
+        "HOME": 3
+      },
+      "all_scores": {
+        "3-1": 2,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Barcelona son 5 maçında ortalama 4.25 gol atarken sadece 0.5 gol yiyerek üstün bir hücum formu ve savunma istikrarı sergiliyor.",
+          "Feyenoord deplasman maçlarında güçlü (son 3 deplasman galibiyet, ortalama 3 gol) ancak Barcelona'nın evdeki hücum gücü (ortalama 3.5 gol) onları baskılayacak.",
+          "Barcelona'nın son maçlarda Valencia ve Elche karşısındaki 5-0'lık skorları, Feyenoord'un savunma hattında (son 5 maçta 1.4 gol yeme ortalaması) ciddi sorunlar yaratacağını gösteriyor.",
+          "Feyenoord'un evinde 2 beraberlik alması, deplasmandaki agresif oyun tarzının Barcelona'nın derin savunmasına karşı tam olarak işe yaramayabileceğine işaret ediyor; ancak Feyenoord'un gol atma potansiyeli (son 5'te 2.6 gol) en az bir gol bulmasını muhtemel kılıyor.",
+          "Barcelona evde ortalama 3,5 gol atıyor ve son beş maçında sadece 2 gol yiyor, bu da güçlü hücum ve yeterli savunma istikrarı gösteriyor."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575330": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575330",
+    "home_team": "VfB Stuttgart",
+    "away_team": "Viking FK",
+    "match_time": "09.09.2026 19:45",
+    "match_utc": "2026-09-09T16:45:00+00:00",
+    "prediction_created_at": "2026-09-09T15:45:53.560269+00:00",
+    "minutes_before_match": 59.9,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 10,
+        "standings": {
+          "position": 7,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T18:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "1. FC Köln",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-28T18:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "FC Bayern München",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 5,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "W-L",
+          "points_last_5": 3,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 2.5,
+          "avg_goals_against": 3.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 4,
+            "goals_against": 1,
+            "avg_goals_for": 4.0,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 1,
+            "goals_against": 5,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 5.0
+          },
+          "rest_days_before_match": 4.9,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 2
+        }
+      },
+      "away": {
+        "team_id": 5720,
+        "standings": {
+          "position": 7,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "VfB Stuttgart",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Viking FK",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T15:45:39.157290+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "VfB Stuttgart",
+          "away_team": "Viking FK",
+          "outcome": "HOME",
+          "score": "3-0",
+          "confidence": 78,
+          "reasons": [
+            "Bundesliga ve Norveç Eliteserien arasındaki belirgin kadro kalitesi ve lig seviyesi farkı.",
+            "VfB Stuttgart'ın iç saha avantajı ile birlikte tempolu ve dominant hücum futbolu sergileme beklentisi.",
+            "Viking FK'nın üst düzey Avrupa deplasmanlarında savunma direncini 90 dakikaya yaymakta zorlanacak olması.",
+            "Stuttgart'ın Köln maçında gösterdiği etkili bitiricilik ve sahasındaki skor üretme arzusu."
+          ],
+          "score_candidates": [
+            "3-0",
+            "3-1",
+            "2-0"
+          ],
+          "change_vs_previous": "Önceki tahmin yok."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "VfB Stuttgart",
+          "away_team": "Viking FK",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "VfB Stuttgart, evindeki son maçta (1. FC Köln) 4-1 gibi yüksek gol sayılı bir galibiyet alarak ofansif gücünü ve ev sahibi avantajını kanıtladı.",
+            "Viking FK için veri eksikliği (N/A) ve Norveç ligi ile Bundesliga arasındaki kalite farkı, Stuttgart'ın teknik ve fiziksel üstünlüğünü işaret ediyor.",
+            "Stuttgart'ın son 5 maçta ortalama 2.5 gol atması, Viking'in savunmasının Bundesliga seviyesindeki pres ve tempoya ayak uyduramayacağı varsayımını destekliyor.",
+            "Ev sahibi takımın son maçta 4 gol atması, Viking'in deplasmanda en az 1 gol yeme ihtimalini yüksek tutuyor; ancak Stuttgart'ın gol bulma kapasitesi farkı koruyacaktır."
+          ],
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "VfB Stuttgart",
+          "away_team": "Viking FK",
+          "outcome": "HOME",
+          "score": "2-0",
+          "confidence": 70,
+          "reasons": [
+            "Stuttgart bu sezon evinde oynadığı tek lig maçında 4 gol atıp sadece 1 gol yedi ve bu da güçlü bir ev sahibi performansı gösteriyor.",
+            "Viking FK, Norveç liginde mücadele eden ve Avrupa maçlarında alışık olmadığı düzeyde zorluklarla karşılaşan, Avrupa seviyesinde tanıdık olmayan bir takım.",
+            "Avrupa müsabakalarında ev sahibi avantajı önemlidir ve Stuttgart'ın evinde daha rahat ve agresif oynaması bekleniyor, bu da gol üretimini artırabilir.",
+            "Viking'in son dönemde maç oynamamış olması ve genel kalite farkı göz önüne alındığında, Stuttgart'ın savunmasının temiz bir sheet tutması ve 2-0'lık bir galibiyet elde etmesi makul görünüyor."
+          ],
+          "score_candidates": [
+            "2-0",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "VfB Stuttgart",
+          "away_team": "Viking FK",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Stuttgart ev sahibi olarak son 5 maçta ortalama 4.0 gol attı, hücum gücü yüksek",
+            "Viking FK Avrupa ligi seviyesinde yeni, savunma zayıf ve son 5 maçta gol yeme oranı yüksek",
+            "Stuttgart'ın evdeki ortalama gol yeme 1.0 iken Viking'in deplasmanda ortalama gol yeme 2.5, bu fark Stuttgart lehine skor yönlendirir",
+            "İki takım da dinlenme gününe yakın, Stuttgart 4.9 gün dinlenmiş, bu formda daha verimli bir performans sergileme ihtimali artırıyor"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "3-0",
+      "score_votes": 1,
+      "score_share": 25,
+      "average_subjective_confidence": 56,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "3-0": 1,
+        "3-1": 1,
+        "2-0": 1,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Bundesliga ve Norveç Eliteserien arasındaki belirgin kadro kalitesi ve lig seviyesi farkı.",
+          "VfB Stuttgart'ın iç saha avantajı ile birlikte tempolu ve dominant hücum futbolu sergileme beklentisi.",
+          "Viking FK'nın üst düzey Avrupa deplasmanlarında savunma direncini 90 dakikaya yaymakta zorlanacak olması.",
+          "Stuttgart'ın Köln maçında gösterdiği etkili bitiricilik ve sahasındaki skor üretme arzusu.",
+          "VfB Stuttgart, evindeki son maçta (1. FC Köln) 4-1 gibi yüksek gol sayılı bir galibiyet alarak ofansif gücünü ve ev sahibi avantajını kanıtladı."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
   }
 }
