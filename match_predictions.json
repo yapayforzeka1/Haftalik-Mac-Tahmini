@@ -2470,7 +2470,10 @@
           ],
           "change_vs_previous": "Yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Mistral Small Latest",
@@ -2500,7 +2503,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cohere Command A+",
@@ -2524,7 +2530,10 @@
           ],
           "change_vs_previous": "N/A"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -2548,7 +2557,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": true
       }
     ],
     "consensus": {
@@ -2582,10 +2594,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 5
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 2,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-09T21:15:34.996159+00:00"
+    },
+    "consensus_points": 5,
+    "exact_score_correct": true,
+    "outcome_correct": true
   },
   "575332": {
     "season": "2026/27",
@@ -2808,7 +2830,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Mistral Small Latest",
@@ -2838,7 +2863,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -2862,7 +2890,10 @@
           ],
           "change_vs_previous": "None"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -2886,7 +2917,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -2922,10 +2956,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 3
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 6,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-09T21:15:34.996206+00:00"
+    },
+    "consensus_points": 3,
+    "exact_score_correct": false,
+    "outcome_correct": true
   },
   "575334": {
     "season": "2026/27",
@@ -3180,7 +3224,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -3204,7 +3251,10 @@
           ],
           "change_vs_previous": "None"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -3228,7 +3278,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -3267,10 +3320,20 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ]
+      ],
+      "points": 3
     },
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 3,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-09T21:15:34.996239+00:00"
+    },
+    "consensus_points": 3,
+    "exact_score_correct": false,
+    "outcome_correct": true
   },
   "575333": {
     "season": "2026/27",
@@ -3536,7 +3599,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -3566,7 +3632,10 @@
           ],
           "change_vs_previous": ""
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -3615,10 +3684,20 @@
           "model": "Cohere Command A+",
           "error": "Geçersiz outcome: DEPLASMAN"
         }
-      ]
+      ],
+      "points": 3
     },
     "prediction_mode": "NO_COMMON",
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 0,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-09T21:15:34.996260+00:00"
+    },
+    "consensus_points": 3,
+    "exact_score_correct": false,
+    "outcome_correct": false
   }
 }
