@@ -2166,5 +2166,1069 @@
     },
     "final_sent": true,
     "result_sent": false
+  },
+  "575331": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575331",
+    "home_team": "Liverpool FC",
+    "away_team": "Club Atlético de Madrid",
+    "match_time": "09.09.2026 22:00",
+    "match_utc": "2026-09-09T19:00:00+00:00",
+    "prediction_created_at": "2026-09-09T17:53:45.520350+00:00",
+    "minutes_before_match": 67.3,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 64,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T19:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Ipswich Town FC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-29T11:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Nottingham Forest FC",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-23T15:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Newcastle United FC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "W-D-D",
+          "points_last_5": 5,
+          "goals_for_last_5": 6,
+          "goals_against_last_5": 4,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 1.33,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-1D-0L",
+            "goals_for": 2,
+            "goals_against": 2,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 4,
+            "goals_against": 2,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 5.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 78,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T14:15:00Z",
+              "competition": "Primera Division",
+              "opponent": "Athletic Club",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-29T19:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Sevilla FC",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-23T15:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Villarreal CF",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-19T19:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Málaga CF",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-W-D-W",
+          "points_last_5": 7,
+          "goals_for_last_5": 7,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 1.75,
+          "avg_goals_against": 1.5,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 4,
+            "goals_against": 2,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 3,
+            "goals_against": 4,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 4.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 4
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Liverpool FC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Club Atlético de Madrid",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T17:52:51.353781+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Liverpool FC",
+          "away_team": "Club Atlético de Madrid",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 62,
+          "reasons": [
+            "Liverpool, Anfield'ın yüksek atmosferinde Avrupa gecelerine güçlü başlama eğiliminde ve hücum hattında maç başına ortalama 2.0 gol üretme temposunu koruyor.",
+            "Atlético Madrid'in son deplasman maçında Athletic Bilbao'ya 3-0 mağlup olması, deplasmandaki savunma zaaflarını ve baskı altındaki kırılganlığını gösteriyor.",
+            "Liverpool son lig maçlarında kalesini gole kapatmakta zorlansa da (Nottingham ve Newcastle'dan 2'şer gol yedi), iç saha temposuyla oyunu domine etme potansiyeline sahip.",
+            "Liverpool'un 5 günlük dinlenme süresi ve Atlético'ya kıyasla daha taze fiziksel durumu, maçın son bölümündeki dinamizmi ev sahibi lehine çevirecektir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "Yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Liverpool FC",
+          "away_team": "Club Atlético de Madrid",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Liverpool'un son 5 maçta ortalama 2.0 gol atması ve ev sahasında (Nottingham maçında) gol üretme kapasitesi, Atletico'nun deplasman savunma zafiyetini (son 2 deplasmanda 4 gol yeme) istismar etmesini sağlar.",
+            "Atletico Madrid'in son maçta Athletic'e 3-0 yenilmesi ve deplasman performansındaki tutarsızlık (1W-0D-1L), Liverpool'un ev avantajını kullanmasını kolaylaştırır.",
+            "Liverpool'un son 3 maçta sadece 1 mağlubiyet almadan puan toplaması (W-D-D), mental dayanıklılığını ve skor koruma yeteneğini gösterir; bu da 2-1 gibi bir skorun sürmesini destekler.",
+            "Atletico'nun ortalama 1.5 gol yeme ve 1.75 gol atma ortalaması, maçın her iki tarafın da gol bulduğu bir senaryoya (BTTS) işaret eder, ancak Liverpool'un evdeki baskısı sonucu galibiyet daha olasıdır."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Liverpool FC",
+          "away_team": "Club Atlético de Madrid",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Liverpool ev sahibinde maç başına ortalama 2 gol atıyor ve son üç maçında gol bulma konusunda tutarlıydı",
+            "Atlético de Madrid deplasmanında maç başına ortalama 2 gol yiyor ve Athletic Club'a karşı 0-3'lük bir yenilgiyle mücadele ettiği için savunmasında zayıflıklar var",
+            "Her iki takım da son maçlarında gol atma eğiliminde olduğundan, 2-1'lik bir skor makul görünüyor",
+            "Champions League maçında ev sahibi avantajı ve Liverpool'un genel olarak daha iyi formu, az farkla ev sahibi galibiyetine işaret ediyor"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "N/A"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Liverpool FC",
+          "away_team": "Club Atlético de Madrid",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Liverpool ev sahibi avantajı ve son 5 maçta ortalama 2.0 gol atma kapasitesi",
+            "Atletico Madrid savunma zayıflığı (ortalama 1.5 gol yeme) ve son maçta 3 gol yedi",
+            "Her iki takım da yüksek tempolu, ofansif taktikler tercih ediyor; Liverpool'un kanatları ve Atletico'nun kontra atakları gol fırsatları yaratıyor",
+            "Dinlenme günleri benzer, rotasyon riski düşük, ana kadro sahada olacak"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "2-1",
+      "score_votes": 4,
+      "score_share": 100,
+      "average_subjective_confidence": 52,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 4
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Liverpool, Anfield'ın yüksek atmosferinde Avrupa gecelerine güçlü başlama eğiliminde ve hücum hattında maç başına ortalama 2.0 gol üretme temposunu koruyor.",
+          "Atlético Madrid'in son deplasman maçında Athletic Bilbao'ya 3-0 mağlup olması, deplasmandaki savunma zaaflarını ve baskı altındaki kırılganlığını gösteriyor.",
+          "Liverpool son lig maçlarında kalesini gole kapatmakta zorlansa da (Nottingham ve Newcastle'dan 2'şer gol yedi), iç saha temposuyla oyunu domine etme potansiyeline sahip.",
+          "Liverpool'un 5 günlük dinlenme süresi ve Atlético'ya kıyasla daha taze fiziksel durumu, maçın son bölümündeki dinamizmi ev sahibi lehine çevirecektir.",
+          "Liverpool'un son 5 maçta ortalama 2.0 gol atması ve ev sahasında (Nottingham maçında) gol üretme kapasitesi, Atletico'nun deplasman savunma zafiyetini (son 2 deplasmanda 4 gol yeme) istismar etmesini sağlar."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575332": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575332",
+    "home_team": "Paris Saint-Germain FC",
+    "away_team": "ŠK Slovan Bratislava",
+    "match_time": "09.09.2026 22:00",
+    "match_utc": "2026-09-09T19:00:00+00:00",
+    "prediction_created_at": "2026-09-09T17:54:44.421333+00:00",
+    "minutes_before_match": 67.3,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 524,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T19:05:00Z",
+              "competition": "Ligue 1",
+              "opponent": "AS Monaco FC",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-28T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Lille OSC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-23T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Stade Rennais FC 1901",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "L-D-D",
+          "points_last_5": 2,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 1.67,
+          "avg_goals_against": 2.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 1,
+            "goals_against": 2,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-2D-0L",
+            "goals_for": 4,
+            "goals_against": 4,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 5.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 7509,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Paris Saint-Germain FC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "ŠK Slovan Bratislava",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T17:53:53.344267+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "ŠK Slovan Bratislava",
+          "outcome": "HOME",
+          "score": "3-0",
+          "confidence": 0,
+          "reasons": [
+            "PSG ile Slovan Bratislava arasındaki belirgin kadro kalitesi ve bütçe farkı maçın gidişatını doğrudan belirleyecektir.",
+            "Ligue 1'deki son puan kayıplarının ardından PSG'nin Parc des Princes'te Şampiyonlar Ligi'ne baskılı ve güçlü bir başlangıç yapması beklenmektedir.",
+            "PSG'nin üst düzey hücum hattı, konuk ekibin alçak blok savunmasını kırmakta zorlanmayacak niteliktedir.",
+            "Slovan Bratislava'nın deplasmandaki sınırlı hücum tehdidi göz önüne alındığında, PSG'nin maçı gol yemeden tamamlaması yüksek ihtimaldir."
+          ],
+          "score_candidates": [
+            "3-0",
+            "4-0",
+            "3-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "ŠK Slovan Bratislava",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "PSG'nin son 5 maçta ortalama 1.67 gol atması ve Slovan Bratislava'nın Avrupa'da genellikle daha zayıf savunma sergilemesi, PSG'nin en az 2-3 gol atmasını destekliyor.",
+            "PSG'nin son ev maçında Monaco'ya 2-1 yenilmesi, savunmada dikkatsizlik gösterdiğini ancak hücumda gol bulabildiğini kanıtlıyor; Slovan karşısında bu savunma eksikliği gol yemeye yol açabilir.",
+            "Slovan Bratislava'nın Ligue 1 seviyesindeki rakiplere kıyasla daha düşük teknik kapasitesi ve PSG'nin ev avantajı, maçın tek taraflı geçmesine zemin hazırlıyor.",
+            "PSG'nin son 3 maçta 5 gol atıp 6 gol yemesi, yüksek tempolu ve açık oyunlara işaret ediyor; bu da 3-1 gibi bir skoru olası kılıyor."
+          ],
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "ŠK Slovan Bratislava",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "PSG'nin genel kalitesi ve Avrupa deneyimi Slovan Bratislava'nın çok üzerinde; ev sahibi olarak baskı kurması bekleniyor.",
+            "PSG'nin son 5 Ligue 1 maçında ortalama 1.67 gol attığı ve savunmasının zaman zaman bir gol yediği görülüyor; bu da iki gol atmasını ve bir tane yemesini olası kılıyor.",
+            "Slovan Bratislava'nın Slovakya süper ligindeki rekabet düzeyi ve Avrupa maçlarındaki sınırlı deneyimi, bir teselli golü dışında tutarlı gol üretimini zorlaştırıyor.",
+            "Ev sahibi olarak baskı ve Şampiyonlar Ligi'nin ilk maçındaki yüksek önem, PSG'yi gol arayışına yönlendirecek; Slovan'ın savunmasının zaman zaman hata yapması bekleniyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "ŠK Slovan Bratislava",
+          "outcome": "HOME",
+          "score": "3-0",
+          "confidence": 78,
+          "reasons": [
+            "PSG son 5 maçta ortalama 1.67 gol attı ve evinde daha agresif oynuyor",
+            "Slovan Bratislava Avrupa kupalarında savunma zayıflığı gösterdi, xG/GA verileri düşük savunma kalitesi işaret ediyor",
+            "PSG'nin dinlenme süresi 5 gün, oyuncu rotasyonu düşük, kadro eksiksiz sahaya çıkacak",
+            "Teknik direktörler taktiksel olarak PSG'nin kanat baskısını ve hızlı kanat ataklarını tercih ediyor, Slovan ise topa sahip olma oranı düşük"
+          ],
+          "score_candidates": [
+            "3-0",
+            "2-1",
+            "4-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "3-0",
+      "score_votes": 2,
+      "score_share": 50,
+      "average_subjective_confidence": 37,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "3-0": 2,
+        "3-1": 1,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "PSG ile Slovan Bratislava arasındaki belirgin kadro kalitesi ve bütçe farkı maçın gidişatını doğrudan belirleyecektir.",
+          "Ligue 1'deki son puan kayıplarının ardından PSG'nin Parc des Princes'te Şampiyonlar Ligi'ne baskılı ve güçlü bir başlangıç yapması beklenmektedir.",
+          "PSG'nin üst düzey hücum hattı, konuk ekibin alçak blok savunmasını kırmakta zorlanmayacak niteliktedir.",
+          "Slovan Bratislava'nın deplasmandaki sınırlı hücum tehdidi göz önüne alındığında, PSG'nin maçı gol yemeden tamamlaması yüksek ihtimaldir.",
+          "PSG'nin son 5 maçta ortalama 1.67 gol atması ve Slovan Bratislava'nın Avrupa'da genellikle daha zayıf savunma sergilemesi, PSG'nin en az 2-3 gol atmasını destekliyor."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575334": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575334",
+    "home_team": "Sporting Clube de Portugal",
+    "away_team": "Galatasaray SK",
+    "match_time": "09.09.2026 22:00",
+    "match_utc": "2026-09-09T19:00:00+00:00",
+    "prediction_created_at": "2026-09-09T17:56:46.960254+00:00",
+    "minutes_before_match": 67.3,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 498,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "CD Nacional",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-28T19:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Rio Ave FC",
+              "venue": "AWAY",
+              "goals_for": 4,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-22T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "FC Alverca",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-14T19:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Vitória SC",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-08T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "CF Estrela da Amadora",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "W-W-W-W-D",
+          "points_last_5": 13,
+          "goals_for_last_5": 14,
+          "goals_against_last_5": 5,
+          "avg_goals_for": 2.8,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 3,
+            "record": "3W-0D-0L",
+            "goals_for": 8,
+            "goals_against": 3,
+            "avg_goals_for": 2.67,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 6,
+            "goals_against": 2,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 4.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 610,
+        "standings": {
+          "position": 9,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Sporting Clube de Portugal",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Galatasaray SK",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 4,
+          "points": 11,
+          "outcome_correct": 3,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 75,
+          "exact_score_accuracy": 25,
+          "average_points": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 4,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 50,
+          "exact_score_accuracy": 25,
+          "average_points": 2.0
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 3,
+          "points": 8,
+          "outcome_correct": 2,
+          "exact_score_correct": 1,
+          "outcome_accuracy": 67,
+          "exact_score_accuracy": 33,
+          "average_points": 2.67
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-09T17:56:19.580769+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Sporting Clube de Portugal",
+          "away_team": "Galatasaray SK",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Sporting CP son 5 maçında 14 gol atarak çok yüksek bir gol üretimi sergiliyor (ortalama 2.8 gol/maç) ve evinde 3 maçta da galip geliyor.",
+            "Galatasaray için son 5 maç verisi mevcut olmadığından (N/A), belirsizlik nedeniyle Sporting'in form avantajına ve ev sahibi faktörüne ağırlık verildi.",
+            "Sporting'in evindeki savunma performansı (3 maçta 3 gol yediği) orta seviyede; bu da Galatasaray'ın en az bir gol bulma ihtimalini destekliyor.",
+            "UEFA Şampiyonlar Ligi ilk haftasında ev sahibi takımın motivasyonu ve taraftar desteği, özellikle rakip formu bilinmediğinde skorun Sporting lehine olmasını güçlendirir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Sporting Clube de Portugal",
+          "away_team": "Galatasaray SK",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Sporting ev sahibi olarak son 5 maçında güçlü bir performans sergiledi, maç başına ortalama 2,67 gol attı ve sadece 1 gol yedi",
+            "Galatasaray'ın son 5 maç verisi yok, bu da gol üretimini tahmin etmeyi zorlaştırıyor; ancak kulübün Avrupa deneyimi ve kalitesi en az bir gol atma ihtimalini destekliyor",
+            "Sporting'in son 5 maçta gol atma oranı yüksek (toplam 14 gol) ve ev sahibi avantajı, Galatasaray'ın olası bir golüne rağmen 2-1'lik bir galibiyet sağlıyor",
+            "Son 5 maçta ortalama 4 günlük dinlenme süresi ve maç başına ortalama 2,8 gol ile Sporting'in saldırı gücü doruk noktasında, bu da birkaç gol bulmasını olası kılıyor"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Sporting Clube de Portugal",
+          "away_team": "Galatasaray SK",
+          "outcome": "HOME",
+          "score": "2-0",
+          "confidence": 0,
+          "reasons": [
+            "Sporting'in son 5 ev maçında ortalama 2.67 gol atma ve sadece 1 gol yeme performansı yüksek ofansif verimlilik gösteriyor.",
+            "Galatasaray'ın son 5 maç verisi eksik ve ligdeki ortalama savunma istatistikleri düşük, bu da Sporting'in savunma avantajını artırıyor.",
+            "Sporting'in dinlenme süresi (4 gün) rakiplerine göre daha iyi, bu da oyuncuların fiziksel olarak taze olmasını sağlıyor.",
+            "Teknik direktörlerin taktiksel yaklaşımları: Sporting genellikle evinde yüksek pres ve kanat akımlarıyla gol üretirken, Galatasaray'ın deplasmanda daha temkinli bir oyun sergilemesi bekleniyor."
+          ],
+          "score_candidates": [
+            "2-0",
+            "2-1",
+            "1-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": "2-1",
+      "score_votes": 2,
+      "score_share": 67,
+      "average_subjective_confidence": 23,
+      "all_outcomes": {
+        "HOME": 3
+      },
+      "all_scores": {
+        "2-1": 2,
+        "2-0": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Sporting CP son 5 maçında 14 gol atarak çok yüksek bir gol üretimi sergiliyor (ortalama 2.8 gol/maç) ve evinde 3 maçta da galip geliyor.",
+          "Galatasaray için son 5 maç verisi mevcut olmadığından (N/A), belirsizlik nedeniyle Sporting'in form avantajına ve ev sahibi faktörüne ağırlık verildi.",
+          "Sporting'in evindeki savunma performansı (3 maçta 3 gol yediği) orta seviyede; bu da Galatasaray'ın en az bir gol bulma ihtimalini destekliyor.",
+          "UEFA Şampiyonlar Ligi ilk haftasında ev sahibi takımın motivasyonu ve taraftar desteği, özellikle rakip formu bilinmediğinde skorun Sporting lehine olmasını güçlendirir.",
+          "Sporting ev sahibi olarak son 5 maçında güçlü bir performans sergiledi, maç başına ortalama 2,67 gol attı ve sadece 1 gol yedi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "final_sent": true,
+    "result_sent": false
   }
 }
