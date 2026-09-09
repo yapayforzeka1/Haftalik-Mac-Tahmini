@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -59,6 +60,117 @@ def send_telegram_message(message: str) -> None:
         timeout=30,
     )
     response.raise_for_status()
+
+
+
+
+def _outcome_display(outcome: str, home_team: str, away_team: str) -> tuple[str, str]:
+    outcome = str(outcome or '').upper().strip()
+    if outcome == "HOME":
+        return "🔴", home_team
+    if outcome == "AWAY":
+        return "🔵", away_team
+    if outcome == "DRAW":
+        return "⚪", "Beraberlik"
+    return "⚠️", "Bilinmiyor"
+
+
+def _prediction_message_mode(successful: list[Any], home_team: str, away_team: str) -> str:
+    """Classify the AI agreement independently for outcome and exact score.
+
+    NORMAL: both outcome and exact score have a strict majority.
+    OUTCOME_COMMON_SCORE_SPLIT: outcome has a strict majority, exact score does not.
+    NO_COMMON: no outcome majority (or fewer than two valid AI votes).
+    """
+    if len(successful) < 2:
+        return "NO_COMMON"
+
+    outcomes = [str(v.result.get("outcome", "")).upper() for v in successful if v.result]
+    scores = [str(v.result.get("score", "")).strip() for v in successful if v.result]
+    if len(outcomes) < 2:
+        return "NO_COMMON"
+
+    outcome_counts = Counter(outcomes)
+    score_counts = Counter(scores)
+    outcome_winner, outcome_count = outcome_counts.most_common(1)[0]
+    top_outcome_counts = [count for count in outcome_counts.values() if count == outcome_count]
+    outcome_common = outcome_count > len(successful) / 2 and len(top_outcome_counts) == 1
+
+    if not outcome_common:
+        return "NO_COMMON"
+
+    score_winner, score_count = score_counts.most_common(1)[0]
+    top_score_counts = [count for count in score_counts.values() if count == score_count]
+    score_common = score_count > len(successful) / 2 and len(top_score_counts) == 1
+
+    return "NORMAL" if score_common else "OUTCOME_COMMON_SCORE_SPLIT"
+
+
+def _build_special_prediction_message(record: dict[str, Any]) -> str:
+    """Build a visually distinct Telegram message for non-standard AI agreement."""
+    home = record.get("home_team", "?")
+    away = record.get("away_team", "?")
+    match_time = record.get("match_time", "?")
+    votes = [v for v in record.get("ai_votes", []) if v.get("success") and v.get("result")]
+    mode = record.get("prediction_mode", "NO_COMMON")
+
+    lines = []
+    if mode == "OUTCOME_COMMON_SCORE_SPLIT":
+        lines.extend([
+            "🟡 SONUÇ ORTAK — SKOR AYRIŞTI",
+            "━━━━━━━━━━━━━━━━━━━━",
+            "",
+            f"⚽ {home} - {away}",
+            f"📅 {match_time}",
+            "",
+        ])
+        outcomes = [str(v["result"].get("outcome", "")).upper() for v in votes]
+        counts = Counter(outcomes)
+        common_outcome = counts.most_common(1)[0][0]
+        emoji, label = _outcome_display(common_outcome, home, away)
+        lines.extend([
+            "🎯 ORTAK SONUÇ",
+            f"{emoji} {label} — {counts[common_outcome]}/{len(votes)} AL",
+            "",
+            "⚽ SKORDA ORTAKLIK YOK",
+            "",
+        ])
+    else:
+        lines.extend([
+            "🔴 ORTAK KARAR YOK",
+            "━━━━━━━━━━━━━━━━━━━━",
+            "",
+            f"⚽ {home} - {away}",
+            f"📅 {match_time}",
+            "",
+            "❌ Kazanan konusunda ortak karar yok.",
+            "❌ Skor konusunda ortak karar yok.",
+            "",
+        ])
+
+    lines.append("🤖 AL BİREYSEL TAHMİNLERİ")
+    lines.append("")
+    for vote in votes:
+        result = vote["result"]
+        emoji, label = _outcome_display(result.get("outcome"), home, away)
+        lines.append(f"• {vote.get('model', '?')}")
+        lines.append(f"  {emoji} {label} | ⚽ {result.get('score', '?')}")
+        lines.append("")
+
+    outcome_counts = Counter(str(v["result"].get("outcome", "")).upper() for v in votes)
+    lines.extend([
+        "━━━━━━━━━━━━━━━━━━━━",
+        "📊 SONUÇ DAĞILIMI",
+        f"🔴 {home}: {outcome_counts.get('HOME', 0)}",
+        f"⚪ Beraberlik: {outcome_counts.get('DRAW', 0)}",
+        f"🔵 {away}: {outcome_counts.get('AWAY', 0)}",
+        "",
+    ])
+    if mode == "OUTCOME_COMMON_SCORE_SPLIT":
+        lines.append("🟡 Kazanan konusunda ortak karar var; skorlar farklı.")
+    else:
+        lines.append("⚠️ Bu mesaj ortak tahmin değildir.")
+    return "\n".join(lines).strip()
 
 
 def send_telegram_photo(path: Path, caption: str | None = None) -> None:
@@ -509,11 +621,14 @@ def main() -> None:
 
         votes = run_ai_pool(home_team, away_team, context, research, history)
         successful = [v for v in votes if v.success and v.result]
-        if len(successful) < 3:
-            print(f"⚠️ {home_team} - {away_team}: yalnızca {len(successful)}/5 AI başarılı; Telegram tahmini gönderilmiyor.")
-            continue
+        prediction_mode = _prediction_message_mode(successful, home_team, away_team)
+        print(f"📊 {home_team} - {away_team}: {len(successful)}/5 AI başarılı | mesaj modu={prediction_mode}")
 
-        consensus = build_consensus(votes)
+        try:
+            consensus = build_consensus(votes)
+        except Exception as error:
+            print(f"⚠️ Consensus oluşturulamadı ({home_team} - {away_team}): {error}")
+            consensus = {"score": None, "outcome": None, "error": str(error)}
         record = {
             "season": SEASON,
             "matchday": match.get("matchday"),
@@ -529,6 +644,7 @@ def main() -> None:
             "research": research,
             "ai_votes": [{"model": v.model, "success": v.success, "result": v.result, "error": v.error} for v in votes],
             "consensus": consensus,
+            "prediction_mode": prediction_mode,
             "final_sent": False,
             "result_sent": False,
         }
@@ -542,11 +658,25 @@ def main() -> None:
 
     for group_key, records in sorted(groups.items()):
         records.sort(key=lambda r: r.get("home_team", ""))
-        message = build_telegram_group_message(records, test_mode=test_mode)
-        image_path = render_match_group_image(records, test_mode=test_mode)
+        if any(record.get("prediction_mode") != "NORMAL" for record in records):
+            message_parts = []
+            normal_records = []
+            for record in records:
+                if record.get("prediction_mode") == "NORMAL":
+                    normal_records.append(record)
+                else:
+                    message_parts.append(_build_special_prediction_message(record))
+            if normal_records:
+                message_parts.insert(0, build_telegram_group_message(normal_records, test_mode=test_mode))
+            message = "\n\n".join(message_parts)
+            image_path = None
+        else:
+            message = build_telegram_group_message(records, test_mode=test_mode)
+            image_path = render_match_group_image(records, test_mode=test_mode)
         try:
             send_telegram_message(message)
-            send_telegram_photo(image_path, "🖼️ Maç tahmin görseli")
+            if image_path is not None:
+                send_telegram_photo(image_path, "🖼️ Maç tahmin görseli")
         except Exception as error:
             print(f"⚠️ Telegram maç paketi hatası ({group_key}): {error}")
             continue
