@@ -13,6 +13,8 @@ from consensus_engine import build_consensus
 from data_provider import (
     APIFootballClient,
     APIFootballError,
+    FotMobClient,
+    FotMobError,
     FootballDataClient,
     FootballDataError,
     build_team_form,
@@ -292,6 +294,22 @@ def _get_official_xi(
     except FootballDataError as error:
         print(f"⚠️ football-data.org XI kontrolü başarısız: {error}")
 
+    # FotMob is a no-key fallback and is checked before API-Football so the
+    # known 2026/27 Free-plan limitation does not block or waste the XI check.
+    try:
+        fotmob = FotMobClient()
+        official_xi = fotmob.get_match_official_xi(
+            home_team, away_team, kickoff_utc
+        )
+        if official_xi:
+            return official_xi, None
+    except FotMobError as error:
+        print(f"⚠️ FotMob XI kontrolü başarısız: {error}")
+    except Exception as error:
+        print(f"⚠️ FotMob XI kontrolünde beklenmeyen hata: {error}")
+
+    # Keep API-Football as a second external fallback. It may work if the
+    # account/season coverage changes in the future.
     try:
         api_football = APIFootballClient()
         official_xi = api_football.get_match_official_xi(
@@ -304,7 +322,7 @@ def _get_official_xi(
     except Exception as error:
         print(f"⚠️ API-Football XI kontrolünde beklenmeyen hata: {error}")
 
-    return None, "İki kaynaktan da resmi ilk 11 alınamadı."
+    return None, "football-data.org, FotMob ve API-Football kaynaklarında resmi ilk 11 bulunamadı."
 
 
 def _upcoming_matches(matches: list[dict[str, Any]], now_utc: datetime, test_mode: bool) -> list[tuple[dict[str, Any], float]]:
