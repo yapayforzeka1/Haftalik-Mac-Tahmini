@@ -5312,7 +5312,10 @@
           ],
           "change_vs_previous": "Önceki tahmin bulunmuyor."
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Mistral Small Latest",
@@ -5343,7 +5346,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -5367,7 +5373,10 @@
           ],
           "change_vs_previous": "none"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -5391,7 +5400,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -5445,7 +5457,21 @@
     },
     "prediction_mode": "NO_COMMON",
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 4,
+      "away": 1,
+      "status": "FINISHED",
+      "updated_at": "2026-09-10T21:16:11.531251+00:00"
+    },
+    "consensus_points": null,
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": 2
   },
   "575337": {
     "season": "2026/27",
@@ -5835,7 +5861,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -5859,7 +5888,10 @@
           ],
           "change_vs_previous": "None"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -5883,7 +5915,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -5934,7 +5969,21 @@
     },
     "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 5,
+      "away": 0,
+      "status": "FINISHED",
+      "updated_at": "2026-09-10T21:16:11.531425+00:00"
+    },
+    "consensus_points": 3,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": 2
   },
   "575338": {
     "season": "2026/27",
@@ -6704,7 +6753,10 @@
           ],
           "change_vs_previous": "Önceki tahmin bulunmuyor."
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Mistral Small Latest",
@@ -6734,7 +6786,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -6758,7 +6813,10 @@
           ],
           "change_vs_previous": ""
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -6782,7 +6840,10 @@
           ],
           "change_vs_previous": "yok"
         },
-        "error": null
+        "error": null,
+        "points": 3,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "consensus": {
@@ -6835,6 +6896,20 @@
     },
     "prediction_mode": "NORMAL",
     "final_sent": true,
-    "result_sent": false
+    "result_sent": true,
+    "actual": {
+      "home": 2,
+      "away": 3,
+      "status": "FINISHED",
+      "updated_at": "2026-09-10T21:16:11.531499+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": 2
   }
 }
