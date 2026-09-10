@@ -14,7 +14,7 @@ COMPETITION_CODE = "CL"
 REQUEST_TIMEOUT = 30
 API_FOOTBALL_REQUEST_TIMEOUT = 30
 API_FOOTBALL_CL_LEAGUE_ID = 2
-FOTMOB_BASE_URL = "https://www.fotmob.com/api"
+FOTMOB_BASE_URL = "https://www.fotmob.com/api/data"
 FOTMOB_REQUEST_TIMEOUT = 20
 
 
@@ -254,33 +254,52 @@ class FotMobClient:
         return best_match
 
     @staticmethod
-    def _lineup_team(lineup: dict[str, Any], key: str) -> dict[str, Any]:
-        team = lineup.get(key) or {}
-        return team if isinstance(team, dict) else {}
-
-    @staticmethod
-    def _players(team: dict[str, Any], key: str) -> list[dict[str, Any]]:
-        raw = team.get(key) or []
+    def _normalize_players(raw: Any) -> list[dict[str, Any]]:
         if isinstance(raw, dict):
             raw = raw.get("players") or raw.get("starters") or []
-        result = []
-        for item in raw:
+        result: list[dict[str, Any]] = []
+        for item in raw or []:
             if not isinstance(item, dict):
                 continue
             player = item.get("player") if isinstance(item.get("player"), dict) else item
             name = player.get("name") or player.get("playerName")
             if not name:
                 continue
-            result.append(
-                {
-                    "id": player.get("id"),
-                    "name": name,
-                    "number": player.get("shirtNumber") or player.get("number"),
-                    "pos": player.get("position") or player.get("pos"),
-                    "grid": player.get("grid"),
-                }
-            )
+            result.append({
+                "id": player.get("id") or player.get("playerId"),
+                "name": name,
+                "number": player.get("shirtNumber") or player.get("number"),
+                "pos": player.get("position") or player.get("positionId") or player.get("pos"),
+                "grid": player.get("grid"),
+            })
         return result
+
+    def _extract_lineup_teams(self, data: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+        content = data.get("content") if isinstance(data.get("content"), dict) else data
+        lineup = content.get("lineup") if isinstance(content, dict) else None
+        if not isinstance(lineup, dict):
+            return {}, {}
+
+        # Current FotMob matchDetails payload: content.lineup.lineups[]
+        teams = lineup.get("lineups")
+        if isinstance(teams, list):
+            home: dict[str, Any] = {}
+            away: dict[str, Any] = {}
+            for team in teams:
+                if not isinstance(team, dict):
+                    continue
+                team_id = str(team.get("teamId", ""))
+                if not home:
+                    home = team
+                elif team_id != str(home.get("teamId", "")):
+                    away = team
+                    break
+            return home, away
+
+        # Compatibility with payloads exposing homeTeam / awayTeam directly.
+        home = lineup.get("homeTeam") if isinstance(lineup.get("homeTeam"), dict) else {}
+        away = lineup.get("awayTeam") if isinstance(lineup.get("awayTeam"), dict) else {}
+        return home, away
 
     def get_match_official_xi(
         self,
@@ -298,21 +317,15 @@ class FotMobClient:
             return None
 
         data = self._get("/matchDetails", params={"matchId": match_id})
-        content = data.get("content") if isinstance(data.get("content"), dict) else data
-        lineup = content.get("lineup") if isinstance(content, dict) else None
-        if not isinstance(lineup, dict):
-            lineup = data.get("lineup") if isinstance(data.get("lineup"), dict) else {}
-
-        home = self._lineup_team(lineup, "homeTeam")
-        away = self._lineup_team(lineup, "awayTeam")
-        home_xi = self._players(home, "starters")
-        away_xi = self._players(away, "starters")
+        home, away = self._extract_lineup_teams(data)
+        home_xi = self._normalize_players(home.get("players") or home.get("starters") or [])
+        away_xi = self._normalize_players(away.get("players") or away.get("starters") or [])
 
         if len(home_xi) >= 11 and len(away_xi) >= 11:
             return {
                 "status": "ANNOUNCED",
-                "home": home_xi,
-                "away": away_xi,
+                "home": home_xi[:11],
+                "away": away_xi[:11],
                 "home_formation": home.get("formation"),
                 "away_formation": away.get("formation"),
                 "source": "FotMob",
