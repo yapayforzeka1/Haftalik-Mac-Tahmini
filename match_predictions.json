@@ -3818,5 +3818,1042 @@
     "consensus_outcome_correct": false,
     "consensus_exact_score_correct": false,
     "grading_version": 2
+  },
+  "575335": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575335",
+    "home_team": "Fenerbahçe SK",
+    "away_team": "AS Roma",
+    "match_time": "10.09.2026 19:45",
+    "match_utc": "2026-09-10T16:45:00+00:00",
+    "prediction_created_at": "2026-09-10T15:59:50.723685+00:00",
+    "minutes_before_match": 45.6,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 613,
+        "standings": {
+          "position": 13,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      },
+      "away": {
+        "team_id": 100,
+        "standings": {
+          "position": 13,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T18:45:00Z",
+              "competition": "Serie A",
+              "opponent": "Atalanta BC",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-31T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "US Lecce",
+              "venue": "AWAY",
+              "goals_for": 4,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-24T18:45:00Z",
+              "competition": "Serie A",
+              "opponent": "ACF Fiorentina",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 10,
+          "goals_against_last_5": 1,
+          "avg_goals_for": 3.33,
+          "avg_goals_against": 0.33,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "2W-0D-0L",
+            "goals_for": 6,
+            "goals_against": 1,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 0.5
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 4,
+            "goals_against": 0,
+            "avg_goals_for": 4.0,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 4.9,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 363364,
+            "name": "Ederson",
+            "number": "31",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 904098,
+            "name": "Mert Müldür",
+            "number": "18",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 309328,
+            "name": "Milan Škriniar",
+            "number": "37",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 417068,
+            "name": "Nathan Aké",
+            "number": "15",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1113704,
+            "name": "Archie Brown",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1183589,
+            "name": "Ismail Yüksek",
+            "number": "5",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 319300,
+            "name": "N'Golo Kanté",
+            "number": "91",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1216728,
+            "name": "Bartuğ Elmaz",
+            "number": "28",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 950473,
+            "name": "Mason Greenwood",
+            "number": "11",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 517052,
+            "name": "Vedat Muriqi",
+            "number": "19",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1117570,
+            "name": "Kerem Aktürkoglu",
+            "number": "7",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 768474,
+            "name": "Mile Svilar",
+            "number": "99",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 787242,
+            "name": "Evan N'Dicka",
+            "number": "5",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 588687,
+            "name": "Gianluca Mancini",
+            "number": "23",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 671203,
+            "name": "Mario Hermoso",
+            "number": "22",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 1180321,
+            "name": "Devyne Rensch",
+            "number": "2",
+            "pos": 62,
+            "grid": null
+          },
+          {
+            "id": 299799,
+            "name": "Bryan Cristante",
+            "number": "4",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1016132,
+            "name": "Manu Koné",
+            "number": "17",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1320176,
+            "name": "Wesley",
+            "number": "43",
+            "pos": 68,
+            "grid": null
+          },
+          {
+            "id": 325916,
+            "name": "Paulo Dybala",
+            "number": "21",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 1280082,
+            "name": "Matias Soulé",
+            "number": "18",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 660301,
+            "name": "Donyell Malen",
+            "number": "14",
+            "pos": 105,
+            "grid": null
+          }
+        ],
+        "home_formation": "4-3-3",
+        "away_formation": "3-4-2-1",
+        "source": "FotMob",
+        "match_id": 6106331
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Fenerbahçe SK",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "AS Roma",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T15:59:34.065320+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "AI cevabı JSON değil."
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Fenerbahçe SK",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "AS Roma'nın son 5 maçta gösterdiği yüksek gol ortalaması (3.33) ve düşük gol yeme ortalaması (0.33), ofansif gücünü ve savunma disiplinini kanıtlıyor; ancak deplasman performansının ev performansına kıyasla daha az verimli olması bekleniyor.",
+            "Fenerbahçe'nin ev sahibi avantajı ve 4-3-3 formasyonu, Roma'nın 3-4-2-1 formasyonuna karşı kanatlardan baskı kurmasını sağlayarak gol üretme potansiyelini artırıyor.",
+            "Roma'nın son maçlarda Atalanta ve Lecce karşısındaki üstünlüğü, takımın formda olduğunu gösterse de, Fenerbahçe'nin evindeki motivasyonu ve taraftar desteği eşitliği bozucu bir faktör olabilir.",
+            "Her iki takımın da yeni sezonun ilk haftasında taktiksel temkinli olması bekleniyor; bu durum, yüksek skorlu bir maçı engellerken, ev sahibinin hafif üstünlüğüyle 2-1 gibi dengeli bir skora işaret ediyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Fenerbahçe SK",
+          "away_team": "AS Roma",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 70,
+          "reasons": [
+            "Roma'nın son beş Serie A maçında 10 gol atması ve sadece 1 gol yemesi, hem yüksek hücum verimi hem de sağlam savunma gösteriyor.",
+            "Fenerbahçe'nin kadrosu yetenekli olsa da, mevcut maç verisi yok; deneyimli stoperler (Škriniar, Aké) erken sezon döneminde Roma'nın akıcı hücumuna karşı zorlanabilir.",
+            "Maç Fenerbahçe'nin sezon açılış maçı; erken sezon maçları genellikle daha hazır ve galibiyet serisi olan deplasman takımı lehine olur.",
+            "İki takım da güçlü ilk 11'lerini açıkladı; Roma'nın hücum seçenekleri (Dybala, Malen, Soulé) en az iki gol yaratma potansiyeline sahipken, Fenerbahçe de en az bir gol bulabilir."
+          ],
+          "score_candidates": [
+            "1-2",
+            "2-1",
+            "0-1"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Fenerbahçe SK",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Roma son 5 maçta savunma olarak çok güçlü (avg GA 0.33) fakat bu maçta deplasmanda ve 4.9 gün dinlenme süresi var, savunma performansı düşebilir",
+            "Fenerbahçe'nin ev sahibi olarak agresif 4-3-3 formasyonu ve orta sahada Kanté ile yüksek top kazanma potansiyeli gol üretimini artırır",
+            "Her iki takım da hücumda etkili (Roma ortalama 3.33 gol, Fenerbahçe kadrosunda Greenwood ve Muriqi gibi forvetler) ancak Fenerbahçe'nin savunma eksikliği (ilk 11’de deneyimsiz defans) gol yemeye açık",
+            "Maçın Avrupa ligi önemi ve sezon başı motivasyonu, ev sahibi takımın galibiyet hedefi ve Roma’nın rotasyon riski (yeni transferler ve genç oyuncular) skoru 2-1 yönünde dengeleyebilir"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 2,
+      "outcome_share": 67,
+      "score": "2-1",
+      "score_votes": 2,
+      "score_share": 67,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 2,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 49,
+      "all_outcomes": {
+        "HOME": 2,
+        "AWAY": 1
+      },
+      "all_scores": {
+        "2-1": 2,
+        "1-2": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "AS Roma'nın son 5 maçta gösterdiği yüksek gol ortalaması (3.33) ve düşük gol yeme ortalaması (0.33), ofansif gücünü ve savunma disiplinini kanıtlıyor; ancak deplasman performansının ev performansına kıyasla daha az verimli olması bekleniyor.",
+          "Fenerbahçe'nin ev sahibi avantajı ve 4-3-3 formasyonu, Roma'nın 3-4-2-1 formasyonuna karşı kanatlardan baskı kurmasını sağlayarak gol üretme potansiyelini artırıyor.",
+          "Roma'nın son maçlarda Atalanta ve Lecce karşısındaki üstünlüğü, takımın formda olduğunu gösterse de, Fenerbahçe'nin evindeki motivasyonu ve taraftar desteği eşitliği bozucu bir faktör olabilir.",
+          "Her iki takımın da yeni sezonun ilk haftasında taktiksel temkinli olması bekleniyor; bu durum, yüksek skorlu bir maçı engellerken, ev sahibinin hafif üstünlüğüyle 2-1 gibi dengeli bir skora işaret ediyor.",
+          "Roma son 5 maçta savunma olarak çok güçlü (avg GA 0.33) fakat bu maçta deplasmanda ve 4.9 gün dinlenme süresi var, savunma performansı düşebilir"
+        ],
+        "AWAY": [
+          "Roma'nın son beş Serie A maçında 10 gol atması ve sadece 1 gol yemesi, hem yüksek hücum verimi hem de sağlam savunma gösteriyor.",
+          "Fenerbahçe'nin kadrosu yetenekli olsa da, mevcut maç verisi yok; deneyimli stoperler (Škriniar, Aké) erken sezon döneminde Roma'nın akıcı hücumuna karşı zorlanabilir.",
+          "Maç Fenerbahçe'nin sezon açılış maçı; erken sezon maçları genellikle daha hazır ve galibiyet serisi olan deplasman takımı lehine olur.",
+          "İki takım da güçlü ilk 11'lerini açıkladı; Roma'nın hücum seçenekleri (Dybala, Malen, Soulé) en az iki gol yaratma potansiyeline sahipken, Fenerbahçe de en az bir gol bulabilir."
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "AI cevabı JSON değil."
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "NORMAL",
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575336": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575336",
+    "home_team": "PSV",
+    "away_team": "FK Shakhtar Donetsk",
+    "match_time": "10.09.2026 19:45",
+    "match_utc": "2026-09-10T16:45:00+00:00",
+    "prediction_created_at": "2026-09-10T16:00:12.945749+00:00",
+    "minutes_before_match": 45.6,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 674,
+        "standings": {
+          "position": 13,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T18:00:00Z",
+              "competition": "Eredivisie",
+              "opponent": "AFC Ajax",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-30T10:15:00Z",
+              "competition": "Eredivisie",
+              "opponent": "FC Utrecht",
+              "venue": "AWAY",
+              "goals_for": 6,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-23T12:30:00Z",
+              "competition": "Eredivisie",
+              "opponent": "FC Groningen",
+              "venue": "HOME",
+              "goals_for": 5,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-15T18:00:00Z",
+              "competition": "Eredivisie",
+              "opponent": "SBV Excelsior",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-08T18:00:00Z",
+              "competition": "Eredivisie",
+              "opponent": "Fortuna Sittard",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "W-W-W-W-D",
+          "points_last_5": 13,
+          "goals_for_last_5": 18,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 3.6,
+          "avg_goals_against": 1.2,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 7,
+            "goals_against": 3,
+            "avg_goals_for": 3.5,
+            "avg_goals_against": 1.5
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "3W-0D-0L",
+            "goals_for": 11,
+            "goals_against": 3,
+            "avg_goals_for": 3.67,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 4.9,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 1887,
+        "standings": {
+          "position": 13,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      },
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 1077903,
+            "name": "Matěj Kovár",
+            "number": "32",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 892816,
+            "name": "Sergiño Dest",
+            "number": "8",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 881640,
+            "name": "Lutsharel Geertruida",
+            "number": "2",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 794244,
+            "name": "Armando Obispo",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 281012,
+            "name": "Filip Kostić",
+            "number": "18",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 774947,
+            "name": "Guus Til",
+            "number": "20",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 1337282,
+            "name": "Kodai Sano",
+            "number": "24",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1327149,
+            "name": "Paul Wanner",
+            "number": "10",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 163670,
+            "name": "Ivan Perišić",
+            "number": "5",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 1036401,
+            "name": "Ricardo Pepi",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1359970,
+            "name": "Ruben van Bommel",
+            "number": "7",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 976428,
+            "name": "Dmytro Riznyk",
+            "number": "31",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1314657,
+            "name": "Vinícius Tobias",
+            "number": "17",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1024427,
+            "name": "Valeriy Bondar",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 656667,
+            "name": "Mykola Matviyenko",
+            "number": "22",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1259576,
+            "name": "Pedro Henrique",
+            "number": "13",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1192419,
+            "name": "Oleg Ocheretko",
+            "number": "27",
+            "pos": 65,
+            "grid": null
+          },
+          {
+            "id": 1503318,
+            "name": "Alisson Santana",
+            "number": "30",
+            "pos": 82,
+            "grid": null
+          },
+          {
+            "id": 1396465,
+            "name": "Marlon Gomes",
+            "number": "6",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 1697412,
+            "name": "Isaque",
+            "number": "14",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 1460572,
+            "name": "Gleiker Mendoza",
+            "number": "77",
+            "pos": 88,
+            "grid": null
+          },
+          {
+            "id": 1483508,
+            "name": "Kauã Elias",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_formation": "4-3-3",
+        "away_formation": "4-1-4-1",
+        "source": "FotMob",
+        "match_id": 6106304
+      }
+    },
+    "history": {
+      "home": {
+        "team": "PSV",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "FK Shakhtar Donetsk",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T15:59:59.597132+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "PSV",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 72,
+          "reasons": [
+            "PSV son 5 lig maçında toplam 18 gol atarak son derece yüksek bir hücum formu yakaladı.",
+            "Eredivisie devinin Ajax ve Utrecht deplasmanlarındaki farklı galibiyetleri hücum zenginliğini açıkça gösteriyor.",
+            "Shakhtar Donetsk dinamik ve yetenekli bir kadroya sahip olsa da, PSV'nin ev sahibi avantajı ve tecrübeli isimleri (Perisic, Kostic, Geertruida) ağır basıyor.",
+            "PSV'nin savunmada maç başına yedirdiği ortalama 1.2 gol göz önüne alındığında Shakhtar'ın skora katkı vermesi, ancak maçı PSV'nin rahat kazanması beklenmektedir."
+          ],
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "2-0"
+          ],
+          "change_vs_previous": "İlk analiz, geçmiş tahmin bulunmuyor."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "PSV",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "PSV son 5 maçında ortalama 3.6 gol atarak çok yüksek bir gol üretimi sergiliyor; bu form, ev sahibi avantajıyla birleştiğinde en az 2-3 gol beklentisini güçlendiriyor.",
+            "Shakhtar Donetsk için son 5 maç verisi bulunmuyor (N/A), bu da muhtemelen sezon öncesi hazırlık veya kadro belirsizliği nedeniyle performans verisinin eksik olduğunu gösteriyor; PSV'nin net form avantajı bu belirsizliği telafi ediyor.",
+            "PSV'nin ev sahasındaki son 2 maçında 7 gol atıp sadece 3 gol yemesi, Philip Kostić ve Ivan Perišić gibi tecrübeli oyuncuların ofansif katkısıyla savunmanın da dengeli olduğunu gösteriyor.",
+            "Shakhtar'ın 4-1-4-1 formasyonu savunmada disiplinli olsa da, PSV'nin 4-3-3 ile oluşturduğu genişlik ve hızlı kanat oyununa karşı uzun vadede zorlanma ihtimali yüksek; PSV'nin gol yeme ortalaması (1.2) Shakhtar'ın potansiyel bir gol atmasına izin verebilir ancak maçı kazanmak için yeterli gol farkını yakalaması bekleniyor."
+          ],
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "PSV",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "PSV son beş maçında maç başına 3.6 gol ortalamasıyla güçlü bir hücum performansı sergiledi ve bunların dördünde galibiyet elde edildi.",
+            "Shakhtar'ın güncel maç verisi eksik, ancak Avrupa müsabakalarında historically sağlam savunma gösterdiği için PSV'nin atak gücünü sınırlandırabilir ve en az bir gol atabilir.",
+            "Ev sahibi takımın 4-3-3 düzeni, geniş hücum oyuncuları ve yüksek xG değerleriyle PSV'nin baskı kurmasını ve birkaç gol yaratmasını sağlıyor.",
+            "Maç öncesi dinlenme süresi (4.9 gün) ve Eredivisie'nin orta seviyeli rekabeti, PSV'nin yüksek tempoda oynamasına ve en az iki gol bulmasına olanak tanıyor, Shakhtar ise muhtemelen bir gol kaydedecektir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "önceki tahmin yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "PSV",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "PSV son 5 maçta ortalama 3.6 gol attı, ofansif verim yüksek.",
+            "Shakhtar'ın resmi ilk 11'i açıklanmadı, muhtemel eksik ve savunma zayıf.",
+            "PSV ev sahibi avantajı ve 4.9 gün dinlenme süresi, performansını artırıyor.",
+            "Her iki takım da Avrupa seviyesinde, ancak PSV'nin Eredivisie kalitesi Shakhtar'ın mevcut formuna göre üstün."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "önceki tahmin yoksa yok; değiştiyse neden"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "3-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 38,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "3-1": 2,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "PSV son 5 lig maçında toplam 18 gol atarak son derece yüksek bir hücum formu yakaladı.",
+          "Eredivisie devinin Ajax ve Utrecht deplasmanlarındaki farklı galibiyetleri hücum zenginliğini açıkça gösteriyor.",
+          "Shakhtar Donetsk dinamik ve yetenekli bir kadroya sahip olsa da, PSV'nin ev sahibi avantajı ve tecrübeli isimleri (Perisic, Kostic, Geertruida) ağır basıyor.",
+          "PSV'nin savunmada maç başına yedirdiği ortalama 1.2 gol göz önüne alındığında Shakhtar'ın skora katkı vermesi, ancak maçı PSV'nin rahat kazanması beklenmektedir.",
+          "PSV son 5 maçında ortalama 3.6 gol atarak çok yüksek bir gol üretimi sergiliyor; bu form, ev sahibi avantajıyla birleştiğinde en az 2-3 gol beklentisini güçlendiriyor."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "final_sent": true,
+    "result_sent": false
   }
 }
