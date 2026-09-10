@@ -4855,5 +4855,1911 @@
     "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
     "final_sent": true,
     "result_sent": false
+  },
+  "575339": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575339",
+    "home_team": "Como 1907",
+    "away_team": "RB Leipzig",
+    "match_time": "10.09.2026 22:00",
+    "match_utc": "2026-09-10T19:00:00+00:00",
+    "prediction_created_at": "2026-09-10T18:21:12.139799+00:00",
+    "minutes_before_match": 40.1,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 7397,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-04T18:45:00Z",
+              "competition": "Serie A",
+              "opponent": "Genoa CFC",
+              "venue": "AWAY",
+              "goals_for": 4,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-30T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "SSC Napoli",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-22T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "Udinese Calcio",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "W-W-D",
+          "points_last_5": 7,
+          "goals_for_last_5": 7,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 2.33,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "2W-1D-0L",
+            "goals_for": 7,
+            "goals_against": 3,
+            "avg_goals_for": 2.33,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 6.0,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 721,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T13:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "SV Werder Bremen",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-29T13:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "Borussia Mönchengladbach",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-W",
+          "points_last_5": 3,
+          "goals_for_last_5": 4,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 1.5,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 3,
+            "goals_against": 0,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 0.0
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 1,
+            "goals_against": 3,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 3.0
+          },
+          "rest_days_before_match": 5.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 2
+        }
+      },
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 560939,
+            "name": "Jean Butez",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1109171,
+            "name": "Yan Couto",
+            "number": "27",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 793907,
+            "name": "Trevoh Chalobah",
+            "number": "99",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1413963,
+            "name": "Jacobo Ramón",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1384881,
+            "name": "Álex Valle",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 638090,
+            "name": "Luis Milla",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1076647,
+            "name": "Lucas Da Cunha",
+            "number": "7",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1434889,
+            "name": "Assane Diao",
+            "number": "11",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1347574,
+            "name": "Nico Paz",
+            "number": "10",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 1215064,
+            "name": "Martin Baturina",
+            "number": "20",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 873270,
+            "name": "Anastasios Douvikas",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 972200,
+            "name": "Maarten Vandevoordt",
+            "number": "26",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 883087,
+            "name": "Ridle Baku",
+            "number": "17",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 278856,
+            "name": "Willi Orbán",
+            "number": "4",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1253852,
+            "name": "Castello Lukeba",
+            "number": "23",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 806669,
+            "name": "David Raum",
+            "number": "22",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1274060,
+            "name": "Neil El Aynaoui",
+            "number": "21",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1024672,
+            "name": "Nicolas Seiwald",
+            "number": "13",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1482209,
+            "name": "Andrija Maksimović",
+            "number": "30",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 704523,
+            "name": "Christopher Nkunku",
+            "number": "28",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 1248482,
+            "name": "Antonio Nusa",
+            "number": "7",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 1412137,
+            "name": "Marc Guiu",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_formation": "4-2-3-1",
+        "away_formation": "4-2-3-1",
+        "source": "FotMob",
+        "match_id": 6106411
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Como 1907",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "RB Leipzig",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T18:20:54.058565+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "RB Leipzig",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 62,
+          "reasons": [
+            "Como Serie A'ya Napoli ve Genoa galibiyetleriyle son derece formda başladı ve hücum hattında Nico Paz ile Baturina önderliğinde yüksek gol üretkenliğine ulaştı.",
+            "RB Leipzig sezona ligde Gladbach galibiyetiyle başlasa da deplasmanda Werder Bremen'e 3-1 mağlup olarak dış saha savunma zafiyetlerini ortaya koydu.",
+            "Como'nun 6 günlük daha uzun dinlenme süresi ve taraftarı önündeki UCL heyecanı oyun disiplinine olumlu yansıyacaktır.",
+            "Açıklanan 11'lerde Como'nun Milla ve Da Cunha ile kurduğu orta saha dengesi, Leipzig'in deplasmandaki kırılgan yapısına karşı üstünlük kurabilir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-2"
+          ],
+          "change_vs_previous": "Önceki tahmin bulunmuyor."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "RB Leipzig",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "RB Leipzig'in Serie A'ya kıyasla daha yüksek tempolu ve teknik kalitede bir Bundesliga ekibi olması, özellikle deplasmanda bile üstün teknik kadrosu (Nkunku, Nusa, Guiu) ile gol bulma potansiyelini artırıyor.",
+            "Como'nun son 5 maçındaki iyi performansı (2W-1D) tamamen deplasman maçlarında gerçekleşmiş; ev sahibi avantajını henüz Serie A veya Avrupa seviyesinde kanıtlamamış durumda. Evde ilk kez oynayacak olmaları psikolojik baskı yaratabilir.",
+            "RB Leipzig'in son maçta Werder Bremen'e 3-1 yenilmesi form düşüşü olarak görülebilir ancak rakip kalitesi ve Leipzig'in evindeki 3-0'lık galibiyeti, ofansif gücünün hala yüksek olduğunu gösteriyor. Como'nun savunması (Chalobah, Ramón) genç ve deneyimsiz olabilir.",
+            "Her iki takım da 4-2-3-1 oynuyor. Leipzig'in orta saha kontrolü (Seiwald, El Aynaoui) ve kanat hızı (Nusa, Raum) Como'nun savunma hattını zorlayacaktır. Como'nun kontra ataklarda Douvikas ve Baturina ile tehlike oluşturması beklenir, ancak Leipzig'in pres baskısı altında topu tutma sorunu yaşaması muhtemel.",
+            "Turnuvanın ilk haftası olması ve Como'nun yeni yükselen bir takım olması, Leipzig'in daha organize ve deneyimli yapısını öne çıkarır. Leipzig'in deplasmanda gol yeme riski var (son deplasmanda 3 yedi), bu da Como'nun en az bir gol bulmasını kolaylaştırır."
+          ],
+          "score_candidates": [
+            "1-2",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "RB Leipzig",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 65,
+          "reasons": [
+            "Como'nun son 5 deplasman maçı 2,33 gol atma ortalaması ve sadece 1,0 gol yeme ortalaması gösteriyor; bu da iyi hücum performansı ama mütevazı savunma anlamına geliyor",
+            "RB Leipzig'in kadrosu Nkunku, Nusa ve Guiu gibi kaliteli forvetlerden oluşuyor ve bu oyuncular üst seviye rakipler karşısında gol atma becerisi gösterdi",
+            "Como için ev sahibi avantajı, Leipzig'in üstün kalite ve derinlik avantajıyla dengeleniyor; Leipzig'in son deplasman maçındaki galibiyetsizlikleri, bu maçta tepki verme motivasyonu sağlayabilir",
+            "Her iki takımın da gol üretim eğilimleri göz önüne alındığında, toplam gol sayısının yaklaşık 3 olması bekleniyor ve 1-2 skoru bu dengeyi yansıtıyor"
+          ],
+          "score_candidates": [
+            "1-2",
+            "2-1",
+            "1-1"
+          ],
+          "change_vs_previous": "none"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "RB Leipzig",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Como son 6.0 gün dinlenmiş ve son 3 deplasmanda ortalama 2.33 gol atıyor; RB Leipzig sadece 5.2 gün dinlenmiş ve son maçta 3 gol yedi",
+            "Leipzig'in savunması son 5 maçta 1.5 gol/kalan ortalama verirken Como'nun savunması 1.0 gol/kalan",
+            "Her iki takım da 4-2-3-1 dizilişiyle orta saha yoğunluğu yüksek, Como'nun kanat oyuncuları daha aktif, Leipzig ise kontra atak odaklı",
+            "Leipzig'in ev sahibi avantajı yok, yolculuk ve takvim sıkışıklığı performansını düşürebilir"
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 2,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 51,
+      "all_outcomes": {
+        "HOME": 2,
+        "AWAY": 2
+      },
+      "all_scores": {
+        "2-1": 2,
+        "1-2": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Como Serie A'ya Napoli ve Genoa galibiyetleriyle son derece formda başladı ve hücum hattında Nico Paz ile Baturina önderliğinde yüksek gol üretkenliğine ulaştı.",
+          "RB Leipzig sezona ligde Gladbach galibiyetiyle başlasa da deplasmanda Werder Bremen'e 3-1 mağlup olarak dış saha savunma zafiyetlerini ortaya koydu.",
+          "Como'nun 6 günlük daha uzun dinlenme süresi ve taraftarı önündeki UCL heyecanı oyun disiplinine olumlu yansıyacaktır.",
+          "Açıklanan 11'lerde Como'nun Milla ve Da Cunha ile kurduğu orta saha dengesi, Leipzig'in deplasmandaki kırılgan yapısına karşı üstünlük kurabilir.",
+          "Como son 6.0 gün dinlenmiş ve son 3 deplasmanda ortalama 2.33 gol atıyor; RB Leipzig sadece 5.2 gün dinlenmiş ve son maçta 3 gol yedi"
+        ],
+        "AWAY": [
+          "RB Leipzig'in Serie A'ya kıyasla daha yüksek tempolu ve teknik kalitede bir Bundesliga ekibi olması, özellikle deplasmanda bile üstün teknik kadrosu (Nkunku, Nusa, Guiu) ile gol bulma potansiyelini artırıyor.",
+          "Como'nun son 5 maçındaki iyi performansı (2W-1D) tamamen deplasman maçlarında gerçekleşmiş; ev sahibi avantajını henüz Serie A veya Avrupa seviyesinde kanıtlamamış durumda. Evde ilk kez oynayacak olmaları psikolojik baskı yaratabilir.",
+          "RB Leipzig'in son maçta Werder Bremen'e 3-1 yenilmesi form düşüşü olarak görülebilir ancak rakip kalitesi ve Leipzig'in evindeki 3-0'lık galibiyeti, ofansif gücünün hala yüksek olduğunu gösteriyor. Como'nun savunması (Chalobah, Ramón) genç ve deneyimsiz olabilir.",
+          "Her iki takım da 4-2-3-1 oynuyor. Leipzig'in orta saha kontrolü (Seiwald, El Aynaoui) ve kanat hızı (Nusa, Raum) Como'nun savunma hattını zorlayacaktır. Como'nun kontra ataklarda Douvikas ve Baturina ile tehlike oluşturması beklenir, ancak Leipzig'in pres baskısı altında topu tutma sorunu yaşaması muhtemel.",
+          "Turnuvanın ilk haftası olması ve Como'nun yeni yükselen bir takım olması, Leipzig'in daha organize ve deneyimli yapısını öne çıkarır. Leipzig'in deplasmanda gol yeme riski var (son deplasmanda 3 yedi), bu da Como'nun en az bir gol bulmasını kolaylaştırır."
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "NO_COMMON",
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575337": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575337",
+    "home_team": "FC Bayern München",
+    "away_team": "FK Bodø/Glimt",
+    "match_time": "10.09.2026 22:00",
+    "match_utc": "2026-09-10T19:00:00+00:00",
+    "prediction_created_at": "2026-09-10T18:20:20.891665+00:00",
+    "minutes_before_match": 40.1,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 5,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T16:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "FC Schalke 04",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 0,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-28T18:30:00Z",
+              "competition": "Bundesliga",
+              "opponent": "VfB Stuttgart",
+              "venue": "HOME",
+              "goals_for": 5,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "D-W",
+          "points_last_5": 4,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 1,
+          "avg_goals_for": 2.5,
+          "avg_goals_against": 0.5,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 5,
+            "goals_against": 1,
+            "avg_goals_for": 5.0,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "0W-1D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": 0.0,
+            "avg_goals_against": 0.0
+          },
+          "rest_days_before_match": 5.1,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 2
+        }
+      },
+      "away": {
+        "team_id": 5721,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      },
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 27299,
+            "name": "Manuel Neuer",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 526827,
+            "name": "Konrad Laimer",
+            "number": "27",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 658554,
+            "name": "Dayot Upamecano",
+            "number": "2",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 469700,
+            "name": "Jonathan Tah",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 751202,
+            "name": "Alphonso Davies",
+            "number": "19",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 460632,
+            "name": "Joshua Kimmich",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1473580,
+            "name": "Aleksandar Pavlović",
+            "number": "45",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1029063,
+            "name": "Michael Olise",
+            "number": "17",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1156141,
+            "name": "Jamal Musiala",
+            "number": "10",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 860914,
+            "name": "Luis Díaz",
+            "number": "14",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 194165,
+            "name": "Harry Kane",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 625360,
+            "name": "Nikita Haikin",
+            "number": "12",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1281021,
+            "name": "Fredrik Sjøvold",
+            "number": "20",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1436937,
+            "name": "Villads Nielsen",
+            "number": "2",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 917774,
+            "name": "Odin Lurås Bjørtuft",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 630228,
+            "name": "Fredrik André Bjørkan",
+            "number": "15",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 902675,
+            "name": "Joshua Kitolano",
+            "number": "16",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 530635,
+            "name": "Patrick Berg",
+            "number": "7",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 540975,
+            "name": "Sondre Brunstad Fet",
+            "number": "19",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1160076,
+            "name": "Sondre Auklend",
+            "number": "8",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 615292,
+            "name": "Andreas Helmersen",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1086551,
+            "name": "Ole Blomberg",
+            "number": "11",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "home_formation": "4-2-3-1",
+        "away_formation": "4-3-3",
+        "source": "FotMob",
+        "match_id": 6106240
+      }
+    },
+    "history": {
+      "home": {
+        "team": "FC Bayern München",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "FK Bodø/Glimt",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T18:20:06.433555+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "AI cevabı JSON değil."
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "FC Bayern München",
+          "away_team": "FK Bodø/Glimt",
+          "outcome": "HOME",
+          "score": "4-1",
+          "confidence": 0,
+          "reasons": [
+            "Bayern'in son ev maçında Stuttgart'a karşı 5-1'lik skorla gösterdiği üstün gol üretimi (avg_goals_for: 5.0) ve Bodø/Glimt'in deplasman verilerinin eksik/olumsuz olması.",
+            "Harry Kane, Jamal Musiala ve Luis Díaz'dan oluşan ofansif kadronun, Norveç ekibinin 4-3-3 dizilişindeki savunma boşluklarını kolayca kullanması bekleniyor.",
+            "Bodø/Glimt'in Avrupa'daki savunma disiplini, Bundesliga'nın fiziksel ve teknik baskısı altında çözülebilir; Bayern'in son 5 maçta ortalama 2.5 gol atması bu farkı destekliyor.",
+            "Ev sahibi avantajı ve Bayern'in şampiyonluk motivasyonu, ilk haftada maksimum puan ve gol farkı hedeflemesini sağlar."
+          ],
+          "score_candidates": [
+            "4-1",
+            "3-1",
+            "5-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FC Bayern München",
+          "away_team": "FK Bodø/Glimt",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 80,
+          "reasons": [
+            "Bayern'in evdeki son 5 maçında ortalama 5 gol attığı ve genel olarak maç başına ortalama 2,5 gol kaydettiği için güçlü hücuma sahip.",
+            "Bayern'in resmi XI'i, Harry Kane, Jamal Musiala, Luis Díaz ve diğerleri gibi kaliteli hücuma sahip oyuncularla dolu ve bu da birkaç gol atmasını çok olası kılıyor.",
+            "FK Bodø/Glimt'in Avrupa'da skor yapma geçmişi olsa da, Bundesliga ile karşılaştırıldığında kalite farkı ve verilerde gösterecek skor yok; bu da Bayern'in baskın performansına yol açabilir ve Bodø/Glimt'in bir gol atmasını sağlayabilir.",
+            "Maç yeni sezonda, Bayern için 5,1 günlük dinlenme süresiyle oynanıyor; bu da yüksek tempoda oynamalarına ve en az iki gol atmalarına olanak tanıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "3-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FC Bayern München",
+          "away_team": "FK Bodø/Glimt",
+          "outcome": "HOME",
+          "score": "3-0",
+          "confidence": 78,
+          "reasons": [
+            "Bayern Munich evinde yüksek ortalama gol (2.5) ve son 5 maçta 5 gol attı",
+            "Bodø/Glimt'in savunma istatistikleri eksik, Avrupa deneyimi sınırlı",
+            "Bayern'in kadrosunda Harry Kane ve Jamal Musiala gibi golcü forvetler mevcut, hücum gücü çok yüksek",
+            "Bodø/Glimt'in son 5 maçta gol yeme ortalaması yüksek, savunma zayıf"
+          ],
+          "score_candidates": [
+            "3-0",
+            "4-0",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "4-1",
+      "top_score_votes": 1,
+      "average_subjective_confidence": 53,
+      "all_outcomes": {
+        "HOME": 3
+      },
+      "all_scores": {
+        "4-1": 1,
+        "2-1": 1,
+        "3-0": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Bayern'in son ev maçında Stuttgart'a karşı 5-1'lik skorla gösterdiği üstün gol üretimi (avg_goals_for: 5.0) ve Bodø/Glimt'in deplasman verilerinin eksik/olumsuz olması.",
+          "Harry Kane, Jamal Musiala ve Luis Díaz'dan oluşan ofansif kadronun, Norveç ekibinin 4-3-3 dizilişindeki savunma boşluklarını kolayca kullanması bekleniyor.",
+          "Bodø/Glimt'in Avrupa'daki savunma disiplini, Bundesliga'nın fiziksel ve teknik baskısı altında çözülebilir; Bayern'in son 5 maçta ortalama 2.5 gol atması bu farkı destekliyor.",
+          "Ev sahibi avantajı ve Bayern'in şampiyonluk motivasyonu, ilk haftada maksimum puan ve gol farkı hedeflemesini sağlar.",
+          "Bayern'in evdeki son 5 maçında ortalama 5 gol attığı ve genel olarak maç başına ortalama 2,5 gol kaydettiği için güçlü hücuma sahip."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "AI cevabı JSON değil."
+        },
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575338": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575338",
+    "home_team": "Manchester United FC",
+    "away_team": "Sabah FK",
+    "match_time": "10.09.2026 22:00",
+    "match_utc": "2026-09-10T19:00:00+00:00",
+    "prediction_created_at": "2026-09-10T18:20:45.344947+00:00",
+    "minutes_before_match": 40.1,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 66,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-06T13:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Everton FC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-08-30T15:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Ipswich Town FC",
+              "venue": "HOME",
+              "goals_for": 5,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-08-22T11:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Hull City AFC",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "D-W-L",
+          "points_last_5": 4,
+          "goals_for_last_5": 7,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 2.33,
+          "avg_goals_against": 2.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 5,
+            "goals_against": 2,
+            "avg_goals_for": 5.0,
+            "avg_goals_against": 2.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-1D-1L",
+            "goals_for": 2,
+            "goals_against": 4,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 4.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "away": {
+        "team_id": 10233,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      },
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 1178602,
+            "name": "Senne Lammens",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 775539,
+            "name": "Noussair Mazraoui",
+            "number": "3",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1358581,
+            "name": "Leny Yoro",
+            "number": "15",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 847983,
+            "name": "Lisandro Martínez",
+            "number": "6",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1526560,
+            "name": "Patrick Dorgu",
+            "number": "13",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1292810,
+            "name": "Kobbie Mainoo",
+            "number": "37",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 465960,
+            "name": "Youri Tielemans",
+            "number": "18",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 923312,
+            "name": "Bryan Mbeumo",
+            "number": "19",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 422685,
+            "name": "Bruno Fernandes",
+            "number": "8",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 863098,
+            "name": "Matheus Cunha",
+            "number": "10",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 1073977,
+            "name": "Benjamin Šeško",
+            "number": "30",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 489507,
+            "name": "Stas Pokatilov",
+            "number": "92",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 542777,
+            "name": "Akim Zedadka",
+            "number": "80",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1441450,
+            "name": "Rəhman Daşdəmirov",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1337091,
+            "name": "Aden McCarthy",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 823121,
+            "name": "Tymoteusz Puchacz",
+            "number": "27",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1429286,
+            "name": "Umarali Rakhmonaliev",
+            "number": "7",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 906920,
+            "name": "Ivan Lepinjica",
+            "number": "13",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 876149,
+            "name": "Kaheem Parris",
+            "number": "11",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 458807,
+            "name": "Veljko Simić",
+            "number": "21",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 1624072,
+            "name": "Christian Nwachukwu",
+            "number": "8",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 617465,
+            "name": "Joy-Lance Mickels",
+            "number": "20",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_formation": "4-2-3-1",
+        "away_formation": "4-2-3-1",
+        "source": "FotMob",
+        "match_id": 6106293
+      }
+    },
+    "history": {
+      "home": {
+        "team": "Manchester United FC",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Sabah FK",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T18:20:29.640907+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "Sabah FK",
+          "outcome": "HOME",
+          "score": "4-0",
+          "confidence": 85,
+          "reasons": [
+            "Manchester United, kadro kalitesi ve lig seviyesi açısından rakibi Sabah FK'nın çok üzerinde yer alıyor.",
+            "Açıklanan resmi 11'de Bruno Fernandes, Šeško, Mbeumo ve Cunha gibi as hücum silahlarının tamamı yer alıyor.",
+            "Sabah FK'nın deplasmanda Premier Lig devi karşısında direnç göstermesi ve skor üretmesi oldukça zor görünüyor.",
+            "İki takım arasındaki belirgin güç farkı ve Old Trafford avantajı rahat ve farklı bir ev sahibi galibiyetine işaret ediyor."
+          ],
+          "score_candidates": [
+            "4-0",
+            "5-0",
+            "3-0"
+          ],
+          "change_vs_previous": "Geçmiş tahmin bulunmuyor."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "Sabah FK",
+          "outcome": "HOME",
+          "score": "3-0",
+          "confidence": 0,
+          "reasons": [
+            "Manchester United, Premier League seviyesindeki son 5 maçında ortalama 2.33 gol atarken, Sabah FK'nın son 5 maç verisi bulunmamaktadır (N/A). Bu veri boşluğu, rakibin Avrupa seviyesindeki savunma organizasyonunun belirsizliğini gösterir; ancak lig kalite farkı (Premier League vs. Azerbaycan Premier Lig) Manchester United lehine ağır basar.",
+            "Resmi ilk 11'de Manchester United'ın hücum hattında Benjamin Šeško, Matheus Cunha ve Bryan Mbeumo gibi yüksek gol potansiyeline sahip oyuncular yer alıyor. Bu kadro, özellikle ev sahibi avantajıyla Old Trafford'ta zayıf veya verisi olmayan bir rakibe karşı agresif bir oyun planı uygulayacaktır.",
+            "Sabah FK'nın deplasman performansına dair veri eksikliği, genellikle daha düşük seviye liglerden gelen takımların Avrupa'daki teknik ve fiziksel baskıya karşı direnç göstermekte zorlandığını işaret eder. Manchester United'ın son ev maçında Ipswich'e 5-2 yenilmesi, hücum gücünün yüksek olduğunu ancak savunmada dikkatsizlik gösterebileceğini gösterse de, rakip kalitesi farkı bu riski minimize eder.",
+            "Maçın UEFA Şampiyonlar Ligi grup aşaması (League Stage) ilk haftası olması, Manchester United'ın galibiyetle başlamaya yönelik yüksek motivasyonunu artırır. Dinlenme süresi (4.2 gün) ev sahibi için yeterli toparlanma sağlar."
+          ],
+          "score_candidates": [
+            "3-0",
+            "2-0",
+            "3-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "Sabah FK",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Manchester United'un son ev maçı 5 gol ve sadece 2 yedi golle sonuçlandı; bu da birden fazla gol atabileceklerini ve rakibin skor yapmasını sınırlayabileceklerini gösteriyor.",
+            "Sabah FK'nın güncel rekabetçi maç verisi yok ve Şampiyonlar Ligi'nde tarihsel olarak daha düşük kaliteli takımlar; bu da sık sık gol atma konusunda zorlanmalarına neden oluyor.",
+            "Manchester United'ın ilk 11'inde Bruno Fernandes, Matheus Cunha, Bryan Mbeumo ve Benjamin Šeško gibi yüksek kaliteli forvet oyuncuları bulunuyor; bu da gol yaratma ve tamamlamada tehlike oluşturuyor.",
+            "Old Trafford'daki ev sahibi avantajı ve dengeli 4-2-3-1 dizilişi Manchester United'a hakimlik sağlıyor; bu da dar bir 2-1 galibiyetin en olası sonuç olmasını sağlıyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "None"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "Sabah FK",
+          "outcome": "HOME",
+          "score": "2-0",
+          "confidence": 0,
+          "reasons": [
+            "Manchester United son 5 maçta ortalama 2.33 gol attı ve evde güçlü bir hücum gösterdi",
+            "Sabah FK'in geçmiş maç verisi yok, Avrupa seviyesindeki rakiplerine karşı gol üretimi düşük",
+            "United'ın ev sahibi avantajı ve dinlenme süresi (4.2 gün) rakipten daha iyiydi",
+            "Her iki takım da 4-2-3-1 formasyonunda oynayacak, United'ın kanatları ve forvetleri daha etkili görünüyor"
+          ],
+          "score_candidates": [
+            "2-0",
+            "1-0",
+            "2-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "4-0",
+      "top_score_votes": 1,
+      "average_subjective_confidence": 21,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "4-0": 1,
+        "3-0": 1,
+        "2-1": 1,
+        "2-0": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Manchester United, kadro kalitesi ve lig seviyesi açısından rakibi Sabah FK'nın çok üzerinde yer alıyor.",
+          "Açıklanan resmi 11'de Bruno Fernandes, Šeško, Mbeumo ve Cunha gibi as hücum silahlarının tamamı yer alıyor.",
+          "Sabah FK'nın deplasmanda Premier Lig devi karşısında direnç göstermesi ve skor üretmesi oldukça zor görünüyor.",
+          "İki takım arasındaki belirgin güç farkı ve Old Trafford avantajı rahat ve farklı bir ev sahibi galibiyetine işaret ediyor.",
+          "Manchester United, Premier League seviyesindeki son 5 maçında ortalama 2.33 gol atarken, Sabah FK'nın son 5 maç verisi bulunmamaktadır (N/A). Bu veri boşluğu, rakibin Avrupa seviyesindeki savunma organizasyonunun belirsizliğini gösterir; ancak lig kalite farkı (Premier League vs. Azerbaycan Premier Lig) Manchester United lehine ağır basar."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "final_sent": true,
+    "result_sent": false
+  },
+  "575340": {
+    "season": "2026/27",
+    "matchday": 1,
+    "match_id": "575340",
+    "home_team": "SK Slavia Praha",
+    "away_team": "Racing Club de Lens",
+    "match_time": "10.09.2026 22:00",
+    "match_utc": "2026-09-10T19:00:00+00:00",
+    "prediction_created_at": "2026-09-10T18:21:38.143182+00:00",
+    "minutes_before_match": 40.1,
+    "context": {
+      "season": "2026/27",
+      "matchday": 1,
+      "stage": "LEAGUE_STAGE",
+      "venue": null,
+      "home": {
+        "team_id": 930,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [],
+          "last_5": "N/A",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 0,
+          "avg_goals_for": null,
+          "avg_goals_against": null,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": null,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        }
+      },
+      "away": {
+        "team_id": 546,
+        "standings": {
+          "position": 17,
+          "played": 0,
+          "points": 0,
+          "goals_for": 0,
+          "goals_against": 0
+        },
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-05T15:15:00Z",
+              "competition": "Ligue 1",
+              "opponent": "FC Lorient",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-29T15:15:00Z",
+              "competition": "Ligue 1",
+              "opponent": "RC Strasbourg Alsace",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-08-22T15:15:00Z",
+              "competition": "Ligue 1",
+              "opponent": "AJ Auxerre",
+              "venue": "HOME",
+              "goals_for": 5,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-L-W",
+          "points_last_5": 3,
+          "goals_for_last_5": 6,
+          "goals_against_last_5": 5,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 1.67,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 5,
+            "goals_against": 3,
+            "avg_goals_for": 2.5,
+            "avg_goals_against": 1.5
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 1,
+            "goals_against": 2,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 5.2,
+          "matches_last_14_days": 2,
+          "matches_last_21_days": 3
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED",
+        "home": null,
+        "away": null,
+        "source": null
+      },
+      "official_xi_warning": "football-data.org, FotMob ve API-Football kaynaklarında resmi ilk 11 bulunamadı."
+    },
+    "history": {
+      "home": {
+        "team": "SK Slavia Praha",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "away": {
+        "team": "Racing Club de Lens",
+        "archived_matches": 0,
+        "results": [],
+        "record": "0W-0D-0L",
+        "prediction_changes": []
+      },
+      "ai_performance": {
+        "Groq Qwen 3.6 27B": {
+          "matches": 10,
+          "points": 33,
+          "outcome_correct": 9,
+          "exact_score_correct": 3,
+          "outcome_accuracy": 90,
+          "exact_score_accuracy": 30,
+          "average_points": 3.3
+        },
+        "Cohere Command A+": {
+          "matches": 9,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 78,
+          "exact_score_accuracy": 22,
+          "average_points": 2.78
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 10,
+          "points": 25,
+          "outcome_correct": 7,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 70,
+          "exact_score_accuracy": 20,
+          "average_points": 2.5
+        },
+        "Gemini 3.6 Flash": {
+          "matches": 6,
+          "points": 19,
+          "outcome_correct": 5,
+          "exact_score_correct": 2,
+          "outcome_accuracy": 83,
+          "exact_score_accuracy": 33,
+          "average_points": 3.17
+        }
+      }
+    },
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-09-10T18:21:21.839091+00:00"
+    },
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 58,
+          "reasons": [
+            "Slavia Praha'nın iç sahadaki yüksek tempolu ve fiziki baskıya dayalı oyun tarzı, Avrupa kupalarında rakipler için zorlu bir deplasman atmosferi yaratıyor.",
+            "RC Lens'in ligde oynadığı son deplasman maçlarında savunma zaafları göstermesi ve gol yeme oranının yüksekliği kalesini gole kapatmasını zorlaştıracaktır.",
+            "Fransız temsilcisi Lens hücum kalitesiyle skora katkı verebilecek potansiyele sahip olsa da Slavia'nın evindeki arzulu başlangıcına direnç göstermekte zorlanabilir.",
+            "Şampiyonlar Ligi lig aşamasının ilk maçında ev sahibi avantajını kullanmak isteyen Slavia Praha'nın çekişmeli geçecek mücadeleyi tek farkla kazanması muhtemeldir."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "1-0"
+          ],
+          "change_vs_previous": "Önceki tahmin bulunmuyor."
+        },
+        "error": null
+      },
+      {
+        "model": "Mistral Small Latest",
+        "success": false,
+        "result": null,
+        "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+      },
+      {
+        "model": "Groq Qwen 3.6 27B",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "SK Slavia Praha'nın ev sahibi avantajı ve Çekya Ligi'ndeki istikrarı, Lens'in deplasman performansındaki dalgalanmalarına göre daha güvenilir bir temel oluşturuyor.",
+            "Lens'in son 5 maçta ortalama 2.0 gol atması ofansif potansiyelini gösterse de, 1.67 gol yeme ortalaması savunma zafiyetlerini ortaya koyuyor; bu da Slavia'nın gol bulmasını kolaylaştırır.",
+            "Lens'in son iki maçta yenilip puan kaybetmesi (L-L-W formu) takımın mental ve taktiksel olarak tam konsantrasyonda olmadığını işaret ediyor.",
+            "UEFA Şampiyonlar Ligi grup aşaması ilk haftasında ev sahibi takımlar genellikle daha kontrollü oynar; Slavia'nın Lens'in savunma hatalarını cezalandırarak 2-1 gibi yakın bir skorla galip gelmesi en olası senaryodur."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 15,
+          "reasons": [
+            "Lens, son üç Ligue 1 maçında ortalama 2 gol attı ve bu da gol atma kapasitesini gösteriyor; Slavia Prag ise Şampiyonlar Ligi'ndeki ilk maçında ev sahibi avantajına sahip.",
+            "Slavia Prag'ın son maç verisi yok, ancak Avrupa'daki ev maçlarında sağlam savunma ve rekabet gücüyle tanınıyor.",
+            "Maç sezonun başında oynanıyor ve her iki takım da yeni; bu da düşük skorlu, dengeli bir mücadeleye işaret ediyor.",
+            "Lens'in deplasman performansı sınırlı (1 maçta 1 gol ve mağlubiyet), bu da deplasmanında zorlanabileceğine ve ev sahibi takımın bir gol farkıyla kazanacağına işaret ediyor."
+          ],
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": ""
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Racing Club de Lens",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 68,
+          "reasons": [
+            "Racing Club de Lens son 5 maçta 2 galibiyet, 1 beraberlik ve 2 mağlubiyet alarak ortalama 2.0 gol attı; savunması ise maç başına 1.67 gol yedi.",
+            "SK Slavia Praha'nın son 5 maç verisi mevcut değil, ancak ev sahibi olarak yeni sezon başlangıcında savunma zayıflığı ve gol üretiminde eksiklik yaşama ihtimali yüksek.",
+            "Lens'in deplasmanda oynadığı son 3 maçta 2 galibiyet elde etmesi, deplasman performansının iyi olduğunu gösteriyor.",
+            "Lig kalitesi farkı: Çek Cumhuriyeti ligi genellikle Fransa Ligue 1'den daha düşük seviyede kabul edilir; bu da Lens'in hücum avantajını artırıyor."
+          ],
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "1-1"
+          ],
+          "change_vs_previous": "yok"
+        },
+        "error": null
+      }
+    ],
+    "consensus": {
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 35,
+      "all_outcomes": {
+        "HOME": 3,
+        "AWAY": 1
+      },
+      "all_scores": {
+        "2-1": 3,
+        "1-2": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Slavia Praha'nın iç sahadaki yüksek tempolu ve fiziki baskıya dayalı oyun tarzı, Avrupa kupalarında rakipler için zorlu bir deplasman atmosferi yaratıyor.",
+          "RC Lens'in ligde oynadığı son deplasman maçlarında savunma zaafları göstermesi ve gol yeme oranının yüksekliği kalesini gole kapatmasını zorlaştıracaktır.",
+          "Fransız temsilcisi Lens hücum kalitesiyle skora katkı verebilecek potansiyele sahip olsa da Slavia'nın evindeki arzulu başlangıcına direnç göstermekte zorlanabilir.",
+          "Şampiyonlar Ligi lig aşamasının ilk maçında ev sahibi avantajını kullanmak isteyen Slavia Praha'nın çekişmeli geçecek mücadeleyi tek farkla kazanması muhtemeldir.",
+          "SK Slavia Praha'nın ev sahibi avantajı ve Çekya Ligi'ndeki istikrarı, Lens'in deplasman performansındaki dalgalanmalarına göre daha güvenilir bir temel oluşturuyor."
+        ],
+        "AWAY": [
+          "Racing Club de Lens son 5 maçta 2 galibiyet, 1 beraberlik ve 2 mağlubiyet alarak ortalama 2.0 gol attı; savunması ise maç başına 1.67 gol yedi.",
+          "SK Slavia Praha'nın son 5 maç verisi mevcut değil, ancak ev sahibi olarak yeni sezon başlangıcında savunma zayıflığı ve gol üretiminde eksiklik yaşama ihtimali yüksek.",
+          "Lens'in deplasmanda oynadığı son 3 maçta 2 galibiyet elde etmesi, deplasman performansının iyi olduğunu gösteriyor.",
+          "Lig kalitesi farkı: Çek Cumhuriyeti ligi genellikle Fransa Ligue 1'den daha düşük seviyede kabul edilir; bu da Lens'in hücum avantajını artırıyor."
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Mistral Small Latest",
+          "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
+        }
+      ]
+    },
+    "prediction_mode": "NORMAL",
+    "final_sent": true,
+    "result_sent": false
   }
 }
