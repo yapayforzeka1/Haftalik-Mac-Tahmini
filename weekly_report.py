@@ -121,18 +121,43 @@ def _stats(records: list[dict[str, Any]]) -> dict[str, Any]:
     stats: dict[str, dict[str, int | float]] = {}
     for model in MODEL_ORDER:
         stats[model] = {"matches": 0, "points": 0, "exact": 0, "outcome": 0}
-    consensus = {"matches": 0, "points": 0, "exact": 0, "outcome": 0}
+
+    consensus = {
+        "matches": 0,
+        "points": 0,
+        "exact": 0,
+        "outcome": 0,
+        "no_consensus": 0,
+        "score_split": 0,
+    }
 
     for record in records:
         actual = record.get("actual") or {}
         ah, aa = actual.get("home"), actual.get("away")
         if ah is None or aa is None:
             continue
-        if record.get("consensus_points") is not None:
+
+        c = record.get("consensus") or {}
+        winner_consensus = record.get("consensus_winner_applicable")
+        score_consensus = record.get("consensus_score_applicable")
+
+        if winner_consensus is None:
+            winner_consensus = bool(c.get("winner_consensus", c.get("outcome")))
+        if score_consensus is None:
+            score_consensus = bool(c.get("score_consensus", c.get("score")))
+
+        if winner_consensus:
             consensus["matches"] += 1
-            consensus["points"] += int(record["consensus_points"])
-            consensus["exact"] += int(bool(record.get("exact_score_correct")))
-            consensus["outcome"] += int(bool(record.get("outcome_correct")))
+            if record.get("consensus_points") is not None:
+                consensus["points"] += int(record["consensus_points"])
+            consensus["outcome"] += int(bool(record.get("consensus_outcome_correct", record.get("outcome_correct"))))
+            if score_consensus:
+                consensus["exact"] += int(bool(record.get("consensus_exact_score_correct", record.get("exact_score_correct"))))
+            else:
+                consensus["score_split"] += 1
+        else:
+            consensus["no_consensus"] += 1
+
         for vote in record.get("ai_votes", []):
             model = vote.get("model")
             if model not in stats or not vote.get("success") or vote.get("points") is None:
@@ -323,9 +348,21 @@ def render_weekly_image(snapshot: dict[str, Any], predictions: dict[str, Any]) -
         outcome_votes = int(consensus.get("outcome_votes") or 0)
         if not outcome_votes and successful:
             outcome_votes = sum(1 for v in successful_votes if v.get("result", {}).get("outcome") == consensus.get("outcome"))
-        confidence = int(consensus.get("outcome_share") or 0)
-        if not confidence and successful:
+        winner_consensus = bool(consensus.get("winner_consensus", consensus.get("outcome")))
+        score_consensus = bool(consensus.get("score_consensus", consensus.get("score")))
+        confidence = int(consensus.get("outcome_share") or 0) if winner_consensus else 0
+        if not confidence and winner_consensus and successful:
             confidence = int(round(outcome_votes / successful * 100))
+
+        if not winner_consensus:
+            consensus_display = "ORTAK\\nYOK"
+            confidence_display = "—"
+        elif not score_consensus:
+            consensus_display = "SONUÇ\\nORTAK"
+            confidence_display = f"%{confidence}"
+        else:
+            consensus_display = str(consensus.get("score", "-"))
+            confidence_display = f"%{confidence}"
 
         values: list[tuple[list[str], bool]] = [([_kickoff_display(record)], False), ([match_name], False), ([actual_score], True)]
         for model in MODEL_ORDER:
@@ -334,7 +371,7 @@ def render_weekly_image(snapshot: dict[str, Any], predictions: dict[str, Any]) -
                 values.extend([(["YOK"], False), (["-"], True)])
             else:
                 values.extend([([str(vote.get("result", {}).get("score", "-"))], True), ([f"{_score_text(vote.get('points'))}"], True)])
-        values.extend([([str(consensus.get("score", "-"))], True), ([f"%{confidence}"], True)])
+        values.extend([([consensus_display], True), ([confidence_display], True)])
 
         for idx, ((lines, emphasized), (_, w)) in enumerate(zip(values, cols)):
             x = x_positions[idx]
@@ -375,7 +412,7 @@ def render_weekly_image(snapshot: dict[str, Any], predictions: dict[str, Any]) -
     draw.text((x + 14, y + 53), f"{int(cons['points'])} PUAN", font=_font(25, True), fill=(255, 220, 80))
     draw.text((x + 14, y + 92), f"Maç: {int(cons['matches'])}", font=_font(15, True), fill=(240, 240, 240))
     draw.text((x + 14, y + 119), f"Sonuç: {int(cons['outcome'])}   •   Tam skor: {int(cons['exact'])}", font=_font(14), fill=(225, 225, 225))
-    draw.text((x + 14, y + 148), f"Ortalama: {cons['avg']}", font=_font(14, True), fill=(255, 220, 80))
+    draw.text((x + 14, y + 148), f"Ort: {cons['avg']}   •   Ortak yok: {int(cons.get('no_consensus', 0))}", font=_font(13, True), fill=(255, 220, 80))
 
     # Overall textual assessment under the table/cards.
     y += card_h + 26

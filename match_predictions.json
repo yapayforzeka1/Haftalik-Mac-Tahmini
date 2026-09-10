@@ -296,6 +296,13 @@
       "score": "2-1",
       "score_votes": 3,
       "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 3,
       "average_subjective_confidence": 26,
       "all_outcomes": {
         "HOME": 3
@@ -322,8 +329,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -335,7 +341,13 @@
     },
     "consensus_points": 3,
     "exact_score_correct": false,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575326": {
     "season": "2026/27",
@@ -668,12 +680,19 @@
     "consensus": {
       "successful_ai": 4,
       "total_ai": 5,
-      "outcome": "HOME",
-      "outcome_votes": 2,
-      "outcome_share": 50,
-      "score": "1-2",
-      "score_votes": 2,
-      "score_share": 50,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "1-2",
+      "top_score_votes": 2,
       "average_subjective_confidence": 36,
       "all_outcomes": {
         "AWAY": 2,
@@ -705,8 +724,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -716,9 +734,15 @@
       "status": "FINISHED",
       "updated_at": "2026-09-08T21:16:54.105752+00:00"
     },
-    "consensus_points": 3,
+    "consensus_points": null,
     "exact_score_correct": false,
-    "outcome_correct": false
+    "outcome_correct": false,
+    "prediction_mode": "NO_COMMON",
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575328": {
     "season": "2026/27",
@@ -1049,6 +1073,13 @@
       "score": "2-1",
       "score_votes": 4,
       "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 4,
       "average_subjective_confidence": 34,
       "all_outcomes": {
         "HOME": 4
@@ -1071,8 +1102,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 0
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -1084,7 +1114,13 @@
     },
     "consensus_points": 0,
     "exact_score_correct": false,
-    "outcome_correct": false
+    "outcome_correct": false,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575325": {
     "season": "2026/27",
@@ -1413,6 +1449,13 @@
       "score": "2-1",
       "score_votes": 4,
       "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 4,
       "average_subjective_confidence": 52,
       "all_outcomes": {
         "HOME": 4
@@ -1435,8 +1478,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 5
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -1448,7 +1490,13 @@
     },
     "consensus_points": 5,
     "exact_score_correct": true,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": true,
+    "grading_version": 2
   },
   "575329": {
     "season": "2026/27",
@@ -1813,6 +1861,13 @@
       "score": "3-1",
       "score_votes": 2,
       "score_share": 67,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "3-1",
+      "top_score_votes": 2,
       "average_subjective_confidence": 22,
       "all_outcomes": {
         "HOME": 3
@@ -1840,8 +1895,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -1853,7 +1907,13 @@
     },
     "consensus_points": 3,
     "exact_score_correct": false,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575330": {
     "season": "2026/27",
@@ -2165,9 +2225,16 @@
       "outcome": "HOME",
       "outcome_votes": 4,
       "outcome_share": 100,
-      "score": "3-0",
-      "score_votes": 1,
-      "score_share": 25,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "3-0",
+      "top_score_votes": 1,
       "average_subjective_confidence": 56,
       "all_outcomes": {
         "HOME": 4
@@ -2193,8 +2260,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -2206,7 +2272,13 @@
     },
     "consensus_points": 3,
     "exact_score_correct": false,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575331": {
     "season": "2026/27",
@@ -2572,6 +2644,13 @@
       "score": "2-1",
       "score_votes": 4,
       "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 4,
       "average_subjective_confidence": 52,
       "all_outcomes": {
         "HOME": 4
@@ -2594,8 +2673,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 5
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -2607,7 +2685,13 @@
     },
     "consensus_points": 5,
     "exact_score_correct": true,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": true,
+    "grading_version": 2
   },
   "575332": {
     "season": "2026/27",
@@ -2929,9 +3013,16 @@
       "outcome": "HOME",
       "outcome_votes": 4,
       "outcome_share": 100,
-      "score": "3-0",
-      "score_votes": 2,
-      "score_share": 50,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "3-0",
+      "top_score_votes": 2,
       "average_subjective_confidence": 37,
       "all_outcomes": {
         "HOME": 4
@@ -2956,8 +3047,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -2969,7 +3059,13 @@
     },
     "consensus_points": 3,
     "exact_score_correct": false,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575334": {
     "season": "2026/27",
@@ -3293,6 +3389,13 @@
       "score": "2-1",
       "score_votes": 2,
       "score_share": 67,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 2,
       "average_subjective_confidence": 23,
       "all_outcomes": {
         "HOME": 3
@@ -3320,8 +3423,7 @@
           "model": "Mistral Small Latest",
           "error": "API error occurred: Status 429. Body: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"code\":\"1300\",\"raw_status_code\":429}"
         }
-      ],
-      "points": 3
+      ]
     },
     "final_sent": true,
     "result_sent": true,
@@ -3333,7 +3435,13 @@
     },
     "consensus_points": 3,
     "exact_score_correct": false,
-    "outcome_correct": true
+    "outcome_correct": true,
+    "prediction_mode": "NORMAL",
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   },
   "575333": {
     "season": "2026/27",
@@ -3641,12 +3749,19 @@
     "consensus": {
       "successful_ai": 2,
       "total_ai": 5,
-      "outcome": "HOME",
-      "outcome_votes": 1,
-      "outcome_share": 50,
-      "score": "1-2",
-      "score_votes": 1,
-      "score_share": 50,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 1,
+      "top_score": "1-2",
+      "top_score_votes": 1,
       "average_subjective_confidence": 39,
       "all_outcomes": {
         "AWAY": 1,
@@ -3684,8 +3799,7 @@
           "model": "Cohere Command A+",
           "error": "Geçersiz outcome: DEPLASMAN"
         }
-      ],
-      "points": 3
+      ]
     },
     "prediction_mode": "NO_COMMON",
     "final_sent": true,
@@ -3696,8 +3810,13 @@
       "status": "FINISHED",
       "updated_at": "2026-09-09T21:15:34.996260+00:00"
     },
-    "consensus_points": 3,
+    "consensus_points": null,
     "exact_score_correct": false,
-    "outcome_correct": false
+    "outcome_correct": false,
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "grading_version": 2
   }
 }

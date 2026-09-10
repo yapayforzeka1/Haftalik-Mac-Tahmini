@@ -161,13 +161,30 @@ def _build_special_prediction_message(record: dict[str, Any]) -> str:
             "",
         ])
 
-    lines.append("🤖 AL BİREYSEL TAHMİNLERİ")
+    research = record.get("research") or {}
+    research_status = str(research.get("status") or "").upper()
+    research_confidence = str(research.get("research_confidence") or "").upper()
+    if research_status or research_confidence:
+        lines.extend([
+            "🔎 ARAŞTIRMA DURUMU",
+            f"• Durum: {research_status or 'BİLİNMİYOR'}",
+            f"• Araştırma güveni: {research_confidence or '-'}",
+            "",
+        ])
+
+    lines.append("🤖 AI BİREYSEL TAHMİNLERİ")
     lines.append("")
     for vote in votes:
         result = vote["result"]
         emoji, label = _outcome_display(result.get("outcome"), home, away)
         lines.append(f"• {vote.get('model', '?')}")
         lines.append(f"  {emoji} {label} | ⚽ {result.get('score', '?')}")
+        reasons = result.get("reasons") or []
+        for reason in reasons[:2]:
+            clean_reason = " ".join(str(reason).split())
+            if len(clean_reason) > 180:
+                clean_reason = clean_reason[:177] + "..."
+            lines.append(f"  ↳ {clean_reason}")
         lines.append("")
 
     outcome_counts = Counter(str(v["result"].get("outcome", "")).upper() for v in votes)
@@ -242,25 +259,37 @@ def build_standings_map(standings: list[dict[str, Any]]) -> dict[int, dict[str, 
 
 
 def update_finished_results(predictions: dict[str, Any], matches: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    changed = []
+    """
+    Update new finished matches and re-grade all archived finished matches.
+
+    Re-grading is intentional: older records may contain consensus fields created
+    by the previous plurality engine. grade_record() rebuilds consensus from the
+    individual AI votes, so historical records are repaired without rerunning AI.
+    """
+    changed: list[dict[str, Any]] = []
     by_id = {str(m.get("id")): m for m in matches}
+
     for match_id, record in predictions.items():
-        if record.get("actual"):
-            continue
         match = by_id.get(str(match_id))
-        if not match or match.get("status") != "FINISHED":
-            continue
-        score = match.get("score", {}).get("fullTime", {})
-        if score.get("home") is None or score.get("away") is None:
-            continue
-        record["actual"] = {
-            "home": score["home"],
-            "away": score["away"],
-            "status": "FINISHED",
-            "updated_at": datetime.now(timezone.utc).isoformat(),
-        }
-        grade_record(record)
-        changed.append(record)
+
+        if not record.get("actual"):
+            if not match or match.get("status") != "FINISHED":
+                continue
+            score = match.get("score", {}).get("fullTime", {})
+            if score.get("home") is None or score.get("away") is None:
+                continue
+
+            record["actual"] = {
+                "home": score["home"],
+                "away": score["away"],
+                "status": "FINISHED",
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+            }
+
+        if record.get("actual"):
+            grade_record(record)
+            changed.append(record)
+
     return changed
 
 
@@ -556,7 +585,7 @@ def main() -> None:
     if test_mode:
         print("🧪 TEST MODU AKTİF")
         print("TEST MODU: resmi XI bekleme kuralı bypass edilir; en yakın gelecek maç kullanılabilir.")
-    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde (50–75 dk kala) (50–75 dk kala)'} {len(upcoming)} maç seçildi.")
+    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde (35–75 dk kala)'} {len(upcoming)} maç seçildi.")
     if not upcoming:
         save_predictions(predictions)
         return
@@ -640,14 +669,24 @@ def main() -> None:
 
         votes = run_ai_pool(home_team, away_team, context, research, history)
         successful = [v for v in votes if v.success and v.result]
-        prediction_mode = _prediction_message_mode(successful, home_team, away_team)
-        print(f"📊 {home_team} - {away_team}: {len(successful)}/5 AI başarılı | mesaj modu={prediction_mode}")
 
         try:
             consensus = build_consensus(votes)
         except Exception as error:
             print(f"⚠️ Consensus oluşturulamadı ({home_team} - {away_team}): {error}")
-            consensus = {"score": None, "outcome": None, "error": str(error)}
+            consensus = {
+                "score": None,
+                "outcome": None,
+                "winner_consensus": False,
+                "score_consensus": False,
+                "consensus_mode": "NO_COMMON",
+                "error": str(error),
+                "successful_ai": len(successful),
+                "total_ai": len(votes),
+            }
+
+        prediction_mode = consensus.get("consensus_mode", _prediction_message_mode(successful, home_team, away_team))
+        print(f"📊 {home_team} - {away_team}: {len(successful)}/5 AI başarılı | mesaj modu={prediction_mode}")
         record = {
             "season": SEASON,
             "matchday": match.get("matchday"),
@@ -677,21 +716,21 @@ def main() -> None:
 
     for group_key, records in sorted(groups.items()):
         records.sort(key=lambda r: r.get("home_team", ""))
-        if any(record.get("prediction_mode") != "NORMAL" for record in records):
-            message_parts = []
-            normal_records = []
-            for record in records:
-                if record.get("prediction_mode") == "NORMAL":
-                    normal_records.append(record)
-                else:
-                    message_parts.append(_build_special_prediction_message(record))
-            if normal_records:
-                message_parts.insert(0, build_telegram_group_message(normal_records, test_mode=test_mode))
-            message = "\n\n".join(message_parts)
-            image_path = None
-        else:
-            message = build_telegram_group_message(records, test_mode=test_mode)
-            image_path = render_match_group_image(records, test_mode=test_mode)
+        normal_records = [r for r in records if r.get("prediction_mode") == "NORMAL"]
+        special_records = [r for r in records if r.get("prediction_mode") != "NORMAL"]
+
+        message_parts = []
+        if normal_records:
+            message_parts.append(build_telegram_group_message(normal_records, test_mode=test_mode))
+        for record in special_records:
+            message_parts.append(_build_special_prediction_message(record))
+
+        message = "\n\n".join(message_parts)
+        image_path = (
+            render_match_group_image(normal_records, test_mode=test_mode)
+            if normal_records
+            else None
+        )
         try:
             send_telegram_message(message)
             if image_path is not None:

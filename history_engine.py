@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from collections import Counter
 from typing import Any
+
+from consensus_engine import AIVote, build_consensus
 
 
 def _same_team(record: dict[str, Any], team: str) -> bool:
@@ -9,6 +12,16 @@ def _same_team(record: dict[str, Any], team: str) -> bool:
 
 def actual_outcome(home: int, away: int) -> str:
     return "HOME" if home > away else "AWAY" if home < away else "DRAW"
+
+
+def outcome_points(predicted_outcome: str | None, actual: str) -> int:
+    """Score only a consensual outcome, without inventing an exact score."""
+    if not predicted_outcome:
+        return 0
+    if predicted_outcome != actual:
+        return 0
+    # Locked scoring rule: a draw prediction that becomes a draw is worth 5.
+    return 5 if predicted_outcome == "DRAW" else 3
 
 
 def score_prediction(predicted_score: str | None, actual_home: int, actual_away: int) -> int:
@@ -41,6 +54,43 @@ def score_prediction(predicted_score: str | None, actual_home: int, actual_away:
     if predicted == real:
         return 3
     return 0
+
+
+def _rebuild_consensus_from_record(record: dict[str, Any]) -> dict[str, Any]:
+    """Recompute consensus from the archived individual AI votes."""
+    votes: list[AIVote] = []
+    for vote in record.get("ai_votes", []):
+        votes.append(
+            AIVote(
+                model=str(vote.get("model", "Unknown")),
+                success=bool(vote.get("success")),
+                result=vote.get("result") if isinstance(vote.get("result"), dict) else None,
+                error=vote.get("error"),
+            )
+        )
+    if not any(v.success and v.result for v in votes):
+        return dict(record.get("consensus") or {})
+    try:
+        return build_consensus(votes)
+    except RuntimeError:
+        return dict(record.get("consensus") or {})
+
+
+def _consensus_flags(record: dict[str, Any]) -> tuple[dict[str, Any], bool, bool, str]:
+    rebuilt = _rebuild_consensus_from_record(record)
+    mode = str(rebuilt.get("consensus_mode") or "").upper()
+    winner_consensus = bool(rebuilt.get("winner_consensus"))
+    score_consensus = bool(rebuilt.get("score_consensus"))
+
+    if mode not in {"NORMAL", "OUTCOME_COMMON_SCORE_SPLIT", "NO_COMMON"}:
+        if winner_consensus and score_consensus:
+            mode = "NORMAL"
+        elif winner_consensus:
+            mode = "OUTCOME_COMMON_SCORE_SPLIT"
+        else:
+            mode = "NO_COMMON"
+
+    return rebuilt, winner_consensus, score_consensus, mode
 
 
 def build_team_history(predictions: dict[str, Any], team: str, limit: int = 5) -> dict[str, Any]:
@@ -122,19 +172,58 @@ def build_ai_performance(predictions: dict[str, Any]) -> dict[str, Any]:
 
 
 def grade_record(record: dict[str, Any]) -> None:
-    """Grade consensus and every successful AI vote after a real result arrives."""
+    """
+    Grade consensus and every successful AI vote after a real result arrives.
+
+    Important:
+    - No winner consensus => no consensus points at all.
+    - Winner consensus + no exact-score consensus => outcome-only points.
+    - Exact-score consensus => normal locked score.
+    - Every successful AI vote is always graded independently.
+    """
     actual = record.get("actual") or {}
     ah, aa = actual.get("home"), actual.get("away")
     if ah is None or aa is None:
         return
 
     real_outcome = actual_outcome(ah, aa)
-    consensus = record.get("consensus") or {}
-    consensus_score = consensus.get("score")
-    consensus["points"] = score_prediction(consensus_score, ah, aa)
-    record["consensus_points"] = consensus["points"]
-    record["exact_score_correct"] = (consensus_score or "").replace(" ", "") == f"{ah}-{aa}"
-    record["outcome_correct"] = consensus.get("outcome") == real_outcome
+    consensus, winner_consensus, score_consensus, mode = _consensus_flags(record)
+
+    # Always replace stale consensus data with the consensus rebuilt from the
+    # individual archived AI votes. This repairs older records that were created
+    # with the previous plurality-based engine.
+    record["consensus"] = consensus
+    consensus["winner_consensus"] = winner_consensus
+    consensus["score_consensus"] = score_consensus
+    consensus["consensus_mode"] = mode
+    record["prediction_mode"] = mode
+
+    if winner_consensus and score_consensus and consensus.get("score"):
+        consensus_points = score_prediction(consensus.get("score"), ah, aa)
+        exact_correct = consensus.get("score", "").replace(" ", "") == f"{ah}-{aa}"
+    elif winner_consensus:
+        consensus_points = outcome_points(consensus.get("outcome"), real_outcome)
+        exact_correct = False
+    else:
+        consensus_points = None
+        exact_correct = False
+
+    record["consensus_points"] = consensus_points
+    record["consensus_winner_applicable"] = winner_consensus
+    record["consensus_score_applicable"] = score_consensus
+    record["consensus_outcome_correct"] = (
+        winner_consensus and consensus.get("outcome") == real_outcome
+    )
+    record["consensus_exact_score_correct"] = (
+        score_consensus
+        and bool(consensus.get("score"))
+        and consensus.get("score", "").replace(" ", "") == f"{ah}-{aa}"
+    )
+
+    # Backward-compatible fields used by team history and older reports.
+    record["outcome_correct"] = record["consensus_outcome_correct"]
+    record["exact_score_correct"] = record["consensus_exact_score_correct"]
+    record["grading_version"] = 2
 
     for vote in record.get("ai_votes", []):
         if not vote.get("success") or not vote.get("result"):
@@ -142,4 +231,6 @@ def grade_record(record: dict[str, Any]) -> None:
         result = vote["result"]
         vote["points"] = score_prediction(result.get("score"), ah, aa)
         vote["outcome_correct"] = result.get("outcome") == real_outcome
-        vote["exact_score_correct"] = (result.get("score") or "").replace(" ", "") == f"{ah}-{aa}"
+        vote["exact_score_correct"] = (
+            (result.get("score") or "").replace(" ", "") == f"{ah}-{aa}"
+        )

@@ -7,9 +7,9 @@ UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tah
 2. Gemini Google Search grounding: güncel haber, sakatlık/ceza, xG/xGA, şut, kadro ve taktik araştırması.
 3. Araştırma başarısız olsa bile sistem yapılandırılmış verilerle AI havuzuna devam eder.
 4. 5 AI bağımsız olarak tahmin üretir.
-5. En az 3/5 başarılı AI varsa konsensüs oluşturulur. Aynı kickoff dakikasındaki maçlar tek Telegram yazılı paketi ve tek görsel paket halinde gönderilir; tek maçta tek kart kullanılır.
-6. Tahmin penceresi normalde maçtan 45-60 dakika öncesidir.
-7. `match_predictions.json` haftalar boyunca maç, 5 AI oyu, konsensüs ve gerçek sonuçları saklar.
+5. Başarılı AI sayısı kaç olursa olsun sonuçlar değerlendirilir. Konsensüs yalnızca benzersiz **salt çoğunluk** varsa oluşur; çoğunluk yoksa sistem ortak sonuç uydurmaz. Aynı kickoff dakikasındaki maçlar tek Telegram yazılı paketi halinde gönderilir; normal konsensüs maçları görsel kart olarak da gönderilir.
+6. Tahmin penceresi normalde maçtan **35-75 dakika** öncesidir.
+7. `match_predictions.json` haftalar boyunca maç, 5 AI oyu, konsensüs ve gerçek sonuçları saklar; sonuçlar sonradan yeni konsensüs kurallarıyla yeniden değerlendirilebilir.
 8. Maç tamamlandığında puanlama otomatik yapılır.
 9. Bir Matchday'in planlanan son maç başlangıcından 1 saat sonra haftalık rapor hazırlanır. Ertelenen/iptal edilen maçlar raporu bloke etmez.
 10. Haftalık rapor Telegram'a görsel olarak gönderilir. Ardından haftaları birbirinden ayrı tutan genel sezon performans görseli gönderilir.
@@ -22,6 +22,15 @@ UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tah
 - **0 puan:** Sonuç yanlış.
 
 `2 puan` ayrı bir puan kategorisi değildir. 5 yerine 3 alınması, tam skor ile sadece sonucu bilmek arasındaki 2 puanlık farktır.
+
+## Konsensüs ve anlaşmazlık kuralı
+
+- **Kazanan konsensüsü:** Başarılı AI'ların benzersiz salt çoğunluğu gerekir. Örneğin 4 AI'dan 2-2 dağılım varsa ortak karar yoktur.
+- **Skor konsensüsü:** Tam skor için de ayrıca benzersiz salt çoğunluk gerekir.
+- Kazanan ortak, skor ortak değilse **SONUÇ ORTAK — SKOR AYRIŞTI** formatı kullanılır; skor tek bir AI'ın tahmini olarak konsensüs diye gösterilmez.
+- Kazanan konusunda da ortaklık yoksa **ORTAK KARAR YOK** formatı kullanılır; her başarılı AI'ın sonucu ve skoru ayrı gösterilir.
+- Ortak karar olmayan maçlar konsensüs puanına dahil edilmez. Buna karşılık tüm başarılı AI'ların bireysel tahminleri normal şekilde puanlanır.
+- Eski arşivlerdeki çoğunluk/puan bilgileri, maç sonucu geldiğinde bireysel AI oylarından yeniden hesaplanır; böylece eski hatalı plurality konsensüsleri düzeltilir.
 
 ## Haftalık performans kuralı
 - Her Matchday kendi içinde değerlendirilir.
@@ -78,4 +87,4 @@ Genel performans görselinde haftalar ayrı sütunlarda, sezon toplamı ve ortal
 API anahtarları kod içine yazılmamalıdır.
 
 ## Test modu
-GitHub Actions → **Run workflow** üzerinden `test_mode=true` seçilirse 45-60 dakika filtresi bypass edilir ve en yakın gelecek Champions League maçıyla Telegram testi yapılır. Test modu tahmini `match_predictions.json` içine kaydetmez.
+GitHub Actions → **Run workflow** üzerinden `test_mode=true` seçilirse 35-75 dakika filtresi bypass edilir ve en yakın gelecek Champions League maçıyla Telegram testi yapılır. Test modu tahmini `match_predictions.json` içine kaydetmez.
