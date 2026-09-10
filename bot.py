@@ -10,7 +10,14 @@ from typing import Any
 
 from ai_pool import run_ai_pool
 from consensus_engine import build_consensus
-from data_provider import FootballDataClient, FootballDataError, build_team_form, parse_utc
+from data_provider import (
+    APIFootballClient,
+    APIFootballError,
+    FootballDataClient,
+    FootballDataError,
+    build_team_form,
+    parse_utc,
+)
 from history_engine import build_ai_performance, build_team_history, grade_record
 from report_engine import build_result_message, build_telegram_group_message
 from research_engine import empty_research, research_match
@@ -28,7 +35,9 @@ from weekly_report import (
 
 TURKEY_TZ = ZoneInfo("Europe/Istanbul")
 MIN_MINUTES_BEFORE = 35
-MAX_MINUTES_BEFORE = 75
+MAX_MINUTES_BEFORE = 50
+LINEUP_FIRST_CHECK_MINUTES = 50
+LINEUP_SECOND_CHECK_MINUTES = 45
 LINEUP_REQUIRED = False
 MATCHES_FILE = Path("match_predictions.json")
 WEEKLY_SCHEDULE_FILE = Path("weekly_schedule.json")
@@ -62,19 +71,6 @@ def send_telegram_message(message: str) -> None:
     response.raise_for_status()
 
 
-def send_result_telegram_message(message: str) -> None:
-    import requests
-    token = os.environ.get("TELEGRAM_RESULT_BOT_TOKEN")
-    chat_id = os.environ.get("TELEGRAM_RESULT_CHAT_ID")
-    if not token or not chat_id:
-        raise RuntimeError("Sonuç Telegram secretleri eksik: TELEGRAM_RESULT_BOT_TOKEN / TELEGRAM_RESULT_CHAT_ID")
-
-    response = requests.post(
-        f"https://api.telegram.org/bot{token}/sendMessage",
-        data={"chat_id": chat_id, "text": message},
-        timeout=30,
-    )
-    response.raise_for_status()
 
 
 def _outcome_display(outcome: str, home_team: str, away_team: str) -> tuple[str, str]:
@@ -161,31 +157,16 @@ def _build_special_prediction_message(record: dict[str, Any]) -> str:
             "",
         ])
 
-    research = record.get("research") or {}
-    research_status = str(research.get("status") or "").upper()
-    research_confidence = str(research.get("research_confidence") or "").upper()
-    if research_status or research_confidence:
-        lines.extend([
-            "🔎 ARAŞTIRMA DURUMU",
-            f"• Durum: {research_status or 'BİLİNMİYOR'}",
-            f"• Araştırma güveni: {research_confidence or '-'}",
-            "",
-        ])
-
-    lines.append("🤖 AI BİREYSEL TAHMİNLERİ")
+    lines.append("🤖 AL BİREYSEL TAHMİNLERİ")
     lines.append("")
     for vote in votes:
         result = vote["result"]
         emoji, label = _outcome_display(result.get("outcome"), home, away)
-        lines.append(f"• {vote.get('model', '?')}")
-        lines.append(f"  {emoji} {label} | ⚽ {result.get('score', '?')}")
         reasons = result.get("reasons") or []
-        for reason in reasons[:2]:
-            clean_reason = " ".join(str(reason).split())
-            if len(clean_reason) > 180:
-                clean_reason = clean_reason[:177] + "..."
-            lines.append(f"  ↳ {clean_reason}")
-        lines.append("")
+        reason = str(reasons[0]).strip() if reasons else "Gerekçe belirtilmedi."
+        lines.append(
+            f"{vote.get('model', '?')} → {label} {result.get('score', '?')} | Gerekçe: {reason}"
+        )
 
     outcome_counts = Counter(str(v["result"].get("outcome", "")).upper() for v in votes)
     lines.extend([
@@ -204,7 +185,7 @@ def _build_special_prediction_message(record: dict[str, Any]) -> str:
 
 
 def send_telegram_photo(path: Path, caption: str | None = None) -> None:
-    """Bot 1: maç tahmini görselleri."""
+    """Bot 1: maç tahmini ve maç sonucu mesajları."""
     import requests
     with path.open("rb") as photo:
         data = {"chat_id": os.environ["TELEGRAM_CHAT_ID"]}
@@ -259,38 +240,71 @@ def build_standings_map(standings: list[dict[str, Any]]) -> dict[int, dict[str, 
 
 
 def update_finished_results(predictions: dict[str, Any], matches: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """
-    Update new finished matches and re-grade all archived finished matches.
-
-    Re-grading is intentional: older records may contain consensus fields created
-    by the previous plurality engine. grade_record() rebuilds consensus from the
-    individual AI votes, so historical records are repaired without rerunning AI.
-    """
-    changed: list[dict[str, Any]] = []
+    changed = []
     by_id = {str(m.get("id")): m for m in matches}
-
     for match_id, record in predictions.items():
-        match = by_id.get(str(match_id))
-
-        if not record.get("actual"):
-            if not match or match.get("status") != "FINISHED":
-                continue
-            score = match.get("score", {}).get("fullTime", {})
-            if score.get("home") is None or score.get("away") is None:
-                continue
-
-            record["actual"] = {
-                "home": score["home"],
-                "away": score["away"],
-                "status": "FINISHED",
-                "updated_at": datetime.now(timezone.utc).isoformat(),
-            }
-
         if record.get("actual"):
-            grade_record(record)
-            changed.append(record)
-
+            continue
+        match = by_id.get(str(match_id))
+        if not match or match.get("status") != "FINISHED":
+            continue
+        score = match.get("score", {}).get("fullTime", {})
+        if score.get("home") is None or score.get("away") is None:
+            continue
+        record["actual"] = {
+            "home": score["home"],
+            "away": score["away"],
+            "status": "FINISHED",
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+        }
+        grade_record(record)
+        changed.append(record)
     return changed
+
+
+def _get_official_xi(
+    football: FootballDataClient,
+    home_team: str,
+    away_team: str,
+    match_id: str,
+    kickoff_utc: datetime,
+) -> tuple[dict[str, Any] | None, str | None]:
+    """Get official XI with football-data.org first, then API-Football as fallback."""
+    try:
+        details = football.get_match_details(int(match_id))
+        lineups = details.get("lineups") or {}
+        home_xi = (lineups.get("homeTeam") or {}).get("lineup") or []
+        away_xi = (lineups.get("awayTeam") or {}).get("lineup") or []
+        if len(home_xi) >= 11 and len(away_xi) >= 11:
+            return (
+                {
+                    "status": "ANNOUNCED",
+                    "home": home_xi,
+                    "away": away_xi,
+                    "source": "football-data.org match lineup",
+                },
+                None,
+            )
+        print(
+            f"⏳ football-data.org XI henüz tam değil: "
+            f"{home_team} - {away_team} ({len(home_xi)}/11 - {len(away_xi)}/11)"
+        )
+    except FootballDataError as error:
+        print(f"⚠️ football-data.org XI kontrolü başarısız: {error}")
+
+    try:
+        api_football = APIFootballClient()
+        official_xi = api_football.get_match_official_xi(
+            home_team, away_team, kickoff_utc
+        )
+        if official_xi:
+            return official_xi, None
+    except APIFootballError as error:
+        print(f"⚠️ API-Football XI kontrolü başarısız: {error}")
+    except Exception as error:
+        print(f"⚠️ API-Football XI kontrolünde beklenmeyen hata: {error}")
+
+    return None, "İki kaynaktan da resmi ilk 11 alınamadı."
 
 
 def _upcoming_matches(matches: list[dict[str, Any]], now_utc: datetime, test_mode: bool) -> list[tuple[dict[str, Any], float]]:
@@ -540,13 +554,7 @@ def maybe_send_weekly_reports(predictions: dict[str, Any], matches: list[dict[st
 
 
 def main() -> None:
-    required = [
-        "TELEGRAM_BOT_TOKEN",
-        "TELEGRAM_CHAT_ID",
-        "TELEGRAM_RESULT_BOT_TOKEN",
-        "TELEGRAM_RESULT_CHAT_ID",
-        "FOOTBALL_DATA_API_KEY",
-    ]
+    required = ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "FOOTBALL_DATA_API_KEY"]
     missing = [x for x in required if not os.environ.get(x)]
     if missing:
         raise RuntimeError(f"Eksik secret: {', '.join(missing)}")
@@ -566,7 +574,7 @@ def main() -> None:
     for record in finished_updates:
         if not record.get("result_sent"):
             try:
-                send_result_telegram_message(build_result_message(record))
+                send_telegram_message(build_result_message(record))
                 record["result_sent"] = True
             except Exception as error:
                 print(f"⚠️ Sonuç Telegram hatası: {error}")
@@ -585,7 +593,7 @@ def main() -> None:
     if test_mode:
         print("🧪 TEST MODU AKTİF")
         print("TEST MODU: resmi XI bekleme kuralı bypass edilir; en yakın gelecek maç kullanılabilir.")
-    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde (35–75 dk kala)'} {len(upcoming)} maç seçildi.")
+    print(f"Toplam {len(matches)} maç; {'TEST MODUNDA' if test_mode else 'tahmin penceresinde (50–35 dk kala)'} {len(upcoming)} maç seçildi.")
     if not upcoming:
         save_predictions(predictions)
         return
@@ -629,24 +637,36 @@ def main() -> None:
             context["data_warning"] = str(error)
             print(f"⚠️ Son maç verileri alınamadı: {error}")
 
-        # Official XI is optional. Continue with available data if lineups are unavailable.
-        official_xi_context = None
-        try:
-            details = football.get_match_details(int(match_id))
-            lineups = details.get("lineups") or {}
-            home_xi = (lineups.get("homeTeam") or {}).get("lineup") or []
-            away_xi = (lineups.get("awayTeam") or {}).get("lineup") or []
-            if len(home_xi) >= 11 and len(away_xi) >= 11:
-                official_xi_context = {
-                    "status": "ANNOUNCED",
-                    "home": home_xi,
-                    "away": away_xi,
-                    "source": "football-data.org match lineup",
-                }
-                context["official_xi"] = official_xi_context
-        except FootballDataError as error:
-            context["official_xi_warning"] = str(error)
-            print(f"⚠️ Resmi XI football-data.org üzerinden alınamadı: {error}")
+        # Official XI priority: check at 50 minutes, retry at 45 minutes.
+        # football-data.org is checked first; API-Football is the fallback.
+        official_xi_context, xi_warning = _get_official_xi(
+            football, home_team, away_team, match_id, match_utc
+        )
+        if official_xi_context:
+            context["official_xi"] = official_xi_context
+            print(
+                f"✅ {home_team} - {away_team}: resmi ilk 11 bulundu "
+                f"(kaynak: {official_xi_context.get('source', '?')})."
+            )
+        elif minutes_until > LINEUP_SECOND_CHECK_MINUTES and not test_mode:
+            print(
+                f"⏳ {home_team} - {away_team}: ilk 11 henüz bulunamadı. "
+                f"Maç yaklaşık {minutes_until:.1f} dk sonra; 45 dk kontrolünde tekrar denenecek."
+            )
+            continue
+        else:
+            context["official_xi"] = {
+                "status": "NOT_ANNOUNCED",
+                "home": None,
+                "away": None,
+                "source": None,
+            }
+            if xi_warning:
+                context["official_xi_warning"] = xi_warning
+            print(
+                f"⚠️ {home_team} - {away_team}: 45 dk kontrolünde de resmi ilk 11 bulunamadı. "
+                "Tahmin mevcut verilerle devam ediyor."
+            )
 
         history = {
             "home": build_team_history(predictions, home_team),
@@ -664,29 +684,16 @@ def main() -> None:
             print("ℹ️ GEMINI_API_KEY yok; araştırma katmanı atlandı.")
             research = empty_research("GEMINI_API_KEY yok; araştırma katmanı atlandı.")
 
-        if not official_xi_context:
-            print(f"ℹ️ {home_team} - {away_team}: resmi ilk 11 yok; mevcut verilerle tahmin devam ediyor.")
-
         votes = run_ai_pool(home_team, away_team, context, research, history)
         successful = [v for v in votes if v.success and v.result]
+        prediction_mode = _prediction_message_mode(successful, home_team, away_team)
+        print(f"📊 {home_team} - {away_team}: {len(successful)}/5 AI başarılı | mesaj modu={prediction_mode}")
 
         try:
             consensus = build_consensus(votes)
         except Exception as error:
             print(f"⚠️ Consensus oluşturulamadı ({home_team} - {away_team}): {error}")
-            consensus = {
-                "score": None,
-                "outcome": None,
-                "winner_consensus": False,
-                "score_consensus": False,
-                "consensus_mode": "NO_COMMON",
-                "error": str(error),
-                "successful_ai": len(successful),
-                "total_ai": len(votes),
-            }
-
-        prediction_mode = consensus.get("consensus_mode", _prediction_message_mode(successful, home_team, away_team))
-        print(f"📊 {home_team} - {away_team}: {len(successful)}/5 AI başarılı | mesaj modu={prediction_mode}")
+            consensus = {"score": None, "outcome": None, "error": str(error)}
         record = {
             "season": SEASON,
             "matchday": match.get("matchday"),
@@ -716,21 +723,21 @@ def main() -> None:
 
     for group_key, records in sorted(groups.items()):
         records.sort(key=lambda r: r.get("home_team", ""))
-        normal_records = [r for r in records if r.get("prediction_mode") == "NORMAL"]
-        special_records = [r for r in records if r.get("prediction_mode") != "NORMAL"]
-
-        message_parts = []
-        if normal_records:
-            message_parts.append(build_telegram_group_message(normal_records, test_mode=test_mode))
-        for record in special_records:
-            message_parts.append(_build_special_prediction_message(record))
-
-        message = "\n\n".join(message_parts)
-        image_path = (
-            render_match_group_image(normal_records, test_mode=test_mode)
-            if normal_records
-            else None
-        )
+        if any(record.get("prediction_mode") != "NORMAL" for record in records):
+            message_parts = []
+            normal_records = []
+            for record in records:
+                if record.get("prediction_mode") == "NORMAL":
+                    normal_records.append(record)
+                else:
+                    message_parts.append(_build_special_prediction_message(record))
+            if normal_records:
+                message_parts.insert(0, build_telegram_group_message(normal_records, test_mode=test_mode))
+            message = "\n\n".join(message_parts)
+            image_path = None
+        else:
+            message = build_telegram_group_message(records, test_mode=test_mode)
+            image_path = render_match_group_image(records, test_mode=test_mode)
         try:
             send_telegram_message(message)
             if image_path is not None:
