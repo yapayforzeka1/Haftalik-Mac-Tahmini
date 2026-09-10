@@ -1,0 +1,76 @@
+{
+  "1": {
+    "season": "2026/27",
+    "matchday": 1,
+    "created_at": "2026-09-10T20:17:13.567970+00:00",
+    "planned_matches": 18,
+    "completed_evaluated_matches": 12,
+    "postponed_or_unavailable": [],
+    "match_ids": [
+      "575327",
+      "575326",
+      "575328",
+      "575325",
+      "575329",
+      "575330",
+      "575331",
+      "575332",
+      "575334",
+      "575333",
+      "575335",
+      "575336"
+    ],
+    "stats": {
+      "models": {
+        "Gemini 3.6 Flash": {
+          "matches": 7,
+          "points": 19,
+          "exact": 2,
+          "outcome": 5,
+          "avg": 2.71
+        },
+        "Mistral Small Latest": {
+          "matches": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "avg": 0
+        },
+        "Groq Qwen 3.6 27B": {
+          "matches": 12,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "avg": 2.75
+        },
+        "Cohere Command A+": {
+          "matches": 11,
+          "points": 25,
+          "exact": 2,
+          "outcome": 7,
+          "avg": 2.27
+        },
+        "Groq GPT-OSS 120B": {
+          "matches": 12,
+          "points": 25,
+          "exact": 2,
+          "outcome": 7,
+          "avg": 2.08
+        }
+      },
+      "consensus": {
+        "matches": 10,
+        "points": 25,
+        "exact": 2,
+        "outcome": 7,
+        "no_consensus": 2,
+        "score_split": 3,
+        "avg": 2.5
+      }
+    },
+    "last_planned_kickoff": "2026-09-10T19:00:00+00:00",
+    "weekly_photo_sent": true,
+    "general_photo_sent": true,
+    "telegram_sent": true
+  }
+}
