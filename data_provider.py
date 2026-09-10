@@ -14,6 +14,8 @@ COMPETITION_CODE = "CL"
 REQUEST_TIMEOUT = 30
 API_FOOTBALL_REQUEST_TIMEOUT = 30
 API_FOOTBALL_CL_LEAGUE_ID = 2
+FOTMOB_BASE_URL = "https://www.fotmob.com/api"
+FOTMOB_REQUEST_TIMEOUT = 20
 
 
 class FootballDataError(RuntimeError):
@@ -185,6 +187,143 @@ class FootballDataClient:
         matches = data.get("matches", [])
         matches.sort(key=lambda item: item.get("utcDate", ""), reverse=True)
         return matches[:limit]
+
+
+class FotMobError(RuntimeError):
+    pass
+
+
+class FotMobClient:
+    """FotMob fallback for confirmed starting XIs. No API key required."""
+
+    def __init__(self) -> None:
+        self._matches_cache: dict[str, list[dict[str, Any]]] = {}
+
+    def _get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+        response = requests.get(
+            f"{FOTMOB_BASE_URL}{path}",
+            params=params or {},
+            headers={"User-Agent": "Mozilla/5.0 (compatible; CLTahmin/2026)"},
+            timeout=FOTMOB_REQUEST_TIMEOUT,
+        )
+        if response.status_code != 200:
+            raise FotMobError(f"FotMob HTTP hatası ({response.status_code}).")
+        try:
+            return response.json()
+        except ValueError as error:
+            raise FotMobError("FotMob JSON yanıtı okunamadı.") from error
+
+    def get_matches_by_date(self, date: str) -> list[dict[str, Any]]:
+        if date in self._matches_cache:
+            return self._matches_cache[date]
+        data = self._get("/matches", params={"date": date.replace("-", "")})
+        matches: list[dict[str, Any]] = []
+        for league in data.get("leagues", []) or []:
+            matches.extend(league.get("matches", []) or [])
+        self._matches_cache[date] = matches
+        return matches
+
+    def find_match(
+        self,
+        home_team: str,
+        away_team: str,
+        kickoff_utc: datetime,
+    ) -> dict[str, Any] | None:
+        matches = self.get_matches_by_date(kickoff_utc.date().isoformat())
+        best_match = None
+        best_diff = None
+
+        for match in matches:
+            home_name = (match.get("home") or {}).get("name", "")
+            away_name = (match.get("away") or {}).get("name", "")
+            if not _team_names_match(home_team, home_name) or not _team_names_match(away_team, away_name):
+                continue
+
+            utc_value = (match.get("status") or {}).get("utcTime")
+            if not utc_value:
+                continue
+            try:
+                match_dt = datetime.fromisoformat(utc_value.replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            diff = abs((match_dt - kickoff_utc).total_seconds())
+            if diff <= 3 * 3600 and (best_diff is None or diff < best_diff):
+                best_match = match
+                best_diff = diff
+
+        return best_match
+
+    @staticmethod
+    def _lineup_team(lineup: dict[str, Any], key: str) -> dict[str, Any]:
+        team = lineup.get(key) or {}
+        return team if isinstance(team, dict) else {}
+
+    @staticmethod
+    def _players(team: dict[str, Any], key: str) -> list[dict[str, Any]]:
+        raw = team.get(key) or []
+        if isinstance(raw, dict):
+            raw = raw.get("players") or raw.get("starters") or []
+        result = []
+        for item in raw:
+            if not isinstance(item, dict):
+                continue
+            player = item.get("player") if isinstance(item.get("player"), dict) else item
+            name = player.get("name") or player.get("playerName")
+            if not name:
+                continue
+            result.append(
+                {
+                    "id": player.get("id"),
+                    "name": name,
+                    "number": player.get("shirtNumber") or player.get("number"),
+                    "pos": player.get("position") or player.get("pos"),
+                    "grid": player.get("grid"),
+                }
+            )
+        return result
+
+    def get_match_official_xi(
+        self,
+        home_team: str,
+        away_team: str,
+        kickoff_utc: datetime,
+    ) -> dict[str, Any] | None:
+        match = self.find_match(home_team, away_team, kickoff_utc)
+        if not match:
+            print(f"⚠️ FotMob maçı bulunamadı: {home_team} - {away_team}")
+            return None
+
+        match_id = match.get("id")
+        if match_id is None:
+            return None
+
+        data = self._get("/matchDetails", params={"matchId": match_id})
+        content = data.get("content") if isinstance(data.get("content"), dict) else data
+        lineup = content.get("lineup") if isinstance(content, dict) else None
+        if not isinstance(lineup, dict):
+            lineup = data.get("lineup") if isinstance(data.get("lineup"), dict) else {}
+
+        home = self._lineup_team(lineup, "homeTeam")
+        away = self._lineup_team(lineup, "awayTeam")
+        home_xi = self._players(home, "starters")
+        away_xi = self._players(away, "starters")
+
+        if len(home_xi) >= 11 and len(away_xi) >= 11:
+            return {
+                "status": "ANNOUNCED",
+                "home": home_xi,
+                "away": away_xi,
+                "home_formation": home.get("formation"),
+                "away_formation": away.get("formation"),
+                "source": "FotMob",
+                "match_id": match_id,
+            }
+
+        print(
+            f"⏳ FotMob XI henüz tam değil: {home_team} - {away_team} "
+            f"({len(home_xi)}/11 - {len(away_xi)}/11)"
+        )
+        return None
 
 
 class APIFootballClient:
