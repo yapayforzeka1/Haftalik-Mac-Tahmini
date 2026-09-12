@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import os
+import random
 import re
+import time
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -18,6 +20,43 @@ MISTRAL_MODEL = "mistral-small-latest"
 GROQ_QWEN_MODEL = "qwen/qwen3.6-27b"
 GROQ_120B_MODEL = "openai/gpt-oss-120b"
 COHERE_MODEL = "command-a-plus-05-2026"
+
+# Rate-limit / transient error retry settings (free-tier friendly)
+_MAX_RETRIES = 4
+_BASE_WAIT_SEC = 2.0
+
+
+def _is_rate_limit_error(exc: BaseException) -> bool:
+    text = str(exc).lower()
+    markers = (
+        "429",
+        "rate limit",
+        "rate_limited",
+        "resource_exhausted",
+        "quota",
+        "too many requests",
+        "503",
+        "unavailable",
+        "high demand",
+        "overloaded",
+    )
+    return any(m in text for m in markers)
+
+
+def _call_with_retry(name: str, fn: Callable[[], str], max_retries: int = _MAX_RETRIES) -> str:
+    """Call fn with exponential backoff on rate-limit / transient errors."""
+    last_error: BaseException | None = None
+    for attempt in range(max_retries):
+        try:
+            return fn()
+        except Exception as exc:
+            last_error = exc
+            if not _is_rate_limit_error(exc) or attempt >= max_retries - 1:
+                raise
+            wait = (_BASE_WAIT_SEC * (2 ** attempt)) + random.uniform(0, 1.0)
+            print(f"⏳ {name} rate-limit/transient hata (deneme {attempt + 1}/{max_retries}), {wait:.1f}s bekleniyor...")
+            time.sleep(wait)
+    raise last_error  # type: ignore[misc]
 
 
 def _extract_json(text: str) -> dict[str, Any]:
@@ -109,18 +148,38 @@ SADECE JSON:
 
 def _gemini(prompt: str) -> str:
     from google import genai
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-    response = client.models.generate_content(model=GEMINI_MODEL, contents=prompt,
-        config={"response_mime_type": "application/json", "temperature": 0.15, "max_output_tokens": 1100})
-    return response.text or ""
+
+    def _once() -> str:
+        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        response = client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=prompt,
+            config={
+                "response_mime_type": "application/json",
+                "temperature": 0.15,
+                "max_output_tokens": 1100,
+            },
+        )
+        return response.text or ""
+
+    return _call_with_retry("Gemini", _once)
 
 
 def _mistral(prompt: str) -> str:
     from mistralai.client import Mistral
-    client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
-    response = client.chat.complete(model=MISTRAL_MODEL, messages=[{"role":"user","content":prompt}],
-        temperature=0.1, response_format={"type":"json_object"}, max_tokens=1100)
-    return response.choices[0].message.content or ""
+
+    def _once() -> str:
+        client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
+        response = client.chat.complete(
+            model=MISTRAL_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            response_format={"type": "json_object"},
+            max_tokens=1100,
+        )
+        return response.choices[0].message.content or ""
+
+    return _call_with_retry("Mistral", _once)
 
 
 def _groq(prompt: str, model: str) -> str:
@@ -150,9 +209,13 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
     ]
     votes: list[AIVote] = []
-    for name, call, key_name in providers:
+    for idx, (name, call, key_name) in enumerate(providers):
         if not os.environ.get(key_name):
-            votes.append(AIVote(name, False, error=f"{key_name} eksik")); continue
+            votes.append(AIVote(name, False, error=f"{key_name} eksik"))
+            continue
+        # Free-tier friendly: short pause between different providers
+        if idx > 0:
+            time.sleep(1.5)
         try:
             parsed = _normalize(_extract_json(call(prompt)), home, away)
             votes.append(AIVote(name, True, parsed))
