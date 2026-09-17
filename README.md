@@ -1,90 +1,157 @@
-# Haftalık Maç Tahmini
+# Haftalık Maç Tahmini — v3
 
-UEFA Şampiyonlar Ligi 2026/27 için maç öncesi çoklu yapay zekâ analiz, tahmin ve haftalık performans botu.
+Maç öncesi tahmin, 90 dakika sonuç değerlendirmesi ve kullanıcı onaylı öğrenme sistemi.
+**Ayrı Champions-League-Performance-Bot projesi bu sürümde değiştirilmedi.**
 
-## Akış
-1. football-data.org: fikstür ve son maçlar. Champions League puan durumu endpoint'i 404 verirse analiz durmaz; standings opsiyonel kabul edilir.
-2. Gemini Google Search grounding: güncel haber, sakatlık/ceza, xG/xGA, şut, kadro ve taktik araştırması.
-3. Araştırma başarısız olsa bile sistem yapılandırılmış verilerle AI havuzuna devam eder.
-4. 5 AI bağımsız olarak tahmin üretir.
-5. Başarılı AI sayısı kaç olursa olsun sonuçlar değerlendirilir. Konsensüs yalnızca benzersiz **salt çoğunluk** varsa oluşur; çoğunluk yoksa sistem ortak sonuç uydurmaz. Aynı kickoff dakikasındaki maçlar tek Telegram yazılı paketi halinde gönderilir; normal konsensüs maçları görsel kart olarak da gönderilir.
-6. Tahmin penceresi normalde maçtan **35-75 dakika** öncesidir.
-7. `match_predictions.json` haftalar boyunca maç, 5 AI oyu, konsensüs ve gerçek sonuçları saklar; sonuçlar sonradan yeni konsensüs kurallarıyla yeniden değerlendirilebilir.
-8. Maç tamamlandığında puanlama otomatik yapılır.
-9. Bir Matchday'in planlanan son maç başlangıcından 1 saat sonra haftalık rapor hazırlanır. Ertelenen/iptal edilen maçlar raporu bloke etmez.
-10. Haftalık rapor Telegram'a görsel olarak gönderilir. Ardından haftaları birbirinden ayrı tutan genel sezon performans görseli gönderilir.
-11. `weekly_reports.json` her haftanın bağımsız snapshot'ını sabit tutar; `weekly_schedule.json` ilk görülen Matchday program kesitini saklayarak erteleme/reschedule durumunda rapor saatinin kaymasını önler.
+## Sabit kurallar
 
-## Kilitli puanlama sistemi
-- **5 puan:** Tam skor doğru.
-- **3 puan:** Kazanan doğru, skor yanlış.
-- **5 puan:** Tahmin beraberlik ve gerçek maç da beraberlik; skor farklı olsa bile.
-- **0 puan:** Sonuç yanlış.
+| Başarı | Puan |
+|---|---:|
+| Tam skor | 6 |
+| Doğru kazanan + doğru gol farkı, farklı skor | 5 |
+| Doğru beraberlik, farklı skor | 3 |
+| Yalnızca kazanan | 2 |
+| Yanlış sonuç | 0 |
 
-`2 puan` ayrı bir puan kategorisi değildir. 5 yerine 3 alınması, tam skor ile sadece sonucu bilmek arasındaki 2 puanlık farktır.
+Her model ve turnuva aşamasında aynıdır. 90 dakika + hakem ek süresi değerlendirilir.
+15+15 dakika ve seri penaltılar hariçtir. Sağlayıcı uzatmalı bir maç için 90 dakika
+skorunu vermiyorsa değerlendirme bekler; fullTime yanlışlıkla kullanılmaz.
+Her tahmin tek kategoriden puan alır. Yanıt vermeyen model hata/erişilebilirlik
+olarak kaydedilir; başarısız tahmin sayılmaz.
 
-## Konsensüs ve anlaşmazlık kuralı
+Konsensüs için en az iki geçerli model ve başarılı modellerin salt çoğunluğu gerekir.
+Sonuç ve skor çoğunluğu ayrı hesaplanır. Örneğin 3/4, %75 **uzlaşmadır**, maçın
+kazanılma olasılığı değildir. AI güveni öznel güven ortalamasıdır.
+Ortak skor aynı tabloyla; yalnızca ortak sonuç doğru kazanan için 2, beraberlik için
+3 puanla değerlendirilir. Konsensüs yoksa ortak puan yoktur; bireysel puanlar vardır.
 
-- **Kazanan konsensüsü:** Başarılı AI'ların benzersiz salt çoğunluğu gerekir. Örneğin 4 AI'dan 2-2 dağılım varsa ortak karar yoktur.
-- **Skor konsensüsü:** Tam skor için de ayrıca benzersiz salt çoğunluk gerekir.
-- Kazanan ortak, skor ortak değilse **SONUÇ ORTAK — SKOR AYRIŞTI** formatı kullanılır; skor tek bir AI'ın tahmini olarak konsensüs diye gösterilmez.
-- Kazanan konusunda da ortaklık yoksa **ORTAK KARAR YOK** formatı kullanılır; her başarılı AI'ın sonucu ve skoru ayrı gösterilir.
-- Ortak karar olmayan maçlar konsensüs puanına dahil edilmez. Buna karşılık tüm başarılı AI'ların bireysel tahminleri normal şekilde puanlanır.
-- Eski arşivlerdeki çoğunluk/puan bilgileri, maç sonucu geldiğinde bireysel AI oylarından yeniden hesaplanır; böylece eski hatalı plurality konsensüsleri düzeltilir.
+## Çalışma
 
-## Haftalık performans kuralı
-- Her Matchday kendi içinde değerlendirilir.
-- Haftalık rapor yalnızca o haftanın maçlarını ve sonuçlarını içerir.
-- Bir haftanın raporu oluşturulduktan sonra o haftanın snapshot'ı değişmez.
-- Sonraki hafta önceki haftaya eklenmez.
-- Ayrı **Genel Performans** görseli 1. haftadan itibaren haftaları karşılaştırır ve sezon toplamını kümülatif gösterir.
+1. Operasyon botunun bekleyen kararlarını oku; yetkili kullanıcıyı doğrula.
+2. Arşivlenmiş gönderimleri yeniden üretmeden sürdür; biten maçları puanla.
+3. Öğrenme özetlerini güncelle; yeterli veri varsa onaya sunulacak öneri hazırla.
+4. Maçtan 60 dakika önce kontrol penceresine gir. Resmi XI erken/40/30 dakika
+   pencerelerinde kontrol edilir. XI varsa tahmin hazırlanır. Yoksa 30 dakika kala
+   kaynaklı kadro araştırması yapılır. Actions gecikirse maç başlamadan yakalama yapılır.
+5. football-data.org, API-Football ve teyitli FotMob kadroları denenir. Resmi kadro
+   bulunamazsa araştırma; sakatlık, ceza ve transfer uygunluğunu kontrol eden tahmini
+   XI üretmeye çalışır. Eksik isimler uydurulmaz. Tam XI bulunmasa da maç atlanmaz.
+6. Aynı araştırma tüm modellere verilir; kadro/araştırma/historical veriler ve sürümler
+   tahminden önce dondurulur. Bağımsız sağlayıcılar eşzamanlı, aynı Groq hesabındaki
+   iki model sırayla çağrılır. Süre ve çıktı limitleri vardır.
+7. Bir veya daha fazla yanıt varsa başarılı modeller kullanılır. Tek yanıt bireyseldir.
+   Tümü başarısızsa sınırlı yeniden deneme; ardından yeterli form verisiyle Poisson
+   yedek tahmini. O da mümkün değilse tahmin üretilemedi bildirimi.
+8. Tahmin kaydedildikten sonra Telegram yazısı ve NORMAL modda görsel gönderilir.
+   Parçalar ayrı takip edilir. Her maçın mesajı ayrı gönderilir; uzun mesajlar bölünür.
 
-## Telegram maç tahmin formatı
-Maç başlamadan önce Telegram'a iki parça gönderilir:
-1. Yazılı tahmin mesajı.
-2. Aynı içeriğin görsel maç kartı.
+## Öğrenme ve onay sınırları
 
-Tek maç örneği:
-```text
-🏆 ŞAMPİYONLAR LİGİ 2026/27
-⚽ MAÇ TAHMİNİ
+Bu sürüm LLM ağırlıklarını yeniden eğitmez ve isabet artışı garantisi vermez.
+Her maç için puan, tam skor, sonuç doğruluğu, gol sapması, kullanılan veri türleri,
+maç öncesi gerekçeler, kaynaklar ve resmi XI durumu saklanır. Modelin kullandığını
+bildirdiği faktörler ile arşivde mevcut veriler ayrı ölçülür. Birlikte görülme nedensellik
+değildir. Eski arşivlerde faktör etiketi yoksa sonradan uydurulmaz.
 
-📅 16.09.2026   ⏰ 19:45
+Sonraki maçlara yalnızca o andan önce sonuçlanmış ve maç öncesi oluşturulduğu
+zaman damgasıyla doğrulanabilen kayıtlar özetlenerek verilir. Geçmiş maçlara bugün
+web araştırması yapılıp "maç öncesi" test sonucu diye sunulmaz. Öğrenme özetleri
+ücretsiz deterministik hesaplanır; maç sonu ek LLM çağrısı yapılmaz.
 
-⚽ Juventus — Dortmund
-🤖 Kazanan: Juventus — %80 (4/5)
-🎯 Skor: 2-1 — %60 (3/5)
-📊 AI Güveni: %80
+İlk sürümün ayar alanı sınırlıdır: dengeli analiz ve resmi XI yokken kadro belirsizliğini
+öne çıkaran analiz politikası. XI var/yok gruplarında en az sekizer uygun maç ve
+15 yüzde puanlık tam skor farkı oluşursa gözlemsel kanıtla bir **deney önerisi** çıkar.
+Bu, yeni politikanın önceden başarı kanıtladığı anlamına gelmez. Yeni politika sadece
+onaydan sonraki, henüz girdileri dondurulmamış tahminlere uygulanır. Aynı koşuldaki
+eski/yeni politika örneklerinde en az sekizer maç ve belirgin düşüş varsa eski
+politikaya dönüş de onaya sunulur. Serbest kod düzenleme veya onaysız ağırlık değişimi yoktur.
 
-ℹ️ Bu oranlar maç öncesi AI konsensüsünü gösterir.
-Puanlama maç sonucu belli olduktan sonra yapılacaktır.
+## Şampiyonlar Ligi AI Operasyon
+
+- ✅ Onayla: gösterilen sürüm ve talimatı uygula.
+- ❌ Reddet: mevcut politikayı koru.
+- 📋 Ayrıntı: kanıt, maç kimlikleri, yeni talimat ve sınırlamaları göster.
+
+Yalnızca tanımlı kullanıcının tanımlı özel sohbetteki, doğru öneri mesajına ait
+kararı kabul edilir. Tekrarlı tıklamalar tekrar uygulamaz. Öneri 7 gün sonra veya
+ayar sürümü değişince geçersizdir. Sessizlik onay değildir. İlk başarılı bağlantıda
+hazır mesajı, sonuçlar değiştikçe öğrenme özeti iletilir.
+
+Düğmeler GitHub Actions çalıştığında işlenir; anlık yanıt beklenmemelidir. Telegram
+bekleyen güncellemeleri en fazla 24 saat tutar. Uzun kesintiden sonra karar işlenmediyse
+yeniden tıklayın. Başka bir süreç aynı botun getUpdates kuyruğunu tüketmemeli ve
+webhook kurulu olmamalıdır. Gecikmiş callback onayı zaman aşımına uğrasa bile karar
+normal mesajla bildirilir. Sayısal admin ID/token loglara veya arşive yazılmaz.
+
+## Secrets ve değişkenler
+
+GitHub Settings → Secrets and variables → Actions:
+
+| Secret | Anlam |
+|---|---|
+| TELEGRAM_BOT_TOKEN | Mevcut tahmin botunun token'ı |
+| TELEGRAM_CHAT_ID | Maç mesajlarının hedefi |
+| FOOTBALL_DATA_API_KEY | Fikstür ve sonuç API anahtarı |
+| API_FOOTBALL_KEY | İsteğe bağlı ikinci kadro sağlayıcısı |
+| GEMINI_API_KEY | Araştırma ve Gemini tahmini |
+| MISTRAL_API_KEY | Mistral tahmini |
+| GROQ_API_KEY | İki Groq modeli |
+| COHERE_API_KEY | Cohere tahmini |
+| OPERATIONS_TELEGRAM_BOT_TOKEN | Yeni operasyon botu token'ı |
+| OPERATIONS_TELEGRAM_CHAT_ID | Senin özel sohbet ID'n |
+| OPERATIONS_TELEGRAM_ADMIN_USER_ID | Yetkili Telegram kullanıcı ID'n |
+
+Özel sohbette son iki ID aynıdır. Yeni bota /start gönderilmiş olmalıdır.
+API anahtarları eksikse ilgili model başarısız çağrı sayılır. Model API kimlikleri
+GEMINI_MODEL, MISTRAL_MODEL, GROQ_QWEN_MODEL, GROQ_120B_MODEL, COHERE_MODEL repository
+variables ile değiştirilebilir; varsayılanlar kaynak projeden korunmuştur. Canlı
+hesabın model erişimi/kotası çevrimdışı testlerle doğrulanamaz.
+
+## Arşivler ve kurtarma
+
+- match_predictions.json: asıl tahmin, girdiler, sonuç ve gönderim makbuzları.
+- data/pre_v3_predictions.json: ilk v3 çalışmasında eski arşivin değişmez yedeği.
+- legacy_evaluation: her eski kaydın önceki puanlaması korunur.
+- post_match_analysis: yeni ölçümler ve veri kullanımı incelemesi.
+- data/operations.json: politika, öneri, karar, Telegram cursor, öğrenme özeti.
+- data/provider_cache.json: süreli sağlayıcı önbelleği.
+
+JSON bozuksa işlem durur; boş veriyle üzerine yazılmaz. Dosya güncellemeleri atomiktir.
+Workflow hata olsa da tamamlanan adımları commit etmeyi dener; commit/push hatasında
+kurtarma artifact'i bırakır. Workflow concurrency aynı botun eşzamanlı çalışmasını önler.
+Telegram ve GitHub arasında ortak işlem olmadığı için mesajın gidip makbuzun diske veya
+GitHub'a ulaşmadığı dar kesinti aralığında tekrar mesaj mümkündür; tam exactly-once
+iddiası yoktur. GitHub tamamen iptal edilirse son commit sonrası ilerleme kaybolabilir.
+
+GitHub cron kesin zaman garantisi vermez; ücretsiz hizmet kesintileri ve veri yokluğu
+nedeniyle her maça zamanında skor üretme garantisi yoktur. Önceden görülen bir maçın
+penceresi kaçarsa uyarı gönderilir; maç başladıktan sonra yeni tahmin yayımlanmaz.
+
+Eski weekly_reports.json / weekly_schedule.json ve haftalık görsel araçları arşiv
+uyumluluğu için durur, ana akış bunları çağırmaz. Ayrı performans botunun eski puanlaması
+sonraki aşamada güncellenmelidir; şu anda aynı puanı göstermesi beklenmemelidir.
+
+## Yerel test ve devreye alma
+
+Python 3.12:
+
+```shell
+python -m pip install -r requirements.txt
+python -m pytest -q
 ```
 
-Aynı kickoff dakikasında 4 maç varsa bunlar 4 ayrı mesaj yerine tek yazılı paket ve tek 4 kartlı görsel olarak gönderilir.
+Testler canlı Telegram/AI servisine bağlanmaz. TEST_MODE=true ayrı test_runtime dizini
+kullanır, operasyon önerilerini işlemez; ancak manuel workflow testi gerçek Telegram'a
+TEST etiketiyle mesaj gönderir ve API kotası tüketebilir.
 
-Buradaki yüzdeler gerçek kazanma olasılığı değildir; başarılı AI'ların konsensüs oranıdır. Maç başlamadan puan gösterilmez. Puanlama yalnızca gerçek sonuç geldikten sonra yapılır.
+Güncelleme ZIP'inde canlı arşiv JSON'ları yoktur. Kod dosyalarını aynı isimlerin üzerine
+kopyalayın; repodaki match_predictions.json ve diğer mevcut JSON'ları koruyun.
+README, requirements.txt, pytest.ini, tests/ ve gizli .github/workflows/main.yml dahil
+olmalıdır. Önce testlerin geçtiğini kontrol edin. İlk canlı denemede secret erişimi,
+operasyon hazır mesajı ve workflow arşiv commit'ini kontrol edin. Bu teslimatta canlı
+servis bağlantısı veya deployment yapılmamıştır.
 
-## Haftalık görsel rapor
-Haftalık raporda:
-- Maçlar kronolojik sırada gösterilir.
-- Her maçın gerçek skoru bulunur.
-- 5 AI'ın her bir tahmini ve aldığı puan gösterilir.
-- Konsensüs tahmini ve puanı gösterilir.
-- Alt bölümde haftalık AI performansı ve konsensüs performansı yer alır.
-
-Genel performans görselinde haftalar ayrı sütunlarda, sezon toplamı ve ortalama puanla birlikte karşılaştırılır.
-
-## AI havuzu
-- Gemini 3.6 Flash
-- Mistral Small Latest
-- Groq Qwen 3.6 27B
-- Cohere Command A+
-- Groq GPT-OSS 120B
-
-## GitHub Secrets
-`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `FOOTBALL_DATA_API_KEY`, `GEMINI_API_KEY`, `MISTRAL_API_KEY`, `GROQ_API_KEY`, `COHERE_API_KEY`
-
-API anahtarları kod içine yazılmamalıdır.
-
-## Test modu
-GitHub Actions → **Run workflow** üzerinden `test_mode=true` seçilirse 35-75 dakika filtresi bypass edilir ve en yakın gelecek Champions League maçıyla Telegram testi yapılır. Test modu tahmini `match_predictions.json` içine kaydetmez.
+Teknik kaynaklar: [90 dakika skor alanı](https://docs.football-data.org/general/v4/overtime.html),
+[kadro şeması](https://docs.football-data.org/general/v4/match.html),
+[Telegram updates](https://core.telegram.org/bots/api#getupdates),
+[GitHub zamanlama](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).

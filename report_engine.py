@@ -63,7 +63,7 @@ def _individual_vote_lines(record: dict[str, Any]) -> list[str]:
         outcome = str(result.get("outcome", "")).upper()
         score = str(result.get("score", "?"))
         points = vote.get("points")
-        point_text = "-" if points is None else f"{points}/5"
+        point_text = "-" if points is None else f"{points}/6"
         lines.extend([
             f"• {vote.get('model', '?')}",
             f"  {_outcome_text(outcome, home, away)} | ⚽ {score} | Puan: {point_text}",
@@ -103,7 +103,7 @@ def build_result_message(record: dict[str, Any]) -> str:
             f"⚽ {home} - {away}\n"
             f"🏁 Gerçek skor: {actual_score}\n"
             f"🎯 AI Ortak Kararı skoru: {predicted}\n"
-            f"🏆 Konsensüs puanı: {points if points is not None else '-'} / 5\n"
+            f"🏆 Konsensüs puanı: {points if points is not None else '-'} / 6\n"
             f"{'✅ Maç sonucu doğru' if outcome_ok else '❌ Maç sonucu yanlış'}\n"
             f"{'✅ Tam skor tuttu' if exact_ok else '❌ Tam skor tutmadı'}"
         )
@@ -125,7 +125,7 @@ def build_result_message(record: dict[str, Any]) -> str:
             "🟢 ORTAK KAZANAN VAR",
             f"🏆 {_outcome_text(outcome, home, away)} — {outcome_votes}/{successful} AI",
             f"{'✅ Ortak sonuç doğru' if outcome_ok else '❌ Ortak sonuç yanlış'}",
-            f"🏆 Ortak kazanan puanı: {points if points is not None else '-'} / 5",
+            f"🏆 Ortak kazanan puanı: {points if points is not None else '-'} / 6",
             "",
             "🟡 SKORDA ORTAK KARAR YOK",
             "",
