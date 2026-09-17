@@ -4,11 +4,27 @@
   "revision": 0,
   "proposals": {},
   "decisions": [],
-  "update_offset": 0,
+  "update_offset": 303424072,
   "notices": {
     "summary:604d9b879ba2": {
       "text": "📊 Öğrenme arşivi güncellendi (90 dakika, 6/5/3/2/0).\nGemini 3.6 Flash: 10/16 yanıt, 3 tam skor, 26 puan.\nMistral Small Latest: 0/16 yanıt, 0 tam skor, 0 puan.\nGroq Qwen 3.6 27B: 16/16 yanıt, 3 tam skor, 40 puan.\nCohere Command A+: 15/16 yanıt, 2 tam skor, 32 puan.\nGroq GPT-OSS 120B: 16/16 yanıt, 2 tam skor, 39 puan.\nVeri ve gerekçe ilişkileri kaydedildi. Bu özet bir ayar değişikliği değildir.",
-      "receipt": {}
+      "receipt": {
+        "parts_sent": 1,
+        "message_ids": [
+          5
+        ],
+        "complete": true
+      }
+    },
+    "welcome": {
+      "text": "✅ Şampiyonlar Ligi AI Operasyon hazır.\nGeliştirme önerileri Onayla / Reddet / Ayrıntı düğmeleriyle iletilecek. Kararlar sonraki GitHub Actions çalışmasında işlenir. Yeterli kanıt yoksa öneri üretilmez; onaysız ayar değişmez.",
+      "receipt": {
+        "parts_sent": 1,
+        "message_ids": [
+          6
+        ],
+        "complete": true
+      }
     }
   },
   "summaries": {
