@@ -12,10 +12,10 @@ API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 
 COMPETITION_CODE = "CL"
 REQUEST_TIMEOUT = 30
-API_FOOTBALL_REQUEST_TIMEOUT = 30
+API_FOOTBALL_REQUEST_TIMEOUT = 12
 API_FOOTBALL_CL_LEAGUE_ID = 2
 FOTMOB_BASE_URL = "https://www.fotmob.com/api/data"
-FOTMOB_REQUEST_TIMEOUT = 20
+FOTMOB_REQUEST_TIMEOUT = 12
 
 
 class FootballDataError(RuntimeError):
@@ -317,7 +317,16 @@ class FotMobClient:
             return None
 
         data = self._get("/matchDetails", params={"matchId": match_id})
+        lineup = (data.get("content") or {}).get("lineup") or {}
+        if lineup.get("confirmed") is not True:
+            return None
         home, away = self._extract_lineup_teams(data)
+        expected_home = str((match.get("home") or {}).get("id", ""))
+        expected_away = str((match.get("away") or {}).get("id", ""))
+        by_id = {str(x.get("teamId", x.get("id", ""))): x for x in (home, away)}
+        if not expected_home or not expected_away or expected_home not in by_id or expected_away not in by_id:
+            return None
+        home, away = by_id[expected_home], by_id[expected_away]
         home_xi = self._normalize_players(home.get("players") or home.get("starters") or [])
         away_xi = self._normalize_players(away.get("players") or away.get("starters") or [])
 

@@ -14,46 +14,7 @@ def actual_outcome(home: int, away: int) -> str:
     return "HOME" if home > away else "AWAY" if home < away else "DRAW"
 
 
-def outcome_points(predicted_outcome: str | None, actual: str) -> int:
-    """Score only a consensual outcome, without inventing an exact score."""
-    if not predicted_outcome:
-        return 0
-    if predicted_outcome != actual:
-        return 0
-    # Locked scoring rule: a draw prediction that becomes a draw is worth 5.
-    return 5 if predicted_outcome == "DRAW" else 3
-
-
-def score_prediction(predicted_score: str | None, actual_home: int, actual_away: int) -> int:
-    """
-    Kilitli puanlama sistemi:
-    - Tam skor: 5
-    - Kazanan doğru, skor yanlış: 3
-    - Beraberlik tahmini + gerçek beraberlik (skor farklı olsa bile): 5
-    - Yanlış sonuç: 0
-
-    Not: 2 puan ayrı bir kategori değildir. 5 -> 3 farkı,
-    tam skor yerine sadece sonucu bilmenin doğal puan farkıdır.
-    """
-    score = (predicted_score or "").replace(" ", "")
-    actual_score = f"{actual_home}-{actual_away}"
-    if score == actual_score:
-        return 5
-
-    predicted = None
-    try:
-        left, right = score.split("-", 1)
-        ph, pa = int(left), int(right)
-        predicted = actual_outcome(ph, pa)
-    except (ValueError, AttributeError):
-        pass
-
-    real = actual_outcome(actual_home, actual_away)
-    if predicted == "DRAW" and real == "DRAW":
-        return 5
-    if predicted == real:
-        return 3
-    return 0
+from scoring import VERSION, outcome_points, score_prediction
 
 
 def _rebuild_consensus_from_record(record: dict[str, Any]) -> dict[str, Any]:
@@ -223,7 +184,7 @@ def grade_record(record: dict[str, Any]) -> None:
     # Backward-compatible fields used by team history and older reports.
     record["outcome_correct"] = record["consensus_outcome_correct"]
     record["exact_score_correct"] = record["consensus_exact_score_correct"]
-    record["grading_version"] = 2
+    record["grading_version"] = VERSION
 
     for vote in record.get("ai_votes", []):
         if not vote.get("success") or not vote.get("result"):
