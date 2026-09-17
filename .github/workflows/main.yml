@@ -3,16 +3,10 @@ name: Haftalık Maç Tahmini
 on:
   schedule:
     - cron: "*/5 * * * *"
-
   workflow_dispatch:
     inputs:
       test_mode:
-        description: "Telegram maç tahmin akışını test et"
-        required: true
-        default: false
-        type: boolean
-      report_test_mode:
-        description: "Haftalık + genel performans görsellerini test et"
+        description: "En yakın maç için TEST mesajı gönder (üretim arşivini değiştirmez)"
         required: true
         default: false
         type: boolean
@@ -27,59 +21,63 @@ concurrency:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
+    timeout-minutes: 20
     steps:
-      - name: Repository'yi indir
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Python kurulumu
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Paketleri kur
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests google-genai mistralai groq cohere pydantic pillow
-
-      - name: Core testleri
-        run: python test_core.py
-
+          cache: pip
+      - name: Bağımlılıkları kur
+        run: python -m pip install -r requirements.txt
+      - name: Testler
+        run: python -m pytest -q
       - name: Botu çalıştır
+        id: run_bot
+        timeout-minutes: 14
         env:
+          PYTHONUNBUFFERED: "1"
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_RESULT_BOT_TOKEN: ${{ secrets.TELEGRAM_RESULT_BOT_TOKEN }}
-          TELEGRAM_RESULT_CHAT_ID: ${{ secrets.TELEGRAM_RESULT_CHAT_ID }}
-          ANALYSIS_TELEGRAM_BOT_TOKEN: ${{ secrets.ANALYSIS_TELEGRAM_BOT_TOKEN }}
-          ANALYSIS_TELEGRAM_CHAT_ID: ${{ secrets.ANALYSIS_TELEGRAM_CHAT_ID }}
+          OPERATIONS_TELEGRAM_BOT_TOKEN: ${{ secrets.OPERATIONS_TELEGRAM_BOT_TOKEN }}
+          OPERATIONS_TELEGRAM_CHAT_ID: ${{ secrets.OPERATIONS_TELEGRAM_CHAT_ID }}
+          OPERATIONS_TELEGRAM_ADMIN_USER_ID: ${{ secrets.OPERATIONS_TELEGRAM_ADMIN_USER_ID }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+          MISTRAL_MODEL: ${{ vars.MISTRAL_MODEL || 'mistral-small-latest' }}
+          GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.6-27b' }}
+          GROQ_120B_MODEL: ${{ vars.GROQ_120B_MODEL || 'openai/gpt-oss-120b' }}
+          COHERE_MODEL: ${{ vars.COHERE_MODEL || 'command-a-plus-05-2026' }}
+          SEASON_START: "2026"
           TEST_MODE: ${{ inputs.test_mode || false }}
-          REPORT_TEST_MODE: ${{ inputs.report_test_mode || false }}
         run: python bot.py
-
-      - name: Arşivleri kaydet
+      - name: Yarım kalan işlemler dâhil durumu kaydet
+        if: ${{ always() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' && !inputs.test_mode }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          for file in match_predictions.json weekly_reports.json weekly_schedule.json; do
-            if [ -f "$file" ]; then
-              git add "$file"
-            fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for file in match_predictions.json data/operations.json data/provider_cache.json data/pre_v3_predictions.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
           done
-
           if ! git diff --cached --quiet; then
-            git commit -m "Haftalık maç tahmin ve performans arşivlerini güncelle"
-            git push
-          else
-            echo "Kaydedilecek yeni değişiklik yok."
+            git commit -m "Save prediction, learning and operations state"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
+      - name: Hata durumunda kurtarma arşivi
+        if: ${{ failure() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: prediction-recovery-${{ github.run_id }}
+          path: |
+            match_predictions.json
+            data/
+            test_runtime/
+          retention-days: 7
