@@ -63,16 +63,14 @@ def test_exact_score_consensus_requires_strict_majority():
 
 
 def test_locked_scoring_rules():
-    # Exact score = 5
-    assert score_prediction("2-1", 2, 1) == 5
-    # Winner right, score wrong = 3 (the 2-point gap is not a separate category)
-    assert score_prediction("2-1", 3, 1) == 3
-    assert score_prediction("2-1", 5, 0) == 3
-    # Any draw prediction + any actual draw = 5
-    assert score_prediction("1-1", 2, 2) == 5
-    assert score_prediction("0-0", 3, 3) == 5
-    assert score_prediction("2-2", 1, 1) == 5
-    # Wrong outcome = 0
+    assert score_prediction("2-1", 2, 1) == 6
+    assert score_prediction("2-0", 3, 1) == 5
+    assert score_prediction("1-3", 0, 2) == 5
+    assert score_prediction("2-1", 3, 1) == 2
+    assert score_prediction("2-1", 5, 0) == 2
+    assert score_prediction("1-1", 2, 2) == 3
+    assert score_prediction("0-0", 3, 3) == 3
+    assert score_prediction("2-2", 1, 1) == 3
     assert score_prediction("2-1", 0, 1) == 0
 
 
@@ -93,14 +91,14 @@ def test_grade_record():
     # Winner has a strict majority (2/3), exact score does not.
     assert record["consensus"]["consensus_mode"] == "OUTCOME_COMMON_SCORE_SPLIT"
     assert record["consensus"]["score"] is None
-    assert record["consensus_points"] == 3
+    assert record["consensus_points"] == 2
     assert record["consensus_winner_applicable"] is True
     assert record["consensus_score_applicable"] is False
     assert record["consensus_outcome_correct"] is True
     assert record["consensus_exact_score_correct"] is False
 
-    assert record["ai_votes"][0]["points"] == 5
-    assert record["ai_votes"][1]["points"] == 3
+    assert record["ai_votes"][0]["points"] == 6
+    assert record["ai_votes"][1]["points"] == 5
     assert record["ai_votes"][2]["points"] == 0
 
 
@@ -123,7 +121,7 @@ def test_grade_no_consensus():
     assert record["consensus"]["score"] is None
     assert record["consensus_points"] is None
     assert record["consensus_winner_applicable"] is False
-    assert record["ai_votes"][0]["points"] == 3
+    assert record["ai_votes"][0]["points"] == 5
     assert record["ai_votes"][1]["points"] == 0
 
 
