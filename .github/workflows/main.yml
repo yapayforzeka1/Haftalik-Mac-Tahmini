@@ -52,7 +52,7 @@ jobs:
           COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
           MISTRAL_MODEL: ${{ vars.MISTRAL_MODEL || 'mistral-small-latest' }}
-          GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.6-27b' }}
+          GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.8-27b' }}
           GROQ_120B_MODEL: ${{ vars.GROQ_120B_MODEL || 'openai/gpt-oss-120b' }}
           COHERE_MODEL: ${{ vars.COHERE_MODEL || 'command-a-plus-05-2026' }}
           SEASON_START: "2026"
