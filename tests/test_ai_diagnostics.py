@@ -21,6 +21,7 @@ def test_sdk_argument_error_is_identifiable_without_raw_message():
 
 
 def test_all_models_final_diagnostics_without_sensitive_content(monkeypatch,capsys):
+    monkeypatch.setattr(ai_pool.time,'sleep',lambda _:None)
     for name in ('GEMINI_API_KEY','MISTRAL_API_KEY','GROQ_API_KEY','COHERE_API_KEY'):
         monkeypatch.setenv(name,'private-token')
     def fail(prompt):
@@ -49,7 +50,7 @@ def test_missing_keys_logged_without_calling_providers(monkeypatch,capsys):
 
 
 def test_cached_error_text_is_not_printed(capsys):
-    names=['Gemini 3.6 Flash','Mistral Small Latest','Groq Qwen 3.6 27B','Cohere Command A+','Groq GPT-OSS 120B']
+    names=['Gemini 3.6 Flash','Mistral Small Latest',ai_pool.QWEN_LABEL,'Cohere Command A+','Groq GPT-OSS 120B']
     cached={name:{'model':name,'success':False,'error':'private-token'} for name in names}
     ai_pool.run_ai_pool('h','a',{}, {}, {},cached=cached)
     output=capsys.readouterr().out
