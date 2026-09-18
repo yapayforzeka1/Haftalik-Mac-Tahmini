@@ -6,6 +6,9 @@ import random
 import re
 import time
 import threading
+import math
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from typing import Any, Callable
@@ -19,60 +22,109 @@ class AIVote:
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
-GROQ_QWEN_MODEL = os.getenv("GROQ_QWEN_MODEL", "qwen/qwen3.6-27b")
+def resolve_qwen_model(value):
+    # Migrate only the confirmed obsolete setting; preserve other explicit overrides.
+    value = (value or '').strip()
+    return 'qwen/qwen3.8-27b' if value in {'', 'qwen/qwen3.6-27b'} else value
+
+
+GROQ_QWEN_MODEL = resolve_qwen_model(os.getenv("GROQ_QWEN_MODEL"))
+QWEN_LABEL = 'Groq Qwen 3.8 27B' if GROQ_QWEN_MODEL == 'qwen/qwen3.8-27b' else 'Groq Qwen (custom)'
 GROQ_120B_MODEL = os.getenv("GROQ_120B_MODEL", "openai/gpt-oss-120b")
 COHERE_MODEL = os.getenv("COHERE_MODEL", "command-a-plus-05-2026")
 
 # Rate-limit / transient error retry settings (free-tier friendly)
-_MAX_RETRIES = 2
-_BASE_WAIT_SEC = 2.0
+_MAX_RETRIES = 3
+_BASE_WAIT_SEC = 10.0
+_MAX_WAIT_SEC = 60.0
+
+
+class OutputError(ValueError):
+    """Fixed diagnostic code, without provider text or credentials."""
+
+
+class TimeBudgetError(TimeoutError):
+    pass
 
 
 def _is_rate_limit_error(exc: BaseException) -> bool:
-    text = str(exc).lower()
-    markers = (
-        "429",
-        "rate limit",
-        "rate_limited",
-        "resource_exhausted",
-        "quota",
-        "too many requests",
-        "503",
-        "unavailable",
-        "high demand",
-        "overloaded",
-    )
-    return any(m in text for m in markers)
+    status = error_http_status(exc)
+    if status is not None:
+        return status in {408, 429, 500, 502, 503, 504}
+    return safe_error(exc) in {'QUOTA_OR_RATE_LIMIT', 'TIMEOUT', 'CONNECTION_ERROR'}
 
 
-def _call_with_retry(name: str, fn: Callable[[], str], max_retries: int = _MAX_RETRIES) -> str:
-    """Call fn with exponential backoff on rate-limit / transient errors."""
+def retry_after_seconds(error):
+    sources = [getattr(error, 'headers', None)]
+    for attr in ('response', 'raw_response'):
+        sources.append(getattr(getattr(error, attr, None), 'headers', None))
+    for headers in sources:
+        if not headers:
+            continue
+        for key, value in headers.items():
+            if str(key).lower() != 'retry-after':
+                continue
+            try:
+                wait = float(value)
+            except (ValueError, TypeError):
+                try:
+                    date = parsedate_to_datetime(str(value))
+                    if date.tzinfo is None:
+                        date = date.replace(tzinfo=timezone.utc)
+                    wait = (date - datetime.now(timezone.utc)).total_seconds()
+                except (ValueError, TypeError, OverflowError):
+                    continue
+            if math.isfinite(wait):
+                return max(0.0, wait)
+    return None
+
+
+def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *, deadline=None):
+    """One bounded retry layer; reserve a full request before the delivery deadline."""
     last_error: BaseException | None = None
     for attempt in range(max_retries):
+        if deadline is not None and time.monotonic() + 30 >= deadline:
+            if last_error is not None:
+                raise last_error
+            raise TimeBudgetError('TIME_BUDGET')
         try:
             return fn()
         except Exception as exc:
             last_error = exc
-            if not _is_rate_limit_error(exc) or attempt >= max_retries - 1:
+            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED'}
+            if (not _is_rate_limit_error(exc) and not output_retry) or attempt >= max_retries - 1:
                 raise
-            wait = (_BASE_WAIT_SEC * (2 ** attempt)) + random.uniform(0, 1.0)
-            print(f"⏳ {name} rate-limit/transient hata (deneme {attempt + 1}/{max_retries}), {wait:.1f}s bekleniyor...")
+            if output_retry and attempt >= 1:
+                raise  # At most one additional generation for invalid/truncated JSON.
+            base = 20.0 if safe_error(exc) == 'QUOTA_OR_RATE_LIMIT' else _BASE_WAIT_SEC
+            wait = max(base * (2 ** attempt) + random.uniform(0, 1), retry_after_seconds(exc) or 0)
+            if wait > _MAX_WAIT_SEC or (deadline is not None and time.monotonic() + wait + 30 >= deadline):
+                print(f'AI RETRY | {name} | ertelendi: bekleme veya mac oncesi sure siniri', flush=True)
+                raise  # Do not shorten Retry-After and hit the provider early.
+            print(f'AI RETRY | {name} | neden={safe_error(exc)} | deneme={attempt+2}/{max_retries} | bekleme={wait:.1f}s', flush=True)
             time.sleep(wait)
     raise last_error  # type: ignore[misc]
 
 
 def _extract_json(text: str) -> dict[str, Any]:
     text = (text or "").strip()
+    if not text:
+        raise OutputError('EMPTY_RESPONSE')
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        match = re.search(r"\{.*\}", text, flags=re.S)
+        match = re.fullmatch(r'```(?:json)?\s*(\{.*\})\s*```', text, flags=re.S | re.I)
         if not match:
-            raise ValueError("AI cevabı JSON değil.")
-        return json.loads(match.group(0))
+            raise OutputError('INVALID_JSON') from None
+        try:
+            return json.loads(match.group(1))
+        except json.JSONDecodeError:
+            raise OutputError('INVALID_JSON') from None
 
 
 def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
+    if not isinstance(result, dict):
+        raise ValueError('Prediction must be a JSON object.')
     outcome = str(result.get("outcome", "")).upper().strip()
     if outcome not in {"HOME", "DRAW", "AWAY"}:
         raise ValueError(f"Geçersiz outcome: {outcome}")
@@ -111,7 +163,8 @@ def error_http_status(error):
     """Only a numeric HTTP status may leave an SDK exception."""
     response = getattr(error, 'response', None)
     for value in (getattr(error, 'status_code', None), getattr(error, 'code', None),
-                  getattr(response, 'status_code', None)):
+                  getattr(response, 'status_code', None),
+                  getattr(getattr(error, 'raw_response', None), 'status_code', None)):
         if isinstance(value, int) and not isinstance(value, bool) and 100 <= value <= 599:
             return value
     return None
@@ -119,6 +172,10 @@ def error_http_status(error):
 
 def safe_error(error):
     # SDK exceptions may contain URLs/headers. Persist only a category.
+    if isinstance(error, TimeBudgetError):
+        return 'TIME_BUDGET'
+    if isinstance(error, OutputError):
+        return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'} else 'INVALID_JSON'
     text = str(error).lower()
     status = error_http_status(error)
     if status == 429 or any(x in text for x in ("429", "quota", "resource_exhausted", "rate limit")):
@@ -236,7 +293,7 @@ def _gemini(prompt: str) -> str:
         )
         return response.text or ""
 
-    return _call_with_retry("Gemini", _once)
+    return _once()  # The pool owns retries and the shared deadline.
 
 
 def _mistral(prompt: str) -> str:
@@ -250,10 +307,11 @@ def _mistral(prompt: str) -> str:
             temperature=0.1,
             response_format={"type": "json_object"},
             max_tokens=1100,
+            retries=None,
         )
         return response.choices[0].message.content or ""
 
-    return _call_with_retry("Mistral", _once)
+    return _once()
 
 
 def _groq(prompt: str, model: str) -> str:
@@ -269,8 +327,39 @@ def _groq(prompt: str, model: str) -> str:
 def _cohere(prompt: str) -> str:
     import cohere
     client = cohere.ClientV2(api_key=os.environ["COHERE_API_KEY"], timeout=25, max_retries=0)
-    response = client.chat(model=COHERE_MODEL, messages=[{"role":"user","content":prompt}], max_tokens=1100)
-    return "\n".join(getattr(block, "text", "") for block in (getattr(response.message, "content", []) or []) if getattr(block, "type", "") == "text")
+    schema = {
+        'type': 'object',
+        'required': ['outcome', 'score', 'confidence', 'short_reason', 'reasons'],
+        'properties': {
+            'outcome': {'type':'string', 'enum':['HOME','DRAW','AWAY']},
+            'score': {'type':'string'}, 'confidence': {'type':'integer'},
+            'short_reason': {'type':'string'},
+            'reasons': {'type':'array','items':{'type':'string'}},
+            'score_candidates': {'type':'array','items':{'type':'string'}},
+            'factors_used': {'type':'array','items':{'type':'string'}},
+            'change_vs_previous': {'type':'string'},
+        },
+    }
+    options = {}
+    if COHERE_MODEL.startswith(('command-a-plus', 'command-a-reasoning')):
+        options['thinking'] = {'type':'disabled'}
+    response = client.chat(model=COHERE_MODEL,
+        messages=[{'role':'system','content':'Return only the requested JSON object. Keep reasons concise.'},
+                  {'role':'user','content':prompt}],
+        response_format={'type':'json_object','json_schema':schema},
+        temperature=0.1, max_tokens=2048, **options)
+    finish = str(getattr(response, 'finish_reason', '') or '').lower()
+    if finish == 'max_tokens':
+        raise OutputError('RESPONSE_TRUNCATED')
+    if finish in {'error', 'timeout', 'tool_call'}:
+        raise OutputError('RESPONSE_STOPPED')
+    content = getattr(response.message, 'content', []) or []
+    def field(block, key):
+        return block.get(key) if isinstance(block, dict) else getattr(block, key, None)
+    text = '\n'.join(str(field(block, 'text') or '') for block in content if field(block, 'type') == 'text')
+    if not text.strip():
+        raise OutputError('EMPTY_RESPONSE')
+    return text
 
 
 def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None) -> list[AIVote]:
@@ -278,12 +367,16 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
     providers: list[tuple[str, Callable[[str], str], str]] = [
         ("Gemini 3.6 Flash", _gemini, "GEMINI_API_KEY"),
         ("Mistral Small Latest", _mistral, "MISTRAL_API_KEY"),
-        ("Groq Qwen 3.6 27B", lambda p: _groq(p, GROQ_QWEN_MODEL), "GROQ_API_KEY"),
+        (QWEN_LABEL, lambda p: _groq(p, GROQ_QWEN_MODEL), "GROQ_API_KEY"),
         ("Cohere Command A+", _cohere, "COHERE_API_KEY"),
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
     ]
     votes = {}
     diagnostics = {}
+    model_ids = dict(zip((name for name, _, _ in providers),
+                        (GEMINI_MODEL, MISTRAL_MODEL, GROQ_QWEN_MODEL, COHERE_MODEL, GROQ_120B_MODEL)))
+    if os.getenv('GROQ_QWEN_MODEL') == 'qwen/qwen3.6-27b':
+        print('AI MODEL | Qwen: eski qwen/qwen3.6-27b ayari qwen/qwen3.8-27b olarak guncellendi.', flush=True)
     groq_lock = threading.Lock()
 
     def execute(name, call, key_name):
@@ -295,16 +388,23 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
                 return AIVote(name, False, error="TIME_BUDGET")
             stage = 'REQUEST'
-            try:
+            def request_and_validate():
+                nonlocal stage
+                stage = 'REQUEST'
                 raw = call(prompt)
                 stage = 'PARSE'
                 parsed = _extract_json(raw)
                 stage = 'VALIDATE'
                 result = _normalize(parsed, home, away)
+                return result
+            try:
+                result = _call_with_retry(name, request_and_validate, deadline=deadline)
+                result['model_id'] = model_ids[name]
                 diagnostics[name] = ('COMPLETE', 'OK', None)
                 return AIVote(name, True, result)
             except Exception as error:
-                category = ('INVALID_JSON' if stage == 'PARSE' else
+                category = (safe_error(error) if isinstance(error, (OutputError, TimeBudgetError)) else
+                            'INVALID_JSON' if stage == 'PARSE' else
                             'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
                 diagnostics[name] = (stage, category, error_http_status(error))
                 return AIVote(name, False, error=category)
@@ -332,7 +432,8 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
     allowed = {'OK', 'MISSING_API_KEY', 'TIME_BUDGET', 'INVALID_JSON', 'INVALID_PREDICTION',
                'QUOTA_OR_RATE_LIMIT', 'TIMEOUT', 'AUTH_ERROR', 'MODEL_UNAVAILABLE',
                'MODEL_OR_ENDPOINT_NOT_FOUND', 'PROVIDER_UNAVAILABLE', 'INVALID_REQUEST',
-               'SDK_IMPORT_ERROR', 'SDK_ARGUMENT_ERROR', 'SDK_RESPONSE_ERROR', 'CONNECTION_ERROR'}
+               'SDK_IMPORT_ERROR', 'SDK_ARGUMENT_ERROR', 'SDK_RESPONSE_ERROR', 'CONNECTION_ERROR',
+               'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'}
     for name, _, _ in providers:
         vote = votes[name]
         stage, category, status = diagnostics.get(name, ('CACHE', 'OK' if vote.success else vote.error, None))

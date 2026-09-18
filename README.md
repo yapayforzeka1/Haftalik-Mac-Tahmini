@@ -170,3 +170,32 @@ sırasındadır. Kısa gerekçe modelden alınır; ayrıntılı gerekçeler ve m
 arşivde korunur. Görünüm tahmin anında dondurulur. Eski tahminler yeniden gönderilmez;
 eski kayıtların iki modelli ortak karar eşiği korunur. Yeni kayıtlar üç model eşiği taşır.
 Maç sonucu mesaj tasarımı bu güncellemenin kapsamında değildir.
+
+## AI servis hata düzeltmesi
+
+- Groq Qwen varsayılanı `qwen/qwen3.8-27b` oldu. GitHub Variables içinde eski
+  `qwen/qwen3.6-27b` kalsa bile bu belirli değer yeni kimliğe çevrilir. Diğer açık
+  model tercihleri korunur. Yeni Qwen sonuçları yeni model adıyla kaydedilir;
+  bireysel sonuçlarda gerçek API model kimliği de tutulur. Eski arşivler değiştirilmez.
+- Cohere artık JSON şemasıyla çağrılır. Command A+/Reasoning için düşünme çıktısı
+  kapatılır ve yanıt bütçesi 2048 token olur. Eksik/kesilmiş çıktı kabul edilmez;
+  `EMPTY_RESPONSE`, `RESPONSE_TRUNCATED` ve `INVALID_JSON` ayrı raporlanır.
+- Her sağlayıcı için tek bir yeniden deneme katmanı vardır: geçici 429/5xx/timeout
+  hatalarında toplam en fazla üç deneme. Bir model başarılıyken diğerlerinin geçici
+  hataları da yeniden denenir. Geçersiz/eksik JSON için en fazla bir ek deneme vardır.
+- Bekleme artarak ilerler; varsa HTTP `Retry-After` değerinden önce istek atılmaz.
+  Bir bekleme 60 saniyeyi aşacaksa veya maç öncesi süre yetersizse yeniden deneme
+  yapılmaz. Hesap kotası, model erişim izni veya sağlayıcı kesintisi kodla garanti
+  edilemez. Hata mesajları sırları içerebileceğinden ham yanıtlar loga yazılmaz.
+
+Güncellemeyi yüklerken `.github/workflows/main.yml` dosyasını da değiştirin.
+Ardından Actions üzerinden `test_mode=true` ile çalıştırıp `AI SONUC OZETI` ve
+`AI TOPLAM` satırlarını kontrol edin. Bu paket, format ve tanılama güncellemelerinin
+üzerine uygulanır. Yerel testlerde canlı servislere veya Telegram'a bağlanılmaz.
+
+Doğrulanan teknik kaynaklar:
+[Groq Qwen modeli](https://console.groq.com/docs/model/qwen/qwen3.8-27b),
+[Cohere JSON biçimi](https://docs.cohere.com/v2/reference/chat),
+[Cohere düşünme ayarı](https://docs.cohere.com/docs/reasoning),
+[Mistral hata yönetimi](https://docs.mistral.ai/resources/error-glossary),
+[Gemini yeniden deneme](https://ai.google.dev/gemini-api/docs/troubleshooting).

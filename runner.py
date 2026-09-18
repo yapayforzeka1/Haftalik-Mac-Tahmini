@@ -264,16 +264,9 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         save()
     votes = run_ai_pool(r['home_team'], r['away_team'], context, r['research'], r['history'],
                         cached=cached, on_vote=on_vote, deadline=deadline)
-    if not any(v.success for v in votes) and r['pool_round'] < 2 and minutes_left(match) > 3 and time.monotonic() < deadline - 90:
-        r['pool_round'] = 2
-        r['first_round_votes'] = copy.deepcopy(r['ai_votes'])
-        # Retry transient failures only; missing keys/auth/invalid output are not retried.
-        retryable = {'QUOTA_OR_RATE_LIMIT', 'TIMEOUT'}
-        cached = {v.model: asdict(v) for v in votes if v.error not in retryable}
-        r['ai_votes'] = list(cached.values())
-        save()
-        votes = run_ai_pool(r['home_team'], r['away_team'], context, r['research'], r['history'],
-                            cached=cached, on_vote=on_vote, deadline=deadline)
+    # The pool retries each failed provider even when another model succeeds.
+    # Do not start a second round that would bypass Retry-After or multiply calls.
+    r['ai_votes'] = [asdict(v) for v in votes]
     if minutes_left(match) <= 0:
         r['late_generation'] = True
         save()
