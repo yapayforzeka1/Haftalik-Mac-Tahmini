@@ -107,15 +107,42 @@ def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
 
 
 
+def error_http_status(error):
+    """Only a numeric HTTP status may leave an SDK exception."""
+    response = getattr(error, 'response', None)
+    for value in (getattr(error, 'status_code', None), getattr(error, 'code', None),
+                  getattr(response, 'status_code', None)):
+        if isinstance(value, int) and not isinstance(value, bool) and 100 <= value <= 599:
+            return value
+    return None
+
+
 def safe_error(error):
     # SDK exceptions may contain URLs/headers. Persist only a category.
     text = str(error).lower()
-    if any(x in text for x in ("429", "quota", "resource_exhausted", "rate limit")):
+    status = error_http_status(error)
+    if status == 429 or any(x in text for x in ("429", "quota", "resource_exhausted", "rate limit")):
         return "QUOTA_OR_RATE_LIMIT"
     if any(x in text for x in ("timeout", "timed out", "deadline")):
         return "TIMEOUT"
-    if any(x in text for x in ("401", "403", "unauthorized")):
+    if status in {401, 403} or any(x in text for x in ("401", "403", "unauthorized")):
         return "AUTH_ERROR"
+    if any(x in text for x in ('model_decommissioned', 'model_not_found', 'model_not_available')):
+        return "MODEL_UNAVAILABLE"
+    if status == 404:
+        return "MODEL_OR_ENDPOINT_NOT_FOUND"
+    if status is not None and status >= 500:
+        return "PROVIDER_UNAVAILABLE"
+    if status in {400, 422}:
+        return "INVALID_REQUEST"
+    if isinstance(error, (ImportError, ModuleNotFoundError)):
+        return "SDK_IMPORT_ERROR"
+    if isinstance(error, TypeError):
+        return "SDK_ARGUMENT_ERROR"
+    if isinstance(error, AttributeError):
+        return "SDK_RESPONSE_ERROR"
+    if isinstance(error, ConnectionError):
+        return "CONNECTION_ERROR"
     return type(error).__name__
 
 
@@ -256,18 +283,31 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
     ]
     votes = {}
+    diagnostics = {}
     groq_lock = threading.Lock()
 
     def execute(name, call, key_name):
         if not os.environ.get(key_name):
+            diagnostics[name] = ('CONFIG', 'MISSING_API_KEY', None)
             return AIVote(name, False, error=f"{key_name} eksik")
         def invoke():
             if deadline is not None and time.monotonic() >= deadline - 30:
+                diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
                 return AIVote(name, False, error="TIME_BUDGET")
+            stage = 'REQUEST'
             try:
-                return AIVote(name, True, _normalize(_extract_json(call(prompt)), home, away))
+                raw = call(prompt)
+                stage = 'PARSE'
+                parsed = _extract_json(raw)
+                stage = 'VALIDATE'
+                result = _normalize(parsed, home, away)
+                diagnostics[name] = ('COMPLETE', 'OK', None)
+                return AIVote(name, True, result)
             except Exception as error:
-                return AIVote(name, False, error=safe_error(error))
+                category = ('INVALID_JSON' if stage == 'PARSE' else
+                            'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
+                diagnostics[name] = (stage, category, error_http_status(error))
+                return AIVote(name, False, error=category)
         # Two Groq models share a quota, so do not hit that provider simultaneously.
         if key_name == "GROQ_API_KEY":
             with groq_lock:
@@ -287,4 +327,17 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
             # Persistence runs on the caller thread, never concurrently.
             if on_vote:
                 on_vote(vote)
+    # Print only fixed labels/categories: never SDK text, prompts, responses or secrets.
+    print('AI SONUC OZETI (bu tur):', flush=True)
+    allowed = {'OK', 'MISSING_API_KEY', 'TIME_BUDGET', 'INVALID_JSON', 'INVALID_PREDICTION',
+               'QUOTA_OR_RATE_LIMIT', 'TIMEOUT', 'AUTH_ERROR', 'MODEL_UNAVAILABLE',
+               'MODEL_OR_ENDPOINT_NOT_FOUND', 'PROVIDER_UNAVAILABLE', 'INVALID_REQUEST',
+               'SDK_IMPORT_ERROR', 'SDK_ARGUMENT_ERROR', 'SDK_RESPONSE_ERROR', 'CONNECTION_ERROR'}
+    for name, _, _ in providers:
+        vote = votes[name]
+        stage, category, status = diagnostics.get(name, ('CACHE', 'OK' if vote.success else vote.error, None))
+        category = category if category in allowed else 'SDK_ERROR'
+        state = 'BASARILI' if vote.success else 'BASARISIZ'
+        print(f'AI | {name} | {state} | asama={stage} | neden={category} | HTTP={status or "-"}', flush=True)
+    print(f'AI TOPLAM | {sum(v.success for v in votes.values())}/{len(providers)} basarili', flush=True)
     return [votes[name] for name, _, _ in providers]
