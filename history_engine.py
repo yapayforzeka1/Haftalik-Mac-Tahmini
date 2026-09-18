@@ -32,7 +32,9 @@ def _rebuild_consensus_from_record(record: dict[str, Any]) -> dict[str, Any]:
     if not any(v.success and v.result for v in votes):
         return dict(record.get("consensus") or {})
     try:
-        return build_consensus(votes)
+        # Preserve the rule used when published; legacy records required two models.
+        minimum = record.get('consensus_min_successful', (record.get('consensus') or {}).get('min_successful', 2))
+        return build_consensus(votes, min_successful=int(minimum))
     except RuntimeError:
         return dict(record.get("consensus") or {})
 

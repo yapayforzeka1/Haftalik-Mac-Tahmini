@@ -99,6 +99,7 @@ def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
     return {
         "home_team": home, "away_team": away, "outcome": outcome, "score": f"{home_goals}-{away_goals}",
         "confidence": confidence, "reasons": [str(x) for x in reasons[:5]],
+        "short_reason": " ".join(str(result.get("short_reason") or "").split())[:160],
         "score_candidates": [str(x) for x in candidates[:3]],
         "change_vs_previous": str(result.get("change_vs_previous", "")),
         "factors_used": [x for x in result.get("factors_used", []) if x in {"form", "official_xi", "predicted_xi", "injuries", "standings", "rest", "research"}],
@@ -161,6 +162,8 @@ Onaylı öğrenme talimatını uygula; geçmiş ilişkilere nedensel kanıt muam
 factors_used listesine yalnızca gerçekten kullandığın veri türlerini yaz:
 form, official_xi, predicted_xi, injuries, standings, rest, research.
 Kadro veya istatistik yoksa varmış gibi gerekçe üretme.
+short_reason alanına kazanan/beraberlik tercihini açıklayan Türkçe, en fazla 7 kelimelik bir sebep yaz.
+Bu kısa sebep reasons ile tutarlı olsun ve yalnızca mevcut verilere dayansın.
 
 KARAR PROTOKOLÜ — ATLANMAYACAK:
 1) Takım gücünü sadece son 5 sonuca göre değerlendirme; rakiplerin seviyesi ve rakiplerin lig/Avrupa kalitesini hesaba kat.
@@ -185,6 +188,7 @@ SADECE JSON:
 {{"outcome":"HOME|DRAW|AWAY","score":"2-1","confidence":0,
 "score_candidates":["2-1","1-1","2-0"],"factors_used":["form"],
 "reasons":["skoru etkileyen neden 1","neden 2","neden 3","neden 4"],
+"short_reason":"tercihin çok kısa sebebi",
 "change_vs_previous":"önceki tahmin yoksa yok; değiştiyse neden"}}
 """
 

@@ -19,7 +19,7 @@ skorunu vermiyorsa değerlendirme bekler; fullTime yanlışlıkla kullanılmaz.
 Her tahmin tek kategoriden puan alır. Yanıt vermeyen model hata/erişilebilirlik
 olarak kaydedilir; başarısız tahmin sayılmaz.
 
-Konsensüs için en az iki geçerli model ve başarılı modellerin salt çoğunluğu gerekir.
+Yeni tahminlerde konsensüs için en az üç geçerli model ve başarılı modellerin salt çoğunluğu gerekir.
 Sonuç ve skor çoğunluğu ayrı hesaplanır. Örneğin 3/4, %75 **uzlaşmadır**, maçın
 kazanılma olasılığı değildir. AI güveni öznel güven ortalamasıdır.
 Ortak skor aynı tabloyla; yalnızca ortak sonuç doğru kazanan için 2, beraberlik için
@@ -39,11 +39,11 @@ Ortak skor aynı tabloyla; yalnızca ortak sonuç doğru kazanan için 2, berabe
 6. Aynı araştırma tüm modellere verilir; kadro/araştırma/historical veriler ve sürümler
    tahminden önce dondurulur. Bağımsız sağlayıcılar eşzamanlı, aynı Groq hesabındaki
    iki model sırayla çağrılır. Süre ve çıktı limitleri vardır.
-7. Bir veya daha fazla yanıt varsa başarılı modeller kullanılır. Tek yanıt bireyseldir.
-   Tümü başarısızsa sınırlı yeniden deneme; ardından yeterli form verisiyle Poisson
-   yedek tahmini. O da mümkün değilse tahmin üretilemedi bildirimi.
-8. Tahmin kaydedildikten sonra Telegram yazısı ve NORMAL modda görsel gönderilir.
-   Parçalar ayrı takip edilir. Her maçın mesajı ayrı gönderilir; uzun mesajlar bölünür.
+7. Üç veya daha fazla geçerli yanıt varsa salt çoğunluk değerlendirilir. Bir veya iki
+   yanıt bireysel gösterilir. Tümü başarısızsa sınırlı yeniden denemeden sonra sade
+   tahmin üretilemedi tablosu gönderilir; istatistiksel veya bahis yedeği yayımlanmaz.
+8. Her maç için onaylanan tablo tek görsel olarak gönderilir. Aynı metin ayrıca
+   gönderilmez. Görsel gönderim kaydı tutularak tamamlanan gönderimler tekrarlanmaz.
 
 ## Öğrenme ve onay sınırları
 
@@ -155,3 +155,18 @@ Teknik kaynaklar: [90 dakika skor alanı](https://docs.football-data.org/general
 [kadro şeması](https://docs.football-data.org/general/v4/match.html),
 [Telegram updates](https://core.telegram.org/bots/api#getupdates),
 [GitHub zamanlama](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
+## Onaylı Telegram tabloları — format 4
+
+- Kazanan ve skor ortak: yalnızca özet; ortak skoru seçen kısa model adları dahil.
+- Kazanan ortak, skor farklı: özet ve AI Modelleri | Skor | Oy tablosu.
+- Ortak karar yok: özet ve AI | Kazanan ve kısa sebep | Skor | Oy tablosu.
+- 1–2 yanıt: özet/yanıt sayısı ve AI | Kazanan ve kısa sebep | Skor tablosu.
+- 0 yanıt: Maç | Saat | AI yanıtı | Durum; Tahmin üretilemedi.
+
+Oy, aynı skoru seçen başarılı modellerin sayısı / başarılı model sayısıdır.
+Yanıt sayısında beş modelin tamamı paydada yer alır. Skorlar ev sahibi–deplasman
+sırasındadır. Kısa gerekçe modelden alınır; ayrıntılı gerekçeler ve model kimlikleri
+arşivde korunur. Görünüm tahmin anında dondurulur. Eski tahminler yeniden gönderilmez;
+eski kayıtların iki modelli ortak karar eşiği korunur. Yeni kayıtlar üç model eşiği taşır.
+Maç sonucu mesaj tasarımı bu güncellemenin kapsamında değildir.

@@ -11,10 +11,9 @@ from zoneinfo import ZoneInfo
 from ai_pool import run_ai_pool, safe_error
 from consensus_engine import build_consensus
 from data_provider import build_team_form, parse_utc
-from fallback import predict as fallback_predict
 from history_engine import grade_record
 from learning import POLICIES, audit, digest, learning_context, maybe_propose, new_state, summarize, utcnow
-from messages import prediction_message
+from messages import FORMAT_VERSION, prediction_message, prediction_tables
 from operations import run_operations
 from providers import CachedFootball, official_xi, predicted_xi
 from report_engine import build_result_message
@@ -97,6 +96,27 @@ def deliver_record(r, bot, chat_id, save, clock=None):
         return
     clock = clock or now
     kickoff = parse_utc(r['match_utc'])
+    if r.get('message_format_version', 0) >= FORMAT_VERSION:
+        # A single table image, with a durable receipt and no duplicate text.
+        if r.get('photo_sent') or r.get('prediction_receipt', {}).get('complete'):
+            r['final_sent'] = True
+            save()
+            return
+        if clock() < kickoff:
+            from match_report import render_match_group_image
+            path = render_match_group_image([r], test_mode=bool(r.get('test_mode')))
+            if clock() < kickoff:
+                bot.photo(chat_id, path)
+                r['photo_sent'] = True
+                r['prediction_receipt'] = {'complete': True, 'transport': 'photo'}
+                r['final_sent'] = True
+                save()
+                return
+        r['delivery_expired'] = True
+        r.setdefault('delivery_notice', {})
+        deliver_text(bot, chat_id, f"⚠️ {r['home_team']} — {r['away_team']}: maç öncesi tahmin iletilemedi.",
+                     r['delivery_notice'], save)
+        return
     if clock() >= kickoff and not r.get('prediction_receipt', {}).get('complete'):
         r['delivery_expired'] = True
         r.setdefault('delivery_notice', {})
@@ -231,7 +251,7 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         import ai_pool
         r['model_versions'] = {key: getattr(ai_pool, key) for key in
             ('GEMINI_MODEL', 'MISTRAL_MODEL', 'GROQ_QWEN_MODEL', 'GROQ_120B_MODEL', 'COHERE_MODEL')}
-        r['prompt_version'] = 3
+        r['prompt_version'] = 4
         save()
     if minutes_left(match) <= 0:
         return False
@@ -258,20 +278,24 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         r['late_generation'] = True
         save()
         return False
-    if any(v.success for v in votes):
+    r['consensus_min_successful'] = 3
+    if any(v.success and v.result for v in votes):
         r['prediction_kind'] = 'AI'
-        r['consensus'] = build_consensus(votes)
+        r['consensus'] = build_consensus(votes, min_successful=3)
     else:
-        r['fallback'] = fallback_predict(context)
-        r['prediction_kind'] = 'STATISTICAL' if r['fallback'] else 'UNAVAILABLE'
+        # Fifth approved format: publish no substitute prediction when no AI replies.
+        r['prediction_kind'] = 'UNAVAILABLE'
+        r['unavailable_details'] = [{'model': v.model, 'error': v.error} for v in votes]
         r['consensus'] = {'consensus_mode': 'NO_COMMON', 'winner_consensus': False, 'score_consensus': False}
     r['prediction_created_at'] = utcnow()
     r['minutes_before_match'] = round(minutes_left(match), 1)
     r['prediction_mode'] = r['consensus']['consensus_mode']
     r['published_consensus'] = copy.deepcopy(r['consensus'])
+    r['message_format_version'] = FORMAT_VERSION
+    r['prediction_table'] = prediction_tables(r)
     r['prediction_text'] = ('🧪 TEST\n' if test_mode else '') + prediction_message(r)
     r['prediction_ready'] = True
-    r['image_required'] = r['prediction_mode'] == 'NORMAL'
+    r['image_required'] = True
     save()
     return True
 

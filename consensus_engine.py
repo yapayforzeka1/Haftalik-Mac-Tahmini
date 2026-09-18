@@ -24,8 +24,8 @@ def _strict_majority(counts: Counter[str], total: int) -> tuple[str | None, int]
     return value, count
 
 
-def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[str], successful_count: int) -> str:
-    if successful_count < 2:
+def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[str], successful_count: int, min_successful: int = 2) -> str:
+    if successful_count < min_successful:
         return "NO_COMMON"
 
     outcome, _ = _strict_majority(outcome_counts, successful_count)
@@ -39,7 +39,7 @@ def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[
     return "NORMAL"
 
 
-def build_consensus(votes: list[AIVote]) -> dict[str, Any]:
+def build_consensus(votes: list[AIVote], min_successful: int = 2) -> dict[str, Any]:
     """
     Consensus is deliberately stricter than a simple plurality.
 
@@ -59,7 +59,7 @@ def build_consensus(votes: list[AIVote]) -> dict[str, Any]:
     outcome, outcome_votes = _strict_majority(outcome_counts, len(successful))
     score, score_votes = _strict_majority(score_counts, len(successful))
 
-    mode = classify_consensus_mode(outcome_counts, score_counts, len(successful))
+    mode = classify_consensus_mode(outcome_counts, score_counts, len(successful), min_successful)
 
     if mode == "NO_COMMON":
         outcome = None
@@ -88,6 +88,7 @@ def build_consensus(votes: list[AIVote]) -> dict[str, Any]:
     )
 
     return {
+        "min_successful": min_successful,
         "successful_ai": len(successful),
         "total_ai": len(votes),
 
