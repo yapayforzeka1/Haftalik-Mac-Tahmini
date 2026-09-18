@@ -357,14 +357,13 @@ def _groq(prompt: str, model: str) -> str:
 def _cohere(prompt: str) -> str:
     import cohere
     client = cohere.ClientV2(api_key=os.environ["COHERE_API_KEY"], timeout=25, max_retries=0)
-    options = {}
-    if COHERE_MODEL.startswith(('command-a-plus', 'command-a-reasoning')):
-        options['thinking'] = {'type':'disabled'}
+    # Live comparison accepted JSON mode with the model's default thinking setting.
+    # Explicit thinking=disabled returned HTTP 422; omit the parameter entirely.
     response = client.chat(model=COHERE_MODEL,
         messages=[{'role':'system','content':'Return only the requested JSON object. Keep reasons concise.'},
                   {'role':'user','content':prompt}],
         response_format={'type':'json_object'},
-        temperature=0.1, max_tokens=2048, **options)
+        temperature=0.1, max_tokens=2048)
     finish = str(getattr(response, 'finish_reason', '') or '').lower()
     if finish == 'max_tokens':
         raise OutputError('RESPONSE_TRUNCATED')

@@ -86,7 +86,7 @@ def test_model_migration_preserves_custom_override():
     assert pool.resolve_qwen_model('qwen/custom')=='qwen/custom'
 
 
-def test_cohere_real_sdk_serializes_json_mode_and_disables_thinking(monkeypatch):
+def test_cohere_real_sdk_serializes_json_mode_without_thinking_override(monkeypatch):
     import httpx
     monkeypatch.setenv('COHERE_API_KEY','test-only')
     monkeypatch.setattr(pool,'COHERE_MODEL','command-a-plus-05-2026')
@@ -100,7 +100,7 @@ def test_cohere_real_sdk_serializes_json_mode_and_disables_thinking(monkeypatch)
     body=requests[0]
     assert body['response_format']['type']=='json_object'
     assert body['response_format']=={'type':'json_object'}
-    assert body['thinking']=={'type':'disabled'} and body['max_tokens']==2048
+    assert 'thinking' not in body and body['max_tokens']==2048
     assert pool._normalize(pool._extract_json(text),'h','a')['score']=='1-2'
 
 

@@ -177,8 +177,8 @@ Maç sonucu mesaj tasarımı bu güncellemenin kapsamında değildir.
   `qwen/qwen3.6-27b` kalsa bile bu belirli değer yeni kimliğe çevrilir. Diğer açık
   model tercihleri korunur. Yeni Qwen sonuçları yeni model adıyla kaydedilir;
   bireysel sonuçlarda gerçek API model kimliği de tutulur. Eski arşivler değiştirilmez.
-- Cohere sade JSON nesnesi moduyla çağrılır; isteğe bağlı JSON şeması gönderilmez. Command A+/Reasoning için düşünme çıktısı
-  kapatılır ve yanıt bütçesi 2048 token olur. Eksik/kesilmiş çıktı kabul edilmez;
+- Cohere sade JSON nesnesi moduyla çağrılır; isteğe bağlı JSON şeması gönderilmez. Thinking parametresi gönderilmez; modelin varsayılanı kullanılır
+  ve yanıt bütçesi 2048 token olur. Eksik/kesilmiş çıktı kabul edilmez;
   `EMPTY_RESPONSE`, `RESPONSE_TRUNCATED` ve `INVALID_JSON` ayrı raporlanır.
 - Her sağlayıcı için tek bir yeniden deneme katmanı vardır: geçici 429/5xx/timeout
   hatalarında toplam en fazla üç deneme. Bir model başarılıyken diğerlerinin geçici
@@ -220,3 +220,14 @@ Kurulum: ZIP içindeki dosyaları mevcut deponun aynı yollarına kopyalayın.
 Önceki güncellemelerin uygulanmış olması gerekir. GitHub Actions üzerinden TEST
 modunda bir kez çalıştırın; kalan sorun varsa `AI DETAY` ve `AI SONUC OZETI`
 satırlarını paylaşın. TEST modu gerçek API kullanır; yerel pytest testleri kullanmaz.
+
+
+### Cohere canlı karşılaştırması sonrası düzeltme
+
+Kullanıcının canlı testinde JSON modu açık ve thinking parametresi olmadan
+HTTP 200 / VALID_PREDICTION alındı. Thinking disabled ile yapılan diğer test
+HTTP 422 verdi. Ana bot ilk testte çalışan ayara geçirildi: JSON nesnesi modu
+korunur, thinking parametresi tamamen çıkarılır. Bu sonuç bütün maçlarda veya
+gelecekteki servis koşullarında başarı garantisi değildir.
+Skor/sonuç doğrulaması, 2048 token bütçesi ve kesilmiş yanıt kontrolü korunur.
+Mistral 429 ve Gemini servis hataları bu değişiklikle çözülmüş sayılmaz.
