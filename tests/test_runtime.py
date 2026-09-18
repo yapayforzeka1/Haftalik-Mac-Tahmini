@@ -88,10 +88,10 @@ def test_single_model_and_denominator():
     assert r['consensus_points'] is None
 
 
-def test_normal_message_confidence_is_not_vote_share():
+def test_normal_message_uses_compact_votes_without_confidence():
     text = prediction_message(record())
-    assert 'Uzlaşma %67 (2/3)' in text
-    assert 'AI Güveni: %55' in text
+    assert '2/3' in text
+    assert 'AI Güveni' not in text
     assert 'Penaltı' not in text
 
 
@@ -99,8 +99,8 @@ def test_split_message_distribution():
     r = record()
     r['ai_votes'][1] = vote('b','3-1')
     r['consensus'] = build_consensus([AIVote(**v) for v in r['ai_votes']])
-    assert 'SONUÇ ORTAK — SKOR AYRIŞTI' in prediction_message(r)
-    assert '2-1: (1/3)' in prediction_message(r)
+    assert 'AI Modelleri' in prediction_message(r)
+    assert '2–1 | 1/3' in prediction_message(r)
 
 
 def test_score_normalization():
@@ -182,7 +182,7 @@ def test_fallback_requires_data_and_is_separate():
     result=predict({'home':{'last_5':form},'away':{'last_5':form}})
     r=record();r.update(prediction_kind='STATISTICAL',fallback=result)
     text=prediction_message(r)
-    assert 'İstatistiksel yedek' in text
+    assert 'Tahmin üretilemedi' in text
     assert 'AI Güveni' not in text
     assert 'Uzlaşma' not in text
 
@@ -289,7 +289,7 @@ def test_wait_for_official_until_30_then_finalize_without_ai(monkeypatch):
     m['utcDate']=(NOW+timedelta(minutes=30)).isoformat()
     assert prepare_prediction(r,m,None,{},state,lambda:None,float('inf'))
     assert r['prediction_kind']=='UNAVAILABLE'
-    assert 'tahmin üretilemedi' in r['prediction_text']
+    assert 'Tahmin üretilemedi' in r['prediction_text']
 
 
 def test_saved_prediction_not_generated_again(monkeypatch):
@@ -327,7 +327,8 @@ def test_full_main_twice_does_not_regenerate_or_resend(monkeypatch, tmp_path):
     assert runner.main() == 0
     assert runner.main() == 0
     assert len(count) == 1
-    assert sum(method == 'sendMessage' for method, _ in bot.calls) == 1
+    assert sum(method == 'sendMessage' for method, _ in bot.calls) == 0
+    assert sum(method == 'photo' for method, _ in bot.calls) == 1
     saved=load_json(tmp_path/'match_predictions.json',{})['1']
     assert saved['final_sent'] and saved['prediction_kind']=='AI'
     assert saved['model_versions'] and saved['input_hash']
