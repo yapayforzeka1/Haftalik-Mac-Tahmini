@@ -86,7 +86,7 @@ def test_model_migration_preserves_custom_override():
     assert pool.resolve_qwen_model('qwen/custom')=='qwen/custom'
 
 
-def test_cohere_real_sdk_serializes_schema_and_disables_thinking(monkeypatch):
+def test_cohere_real_sdk_serializes_json_mode_and_disables_thinking(monkeypatch):
     import httpx
     monkeypatch.setenv('COHERE_API_KEY','test-only')
     monkeypatch.setattr(pool,'COHERE_MODEL','command-a-plus-05-2026')
@@ -99,7 +99,7 @@ def test_cohere_real_sdk_serializes_schema_and_disables_thinking(monkeypatch):
     text=pool._cohere('Return JSON')
     body=requests[0]
     assert body['response_format']['type']=='json_object'
-    assert 'outcome' in body['response_format']['json_schema']['required']
+    assert body['response_format']=={'type':'json_object'}
     assert body['thinking']=={'type':'disabled'} and body['max_tokens']==2048
     assert pool._normalize(pool._extract_json(text),'h','a')['score']=='1-2'
 
@@ -154,3 +154,49 @@ def test_json_fences_supported_but_truncated_or_ambiguous_output_rejected():
     assert pool._extract_json('```json\n{"score":"1-2"}\n```')=={'score':'1-2'}
     with pytest.raises(pool.OutputError):pool._extract_json('{"score":"1-2"} {"score":"2-1"}')
     with pytest.raises(ValueError):pool._normalize([], 'h','a')
+
+
+def test_mistral_waits_full_minute(clock):
+    calls=[]
+    def request():
+        calls.append(1)
+        if len(calls)==1: raise HTTPError(429)
+        return 'ok'
+    assert pool._call_with_retry('Mistral Small Latest',request,deadline=200)=='ok'
+    assert clock[1]==[60]
+
+
+def test_mistral_does_not_retry_past_delivery_deadline(clock):
+    calls=[]
+    def request():
+        calls.append(1);raise HTTPError(429)
+    with pytest.raises(HTTPError):
+        pool._call_with_retry('Mistral Small Latest',request,deadline=80)
+    assert len(calls)==1 and clock[1]==[]
+
+
+@pytest.mark.parametrize('body,expected',[
+    ({'message':'tokens per minute exceeded secret-key'},'TOKEN_RATE_LIMIT'),
+    ('requests per second exceeded secret-key','REQUEST_RATE_LIMIT'),
+    ({'error':{'code':'insufficient_quota'}},'QUOTA_EXHAUSTED'),
+    ('unknown private-body','LIMIT_UNSPECIFIED')])
+def test_rate_details_are_fixed_codes(body,expected):
+    error=HTTPError(429);error.body=body
+    assert pool.safe_error_detail(error)==expected
+
+
+def test_exhausted_quota_not_retried(clock):
+    calls=[]
+    def request():
+        calls.append(1)
+        error=HTTPError(429);error.body={'code':'insufficient_quota'}
+        raise error
+    with pytest.raises(HTTPError):pool._call_with_retry('Mistral Small Latest',request)
+    assert calls==[1] and clock[1]==[]
+
+
+def test_invalid_request_details_do_not_expose_body():
+    error=HTTPError(422);error.body={'message':'thinking is unsupported private-key'}
+    assert pool.safe_error_detail(error)=='CHECK_THINKING'
+    error.body={'message':'private-key unknown field'}
+    assert pool.safe_error_detail(error)=='REQUEST_DETAIL_UNSPECIFIED'
