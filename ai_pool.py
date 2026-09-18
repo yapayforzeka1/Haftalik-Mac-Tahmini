@@ -96,8 +96,12 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
                 raise
             if output_retry and attempt >= 1:
                 raise  # At most one additional generation for invalid/truncated JSON.
+            if safe_error_detail(exc) == 'QUOTA_EXHAUSTED':
+                raise  # Waiting seconds cannot replenish a billing/daily quota.
             base = 20.0 if safe_error(exc) == 'QUOTA_OR_RATE_LIMIT' else _BASE_WAIT_SEC
             wait = max(base * (2 ** attempt) + random.uniform(0, 1), retry_after_seconds(exc) or 0)
+            if name == 'Mistral Small Latest' and error_http_status(exc) == 429:
+                wait = max(wait, 60.0)  # Allow the minute token window to clear.
             if wait > _MAX_WAIT_SEC or (deadline is not None and time.monotonic() + wait + 30 >= deadline):
                 print(f'AI RETRY | {name} | ertelendi: bekleme veya mac oncesi sure siniri', flush=True)
                 raise  # Do not shorten Retry-After and hit the provider early.
@@ -168,6 +172,32 @@ def error_http_status(error):
         if isinstance(value, int) and not isinstance(value, bool) and 100 <= value <= 599:
             return value
     return None
+
+
+def safe_error_detail(error):
+    """Classify provider body into fixed codes; never print provider content."""
+    body = getattr(error, 'body', None)
+    if body is None:
+        body = getattr(error, 'details', None)
+    text = (json.dumps(body, ensure_ascii=True, default=str) if isinstance(body, (dict, list))
+            else str(body or '')).lower()[:16000]
+    status = error_http_status(error)
+    if status == 429:
+        if any(x in text for x in ('insufficient_quota', 'billing hard limit',
+                                  'daily quota exceeded', 'monthly quota exceeded',
+                                  'credit balance exhausted')):
+            return 'QUOTA_EXHAUSTED'
+        if any(x in text for x in ('tokens per minute', 'tokens_per_minute', 'token rate limit')):
+            return 'TOKEN_RATE_LIMIT'
+        if any(x in text for x in ('requests per second', 'requests per minute', 'request rate limit')):
+            return 'REQUEST_RATE_LIMIT'
+        return 'LIMIT_UNSPECIFIED'
+    if status in {400, 422}:
+        for field in ('json_schema', 'response_format', 'thinking', 'temperature', 'max_tokens', 'model'):
+            if re.search(r'(?<![a-z_])' + field + r'(?![a-z_])', text):
+                return 'CHECK_' + field.upper()
+        return 'REQUEST_DETAIL_UNSPECIFIED'
+    return 'UNSPECIFIED'
 
 
 def safe_error(error):
@@ -327,26 +357,13 @@ def _groq(prompt: str, model: str) -> str:
 def _cohere(prompt: str) -> str:
     import cohere
     client = cohere.ClientV2(api_key=os.environ["COHERE_API_KEY"], timeout=25, max_retries=0)
-    schema = {
-        'type': 'object',
-        'required': ['outcome', 'score', 'confidence', 'short_reason', 'reasons'],
-        'properties': {
-            'outcome': {'type':'string', 'enum':['HOME','DRAW','AWAY']},
-            'score': {'type':'string'}, 'confidence': {'type':'integer'},
-            'short_reason': {'type':'string'},
-            'reasons': {'type':'array','items':{'type':'string'}},
-            'score_candidates': {'type':'array','items':{'type':'string'}},
-            'factors_used': {'type':'array','items':{'type':'string'}},
-            'change_vs_previous': {'type':'string'},
-        },
-    }
     options = {}
     if COHERE_MODEL.startswith(('command-a-plus', 'command-a-reasoning')):
         options['thinking'] = {'type':'disabled'}
     response = client.chat(model=COHERE_MODEL,
         messages=[{'role':'system','content':'Return only the requested JSON object. Keep reasons concise.'},
                   {'role':'user','content':prompt}],
-        response_format={'type':'json_object','json_schema':schema},
+        response_format={'type':'json_object'},
         temperature=0.1, max_tokens=2048, **options)
     finish = str(getattr(response, 'finish_reason', '') or '').lower()
     if finish == 'max_tokens':
@@ -406,6 +423,9 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 category = (safe_error(error) if isinstance(error, (OutputError, TimeBudgetError)) else
                             'INVALID_JSON' if stage == 'PARSE' else
                             'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
+                detail = safe_error_detail(error)
+                if detail != 'UNSPECIFIED':
+                    print(f'AI DETAY | {name} | {detail}', flush=True)
                 diagnostics[name] = (stage, category, error_http_status(error))
                 return AIVote(name, False, error=category)
         # Two Groq models share a quota, so do not hit that provider simultaneously.

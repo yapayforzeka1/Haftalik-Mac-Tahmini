@@ -177,7 +177,7 @@ Maç sonucu mesaj tasarımı bu güncellemenin kapsamında değildir.
   `qwen/qwen3.6-27b` kalsa bile bu belirli değer yeni kimliğe çevrilir. Diğer açık
   model tercihleri korunur. Yeni Qwen sonuçları yeni model adıyla kaydedilir;
   bireysel sonuçlarda gerçek API model kimliği de tutulur. Eski arşivler değiştirilmez.
-- Cohere artık JSON şemasıyla çağrılır. Command A+/Reasoning için düşünme çıktısı
+- Cohere sade JSON nesnesi moduyla çağrılır; isteğe bağlı JSON şeması gönderilmez. Command A+/Reasoning için düşünme çıktısı
   kapatılır ve yanıt bütçesi 2048 token olur. Eksik/kesilmiş çıktı kabul edilmez;
   `EMPTY_RESPONSE`, `RESPONSE_TRUNCATED` ve `INVALID_JSON` ayrı raporlanır.
 - Her sağlayıcı için tek bir yeniden deneme katmanı vardır: geçici 429/5xx/timeout
@@ -199,3 +199,24 @@ Doğrulanan teknik kaynaklar:
 [Cohere düşünme ayarı](https://docs.cohere.com/docs/reasoning),
 [Mistral hata yönetimi](https://docs.mistral.ai/resources/error-glossary),
 [Gemini yeniden deneme](https://ai.google.dev/gemini-api/docs/troubleshooting).
+
+
+### Sağlayıcı hata düzeltmesi — ikinci paket
+
+- Cohere 422 hatası için istek sadeleştirildi: `response_format={"type":"json_object"}`.
+  Gelen tahminin skor/sonuç tutarlılığı yine uygulamada doğrulanır.
+  Önceki log hata gövdesini içermediğinden 422'nin kesin sebebi henüz doğrulanmış değildir.
+- Mistral 429 sonrasında en az 60 saniye beklenir. Sağlayıcının daha uzun
+  Retry-After süresi kısaltılmaz; maç öncesi süre yetmezse yeniden çağrı yapılmaz.
+- Sağlayıcı açıkça yetersiz kota/bakiye bildirirse tekrar denenmez.
+- `AI DETAY` satırları token hızı, istek hızı, kota veya kontrol edilmesi gereken
+  istek alanını sabit kodlarla gösterir. Ham hata gövdesi ve API anahtarları yazılmaz.
+  `CHECK_...` kesin kök neden değil, sağlayıcı yanıtında adı geçen alandır.
+- Gemini 503/504 için mevcut sınırlı yeniden deneme sürer; servis erişilebilirliği
+  veya hesap kotası bu paketle garanti edilemez.
+- Telegram formatları ve ortak karar kuralları korunur; yüzde 58 gönderim eşiği yoktur.
+
+Kurulum: ZIP içindeki dosyaları mevcut deponun aynı yollarına kopyalayın.
+Önceki güncellemelerin uygulanmış olması gerekir. GitHub Actions üzerinden TEST
+modunda bir kez çalıştırın; kalan sorun varsa `AI DETAY` ve `AI SONUC OZETI`
+satırlarını paylaşın. TEST modu gerçek API kullanır; yerel pytest testleri kullanmaz.
