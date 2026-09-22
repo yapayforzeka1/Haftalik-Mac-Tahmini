@@ -199,6 +199,7 @@ def new_record(match, state, test_mode=False):
     return {'schema_version': 3, 'season': str(match.get('season', {}).get('startDate', '2026'))[:4],
             'stage': match.get('stage'), 'matchday': match.get('matchday'), 'match_id': str(match['id']),
             'home_team': match['homeTeam']['name'], 'away_team': match['awayTeam']['name'],
+            'home_crest': match.get('homeTeam', {}).get('crest'), 'away_crest': match.get('awayTeam', {}).get('crest'),
             'match_utc': kickoff.isoformat(), 'match_time': kickoff.astimezone(TURKEY).strftime('%d.%m.%Y %H:%M'),
             'created_at': utcnow(), 'score_scope': 'REGULAR_90', 'learning_policy': state['policy'],
             'policy_revision': state['revision'], 'ai_votes': [], 'pool_round': 0,

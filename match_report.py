@@ -174,16 +174,31 @@ def _competition_title(record: dict) -> str:
     return "ŞAMPİYONLAR LİGİ" if not stage or "LEAGUE" in stage or "CHAMPIONS" in stage else stage.replace("_", " ")
 
 
-def _draw_seal(draw, cx: int, cy: int, r: int = 46):
-    """Project-specific Sercan seal; drawn locally so deployment needs no asset file."""
-    draw.ellipse((cx-r, cy-r, cx+r, cy+r), outline=GOLD, width=3)
-    draw.ellipse((cx-r+7, cy-r+7, cx+r-7, cy+r-7), outline=GOLD, width=1)
-    crown = [(cx-14, cy-r+19), (cx-8, cy-r+8), (cx, cy-r+18), (cx+8, cy-r+8), (cx+14, cy-r+19)]
+def _draw_starball(draw, cx: int, cy: int, r: int = 28):
+    """Small Champions-League-inspired starball mark drawn without external assets."""
+    import math
+    pts = []
+    for i in range(10):
+        a = -math.pi / 2 + i * math.pi / 5
+        rr = r if i % 2 == 0 else r * 0.42
+        pts.append((cx + math.cos(a) * rr, cy + math.sin(a) * rr))
+    draw.polygon(pts, outline=WHITE)
+    draw.ellipse((cx-r-7, cy-r-7, cx+r+7, cy+r+7), outline=MUTED, width=1)
+
+
+def _draw_seal(draw, cx: int, cy: int, r: int = 51):
+    """Readable project-specific Sercan seal, fully local for deterministic rendering."""
+    draw.ellipse((cx-r, cy-r, cx+r, cy+r), fill='#080b10', outline=GOLD, width=3)
+    draw.ellipse((cx-r+6, cy-r+6, cx+r-6, cy+r-6), outline=GOLD, width=1)
+    # crown
+    crown_y = cy-r+17
+    crown = [(cx-15,crown_y+10),(cx-10,crown_y-2),(cx,crown_y+8),(cx+10,crown_y-2),(cx+15,crown_y+10)]
     draw.line(crown, fill=GOLD, width=2)
-    f1, f2, f3 = _font(8, True), _font(18, True), _font(7, True)
-    t = "DESIGNED BY"; draw.text((cx-_text_width(draw,t,f1)/2, cy-r+23), t, font=f1, fill=GOLD)
-    t = "Sercan"; draw.text((cx-_text_width(draw,t,f2)/2, cy-8), t, font=f2, fill=GOLD)
-    t = "FUTBOL • VERİ • ANALİZ • TAHMİN"; draw.text((cx-_text_width(draw,t,f3)/2, cy+r-22), t, font=f3, fill=GOLD)
+    draw.line((cx-15,crown_y+12,cx+15,crown_y+12), fill=GOLD, width=2)
+    f1, f2, f3 = _font(8, True), _font(19, True), _font(6, True)
+    t='DESIGNED BY'; draw.text((cx-_text_width(draw,t,f1)/2, cy-r+33), t, font=f1, fill=GOLD)
+    t='Sercan'; draw.text((cx-_text_width(draw,t,f2)/2, cy-8), t, font=f2, fill=GOLD)
+    t='FUTBOL • VERİ • ANALİZ • TAHMİN'; draw.text((cx-_text_width(draw,t,f3)/2, cy+r-19), t, font=f3, fill=GOLD)
 
 
 def _successful_votes(record: dict) -> list[dict]:
@@ -198,8 +213,9 @@ def _consensus(record: dict):
     scores = Counter(v["result"].get("score") for v in votes)
     outcome, ov = outcomes.most_common(1)[0]
     score, sv = scores.most_common(1)[0]
-    winner = label(outcome, record) if ov > len(votes)/2 and len(votes) >= 3 else "Ortak karar yok"
-    common_score = str(score).replace("-", "–") if sv > len(votes)/2 and len(votes) >= 3 else "—"
+    enough = len(votes) >= int(record.get("consensus_min_successful") or 3)
+    winner = label(outcome, record) if enough and ov > len(votes)/2 else ("Yetersiz AI katılımı" if not enough else "Ortak karar yok")
+    common_score = str(score).replace("-", "–") if enough and sv > len(votes)/2 else "—"
     return winner, common_score, ov, sv
 
 
@@ -239,7 +255,11 @@ def _analysis_lines(record: dict) -> list[str]:
     lines = []
     for vote in _successful_votes(record):
         reason = short_reason(vote.get("result") or {})
-        if reason and reason != "Gerekçe belirtilmedi." and reason not in lines:
+        norm = " ".join((reason or "").lower().replace("'", "").split())
+        duplicate = any(norm == " ".join(x.lower().replace("'", "").split()) or
+                        (len(set(norm.split()) & set(x.lower().split())) >= max(4, min(len(norm.split()), len(x.split())) - 2))
+                        for x in lines)
+        if reason and reason != "Gerekçe belirtilmedi." and not duplicate:
             lines.append(reason)
         if len(lines) == 2:
             break
@@ -247,15 +267,16 @@ def _analysis_lines(record: dict) -> list[str]:
 
 
 def _draw_header(canvas, draw, records, test_mode: bool) -> int:
-    h = 132
+    h = 142
     _rounded(draw, (PAD, 18, WIDTH-PAD, h-4), 22, fill=PANEL, outline=BORDER, width=2)
-    _draw_seal(draw, PAD+62, 73, 43)
+    _draw_seal(draw, PAD+65, 78, 49)
+    _draw_starball(draw, PAD+145, 58, 22)
     title_f, sub_f = _font(27, True), _font(15)
     title = _competition_title(records[0])
-    draw.text((PAD+125, 38), title, font=title_f, fill=TEXT)
+    draw.text((PAD+180, 38), title, font=title_f, fill=TEXT)
     dt = _kickoff(records[0]).astimezone(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y")
     sub = f"MAÇ TAHMİNLERİ  •  {dt}  •  {len(records)} MAÇ" if len(records) > 1 else f"MAÇ TAHMİNİ  •  {dt}"
-    draw.text((PAD+126, 78), sub, font=sub_f, fill=MUTED)
+    draw.text((PAD+180, 80), sub, font=sub_f, fill=MUTED)
     motto = "Disiplinli analiz, daha güçlü yarınlar."
     mf = _font(13, True)
     mw = _text_width(draw, motto, mf)
@@ -308,7 +329,7 @@ def _draw_data_status(draw, x, y, w, record) -> int:
 
 
 def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
-    card_h = 500 if compact else 570
+    card_h = 410 if compact else 440
     x1, x2 = PAD, WIDTH-PAD
     _rounded(draw, (x1, y, x2, y+card_h), 22, fill=PANEL, outline=BORDER, width=2)
 
@@ -332,7 +353,7 @@ def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
     gap = 14; bw = (x2-x1-44-gap)/2
     for bx, label_txt, value, sub in (
         (x1+22, "KONSENSÜS", winner, f"{ov}/{n} AI" if n else "0 AI"),
-        (x1+22+bw+gap, "TAHMİNİ SKOR", score, f"Güven %{conf}" if conf is not None else "Güven verisi yok"),
+        (x1+22+bw+gap, "TAHMİNİ SKOR", score, (f"Güven %{conf}" if conf is not None else "Güven verisi yok") if score != "—" else "Nihai tahmin oluşmadı"),
     ):
         _rounded(draw, (bx, box_y, bx+bw, box_y+92), 15, fill=CARD, outline=BORDER)
         draw.text((bx+15, box_y+12), label_txt, font=_font(11, True), fill=MUTED)
@@ -368,8 +389,8 @@ def render_match_group_image(records, test_mode=False):
         raise ValueError("Görsel için en az bir maç gerekir.")
     records = sorted(records, key=lambda r: (kickoff_key(r), r.get("home_team", "")))
     compact = len(records) > 1
-    card_h = 500 if compact else 570
-    header_h = 142
+    card_h = 410 if compact else 440
+    header_h = 152
     total_h = header_h + len(records) * (card_h + 16) + 34
     canvas = Image.new("RGB", (WIDTH, total_h), BG)
     draw = ImageDraw.Draw(canvas)
