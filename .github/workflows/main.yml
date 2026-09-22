@@ -6,7 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       test_mode:
-        description: "En yakın maç için TEST mesajı gönder (üretim arşivini değiştirmez)"
+        description: "En yakın maç için TEST mesajı gönder (AI token kullanır, üretim arşivini değiştirmez)"
+        required: true
+        default: false
+        type: boolean
+      visual_test:
+        description: "Sadece görsel TESTİ gönder (AI/API token kullanmaz)"
         required: true
         default: false
         type: boolean
@@ -34,7 +39,14 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Testler
         run: python -m pytest -q
+      - name: Tokensız görsel testi
+        if: ${{ inputs.visual_test }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python render_preview.py
       - name: Botu çalıştır
+        if: ${{ !inputs.visual_test }}
         id: run_bot
         timeout-minutes: 14
         env:
