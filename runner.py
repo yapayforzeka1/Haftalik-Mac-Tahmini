@@ -141,6 +141,42 @@ def deliver_record(r, bot, chat_id, save, clock=None):
 
 
 def drain_delivery(predictions, bot, chat_id, save):
+    """Send new-format predictions by kickoff group, then resume results/legacy records."""
+    from collections import defaultdict
+    from match_report import kickoff_key, render_match_group_image
+
+    groups = defaultdict(list)
+    for r in predictions.values():
+        if (r.get('prediction_ready') and not r.get('final_sent')
+                and r.get('message_format_version', 0) >= FORMAT_VERSION
+                and not r.get('photo_sent') and not r.get('prediction_receipt', {}).get('complete')):
+            try:
+                if now() < parse_utc(r['match_utc']):
+                    groups[(kickoff_key(r), bool(r.get('test_mode')))].append(r)
+            except (KeyError, ValueError):
+                pass
+
+    for (_, is_test), records in sorted(groups.items()):
+        try:
+            kickoff = min(parse_utc(r['match_utc']) for r in records)
+            if now() >= kickoff:
+                continue
+            path = render_match_group_image(records, test_mode=is_test)
+            if now() >= kickoff:
+                continue
+            bot.photo(chat_id, path)
+            for r in records:
+                r['photo_sent'] = True
+                r['prediction_receipt'] = {
+                    'complete': True, 'transport': 'photo',
+                    'group_key': kickoff_key(r), 'group_size': len(records),
+                }
+                r['final_sent'] = True
+            save()
+        except (TelegramError, OSError) as exc:
+            ids = ','.join(str(r.get('match_id')) for r in records)
+            print(f"Grup gönderimi bekliyor: {ids} / {safe_error(exc)}")
+
     for r in predictions.values():
         try:
             deliver_record(r, bot, chat_id, save)
@@ -387,13 +423,14 @@ def main():
         try:
             # Leave a safety margin to publish before kickoff, even after delayed Actions starts.
             deadline = min(end, time.monotonic() + max(0, minutes_left(match)*60 - 45))
-            if prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode):
-                deliver_record(r, telegram, chat, save)
+            prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode)
         except StateError:
             raise
         except Exception as exc:
             r['last_processing_error'] = safe_error(exc)
             save()
             print(f'Maç işlemi bekliyor: {key} / {safe_error(exc)}')
+    # Publish after all candidates are prepared so same-kickoff matches share one image.
+    drain_delivery(predictions, telegram, chat, save)
     save()
     return 0
