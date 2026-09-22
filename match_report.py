@@ -175,31 +175,40 @@ def _competition_title(record: dict) -> str:
 
 
 def _draw_starball(draw, cx: int, cy: int, r: int = 28):
-    """Small Champions-League-inspired starball mark drawn without external assets."""
+    """Compact Champions-League-style starball mark; local and deterministic."""
     import math
-    pts = []
-    for i in range(10):
-        a = -math.pi / 2 + i * math.pi / 5
-        rr = r if i % 2 == 0 else r * 0.42
-        pts.append((cx + math.cos(a) * rr, cy + math.sin(a) * rr))
-    draw.polygon(pts, outline=WHITE)
-    draw.ellipse((cx-r-7, cy-r-7, cx+r+7, cy+r+7), outline=MUTED, width=1)
+    # outer ball
+    draw.ellipse((cx-r-5, cy-r-5, cx+r+5, cy+r+5), outline=MUTED, width=1)
+    # six slim stars around a small central polygon, giving a star-ball silhouette
+    for j in range(6):
+        base = -math.pi/2 + j*math.pi/3
+        sx, sy = cx + math.cos(base)*r*0.56, cy + math.sin(base)*r*0.56
+        pts=[]
+        for i in range(10):
+            a = base-math.pi/2 + i*math.pi/5
+            rr = r*0.34 if i%2==0 else r*0.14
+            pts.append((sx+math.cos(a)*rr, sy+math.sin(a)*rr))
+        draw.polygon(pts, outline=WHITE)
+    inner=[]
+    for i in range(6):
+        a=-math.pi/2+i*math.pi/3
+        inner.append((cx+math.cos(a)*r*0.24, cy+math.sin(a)*r*0.24))
+    draw.polygon(inner, outline=WHITE)
 
-
-def _draw_seal(draw, cx: int, cy: int, r: int = 51):
-    """Readable project-specific Sercan seal, fully local for deterministic rendering."""
-    draw.ellipse((cx-r, cy-r, cx+r, cy+r), fill='#080b10', outline=GOLD, width=3)
-    draw.ellipse((cx-r+6, cy-r+6, cx+r-6, cy+r-6), outline=GOLD, width=1)
-    # crown
-    crown_y = cy-r+17
-    crown = [(cx-15,crown_y+10),(cx-10,crown_y-2),(cx,crown_y+8),(cx+10,crown_y-2),(cx+15,crown_y+10)]
+def _draw_seal(draw, cx: int, cy: int, r: int = 58):
+    """Project seal: DESIGNED BY / Sercan / FUTBOL • VERİ • ANALİZ • TAHMİN."""
+    draw.ellipse((cx-r, cy-r, cx+r, cy+r), fill='#070a0f', outline=GOLD, width=3)
+    draw.ellipse((cx-r+7, cy-r+7, cx+r-7, cy+r-7), outline=GOLD, width=1)
+    crown_y = cy-r+15
+    crown = [(cx-17,crown_y+12),(cx-11,crown_y-1),(cx,crown_y+9),(cx+11,crown_y-1),(cx+17,crown_y+12)]
     draw.line(crown, fill=GOLD, width=2)
-    draw.line((cx-15,crown_y+12,cx+15,crown_y+12), fill=GOLD, width=2)
-    f1, f2, f3 = _font(8, True), _font(19, True), _font(6, True)
-    t='DESIGNED BY'; draw.text((cx-_text_width(draw,t,f1)/2, cy-r+33), t, font=f1, fill=GOLD)
-    t='Sercan'; draw.text((cx-_text_width(draw,t,f2)/2, cy-8), t, font=f2, fill=GOLD)
-    t='FUTBOL • VERİ • ANALİZ • TAHMİN'; draw.text((cx-_text_width(draw,t,f3)/2, cy+r-19), t, font=f3, fill=GOLD)
-
+    draw.line((cx-17,crown_y+14,cx+17,crown_y+14), fill=GOLD, width=2)
+    f1, f2, f3 = _font(9, True), _font(21, True), _font(6, True)
+    t='DESIGNED BY'; draw.text((cx-_text_width(draw,t,f1)/2, cy-r+37), t, font=f1, fill=GOLD)
+    t='Sercan'; draw.text((cx-_text_width(draw,t,f2)/2, cy-7), t, font=f2, fill=GOLD)
+    # Keep the approved wording; split it for readability at Telegram scale.
+    t='FUTBOL • VERİ • ANALİZ'; draw.text((cx-_text_width(draw,t,f3)/2, cy+r-24), t, font=f3, fill=GOLD)
+    t='• TAHMİN •'; draw.text((cx-_text_width(draw,t,f3)/2, cy+r-15), t, font=f3, fill=GOLD)
 
 def _successful_votes(record: dict) -> list[dict]:
     return [v for v in record.get("ai_votes", []) if v.get("success") and isinstance(v.get("result"), dict)]
@@ -267,16 +276,16 @@ def _analysis_lines(record: dict) -> list[str]:
 
 
 def _draw_header(canvas, draw, records, test_mode: bool) -> int:
-    h = 142
+    h = 154
     _rounded(draw, (PAD, 18, WIDTH-PAD, h-4), 22, fill=PANEL, outline=BORDER, width=2)
-    _draw_seal(draw, PAD+65, 78, 49)
-    _draw_starball(draw, PAD+145, 58, 22)
+    _draw_seal(draw, PAD+70, 83, 56)
+    _draw_starball(draw, PAD+157, 58, 23)
     title_f, sub_f = _font(27, True), _font(15)
     title = _competition_title(records[0])
-    draw.text((PAD+180, 38), title, font=title_f, fill=TEXT)
+    draw.text((PAD+195, 38), title, font=title_f, fill=TEXT)
     dt = _kickoff(records[0]).astimezone(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y")
     sub = f"MAÇ TAHMİNLERİ  •  {dt}  •  {len(records)} MAÇ" if len(records) > 1 else f"MAÇ TAHMİNİ  •  {dt}"
-    draw.text((PAD+180, 80), sub, font=sub_f, fill=MUTED)
+    draw.text((PAD+195, 80), sub, font=sub_f, fill=MUTED)
     motto = "Disiplinli analiz, daha güçlü yarınlar."
     mf = _font(13, True)
     mw = _text_width(draw, motto, mf)
@@ -390,7 +399,7 @@ def render_match_group_image(records, test_mode=False):
     records = sorted(records, key=lambda r: (kickoff_key(r), r.get("home_team", "")))
     compact = len(records) > 1
     card_h = 410 if compact else 440
-    header_h = 152
+    header_h = 164
     total_h = header_h + len(records) * (card_h + 16) + 34
     canvas = Image.new("RGB", (WIDTH, total_h), BG)
     draw = ImageDraw.Draw(canvas)

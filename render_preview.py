@@ -7,6 +7,17 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from match_report import render_match_group_image
 
+CRESTS = {
+    "Arsenal": "https://crests.football-data.org/57.png",
+    "Bayern Münih": "https://crests.football-data.org/5.png",
+    "Galatasaray": "https://crests.football-data.org/610.png",
+    "Liverpool": "https://crests.football-data.org/64.png",
+    "Inter": "https://crests.football-data.org/108.png",
+    "Benfica": "https://crests.football-data.org/1903.png",
+    "Real Madrid": "https://crests.football-data.org/86.png",
+    "Juventus": "https://crests.football-data.org/109.png",
+}
+
 
 def vote(model, outcome, score, confidence, reason):
     return {"model": model, "success": True, "result": {"outcome": outcome, "score": score, "confidence": confidence, "short_reason": reason}}
@@ -16,6 +27,7 @@ def record(mid, home, away, kickoff, score="2-1"):
     return {
         "match_id": str(mid), "home_team": home, "away_team": away,
         "match_utc": kickoff.isoformat(), "stage": "LEAGUE_STAGE", "test_mode": True,
+        "home_crest": CRESTS.get(home), "away_crest": CRESTS.get(away),
         "consensus_min_successful": 3, "total_ai": 5,
         "ai_votes": [
             vote("Gemini 3.6 Flash", "HOME", score, 72, f"{home} son maçlardaki hücum üretkenliğiyle öne çıkıyor."),
