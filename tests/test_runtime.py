@@ -152,7 +152,7 @@ def test_late_delivery_never_sends_prediction():
     r=record();bot=FakeTelegram()
     deliver_record(r,bot,'1',lambda:None,clock=lambda:NOW+timedelta(hours=2))
     assert r['delivery_expired']
-    assert bot.calls[0][1]['text'] != r['prediction_text']
+    assert bot.calls == []
 
 
 def test_result_retry_without_new_result():
@@ -162,7 +162,8 @@ def test_result_retry_without_new_result():
     assert not r.get('result_sent')
     bot.fail_at=0
     drain_delivery({'1':r},bot,'1',lambda:None)
-    assert r['result_sent']
+    assert not r.get('result_sent')
+    assert bot.calls == []
 
 
 def test_migration_preserves_original_grade_and_no_resend():

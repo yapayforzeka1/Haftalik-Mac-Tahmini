@@ -130,7 +130,7 @@ def test_no_photo_when_render_finishes_after_kickoff(monkeypatch,tmp_path):
         def photo(self,*args): pytest.fail('Late prediction')
         def call(self,*args,**kwargs): calls.append(kwargs);return {'message_id':1}
     deliver_record(r,Bot(),'1',lambda:None,clock=lambda:next(times))
-    assert r['delivery_expired'] and len(calls)==1
+    assert r['delivery_expired'] and calls == []
 
 
 def test_render_all_modes_and_long_names(tmp_path,monkeypatch):

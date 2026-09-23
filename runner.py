@@ -12,9 +12,9 @@ from ai_pool import run_ai_pool, safe_error
 from consensus_engine import build_consensus
 from data_provider import build_team_form, parse_utc
 from history_engine import grade_record
-from learning import POLICIES, audit, digest, learning_context, maybe_propose, new_state, summarize, utcnow
+from learning import POLICIES, audit, digest, learning_context, new_state, utcnow
 from messages import FORMAT_VERSION, prediction_message, prediction_tables
-from operations import run_operations
+from policy_sync import apply_approved_policy
 from providers import CachedFootball, official_xi, predicted_xi
 from report_engine import build_result_message
 from research_engine import empty_research, research_match
@@ -114,14 +114,13 @@ def deliver_record(r, bot, chat_id, save, clock=None):
                 return
         r['delivery_expired'] = True
         r.setdefault('delivery_notice', {})
-        deliver_text(bot, chat_id, f"⚠️ {r['home_team']} — {r['away_team']}: maç öncesi tahmin iletilemedi.",
-                     r['delivery_notice'], save)
+        save()
         return
     if clock() >= kickoff and not r.get('prediction_receipt', {}).get('complete'):
         r['delivery_expired'] = True
         r.setdefault('delivery_notice', {})
         text = f"⚠️ {r['home_team']} — {r['away_team']}: tahmin paketi maç başlamadan tamamen iletilemedi."
-        deliver_text(bot, chat_id, text, r['delivery_notice'], save)
+        save()
         return
     r.setdefault('prediction_receipt', {})
     if not r['prediction_receipt'].get('complete'):
@@ -180,16 +179,6 @@ def drain_delivery(predictions, bot, chat_id, save):
     for r in predictions.values():
         try:
             deliver_record(r, bot, chat_id, save)
-            if r.get('actual') and r.get('grading_version') == VERSION and not r.get('result_sent'):
-                if r.get('prediction_kind') == 'UNAVAILABLE':
-                    r['result_sent'] = True
-                    save()
-                    continue
-                r.setdefault('result_receipt', {})
-                r.setdefault('result_text', result_text(r))
-                deliver_text(bot, chat_id, r['result_text'], r['result_receipt'], save)
-                r['result_sent'] = True
-                save()
         except (TelegramError, OSError) as exc:
             print(f"Gönderim bekliyor: {r.get('match_id')} / {safe_error(exc)}")
 
@@ -346,10 +335,8 @@ def track_missed_fixtures(matches, predictions, state, bot, chat, save_state):
             if not receipt.get('complete'):
                 text = (f"⚠️ {match['homeTeam']['name']} — {match['awayTeam']['name']}: "
                         "maç öncesi tahmin tamamlanamadı. Zamanlama/servis kayıtlarının incelenmesi gerekiyor.")
-                try:
-                    deliver_text(bot, chat, text, receipt, save_state)
-                except TelegramError:
-                    pass
+                tracked[key]['missed_text'] = text
+                tracked[key]['missed_at'] = utcnow()
     save_state()
 
 
@@ -372,13 +359,7 @@ def main():
     backup = root / 'data' / 'pre_v3_predictions.json'
     if predictions and not backup.exists():
         save_json(backup, predictions)
-    ops_token = os.getenv('OPERATIONS_TELEGRAM_BOT_TOKEN')
-    if ops_token and not test_mode:
-        try:
-            run_operations(Telegram(ops_token), state, save_state,
-                os.getenv('OPERATIONS_TELEGRAM_ADMIN_USER_ID'), os.getenv('OPERATIONS_TELEGRAM_CHAT_ID'))
-        except (TelegramError, ValueError) as exc:
-            print(f'Operasyon işlemi bekliyor: {safe_error(exc)}')
+    apply_approved_policy(state, os.getenv('APPROVED_POLICY_FILE'))
     token, chat = os.getenv('TELEGRAM_BOT_TOKEN'), os.getenv('TELEGRAM_CHAT_ID')
     if not token or not chat:
         raise StateError('Tahmin botu TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID secret eksik.')
@@ -390,24 +371,6 @@ def main():
     refresh_results(predictions, matches)
     save()
     drain_delivery(predictions, telegram, chat, save)
-    state['summaries'] = summarize(predictions)
-    summary_hash = digest(state['summaries'])
-    if state.get('last_summary_hash') != summary_hash and state['summaries']['models']:
-        lines = ['📊 Öğrenme arşivi güncellendi (90 dakika, 6/5/3/2/0).']
-        for name, item in state['summaries']['models'].items():
-            lines.append(f"{name}: {item['available']}/{item['opportunities']} yanıt, "
-                         f"{item['exact']} tam skor, {item['points']} puan.")
-        lines.append('Veri ve gerekçe ilişkileri kaydedildi. Bu özet bir ayar değişikliği değildir.')
-        state['notices']['summary:'+summary_hash[:12]] = {'text':'\n'.join(lines),'receipt':{}}
-        state['last_summary_hash'] = summary_hash
-    maybe_propose(predictions, state)
-    save_state()
-    if ops_token and not test_mode:
-        try:
-            run_operations(Telegram(ops_token), state, save_state,
-                os.getenv('OPERATIONS_TELEGRAM_ADMIN_USER_ID'), os.getenv('OPERATIONS_TELEGRAM_CHAT_ID'))
-        except (TelegramError, ValueError) as exc:
-            print(f'Operasyon bildirimi bekliyor: {safe_error(exc)}')
     candidates = [m for m in matches if m.get('status') in {'TIMED', 'SCHEDULED'} and minutes_left(m) > 0
                   and (test_mode or minutes_left(m) <= 60)]
     candidates.sort(key=lambda m: m['utcDate'])
