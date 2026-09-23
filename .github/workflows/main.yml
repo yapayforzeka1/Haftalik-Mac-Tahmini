@@ -45,17 +45,24 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python render_preview.py
+      - name: Read approved Operations configuration
+        if: ${{ vars.OPERATIONS_REPO != '' && !inputs.visual_test }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.OPERATIONS_REPO }}
+          ref: ${{ vars.OPERATIONS_BRANCH || 'main' }}
+          token: ${{ secrets.OPERATIONS_REPO_TOKEN }}
+          path: operations-source
+          persist-credentials: false
       - name: Botu çalıştır
         if: ${{ !inputs.visual_test }}
         id: run_bot
         timeout-minutes: 14
         env:
           PYTHONUNBUFFERED: "1"
+          APPROVED_POLICY_FILE: ${{ vars.OPERATIONS_REPO != '' && 'operations-source/data/approved_policy.json' || '' }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          OPERATIONS_TELEGRAM_BOT_TOKEN: ${{ secrets.OPERATIONS_TELEGRAM_BOT_TOKEN }}
-          OPERATIONS_TELEGRAM_CHAT_ID: ${{ secrets.OPERATIONS_TELEGRAM_CHAT_ID }}
-          OPERATIONS_TELEGRAM_ADMIN_USER_ID: ${{ secrets.OPERATIONS_TELEGRAM_ADMIN_USER_ID }}
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
