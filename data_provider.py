@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import unicodedata
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import requests
@@ -26,62 +26,38 @@ class APIFootballError(RuntimeError):
     pass
 
 
+# Only remove complete club-designator words; never substrings inside names.
+_CLUB_WORDS = {"fc", "cf", "afc", "sk", "fk", "ac", "club", "football", "calcio"}
+_TEAM_ALIASES = {
+    "racing de lens": "lens",
+    "racing club de lens": "lens",
+    "rc lens": "lens",
+    "sporting clube de portugal": "sporting portugal",
+    "sporting cp": "sporting portugal",
+    "sporting lisbon": "sporting portugal",
+}
+
+
 def _normalize_team_name(value: str) -> str:
-    value = value or ""
-    value = unicodedata.normalize("NFKD", value)
-    value = "".join(
-        char for char in value if not unicodedata.combining(char)
-    )
-    value = value.lower()
-
-    replacements = {
-        "fc": "",
-        "cf": "",
-        "afc": "",
-        "sk": "",
-        "ac": "",
-        "calcio": "",
-        "club": "",
-        "football club": "",
-    }
-
-    for old, new in replacements.items():
-        value = value.replace(old, new)
-
-    value = (
-        value.replace("-", " ")
-        .replace(".", " ")
-        .replace(",", " ")
-        .replace("'", " ")
-        .replace('"', " ")
-        .replace("/", " ")
-    )
-
-    return " ".join(value.split())
+    value = unicodedata.normalize("NFKD", str(value or ""))
+    value = "".join(c for c in value if not unicodedata.combining(c)).casefold()
+    import re
+    words = re.findall(r"[a-z0-9]+", value)
+    normalized = " ".join(w for w in words if w not in _CLUB_WORDS)
+    return _TEAM_ALIASES.get(normalized, normalized)
 
 
 def _team_names_match(name_a: str, name_b: str) -> bool:
-    a = _normalize_team_name(name_a)
-    b = _normalize_team_name(name_b)
-
+    a, b = _normalize_team_name(name_a), _normalize_team_name(name_b)
     if not a or not b:
         return False
-
     if a == b:
         return True
-
-    if a in b or b in a:
-        return True
-
-    a_words = set(a.split())
-    b_words = set(b.split())
-
-    if len(a_words) >= 2 and len(b_words) >= 2:
-        common = a_words & b_words
-        if len(common) >= 2:
-            return True
-
-    return False
+    # Do not accept arbitrary substrings or generic shared words.
+    a_words, b_words = set(a.split()), set(b.split())
+    return (len(a_words) >= 2 and len(b_words) >= 2
+            and len(a_words & b_words) >= 2
+            and (len(a_words & b_words) / max(len(a_words), len(b_words))) >= 0.75)
 
 
 class FootballDataClient:
@@ -229,28 +205,36 @@ class FotMobClient:
         away_team: str,
         kickoff_utc: datetime,
     ) -> dict[str, Any] | None:
-        matches = self.get_matches_by_date(kickoff_utc.date().isoformat())
+        # FotMob groups fixtures by calendar day; UTC/local boundaries can differ.
+        # Query neighbouring days only if the kickoff day's search finds no match.
+        if kickoff_utc.tzinfo is None:
+            kickoff_utc = kickoff_utc.replace(tzinfo=timezone.utc)
+        kickoff_utc = kickoff_utc.astimezone(timezone.utc)
         best_match = None
-        best_diff = None
-
-        for match in matches:
-            home_name = (match.get("home") or {}).get("name", "")
-            away_name = (match.get("away") or {}).get("name", "")
-            if not _team_names_match(home_team, home_name) or not _team_names_match(away_team, away_name):
-                continue
-
-            utc_value = (match.get("status") or {}).get("utcTime")
-            if not utc_value:
-                continue
-            try:
-                match_dt = datetime.fromisoformat(utc_value.replace("Z", "+00:00"))
-            except ValueError:
-                continue
-            diff = abs((match_dt - kickoff_utc).total_seconds())
-            if diff <= 3 * 3600 and (best_diff is None or diff < best_diff):
-                best_match = match
-                best_diff = diff
-
+        best_diff = float("inf")
+        for offset in (0, -1, 1):
+            date = (kickoff_utc.date() + timedelta(days=offset)).isoformat()
+            matches = self.get_matches_by_date(date)
+            for match in matches:
+                home_name = (match.get("home") or {}).get("name", "")
+                away_name = (match.get("away") or {}).get("name", "")
+                if not (_team_names_match(home_team, home_name)
+                        and _team_names_match(away_team, away_name)):
+                    continue
+                utc_value = (match.get("status") or {}).get("utcTime")
+                if not utc_value:
+                    continue
+                try:
+                    match_dt = datetime.fromisoformat(utc_value.replace("Z", "+00:00"))
+                    if match_dt.tzinfo is None:
+                        continue
+                    diff = abs((match_dt.astimezone(timezone.utc) - kickoff_utc).total_seconds())
+                except (TypeError, ValueError):
+                    continue
+                if diff <= 90 * 60 and diff < best_diff:
+                    best_match, best_diff = match, diff
+            if best_match is not None:
+                break
         return best_match
 
     @staticmethod
@@ -405,7 +389,7 @@ class APIFootballClient:
             "/fixtures",
             params={
                 "league": API_FOOTBALL_CL_LEAGUE_ID,
-                "season": 2026,
+                "season": int(os.getenv("SEASON_START", "2026")),
                 "date": date,
             },
         )
@@ -420,51 +404,35 @@ class APIFootballClient:
         away_team: str,
         kickoff: datetime,
     ) -> dict[str, Any] | None:
-        fixtures = self.get_fixtures_by_date(kickoff.date().isoformat())
-
+        if kickoff.tzinfo is None:
+            kickoff = kickoff.replace(tzinfo=timezone.utc)
+        kickoff = kickoff.astimezone(timezone.utc)
         best_match = None
-        best_score = -1
-
-        for fixture in fixtures:
-            teams = fixture.get("teams", {})
-            api_home = teams.get("home", {}).get("name", "")
-            api_away = teams.get("away", {}).get("name", "")
-
-            if not api_home or not api_away:
-                continue
-
-            home_match = _team_names_match(home_team, api_home)
-            away_match = _team_names_match(away_team, api_away)
-
-            if not home_match or not away_match:
-                continue
-
-            score = 0
-            if home_match:
-                score += 10
-            if away_match:
-                score += 10
-
-            fixture_date = fixture.get("fixture", {}).get("date")
-            if fixture_date:
+        best_diff = float("inf")
+        for offset in (0, -1, 1):
+            date = (kickoff.date() + timedelta(days=offset)).isoformat()
+            fixtures = self.get_fixtures_by_date(date)
+            for fixture in fixtures:
+                teams = fixture.get("teams") or {}
+                api_home = (teams.get("home") or {}).get("name", "")
+                api_away = (teams.get("away") or {}).get("name", "")
+                if not (_team_names_match(home_team, api_home)
+                        and _team_names_match(away_team, api_away)):
+                    continue
+                fixture_date = (fixture.get("fixture") or {}).get("date")
+                if not fixture_date:
+                    continue
                 try:
-                    fixture_dt = datetime.fromisoformat(
-                        fixture_date.replace("Z", "+00:00")
-                    )
-                    diff_minutes = abs(
-                        (fixture_dt - kickoff).total_seconds() / 60
-                    )
-                    if diff_minutes <= 30:
-                        score += 10
-                    elif diff_minutes <= 120:
-                        score += 5
-                except ValueError:
-                    pass
-
-            if score > best_score:
-                best_score = score
-                best_match = fixture
-
+                    fixture_dt = datetime.fromisoformat(fixture_date.replace("Z", "+00:00"))
+                    if fixture_dt.tzinfo is None:
+                        continue
+                    diff = abs((fixture_dt.astimezone(timezone.utc) - kickoff).total_seconds())
+                except (TypeError, ValueError):
+                    continue
+                if diff <= 120 * 60 and diff < best_diff:
+                    best_match, best_diff = fixture, diff
+            if best_match is not None:
+                break
         return best_match
 
     def get_lineups(self, fixture_id: int) -> list[dict[str, Any]]:
