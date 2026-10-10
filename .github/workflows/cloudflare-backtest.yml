@@ -1,0 +1,49 @@
+name: Cloudflare Clef Backtest
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Maximum completed matches (1-16)'
+        required: true
+        default: '16'
+        type: choice
+        options:
+          - '1'
+          - '4'
+          - '8'
+          - '16'
+      dry_run:
+        description: 'Preview sanitized inputs without calling Cloudflare'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run isolated backtest
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          LIMIT: ${{ inputs.limit }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = 'true' ]; then
+            python3 scripts/cloudflare_backtest.py --limit "$LIMIT" --dry-run
+          else
+            python3 scripts/cloudflare_backtest.py --limit "$LIMIT"
+          fi
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-backtest-results
+          path: cloudflare_backtest_results.json
+          if-no-files-found: warn
