@@ -57,7 +57,8 @@ def build_consensus(votes: list[AIVote], min_successful: int = 2) -> dict[str, A
     score_counts = Counter(str(v.result.get("score", "")).replace(" ", "") for v in successful)
 
     outcome, outcome_votes = _strict_majority(outcome_counts, len(successful))
-    score, score_votes = _strict_majority(score_counts, len(successful))
+    winning_scores = Counter(str(v.result.get("score", "")).replace(" ", "") for v in successful if v.result.get("outcome") == outcome) if outcome else Counter()
+    score, score_votes = _strict_majority(winning_scores, len(successful))
 
     mode = classify_consensus_mode(outcome_counts, score_counts, len(successful), min_successful)
 

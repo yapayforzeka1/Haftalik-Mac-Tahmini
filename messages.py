@@ -4,7 +4,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 FORMAT_VERSION = 4
-MODEL_COUNT = 5
+MODEL_COUNT = 6
 
 
 def label(value, record):
@@ -14,7 +14,7 @@ def label(value, record):
 def short_model(name):
     name = str(name)
     for token, short in (("gemini", "Gemini"), ("mistral", "Mistral"), ("qwen", "Qwen"),
-                         ("cohere", "Cohere"), ("gpt-oss", "GPT-OSS")):
+                         ("cohere", "Cohere"), ("gpt-oss", "GPT-OSS"), ("clef", "Clef")):
         if token in name.lower():
             return short
     return name
@@ -69,7 +69,7 @@ def prediction_tables(record):
     outcome, ov = outcomes.most_common(1)[0]
     score, sv = counts.most_common(1)[0]
     common_outcome = n >= 3 and ov > n / 2
-    common_score = common_outcome and sv > n / 2
+    common_score = common_outcome and sv > n / 2 and all(v["result"]["outcome"] == outcome for v in votes if v["result"]["score"] == score)
     mode = ('INDIVIDUAL' if n < 3 else 'NORMAL' if common_score else
             'OUTCOME_COMMON_SCORE_SPLIT' if common_outcome else 'NO_COMMON')
     table = {"mode": mode, "summary_headers": ["⚽ Maç", "🕒 Saat", "📋 Durum"],

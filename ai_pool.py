@@ -378,6 +378,61 @@ def _cohere(prompt: str) -> str:
     return text
 
 
+def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dict:
+    """Structured Clef decision; never send archived final scores or provider secrets."""
+    import urllib.request
+    import urllib.error
+    token = os.environ.get('CLOUDFLARE_API_TOKEN', '')
+    account = os.environ.get('CLOUDFLARE_ACCOUNT_ID', '')
+    if not token or not account:
+        raise OutputError('MISSING_API_KEY')
+    # Only explicit pre-match inputs. Exclude history, final results, and prior AI votes.
+    state = json.dumps({'home_team': home, 'away_team': away,
+                        'prematch_context': context, 'prematch_research': research},
+                       ensure_ascii=False, default=str)[:14000]
+    scores = {f'{h}_{a}': f'{h}-{a}' for h in range(5) for a in range(5)}
+    payload = {'model': 'clef-omni', 'state': state, 'questions': {
+        'result': {'type': 'choice', 'instructions': 'Predict regulation-time match outcome.',
+                   'criteria': {'1': 'Home win', 'X': 'Draw', '2': 'Away win'}},
+        'score': {'type': 'choice', 'instructions': 'Predict regulation-time exact score.',
+                  'criteria': scores}}}
+    url = f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/@cf/cloudflare/clef-omni'
+    request = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'),
+        headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}, method='POST')
+    with urllib.request.urlopen(request, timeout=25) as response:
+        data = json.load(response)
+    if not data.get('success'):
+        raise OutputError('PROVIDER_UNAVAILABLE')
+    answers = (data.get('result') or {}).get('answers') or {}
+    outcome_key = (answers.get('result') or {}).get('choice')
+    outcome = {'1': 'HOME', 'X': 'DRAW', '2': 'AWAY'}.get(outcome_key)
+    if not outcome:
+        raise OutputError('INVALID_PREDICTION')
+    score_answer = answers.get('score') or {}
+    probabilities = score_answer.get('probabilities') or {}
+    def matches(key):
+        if key not in scores: return False
+        h, a = map(int, key.split('_'))
+        return (h > a if outcome == 'HOME' else h < a if outcome == 'AWAY' else h == a)
+    candidates = [(key, float(value)) for key, value in probabilities.items()
+                  if matches(key) and isinstance(value, (int, float))]
+    if not candidates:
+        choice = score_answer.get('choice')
+        if not matches(choice):
+            raise OutputError('INVALID_PREDICTION')
+        selected = choice
+    else:
+        selected = max(candidates, key=lambda x: x[1])[0]
+    prob = (answers.get('result') or {}).get('probabilities') or {}
+    confidence = round(max(0, min(1, float(prob.get(outcome_key, 0)))) * 100)
+    return {'home_team': home, 'away_team': away, 'outcome': outcome,
+            'score': scores[selected], 'confidence': confidence,
+            'reasons': ['Cloudflare Clef-omni structured pre-match decision'],
+            'short_reason': 'Clef-omni maç öncesi verileri değerlendirdi.',
+            'score_candidates': [scores[k] for k, _ in sorted(candidates, key=lambda x:-x[1])[:3]],
+            'factors_used': ['form']}
+
+
 def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None) -> list[AIVote]:
     prompt = build_prompt(home, away, match_context, research, history)
     providers: list[tuple[str, Callable[[str], str], str]] = [
@@ -387,10 +442,13 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         ("Cohere Command A+", _cohere, "COHERE_API_KEY"),
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
     ]
+    if os.getenv("CLEF_ENABLED", "true").lower() not in {"false", "0", "no", "off"}:
+        providers.append(("Cloudflare Clef-omni", lambda p: _cloudflare_clef(home, away, match_context, research), "CLOUDFLARE_API_TOKEN"))
     votes = {}
     diagnostics = {}
     model_ids = dict(zip((name for name, _, _ in providers),
                         (GEMINI_MODEL, MISTRAL_MODEL, GROQ_QWEN_MODEL, COHERE_MODEL, GROQ_120B_MODEL)))
+    model_ids["Cloudflare Clef-omni"] = "@cf/cloudflare/clef-omni"
     if os.getenv('GROQ_QWEN_MODEL') == 'qwen/qwen3.6-27b':
         print('AI MODEL | Qwen: eski qwen/qwen3.6-27b ayari qwen/qwen3.8-27b olarak guncellendi.', flush=True)
     groq_lock = threading.Lock()
@@ -409,7 +467,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 stage = 'REQUEST'
                 raw = call(prompt)
                 stage = 'PARSE'
-                parsed = _extract_json(raw)
+                parsed = raw if name == "Cloudflare Clef-omni" else _extract_json(raw)
                 stage = 'VALIDATE'
                 result = _normalize(parsed, home, away)
                 return result
