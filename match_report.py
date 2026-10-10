@@ -232,7 +232,9 @@ def _confidence(record: dict) -> int | None:
     vals = []
     for vote in _successful_votes(record):
         try:
-            vals.append(int(vote["result"].get("confidence")))
+            value = vote["result"].get("confidence")
+            if isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0:
+                vals.append(int(value))
         except (TypeError, ValueError):
             pass
     return round(sum(vals)/len(vals)) if vals else None
@@ -310,7 +312,9 @@ def _draw_model_rows(draw, x, y, w, record) -> int:
         outcome = label(result.get("outcome"), record)
         score = str(result.get("score") or "—").replace("-", "–")
         conf = result.get("confidence")
-        conf_txt = f" %{conf}" if isinstance(conf, (int, float)) else ""
+        # Several providers use zero as a fallback when confidence is absent.
+        # Show it as unavailable instead of implying measured 0% confidence.
+        conf_txt = f" %{conf:g}" if isinstance(conf, (int, float)) and not isinstance(conf, bool) and conf > 0 else " —"
         draw.text((x, y), _fit_text(draw, f"{model}: {outcome}", row_f, w-105), font=row_f, fill=TEXT)
         right = f"{score}{conf_txt}"
         rw = _text_width(draw, right, score_f)
@@ -338,7 +342,7 @@ def _draw_data_status(draw, x, y, w, record) -> int:
 
 
 def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
-    card_h = 410 if compact else 440
+    card_h = 520
     x1, x2 = PAD, WIDTH-PAD
     _rounded(draw, (x1, y, x2, y+card_h), 22, fill=PANEL, outline=BORDER, width=2)
 
@@ -375,7 +379,7 @@ def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
     split_y = box_y + 112
     left_x, right_x = x1+22, WIDTH//2+8
     col_w = WIDTH//2 - PAD - 38
-    _draw_model_rows(draw, left_x, split_y, col_w, record)
+    model_rows_bottom = _draw_model_rows(draw, left_x, split_y, col_w, record)
 
     draw.text((right_x, split_y), "KISA ANALİZ", font=_font(12, True), fill=MUTED)
     ay = split_y + 23
@@ -385,7 +389,9 @@ def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
             draw.text((right_x, ay), line, font=af, fill=TEXT); ay += 20
         ay += 3
 
-    data_y = y + card_h - 92
+    # Keep the data badges below all five model rows, with room for wrapping.
+    data_y = y + card_h - 130
+    data_y = max(data_y, model_rows_bottom + 20)
     _draw_data_status(draw, x1+22, data_y, x2-x1-44, record)
     footer = f"{n}/{max(5, len(record.get('ai_votes', [])), int(record.get('total_ai') or 0))} AI yanıtladı"
     draw.text((x2-22-_text_width(draw, footer, _font(11)), y+card_h-27), footer, font=_font(11), fill=MUTED)
@@ -398,7 +404,7 @@ def render_match_group_image(records, test_mode=False):
         raise ValueError("Görsel için en az bir maç gerekir.")
     records = sorted(records, key=lambda r: (kickoff_key(r), r.get("home_team", "")))
     compact = len(records) > 1
-    card_h = 410 if compact else 440
+    card_h = 520
     header_h = 164
     total_h = header_h + len(records) * (card_h + 16) + 34
     canvas = Image.new("RGB", (WIDTH, total_h), BG)
