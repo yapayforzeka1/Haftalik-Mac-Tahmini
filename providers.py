@@ -33,7 +33,6 @@ ACTIVE_MATCH_STATUSES = {
     "SUSPENDED",
     "POSTPONED",
     "CANCELLED",
-    "TIMED",
 }
 
 COMPLETED_MATCH_STATUSES = {
@@ -102,7 +101,7 @@ def competition_matches_ttl(matches, now=None):
             continue
 
         # Unknown match statuses are treated conservatively.
-        if status not in {"SCHEDULED"}:
+        if status not in {"SCHEDULED", "TIMED"}:
             return SHORT_TTL
 
         # Match recently started, or kickoff is within 90 minutes.
