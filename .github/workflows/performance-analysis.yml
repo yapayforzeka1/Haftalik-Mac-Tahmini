@@ -1,0 +1,28 @@
+name: Performans Analizi (Manuel)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Analiz dosyalarini kontrol et
+        run: |
+          test -f performance_analysis.py || { echo 'performance_analysis.py bulunamadi'; exit 1; }
+          test -f match_predictions.json || { echo 'match_predictions.json bulunamadi'; exit 1; }
+
+      - name: Kayitli tahminleri analiz et (AI ve Telegram kullanmaz)
+        run: python performance_analysis.py match_predictions.json
