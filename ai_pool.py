@@ -111,19 +111,23 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
 
 
 def _extract_json(text: str) -> dict[str, Any]:
+    """Accept one complete JSON object, optionally wrapped in a code fence.
+
+    Never repair malformed JSON or accept unrelated trailing content.
+    """
     text = (text or "").strip()
     if not text:
         raise OutputError('EMPTY_RESPONSE')
+    fenced = re.fullmatch(r'```(?:json)?\s*(.*?)\s*```', text, flags=re.S | re.I)
+    if fenced:
+        text = fenced.group(1).strip()
     try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        match = re.fullmatch(r'```(?:json)?\s*(\{.*\})\s*```', text, flags=re.S | re.I)
-        if not match:
-            raise OutputError('INVALID_JSON') from None
-        try:
-            return json.loads(match.group(1))
-        except json.JSONDecodeError:
-            raise OutputError('INVALID_JSON') from None
+        parsed = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        raise OutputError('INVALID_JSON') from None
+    if not isinstance(parsed, dict):
+        raise OutputError('INVALID_JSON')
+    return parsed
 
 
 def _prediction_validation_reason(result: Any) -> str:
@@ -335,20 +339,29 @@ SADECE JSON:
 def _gemini(prompt: str) -> str:
     from google import genai
 
-    def _once() -> str:
-        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"], http_options={"timeout": 25000, "retry_options": {"attempts": 1}})
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt,
-            config={
-                "response_mime_type": "application/json",
-                "temperature": 0.15,
-                "max_output_tokens": 1100,
-            },
-        )
-        return response.text or ""
-
-    return _once()  # The pool owns retries and the shared deadline.
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"],
+                          http_options={"timeout": 25000, "retry_options": {"attempts": 1}})
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=prompt,
+        config={
+            "response_mime_type": "application/json",
+            "temperature": 0.15,
+            "max_output_tokens": 2048,
+        },
+    )
+    candidates = getattr(response, "candidates", None) or []
+    if candidates:
+        finish = getattr(candidates[0], "finish_reason", None)
+        finish_name = str(getattr(finish, "name", finish) or "").upper()
+        if "MAX_TOKENS" in finish_name:
+            raise OutputError('RESPONSE_TRUNCATED')
+        if finish_name and not any(tag in finish_name for tag in ("STOP", "FINISH_REASON_UNSPECIFIED")):
+            raise OutputError('RESPONSE_STOPPED')
+    result = response.text or ""
+    if not result.strip():
+        raise OutputError('EMPTY_RESPONSE')
+    return result
 
 
 def _mistral(prompt: str) -> str:
