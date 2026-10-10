@@ -1,0 +1,32 @@
+name: OpenRouter Ucretsiz API Testi
+
+on:
+  workflow_dispatch:
+    inputs:
+      free_model:
+        description: 'Opsiyonel: OpenRouter katalogundaki :free model kimligi (bos ise otomatik secilir)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openrouter-free-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Yalnizca ucretsiz OpenRouter modeli test et
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_FREE_MODEL: ${{ inputs.free_model }}
+          PYTHONUNBUFFERED: '1'
+        run: python openrouter_diagnostic.py
