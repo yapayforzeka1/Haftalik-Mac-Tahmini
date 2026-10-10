@@ -20,12 +20,12 @@ def test_consensus():
     ]
     result = build_consensus(votes)
     assert result["successful_ai"] == 3
-    assert result["outcome"] == "HOME"
-    assert result["winner_consensus"] is True
-    assert result["outcome_share"] == 67
+    assert result["outcome"] is None
+    assert result["winner_consensus"] is False
+    assert result["outcome_share"] == 0
     assert result["score"] is None
     assert result["score_consensus"] is False
-    assert result["consensus_mode"] == "OUTCOME_COMMON_SCORE_SPLIT"
+    assert result["consensus_mode"] == "NO_COMMON"
     assert result["disagreement"] is True
 
 
@@ -88,13 +88,13 @@ def test_grade_record():
     }
     grade_record(record)
 
-    # Winner has a strict majority (2/3), exact score does not.
-    assert record["consensus"]["consensus_mode"] == "OUTCOME_COMMON_SCORE_SPLIT"
+    # Two matching votes out of three do not meet the fixed-three rule.
+    assert record["consensus"]["consensus_mode"] == "NO_COMMON"
     assert record["consensus"]["score"] is None
-    assert record["consensus_points"] == 2
-    assert record["consensus_winner_applicable"] is True
+    assert record["consensus_points"] is None
+    assert record["consensus_winner_applicable"] is False
     assert record["consensus_score_applicable"] is False
-    assert record["consensus_outcome_correct"] is True
+    assert record["consensus_outcome_correct"] is False
     assert record["consensus_exact_score_correct"] is False
 
     assert record["ai_votes"][0]["points"] == 6

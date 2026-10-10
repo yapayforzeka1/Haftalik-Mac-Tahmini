@@ -72,10 +72,10 @@ def test_two_agreeing_models_remain_individual_in_new_archive():
     grade_record(r)
     assert r['consensus_points'] is None
     assert r['ai_votes'][0]['points']==6
-    # Legacy records keep their originally applicable two-model threshold.
+    # Fixed three-vote rule applies even when older metadata is absent.
     r.pop('consensus_min_successful');r['consensus'].pop('min_successful')
     grade_record(r)
-    assert r['consensus_points']==6
+    assert r['consensus_points'] is None
 
 
 def test_reason_saved_without_losing_full_explanation():

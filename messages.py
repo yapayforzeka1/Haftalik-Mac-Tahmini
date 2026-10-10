@@ -68,8 +68,8 @@ def prediction_tables(record):
     outcomes = Counter(v['result']['outcome'] for v in votes)
     outcome, ov = outcomes.most_common(1)[0]
     score, sv = counts.most_common(1)[0]
-    common_outcome = n >= 3 and ov > n / 2
-    common_score = common_outcome and sv > n / 2 and all(v["result"]["outcome"] == outcome for v in votes if v["result"]["score"] == score)
+    common_outcome = ov >= 3
+    common_score = common_outcome and sv >= 3 and all(v["result"]["outcome"] == outcome for v in votes if v["result"]["score"] == score)
     mode = ('INDIVIDUAL' if n < 3 else 'NORMAL' if common_score else
             'OUTCOME_COMMON_SCORE_SPLIT' if common_outcome else 'NO_COMMON')
     table = {"mode": mode, "summary_headers": ["⚽ Maç", "🕒 Saat", "📋 Durum"],

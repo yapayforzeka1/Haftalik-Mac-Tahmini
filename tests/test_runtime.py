@@ -76,7 +76,7 @@ def test_regular_time_only():
 
 def test_single_model_and_denominator():
     r = record()
-    assert r['consensus']['outcome_share'] == 67
+    assert r['consensus']['outcome_share'] == 0
     assert r['consensus']['successful_ai'] == 3
     r['ai_votes'] = r['ai_votes'][:1]
     r['consensus'] = build_consensus([AIVote(**r['ai_votes'][0])])
@@ -99,7 +99,7 @@ def test_split_message_distribution():
     r = record()
     r['ai_votes'][1] = vote('b','3-1')
     r['consensus'] = build_consensus([AIVote(**v) for v in r['ai_votes']])
-    assert 'AI Modelleri' in prediction_message(r)
+    assert 'Ortak tahmin' in prediction_message(r) and 'Yok' in prediction_message(r)
     assert '2–1 | 1/3' in prediction_message(r)
 
 
@@ -172,7 +172,7 @@ def test_migration_preserves_original_grade_and_no_resend():
     match={'id':1,'status':'FINISHED','score':{'duration':'REGULAR','fullTime':{'home':2,'away':1}}}
     refresh_results({'1':r},[match])
     assert r['legacy_evaluation']['consensus_points']==5
-    assert r['consensus_points']==6
+    assert r['consensus_points'] is None
     assert r['result_sent'] is True
     assert r['post_match_analysis']['models'][0]['goal_error']==0
 

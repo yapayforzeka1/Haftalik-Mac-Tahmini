@@ -222,9 +222,9 @@ def _consensus(record: dict):
     scores = Counter(v["result"].get("score") for v in votes)
     outcome, ov = outcomes.most_common(1)[0]
     score, sv = scores.most_common(1)[0]
-    enough = len(votes) >= int(record.get("consensus_min_successful") or 3)
-    winner = label(outcome, record) if enough and ov > len(votes)/2 else ("Yetersiz AI katılımı" if not enough else "Ortak karar yok")
-    common_score = str(score).replace("-", "–") if enough and sv > len(votes)/2 else "—"
+    enough = len(votes) >= 3
+    winner = label(outcome, record) if enough and ov >= 3 else ("Yetersiz AI katılımı" if not enough else "Ortak karar yok")
+    common_score = str(score).replace("-", "–") if enough and ov >= 3 and sv >= 3 and all(v["result"].get("outcome") == outcome for v in votes if v["result"].get("score") == score) else "—"
     return winner, common_score, ov, sv
 
 

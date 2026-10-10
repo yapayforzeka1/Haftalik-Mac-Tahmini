@@ -19,13 +19,13 @@ def _strict_majority(counts: Counter[str], total: int) -> tuple[str | None, int]
         return None, 0
     value, count = counts.most_common(1)[0]
     top_count = sum(1 for item in counts.values() if item == count)
-    if top_count != 1 or count <= total / 2:
+    if top_count != 1 or count < 3:
         return None, 0
     return value, count
 
 
-def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[str], successful_count: int, min_successful: int = 2) -> str:
-    if successful_count < min_successful:
+def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[str], successful_count: int, min_successful: int = 3) -> str:
+    if successful_count < max(3, min_successful):
         return "NO_COMMON"
 
     outcome, _ = _strict_majority(outcome_counts, successful_count)
@@ -39,16 +39,17 @@ def classify_consensus_mode(outcome_counts: Counter[str], score_counts: Counter[
     return "NORMAL"
 
 
-def build_consensus(votes: list[AIVote], min_successful: int = 2) -> dict[str, Any]:
+def build_consensus(votes: list[AIVote], min_successful: int = 3) -> dict[str, Any]:
     """
     Consensus is deliberately stricter than a simple plurality.
 
-    - Winner/outcome consensus exists only with a unique strict majority.
-    - Exact-score consensus exists only with a unique strict majority.
+    - Winner/outcome consensus requires at least 3 identical votes.
+    - Exact-score consensus requires at least 3 identical consistent votes.
     - If the winner has consensus but the score does not, score is NOT promoted
       to consensus; it remains only as top_score/top_score_votes for information.
     - If there is no winner consensus, outcome and score are both left unset.
     """
+    min_successful = max(3, min_successful)
     successful = [v for v in votes if v.success and v.result]
     if not successful:
         raise RuntimeError("Hiçbir AI başarılı sonuç üretmedi.")
