@@ -31,15 +31,12 @@ ACTIVE_MATCH_STATUSES = {
     "PAUSED",
     "LIVE",
     "SUSPENDED",
-    "POSTPONED",
-    "CANCELLED",
 }
 
 COMPLETED_MATCH_STATUSES = {
     "FINISHED",
     "AWARDED",
 }
-
 
 def competition_matches_ttl(matches, now=None):
     """
@@ -93,6 +90,11 @@ def competition_matches_ttl(matches, now=None):
             return SHORT_TTL
 
         hours_until = (kickoff - now).total_seconds() / 3600
+
+        if status in {"POSTPONED", "CANCELLED"}:
+            if hours_until >= -24:
+                return SHORT_TTL
+            continue
 
         if status in COMPLETED_MATCH_STATUSES:
             # Recently completed fixtures may still receive corrections.
