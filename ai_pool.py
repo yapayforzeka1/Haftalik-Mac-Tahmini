@@ -91,7 +91,7 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
             return fn()
         except Exception as exc:
             last_error = exc
-            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED'}
+            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION'}
             if (not _is_rate_limit_error(exc) and not output_retry) or attempt >= max_retries - 1:
                 raise
             if output_retry and attempt >= 1:
@@ -124,6 +124,31 @@ def _extract_json(text: str) -> dict[str, Any]:
             return json.loads(match.group(1))
         except json.JSONDecodeError:
             raise OutputError('INVALID_JSON') from None
+
+
+def _prediction_validation_reason(result: Any) -> str:
+    """Safe, fixed labels only: never print raw model output or match context."""
+    if not isinstance(result, dict):
+        return 'NOT_OBJECT'
+    outcome = str(result.get('outcome', '')).upper().strip()
+    if outcome not in {'HOME', 'DRAW', 'AWAY'}:
+        return 'INVALID_OUTCOME'
+    score = str(result.get('score', '')).strip()
+    match = re.fullmatch(r'(\d+)\s*-\s*(\d+)', score)
+    if not match:
+        return 'INVALID_SCORE_FORMAT'
+    home, away = map(int, match.groups())
+    if (outcome == 'HOME' and home <= away or
+        outcome == 'AWAY' and home >= away or
+        outcome == 'DRAW' and home != away):
+        return 'OUTCOME_SCORE_CONFLICT'
+    try:
+        confidence = int(result.get('confidence', 0))
+    except (ValueError, TypeError, OverflowError):
+        return 'INVALID_CONFIDENCE'
+    if not 0 <= confidence <= 100:
+        return 'INVALID_CONFIDENCE'
+    return 'OTHER_VALIDATION_ERROR'
 
 
 def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
@@ -465,14 +490,32 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
                 return AIVote(name, False, error="TIME_BUDGET")
             stage = 'REQUEST'
+            validation_attempts = 0
             def request_and_validate():
-                nonlocal stage
+                nonlocal stage, validation_attempts
                 stage = 'REQUEST'
-                raw = call(prompt)
+                validation_attempts += 1
+                request_prompt = prompt
+                if name == 'Groq GPT-OSS 120B' and validation_attempts > 1:
+                    request_prompt += ('\nZORUNLU SON KONTROL: outcome HOME/DRAW/AWAY olmali; '
+                                       'score ev-deplasman sirasinda 0-0 gibi yazilmali; '
+                                       'HOME icin ev golleri fazla, AWAY icin deplasman fazla, '
+                                       'DRAW icin esit olmali; confidence 0-100 tam sayi olmali. '
+                                       'Yalnizca gecerli JSON dondur.')
+                raw = call(request_prompt)
                 stage = 'PARSE'
                 parsed = raw if name == "Cloudflare Clef-omni" else _extract_json(raw)
                 stage = 'VALIDATE'
-                result = _normalize(parsed, home, away)
+                try:
+                    result = _normalize(parsed, home, away)
+                except (ValueError, TypeError, OverflowError) as exc:
+                    # Never rewrite a contradictory outcome/score or fabricate a vote.
+                    # Retry GPT-OSS once; the second generation must pass strict validation.
+                    if name == 'Groq GPT-OSS 120B':
+                        reason = _prediction_validation_reason(parsed)
+                        print(f'AI VALIDATION | {name} | neden={reason}', flush=True)
+                        raise OutputError('GPT_OSS_INVALID_PREDICTION') from None
+                    raise
                 return result
             try:
                 result = _call_with_retry(name, request_and_validate, deadline=deadline)
