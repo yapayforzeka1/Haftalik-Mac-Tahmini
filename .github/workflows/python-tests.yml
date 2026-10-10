@@ -41,4 +41,4 @@ jobs:
           FOOTBALL_DATA_API_KEY: ""
           API_FOOTBALL_KEY: ""
         run: |
-          python -m pytest tests/test_fotmob_matching.py -v
+          python -m pytest tests/ -v
