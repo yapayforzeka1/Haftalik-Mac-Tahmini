@@ -1,0 +1,107 @@
+
+name: Cloudflare Clef Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Test Clef-omni
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import json
+          import urllib.request
+          import urllib.error
+
+          token = os.environ.get("CF_TOKEN")
+          account = os.environ.get("CF_ACCOUNT")
+
+          if not token or not account:
+              raise SystemExit("Missing Cloudflare credentials")
+
+          url = (
+              "https://api.cloudflare.com/client/v4/accounts/"
+              + account + "/ai/run/@cf/cloudflare/clef-omni"
+          )
+
+          payload = {
+              "model": "clef-omni",
+              "state": (
+                  "Hypothetical football match. "
+                  "Home team: 5 wins in last 6 matches, "
+                  "12 goals scored, 4 conceded. "
+                  "Away team: 2 wins in last 6 matches, "
+                  "6 goals scored, 10 conceded. "
+                  "This is synthetic test data, not a real fixture."
+              ),
+              "questions": {
+                  "result": {
+                      "type": "choice",
+                      "instructions": "Predict the match result.",
+                      "criteria": {
+                          "1": "Home team wins",
+                          "X": "Draw",
+                          "2": "Away team wins"
+                      }
+                  },
+                  "score": {
+                      "type": "choice",
+                      "instructions": "Predict the exact final score.",
+                      "criteria": {
+                          "0_0": "0-0",
+                          "1_0": "1-0",
+                          "1_1": "1-1",
+                          "2_0": "2-0",
+                          "2_1": "2-1",
+                          "2_2": "2-2",
+                          "3_0": "3-0",
+                          "3_1": "3-1",
+                          "0_1": "0-1",
+                          "1_2": "1-2",
+                          "0_2": "0-2",
+                          "2_3": "2-3"
+                      }
+                  }
+              }
+          }
+
+          data = json.dumps(payload).encode("utf-8")
+          req = urllib.request.Request(
+              url,
+              data=data,
+              headers={
+                  "Authorization": "Bearer " + token,
+                  "Content-Type": "application/json"
+              },
+              method="POST"
+          )
+
+          try:
+              with urllib.request.urlopen(req, timeout=45) as response:
+                  result = json.load(response)
+                  print("HTTP:", response.status)
+                  print(json.dumps(result, indent=2))
+                  if not result.get("success", True):
+                      raise SystemExit("API reported failure")
+                  body = result.get("result", result)
+                  if not isinstance(body, dict) or not isinstance(
+                      body.get("answers"), dict
+                  ):
+                      raise SystemExit("Missing structured answers")
+                  print("TEST PASSED")
+          except urllib.error.HTTPError as error:
+              print("HTTP ERROR:", error.code)
+              print(error.read().decode("utf-8")[:2000])
+              raise SystemExit(1)
+          PY
