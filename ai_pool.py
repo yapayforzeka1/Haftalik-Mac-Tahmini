@@ -437,7 +437,6 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
     prompt = build_prompt(home, away, match_context, research, history)
     providers: list[tuple[str, Callable[[str], str], str]] = [
         ("Gemini 3.6 Flash", _gemini, "GEMINI_API_KEY"),
-        ("Mistral Small Latest", _mistral, "MISTRAL_API_KEY"),
         (QWEN_LABEL, lambda p: _groq(p, GROQ_QWEN_MODEL), "GROQ_API_KEY"),
         ("Cohere Command A+", _cohere, "COHERE_API_KEY"),
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
@@ -446,9 +445,13 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         providers.append(("Cloudflare Clef-omni", lambda p: _cloudflare_clef(home, away, match_context, research), "CLOUDFLARE_API_TOKEN"))
     votes = {}
     diagnostics = {}
-    model_ids = dict(zip((name for name, _, _ in providers),
-                        (GEMINI_MODEL, MISTRAL_MODEL, GROQ_QWEN_MODEL, COHERE_MODEL, GROQ_120B_MODEL)))
-    model_ids["Cloudflare Clef-omni"] = "@cf/cloudflare/clef-omni"
+    model_ids = {
+        "Gemini 3.6 Flash": GEMINI_MODEL,
+        QWEN_LABEL: GROQ_QWEN_MODEL,
+        "Cohere Command A+": COHERE_MODEL,
+        "Groq GPT-OSS 120B": GROQ_120B_MODEL,
+        "Cloudflare Clef-omni": "@cf/cloudflare/clef-omni",
+    }
     if os.getenv('GROQ_QWEN_MODEL') == 'qwen/qwen3.6-27b':
         print('AI MODEL | Qwen: eski qwen/qwen3.6-27b ayari qwen/qwen3.8-27b olarak guncellendi.', flush=True)
     groq_lock = threading.Lock()

@@ -116,27 +116,28 @@ def test_cohere_distinguishes_truncation_and_empty(monkeypatch,finish,content,co
 
 
 def test_partial_success_still_retries_failed_providers_and_saves_once(monkeypatch,clock):
-    for env in ('GEMINI_API_KEY','MISTRAL_API_KEY','GROQ_API_KEY','COHERE_API_KEY'):
+    for env in ('GEMINI_API_KEY','GROQ_API_KEY','COHERE_API_KEY','CLOUDFLARE_API_TOKEN'):
         monkeypatch.setenv(env,'private-key')
+    monkeypatch.setenv('CLOUDFLARE_ACCOUNT_ID','test-account')
     good='{"outcome":"HOME","score":"1-0","confidence":65}'
-    calls={'gemini':0,'mistral':0,'cohere':0}
+    calls={'gemini':0,'clef':0,'cohere':0}
     def gemini(_):
         calls['gemini']+=1
         if calls['gemini']==1:raise HTTPError(503)
         return good
-    def mistral(_):
-        calls['mistral']+=1
-        if calls['mistral']==1:raise HTTPError(429)
-        return good
+    def clef(*_):
+        calls['clef']+=1
+        if calls['clef']==1:raise HTTPError(429)
+        return {'outcome':'HOME','score':'1-0','confidence':65}
     def cohere(_):
         calls['cohere']+=1
         return 'not JSON' if calls['cohere']==1 else good
-    monkeypatch.setattr(pool,'_gemini',gemini);monkeypatch.setattr(pool,'_mistral',mistral)
+    monkeypatch.setattr(pool,'_gemini',gemini);monkeypatch.setattr(pool,'_cloudflare_clef',clef)
     monkeypatch.setattr(pool,'_cohere',cohere);monkeypatch.setattr(pool,'_groq',lambda p,m:good)
     saved=[]
     votes=pool.run_ai_pool('h','a',{}, {}, {},on_vote=saved.append,deadline=500)
     assert all(v.success for v in votes) and len(saved)==5
-    assert calls=={'gemini':2,'mistral':2,'cohere':2}
+    assert calls=={'gemini':2,'clef':2,'cohere':2}
     assert pool.QWEN_LABEL in [v.model for v in votes]
     assert next(v for v in votes if v.model==pool.QWEN_LABEL).result['model_id']==pool.GROQ_QWEN_MODEL
 

@@ -406,7 +406,7 @@ def test_pool_resumes_cached_votes_without_calling_provider(monkeypatch):
     calls=[]
     monkeypatch.setenv('GEMINI_API_KEY','test')
     monkeypatch.setattr(ai_pool,'_gemini',lambda p:calls.append('gemini') or '{"outcome":"HOME","score":"2-1","confidence":70}')
-    for env in ('MISTRAL_API_KEY','GROQ_API_KEY','COHERE_API_KEY'):
+    for env in ('GROQ_API_KEY','COHERE_API_KEY','CLOUDFLARE_API_TOKEN'):
         monkeypatch.delenv(env,raising=False)
     saved=[]
     votes=ai_pool.run_ai_pool('h','a',{}, {}, {},on_vote=saved.append)

@@ -4,7 +4,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 FORMAT_VERSION = 4
-MODEL_COUNT = 6
+MODEL_COUNT = 5
 
 
 def label(value, record):
