@@ -517,5 +517,11 @@
       "utcDate": "2027-01-27T20:00:00Z"
     }
   },
-  "last_summary_hash": "604d9b879ba260dccb0dae0543422fa2e1b9a10b6c51c24f42a576a3997a1143"
+  "last_summary_hash": "604d9b879ba260dccb0dae0543422fa2e1b9a10b6c51c24f42a576a3997a1143",
+  "policy_application": {
+    "revision": 0,
+    "policy": "balanced_v1",
+    "applied_at": "2026-10-13T08:10:43.472438+00:00",
+    "status": "APPLIED_TO_FUTURE_PREDICTIONS"
+  }
 }
