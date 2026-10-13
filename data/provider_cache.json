@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1791912656.186217,
+    "at": 1791912953.9085143,
     "data": {
       "filters": {
         "season": 2026
@@ -1234,7 +1234,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T17:30:01Z",
+          "lastUpdated": "2026-10-13T17:35:21Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -1300,7 +1300,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T17:30:01Z",
+          "lastUpdated": "2026-10-13T17:35:21Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
