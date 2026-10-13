@@ -168,3 +168,50 @@ def test_invalid_cache_entry_fetches_fresh_data(monkeypatch):
 
     get.assert_called_once()
     saved.assert_called_once()
+
+
+def test_fresh_response_survives_cleanup_and_is_reused(monkeypatch):
+    """A newly cached response must not be deleted by a stale clock value."""
+    monkeypatch.setenv("FOOTBALL_DATA_API_KEY", "offline-test-key")
+    key = digest([PATH, PARAMS])
+    cache = {}
+    saved = Mock()
+    client = CachedFootball(cache, saved)
+    get = mock_network(monkeypatch, [fixture(48)])
+
+    # The original bug used the first time (1000) to compare against the
+    # newly written entry (1001), yielding a negative age and deleting it.
+    clock = iter([NOW_TS, NOW_TS + 1, NOW_TS + 1])
+    monkeypatch.setattr(providers.time, "time", lambda: next(clock))
+
+    first = client._get(PATH, PARAMS)
+
+    assert cache[key]["data"] == first
+    assert cache[key]["at"] == NOW_TS + 1
+    get.assert_called_once()
+    saved.assert_called_once()
+
+    # A subsequent invocation must reuse the just-saved snapshot.
+    block_network(monkeypatch)
+    monkeypatch.setattr(providers.time, "time", lambda: NOW_TS + 30)
+    assert client._get(PATH, PARAMS) == first
+    saved.assert_called_once()
+
+
+def test_cleanup_removes_expired_entries_but_keeps_new_entry(monkeypatch):
+    monkeypatch.setenv("FOOTBALL_DATA_API_KEY", "offline-test-key")
+    key = digest([PATH, PARAMS])
+    cache = {
+        "expired": {"at": NOW_TS - 90000, "data": {}},
+        "invalid": {"at": "invalid", "data": {}},
+    }
+    saved = Mock()
+    client = CachedFootball(cache, saved)
+    mock_network(monkeypatch, [fixture(48)])
+    clock = iter([NOW_TS, NOW_TS + 1, NOW_TS + 1])
+    monkeypatch.setattr(providers.time, "time", lambda: next(clock))
+
+    client._get(PATH, PARAMS)
+
+    assert set(cache) == {key}
+    saved.assert_called_once()

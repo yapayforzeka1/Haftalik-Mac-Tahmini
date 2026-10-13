@@ -258,6 +258,10 @@ class CachedFootball(FootballDataClient):
             "data": data,
         }
 
+        # Use a fresh timestamp: the response was cached after the initial
+        # lookup time, so comparing against the old timestamp would make the
+        # newly inserted entry appear to be from the future and delete it.
+        cleanup_now = time.time()
         # Remove obsolete or invalid snapshots.
         for old in list(self.cache):
             old_entry = self.cache.get(old)
@@ -266,7 +270,7 @@ class CachedFootball(FootballDataClient):
                 del self.cache[old]
                 continue
 
-            age = now - old_entry["at"]
+            age = cleanup_now - old_entry["at"]
 
             if age > CACHE_MAX_AGE or age < 0:
                 del self.cache[old]
