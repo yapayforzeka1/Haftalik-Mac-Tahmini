@@ -11574,7 +11574,7 @@
         "status": "NOT_ANNOUNCED"
       }
     },
-    "xi_window": "early"
+    "xi_window": "middle"
   },
   "575342": {
     "schema_version": 3,
@@ -11602,6 +11602,6 @@
         "status": "NOT_ANNOUNCED"
       }
     },
-    "xi_window": "early"
+    "xi_window": "middle"
   }
 }
