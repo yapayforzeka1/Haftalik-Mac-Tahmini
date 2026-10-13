@@ -19,7 +19,7 @@ from PIL import Image, ImageDraw, ImageFont
 from messages import kickoff_text, label, prediction_tables, short_model, short_reason
 
 REPORT_DIR = Path("reports")
-WIDTH = 900
+WIDTH = 1480
 PAD = 34
 BG = "#07111f"
 PANEL = "#0d1b2d"
@@ -281,144 +281,251 @@ def _analysis_lines(record: dict) -> list[str]:
     return lines or ["Model gerekçesi bulunmuyor."]
 
 
+# Image-only ordering: do not mutate ai_votes or archived consensus.
+# Valid positive confidence values are subjective model assessments, NOT win odds.
+def _vote_confidence(vote: dict) -> float | None:
+    if not vote.get("success") or not isinstance(vote.get("result"), dict):
+        return None
+    value = vote["result"].get("confidence")
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    # Providers sometimes use 0 as an absent-value fallback.
+    from math import isfinite
+    if not isfinite(value) or not 0 < value <= 100:
+        return None
+    return float(value)
+
+
+def _ordered_ai_votes(record: dict) -> list[dict]:
+    """Descending confidence; missing confidences and failed providers last.
+
+    Original order is retained for ties and unavailable confidences. This is a
+    presentation-only projection and NEVER changes stored votes or scoring.
+    """
+    votes = list(record.get("ai_votes") or [])
+    return sorted(votes, key=lambda v: (
+        0 if _vote_confidence(v) is not None else 1,
+        -(_vote_confidence(v) or 0),
+    ))
+
+
+# Same seven-match single-table composition as the approved visual mockup.
+# Match columns, consensus, exact score, five AI score/confidence tiles, notes.
+TABLE_X = (20, 340, 525, 675, 1185, 1460)
+ROW_HEIGHT = 181
+ROW_GAP = 8
+HEADER_HEIGHT = 225
+TABLE_HEADER_H = 58
+FOOTER_H = 108
+
+
+def _draw_center(draw, xy, text, font, fill):
+    x, y = xy
+    draw.text((x - _text_width(draw, text, font) / 2, y), text, font=font, fill=fill)
+
+
+def _display_team(name: str) -> str:
+    # Familiar short names are *visual aliases only*, never persisted to match data.
+    aliases = {
+        "FC Internazionale Milano": "Inter Milano",
+        "Club Atlético de Madrid": "Atlético Madrid",
+        "Manchester United FC": "Man. United",
+        "FC Bayern München": "Bayern Münih",
+        "Galatasaray SK": "Galatasaray",
+        "FC Barcelona": "Barcelona",
+        "Arsenal FC": "Arsenal",
+        "Villarreal CF": "Villarreal",
+        "SSC Napoli": "Napoli",
+        "Lille OSC": "Lille",
+        "Club Brugge KV": "Club Brugge",
+        "Viking FK": "Viking FK",
+    }
+    return aliases.get(name, name)
+
+
 def _draw_header(canvas, draw, records, test_mode: bool) -> int:
-    h = 154
-    _rounded(draw, (PAD, 18, WIDTH-PAD, h-4), 22, fill=PANEL, outline=BORDER, width=2)
-    _draw_seal(draw, PAD+70, 83, 56)
-    _draw_starball(draw, PAD+157, 58, 23)
-    title_f, sub_f = _font(27, True), _font(15)
-    title = _competition_title(records[0])
-    draw.text((PAD+195, 38), title, font=title_f, fill=TEXT)
-    dt = _kickoff(records[0]).astimezone(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y")
-    sub = f"MAÇ TAHMİNLERİ  •  {dt}  •  {len(records)} MAÇ" if len(records) > 1 else f"MAÇ TAHMİNİ  •  {dt}"
-    draw.text((PAD+195, 80), sub, font=sub_f, fill=MUTED)
-    motto = "Disiplinli analiz, daha güçlü yarınlar."
-    mf = _font(13, True)
-    mw = _text_width(draw, motto, mf)
-    draw.text((WIDTH-PAD-24-mw, 56), motto, font=mf, fill=GOLD)
+    left, right = TABLE_X[0], TABLE_X[-1]
+    _rounded(draw, (left, 12, right, HEADER_HEIGHT - 13), 23, PANEL, BORDER, 2)
+    _draw_seal(draw, left + 85, 104, 70)
+    _draw_starball(draw, left + 218, 88, 39)
+
+    title_font = _font(44, True)
+    _draw_center(draw, (770, 34), "ŞAMPİYONLAR LİGİ", title_font, TEXT)
+    _draw_center(draw, (770, 91), "MAÇ TAHMİNLERİ", _font(34, True), TEXT)
+    local_date = _kickoff(records[0]).astimezone(ZoneInfo("Europe/Istanbul")).strftime("%d.%m.%Y")
+    _draw_center(draw, (770, 145), f"{local_date}   •   {len(records)} MAÇ", _font(22, True), BLUE)
+    draw.text((1214, 56), "Disiplinli analiz,", font=_font(19, True), fill=GOLD)
+    draw.text((1214, 86), "daha güçlü yarınlar.", font=_font(18, True), fill=GOLD)
     if test_mode:
-        tf = _font(13, True); t="TEST"
-        _rounded(draw, (WIDTH-PAD-85, 90, WIDTH-PAD-24, 116), 12, fill="#33270d", outline=WARN)
-        draw.text((WIDTH-PAD-74, 95), t, font=tf, fill=WARN)
-    return h + 10
+        _rounded(draw, (1298, 142, 1412, 176), 12, "#33270d", WARN, 2)
+        _draw_center(draw, (1355, 148), "TEST", _font(19, True), WARN)
+    return HEADER_HEIGHT
 
 
-def _draw_model_rows(draw, x, y, w, record) -> int:
+def _draw_table_header(draw, y):
+    left, right = TABLE_X[0], TABLE_X[-1]
+    _rounded(draw, (left, y, right, y + TABLE_HEADER_H), 8, PANEL, BORDER)
+    columns = [
+        ("MAÇ", None),
+        ("ORTAK KARAR", "(1-X-2)"),
+        ("TAHMİN SKORU", None),
+        ("AI TAHMİNLERİ", "SKOR / GÜVEN %  •  YÜKSEKTEN DÜŞÜĞE"),
+        ("KISA ANALİZ", None),
+    ]
+    for i, (title, subtitle) in enumerate(columns):
+        center = (TABLE_X[i] + TABLE_X[i + 1]) / 2
+        if subtitle:
+            _draw_center(draw, (center, y + 8), title, _font(17, True), TEXT)
+            _draw_center(draw, (center, y + 30), subtitle, _font(13, True), MUTED)
+        else:
+            _draw_center(draw, (center, y + 19), title, _font(15, True), TEXT)
+        if i:
+            draw.line((TABLE_X[i], y + 9, TABLE_X[i], y + TABLE_HEADER_H - 9), fill=BORDER, width=2)
+    return y + TABLE_HEADER_H + 6
+
+
+def _outcome_color(outcome):
+    return {"HOME": GREEN, "AWAY": RED, "DRAW": WARN}.get(outcome, MUTED)
+
+
+def _draw_match_cell(canvas, draw, y, record):
+    x0, x1 = TABLE_X[0], TABLE_X[1]
+    # Logos are source URLs already archived with the match; fall back to initials.
+    sz = 64
+    home = _crest(record, "home", sz)
+    away = _crest(record, "away", sz)
+    canvas.paste(home, (x0 + 12, y + 30), home)
+    canvas.paste(away, (x1 - sz - 12, y + 30), away)
+    home_name = _display_team(record.get("home_team", "—"))
+    away_name = _display_team(record.get("away_team", "—"))
+    fname = _font(18, True)
+    name_space = (x1 - sz - 22) - (x0 + sz + 22)
+    center = x0 + (x1 - x0) / 2
+    _draw_center(draw, (center, y + 41), _fit_text(draw, home_name, fname, name_space), fname, TEXT)
+    _draw_center(draw, (center, y + 75), _fit_text(draw, away_name, fname, name_space), fname, TEXT)
+    dt = _kickoff(record).astimezone(ZoneInfo("Europe/Istanbul"))
+    _draw_center(draw, (center, y + 133), dt.strftime("%d.%m.%Y  %H:%M"), _font(16), MUTED)
+
+
+def _draw_consensus_cell(draw, y, record):
+    x0, x1 = TABLE_X[1], TABLE_X[2]
     votes = _successful_votes(record)
-    title_f, row_f, score_f = _font(12, True), _font(13), _font(14, True)
-    draw.text((x, y), "AI TAHMİNLERİ", font=title_f, fill=MUTED); y += 22
-    if not votes:
-        draw.text((x, y), "AI yanıtı yok", font=row_f, fill=RED)
-        return y + 28
-    for vote in votes[:5]:
-        result = vote["result"]
-        model = short_model(vote.get("model", "AI"))
-        outcome = label(result.get("outcome"), record)
-        score = str(result.get("score") or "—").replace("-", "–")
-        conf = result.get("confidence")
-        # Several providers use zero as a fallback when confidence is absent.
-        # Show it as unavailable instead of implying measured 0% confidence.
-        conf_txt = f" %{conf:g}" if isinstance(conf, (int, float)) and not isinstance(conf, bool) and conf > 0 else " —"
-        draw.text((x, y), _fit_text(draw, f"{model}: {outcome}", row_f, w-105), font=row_f, fill=TEXT)
-        right = f"{score}{conf_txt}"
-        rw = _text_width(draw, right, score_f)
-        draw.text((x+w-rw, y), right, font=score_f, fill=BLUE)
-        y += 25
-    return y
+    n = len(votes)
+    outcomes = Counter(v.get("result", {}).get("outcome") for v in votes)
+    outcome, num = outcomes.most_common(1)[0] if outcomes else (None, 0)
+    valid = n >= 3 and num >= 3
+    symbol = {"HOME": "1", "AWAY": "2", "DRAW": "X"}.get(outcome) if valid else "—"
+    color = _outcome_color(outcome) if valid else MUTED
+    cx = (x0 + x1) / 2
+    _rounded(draw, (x0 + 15, y + 13, x1 - 15, y + 128), 14, CARD_2, color if valid else BORDER, 2)
+    _draw_center(draw, (cx, y + 18), symbol, _font(45, True), color)
+    name = (_display_team(label(outcome, record)) if valid else
+            "Yetersiz AI" if n < 3 else "Ortak karar yok")
+    namef = _font(16, True)
+    _draw_center(draw, (cx, y + 81), _fit_text(draw, name, namef, x1 - x0 - 38), namef, color)
+    _rounded(draw, (cx - 53, y + 137, cx + 53, y + 166), 10, BLUE_DIM)
+    _draw_center(draw, (cx, y + 140), f"{num}/{n} OY" if valid else f"{n}/{max(5, len(record.get('ai_votes') or []), int(record.get('total_ai') or 0))} AI", _font(16, True), BLUE)
 
 
-def _draw_data_status(draw, x, y, w, record) -> int:
-    draw.text((x, y), "VERİ DURUMU", font=_font(12, True), fill=MUTED); y += 23
-    f = _font(12, True)
-    cx = x
-    for name, state in _data_status(record):
-        if state is None:
-            continue
-        text = ("✓ " if state else "× ") + name
-        color = GREEN if state else WARN
-        pill_w = _text_width(draw, text, f) + 20
-        if cx + pill_w > x + w:
-            cx = x; y += 30
-        _rounded(draw, (cx, y, cx+pill_w, y+24), 12, fill=CARD_2, outline=color)
-        draw.text((cx+10, y+4), text, font=f, fill=color)
-        cx += pill_w + 8
-    return y + 31
+def _draw_score_cell(draw, y, record):
+    x0, x1 = TABLE_X[2], TABLE_X[3]
+    _winner, score, _ov, _sv = _consensus(record)
+    # No made-up "probability" is shown beside the consensus score.
+    cx = (x0 + x1) / 2
+    _rounded(draw, (x0 + 9, y + 13, x1 - 9, y + 166), 12, CARD_2, BORDER)
+    _draw_center(draw, (cx, y + 50), score.replace("–", "-"), _font(38, True), TEXT if score != "—" else GOLD)
+    if score == "—":
+        _draw_center(draw, (cx, y + 111), "Kesin skor yok", _font(13), MUTED)
+
+
+def _draw_ai_cell(draw, y, record):
+    x0, x1 = TABLE_X[3], TABLE_X[4]
+    votes = _ordered_ai_votes(record)
+    count = min(max(5, len(votes)), 5)
+    tile_w = (x1 - x0 - 20) / count
+    for i in range(count):
+        bx = x0 + 10 + tile_w * i
+        end = bx + tile_w - 5
+        vote = votes[i] if i < len(votes) else None
+        _rounded(draw, (int(bx), y + 14, int(end), y + 166), 11, CARD_2, BORDER)
+        model = short_model(vote.get("model", "AI")) if vote else "—"
+        model_font = _font(15, True)
+        _draw_center(draw, ((bx + end) / 2, y + 28), _fit_text(draw, model, model_font, tile_w - 10), model_font, TEXT)
+        if vote and vote.get("success") and isinstance(vote.get("result"), dict):
+            result = vote["result"]
+            score = str(result.get("score") or "—").replace("–", "-")
+            confidence = _vote_confidence(vote)
+            tint = _outcome_color(result.get("outcome"))
+        else:
+            score = "—"
+            confidence = None
+            tint = MUTED
+        _rounded(draw, (int(bx + 8), y + 66, int(end - 8), y + 109), 8, CARD, BORDER)
+        _draw_center(draw, ((bx + end) / 2, y + 72), score, _font(24, True), TEXT)
+        conf_label = f"%{confidence:g}" if confidence is not None else "—"
+        _rounded(draw, (int(bx + 8), y + 116, int(end - 8), y + 157), 8, "#102b28" if confidence is not None else CARD, tint)
+        _draw_center(draw, ((bx + end) / 2, y + 123), conf_label, _font(21, True), tint)
+
+
+def _draw_analysis_cell(draw, y, record):
+    x0, x1 = TABLE_X[4], TABLE_X[5]
+    af = _font(17)
+    yy = y + 29
+    for reason in _analysis_lines(record)[:2]:
+        for line in _wrap(draw, "• " + reason, af, x1 - x0 - 28, max_lines=2):
+            draw.text((x0 + 12, yy), line, font=af, fill=TEXT)
+            yy += 24
+        yy += 14
 
 
 def _draw_match_card(canvas, draw, y: int, record: dict, compact: bool) -> int:
-    card_h = 520
-    x1, x2 = PAD, WIDTH-PAD
-    _rounded(draw, (x1, y, x2, y+card_h), 22, fill=PANEL, outline=BORDER, width=2)
+    x0, x1 = TABLE_X[0], TABLE_X[-1]
+    _rounded(draw, (x0, y, x1, y + ROW_HEIGHT), 14, PANEL, BORDER, 2)
+    for x in TABLE_X[1:-1]:
+        draw.line((x, y + 9, x, y + ROW_HEIGHT - 9), fill=BORDER, width=2)
+    _draw_match_cell(canvas, draw, y, record)
+    _draw_consensus_cell(draw, y, record)
+    _draw_score_cell(draw, y, record)
+    _draw_ai_cell(draw, y, record)
+    _draw_analysis_cell(draw, y, record)
+    return y + ROW_HEIGHT + ROW_GAP
 
-    logo_size = 64
-    home_logo, away_logo = _crest(record, "home", logo_size), _crest(record, "away", logo_size)
-    canvas.paste(home_logo, (x1+22, y+24), home_logo)
-    canvas.paste(away_logo, (x2-22-logo_size, y+24), away_logo)
-    name_f = _font(22, True)
-    match = f"{record.get('home_team','—')}  –  {record.get('away_team','—')}"
-    match = _fit_text(draw, match, name_f, 690)
-    mw = _text_width(draw, match, name_f)
-    draw.text(((WIDTH-mw)/2, y+27), match, font=name_f, fill=TEXT)
-    meta = f"{kickoff_text(record)}  •  90 dakika"
-    mf = _font(13); mwidth = _text_width(draw, meta, mf)
-    draw.text(((WIDTH-mwidth)/2, y+62), meta, font=mf, fill=MUTED)
 
-    winner, score, ov, sv = _consensus(record)
-    votes = _successful_votes(record); n = len(votes)
-    conf = _confidence(record)
-    box_y = y + 108
-    gap = 14; bw = (x2-x1-44-gap)/2
-    for bx, label_txt, value, sub in (
-        (x1+22, "KONSENSÜS", winner, f"{ov}/{n} AI" if n else "0 AI"),
-        (x1+22+bw+gap, "TAHMİNİ SKOR", score, (f"Güven %{conf}" if conf is not None else "Güven verisi yok") if score != "—" else "Nihai tahmin oluşmadı"),
-    ):
-        _rounded(draw, (bx, box_y, bx+bw, box_y+92), 15, fill=CARD, outline=BORDER)
-        draw.text((bx+15, box_y+12), label_txt, font=_font(11, True), fill=MUTED)
-        vf = _font(24 if label_txt == "KONSENSÜS" else 31, True)
-        value_fit = _fit_text(draw, value, vf, int(bw-30))
-        draw.text((bx+15, box_y+35), value_fit, font=vf, fill=TEXT if score != "—" else WARN)
-        sw = _text_width(draw, sub, _font(11, True))
-        draw.text((bx+bw-15-sw, box_y+69), sub, font=_font(11, True), fill=BLUE)
-
-    split_y = box_y + 112
-    left_x, right_x = x1+22, WIDTH//2+8
-    col_w = WIDTH//2 - PAD - 38
-    model_rows_bottom = _draw_model_rows(draw, left_x, split_y, col_w, record)
-
-    draw.text((right_x, split_y), "KISA ANALİZ", font=_font(12, True), fill=MUTED)
-    ay = split_y + 23
-    af = _font(12)
-    for reason in _analysis_lines(record):
-        for line in _wrap(draw, "• " + reason, af, col_w, 2):
-            draw.text((right_x, ay), line, font=af, fill=TEXT); ay += 20
-        ay += 3
-
-    # Keep the data badges below all five model rows, with room for wrapping.
-    data_y = y + card_h - 130
-    data_y = max(data_y, model_rows_bottom + 20)
-    _draw_data_status(draw, x1+22, data_y, x2-x1-44, record)
-    footer = f"{n}/{max(5, len(record.get('ai_votes', [])), int(record.get('total_ai') or 0))} AI yanıtladı"
-    draw.text((x2-22-_text_width(draw, footer, _font(11)), y+card_h-27), footer, font=_font(11), fill=MUTED)
-    return y + card_h + 16
+def _draw_footer(draw, top):
+    left, right = TABLE_X[0], TABLE_X[-1]
+    _rounded(draw, (left, top, right, top + FOOTER_H - 8), 15, PANEL, BORDER)
+    f = _font(17, True)
+    cursor = left + 32
+    for icon, caption, color in (("1", "Ev sahibi kazanır", GREEN),
+                                 ("X", "Beraberlik", WARN),
+                                 ("2", "Deplasman kazanır", RED)):
+        _rounded(draw, (cursor, top + 15, cursor + 32, top + 46), 6, color)
+        _draw_center(draw, (cursor + 16, top + 17), icon, _font(20, True), BG)
+        draw.text((cursor + 41, top + 19), caption, font=f, fill=TEXT)
+        cursor += 250
+    draw.text((left + 800, top + 16), "4/5 AI = Yanıt veren model sayısı", font=_font(15, True), fill=BLUE)
+    draw.text((left + 800, top + 44), "— = Yanıt veya güven oranı yok", font=_font(14), fill=MUTED)
+    note = "Güven yüzdeleri öznel model değerlendirmesidir, kazanma olasılığı değildir."
+    _draw_center(draw, ((left + right)/2, top + 78), note, _font(14), MUTED)
 
 
 def render_match_group_image(records, test_mode=False):
-    """Render one match or all ready matches sharing the same kickoff into one image."""
+    """Generate a concise seven-row-style image, with no new AI/API predictions."""
     if not records:
         raise ValueError("Görsel için en az bir maç gerekir.")
     records = sorted(records, key=lambda r: (kickoff_key(r), r.get("home_team", "")))
-    compact = len(records) > 1
-    card_h = 520
-    header_h = 164
-    total_h = header_h + len(records) * (card_h + 16) + 34
+    header_y = HEADER_HEIGHT
+    rows_y = header_y + TABLE_HEADER_H + 6
+    footer_y = rows_y + len(records) * (ROW_HEIGHT + ROW_GAP) + 10
+    total_h = footer_y + FOOTER_H + 8
     canvas = Image.new("RGB", (WIDTH, total_h), BG)
     draw = ImageDraw.Draw(canvas)
-    y = _draw_header(canvas, draw, records, test_mode)
+    _draw_header(canvas, draw, records, test_mode)
+    _draw_table_header(draw, header_y)
+    y = rows_y
     for record in records:
-        y = _draw_match_card(canvas, draw, y, record, compact)
-    footer = "AI destekli analiz • Güncel veri • Çoklu model konsensüsü"
-    fw = _text_width(draw, footer, _font(11, True))
-    draw.text(((WIDTH-fw)/2, total_h-25), footer, font=_font(11, True), fill=MUTED)
+        y = _draw_match_card(canvas, draw, y, record, len(records) > 1)
+    _draw_footer(draw, footer_y)
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     stamp = kickoff_key(records[0]).replace(":", "").replace("-", "")

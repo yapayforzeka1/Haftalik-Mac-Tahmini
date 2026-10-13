@@ -143,4 +143,4 @@ def test_render_all_modes_and_long_names(tmp_path,monkeypatch):
         r['home_team']='Sporting Clube de Portugal';r['away_team']='Club Atlético de Madrid'
         path=match_report.render_match_group_image([r])
         with Image.open(path) as im:
-            assert im.width==900 and 150<im.height<3000
+            assert im.width==1480 and 150<im.height<3000
