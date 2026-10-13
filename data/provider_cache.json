@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1791916259.0196238,
+    "at": 1791917158.8891106,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 18
+        "played": 20
       },
       "competition": {
         "id": 2001,
@@ -1230,11 +1230,11 @@
           },
           "id": 575341,
           "utcDate": "2026-10-13T16:45:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T18:30:49Z",
+          "lastUpdated": "2026-10-13T18:45:45Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -1296,11 +1296,11 @@
           },
           "id": 575342,
           "utcDate": "2026-10-13T16:45:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T18:30:49Z",
+          "lastUpdated": "2026-10-13T18:45:45Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -1319,7 +1319,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 0
             },
             "halfTime": {
