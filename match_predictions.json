@@ -11564,17 +11564,677 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Racing Club de Lens",
+          "away_team": "Sporting Clube de Portugal",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 65,
+          "reasons": [
+            "Sporting CP son 5 maçta 11 gol atıp sadece 5 gol yiyerek üstün formda",
+            "Lens'in evdeki gol ortalaması düşük (1.0) ve savunması kırılgan",
+            "Sporting'in deplasman performansı istikrarlı ve golcü",
+            "Her iki takım da 3.9 gün dinlenme ile eşit koşullarda"
+          ],
+          "short_reason": "Sporting'in form ve gol üstünlüğü",
+          "score_candidates": [
+            "1-2",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Racing Club de Lens",
+          "away_team": "Sporting Clube de Portugal",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 60,
+          "reasons": [
+            "Lens'in son ev maçında iki gol attı ve galibiyet aldı.",
+            "Sporting deplasmanında maç başına ortalama 2 gol üretiyor.",
+            "Her iki takım da savunma olarak sağlam, yüksek skorları sınırlıyor.",
+            "Benzer dinlenme süreleri ve Şampiyonlar Ligi bağlamı dengeli ve dar bir skor öneriyor."
+          ],
+          "short_reason": "Ev sahibi biraz daha güçlü, galibiyet bekliyor",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Racing Club de Lens",
+          "away_team": "Sporting Clube de Portugal",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 78,
+          "reasons": [
+            "Lens evde gol bulma ortalaması 1.0",
+            "Sporting deplasmanda ortalama 2.2 gol",
+            "Her iki takım da son 5 maçta savunma dengeli",
+            "Dinlenme günleri eşit"
+          ],
+          "short_reason": "dengeli savunma ve gol potansiyeli",
+          "score_candidates": [
+            "1-1",
+            "2-1",
+            "0-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Racing Club de Lens",
+          "away_team": "Sporting Clube de Portugal",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 50,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "1-2",
+            "0-1",
+            "1-3"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 2,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 2,
+      "match_utc": "2026-10-13T16:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 546,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-09T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Olympique Lyonnais",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-18T18:45:00Z",
+              "competition": "Ligue 1",
+              "opponent": "AS Monaco FC",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-09-13T15:15:00Z",
+              "competition": "Ligue 1",
+              "opponent": "Le Mans FC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "SK Slavia Praha",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-05T15:15:00Z",
+              "competition": "Ligue 1",
+              "opponent": "FC Lorient",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "W-L-D-W-L",
+          "points_last_5": 7,
+          "goals_for_last_5": 8,
+          "goals_against_last_5": 8,
+          "avg_goals_for": 1.6,
+          "avg_goals_against": 1.6,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 2,
+            "goals_against": 2,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "1W-1D-1L",
+            "goals_for": 6,
+            "goals_against": 6,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 3.9,
+          "matches_last_14_days": 1,
+          "matches_last_21_days": 1
+        },
+        "standings": {
+          "position": 9,
+          "points": 3,
+          "playedGames": 1,
+          "goalsFor": 3,
+          "goalsAgainst": 2
+        }
+      },
+      "away": {
+        "team_id": 498,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-09T19:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Sporting Clube de Braga",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-19T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "FC Arouca",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-13T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "FC Famalicão",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-09T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Galatasaray SK",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-05T19:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "CD Nacional",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-D-D-W-W",
+          "points_last_5": 11,
+          "goals_for_last_5": 11,
+          "goals_against_last_5": 5,
+          "avg_goals_for": 2.2,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 3,
+            "record": "2W-1D-0L",
+            "goals_for": 7,
+            "goals_against": 3,
+            "avg_goals_for": 2.33,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 4,
+            "goals_against": 2,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 3.9,
+          "matches_last_14_days": 1,
+          "matches_last_21_days": 1
+        },
+        "standings": {
+          "position": 6,
+          "points": 3,
+          "playedGames": 1,
+          "goalsFor": 3,
+          "goalsAgainst": 1
+        }
+      },
       "official_xi": {
         "status": "NOT_ANNOUNCED"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
       }
     },
-    "xi_window": "middle"
+    "xi_window": "final",
+    "context_ready": true,
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "Kaynak doğrulaması yok; güncel haberler kullanılmadı."
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-13T16:16:21.877383+00:00"
+    },
+    "research_raw_unverified": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "QUOTA_OR_RATE_LIMIT"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-13T16:16:21.877365+00:00"
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 13,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 13,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 61.5,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 13,
+          "available": 12,
+          "points": 27,
+          "exact": 2,
+          "outcome": 8,
+          "goal_error": 25,
+          "coverage_pct": 92.3,
+          "exact_pct": 16.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.25,
+          "mean_goal_error": 2.08
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 34,
+          "exact": 2,
+          "outcome": 10,
+          "goal_error": 21,
+          "coverage_pct": 100.0,
+          "exact_pct": 15.4,
+          "outcome_pct": 76.9,
+          "avg_points": 2.62,
+          "mean_goal_error": 1.62
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 8,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 13,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 11,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 7,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 13,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {},
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "273f3dbd7cfa44433baef5393fa98c57515d82e9a3e615f2bde4b78c0627684a",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 63,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Sporting CP son 5 maçta 11 gol atıp sadece 5 gol yiyerek üstün formda",
+          "Lens'in evdeki gol ortalaması düşük (1.0) ve savunması kırılgan",
+          "Sporting'in deplasman performansı istikrarlı ve golcü",
+          "Her iki takım da 3.9 gün dinlenme ile eşit koşullarda",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Lens'in son ev maçında iki gol attı ve galibiyet aldı.",
+          "Sporting deplasmanında maç başına ortalama 2 gol üretiyor.",
+          "Her iki takım da savunma olarak sağlam, yüksek skorları sınırlıyor.",
+          "Benzer dinlenme süreleri ve Şampiyonlar Ligi bağlamı dengeli ve dar bir skor öneriyor."
+        ],
+        "DRAW": [
+          "Lens evde gol bulma ortalaması 1.0",
+          "Sporting deplasmanda ortalama 2.2 gol",
+          "Her iki takım da son 5 maçta savunma dengeli",
+          "Dinlenme günleri eşit"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-13T16:16:58.491033+00:00",
+    "minutes_before_match": 28.0,
+    "prediction_mode": "NO_COMMON",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 63,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Sporting CP son 5 maçta 11 gol atıp sadece 5 gol yiyerek üstün formda",
+          "Lens'in evdeki gol ortalaması düşük (1.0) ve savunması kırılgan",
+          "Sporting'in deplasman performansı istikrarlı ve golcü",
+          "Her iki takım da 3.9 gün dinlenme ile eşit koşullarda",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Lens'in son ev maçında iki gol attı ve galibiyet aldı.",
+          "Sporting deplasmanında maç başına ortalama 2 gol üretiyor.",
+          "Her iki takım da savunma olarak sağlam, yüksek skorları sınırlıyor.",
+          "Benzer dinlenme süreleri ve Şampiyonlar Ligi bağlamı dengeli ve dar bir skor öneriyor."
+        ],
+        "DRAW": [
+          "Lens evde gol bulma ortalaması 1.0",
+          "Sporting deplasmanda ortalama 2.2 gol",
+          "Her iki takım da son 5 maçta savunma dengeli",
+          "Dinlenme günleri eşit"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NO_COMMON",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Racing Club de Lens – Sporting Clube de Portugal",
+        "19:45 TSİ",
+        "⚠️ Kadro eksik",
+        "Yok",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI",
+        "🏆 Kazanan ve kısa sebep",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen",
+          "Sporting Clube de Portugal — Sporting'in form ve gol üstünlüğü",
+          "1–2",
+          "2/4"
+        ],
+        [
+          "Cohere",
+          "Racing Club de Lens — Ev sahibi biraz daha güçlü, galibiyet bekliyor",
+          "2–1",
+          "1/4"
+        ],
+        [
+          "GPT-OSS",
+          "Beraberlik — dengeli savunma ve gol potansiyeli",
+          "1–1",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "Sporting Clube de Portugal — Clef-omni maç öncesi verileri değerlendirdi.",
+          "1–2",
+          "2/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor\nRacing Club de Lens – Sporting Clube de Portugal | 19:45 TSİ | ⚠️ Kadro eksik | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nQwen | Sporting Clube de Portugal — Sporting'in form ve gol üstünlüğü | 1–2 | 2/4\nCohere | Racing Club de Lens — Ev sahibi biraz daha güçlü, galibiyet bekliyor | 2–1 | 1/4\nGPT-OSS | Beraberlik — dengeli savunma ve gol potansiyeli | 1–1 | 1/4\nClef | Sporting Clube de Portugal — Clef-omni maç öncesi verileri değerlendirdi. | 1–2 | 2/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-13T16:45",
+      "group_size": 2
+    }
   },
   "575342": {
     "schema_version": 3,
@@ -11592,16 +12252,595 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "SK Slavia Praha",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 45,
+          "reasons": [
+            "Slavia Praha, Manchester United'a karşı 0-4'lük ağır yenilgiye rağmen Lens'e karşı 2 gol atarak hücum potansiyelini gösterdi.",
+            "Sabah FK, Manchester United'a karşı 0-4'lük skorla hem hücumda üretkenlikten yoksun hem de savunmada kırılgan görünüyor.",
+            "Her iki takım da 32.9 gün dinlenme avantajına sahip, bu da form kaybı riskini minimize ediyor.",
+            "Slavia'nın deplasman performansı verisi eksik olsa da, genel gol ortalaması (2.0) Sabah'ın (0.0) üzerinde."
+          ],
+          "short_reason": "Slavia daha üretken, Sabah hücumda kısır",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "SK Slavia Praha",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 55,
+          "reasons": [
+            "Sabah FK evinde daha güçlü performans gösteriyor",
+            "Her iki takım da son maçında yüksek gol yedi",
+            "Gol atma ve yeme eğilimleri benzer",
+            "Uzun dinlenme süresiyle kondisyon optimal"
+          ],
+          "short_reason": "Ev sahibi avantajlı, eşit güç",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "SK Slavia Praha",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 0,
+          "reasons": [
+            "Her iki takım da son beşte gol yemiş",
+            "Ev sahibi savunma hataları çok",
+            "Deplasman gol üretimi düşük",
+            "İki takım da dinlenmiş durumda"
+          ],
+          "short_reason": "İki takım savunmada zayıf",
+          "score_candidates": [
+            "1-1",
+            "0-0",
+            "2-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "SK Slavia Praha",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 87,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-2",
+            "0-3",
+            "0-1"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 2,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 2,
+      "match_utc": "2026-10-13T16:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 10233,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Manchester United FC",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 4,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "L",
+          "points_last_5": 0,
+          "goals_for_last_5": 0,
+          "goals_against_last_5": 4,
+          "avg_goals_for": 0.0,
+          "avg_goals_against": 4.0,
+          "home_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 0,
+            "goals_against": 4,
+            "avg_goals_for": 0.0,
+            "avg_goals_against": 4.0
+          },
+          "rest_days_before_match": 32.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        },
+        "standings": {
+          "position": 34,
+          "points": 0,
+          "playedGames": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 4
+        }
+      },
+      "away": {
+        "team_id": 930,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Racing Club de Lens",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "L",
+          "points_last_5": 0,
+          "goals_for_last_5": 2,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 3.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "0W-0D-1L",
+            "goals_for": 2,
+            "goals_against": 3,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 3.0
+          },
+          "away_split_last_5": {
+            "matches": 0,
+            "record": "0W-0D-0L",
+            "goals_for": 0,
+            "goals_against": 0,
+            "avg_goals_for": null,
+            "avg_goals_against": null
+          },
+          "rest_days_before_match": 32.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 0
+        },
+        "standings": {
+          "position": 22,
+          "points": 0,
+          "playedGames": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 3
+        }
+      },
       "official_xi": {
         "status": "NOT_ANNOUNCED"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
       }
     },
-    "xi_window": "middle"
+    "xi_window": "final",
+    "context_ready": true,
+    "research": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "Kaynak doğrulaması yok; güncel haberler kullanılmadı."
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-13T16:17:13.612460+00:00"
+    },
+    "research_raw_unverified": {
+      "status": "UNAVAILABLE",
+      "summary": "Güncel web araştırması alınamadı; AI'lar yapılandırılmış futbol verisiyle devam etti.",
+      "home": {},
+      "away": {},
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {},
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {},
+      "news": [],
+      "conflicts": [
+        "QUOTA_OR_RATE_LIMIT"
+      ],
+      "sources": [],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-13T16:17:13.612439+00:00"
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 13,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 13,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 61.5,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 13,
+          "available": 12,
+          "points": 27,
+          "exact": 2,
+          "outcome": 8,
+          "goal_error": 25,
+          "coverage_pct": 92.3,
+          "exact_pct": 16.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.25,
+          "mean_goal_error": 2.08
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 34,
+          "exact": 2,
+          "outcome": 10,
+          "goal_error": 21,
+          "coverage_pct": 100.0,
+          "exact_pct": 15.4,
+          "outcome_pct": 76.9,
+          "avg_points": 2.62,
+          "mean_goal_error": 1.62
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 8,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 13,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 11,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 7,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 13,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {},
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "477588464b1c0eff4a226cccc1e15bdf3f10b7d0739a276d56ac7f519d2252f5",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "0-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 47,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "0-2": 2,
+        "2-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Slavia Praha, Manchester United'a karşı 0-4'lük ağır yenilgiye rağmen Lens'e karşı 2 gol atarak hücum potansiyelini gösterdi.",
+          "Sabah FK, Manchester United'a karşı 0-4'lük skorla hem hücumda üretkenlikten yoksun hem de savunmada kırılgan görünüyor.",
+          "Her iki takım da 32.9 gün dinlenme avantajına sahip, bu da form kaybı riskini minimize ediyor.",
+          "Slavia'nın deplasman performansı verisi eksik olsa da, genel gol ortalaması (2.0) Sabah'ın (0.0) üzerinde.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Sabah FK evinde daha güçlü performans gösteriyor",
+          "Her iki takım da son maçında yüksek gol yedi",
+          "Gol atma ve yeme eğilimleri benzer",
+          "Uzun dinlenme süresiyle kondisyon optimal"
+        ],
+        "DRAW": [
+          "Her iki takım da son beşte gol yemiş",
+          "Ev sahibi savunma hataları çok",
+          "Deplasman gol üretimi düşük",
+          "İki takım da dinlenmiş durumda"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-13T16:17:53.020891+00:00",
+    "minutes_before_match": 27.1,
+    "prediction_mode": "NO_COMMON",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "0-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 47,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "0-2": 2,
+        "2-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Slavia Praha, Manchester United'a karşı 0-4'lük ağır yenilgiye rağmen Lens'e karşı 2 gol atarak hücum potansiyelini gösterdi.",
+          "Sabah FK, Manchester United'a karşı 0-4'lük skorla hem hücumda üretkenlikten yoksun hem de savunmada kırılgan görünüyor.",
+          "Her iki takım da 32.9 gün dinlenme avantajına sahip, bu da form kaybı riskini minimize ediyor.",
+          "Slavia'nın deplasman performansı verisi eksik olsa da, genel gol ortalaması (2.0) Sabah'ın (0.0) üzerinde.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Sabah FK evinde daha güçlü performans gösteriyor",
+          "Her iki takım da son maçında yüksek gol yedi",
+          "Gol atma ve yeme eğilimleri benzer",
+          "Uzun dinlenme süresiyle kondisyon optimal"
+        ],
+        "DRAW": [
+          "Her iki takım da son beşte gol yemiş",
+          "Ev sahibi savunma hataları çok",
+          "Deplasman gol üretimi düşük",
+          "İki takım da dinlenmiş durumda"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NO_COMMON",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Sabah FK – SK Slavia Praha",
+        "19:45 TSİ",
+        "⚠️ Kadro eksik",
+        "Yok",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI",
+        "🏆 Kazanan ve kısa sebep",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen",
+          "SK Slavia Praha — Slavia daha üretken, Sabah hücumda kısır",
+          "0–2",
+          "2/4"
+        ],
+        [
+          "Cohere",
+          "Sabah FK — Ev sahibi avantajlı, eşit güç",
+          "2–1",
+          "1/4"
+        ],
+        [
+          "GPT-OSS",
+          "Beraberlik — İki takım savunmada zayıf",
+          "1–1",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "SK Slavia Praha — Clef-omni maç öncesi verileri değerlendirdi.",
+          "0–2",
+          "2/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor\nSabah FK – SK Slavia Praha | 19:45 TSİ | ⚠️ Kadro eksik | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nQwen | SK Slavia Praha — Slavia daha üretken, Sabah hücumda kısır | 0–2 | 2/4\nCohere | Sabah FK — Ev sahibi avantajlı, eşit güç | 2–1 | 1/4\nGPT-OSS | Beraberlik — İki takım savunmada zayıf | 1–1 | 1/4\nClef | SK Slavia Praha — Clef-omni maç öncesi verileri değerlendirdi. | 0–2 | 2/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-13T16:45",
+      "group_size": 2
+    }
   }
 }
