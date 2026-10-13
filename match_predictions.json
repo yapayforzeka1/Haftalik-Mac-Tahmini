@@ -13142,7 +13142,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -13172,7 +13175,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -13203,7 +13209,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -13229,7 +13238,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -13743,6 +13755,118 @@
       "transport": "photo",
       "group_key": "2026-10-13T19:00",
       "group_size": 7
+    },
+    "actual": {
+      "home": 3,
+      "away": 4,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-13T21:05:50.557859+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 4,
+          "home_bias": -1,
+          "away_bias": -3,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Inter evinde son 3 maçta 11 gol atıp sadece 5 yedi, hücum gücü yüksek.",
+            "Club Brugge deplasman verisi yok, tek maçlık formu zayıf (2-3 yenilgi).",
+            "Inter'in 3 gün dinlenmesi, Brugge'nin 35 gün dinlenmesine karşı dezavantaj değil, ritim avantajı.",
+            "Inter'in ev sahası performansı (3W-0D-0L) Brugge'nin tek maçlık verisinden çok daha güvenilir."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 4,
+          "home_bias": -1,
+          "away_bias": -3,
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Inter strong home form with 3.67 GF per game",
+            "Brugge limited recent activity and defensive vulnerabilities",
+            "Inter’s defensive record at home limits opponent chances",
+            "Brugge capable of scoring one away goal"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 5,
+          "home_bias": -1,
+          "away_bias": -4,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "İnter son 5 maçta güçlü hücum",
+            "Brugge sadece 1 maç oynadı, form düşük",
+            "İnter evde ortalama 2.8 gol attı",
+            "Brugge savunma 3.0 gol yedi"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": 0,
+          "away_bias": -3,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "8f1e7f1c2f9842bf034d4f1909e3cd2f31f69171b03677e662a2251bd8909e60",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575344": {
@@ -13798,7 +13922,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -13835,7 +13962,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -13861,7 +13991,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -14372,6 +14505,103 @@
       "transport": "photo",
       "group_key": "2026-10-13T19:00",
       "group_size": 7
+    },
+    "actual": {
+      "home": 1,
+      "away": 4,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-13T21:05:50.558353+00:00"
+    },
+    "consensus_points": 2,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Barcelona son 5 maçta 22 gol atıp sadece 6 gol yiyerek üstün formda",
+            "Galatasaray tek maçlık veride 1-3 yenilgiyle zayıf bir görüntü çiziyor",
+            "Barcelona'nın deplasman gol ortalaması (3.5) Galatasaray'ın ev gol ortalamasından (1.0) yüksek",
+            "Galatasaray'ın 34 gün dinlenmesine rağmen Barcelona'nın ritmi ve kalitesi belirleyici"
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": false
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Barcelona son 5 maçta 22 gol attı",
+            "Galatasaray son maçta 1 gol attı, 3 yedi",
+            "Barcelona evinde 2 galibiyet, Galatasaray dışarıda 0 galibiyet",
+            "Barcelona dinlenme süresi kısa, Galatasaray 34 gün dinlenmiş ancak form düşük"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "441d5601c1502084407d48df4ce71ae0a54c21a4e1d1da077f30cd31abd0c9eb",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575345": {
@@ -14426,7 +14656,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -14456,7 +14689,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -14487,7 +14723,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -14513,7 +14752,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -15056,6 +15298,118 @@
       "transport": "photo",
       "group_key": "2026-10-13T19:00",
       "group_size": 7
+    },
+    "actual": {
+      "home": 2,
+      "away": 0,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-13T21:05:50.558570+00:00"
+    },
+    "consensus_points": 2,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Atletico Madrid evinde son 2 maçta 6 gol atıp sadece 1 yedi, formu çok yüksek.",
+            "Manchester United deplasmanda son 2 maçta galibiyet alamadı ve gol yeme oranı yüksek.",
+            "Her iki takım da benzer dinlenme süresine sahip, fiziksel dezavantaj yok.",
+            "Atletico'nun ev avantajı ve United'ın deplasman kırılganlığı ev sahibini öne çıkarıyor."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings"
+          ],
+          "pre_match_reasons": [
+            "Atletico son beş maçında evinde ortalama 3 gol attı",
+            "United deplasmanında gol üretimi istikrarlı değil",
+            "Atletico savunma istikrarı göstererek son beş maçta sadece dört gol yedi",
+            "Champions League grubunda Atletico'nun üstünlüğü ve ev avantajı galibiyet ihtimalini artırıyor"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Atletico evinde gol ortalaması yüksek",
+            "Manchester United savunması son maçta zayıf",
+            "Ev sahibi dinlenme süresi biraz daha fazla",
+            "Atletico son 5 maçta 12 gol attı"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "bd1b33dd7ec4b6a6cfb45301739383d83bf2bdfb18b4527d789e2834e5f45266",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575346": {
@@ -15938,7 +16292,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -15976,7 +16333,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -16491,6 +16851,85 @@
       "transport": "photo",
       "group_key": "2026-10-13T19:00",
       "group_size": 7
+    },
+    "actual": {
+      "home": 3,
+      "away": 3,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-13T21:05:50.558774+00:00"
+    },
+    "consensus_points": null,
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": -3,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Bayern'in son 5 maçta 16 gol atıp sadece 3 yemesi, üstün hücum gücünü gösteriyor.",
+            "Viking'in tek maçlık verisi (1-3 Stuttgart) zayıf savunma ve düşük gol üretimünü işaret ediyor.",
+            "Bayern'in deplasman formu (1G 2B) istikrarlı olsa da, rakip kalitesi düşük olduğunda gol sayıları artıyor.",
+            "Viking'in 34 gün dinlenmesi avantaj olsa da, Bayern'in 3 gün dinlenmesi ve yüksek tempolu oyunu bu farkı kapatır."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": false
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": false
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": -3,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "ecc2481f79883eb6602774c3d658383848c8799551bfe4b1f7cdc98f6f80bdd1",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575348": {
@@ -16545,7 +16984,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -16576,7 +17018,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -16607,7 +17052,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -16633,7 +17081,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -17168,6 +17619,119 @@
       "transport": "photo",
       "group_key": "2026-10-13T19:00",
       "group_size": 7
+    },
+    "actual": {
+      "home": 1,
+      "away": 0,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-13T21:05:50.558925+00:00"
+    },
+    "consensus_points": 5,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Leipzig evinde son 2 maçta 11 gol atıp 0 yedi, ev avantajı çok güçlü.",
+            "PSV deplasmanda kırılgan (1G 1M) ve gol yeme riski yüksek.",
+            "Leipzig'in genel formu karışık olsa da ev içi performans belirleyici.",
+            "PSV'nin gol üretme kapasitesi (2.40) Leipzig savunmasını zorlayabilir."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "RB Leipzig son iki ev maçında 11 gol attı ve hiç yemedi",
+            "PSV deplasmanında gol üretimi düşük, son 2 deplasman maçında 5 gol attı",
+            "RB Leipzig Avrupa maçında 1-4 yenildi, bu motivasyonla oynayacak",
+            "PSV'nin son 5 maçta sadece 6 gol yemesi, savunma sağlam"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 3,
+          "home_bias": 2,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Leipzig evinde son 2 maçta 11 gol attı, 0 yedi",
+            "PSV son 5 maçta savunma zayıf, 6 gol yedi",
+            "Leipzig'in dinlenme süresi daha uzun",
+            "PSV'nin deplasman performansı düşük"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "2fd14dd2a5384c9492fc4024d360548f45e4352e946bc1acb31b9b6c20e4365e",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575349": {
