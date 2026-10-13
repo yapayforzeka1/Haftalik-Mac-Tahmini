@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1791924995.177008,
+    "at": 1791925259.8352208,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 20
+        "played": 22
       },
       "competition": {
         "id": 2001,
@@ -1366,7 +1366,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:55:21Z",
+          "lastUpdated": "2026-10-13T20:59:37Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -1385,7 +1385,7 @@
             "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 2,
+              "home": 3,
               "away": 4
             },
             "halfTime": {
@@ -1432,7 +1432,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:54:17Z",
+          "lastUpdated": "2026-10-13T20:59:37Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -1498,7 +1498,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:53:45Z",
+          "lastUpdated": "2026-10-13T20:59:37Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -1560,11 +1560,11 @@
           },
           "id": 575346,
           "utcDate": "2026-10-13T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:55:21Z",
+          "lastUpdated": "2026-10-13T20:57:29Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -1630,7 +1630,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:55:21Z",
+          "lastUpdated": "2026-10-13T20:59:37Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -1696,7 +1696,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:54:17Z",
+          "lastUpdated": "2026-10-13T20:59:05Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -1758,11 +1758,11 @@
           },
           "id": 575349,
           "utcDate": "2026-10-13T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T20:55:21Z",
+          "lastUpdated": "2026-10-13T20:57:29Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
