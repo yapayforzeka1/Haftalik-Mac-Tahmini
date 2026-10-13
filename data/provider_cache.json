@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1791915954.898227,
+    "at": 1791916259.0196238,
     "data": {
       "filters": {
         "season": 2026
@@ -1234,7 +1234,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T18:25:29Z",
+          "lastUpdated": "2026-10-13T18:30:49Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -1254,7 +1254,7 @@
             "duration": "REGULAR",
             "fullTime": {
               "home": 0,
-              "away": 1
+              "away": 2
             },
             "halfTime": {
               "home": 0,
@@ -1300,7 +1300,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-13T18:25:29Z",
+          "lastUpdated": "2026-10-13T18:30:49Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -16845,7 +16845,7 @@
     }
   },
   "8354408cb6752d9972faca47912843eb97e87e16b1b6f44f21a6fe3051e1e511": {
-    "at": 1791915659.6278367,
+    "at": 1791916264.895419,
     "data": {
       "area": {
         "id": 2077,
@@ -16915,7 +16915,7 @@
     }
   },
   "a4efe8abfb91f74e9cdd0bbb250bd355464ba2dc3e823ad9455a2a7a46e77a6d": {
-    "at": 1791915665.969501,
+    "at": 1791916334.9519987,
     "data": {
       "area": {
         "id": 2077,
@@ -16985,7 +16985,7 @@
     }
   },
   "d4b6dddaae5fcb95b1423376d410cb501885d05619a61afda54b4d78a8b3e733": {
-    "at": 1791915671.9956539,
+    "at": 1791916402.3814104,
     "data": {
       "area": {
         "id": 2077,
@@ -17055,7 +17055,7 @@
     }
   },
   "1a1bcbebbc463d24931a747a88e47bca80ed3dff1d07b12d5a074e60998a047e": {
-    "at": 1791915678.200162,
+    "at": 1791916445.9335432,
     "data": {
       "area": {
         "id": 2077,
@@ -17125,7 +17125,7 @@
     }
   },
   "b8bee7a46fa24f820fc26a8ba6f85c3c08a21777bdbd66fd3e2c6e4170cbe4e9": {
-    "at": 1791915684.4049106,
+    "at": 1791916492.6029487,
     "data": {
       "area": {
         "id": 2077,
@@ -17195,7 +17195,7 @@
     }
   },
   "3791f7ad58122e850ec04fd6cc71af3f411ae3393c7bde26dce3921bad125386": {
-    "at": 1791915690.634615,
+    "at": 1791916549.623111,
     "data": {
       "area": {
         "id": 2077,
@@ -17265,7 +17265,7 @@
     }
   },
   "5fca5c527fef21f4cce5a5922ede1ddc9e2fca84d1005f998968ab6b6a8e87bb": {
-    "at": 1791915696.8123982,
+    "at": 1791916613.5168312,
     "data": {
       "area": {
         "id": 2077,

@@ -523,5 +523,7 @@
     "policy": "balanced_v1",
     "applied_at": "2026-10-13T08:10:43.472438+00:00",
     "status": "APPLIED_TO_FUTURE_PREDICTIONS"
-  }
+  },
+  "research_backoff_until": "2026-10-13T18:51:10.155057+00:00",
+  "research_backoff_reason": "QUOTA_OR_RATE_LIMIT"
 }
