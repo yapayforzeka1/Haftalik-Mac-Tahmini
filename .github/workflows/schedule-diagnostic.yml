@@ -1,0 +1,24 @@
+
+name: Schedule Diagnostic (No AI Tokens)
+
+on:
+  schedule:
+    - cron: "3-59/5 * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  check-scheduler:
+    name: Check GitHub Scheduler
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Report scheduled trigger
+        run: |
+          echo "SCHEDULE_DIAGNOSTIC_STARTED"
+          echo "Event: ${{ github.event_name }}"
+          echo "UTC time: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "SCHEDULE_DIAGNOSTIC_FINISHED"
