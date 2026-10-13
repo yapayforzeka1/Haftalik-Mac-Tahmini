@@ -35,6 +35,27 @@ _TEAM_ALIASES = {
     "sporting clube de portugal": "sporting portugal",
     "sporting cp": "sporting portugal",
     "sporting lisbon": "sporting portugal",
+    # Conservative known-name variants for the seven 22:00 fixtures.
+    # Aliases still require matching *both* teams and kickoff time.
+    "internazionale milano": "inter",
+    "internazionale": "inter",
+    "inter milan": "inter",
+    "inter milano": "inter",
+    "brugge kv": "brugge",
+    "brugge": "brugge",
+    "atletico de madrid": "atletico madrid",
+    "atletico madrid": "atletico madrid",
+    "bayern munchen": "bayern munich",
+    "bayern munich": "bayern munich",
+    "psv eindhoven": "psv",
+    "psv": "psv",
+    "ssc napoli": "napoli",
+    "napoli": "napoli",
+    "lille osc": "lille",
+    "lille": "lille",
+    "rb leipzig": "leipzig",
+    "rasenballsport leipzig": "leipzig",
+    "leipzig": "leipzig",
 }
 
 

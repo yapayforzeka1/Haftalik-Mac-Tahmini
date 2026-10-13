@@ -246,7 +246,11 @@ def _data_status(record: dict) -> list[tuple[str, bool | None]]:
     official = (ctx.get("official_xi") or {}).get("status") == "ANNOUNCED"
     predicted = ctx.get("predicted_xi") or {}
     predicted_ok = all(len(predicted.get(side, [])) == 11 for side in ("home", "away"))
-    form_ok = bool(home.get("last_5")) and bool(away.get("last_5"))
+    # A non-empty container is not evidence of actual completed matches.
+    home_form = home.get("last_5") or {}
+    away_form = away.get("last_5") or {}
+    form_ok = (isinstance(home_form, dict) and isinstance(away_form, dict)
+               and bool(home_form.get("matches")) and bool(away_form.get("matches")))
     standings_ok = bool(home.get("standings")) and bool(away.get("standings"))
     research = record.get("research") or {}
     research_ok = research.get("status") == "OK"

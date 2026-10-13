@@ -155,6 +155,10 @@ class CachedFootball(FootballDataClient):
         # Match details and official lineups need frequent refreshes.
         if path.startswith("/matches/"):
             ttl = SHORT_TTL
+        # Last-five form is shared by repeated runs and must not exhaust the
+        # football-data free-tier quota when seven matches start together.
+        elif path.startswith("/teams/") and path.endswith("/matches"):
+            ttl = MEDIUM_TTL
 
         entry = self.cache.get(key)
 
@@ -291,20 +295,37 @@ class CachedFootball(FootballDataClient):
         return self._get(f"/matches/{match_id}")
 
     def get_team_matches(self, team_id, before, **kwargs):
-        rows = super().get_team_matches(
-            team_id,
-            before,
-            **kwargs,
-        )
+        """Cache historical results with the same request spacing as fixtures.
 
-        return [
-            r
-            for r in rows
-            if r.get("status") == "FINISHED"
-            and datetime.fromisoformat(
-                r["utcDate"].replace("Z", "+00:00")
-            ) < before
-        ]
+        The upstream team endpoint is not cached by FootballDataClient, which
+        otherwise makes every scheduled run issue 2 * N additional API calls.
+        """
+        from datetime import timedelta
+
+        days_back = kwargs.get("days_back", 90)
+        limit = kwargs.get("limit", 20)
+        start = (before.date() - timedelta(days=days_back)).isoformat()
+        end = before.date().isoformat()
+        data = self._get(f"/teams/{team_id}/matches", {
+            "dateFrom": start,
+            "dateTo": end,
+            "status": "FINISHED",
+            "limit": limit,
+        })
+        rows = data.get("matches", [])
+        if not isinstance(rows, list):
+            return []
+        completed = []
+        for row in rows:
+            if not isinstance(row, dict) or row.get("status") != "FINISHED":
+                continue
+            try:
+                played_at = datetime.fromisoformat(row["utcDate"].replace("Z", "+00:00"))
+                if played_at.tzinfo and played_at < before:
+                    completed.append(row)
+            except (KeyError, AttributeError, TypeError, ValueError):
+                continue
+        return sorted(completed, key=lambda r: r["utcDate"], reverse=True)[:limit]
 
 
 # ---------------------------------------------------------------------------

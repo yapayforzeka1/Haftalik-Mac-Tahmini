@@ -54,6 +54,109 @@ def empty_research(reason: str) -> dict[str, Any]:
     }
 
 
+
+def structured_research(context: dict[str, Any], reason: str = "") -> dict[str, Any]:
+    """Source-labelled, factual fallback; NOT independently web-grounded news.
+
+    All claims come from completed football-data.org fixtures and the standings
+    already fetched by the bot. Never invent injuries, player eligibility, XI,
+    xG, opponent strength or press reports. `STRUCTURED_ONLY` deliberately
+    remains distinct from the `OK` used for verified Google Search research.
+    """
+    result = empty_research("Harici güncel haberler doğrulanamadı.")
+    result["status"] = "STRUCTURED_ONLY"
+    result["source_kind"] = "FOOTBALL_DATA_API"
+    result["provider_warning"] = reason or "RESEARCH_UNAVAILABLE"
+    result["verified_at"] = datetime.now(timezone.utc).isoformat()
+    result["sources"] = ["football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"]
+    result["source_refs"] = []
+    lines = []
+    source_count = 0
+
+    for side in ("home", "away"):
+        team = context.get(side) or {}
+        form = team.get("last_5") or {}
+        if not isinstance(form, dict):
+            form = {}
+        matches = form.get("matches") or []
+        if not isinstance(matches, list):
+            matches = []
+        matches = [m for m in matches if isinstance(m, dict)][:5]
+        count = len(matches)
+        team_id = team.get("team_id")
+        if isinstance(team_id, int):
+            result["source_refs"].append({
+                "team_id": team_id,
+                "endpoint": f"/v4/teams/{team_id}/matches",
+                "source": "football-data.org",
+            })
+        if not count:
+            result[side]["form"] = "Doğrulanmış son maç listesi mevcut değil."
+            continue
+        source_count += count
+        goals_for = sum(m.get("goals_for", 0) for m in matches if isinstance(m.get("goals_for"), int))
+        goals_against = sum(m.get("goals_against", 0) for m in matches if isinstance(m.get("goals_against"), int))
+        # Keep the sample size; never present an incomplete series as five games.
+        sequence = "-".join(str(m.get("result") or "?") for m in matches)
+        label = "Ev sahibi" if side == "home" else "Deplasman"
+        result[side]["form"] = f"Son {count} doğrulanmış maç: {sequence}."
+        result[side]["goals_trend"] = (
+            f"Son {count} maç: {goals_for} gol attı, {goals_against} gol yedi; "
+            f"maç başına {goals_for/count:.2f} attı / {goals_against/count:.2f} yedi."
+        )
+        last_results = []
+        for m in matches:
+            date = str(m.get("date") or "")[:10]
+            opponent = str(m.get("opponent") or "?")[:72]
+            last_results.append(
+                f"{date} {opponent}: {m.get('goals_for', '?')}-{m.get('goals_against', '?')}"
+                f" ({m.get('venue', '?')})"
+            )
+        result[side]["recent_fixtures"] = last_results
+        split = form.get("home_split_last_5" if side == "home" else "away_split_last_5") or {}
+        if isinstance(split, dict) and split.get("matches"):
+            result[side]["home_away"] = (
+                f"Son {split['matches']} ilgili saha maçı: {split.get('record', '?')}; "
+                f"{split.get('goals_for', '?')} gol attı, {split.get('goals_against', '?')} gol yedi."
+            )
+        standings = team.get("standings") or {}
+        if isinstance(standings, dict) and standings:
+            result["league_context"][side] = {
+                "scope": "Champions League standings",
+                "position": standings.get("position"),
+                "points": standings.get("points"),
+                "played": standings.get("playedGames"),
+            }
+        rest = form.get("rest_days_before_match")
+        congestion = form.get("matches_last_14_days")
+        if isinstance(rest, (int, float)) and not isinstance(rest, bool):
+            result["fixture_congestion"][side] = f"Son maçtan itibaren {rest:.1f} gün dinlenme."
+        if isinstance(congestion, int) and not isinstance(congestion, bool):
+            result["fixture_congestion"][side] = (
+                result["fixture_congestion"].get(side, "")
+                + f" Son 14 günde {congestion} maç."
+            ).strip()
+        lines.append(f"{label}: son {count} maçta {goals_for}-{goals_against} gol dengesi.")
+
+    if source_count:
+        result["summary"] = (
+            "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları "
+            "ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. "
+            "Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. "
+            + " ".join(lines)
+        )
+    official_xi = context.get("official_xi") or {}
+    if official_xi.get("status") == "ANNOUNCED":
+        result["official_xi"] = official_xi
+    else:
+        result["official_xi"] = {"status": "NOT_ANNOUNCED"}
+    # Only independently verified and current players may enter predicted_xi.
+    result["predicted_xi"] = {"home": [], "away": []}
+    result["research_confidence"] = "LOW"
+    result["news"] = []
+    result["score_drivers"] = lines
+    return result
+
 def research_match(
     client: Any,
     home_team: str,

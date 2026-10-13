@@ -4,7 +4,7 @@ import copy
 import os
 import time
 from dataclasses import asdict
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -17,7 +17,7 @@ from messages import FORMAT_VERSION, prediction_message, prediction_tables
 from policy_sync import apply_approved_policy
 from providers import CachedFootball, official_xi, predicted_xi
 from report_engine import build_result_message
-from research_engine import empty_research, research_match
+from research_engine import empty_research, research_match, structured_research
 from scoring import VERSION, regulation_score, score_prediction
 from storage import StateError, load_json, save_json
 from telegram_io import Telegram, TelegramError, deliver_text
@@ -219,7 +219,39 @@ def prepare_context(match, football):
     return context
 
 
-def prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode=False):
+def prewarm_context(r, match, football, save):
+    """Prepare factual data early without freezing XI, research or AI votes.
+
+    This stage is explicitly token-free for AI providers. Partial API results
+    can be retried by prepare_prediction nearer kickoff.
+    """
+    if r.get('final_sent') or r.get('prediction_ready') or r.get('context_ready'):
+        return False
+    context = prepare_context(match, football)
+    context['official_xi'] = (r.get('context') or {}).get('official_xi', {'status': 'NOT_ANNOUNCED'})
+    r['context'] = context
+    r['context_prepared_at'] = utcnow()
+    r['context_ready'] = all('data_warning' not in context.get(side, {})
+                             for side in ('home', 'away'))
+    save()
+    if r['context_ready']:
+        print(f"PREFETCH | {r['match_id']} | structured context ready", flush=True)
+    else:
+        print(f"PREFETCH | {r['match_id']} | partial context; will retry", flush=True)
+    return r['context_ready']
+
+
+def research_gate_open(gate):
+    if not gate or not gate.get('until'):
+        return True
+    try:
+        return datetime.fromisoformat(gate['until'].replace('Z', '+00:00')) <= now()
+    except (ValueError, TypeError):
+        return True
+
+
+def prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode=False,
+                       research_gate=None, save_research_gate=None):
     """Resumable stages: lineup -> context -> research -> votes -> durable message."""
     if r.get('prediction_ready'):
         return True
@@ -245,20 +277,42 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
             r['context_ready'] = True
             save()
         if not r.get('research'):
-            r['research'] = empty_research('Araştırma başlatıldı ancak tamamlanamadı.')
-            save()  # A crash cannot create an unbounded repeat of expensive research.
-            if os.getenv('GEMINI_API_KEY') and time.monotonic() < deadline - 60:
+            # Reserve a durable, source-labelled factual fallback BEFORE any
+            # external AI call. A crash or quota error never fabricates news.
+            fallback = structured_research(context, reason='RESEARCH_PENDING')
+            r['research'] = fallback
+            save()
+            if (os.getenv('GEMINI_API_KEY') and time.monotonic() < deadline - 60
+                    and research_gate_open(research_gate)):
                 try:
                     from google import genai
                     client = genai.Client(api_key=os.environ['GEMINI_API_KEY'],
                         http_options={'timeout': 30000, 'retry_options': {'attempts': 1}})
-                    r['research'] = research_match(client, r['home_team'], r['away_team'], context)
+                    actual = research_match(client, r['home_team'], r['away_team'], context)
+                    if actual.get('status') == 'OK':
+                        r['research'] = actual
+                    else:
+                        r['research_raw_unverified'] = {
+                            'status': actual.get('status', 'UNKNOWN'),
+                            'reason': 'UNVERIFIED_RESEARCH',
+                        }
+                        fallback['provider_warning'] = 'UNVERIFIED_RESEARCH'
                 except Exception as exc:
-                    r['research'] = empty_research(safe_error(exc))
-            if r['research'].get('status') != 'OK':
-                # Do not feed ungrounded current news to the prediction models.
-                r['research_raw_unverified'] = r['research']
-                r['research'] = empty_research('Kaynak doğrulaması yok; güncel haberler kullanılmadı.')
+                    reason = safe_error(exc)
+                    r['research_raw_unverified'] = {'status': 'UNAVAILABLE', 'reason': reason}
+                    fallback['provider_warning'] = reason
+                    if reason in {'QUOTA_OR_RATE_LIMIT', 'PROVIDER_UNAVAILABLE'} and research_gate is not None:
+                        # Avoid seven identical quota/503 searches in one batch
+                        # and repeated searches every five minutes.
+                        research_gate['until'] = (now() + timedelta(minutes=20)).isoformat()
+                        research_gate['reason'] = reason
+                        if save_research_gate:
+                            save_research_gate()
+            elif not research_gate_open(research_gate):
+                fallback['provider_warning'] = 'PROVIDER_COOLDOWN'
+            # Important: STRUCTURED_ONLY is NOT falsely marked as researched OK.
+            print(f"RESEARCH | {r['match_id']} | {r['research'].get('status')} | "
+                  f"{r['research'].get('provider_warning', 'OK')}", flush=True)
             context['predicted_xi'] = predicted_xi(r['research'])
             r['history'] = learning_context(predictions, state, now())
             r['learning_policy'] = state['policy']
@@ -371,12 +425,49 @@ def main():
     refresh_results(predictions, matches)
     save()
     drain_delivery(predictions, telegram, chat, save)
+    # Before the T-30 prediction window, build API-backed form and standings.
+    # This uses no AI providers and helps seven simultaneous fixtures avoid
+    # exhausting the final pre-kickoff processing budget.
+    if not test_mode:
+        upcoming = [m for m in matches if m.get('status') in {'TIMED', 'SCHEDULED'}
+                    and 0 < minutes_left(m) <= 90]
+        upcoming.sort(key=lambda m: m['utcDate'])
+        prewarm_end = time.monotonic() + 110  # leave the rest of this run free
+        for match in upcoming:
+            if time.monotonic() >= prewarm_end:
+                break
+            key = str(match['id'])
+            r = predictions.setdefault(key, new_record(match, state, test_mode))
+            if r.get('context_ready') or r.get('final_sent') or r.get('prediction_ready'):
+                continue
+            # Do not repeatedly call an unavailable API every five minutes.
+            attempted_at = r.get('context_prefetch_attempt_at')
+            if attempted_at:
+                try:
+                    last = parse_utc(attempted_at)
+                    if (now() - last).total_seconds() < 900:
+                        continue
+                except (ValueError, TypeError):
+                    pass
+            r['context_prefetch_attempt_at'] = utcnow()
+            save()
+            try:
+                prewarm_context(r, match, football, save)
+            except Exception as exc:
+                r['context_prefetch_error'] = safe_error(exc)
+                save()
+
     candidates = [m for m in matches if m.get('status') in {'TIMED', 'SCHEDULED'} and minutes_left(m) > 0
                   and (test_mode or minutes_left(m) <= 60)]
     candidates.sort(key=lambda m: m['utcDate'])
     if test_mode:
         candidates = candidates[:1]
     end = time.monotonic() + 600
+    research_gate = {'until': state.get('research_backoff_until')}
+    def save_gate():
+        state['research_backoff_until'] = research_gate.get('until')
+        state['research_backoff_reason'] = research_gate.get('reason')
+        save_state()
     for match in candidates:
         if time.monotonic() >= end:
             break
@@ -387,7 +478,8 @@ def main():
         try:
             # Leave a safety margin to publish before kickoff, even after delayed Actions starts.
             deadline = min(end, time.monotonic() + max(0, minutes_left(match)*60 - 45))
-            prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode)
+            prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode,
+                               research_gate=research_gate, save_research_gate=save_gate)
         except StateError:
             raise
         except Exception as exc:

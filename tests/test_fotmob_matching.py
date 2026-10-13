@@ -79,3 +79,23 @@ def test_api_football_accepts_correct_fixture_without_network(monkeypatch):
     ])
     kickoff = datetime(2026, 10, 13, 16, 45, tzinfo=timezone.utc)
     assert client.find_fixture("Lens", "Sporting CP", kickoff)["fixture"]["id"] == 43
+
+
+@pytest.mark.parametrize("official,provider", [
+    ("FC Internazionale Milano", "Inter Milan"),
+    ("Club Brugge KV", "Club Brugge"),
+    ("Club Atlético de Madrid", "Atletico Madrid"),
+    ("FC Bayern München", "Bayern Munich"),
+    ("PSV", "PSV Eindhoven"),
+    ("SSC Napoli", "Napoli"),
+    ("Lille OSC", "Lille"),
+    ("RB Leipzig", "RasenBallsport Leipzig"),
+])
+def test_2200_fixture_aliases(official, provider):
+    assert _team_names_match(official, provider)
+
+
+def test_2200_fixture_aliases_do_not_match_unrelated_clubs():
+    assert not _team_names_match("Club Brugge KV", "Cercle Brugge")
+    assert not _team_names_match("FC Internazionale Milano", "AC Milan")
+    assert not _team_names_match("RB Leipzig", "Lokomotive Leipzig")
