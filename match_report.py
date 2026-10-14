@@ -243,9 +243,14 @@ def _confidence(record: dict) -> int | None:
 def _data_status(record: dict) -> list[tuple[str, bool | None]]:
     ctx = record.get("context") or {}
     home, away = ctx.get("home") or {}, ctx.get("away") or {}
-    official = (ctx.get("official_xi") or {}).get("status") == "ANNOUNCED"
+    from providers import valid_xi
+    official_xi = ctx.get("official_xi") or {}
     predicted = ctx.get("predicted_xi") or {}
-    predicted_ok = all(len(predicted.get(side, [])) == 11 for side in ("home", "away"))
+    official = all(valid_xi(official_xi.get(side)) for side in ("home", "away"))
+    predicted_ok = all(
+        valid_xi(official_xi.get(side)) or valid_xi(predicted.get(side))
+        for side in ("home", "away")
+    ) and not official
     # A non-empty container is not evidence of actual completed matches.
     home_form = home.get("last_5") or {}
     away_form = away.get("last_5") or {}
@@ -258,7 +263,7 @@ def _data_status(record: dict) -> list[tuple[str, bool | None]]:
     injuries_ok = bool(injuries) if injuries is not None else None
     return [
         ("Resmî XI", official),
-        ("Tahmini XI", predicted_ok if not official else None),
+        ("Resmî/tahmini XI", predicted_ok if not official else None),
         ("Form", form_ok),
         ("Puan durumu", standings_ok),
         ("Güncel araştırma", research_ok),
@@ -404,7 +409,25 @@ def _draw_match_cell(canvas, draw, y, record):
     _draw_center(draw, (center, y + 41), _fit_text(draw, home_name, fname, name_space), fname, TEXT)
     _draw_center(draw, (center, y + 75), _fit_text(draw, away_name, fname, name_space), fname, TEXT)
     dt = _kickoff(record).astimezone(ZoneInfo("Europe/Istanbul"))
-    _draw_center(draw, (center, y + 133), dt.strftime("%d.%m.%Y  %H:%M"), _font(16), MUTED)
+    _draw_center(draw, (center, y + 131), dt.strftime("%d.%m.%Y  %H:%M"), _font(16), MUTED)
+    # Explain XI provenance per team without changing the approved table layout.
+    from providers import valid_xi
+    context = record.get("context") or {}
+    official = context.get("official_xi") or {}
+    probable = context.get("predicted_xi") or {}
+    side_labels = []
+    for side in ("home", "away"):
+        if valid_xi(official.get(side)):
+            side_labels.append("Resmî")
+        elif valid_xi(probable.get(side)):
+            side_labels.append("Tahmini")
+        else:
+            side_labels.append("Eksik")
+    lineup_label = f"Ev: {side_labels[0]} XI  ·  Dep: {side_labels[1]} XI"
+    label_font = _font(12, True)
+    _draw_center(draw, (center, y + 154),
+                 _fit_text(draw, lineup_label, label_font, x1 - x0 - 14),
+                 label_font, GREEN if side_labels == ["Resmî", "Resmî"] else WARN)
 
 
 def _draw_consensus_cell(draw, y, record):

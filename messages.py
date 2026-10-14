@@ -43,11 +43,23 @@ def kickoff_text(record):
 
 def lineup_text(record):
     context = record.get("context") or {}
-    if (context.get("official_xi") or {}).get("status") == "ANNOUNCED":
-        return "✅ Resmî 11"
+    from providers import valid_xi
+    official = context.get("official_xi") or {}
     predicted = context.get("predicted_xi") or {}
-    if all(len(predicted.get(side, [])) == 11 for side in ("home", "away")):
+    kinds = []
+    for side in ("home", "away"):
+        if valid_xi(official.get(side)):
+            kinds.append("OFFICIAL")
+        elif valid_xi(predicted.get(side)):
+            kinds.append("PREDICTED")
+        else:
+            kinds.append("MISSING")
+    if kinds == ["OFFICIAL", "OFFICIAL"]:
+        return "✅ Resmî 11"
+    if kinds == ["PREDICTED", "PREDICTED"]:
         return "⚠️ Tahmini 11"
+    if set(kinds) == {"OFFICIAL", "PREDICTED"}:
+        return "⚠️ Karma 11 (resmî/tahmini)"
     return "⚠️ Kadro eksik"
 
 

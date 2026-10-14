@@ -347,66 +347,78 @@ def valid_xi(players):
     )
 
 
+def merge_official_xi(previous, incoming):
+    """Keep each independently confirmed XI across runs and data providers.
+
+    A missing/partial provider response must never overwrite a previously
+    verified XI, and an unverified 10-player roster is never an official XI.
+    """
+    combined = {"status": "NOT_ANNOUNCED", "home": [], "away": []}
+    for item in (previous, incoming):
+        if not isinstance(item, dict):
+            continue
+        for side in ("home", "away"):
+            if valid_xi(item.get(side)):
+                combined[side] = item[side]
+                source = item.get(f"{side}_source") or item.get("source")
+                if source:
+                    combined[f"{side}_source"] = source
+                formation = item.get(f"{side}_formation")
+                if formation:
+                    combined[f"{side}_formation"] = formation
+    sides = sum(valid_xi(combined[side]) for side in ("home", "away"))
+    combined["status"] = "ANNOUNCED" if sides == 2 else "PARTIAL" if sides else "NOT_ANNOUNCED"
+    if sides:
+        incoming_has_valid_xi = isinstance(incoming, dict) and any(
+            valid_xi(incoming.get(side)) for side in ("home", "away")
+        )
+        previous_checked = previous.get("checked_at") if isinstance(previous, dict) else None
+        combined["checked_at"] = (
+            datetime.now(timezone.utc).isoformat() if incoming_has_valid_xi
+            else previous_checked or datetime.now(timezone.utc).isoformat()
+        )
+        sources = [combined.get(f"{side}_source") for side in ("home", "away")
+                   if valid_xi(combined[side]) and combined.get(f"{side}_source")]
+        if sources:
+            combined["source"] = sources[0] if len(set(sources)) == 1 else "MIXED"
+    return combined
+
+
 def official_xi(football, match):
+    """Collect source-verified starting XIs independently for each team."""
     home = match["homeTeam"]["name"]
     away = match["awayTeam"]["name"]
-
-    kickoff = datetime.fromisoformat(
-        match["utcDate"].replace("Z", "+00:00")
-    )
+    kickoff = datetime.fromisoformat(match["utcDate"].replace("Z", "+00:00"))
+    combined = merge_official_xi(None, None)
 
     try:
         details = football.get_match_details(match["id"])
-
-        # football-data v4 stores lineups inside team objects.
         h = (details.get("homeTeam") or {}).get("lineup")
         a = (details.get("awayTeam") or {}).get("lineup")
-
-        if valid_xi(h) and valid_xi(a):
-            return {
-                "status": "ANNOUNCED",
-                "home": h,
-                "away": a,
-                "source": "football-data.org",
-                "checked_at": datetime.now(
-                    timezone.utc
-                ).isoformat(),
-            }
-
+        combined = merge_official_xi(combined, {
+            "home": h, "away": a, "source": "football-data.org",
+        })
+        if combined["status"] == "ANNOUNCED":
+            return combined
     except FootballDataError:
         pass
 
     clients = []
-
     if os.getenv("API_FOOTBALL_KEY"):
         clients.append(APIFootballClient)
-
     clients.append(FotMobClient)
 
     for factory in clients:
         try:
-            xi = factory().get_match_official_xi(
-                home,
-                away,
-                kickoff,
-            )
-
-            if (
-                xi
-                and valid_xi(xi.get("home"))
-                and valid_xi(xi.get("away"))
-            ):
-                xi["checked_at"] = datetime.now(
-                    timezone.utc
-                ).isoformat()
-
-                return xi
-
+            xi = factory().get_match_official_xi(home, away, kickoff)
+            combined = merge_official_xi(combined, xi)
+            if combined["status"] == "ANNOUNCED":
+                return combined
         except Exception:
-            # External fallback failures must not interrupt match processing.
+            # A failed fallback must not erase a previously verified team.
             pass
 
-    return None
+    return combined if combined["status"] != "NOT_ANNOUNCED" else None
 
 
 # ---------------------------------------------------------------------------

@@ -15,7 +15,7 @@ from history_engine import grade_record
 from learning import POLICIES, audit, digest, learning_context, new_state, utcnow
 from messages import FORMAT_VERSION, prediction_message, prediction_tables
 from policy_sync import apply_approved_policy
-from providers import CachedFootball, official_xi, predicted_xi
+from providers import CachedFootball, merge_official_xi, official_xi, predicted_xi, valid_xi
 from report_engine import build_result_message
 from research_engine import empty_research, research_match, structured_research
 from scoring import VERSION, regulation_score, score_prediction
@@ -250,6 +250,53 @@ def research_gate_open(gate):
         return True
 
 
+def refresh_lineups(r, context, match, football, save, remaining):
+    """Poll before T-30 without AI calls; retain every confirmed team XI."""
+    existing = context.get('official_xi') or {'status': 'NOT_ANNOUNCED'}
+    combined = merge_official_xi(existing, None)
+    context['official_xi'] = combined
+    if combined['status'] == 'ANNOUNCED':
+        return combined
+
+    # Persist a bounded poll interval across GitHub runs. A first T-30 check
+    # is always allowed even if an earlier call occurred within four minutes.
+    last = r.get('xi_checked_at')
+    elapsed = None
+    if last:
+        try:
+            elapsed = (now() - parse_utc(last)).total_seconds()
+        except (ValueError, TypeError):
+            pass
+    crossed_deadline = remaining <= 30 and not r.get('xi_final_checked')
+    if elapsed is None or elapsed >= 240 or crossed_deadline:
+        r['xi_checked_at'] = now().isoformat()
+        if remaining <= 30:
+            r['xi_final_checked'] = True
+        save()
+        fetched = official_xi(football, match)
+        combined = merge_official_xi(combined, fetched)
+        context['official_xi'] = combined
+        save()
+    return combined
+
+
+def lineup_availability(context):
+    """Tell the models exactly which team has which quality of XI."""
+    official = context.get('official_xi') or {}
+    predicted = context.get('predicted_xi') or {}
+    result = {}
+    for side in ('home', 'away'):
+        if valid_xi(official.get(side)):
+            result[side] = 'OFFICIAL'
+        elif valid_xi(predicted.get(side)):
+            result[side] = 'PREDICTED'
+        elif predicted.get(side):
+            result[side] = 'INCOMPLETE_PREDICTED'
+        else:
+            result[side] = 'MISSING'
+    return result
+
+
 def prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode=False,
                        research_gate=None, save_research_gate=None):
     """Resumable stages: lineup -> context -> research -> votes -> durable message."""
@@ -260,14 +307,10 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         return False
     context = r.setdefault('context', {})
     if not r.get('inputs_frozen'):
-        # Check XI in distinct windows, not every five minutes for the same window.
-        bucket = 'early' if remaining > 40 else 'middle' if remaining > 30 else 'final'
-        if (context.get('official_xi') or {}).get('status') != 'ANNOUNCED' and r.get('xi_window') != bucket:
-            xi = official_xi(football, match)
-            context['official_xi'] = xi or {'status': 'NOT_ANNOUNCED'}
-            r['xi_window'] = bucket
-            save()
-        if context['official_xi']['status'] != 'ANNOUNCED' and remaining > 30 and not test_mode:
+        xi = refresh_lineups(r, context, match, football, save, remaining)
+        # Wait for both confirmed starting XIs until T-30. If just one team
+        # is confirmed, retain its XI and use probable-XI research for the other.
+        if xi['status'] != 'ANNOUNCED' and remaining > 30 and not test_mode:
             return False
         if not r.get('context_ready'):
             xi = context['official_xi']
@@ -290,6 +333,9 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
                         http_options={'timeout': 30000, 'retry_options': {'attempts': 1}})
                     actual = research_match(client, r['home_team'], r['away_team'], context)
                     if actual.get('status') == 'OK':
+                        # A search summary is not authority to announce XIs;
+                        # only the team-matched verified provider XI qualifies.
+                        actual['official_xi'] = context['official_xi']
                         r['research'] = actual
                     else:
                         r['research_raw_unverified'] = {
@@ -314,6 +360,10 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
             print(f"RESEARCH | {r['match_id']} | {r['research'].get('status')} | "
                   f"{r['research'].get('provider_warning', 'OK')}", flush=True)
             context['predicted_xi'] = predicted_xi(r['research'])
+            # Never silently promote a short probable roster to a verified XI.
+            context['lineup_availability'] = lineup_availability(context)
+            print(f"XI | {r['match_id']} | home={context['lineup_availability']['home']} "
+                  f"away={context['lineup_availability']['away']}", flush=True)
             r['history'] = learning_context(predictions, state, now())
             r['learning_policy'] = state['policy']
             r['policy_revision'] = state['revision']
@@ -323,6 +373,7 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
     if not r.get('inputs_frozen'):
         # A process died after reserving research; resume without fabricating a completed call.
         context['predicted_xi'] = predicted_xi(r['research'])
+        context['lineup_availability'] = lineup_availability(context)
         r['history'] = learning_context(predictions, state, now())
         r['input_hash'] = digest({'context': context, 'research': r['research'], 'history': r['history']})
         r['inputs_frozen'] = True

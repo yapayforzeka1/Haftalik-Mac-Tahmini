@@ -335,11 +335,15 @@ class FotMobClient:
         home_xi = self._normalize_players(home.get("players") or home.get("starters") or [])
         away_xi = self._normalize_players(away.get("players") or away.get("starters") or [])
 
-        if len(home_xi) >= 11 and len(away_xi) >= 11:
+        # Preserve one independently confirmed team even if the other side
+        # has not appeared in the FotMob lineup response yet.
+        confirmed_home = home_xi[:11] if len(home_xi) == 11 else []
+        confirmed_away = away_xi[:11] if len(away_xi) == 11 else []
+        if confirmed_home or confirmed_away:
             return {
-                "status": "ANNOUNCED",
-                "home": home_xi[:11],
-                "away": away_xi[:11],
+                "status": "ANNOUNCED" if confirmed_home and confirmed_away else "PARTIAL",
+                "home": confirmed_home,
+                "away": confirmed_away,
                 "home_formation": home.get("formation"),
                 "away_formation": away.get("formation"),
                 "source": "FotMob",
@@ -533,11 +537,13 @@ class APIFootballClient:
                 away_xi = players
                 away_formation = lineup.get("formation")
 
-        if len(home_xi) >= 11 and len(away_xi) >= 11:
+        confirmed_home = home_xi if len(home_xi) == 11 else []
+        confirmed_away = away_xi if len(away_xi) == 11 else []
+        if confirmed_home or confirmed_away:
             return {
-                "status": "ANNOUNCED",
-                "home": home_xi,
-                "away": away_xi,
+                "status": "ANNOUNCED" if confirmed_home and confirmed_away else "PARTIAL",
+                "home": confirmed_home,
+                "away": confirmed_away,
                 "home_formation": home_formation,
                 "away_formation": away_formation,
                 "source": "API-Football",

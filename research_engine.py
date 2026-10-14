@@ -146,7 +146,7 @@ def structured_research(context: dict[str, Any], reason: str = "") -> dict[str, 
             + " ".join(lines)
         )
     official_xi = context.get("official_xi") or {}
-    if official_xi.get("status") == "ANNOUNCED":
+    if official_xi.get("status") in {"ANNOUNCED", "PARTIAL"}:
         result["official_xi"] = official_xi
     else:
         result["official_xi"] = {"status": "NOT_ANNOUNCED"}
@@ -237,7 +237,8 @@ Sonuç bölümünde skor tahminini değiştirebilecek 5-8 somut faktörü
 Kullandığın kaynakların adını ve mümkünse URL'sini sources alanına yaz.
 
 KADRO DOĞRULAMA:
-Resmi ilk 11 yoksa her iki takım için güncel tahmini XI oluşturmaya çalış.
+Yapılandırılmış veride bir takımın resmî ilk 11'i doğrulanmışsa onu koru;
+resmî 11'i doğrulanmamış takım(lar) için güncel tahmini XI oluşturmaya çalış.
 Önceki kadrodaki oyuncuların halen kulüpte olduğunu, sakat/cezalı olmadığını kontrol et.
 Transfer olmuş veya oynayamayacak oyuncuyu dahil etme. Bulamadığın oyuncuyu uydurma.
 predicted_xi.home ve predicted_xi.away listelerinde her oyuncu için name,

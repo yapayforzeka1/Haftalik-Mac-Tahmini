@@ -89,12 +89,19 @@ def test_reason_saved_without_losing_full_explanation():
 
 
 @pytest.mark.parametrize('status,expected',[(None,'⚠️ Kadro eksik'),('ANNOUNCED','✅ Resmî 11')])
-def test_lineup_status(status,expected):
-    r=example(['1-2']*5);r['context']['official_xi']['status']=status
-    assert prediction_tables(r)['summary'][2]==expected
+def test_lineup_status(status, expected):
+    r = example(['1-2'] * 5)
+    eleven_home = [{'name': f'Home {i}'} for i in range(11)]
+    eleven_away = [{'name': f'Away {i}'} for i in range(11)]
+    r['context']['official_xi'] = {'status': status,
+        'home': eleven_home if status == 'ANNOUNCED' else [],
+        'away': eleven_away if status == 'ANNOUNCED' else []}
+    assert prediction_tables(r)['summary'][2] == expected
     if status is None:
-        r['context']['predicted_xi']={'home':[{}]*11,'away':[{}]*11}
-        assert prediction_tables(r)['summary'][2]=='⚠️ Tahmini 11'
+        r['context']['predicted_xi'] = {'home': eleven_home, 'away': eleven_away}
+        assert prediction_tables(r)['summary'][2] == '⚠️ Tahmini 11'
+        r['context']['official_xi']['home'] = eleven_home
+        assert prediction_tables(r)['summary'][2] == '⚠️ Karma 11 (resmî/tahmini)'
 
 
 def test_image_delivery_retry_is_single_message_and_never_regenerates(monkeypatch,tmp_path):
