@@ -166,15 +166,13 @@ def test_result_retry_without_new_result():
     assert bot.calls == []
 
 
-def test_migration_preserves_original_grade_and_no_resend():
+def test_old_result_is_not_auto_migrated_during_refresh():
     r=record();r.update(final_sent=True,result_sent=True,grading_version=2,consensus_points=5,
-                         actual={'home':2,'away':1,'status':'FINISHED'})
+                         actual={'home':2,'away':1,'status':'FINISHED','scope':'REGULAR_90'})
+    before=copy.deepcopy(r)
     match={'id':1,'status':'FINISHED','score':{'duration':'REGULAR','fullTime':{'home':2,'away':1}}}
     refresh_results({'1':r},[match])
-    assert r['legacy_evaluation']['consensus_points']==5
-    assert r['consensus_points'] is None
-    assert r['result_sent'] is True
-    assert r['post_match_analysis']['models'][0]['goal_error']==0
+    assert r == before
 
 
 def test_fallback_requires_data_and_is_separate():
@@ -376,12 +374,20 @@ def test_finished_extra_time_without_regular_score_never_regrades():
     assert '90 dakika' in r['result_warning']
 
 
-def test_result_correction_resets_receipt_and_message():
+def test_result_correction_requires_review_and_preserves_receipts():
     r=record();r.update(actual={'home':2,'away':1,'status':'FINISHED','scope':'REGULAR_90'},
                        grading_version=VERSION,result_sent=True,result_text='old',result_receipt={'complete':True})
-    refresh_results({'1':r},[{'id':1,'status':'FINISHED','score':{'duration':'REGULAR','fullTime':{'home':2,'away':2}}}])
-    assert not r['result_sent'] and not r['result_receipt']
-    assert 'result_text' not in r and r['result_revisions'][0]['home']==2
+    original=copy.deepcopy(r)
+    new=[{'id':1,'status':'FINISHED','score':{'duration':'REGULAR','fullTime':{'home':2,'away':2}}}]
+    refresh_results({'1':r},new)
+    pending=r.pop('result_correction_pending_review')
+    assert r == original
+    assert pending['proposed_actual']['home'] == 2
+    assert pending['proposed_actual']['away'] == 2
+    r['result_correction_pending_review']=pending
+    snapshot=copy.deepcopy(r)
+    refresh_results({'1':r},new)
+    assert r == snapshot
 
 
 def test_rollback_is_proposed_not_applied():

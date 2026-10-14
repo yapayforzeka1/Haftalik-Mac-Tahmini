@@ -92,19 +92,23 @@ def refresh_results(predictions, matches):
         actual = {'home': score[0], 'away': score[1], 'status': 'FINISHED', 'scope': 'REGULAR_90'}
         previous = r.get('actual') or {}
         unchanged = all(previous.get(k) == v for k, v in actual.items())
-        if unchanged and r.get('grading_version') == VERSION:
+        if previous:
+            if unchanged:
+                # Historical scoring versions are migrated ONLY by the explicit
+                # offline migration command, never during regular prediction runs.
+                continue
+            # Provider revisions must not alter previously published FINAL
+            # messages, delivery receipts or archived 90-minute evaluations.
+            # Record a proposed correction for manual review instead.
+            proposed = copy.deepcopy(actual)
+            pending = r.get('result_correction_pending_review')
+            if not isinstance(pending, dict) or pending.get('proposed_actual') != proposed:
+                r['result_correction_pending_review'] = {
+                    'proposed_actual': proposed,
+                    'observed_at': utcnow(),
+                    'reason': 'Official result differs from stored result; manual review required.',
+                }
             continue
-        if r.get('actual') and r.get('grading_version') != VERSION:
-            _preserve_pre_kicktipp_grade(r)
-            if 'legacy_evaluation' not in r:
-                r['legacy_evaluation'] = {k: copy.deepcopy(r.get(k)) for k in
-                    ('actual', 'consensus', 'consensus_points', 'ai_votes', 'grading_version')}
-        if previous and not unchanged and previous.get('scope') == 'REGULAR_90':
-            r.setdefault('result_revisions', []).append(copy.deepcopy(previous))
-            r['result_receipt'] = {}
-            r['result_sent'] = False
-            r.pop('result_text', None)
-        r.setdefault('published_consensus', copy.deepcopy(r.get('consensus')))
         actual['updated_at'] = previous.get('updated_at', utcnow()) if unchanged else utcnow()
         r['actual'] = actual
         if r.get('prediction_kind', 'AI') == 'AI' and (r.get('prediction_ready') or r.get('final_sent')):
@@ -140,10 +144,9 @@ def regrade_archived_results(predictions):
         if 'legacy_evaluation' not in r:
             r['legacy_evaluation'] = {k: copy.deepcopy(r.get(k)) for k in
                 ('actual', 'consensus', 'consensus_points', 'ai_votes', 'grading_version')}
-        r.setdefault('published_consensus', copy.deepcopy(r.get('consensus')))
         if r.get('prediction_kind', 'AI') == 'AI':
             grade_record(r)
-            r['post_match_analysis'] = audit(r)
+            # Past analysis is an historical artifact; do not regenerate it.
         elif r.get('prediction_kind') == 'STATISTICAL' and isinstance(r.get('fallback'), dict):
             r['fallback_points'] = score_prediction(r['fallback'].get('score'), actual['home'], actual['away'])
             r['grading_version'] = VERSION
@@ -564,14 +567,6 @@ def main():
         save_json(predictions_path, predictions)
     def save_state():
         save_json(state_path, state)
-    # Retain immutable migration input. Never silently rewrite the original evidence.
-    backup = root / 'data' / 'pre_v3_predictions.json'
-    if predictions and not backup.exists():
-        save_json(backup, predictions)
-    migrated = regrade_archived_results(predictions)
-    if migrated:
-        save()  # Persist once, even if a later external provider request fails.
-        print(f"Kicktipp 8/6/4/0: {migrated} tarihi maç yeni standarda göre puanlandı.")
     apply_approved_policy(state, os.getenv('APPROVED_POLICY_FILE'))
     token, chat = os.getenv('TELEGRAM_BOT_TOKEN'), os.getenv('TELEGRAM_CHAT_ID')
     if not token or not chat:

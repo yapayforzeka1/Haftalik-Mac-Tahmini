@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-from consensus_engine import AIVote, build_consensus
+from scoring import VERSION, outcome_points, score_prediction, parse_score
 
 
 def _same_team(record: dict[str, Any], team: str) -> bool:
@@ -14,46 +14,40 @@ def actual_outcome(home: int, away: int) -> str:
     return "HOME" if home > away else "AWAY" if home < away else "DRAW"
 
 
-from scoring import VERSION, outcome_points, score_prediction, parse_score
-
-
-def _rebuild_consensus_from_record(record: dict[str, Any]) -> dict[str, Any]:
-    """Recompute consensus from the archived individual AI votes."""
-    votes: list[AIVote] = []
-    for vote in record.get("ai_votes", []):
-        votes.append(
-            AIVote(
-                model=str(vote.get("model", "Unknown")),
-                success=bool(vote.get("success")),
-                result=vote.get("result") if isinstance(vote.get("result"), dict) else None,
-                error=vote.get("error"),
-            )
-        )
-    if not any(v.success and v.result for v in votes):
-        return dict(record.get("consensus") or {})
-    try:
-        # Preserve the rule used when published; legacy records required two models.
-        minimum = record.get('consensus_min_successful', (record.get('consensus') or {}).get('min_successful', 3))
-        return build_consensus(votes, min_successful=int(minimum))
-    except RuntimeError:
-        return dict(record.get("consensus") or {})
-
-
 def _consensus_flags(record: dict[str, Any]) -> tuple[dict[str, Any], bool, bool, str]:
-    rebuilt = _rebuild_consensus_from_record(record)
-    mode = str(rebuilt.get("consensus_mode") or "").upper()
-    winner_consensus = bool(rebuilt.get("winner_consensus"))
-    score_consensus = bool(rebuilt.get("score_consensus"))
+    """Read the locked pre-match decision; NEVER rebuild it from archived AI votes.
 
-    if mode not in {"NORMAL", "OUTCOME_COMMON_SCORE_SPLIT", "NO_COMMON"}:
-        if winner_consensus and score_consensus:
+    Re-running the current consensus algorithm against historical votes can
+    change what was actually published. For old records with no mode metadata,
+    prefer explicit published flags and otherwise make only conservative
+    inferences from the saved outcome and score.
+    """
+    archived = record.get("consensus") or {}
+    # If available, the actually published pre-match decision is authoritative
+    # for scoring. Neither it nor the current archived consensus is modified.
+    saved = record.get("published_consensus") or archived
+    if not isinstance(saved, dict):
+        saved = {}
+    mode = str(saved.get("consensus_mode") or record.get("prediction_mode") or "").upper()
+    if mode == "NORMAL":
+        winner = bool(saved.get("outcome"))
+        score = winner and parse_score(saved.get("score")) is not None
+    elif mode == "OUTCOME_COMMON_SCORE_SPLIT":
+        winner = bool(saved.get("outcome"))
+        score = False
+    elif mode in {"NO_COMMON", "INDIVIDUAL", "UNAVAILABLE"}:
+        winner = score = False
+    else:
+        # Never invent an unrecorded consensus from a mere plurality/outcome.
+        winner = saved.get("winner_consensus") is True
+        score = winner and saved.get("score_consensus") is True and parse_score(saved.get("score")) is not None
+        if winner and score:
             mode = "NORMAL"
-        elif winner_consensus:
+        elif winner:
             mode = "OUTCOME_COMMON_SCORE_SPLIT"
         else:
             mode = "NO_COMMON"
-
-    return rebuilt, winner_consensus, score_consensus, mode
+    return saved, winner, score, mode
 
 
 def build_team_history(predictions: dict[str, Any], team: str, limit: int = 5) -> dict[str, Any]:
@@ -150,26 +144,17 @@ def grade_record(record: dict[str, Any]) -> None:
         return
 
     real_outcome = actual_outcome(ah, aa)
-    consensus, winner_consensus, score_consensus, mode = _consensus_flags(record)
+    consensus, winner_consensus, score_consensus, _ = _consensus_flags(record)
 
-    # Always replace stale consensus data with the consensus rebuilt from the
-    # individual archived AI votes. This repairs older records that were created
-    # with the previous plurality-based engine.
-    record["consensus"] = consensus
-    consensus["winner_consensus"] = winner_consensus
-    consensus["score_consensus"] = score_consensus
-    consensus["consensus_mode"] = mode
-    record["prediction_mode"] = mode
+    # Historical consensus, mode, score and votes are immutable evidence.
+    # Only derived scoring fields may change here.
 
     if winner_consensus and score_consensus and consensus.get("score"):
         consensus_points = score_prediction(consensus.get("score"), ah, aa)
-        exact_correct = consensus.get("score", "").replace(" ", "") == f"{ah}-{aa}"
     elif winner_consensus:
         consensus_points = outcome_points(consensus.get("outcome"), real_outcome)
-        exact_correct = False
     else:
         consensus_points = None
-        exact_correct = False
 
     record["consensus_points"] = consensus_points
     record["consensus_winner_applicable"] = winner_consensus

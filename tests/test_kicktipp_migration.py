@@ -72,3 +72,101 @@ def test_already_existing_legacy_grade_is_never_overwritten():
     assert record['pre_kicktipp_evaluation']['grading_version'] == '3:6-5-3-2-0:REGULAR'
     assert record['pre_kicktipp_evaluation']['votes'][0]['points'] == 6
     assert record['ai_votes'][0]['points'] == 8
+
+
+def test_grading_never_changes_saved_prediction_or_mode():
+    record = _prediction(1, '2-1', (2, 1))
+    record['consensus'] = {'outcome': 'HOME', 'score': '2-1',
+                           'winner_consensus': True, 'score_consensus': True,
+                           'consensus_mode': 'NORMAL', 'outcome_votes': 3}
+    record['prediction_mode'] = 'NORMAL'
+    record['ai_votes'].append({'model': 'C', 'success': True,
+                                'result': {'score': '1-2', 'outcome': 'AWAY'}})
+    original = copy.deepcopy(record)
+    grade_record(record)
+    assert record['consensus'] == original['consensus']
+    assert record['published_consensus'] == original['published_consensus']
+    assert record['prediction_mode'] == original['prediction_mode']
+    assert [v['result'] for v in record['ai_votes']] == [v['result'] for v in original['ai_votes']]
+    assert record['consensus_points'] == 8
+
+
+def test_migration_does_not_rebuild_changed_legacy_consensus():
+    # Historic voters would pick AWAY if the modern algorithm were rerun, but
+    # the originally archived decision must stay HOME / 3-1.
+    record = _prediction(1, '3-1', (2, 1))
+    record['consensus'] = {'outcome': 'HOME', 'score': '3-1',
+                           'winner_consensus': True, 'score_consensus': True,
+                           'consensus_mode': 'NORMAL'}
+    record['prediction_mode'] = 'NORMAL'
+    record['ai_votes'] = [
+        {'model': model, 'success': True,
+         'result': {'score': '0-2', 'outcome': 'AWAY'}, 'points': 3}
+        for model in ['A', 'B', 'C']
+    ]
+    before = copy.deepcopy(record)
+    assert regrade_archived_results({'1': record}) == 1
+    assert record['consensus'] == before['consensus']
+    assert record['prediction_mode'] == 'NORMAL'
+    assert record['published_consensus'] == before['published_consensus']
+    assert record['consensus_points'] == 4
+    assert [v['points'] for v in record['ai_votes']] == [0, 0, 0]
+
+
+def test_migration_preview_is_read_only_and_apply_creates_exact_backup(tmp_path):
+    import json
+    from migrate_kicktipp import migrate_file, assert_archive_integrity
+    from storage import StateError
+    path = tmp_path / 'match_predictions.json'
+    original = {'1': _prediction(1, '2-1', (2, 1))}
+    path.write_text(json.dumps(original, indent=3), encoding='utf-8')
+    source_bytes = path.read_bytes()
+    changed, backup = migrate_file(path)
+    assert changed == 1 and backup is None
+    assert path.read_bytes() == source_bytes
+    try:
+        migrate_file(path, apply=True, confirmed=False)
+    except StateError:
+        pass
+    else:
+        assert False, 'Explicit approval flags must be required.'
+    changed, backup = migrate_file(path, apply=True, confirmed=True)
+    assert changed == 1 and backup.is_file()
+    assert backup.read_bytes() == source_bytes
+    result = json.loads(path.read_text(encoding='utf-8'))
+    assert_archive_integrity(original, result)
+    assert result['1']['grading_version'] == VERSION
+    assert result['1']['ai_votes'][0]['points'] == 8
+    assert migrate_file(path, apply=True, confirmed=True) == (0, None)
+
+
+def test_integrity_check_rejects_consensus_vote_and_receipt_changes():
+    import pytest
+    from migrate_kicktipp import assert_archive_integrity
+    from storage import StateError
+    original = {'1': _prediction(1, '2-1', (2, 1))}
+    for key, replacement in [('published_consensus', {}), ('result_receipt', {}),
+                              ('prediction_mode', 'NO_COMMON')]:
+        modified = copy.deepcopy(original)
+        modified['1'][key] = replacement
+        with pytest.raises(StateError):
+            assert_archive_integrity(original, modified)
+    modified = copy.deepcopy(original)
+    modified['1']['ai_votes'][0]['result']['score'] = '1-2'
+    with pytest.raises(StateError):
+        assert_archive_integrity(original, modified)
+
+
+def test_published_consensus_is_authoritative_even_if_other_metadata_differs():
+    record = _prediction(1, '2-1', (2, 1))
+    record['consensus'] = {'outcome': None, 'score': None, 'consensus_mode': 'NO_COMMON'}
+    record['prediction_mode'] = 'NO_COMMON'
+    record['published_consensus'] = {'outcome': 'HOME', 'score': '2-1',
+                                     'consensus_mode': 'NORMAL',
+                                     'winner_consensus': True, 'score_consensus': True}
+    original = copy.deepcopy(record)
+    grade_record(record)
+    assert record['consensus'] == original['consensus']
+    assert record['prediction_mode'] == original['prediction_mode']
+    assert record['published_consensus'] == original['published_consensus']
+    assert record['consensus_points'] == 8

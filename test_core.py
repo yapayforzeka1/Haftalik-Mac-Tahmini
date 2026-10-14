@@ -77,7 +77,9 @@ def test_locked_scoring_rules():
 def test_grade_record():
     record = {
         "home_team": "Home", "away_team": "Away",
-        "consensus": {"outcome": "HOME", "score": "2-1"},
+        "consensus": {"outcome": None, "score": None,
+                      "winner_consensus": False, "score_consensus": False,
+                      "consensus_mode": "NO_COMMON"},
         "ai_votes": [
             {"model": "A", "success": True, "result": {"outcome": "HOME", "score": "2-1"}},
             {"model": "B", "success": True, "result": {"outcome": "HOME", "score": "1-0"}},
@@ -86,9 +88,11 @@ def test_grade_record():
         ],
         "actual": {"home": 2, "away": 1, "status": "FINISHED", "updated_at": "2026-09-10T21:00:00+00:00"},
     }
+    original_consensus = record["consensus"].copy()
     grade_record(record)
 
-    # Two matching votes out of three do not meet the fixed-three rule.
+    # The published pre-match decision is locked and must not be recalculated.
+    assert record["consensus"] == original_consensus
     assert record["consensus"]["consensus_mode"] == "NO_COMMON"
     assert record["consensus"]["score"] is None
     assert record["consensus_points"] is None
@@ -105,7 +109,8 @@ def test_grade_record():
 def test_grade_no_consensus():
     record = {
         "home_team": "Napoli", "away_team": "Arsenal",
-        "consensus": {"outcome": "HOME", "score": "1-2"},  # stale old plurality data
+        "consensus": {"outcome": None, "score": None, "consensus_mode": "NO_COMMON",
+                      "winner_consensus": False, "score_consensus": False},
         "ai_votes": [
             {"model": "A", "success": True, "result": {"outcome": "AWAY", "score": "1-2"}},
             {"model": "B", "success": True, "result": {"outcome": "HOME", "score": "2-1"}},
@@ -113,10 +118,12 @@ def test_grade_no_consensus():
         ],
         "actual": {"home": 0, "away": 1, "status": "FINISHED", "updated_at": "2026-09-10T21:00:00+00:00"},
     }
+    original_consensus = record["consensus"].copy()
     grade_record(record)
 
-    # Old plurality consensus must be repaired from the individual AI votes.
-    assert record["prediction_mode"] == "NO_COMMON"
+    # Historical decisions must be graded exactly as saved, not reconstructed.
+    assert record["consensus"] == original_consensus
+    assert "prediction_mode" not in record
     assert record["consensus"]["outcome"] is None
     assert record["consensus"]["score"] is None
     assert record["consensus_points"] is None
