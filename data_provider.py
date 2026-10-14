@@ -264,14 +264,17 @@ class FotMobClient:
 
     @staticmethod
     def _normalize_players(raw: Any) -> list[dict[str, Any]]:
+        """Normalize the current starters[] and the older player-wrapped format."""
         if isinstance(raw, dict):
-            raw = raw.get("players") or raw.get("starters") or []
+            raw = raw.get("starters") or raw.get("players") or []
+        if not isinstance(raw, list):
+            return []
         result: list[dict[str, Any]] = []
-        for item in raw or []:
+        for item in raw:
             if not isinstance(item, dict):
                 continue
             player = item.get("player") if isinstance(item.get("player"), dict) else item
-            name = player.get("name") or player.get("playerName")
+            name = str(player.get("name") or player.get("playerName") or "").strip()
             if not name:
                 continue
             result.append({
@@ -281,34 +284,102 @@ class FotMobClient:
                 "pos": player.get("position") or player.get("positionId") or player.get("pos"),
                 "grid": player.get("grid"),
             })
+        # Never silently slice a bench/mixed squad to its first 11 players.
         return result
 
-    def _extract_lineup_teams(self, data: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
-        content = data.get("content") if isinstance(data.get("content"), dict) else data
-        lineup = content.get("lineup") if isinstance(content, dict) else None
-        if not isinstance(lineup, dict):
-            return {}, {}
-
-        # Current FotMob matchDetails payload: content.lineup.lineups[]
+    @staticmethod
+    def _extract_lineup_teams(lineup: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+        # Current FotMob payload: content.lineup.homeTeam/awayTeam.starters[].
+        home, away = lineup.get("homeTeam"), lineup.get("awayTeam")
+        if isinstance(home, dict) and isinstance(away, dict):
+            return home, away
+        # Legacy compatibility: content.lineup.lineups[] with teamId.
         teams = lineup.get("lineups")
         if isinstance(teams, list):
-            home: dict[str, Any] = {}
-            away: dict[str, Any] = {}
-            for team in teams:
-                if not isinstance(team, dict):
-                    continue
-                team_id = str(team.get("teamId", ""))
-                if not home:
-                    home = team
-                elif team_id != str(home.get("teamId", "")):
-                    away = team
-                    break
-            return home, away
+            found = [item for item in teams if isinstance(item, dict)]
+            if len(found) >= 2:
+                return found[0], found[1]
+        return {}, {}
 
-        # Compatibility with payloads exposing homeTeam / awayTeam directly.
-        home = lineup.get("homeTeam") if isinstance(lineup.get("homeTeam"), dict) else {}
-        away = lineup.get("awayTeam") if isinstance(lineup.get("awayTeam"), dict) else {}
-        return home, away
+    def get_match_lineup_options(
+        self,
+        home_team: str,
+        away_team: str,
+        kickoff_utc: datetime,
+    ) -> dict[str, Any]:
+        """Only classify source-labelled XIs; never promote a projection to official."""
+        empty = {"official": None, "predicted": None, "reason": "MATCH_NOT_FOUND"}
+        match = self.find_match(home_team, away_team, kickoff_utc)
+        if not match:
+            print(f"⚠️ FotMob maçı bulunamadı: {home_team} - {away_team}")
+            return empty
+        match_id = match.get("id")
+        if match_id is None:
+            return {**empty, "reason": "MATCH_ID_MISSING"}
+        data = self._get("/matchDetails", params={"matchId": match_id})
+        content = data.get("content") if isinstance(data.get("content"), dict) else {}
+        lineup = content.get("lineup") if isinstance(content.get("lineup"), dict) else {}
+        if not lineup:
+            return {"official": None, "predicted": None, "reason": "LINEUP_NOT_AVAILABLE"}
+
+        expected_home = str((match.get("home") or {}).get("id") or "")
+        expected_away = str((match.get("away") or {}).get("id") or "")
+        home, away = self._extract_lineup_teams(lineup)
+        if not home or not away or not expected_home or not expected_away:
+            return {"official": None, "predicted": None, "reason": "TEAM_ID_NOT_VERIFIED"}
+        actual_home = str(home.get("teamId") or home.get("id") or "")
+        actual_away = str(away.get("teamId") or away.get("id") or "")
+        # Legacy lineups[] may arrive in a different order; match by IDs.
+        teams = {actual_home: home, actual_away: away}
+        if expected_home not in teams or expected_away not in teams or expected_home == expected_away:
+            return {"official": None, "predicted": None, "reason": "TEAM_ID_MISMATCH"}
+        home, away = teams[expected_home], teams[expected_away]
+
+        home_xi = self._normalize_players(home.get("starters") or home.get("startXI") or home.get("players") or [])
+        away_xi = self._normalize_players(away.get("starters") or away.get("startXI") or away.get("players") or [])
+        def complete(players):
+            return len(players) == 11 and len({p["name"].casefold() for p in players}) == 11
+        home_xi = home_xi if complete(home_xi) else []
+        away_xi = away_xi if complete(away_xi) else []
+        if not home_xi and not away_xi:
+            return {"official": None, "predicted": None, "reason": "NO_VALID_STARTERS"}
+
+        lineup_type = str(lineup.get("lineupType") or "").casefold()
+        explicitly_unconfirmed = lineup.get("confirmed") is False or lineup.get("isVerified") is False
+        projected = lineup_type in {"predicted", "probable", "expected"}
+        official = ((lineup.get("confirmed") is True or lineup.get("isVerified") is True
+                    or lineup_type in {"standard", "official", "confirmed"})
+                    and not explicitly_unconfirmed and not projected)
+        if not official and not projected:
+            return {"official": None, "predicted": None, "reason": "LINEUP_TYPE_UNVERIFIED"}
+        if explicitly_unconfirmed and not projected:
+            return {"official": None, "predicted": None, "reason": "LINEUP_NOT_CONFIRMED"}
+        if explicitly_unconfirmed:
+            official = False
+        result = {
+            "status": "ANNOUNCED" if home_xi and away_xi else "PARTIAL",
+            "home": home_xi,
+            "away": away_xi,
+            "home_formation": home.get("formation"),
+            "away_formation": away.get("formation"),
+            "source": "FotMob",
+            "match_id": match_id,
+        }
+        if projected and not official:
+            # This is an explicit match-specific projection, never official.
+            result["status"] = "PREDICTED" if home_xi and away_xi else "PARTIAL_PREDICTED"
+            source_url = f"https://www.fotmob.com/api/data/matchDetails?matchId={match_id}"
+            for side in ("home", "away"):
+                for player in result[side]:
+                    player.update({
+                        "current_club_confirmed": True,  # Listed for this fixture's verified team ID.
+                        "unavailable": False,  # Provider projects player as available; not injury-verified.
+                        "source_url": source_url,
+                        "lineup_source": "FOTMOB_PREDICTED",
+                        "availability_verified": False,
+                    })
+            return {"official": None, "predicted": result, "reason": "PREDICTED"}
+        return {"official": result, "predicted": None, "reason": "OFFICIAL"}
 
     def get_match_official_xi(
         self,
@@ -316,49 +387,21 @@ class FotMobClient:
         away_team: str,
         kickoff_utc: datetime,
     ) -> dict[str, Any] | None:
-        match = self.find_match(home_team, away_team, kickoff_utc)
-        if not match:
-            print(f"⚠️ FotMob maçı bulunamadı: {home_team} - {away_team}")
-            return None
+        options = self.get_match_lineup_options(home_team, away_team, kickoff_utc)
+        if options["official"] is None and options["reason"] != "MATCH_NOT_FOUND":
+            print(f"XI_SOURCE | FotMob | {home_team} - {away_team} | {options['reason']}", flush=True)
+        return options["official"]
 
-        match_id = match.get("id")
-        if match_id is None:
-            return None
-
-        data = self._get("/matchDetails", params={"matchId": match_id})
-        lineup = (data.get("content") or {}).get("lineup") or {}
-        if lineup.get("confirmed") is not True:
-            return None
-        home, away = self._extract_lineup_teams(data)
-        expected_home = str((match.get("home") or {}).get("id", ""))
-        expected_away = str((match.get("away") or {}).get("id", ""))
-        by_id = {str(x.get("teamId", x.get("id", ""))): x for x in (home, away)}
-        if not expected_home or not expected_away or expected_home not in by_id or expected_away not in by_id:
-            return None
-        home, away = by_id[expected_home], by_id[expected_away]
-        home_xi = self._normalize_players(home.get("players") or home.get("starters") or [])
-        away_xi = self._normalize_players(away.get("players") or away.get("starters") or [])
-
-        # Preserve one independently confirmed team even if the other side
-        # has not appeared in the FotMob lineup response yet.
-        confirmed_home = home_xi[:11] if len(home_xi) == 11 else []
-        confirmed_away = away_xi[:11] if len(away_xi) == 11 else []
-        if confirmed_home or confirmed_away:
-            return {
-                "status": "ANNOUNCED" if confirmed_home and confirmed_away else "PARTIAL",
-                "home": confirmed_home,
-                "away": confirmed_away,
-                "home_formation": home.get("formation"),
-                "away_formation": away.get("formation"),
-                "source": "FotMob",
-                "match_id": match_id,
-            }
-
-        print(
-            f"⏳ FotMob XI henüz tam değil: {home_team} - {away_team} "
-            f"({len(home_xi)}/11 - {len(away_xi)}/11)"
-        )
-        return None
+    def get_match_predicted_xi(
+        self,
+        home_team: str,
+        away_team: str,
+        kickoff_utc: datetime,
+    ) -> dict[str, Any] | None:
+        options = self.get_match_lineup_options(home_team, away_team, kickoff_utc)
+        if options["predicted"] is None and options["reason"] != "MATCH_NOT_FOUND":
+            print(f"XI_SOURCE | FotMob probable | {home_team} - {away_team} | {options['reason']}", flush=True)
+        return options["predicted"]
 
 
 class APIFootballClient:

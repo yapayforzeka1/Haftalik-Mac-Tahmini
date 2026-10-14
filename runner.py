@@ -15,7 +15,9 @@ from history_engine import grade_record
 from learning import POLICIES, audit, digest, learning_context, new_state, utcnow
 from messages import FORMAT_VERSION, prediction_message, prediction_tables
 from policy_sync import apply_approved_policy
-from providers import CachedFootball, merge_official_xi, official_xi, predicted_xi, valid_xi
+from providers import (CachedFootball, merge_official_xi, merge_predicted_xi,
+                       official_xi, predicted_xi, source_predicted_xi, valid_xi)
+from data_provider import _normalize_team_name
 from report_engine import build_result_message
 from research_engine import empty_research, research_match, structured_research
 from scoring import VERSION, regulation_score, score_prediction
@@ -35,10 +37,33 @@ def minutes_left(match):
     return (parse_utc(match['utcDate']) - now()).total_seconds()/60
 
 
+# Temporarily disabled until the user reviews these clubs after the league phase.
+# This filter is applied BEFORE lineup, research and AI-provider calls.
+EXCLUDED_CLUBS = frozenset({"fenerbahce", "galatasaray"})
+
+
+def excluded_club_name(team_name):
+    """Match full club identity, including common suffixes, not partial words."""
+    name = _normalize_team_name(team_name)
+    return any(name == club or name.startswith(club + " ") for club in EXCLUDED_CLUBS)
+
+
+def excluded_fixture(match):
+    return any(excluded_club_name((match.get(side) or {}).get("name", ""))
+               for side in ("homeTeam", "awayTeam"))
+
+
+def excluded_record(record):
+    return any(excluded_club_name(record.get(side, ""))
+               for side in ("home_team", "away_team"))
+
+
 def refresh_results(predictions, matches):
     """Regrade under version 3, preserving prior grades and published decisions."""
     by_id = {str(m['id']): m for m in matches}
     for key, r in predictions.items():
+        if excluded_record(r):
+            continue
         if not r.get('prediction_ready') and not r.get('final_sent'):
             continue
         match = by_id.get(key)
@@ -146,6 +171,8 @@ def drain_delivery(predictions, bot, chat_id, save):
 
     groups = defaultdict(list)
     for r in predictions.values():
+        if excluded_record(r):
+            continue
         if (r.get('prediction_ready') and not r.get('final_sent')
                 and r.get('message_format_version', 0) >= FORMAT_VERSION
                 and not r.get('photo_sent') and not r.get('prediction_receipt', {}).get('complete')):
@@ -177,6 +204,8 @@ def drain_delivery(predictions, bot, chat_id, save):
             print(f"Grup gönderimi bekliyor: {ids} / {safe_error(exc)}")
 
     for r in predictions.values():
+        if excluded_record(r):
+            continue
         try:
             deliver_record(r, bot, chat_id, save)
         except (TelegramError, OSError) as exc:
@@ -225,7 +254,7 @@ def prewarm_context(r, match, football, save):
     This stage is explicitly token-free for AI providers. Partial API results
     can be retried by prepare_prediction nearer kickoff.
     """
-    if r.get('final_sent') or r.get('prediction_ready') or r.get('context_ready'):
+    if excluded_fixture(match) or r.get('final_sent') or r.get('prediction_ready') or r.get('context_ready'):
         return False
     context = prepare_context(match, football)
     context['official_xi'] = (r.get('context') or {}).get('official_xi', {'status': 'NOT_ANNOUNCED'})
@@ -300,6 +329,8 @@ def lineup_availability(context):
 def prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode=False,
                        research_gate=None, save_research_gate=None):
     """Resumable stages: lineup -> context -> research -> votes -> durable message."""
+    if excluded_fixture(match):
+        return False
     if r.get('prediction_ready'):
         return True
     remaining = minutes_left(match)
@@ -312,10 +343,19 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         # is confirmed, retain its XI and use probable-XI research for the other.
         if xi['status'] != 'ANNOUNCED' and remaining > 30 and not test_mode:
             return False
+        # At T-30 use a source-labelled probable XI when official starters are
+        # absent; this is a plain football-data lookup and consumes no AI tokens.
+        if xi['status'] != 'ANNOUNCED' and not r.get('probable_xi_checked_at'):
+            r['probable_xi_checked_at'] = utcnow()
+            save()
+            context['source_predicted_xi'] = source_predicted_xi(match) or {}
+            save()
         if not r.get('context_ready'):
             xi = context['official_xi']
+            prior_projection = context.get('source_predicted_xi') or {}
             context = prepare_context(match, football)
             context['official_xi'] = xi
+            context['source_predicted_xi'] = prior_projection
             r['context'] = context
             r['context_ready'] = True
             save()
@@ -359,7 +399,12 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
             # Important: STRUCTURED_ONLY is NOT falsely marked as researched OK.
             print(f"RESEARCH | {r['match_id']} | {r['research'].get('status')} | "
                   f"{r['research'].get('provider_warning', 'OK')}", flush=True)
-            context['predicted_xi'] = predicted_xi(r['research'])
+            context['predicted_xi'] = merge_predicted_xi(
+                context.get('source_predicted_xi'), predicted_xi(r['research']),
+                context.get('official_xi'),
+            )
+            # Keep the AI's research and context consistent about starter names.
+            r['research']['predicted_xi'] = context['predicted_xi']
             # Never silently promote a short probable roster to a verified XI.
             context['lineup_availability'] = lineup_availability(context)
             print(f"XI | {r['match_id']} | home={context['lineup_availability']['home']} "
@@ -372,7 +417,11 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
             save()
     if not r.get('inputs_frozen'):
         # A process died after reserving research; resume without fabricating a completed call.
-        context['predicted_xi'] = predicted_xi(r['research'])
+        context['predicted_xi'] = merge_predicted_xi(
+            context.get('source_predicted_xi'), predicted_xi(r['research']),
+            context.get('official_xi'),
+        )
+        r['research']['predicted_xi'] = context['predicted_xi']
         context['lineup_availability'] = lineup_availability(context)
         r['history'] = learning_context(predictions, state, now())
         r['input_hash'] = digest({'context': context, 'research': r['research'], 'history': r['history']})
@@ -428,6 +477,8 @@ def track_missed_fixtures(matches, predictions, state, bot, chat, save_state):
     """Never silently drop a known fixture if Actions missed the pre-match window."""
     tracked = state.setdefault('tracked_fixtures', {})
     for match in matches:
+        if excluded_fixture(match):
+            continue
         key = str(match['id'])
         kickoff = parse_utc(match['utcDate'])
         if kickoff > now():
@@ -480,7 +531,8 @@ def main():
     # This uses no AI providers and helps seven simultaneous fixtures avoid
     # exhausting the final pre-kickoff processing budget.
     if not test_mode:
-        upcoming = [m for m in matches if m.get('status') in {'TIMED', 'SCHEDULED'}
+        upcoming = [m for m in matches if not excluded_fixture(m)
+                    and m.get('status') in {'TIMED', 'SCHEDULED'}
                     and 0 < minutes_left(m) <= 90]
         upcoming.sort(key=lambda m: m['utcDate'])
         prewarm_end = time.monotonic() + 110  # leave the rest of this run free
@@ -508,7 +560,8 @@ def main():
                 r['context_prefetch_error'] = safe_error(exc)
                 save()
 
-    candidates = [m for m in matches if m.get('status') in {'TIMED', 'SCHEDULED'} and minutes_left(m) > 0
+    candidates = [m for m in matches if not excluded_fixture(m)
+                  and m.get('status') in {'TIMED', 'SCHEDULED'} and minutes_left(m) > 0
                   and (test_mode or minutes_left(m) <= 60)]
     candidates.sort(key=lambda m: m['utcDate'])
     if test_mode:

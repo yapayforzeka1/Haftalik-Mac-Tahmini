@@ -421,6 +421,47 @@ def official_xi(football, match):
     return combined if combined["status"] != "NOT_ANNOUNCED" else None
 
 
+def source_predicted_xi(match):
+    """Fetch a *labelled* match-specific probable XI without an AI request.
+
+    Only FotMob's explicit predicted/probable lineup is accepted. Historic
+    starters and generic squad listings must not be presented as this XI.
+    """
+    kickoff = datetime.fromisoformat(match["utcDate"].replace("Z", "+00:00"))
+    try:
+        return FotMobClient().get_match_predicted_xi(
+            match["homeTeam"]["name"], match["awayTeam"]["name"], kickoff,
+        )
+    except Exception as exc:
+        # A source outage must not prevent the T-30 fallback prediction.
+        print(f"XI_SOURCE | {match['id']} | FOTMOB_PREDICTED_UNAVAILABLE | {type(exc).__name__}", flush=True)
+        return None
+
+
+def merge_predicted_xi(source, research, official=None):
+    """Prefer a full fixture-specific projection per team over research claims.
+
+    Never splice eleven players from unrelated sources or overwrite official XI.
+    """
+    result = {"status": "PREDICTED", "home": [], "away": []}
+    source = source if isinstance(source, dict) else {}
+    research = research if isinstance(research, dict) else {}
+    official = official if isinstance(official, dict) else {}
+    for side in ("home", "away"):
+        if valid_xi(official.get(side)):
+            continue
+        candidates = [source.get(side), research.get(side)]
+        accepted = [p for p in candidates if valid_xi(p)]
+        if accepted:
+            result[side] = accepted[0]
+        else:
+            # A partial XI is evidence, not a complete first 11.
+            for players in candidates:
+                if isinstance(players, list) and len(players) > len(result[side]):
+                    result[side] = players[:11]
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Predicted starting XI verification
 # ---------------------------------------------------------------------------
