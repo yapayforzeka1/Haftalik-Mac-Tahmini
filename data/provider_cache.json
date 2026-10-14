@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792011345.9200563,
+    "at": 1792011648.1591563,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 30
+        "played": 33
       },
       "competition": {
         "id": 2001,
@@ -1960,7 +1960,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:53:13Z",
+          "lastUpdated": "2026-10-14T20:59:37Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -1976,11 +1976,11 @@
             "crest": "https://crests.football-data.org/86.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 3,
-              "away": 3
+              "away": 4
             },
             "halfTime": {
               "home": 1,
@@ -2026,7 +2026,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:54:49Z",
+          "lastUpdated": "2026-10-14T20:59:37Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2088,11 +2088,11 @@
           },
           "id": 575354,
           "utcDate": "2026-10-14T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:54:49Z",
+          "lastUpdated": "2026-10-14T20:55:53Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -2224,7 +2224,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:54:17Z",
+          "lastUpdated": "2026-10-14T20:59:37Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -2286,11 +2286,11 @@
           },
           "id": 575357,
           "utcDate": "2026-10-14T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:54:17Z",
+          "lastUpdated": "2026-10-14T20:59:37Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -2352,11 +2352,11 @@
           },
           "id": 575358,
           "utcDate": "2026-10-14T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T20:54:49Z",
+          "lastUpdated": "2026-10-14T20:58:01Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
