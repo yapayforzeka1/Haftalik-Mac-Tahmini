@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1791997845.1340988,
+    "at": 1791998143.1158764,
     "data": {
       "filters": {
         "season": 2026
@@ -1828,7 +1828,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T17:09:45Z",
+          "lastUpdated": "2026-10-14T17:15:05Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -1844,11 +1844,11 @@
             "crest": "https://crests.football-data.org/64.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 0,
-              "away": 0
+              "away": 2
             },
             "halfTime": {
               "home": null,
@@ -1894,7 +1894,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T17:09:45Z",
+          "lastUpdated": "2026-10-14T17:15:05Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -1913,8 +1913,8 @@
             "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
-              "away": 0
+              "home": 1,
+              "away": 1
             },
             "halfTime": {
               "home": null,
