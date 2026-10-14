@@ -35,6 +35,10 @@ _TEAM_ALIASES = {
     "sporting clube de portugal": "sporting portugal",
     "sporting cp": "sporting portugal",
     "sporting lisbon": "sporting portugal",
+    # Verified club-name variants: football-data.org vs FotMob fixtures.
+    "lask linz": "lask",
+    "feyenoord rotterdam": "feyenoord",
+    "como 1907": "como",
     # Conservative known-name variants for the seven 22:00 fixtures.
     # Aliases still require matching *both* teams and kickoff time.
     "internazionale milano": "inter",

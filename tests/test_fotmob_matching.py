@@ -99,3 +99,28 @@ def test_2200_fixture_aliases_do_not_match_unrelated_clubs():
     assert not _team_names_match("Club Brugge KV", "Cercle Brugge")
     assert not _team_names_match("FC Internazionale Milano", "AC Milan")
     assert not _team_names_match("RB Leipzig", "Lokomotive Leipzig")
+
+
+@pytest.mark.parametrize("source_home,source_away,fotmob_home,fotmob_away", [
+    ("LASK Linz", "Liverpool FC", "LASK", "Liverpool"),
+    ("Feyenoord Rotterdam", "Como 1907", "Feyenoord", "Como"),
+])
+def test_1945_fotmob_fixture_name_variants_without_network(
+    monkeypatch, source_home, source_away, fotmob_home, fotmob_away,
+):
+    client = FotMobClient()
+    kickoff = datetime(2026, 10, 14, 16, 45, tzinfo=timezone.utc)
+    matches = [
+        _fotmob_match(fotmob_home, fotmob_away, "2026-10-14T16:45:00Z", 210),
+        _fotmob_match(fotmob_home, "Other FC", "2026-10-14T16:45:00Z", 211),
+        _fotmob_match(fotmob_home, fotmob_away, "2026-10-14T20:45:00Z", 212),
+    ]
+    monkeypatch.setattr(client, "get_matches_by_date", lambda day: matches)
+    match = client.find_match(source_home, source_away, kickoff)
+    assert match is not None and match["id"] == 210
+
+
+def test_1945_variants_do_not_allow_unrelated_clubs():
+    assert not _team_names_match("LASK Linz", "LASK Amateure")
+    assert not _team_names_match("Feyenoord Rotterdam", "Sparta Rotterdam")
+    assert not _team_names_match("Como 1907", "Comoros")
