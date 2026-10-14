@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792005046.5263972,
+    "at": 1792005348.0166507,
     "data": {
       "filters": {
         "season": 2026
@@ -1960,7 +1960,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2026,7 +2026,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:14:33Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2092,7 +2092,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -2158,7 +2158,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -2224,7 +2224,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -2290,7 +2290,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -2356,7 +2356,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:09:45Z",
+          "lastUpdated": "2026-10-14T19:15:05Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
