@@ -20059,9 +20059,133 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "AS Roma",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 65,
+          "reasons": [
+            "Real Madrid'in son 5 maçta 2.2 gol ortalaması Roma'nın 1.4'lük ortalamasından belirgin şekilde yüksek.",
+            "Roma evinde son 2 maçta 1 galibiyet 1 beraberlik alırken, Madrid deplasman formu daha istikrarlı.",
+            "Madrid'in Şampiyonlar Ligi'nde Inter'i yenmesi, Roma'nın Fenerbahçe'ye karşı berabere kalması kalite farkını gösteriyor.",
+            "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel derinliğin ön plana çıkmasına neden oluyor."
+          ],
+          "short_reason": "Madrid'in gol üretimi ve formu üstün",
+          "score_candidates": [
+            "1-2",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "AS Roma",
+          "away_team": "Real Madrid CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 1,
+          "reasons": [
+            "Roma son 5 maçta evinde ortalama 2 gol attı ve yedi",
+            "Real Madrid deplasmanda ortalama 2 gol attı ancak savunma daha geçirgen",
+            "Her iki takım da son maçlarda gol atma eğilimi gösterdi",
+            "Ev sahibi avantajı Roma için daha yüksek skor olasılığı yaratıyor"
+          ],
+          "short_reason": "Roma evde daha güçlü görünüyor",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-2"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "AS Roma",
+          "away_team": "Real Madrid CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 68,
+          "reasons": [
+            "Roma evinde 2.0 ort. gol",
+            "Real Madrid dışarıda 2.2 ort. gol",
+            "Roma savunma 0.8 yeme",
+            "Real dinlenme 4 gün"
+          ],
+          "short_reason": "Roma evinde daha etkili",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "AS Roma",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 60,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "1-3"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-14T17:30:49.888310+00:00",
@@ -20259,11 +20383,485 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-14T17:31:08.478223+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-14T18:25:41.011777+00:00"
+    "xi_checked_at": "2026-10-14T18:30:51.046812+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-10-14T18:30:57.690202+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 7-4 gol dengesi. Deplasman: son 5 maçta 11-6 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: D-D-W-D-W.",
+        "goals_trend": "Son 5 maç: 7 gol attı, 4 gol yedi; maç başına 1.40 attı / 0.80 yedi.",
+        "recent_fixtures": [
+          "2026-10-11 Como 1907: 0-0 (AWAY)",
+          "2026-09-19 FC Internazionale Milano: 2-2 (HOME)",
+          "2026-09-14 Torino FC: 2-0 (AWAY)",
+          "2026-09-10 Fenerbahçe SK: 1-1 (AWAY)",
+          "2026-09-05 Atalanta BC: 2-1 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-1D-0L; 4 gol attı, 3 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-L-W-W-W.",
+        "goals_trend": "Son 5 maç: 11 gol attı, 6 gol yedi; maç başına 2.20 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-10-10 Villarreal CF: 1-0 (HOME)",
+          "2026-09-20 Club Atlético de Madrid: 1-2 (AWAY)",
+          "2026-09-15 Elche CF: 3-2 (AWAY)",
+          "2026-09-12 Rayo Vallecano de Madrid: 4-1 (HOME)",
+          "2026-09-08 FC Internazionale Milano: 2-1 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-0D-1L; 4 gol attı, 4 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 22,
+          "points": 1,
+          "played": 1
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 16,
+          "points": 3,
+          "played": 1
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 3.4 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 4.0 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-14T18:30:57.904897+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "QUOTA_OR_RATE_LIMIT",
+      "verified_at": "2026-10-14T18:30:57.904916+00:00",
+      "source_refs": [
+        {
+          "team_id": 100,
+          "endpoint": "/v4/teams/100/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 86,
+          "endpoint": "/v4/teams/86/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 7-4 gol dengesi.",
+        "Deplasman: son 5 maçta 11-6 gol dengesi."
+      ]
+    },
+    "research_raw_unverified": {
+      "status": "UNAVAILABLE",
+      "reason": "QUOTA_OR_RATE_LIMIT"
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 22,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 22,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 36.4,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 22,
+          "available": 19,
+          "points": 40,
+          "exact": 2,
+          "outcome": 13,
+          "goal_error": 39,
+          "coverage_pct": 86.4,
+          "exact_pct": 10.5,
+          "outcome_pct": 68.4,
+          "avg_points": 2.11,
+          "mean_goal_error": 2.05
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 22,
+          "available": 21,
+          "points": 45,
+          "exact": 2,
+          "outcome": 14,
+          "goal_error": 39,
+          "coverage_pct": 95.5,
+          "exact_pct": 9.5,
+          "outcome_pct": 66.7,
+          "avg_points": 2.14,
+          "mean_goal_error": 1.86
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 13,
+          "exact": 0,
+          "outcome": 5,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 55.6,
+          "avg_points": 1.44,
+          "mean_goal_error": 2.22
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 12,
+          "exact": 0,
+          "outcome": 3,
+          "goal_error": 22,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 33.3,
+          "avg_points": 1.33,
+          "mean_goal_error": 2.44
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 17,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 20,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 16,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 22
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Cohere Command A+:form": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 14
+        },
+        "Cohere Command A+:rest": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 2,
+          "goal_error": 10
+        },
+        "Cohere Command A+:standings": {
+          "used": 3,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 5
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "cc8013426a7bad681700d673f1b1f1531cb96d8c1b5ce566d9890e22026ad42d",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 48,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 2
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Real Madrid'in son 5 maçta 2.2 gol ortalaması Roma'nın 1.4'lük ortalamasından belirgin şekilde yüksek.",
+          "Roma evinde son 2 maçta 1 galibiyet 1 beraberlik alırken, Madrid deplasman formu daha istikrarlı.",
+          "Madrid'in Şampiyonlar Ligi'nde Inter'i yenmesi, Roma'nın Fenerbahçe'ye karşı berabere kalması kalite farkını gösteriyor.",
+          "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel derinliğin ön plana çıkmasına neden oluyor.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Roma son 5 maçta evinde ortalama 2 gol attı ve yedi",
+          "Real Madrid deplasmanda ortalama 2 gol attı ancak savunma daha geçirgen",
+          "Her iki takım da son maçlarda gol atma eğilimi gösterdi",
+          "Ev sahibi avantajı Roma için daha yüksek skor olasılığı yaratıyor",
+          "Roma evinde 2.0 ort. gol"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-14T18:31:35.818714+00:00",
+    "minutes_before_match": 28.4,
+    "prediction_mode": "NO_COMMON",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 48,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 2
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Real Madrid'in son 5 maçta 2.2 gol ortalaması Roma'nın 1.4'lük ortalamasından belirgin şekilde yüksek.",
+          "Roma evinde son 2 maçta 1 galibiyet 1 beraberlik alırken, Madrid deplasman formu daha istikrarlı.",
+          "Madrid'in Şampiyonlar Ligi'nde Inter'i yenmesi, Roma'nın Fenerbahçe'ye karşı berabere kalması kalite farkını gösteriyor.",
+          "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel derinliğin ön plana çıkmasına neden oluyor.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Roma son 5 maçta evinde ortalama 2 gol attı ve yedi",
+          "Real Madrid deplasmanda ortalama 2 gol attı ancak savunma daha geçirgen",
+          "Her iki takım da son maçlarda gol atma eğilimi gösterdi",
+          "Ev sahibi avantajı Roma için daha yüksek skor olasılığı yaratıyor",
+          "Roma evinde 2.0 ort. gol"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NO_COMMON",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "AS Roma – Real Madrid CF",
+        "22:00 TSİ",
+        "⚠️ Kadro eksik",
+        "Yok",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI",
+        "🏆 Kazanan ve kısa sebep",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen",
+          "Real Madrid CF — Madrid'in gol üretimi ve formu üstün",
+          "1–2",
+          "2/4"
+        ],
+        [
+          "Cohere",
+          "AS Roma — Roma evde daha güçlü görünüyor",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "GPT-OSS",
+          "AS Roma — Roma evinde daha etkili",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "Clef",
+          "Real Madrid CF — Clef-omni maç öncesi verileri değerlendirdi.",
+          "1–2",
+          "2/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor\nAS Roma – Real Madrid CF | 22:00 TSİ | ⚠️ Kadro eksik | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nQwen | Real Madrid CF — Madrid'in gol üretimi ve formu üstün | 1–2 | 2/4\nCohere | AS Roma — Roma evde daha güçlü görünüyor | 2–1 | 2/4\nGPT-OSS | AS Roma — Roma evinde daha etkili | 2–1 | 2/4\nClef | Real Madrid CF — Clef-omni maç öncesi verileri değerlendirdi. | 1–2 | 2/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-14T19:00",
+      "group_size": 3
+    }
   },
   "575353": {
     "schema_version": 3,
@@ -22418,9 +23016,135 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "FC Porto",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Real Betis evinde son 2 maçta 6 gol atıp sadece 2 gol yedi, Porto ise deplasmanda 6 gol atıp 2 gol yedi.",
+            "Betis'in son 5 maçta 12 gol atma ortalaması (2.4) Porto'nun 11 gol ortalamasından (2.2) hafifçe üstün.",
+            "Her iki takım da son maçlarından sonra benzer dinlenme sürelerine sahip (3.1 vs 4.1 gün), yorgunluk dezavantajı yok.",
+            "Porto'nun Manchester City'ye 0-2 yenilmesi, Avrupa'da savunma zafiyetini gösterirken Betis Lille'i 3-2 yenerek hücum gücünü kanıtladı."
+          ],
+          "short_reason": "Betis ev avantajı ve hücum formu",
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "FC Porto",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 60,
+          "reasons": [
+            "Betis son beş maçta güçlü hücum performansı gösterdi",
+            "Porto deplasmanında da gol atma yeteneği kanıtladı",
+            "Betis ev sahibi avantajıyla lige göre daha iyi durumda",
+            "Her iki takım da benzer gol beklentisiyle oynuyor"
+          ],
+          "short_reason": "Ev sahibi üstünlüğü ve form",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "FC Porto",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Real Betis son 5 maçta 12 gol attı",
+            "Porto son 5 maçta 11 gol attı",
+            "Betis evinde 3.0 ort. gol",
+            "Porto deplasmanda 3.0 ort. gol"
+          ],
+          "short_reason": "ev sahibi formu daha üstün",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "FC Porto",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 43,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "1-1",
+            "2-2",
+            "0-0"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-14T17:31:33.311789+00:00",
@@ -22618,11 +23342,445 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-14T17:31:45.742159+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-14T18:25:47.854064+00:00"
+    "xi_checked_at": "2026-10-14T18:31:35.842993+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-10-14T18:31:36.847752+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 12-6 gol dengesi. Deplasman: son 5 maçta 11-6 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: W-D-W-W-W.",
+        "goals_trend": "Son 5 maç: 12 gol attı, 6 gol yedi; maç başına 2.40 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-10-11 CA Osasuna: 5-2 (HOME)",
+          "2026-09-20 RC Deportivo La Coruña: 1-1 (AWAY)",
+          "2026-09-17 Getafe CF: 1-0 (HOME)",
+          "2026-09-14 Villarreal CF: 2-1 (AWAY)",
+          "2026-09-08 Lille OSC: 3-2 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 6 gol attı, 2 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-L-W.",
+        "goals_trend": "Son 5 maç: 11 gol attı, 6 gol yedi; maç başına 2.20 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-10-10 CS Marítimo: 2-1 (AWAY)",
+          "2026-09-20 Sport Lisboa e Benfica: 3-1 (HOME)",
+          "2026-09-12 Casa Pia AC: 4-1 (AWAY)",
+          "2026-09-08 Manchester City FC: 0-2 (HOME)",
+          "2026-09-04 Moreirense FC: 2-1 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 6 gol attı, 2 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 12,
+          "points": 3,
+          "played": 1
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 29,
+          "points": 0,
+          "played": 1
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 3.1 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 4.1 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-14T18:31:37.043298+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "PROVIDER_COOLDOWN",
+      "verified_at": "2026-10-14T18:31:37.043316+00:00",
+      "source_refs": [
+        {
+          "team_id": 90,
+          "endpoint": "/v4/teams/90/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 503,
+          "endpoint": "/v4/teams/503/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 12-6 gol dengesi.",
+        "Deplasman: son 5 maçta 11-6 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 22,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 22,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 36.4,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 22,
+          "available": 19,
+          "points": 40,
+          "exact": 2,
+          "outcome": 13,
+          "goal_error": 39,
+          "coverage_pct": 86.4,
+          "exact_pct": 10.5,
+          "outcome_pct": 68.4,
+          "avg_points": 2.11,
+          "mean_goal_error": 2.05
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 22,
+          "available": 21,
+          "points": 45,
+          "exact": 2,
+          "outcome": 14,
+          "goal_error": 39,
+          "coverage_pct": 95.5,
+          "exact_pct": 9.5,
+          "outcome_pct": 66.7,
+          "avg_points": 2.14,
+          "mean_goal_error": 1.86
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 13,
+          "exact": 0,
+          "outcome": 5,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 55.6,
+          "avg_points": 1.44,
+          "mean_goal_error": 2.22
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 12,
+          "exact": 0,
+          "outcome": 3,
+          "goal_error": 22,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 33.3,
+          "avg_points": 1.33,
+          "mean_goal_error": 2.44
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 17,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 20,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 16,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 22
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Cohere Command A+:form": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 14
+        },
+        "Cohere Command A+:rest": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 2,
+          "goal_error": 10
+        },
+        "Cohere Command A+:standings": {
+          "used": 3,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 5
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "63643ffffc37fe438ef15c220aa78e580e621e3222f4ffb23904d26fb3fb4885",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 62,
+      "all_outcomes": {
+        "HOME": 3,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "2-1": 3,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Real Betis evinde son 2 maçta 6 gol atıp sadece 2 gol yedi, Porto ise deplasmanda 6 gol atıp 2 gol yedi.",
+          "Betis'in son 5 maçta 12 gol atma ortalaması (2.4) Porto'nun 11 gol ortalamasından (2.2) hafifçe üstün.",
+          "Her iki takım da son maçlarından sonra benzer dinlenme sürelerine sahip (3.1 vs 4.1 gün), yorgunluk dezavantajı yok.",
+          "Porto'nun Manchester City'ye 0-2 yenilmesi, Avrupa'da savunma zafiyetini gösterirken Betis Lille'i 3-2 yenerek hücum gücünü kanıtladı.",
+          "Betis son beş maçta güçlü hücum performansı gösterdi"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-14T18:32:11.614358+00:00",
+    "minutes_before_match": 27.8,
+    "prediction_mode": "NORMAL",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 62,
+      "all_outcomes": {
+        "HOME": 3,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "2-1": 3,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Real Betis evinde son 2 maçta 6 gol atıp sadece 2 gol yedi, Porto ise deplasmanda 6 gol atıp 2 gol yedi.",
+          "Betis'in son 5 maçta 12 gol atma ortalaması (2.4) Porto'nun 11 gol ortalamasından (2.2) hafifçe üstün.",
+          "Her iki takım da son maçlarından sonra benzer dinlenme sürelerine sahip (3.1 vs 4.1 gün), yorgunluk dezavantajı yok.",
+          "Porto'nun Manchester City'ye 0-2 yenilmesi, Avrupa'da savunma zafiyetini gösterirken Betis Lille'i 3-2 yenerek hücum gücünü kanıtladı.",
+          "Betis son beş maçta güçlü hücum performansı gösterdi"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NORMAL",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
+      ],
+      "summary": [
+        "Real Betis Balompié – FC Porto",
+        "22:00 TSİ",
+        "⚠️ Kadro eksik",
+        "Real Betis Balompié · 3/4",
+        "2–1 · 3/4",
+        "Qwen, Cohere, GPT-OSS"
+      ],
+      "headers": [],
+      "rows": [],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nReal Betis Balompié – FC Porto | 22:00 TSİ | ⚠️ Kadro eksik | Real Betis Balompié · 3/4 | 2–1 · 3/4 | Qwen, Cohere, GPT-OSS",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-14T19:00",
+      "group_size": 3
+    }
   },
   "575357": {
     "schema_version": 3,
@@ -22640,9 +23798,133 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "QUOTA_OR_RATE_LIMIT"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "FK Shakhtar Donetsk",
+          "away_team": "PAE AEK",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 45,
+          "reasons": [
+            "Shakhtar'ın PSV karşısında 1-1 berabere kalması gol atma ve yeme kapasitesini gösteriyor.",
+            "AEK'nın LASK karşısında 1-0 kazanması deplasman savunma direncini işaret ediyor.",
+            "Her iki takımın da uzun dinlenme süresi (34-36 gün) form ritmi kaybı riski taşıyor.",
+            "Champions League'de düşük skorlu maçlar ve ev sahibi avantajı dengeli bir sonuç üretiyor."
+          ],
+          "short_reason": "Dengeli form ve düşük gol trendi",
+          "score_candidates": [
+            "1-1",
+            "0-0",
+            "1-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FK Shakhtar Donetsk",
+          "away_team": "PAE AEK",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 15,
+          "reasons": [
+            "Her iki takım da son maçında birer gol attı.",
+            "AEK deplasmanda daha defansif oynayabilir.",
+            "Shakhtar evinde daha güçlü ve iki gol bulma potansiyeline sahip.",
+            "Gol sayısının düşük kalması bekleniyor, bu nedenle 2-1 olası"
+          ],
+          "short_reason": "Ev sahibi üstünlüğü ve gol potansiyeli.",
+          "score_candidates": [
+            "2-1",
+            "1-0",
+            "1-1"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FK Shakhtar Donetsk",
+          "away_team": "PAE AEK",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 0,
+          "reasons": [
+            "Her iki takım da son maçta 1 gol attı",
+            "Ev sahibi 34 gün dinlenmiş, deplasman 36 gün",
+            "Her iki takım da savunma açısından dengeli",
+            "Şu ana kadar puan ve konum farkı az"
+          ],
+          "short_reason": "ev sahibi formu dengeli, deplasman galibiyeti",
+          "score_candidates": [
+            "1-1",
+            "0-0",
+            "2-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "FK Shakhtar Donetsk",
+          "away_team": "PAE AEK",
+          "outcome": "DRAW",
+          "score": "0-0",
+          "confidence": 75,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-0",
+            "1-1",
+            "2-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-14T17:31:45.766148+00:00",
@@ -22760,11 +24042,461 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-14T17:31:58.361190+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-14T18:25:53.692487+00:00"
+    "xi_checked_at": "2026-10-14T18:32:11.637077+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-10-14T18:32:12.872252+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 1 maçta 1-1 gol dengesi. Deplasman: son 1 maçta 1-0 gol dengesi.",
+      "home": {
+        "form": "Son 1 doğrulanmış maç: D.",
+        "goals_trend": "Son 1 maç: 1 gol attı, 1 gol yedi; maç başına 1.00 attı / 1.00 yedi.",
+        "recent_fixtures": [
+          "2026-09-10 PSV: 1-1 (AWAY)"
+        ]
+      },
+      "away": {
+        "form": "Son 1 doğrulanmış maç: W.",
+        "goals_trend": "Son 1 maç: 1 gol attı, 0 gol yedi; maç başına 1.00 attı / 0.00 yedi.",
+        "recent_fixtures": [
+          "2026-09-08 LASK Linz: 1-0 (HOME)"
+        ]
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 22,
+          "points": 1,
+          "played": 1
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 17,
+          "points": 3,
+          "played": 1
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 34.1 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 36.1 gün dinlenme. Son 14 günde 0 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-14T18:32:13.055207+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "PROVIDER_COOLDOWN",
+      "verified_at": "2026-10-14T18:32:13.055223+00:00",
+      "source_refs": [
+        {
+          "team_id": 1887,
+          "endpoint": "/v4/teams/1887/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 1899,
+          "endpoint": "/v4/teams/1899/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 1 maçta 1-1 gol dengesi.",
+        "Deplasman: son 1 maçta 1-0 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 22,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 22,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 36.4,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 22,
+          "available": 19,
+          "points": 40,
+          "exact": 2,
+          "outcome": 13,
+          "goal_error": 39,
+          "coverage_pct": 86.4,
+          "exact_pct": 10.5,
+          "outcome_pct": 68.4,
+          "avg_points": 2.11,
+          "mean_goal_error": 2.05
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 22,
+          "available": 21,
+          "points": 45,
+          "exact": 2,
+          "outcome": 14,
+          "goal_error": 39,
+          "coverage_pct": 95.5,
+          "exact_pct": 9.5,
+          "outcome_pct": 66.7,
+          "avg_points": 2.14,
+          "mean_goal_error": 1.86
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 13,
+          "exact": 0,
+          "outcome": 5,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 55.6,
+          "avg_points": 1.44,
+          "mean_goal_error": 2.22
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 12,
+          "exact": 0,
+          "outcome": 3,
+          "goal_error": 22,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 33.3,
+          "avg_points": 1.33,
+          "mean_goal_error": 2.44
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 17,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 20,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 16,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 22
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Cohere Command A+:form": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 14
+        },
+        "Cohere Command A+:rest": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 2,
+          "goal_error": 10
+        },
+        "Cohere Command A+:standings": {
+          "used": 3,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 5
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "989e89c6470da09c07ce53174242c52ca224aabe521f7a57962569dda9c9a7a5",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "DRAW",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "DRAW",
+      "top_outcome_votes": 3,
+      "top_score": "1-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 34,
+      "all_outcomes": {
+        "DRAW": 3,
+        "HOME": 1
+      },
+      "all_scores": {
+        "1-1": 2,
+        "2-1": 1,
+        "0-0": 1
+      },
+      "reasons_by_outcome": {
+        "DRAW": [
+          "Shakhtar'ın PSV karşısında 1-1 berabere kalması gol atma ve yeme kapasitesini gösteriyor.",
+          "AEK'nın LASK karşısında 1-0 kazanması deplasman savunma direncini işaret ediyor.",
+          "Her iki takımın da uzun dinlenme süresi (34-36 gün) form ritmi kaybı riski taşıyor.",
+          "Champions League'de düşük skorlu maçlar ve ev sahibi avantajı dengeli bir sonuç üretiyor.",
+          "Her iki takım da son maçta 1 gol attı"
+        ],
+        "HOME": [
+          "Her iki takım da son maçında birer gol attı.",
+          "AEK deplasmanda daha defansif oynayabilir.",
+          "Shakhtar evinde daha güçlü ve iki gol bulma potansiyeline sahip.",
+          "Gol sayısının düşük kalması bekleniyor, bu nedenle 2-1 olası"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "QUOTA_OR_RATE_LIMIT"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-14T18:33:15.068748+00:00",
+    "minutes_before_match": 26.7,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "DRAW",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "DRAW",
+      "top_outcome_votes": 3,
+      "top_score": "1-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 34,
+      "all_outcomes": {
+        "DRAW": 3,
+        "HOME": 1
+      },
+      "all_scores": {
+        "1-1": 2,
+        "2-1": 1,
+        "0-0": 1
+      },
+      "reasons_by_outcome": {
+        "DRAW": [
+          "Shakhtar'ın PSV karşısında 1-1 berabere kalması gol atma ve yeme kapasitesini gösteriyor.",
+          "AEK'nın LASK karşısında 1-0 kazanması deplasman savunma direncini işaret ediyor.",
+          "Her iki takımın da uzun dinlenme süresi (34-36 gün) form ritmi kaybı riski taşıyor.",
+          "Champions League'de düşük skorlu maçlar ve ev sahibi avantajı dengeli bir sonuç üretiyor.",
+          "Her iki takım da son maçta 1 gol attı"
+        ],
+        "HOME": [
+          "Her iki takım da son maçında birer gol attı.",
+          "AEK deplasmanda daha defansif oynayabilir.",
+          "Shakhtar evinde daha güçlü ve iki gol bulma potansiyeline sahip.",
+          "Gol sayısının düşük kalması bekleniyor, bu nedenle 2-1 olası"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "QUOTA_OR_RATE_LIMIT"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "FK Shakhtar Donetsk – PAE AEK",
+        "22:00 TSİ",
+        "⚠️ Kadro eksik",
+        "Beraberlik · 3/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, GPT-OSS",
+          "1–1",
+          "2/4"
+        ],
+        [
+          "Cohere",
+          "2–1",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "0–0",
+          "1/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor\nFK Shakhtar Donetsk – PAE AEK | 22:00 TSİ | ⚠️ Kadro eksik | Beraberlik · 3/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, GPT-OSS | 1–1 | 2/4\nCohere | 2–1 | 1/4\nClef | 0–0 | 1/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-14T19:00",
+      "group_size": 3
+    }
   },
   "575358": {
     "schema_version": 3,

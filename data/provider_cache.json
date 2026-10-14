@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792002340.9568288,
+    "at": 1792002651.0025134,
     "data": {
       "filters": {
         "season": 2026
@@ -1828,7 +1828,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T18:24:25Z",
+          "lastUpdated": "2026-10-14T18:29:45Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -1847,7 +1847,7 @@
             "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 2,
+              "home": 3,
               "away": 6
             },
             "halfTime": {
@@ -1894,7 +1894,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T18:24:25Z",
+          "lastUpdated": "2026-10-14T18:29:45Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -9491,76 +9491,6 @@
       ]
     }
   },
-  "8354408cb6752d9972faca47912843eb97e87e16b1b6f44f21a6fe3051e1e511": {
-    "at": 1791916264.895419,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 2,
-        "winner": null
-      },
-      "id": 575343,
-      "utcDate": "2026-10-13T19:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 2,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-10-13T00:20:34Z",
-      "homeTeam": {
-        "id": 108,
-        "name": "FC Internazionale Milano",
-        "shortName": "Inter",
-        "tla": "INT",
-        "crest": "https://crests.football-data.org/108.png"
-      },
-      "awayTeam": {
-        "id": 851,
-        "name": "Club Brugge KV",
-        "shortName": "Club Brugge",
-        "tla": "BRU",
-        "crest": "https://crests.football-data.org/851.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 44921,
-          "name": "Rohit Saggi",
-          "type": "REFEREE",
-          "nationality": "Norway"
-        }
-      ]
-    }
-  },
   "a4efe8abfb91f74e9cdd0bbb250bd355464ba2dc3e823ad9455a2a7a46e77a6d": {
     "at": 1791916334.9519987,
     "data": {
@@ -16332,7 +16262,7 @@
     }
   },
   "ab235014ed6f304167860e443b178e000230d22908c3fc01a6b0541e1457a6a4": {
-    "at": 1792002347.2363992,
+    "at": 1792002656.9722655,
     "data": {
       "area": {
         "id": 2077,
@@ -16361,7 +16291,7 @@
       "matchday": 2,
       "stage": "LEAGUE_STAGE",
       "group": null,
-      "lastUpdated": "2026-10-14T01:32:00Z",
+      "lastUpdated": "2026-10-11T00:20:31Z",
       "homeTeam": {
         "id": 100,
         "name": "AS Roma",
@@ -16542,7 +16472,7 @@
     }
   },
   "e4e52c59f6cd71c03722c35feaab8b27c9309e1fdfb7e77f1ae0ee83d0ba2595": {
-    "at": 1792002353.3467205,
+    "at": 1792002696.1653285,
     "data": {
       "area": {
         "id": 2077,
@@ -16571,7 +16501,7 @@
       "matchday": 2,
       "stage": "LEAGUE_STAGE",
       "group": null,
-      "lastUpdated": "2026-10-14T01:32:00Z",
+      "lastUpdated": "2026-10-11T00:20:31Z",
       "homeTeam": {
         "id": 90,
         "name": "Real Betis Balompié",
@@ -16612,7 +16542,7 @@
     }
   },
   "e9527a9e729d0e3b1b596ee6e4927204e210d79d3a757c9ec6dc37cbb76495cc": {
-    "at": 1792002359.417956,
+    "at": 1792002732.153481,
     "data": {
       "area": {
         "id": 2077,
