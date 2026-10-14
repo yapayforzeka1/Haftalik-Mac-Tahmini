@@ -18564,9 +18564,110 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "LASK Linz",
+          "away_team": "Liverpool FC",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 65,
+          "reasons": [
+            "Liverpool, LASK'a kıyasla çok daha yüksek kalitede bir rakip ve Premier League seviyesinde oynuyor.",
+            "LASK, son maçında AEK'ye deplasmanda 0-1 kaybederek gol atma sorunu yaşadığını gösterdi.",
+            "Liverpool'un deplasman formu son 2 maçta 2 galibiyet ve 3 gol atıp 0 gol yeme ile çok güçlü.",
+            "LASK'ın 36 gün dinlenmesi avantaj olsa da Liverpool'un 3 gün dinlenmesi ve taktik üstünlüğü bu farkı kapatmaya yetmez."
+          ],
+          "short_reason": "Liverpool'un kalite ve deplasman formu üstünlüğü",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": false,
+        "result": null,
+        "error": "INVALID_PREDICTION"
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "LASK Linz",
+          "away_team": "Liverpool FC",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 65,
+          "reasons": [
+            "LASK son maçta 0-1 kaybetti",
+            "Liverpool son 5 maçta 5-4 gol dengesi",
+            "Liverpool evinde 3-0 galibiyet",
+            "LASK 36 gün dinlenmiş ancak form zayıf"
+          ],
+          "short_reason": "Liverpool güçlü, LASK zayıf",
+          "score_candidates": [
+            "0-2",
+            "0-1",
+            "1-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "LASK Linz",
+          "away_team": "Liverpool FC",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 88,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-2",
+            "0-3",
+            "0-1"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-14T15:15:47.602142+00:00",
@@ -18724,12 +18825,440 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-14T15:16:06.176616+00:00",
     "context_ready": true,
     "xi_window": "early",
-    "xi_checked_at": "2026-10-14T16:10:55.069527+00:00"
+    "xi_checked_at": "2026-10-14T16:15:45.102865+00:00",
+    "xi_final_checked": true,
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 1 maçta 0-1 gol dengesi. Deplasman: son 5 maçta 5-4 gol dengesi.",
+      "home": {
+        "form": "Son 1 doğrulanmış maç: L.",
+        "goals_trend": "Son 1 maç: 0 gol attı, 1 gol yedi; maç başına 0.00 attı / 1.00 yedi.",
+        "recent_fixtures": [
+          "2026-09-08 PAE AEK: 0-1 (AWAY)"
+        ]
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: L-W-D-W-W.",
+        "goals_trend": "Son 5 maç: 5 gol attı, 4 gol yedi; maç başına 1.00 attı / 0.80 yedi.",
+        "recent_fixtures": [
+          "2026-10-11 Manchester City FC: 0-3 (HOME)",
+          "2026-09-20 AFC Bournemouth: 1-0 (AWAY)",
+          "2026-09-12 Fulham FC: 0-0 (HOME)",
+          "2026-09-09 Club Atlético de Madrid: 2-1 (HOME)",
+          "2026-09-04 Ipswich Town FC: 2-0 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 3 gol attı, 0 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 27,
+          "points": 0,
+          "played": 1
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 15,
+          "points": 3,
+          "played": 1
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 36.0 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 3.1 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-14T16:15:51.745391+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "QUOTA_OR_RATE_LIMIT",
+      "verified_at": "2026-10-14T16:15:51.745409+00:00",
+      "source_refs": [
+        {
+          "team_id": 2016,
+          "endpoint": "/v4/teams/2016/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 64,
+          "endpoint": "/v4/teams/64/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 1 maçta 0-1 gol dengesi.",
+        "Deplasman: son 5 maçta 5-4 gol dengesi."
+      ]
+    },
+    "research_raw_unverified": {
+      "status": "UNAVAILABLE",
+      "reason": "QUOTA_OR_RATE_LIMIT"
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 22,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 22,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 36.4,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 22,
+          "available": 19,
+          "points": 40,
+          "exact": 2,
+          "outcome": 13,
+          "goal_error": 39,
+          "coverage_pct": 86.4,
+          "exact_pct": 10.5,
+          "outcome_pct": 68.4,
+          "avg_points": 2.11,
+          "mean_goal_error": 2.05
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 22,
+          "available": 21,
+          "points": 45,
+          "exact": 2,
+          "outcome": 14,
+          "goal_error": 39,
+          "coverage_pct": 95.5,
+          "exact_pct": 9.5,
+          "outcome_pct": 66.7,
+          "avg_points": 2.14,
+          "mean_goal_error": 1.86
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 13,
+          "exact": 0,
+          "outcome": 5,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 55.6,
+          "avg_points": 1.44,
+          "mean_goal_error": 2.22
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 12,
+          "exact": 0,
+          "outcome": 3,
+          "goal_error": 22,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 33.3,
+          "avg_points": 1.33,
+          "mean_goal_error": 2.44
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 17,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 20,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 16,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 22
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Cohere Command A+:form": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 14
+        },
+        "Cohere Command A+:rest": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 2,
+          "goal_error": 10
+        },
+        "Cohere Command A+:standings": {
+          "used": 3,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 5
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "94298d55b869a8f0020bbe95579f4ffc6b2255eba89bb653fb8990651660f707",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": "0-2",
+      "score_votes": 3,
+      "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "0-2",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 73,
+      "all_outcomes": {
+        "AWAY": 3
+      },
+      "all_scores": {
+        "0-2": 3
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Liverpool, LASK'a kıyasla çok daha yüksek kalitede bir rakip ve Premier League seviyesinde oynuyor.",
+          "LASK, son maçında AEK'ye deplasmanda 0-1 kaybederek gol atma sorunu yaşadığını gösterdi.",
+          "Liverpool'un deplasman formu son 2 maçta 2 galibiyet ve 3 gol atıp 0 gol yeme ile çok güçlü.",
+          "LASK'ın 36 gün dinlenmesi avantaj olsa da Liverpool'un 3 gün dinlenmesi ve taktik üstünlüğü bu farkı kapatmaya yetmez.",
+          "LASK son maçta 0-1 kaybetti"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        },
+        {
+          "model": "Cohere Command A+",
+          "error": "INVALID_PREDICTION"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-14T16:16:27.527937+00:00",
+    "minutes_before_match": 28.5,
+    "prediction_mode": "NORMAL",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 3,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 100,
+      "score": "0-2",
+      "score_votes": 3,
+      "score_share": 100,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "0-2",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 73,
+      "all_outcomes": {
+        "AWAY": 3
+      },
+      "all_scores": {
+        "0-2": 3
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Liverpool, LASK'a kıyasla çok daha yüksek kalitede bir rakip ve Premier League seviyesinde oynuyor.",
+          "LASK, son maçında AEK'ye deplasmanda 0-1 kaybederek gol atma sorunu yaşadığını gösterdi.",
+          "Liverpool'un deplasman formu son 2 maçta 2 galibiyet ve 3 gol atıp 0 gol yeme ile çok güçlü.",
+          "LASK'ın 36 gün dinlenmesi avantaj olsa da Liverpool'un 3 gün dinlenmesi ve taktik üstünlüğü bu farkı kapatmaya yetmez.",
+          "LASK son maçta 0-1 kaybetti"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        },
+        {
+          "model": "Cohere Command A+",
+          "error": "INVALID_PREDICTION"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NORMAL",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
+      ],
+      "summary": [
+        "LASK Linz – Liverpool FC",
+        "19:45 TSİ",
+        "⚠️ Kadro eksik",
+        "Liverpool FC · 3/3",
+        "0–2 · 3/3",
+        "Qwen, GPT-OSS, Clef"
+      ],
+      "headers": [],
+      "rows": [],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nLASK Linz – Liverpool FC | 19:45 TSİ | ⚠️ Kadro eksik | Liverpool FC · 3/3 | 0–2 · 3/3 | Qwen, GPT-OSS, Clef",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-14T16:45",
+      "group_size": 2
+    }
   },
   "575351": {
     "schema_version": 3,
@@ -18747,9 +19276,133 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Feyenoord Rotterdam",
+          "away_team": "Como 1907",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Feyenoord evinde son 2 maçta 7 gol atıp 0 gol yedi, Como deplasmanında zayıf.",
+            "Como'nun son deplasman maçı (Frosinone) 0-2 mağlubiyetle sonuçlandı, gol yeme riski yüksek.",
+            "Feyenoord'un Barcelona'ya karşı aldığı 5-1'lik yenilgi, rakip kalitesi göz önüne alındığında istisnai bir durum.",
+            "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel hazırlık açısından dengeyi koruyor."
+          ],
+          "short_reason": "Feyenoord evinde gol atıyor, Como deplasmanda gol yiyor.",
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "3-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Feyenoord Rotterdam",
+          "away_team": "Como 1907",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 1,
+          "reasons": [
+            "Feyenoord son beş maçta maç başına 3.6 gol ortalamasıyla güçlü hücum gösterdi",
+            "Como savunma olarak daha tutarlı ancak deplasmanında daha fazla gol yedi",
+            "Ev sahibi takımın dört günlük dinlenme ve evindeki performans avantajı"
+          ],
+          "short_reason": "Ev sahibi form ve dinlenme avantajı",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Feyenoord Rotterdam",
+          "away_team": "Como 1907",
+          "outcome": "HOME",
+          "score": "4-1",
+          "confidence": 0,
+          "reasons": [
+            "Feyenoord son 5 maçta 18 gol attı",
+            "Como son 5 maçta sadece 10 gol attı",
+            "Ev sahibi 4 gün dinlenmiş, deplasman 3.3 gün",
+            "Feyenoord evinde 0 yedi, savunma güçlü"
+          ],
+          "short_reason": "Ev sahibi yüksek gol üretimi",
+          "score_candidates": [
+            "4-1",
+            "3-1",
+            "4-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Feyenoord Rotterdam",
+          "away_team": "Como 1907",
+          "outcome": "HOME",
+          "score": "4-1",
+          "confidence": 74,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "4-1",
+            "3-1",
+            "4-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-14T15:16:06.198612+00:00",
@@ -18947,11 +19600,447 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-14T15:16:18.619738+00:00",
     "context_ready": true,
     "xi_window": "early",
-    "xi_checked_at": "2026-10-14T16:11:02.129568+00:00"
+    "xi_checked_at": "2026-10-14T16:16:27.553406+00:00",
+    "xi_final_checked": true,
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 18-6 gol dengesi. Deplasman: son 5 maçta 10-5 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-L-W.",
+        "goals_trend": "Son 5 maç: 18 gol attı, 6 gol yedi; maç başına 3.60 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-10-10 AZ: 2-0 (HOME)",
+          "2026-09-20 FC Utrecht: 5-0 (HOME)",
+          "2026-09-13 PEC Zwolle: 7-0 (AWAY)",
+          "2026-09-09 FC Barcelona: 1-5 (AWAY)",
+          "2026-09-05 NEC: 3-1 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 7 gol attı, 0 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: D-L-W-W-W.",
+        "goals_trend": "Son 5 maç: 10 gol attı, 5 gol yedi; maç başına 2.00 attı / 1.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-11 AS Roma: 0-0 (HOME)",
+          "2026-09-20 Frosinone Calcio: 0-2 (AWAY)",
+          "2026-09-14 Parma Calcio 1913: 2-1 (HOME)",
+          "2026-09-10 RB Leipzig: 4-1 (HOME)",
+          "2026-09-04 Genoa CFC: 4-1 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-0D-1L; 4 gol attı, 3 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 33,
+          "points": 0,
+          "played": 1
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 6,
+          "points": 3,
+          "played": 1
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 4.0 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 3.3 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-14T16:16:28.276141+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "PROVIDER_COOLDOWN",
+      "verified_at": "2026-10-14T16:16:28.276153+00:00",
+      "source_refs": [
+        {
+          "team_id": 675,
+          "endpoint": "/v4/teams/675/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 7397,
+          "endpoint": "/v4/teams/7397/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 18-6 gol dengesi.",
+        "Deplasman: son 5 maçta 10-5 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 22,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 22,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 36.4,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 22,
+          "available": 19,
+          "points": 40,
+          "exact": 2,
+          "outcome": 13,
+          "goal_error": 39,
+          "coverage_pct": 86.4,
+          "exact_pct": 10.5,
+          "outcome_pct": 68.4,
+          "avg_points": 2.11,
+          "mean_goal_error": 2.05
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 22,
+          "available": 21,
+          "points": 45,
+          "exact": 2,
+          "outcome": 14,
+          "goal_error": 39,
+          "coverage_pct": 95.5,
+          "exact_pct": 9.5,
+          "outcome_pct": 66.7,
+          "avg_points": 2.14,
+          "mean_goal_error": 1.86
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 13,
+          "exact": 0,
+          "outcome": 5,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 55.6,
+          "avg_points": 1.44,
+          "mean_goal_error": 2.22
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 9,
+          "available": 9,
+          "points": 12,
+          "exact": 0,
+          "outcome": 3,
+          "goal_error": 22,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 33.3,
+          "avg_points": 1.33,
+          "mean_goal_error": 2.44
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 17,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 20,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 16,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 22,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 5,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 20
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 22
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 8,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 18
+        },
+        "Cohere Command A+:form": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 5,
+          "goal_error": 14
+        },
+        "Cohere Command A+:rest": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 2,
+          "goal_error": 10
+        },
+        "Cohere Command A+:standings": {
+          "used": 3,
+          "exact": 0,
+          "outcome_correct": 3,
+          "goal_error": 5
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "3393d036e63dd1be71b58a34ad81faa8cecf182fe0acd755b61cb63644f405c3",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 35,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 2,
+        "4-1": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Feyenoord evinde son 2 maçta 7 gol atıp 0 gol yedi, Como deplasmanında zayıf.",
+          "Como'nun son deplasman maçı (Frosinone) 0-2 mağlubiyetle sonuçlandı, gol yeme riski yüksek.",
+          "Feyenoord'un Barcelona'ya karşı aldığı 5-1'lik yenilgi, rakip kalitesi göz önüne alındığında istisnai bir durum.",
+          "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel hazırlık açısından dengeyi koruyor.",
+          "Feyenoord son beş maçta maç başına 3.6 gol ortalamasıyla güçlü hücum gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-14T16:17:00.555846+00:00",
+    "minutes_before_match": 28.0,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 35,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 2,
+        "4-1": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Feyenoord evinde son 2 maçta 7 gol atıp 0 gol yedi, Como deplasmanında zayıf.",
+          "Como'nun son deplasman maçı (Frosinone) 0-2 mağlubiyetle sonuçlandı, gol yeme riski yüksek.",
+          "Feyenoord'un Barcelona'ya karşı aldığı 5-1'lik yenilgi, rakip kalitesi göz önüne alındığında istisnai bir durum.",
+          "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel hazırlık açısından dengeyi koruyor.",
+          "Feyenoord son beş maçta maç başına 3.6 gol ortalamasıyla güçlü hücum gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Feyenoord Rotterdam – Como 1907",
+        "19:45 TSİ",
+        "⚠️ Kadro eksik",
+        "Feyenoord Rotterdam · 4/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, Cohere",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "GPT-OSS, Clef",
+          "4–1",
+          "2/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🏆 Ortak tahmin | 🎯 Ortak skor\nFeyenoord Rotterdam – Como 1907 | 19:45 TSİ | ⚠️ Kadro eksik | Feyenoord Rotterdam · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Cohere | 2–1 | 2/4\nGPT-OSS, Clef | 4–1 | 2/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-14T16:45",
+      "group_size": 2
+    }
   }
 }
