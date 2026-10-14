@@ -18725,7 +18725,8 @@
       }
     },
     "context_prepared_at": "2026-10-14T15:16:06.176616+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_window": "early"
   },
   "575351": {
     "schema_version": 3,
@@ -18944,6 +18945,7 @@
       }
     },
     "context_prepared_at": "2026-10-14T15:16:18.619738+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_window": "early"
   }
 }
