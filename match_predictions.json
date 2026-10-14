@@ -18600,7 +18600,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -18637,7 +18640,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -18663,7 +18669,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -19258,6 +19267,102 @@
       "transport": "photo",
       "group_key": "2026-10-14T16:45",
       "group_size": 2
+    },
+    "actual": {
+      "home": 3,
+      "away": 6,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-14T18:45:59.242093+00:00"
+    },
+    "consensus_points": 2,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 7,
+          "home_bias": -3,
+          "away_bias": -4,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Liverpool, LASK'a kıyasla çok daha yüksek kalitede bir rakip ve Premier League seviyesinde oynuyor.",
+            "LASK, son maçında AEK'ye deplasmanda 0-1 kaybederek gol atma sorunu yaşadığını gösterdi.",
+            "Liverpool'un deplasman formu son 2 maçta 2 galibiyet ve 3 gol atıp 0 gol yeme ile çok güçlü.",
+            "LASK'ın 36 gün dinlenmesi avantaj olsa da Liverpool'un 3 gün dinlenmesi ve taktik üstünlüğü bu farkı kapatmaya yetmez."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": false
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 7,
+          "home_bias": -3,
+          "away_bias": -4,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "LASK son maçta 0-1 kaybetti",
+            "Liverpool son 5 maçta 5-4 gol dengesi",
+            "Liverpool evinde 3-0 galibiyet",
+            "LASK 36 gün dinlenmiş ancak form zayıf"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 7,
+          "home_bias": -3,
+          "away_bias": -4,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "d0609ec45738919fe14519c53cc06d252d6adb42963e8b1cd1129372d06ce585",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575351": {

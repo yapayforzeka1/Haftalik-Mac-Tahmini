@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792003244.8098476,
+    "at": 1792003559.1979187,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 27
+        "played": 28
       },
       "competition": {
         "id": 2001,
@@ -1824,11 +1824,11 @@
           },
           "id": 575350,
           "utcDate": "2026-10-14T16:45:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T18:39:21Z",
+          "lastUpdated": "2026-10-14T18:41:29Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -1894,7 +1894,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T18:39:53Z",
+          "lastUpdated": "2026-10-14T18:44:09Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
