@@ -18721,12 +18721,15 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "NOT_ANNOUNCED",
+        "home": [],
+        "away": []
       }
     },
     "context_prepared_at": "2026-10-14T15:16:06.176616+00:00",
     "context_ready": true,
-    "xi_window": "early"
+    "xi_window": "early",
+    "xi_checked_at": "2026-10-14T15:55:38.737190+00:00"
   },
   "575351": {
     "schema_version": 3,
@@ -18941,11 +18944,14 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "NOT_ANNOUNCED",
+        "home": [],
+        "away": []
       }
     },
     "context_prepared_at": "2026-10-14T15:16:18.619738+00:00",
     "context_ready": true,
-    "xi_window": "early"
+    "xi_window": "early",
+    "xi_checked_at": "2026-10-14T15:55:46.032198+00:00"
   }
 }
