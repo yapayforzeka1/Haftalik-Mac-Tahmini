@@ -19417,7 +19417,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -19446,7 +19449,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 5,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -19477,7 +19483,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -19503,7 +19512,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 2,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -20146,6 +20158,117 @@
       "transport": "photo",
       "group_key": "2026-10-14T16:45",
       "group_size": 2
+    },
+    "actual": {
+      "home": 3,
+      "away": 2,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-14T18:50:42.873630+00:00"
+    },
+    "consensus_points": 2,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "3:6-5-3-2-0:REGULAR",
+    "post_match_analysis": {
+      "version": "3:6-5-3-2-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Feyenoord evinde son 2 maçta 7 gol atıp 0 gol yedi, Como deplasmanında zayıf.",
+            "Como'nun son deplasman maçı (Frosinone) 0-2 mağlubiyetle sonuçlandı, gol yeme riski yüksek.",
+            "Feyenoord'un Barcelona'ya karşı aldığı 5-1'lik yenilgi, rakip kalitesi göz önüne alındığında istisnai bir durum.",
+            "Her iki takımın da 3-4 gün dinlenme süresi olması, taktiksel hazırlık açısından dengeyi koruyor."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 5,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Feyenoord son beş maçta maç başına 3.6 gol ortalamasıyla güçlü hücum gösterdi",
+            "Como savunma olarak daha tutarlı ancak deplasmanında daha fazla gol yedi",
+            "Ev sahibi takımın dört günlük dinlenme ve evindeki performans avantajı"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Feyenoord son 5 maçta 18 gol attı",
+            "Como son 5 maçta sadece 10 gol attı",
+            "Ev sahibi 4 gün dinlenmiş, deplasman 3.3 gün",
+            "Feyenoord evinde 0 yedi, savunma güçlü"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 2,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "280532b660ccc87237852f936e5e95f61983c36a52d1a58a9340a13cc34d7031",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575352": {
