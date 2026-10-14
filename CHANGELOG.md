@@ -27,3 +27,9 @@ Paket canlı JSON arşivlerini içermez. Dosyaları mevcut repo köküne aynı y
 Mevcut match_predictions.json, weekly_reports.json ve weekly_schedule.json dosyalarını silmeyin.
 Kodun eski sürümüne dönmek gerekirse v3'ün data/ ve maç arşivini ayrıca koruyun;
 puanlamayı sessizce eski sürüme dönüştürmeyin.
+
+## Puan sürümü 4 (Kicktipp)
+- Tüm aktif değerlendirmeler 8/6/4/0, farklı skorlu doğru beraberlik 6 puan.
+- 1. ve 2. hafta dahil teyitli 90 dakika sonuçları eski puanları koruyan `legacy_evaluation` ile yeniden derecelendirilir.
+- Yalnız ortak sonuç tahmininde doğru 1-X-2 = 4 puan.
+- Daha önceki `legacy_evaluation` kayıtları değişmez; geçiş öncesi 6/5/3/2/0 puanları `pre_kicktipp_evaluation` alanında saklanır.

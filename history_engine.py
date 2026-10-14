@@ -14,7 +14,7 @@ def actual_outcome(home: int, away: int) -> str:
     return "HOME" if home > away else "AWAY" if home < away else "DRAW"
 
 
-from scoring import VERSION, outcome_points, score_prediction
+from scoring import VERSION, outcome_points, score_prediction, parse_score
 
 
 def _rebuild_consensus_from_record(record: dict[str, Any]) -> dict[str, Any]:
@@ -114,7 +114,7 @@ def build_ai_performance(predictions: dict[str, Any]) -> dict[str, Any]:
             continue
         real_outcome = actual_outcome(ah, aa)
         for vote in record.get("ai_votes", []):
-            if not vote.get("success") or not vote.get("result"):
+            if not vote.get("success") or not vote.get("result") or parse_score(vote["result"].get("score")) is None:
                 continue
             model = vote.get("model", "Unknown")
             item = stats.setdefault(model, {"matches": 0, "points": 0, "outcome_correct": 0, "exact_score_correct": 0})
@@ -192,7 +192,8 @@ def grade_record(record: dict[str, Any]) -> None:
         if not vote.get("success") or not vote.get("result"):
             continue
         result = vote["result"]
-        vote["points"] = score_prediction(result.get("score"), ah, aa)
+        vote["points"] = (score_prediction(result.get("score"), ah, aa)
+                          if parse_score(result.get("score")) is not None else None)
         vote["outcome_correct"] = result.get("outcome") == real_outcome
         vote["exact_score_correct"] = (
             (result.get("score") or "").replace(" ", "") == f"{ah}-{aa}"

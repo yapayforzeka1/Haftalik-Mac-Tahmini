@@ -1,16 +1,16 @@
 # Haftalık Maç Tahmini — v3
 
 Maç öncesi tahmin, 90 dakika sonuç değerlendirmesi ve kullanıcı onaylı öğrenme sistemi.
-**Ayrı Champions-League-Performance-Bot projesi bu sürümde değiştirilmedi.**
+**Performans Takip Botu ile Kicktipp 8/6/4/0 standardı ortaktır.**
 
 ## Sabit kurallar
 
 | Başarı | Puan |
 |---|---:|
-| Tam skor | 6 |
-| Doğru kazanan + doğru gol farkı, farklı skor | 5 |
-| Doğru beraberlik, farklı skor | 3 |
-| Yalnızca kazanan | 2 |
+| Tam skor | 8 |
+| Doğru 1-X-2 ve doğru gol farkı, farklı skor | 6 |
+| Doğru beraberlik, farklı skor | 6 |
+| Doğru 1-X-2, yanlış gol farkı | 4 |
 | Yanlış sonuç | 0 |
 
 Her model ve turnuva aşamasında aynıdır. 90 dakika + hakem ek süresi değerlendirilir.
@@ -22,8 +22,8 @@ olarak kaydedilir; başarısız tahmin sayılmaz.
 Yeni tahminlerde konsensüs için en az üç geçerli model ve başarılı modellerin salt çoğunluğu gerekir.
 Sonuç ve skor çoğunluğu ayrı hesaplanır. Örneğin 3/4, %75 **uzlaşmadır**, maçın
 kazanılma olasılığı değildir. AI güveni öznel güven ortalamasıdır.
-Ortak skor aynı tabloyla; yalnızca ortak sonuç doğru kazanan için 2, beraberlik için
-3 puanla değerlendirilir. Konsensüs yoksa ortak puan yoktur; bireysel puanlar vardır.
+Ortak skor aynı tabloyla; yalnızca ortak sonuç belli ise (ortak skor yoksa)
+doğru 1-X-2 için 4, yanlış 1-X-2 için 0 puan verilir. Konsensüs yoksa ortak puan yoktur; bireysel puanlar vardır.
 
 ## Çalışma
 
@@ -128,8 +128,7 @@ nedeniyle her maça zamanında skor üretme garantisi yoktur. Önceden görülen
 penceresi kaçarsa uyarı gönderilir; maç başladıktan sonra yeni tahmin yayımlanmaz.
 
 Eski weekly_reports.json / weekly_schedule.json ve haftalık görsel araçları arşiv
-uyumluluğu için durur, ana akış bunları çağırmaz. Ayrı performans botunun eski puanlaması
-sonraki aşamada güncellenmelidir; şu anda aynı puanı göstermesi beklenmemelidir.
+uyumluluğu için durur, ana akış bunları çağırmaz. Ayrı performans botu da aynı Kicktipp 8/6/4/0 puanlarını kullanır.
 
 ## Yerel test ve devreye alma
 
@@ -231,3 +230,7 @@ korunur, thinking parametresi tamamen çıkarılır. Bu sonuç bütün maçlarda
 gelecekteki servis koşullarında başarı garantisi değildir.
 Skor/sonuç doğrulaması, 2048 token bütçesi ve kesilmiş yanıt kontrolü korunur.
 Mistral 429 ve Gemini servis hataları bu değişiklikle çözülmüş sayılmaz.
+
+## Puan sürümü 4 geçişi
+
+1. ve 2. hafta dahil geçmiş 90 dakika sonuçları `regrade_archived_results` ile yeniden puanlanır. Hemen önceki puanlar `pre_kicktipp_evaluation` içinde; varsa daha eski `legacy_evaluation` ayrıca korunur, tahminler ve Telegram gönderim makbuzları değiştirilmez. Eksik veya teyitsiz maçlar puanlanmaz.

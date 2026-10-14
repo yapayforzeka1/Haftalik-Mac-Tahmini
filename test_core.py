@@ -63,14 +63,14 @@ def test_exact_score_consensus_requires_strict_majority():
 
 
 def test_locked_scoring_rules():
-    assert score_prediction("2-1", 2, 1) == 6
-    assert score_prediction("2-0", 3, 1) == 5
-    assert score_prediction("1-3", 0, 2) == 5
-    assert score_prediction("2-1", 3, 1) == 2
-    assert score_prediction("2-1", 5, 0) == 2
-    assert score_prediction("1-1", 2, 2) == 3
-    assert score_prediction("0-0", 3, 3) == 3
-    assert score_prediction("2-2", 1, 1) == 3
+    assert score_prediction("2-1", 2, 1) == 8
+    assert score_prediction("2-0", 3, 1) == 6
+    assert score_prediction("1-3", 0, 2) == 6
+    assert score_prediction("2-1", 3, 1) == 4
+    assert score_prediction("2-1", 5, 0) == 4
+    assert score_prediction("1-1", 2, 2) == 6
+    assert score_prediction("0-0", 3, 3) == 6
+    assert score_prediction("2-2", 1, 1) == 6
     assert score_prediction("2-1", 0, 1) == 0
 
 
@@ -97,8 +97,8 @@ def test_grade_record():
     assert record["consensus_outcome_correct"] is False
     assert record["consensus_exact_score_correct"] is False
 
-    assert record["ai_votes"][0]["points"] == 6
-    assert record["ai_votes"][1]["points"] == 5
+    assert record["ai_votes"][0]["points"] == 8
+    assert record["ai_votes"][1]["points"] == 6
     assert record["ai_votes"][2]["points"] == 0
 
 
@@ -121,7 +121,7 @@ def test_grade_no_consensus():
     assert record["consensus"]["score"] is None
     assert record["consensus_points"] is None
     assert record["consensus_winner_applicable"] is False
-    assert record["ai_votes"][0]["points"] == 5
+    assert record["ai_votes"][0]["points"] == 6
     assert record["ai_votes"][1]["points"] == 0
 
 

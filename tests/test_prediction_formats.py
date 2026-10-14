@@ -71,7 +71,7 @@ def test_two_agreeing_models_remain_individual_in_new_archive():
     r['actual']={'home':1,'away':2}
     grade_record(r)
     assert r['consensus_points'] is None
-    assert r['ai_votes'][0]['points']==6
+    assert r['ai_votes'][0]['points']==8
     # Fixed three-vote rule applies even when older metadata is absent.
     r.pop('consensus_min_successful');r['consensus'].pop('min_successful')
     grade_record(r)

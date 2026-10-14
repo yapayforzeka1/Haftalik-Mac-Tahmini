@@ -23,3 +23,7 @@ Sonraki adım: README'deki aktarım adımlarıyla kodu GitHub'a taşıma;
 canlı archive JSON'larını koruma; ilk workflow ve operasyon botunu doğrulama.
 Secrets yalnızca GitHub'da; yerel ortamda canlı erişimleri doğrulanamaz.
 Ayrı performans botunun yeni puan sistemine geçirilmesi sonraki proje kapsamındadır.
+
+
+## Sonradan onaylanan puanlama
+Kicktipp 8/6/4/0 aktiftir; yukarıdaki eski 6/5/3/2/0 açıklaması önceki sürümün tarihsel kaydıdır.

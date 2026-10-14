@@ -30,7 +30,7 @@ def test_results_recorded_without_telegram():
         'consensus':{},'context':{}}
     predictions={'1':record}
     refresh_results(predictions,[{'id':1,'status':'FINISHED','score':{'duration':'REGULAR','fullTime':{'home':2,'away':1}}}])
-    assert record['actual']['home']==2 and record['ai_votes'][0]['points']==6
+    assert record['actual']['home']==2 and record['ai_votes'][0]['points']==8
     class Bot:
         def call(self,*a,**k):pytest.fail('Result sent')
         def photo(self,*a,**k):pytest.fail('Result image sent')

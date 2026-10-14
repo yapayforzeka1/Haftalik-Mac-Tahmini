@@ -58,8 +58,24 @@ def excluded_record(record):
                for side in ("home_team", "away_team"))
 
 
+def _preserve_pre_kicktipp_grade(record):
+    """Capture previous points even when a still-older legacy backup exists."""
+    if 'pre_kicktipp_evaluation' in record:
+        return
+    record['pre_kicktipp_evaluation'] = {
+        'grading_version': record.get('grading_version'),
+        'consensus_points': record.get('consensus_points'),
+        'fallback_points': record.get('fallback_points'),
+        'votes': [
+            {'model': vote.get('model'), 'model_id': (vote.get('result') or {}).get('model_id'),
+             'points': vote.get('points')}
+            for vote in record.get('ai_votes') or [] if isinstance(vote, dict)
+        ],
+    }
+
+
 def refresh_results(predictions, matches):
-    """Regrade under version 3, preserving prior grades and published decisions."""
+    """Regrade on verified new results, preserving previous grades and receipts."""
     by_id = {str(m['id']): m for m in matches}
     for key, r in predictions.items():
         if excluded_record(r):
@@ -78,9 +94,11 @@ def refresh_results(predictions, matches):
         unchanged = all(previous.get(k) == v for k, v in actual.items())
         if unchanged and r.get('grading_version') == VERSION:
             continue
-        if r.get('actual') and 'legacy_evaluation' not in r and r.get('grading_version') != VERSION:
-            r['legacy_evaluation'] = {k: copy.deepcopy(r.get(k)) for k in
-                ('actual', 'consensus', 'consensus_points', 'ai_votes', 'grading_version')}
+        if r.get('actual') and r.get('grading_version') != VERSION:
+            _preserve_pre_kicktipp_grade(r)
+            if 'legacy_evaluation' not in r:
+                r['legacy_evaluation'] = {k: copy.deepcopy(r.get(k)) for k in
+                    ('actual', 'consensus', 'consensus_points', 'ai_votes', 'grading_version')}
         if previous and not unchanged and previous.get('scope') == 'REGULAR_90':
             r.setdefault('result_revisions', []).append(copy.deepcopy(previous))
             r['result_receipt'] = {}
@@ -100,6 +118,41 @@ def refresh_results(predictions, matches):
         r.pop('result_warning', None)
 
 
+def regrade_archived_results(predictions):
+    """Migrate already verified 90-minute grades without API calls or Telegram re-sends.
+
+    Only historical *evaluations* change. Published predictions, the original
+    votes and delivery receipts remain unchanged; a one-time legacy snapshot
+    keeps the pre-migration grade for audit.
+    """
+    count = 0
+    for r in predictions.values():
+        if not isinstance(r, dict) or r.get('grading_version') == VERSION:
+            continue
+        actual = r.get('actual') or {}
+        if (actual.get('status') != 'FINISHED' or actual.get('scope') != 'REGULAR_90'
+                or type(actual.get('home')) is not int or type(actual.get('away')) is not int
+                or min(actual['home'], actual['away']) < 0):
+            continue
+        if not (r.get('prediction_ready') or r.get('final_sent')):
+            continue
+        _preserve_pre_kicktipp_grade(r)
+        if 'legacy_evaluation' not in r:
+            r['legacy_evaluation'] = {k: copy.deepcopy(r.get(k)) for k in
+                ('actual', 'consensus', 'consensus_points', 'ai_votes', 'grading_version')}
+        r.setdefault('published_consensus', copy.deepcopy(r.get('consensus')))
+        if r.get('prediction_kind', 'AI') == 'AI':
+            grade_record(r)
+            r['post_match_analysis'] = audit(r)
+        elif r.get('prediction_kind') == 'STATISTICAL' and isinstance(r.get('fallback'), dict):
+            r['fallback_points'] = score_prediction(r['fallback'].get('score'), actual['home'], actual['away'])
+            r['grading_version'] = VERSION
+        else:
+            r['grading_version'] = VERSION
+        count += 1
+    return count
+
+
 def result_text(record):
     if record.get('prediction_kind', 'AI') == 'AI':
         text = build_result_message(record)
@@ -112,7 +165,7 @@ def result_text(record):
     actual = record['actual']
     return (f"📊 {record['home_team']} — {record['away_team']}\n"
             f"90 dakika sonucu: {actual['home']}-{actual['away']}\n"
-            f"İstatistiksel yedek puanı: {record.get('fallback_points', '—')}/6 (AI sıralamasından ayrı)")
+            f"İstatistiksel yedek puanı: {record.get('fallback_points', '—')}/8 (AI sıralamasından ayrı)")
 
 
 def deliver_record(r, bot, chat_id, save, clock=None):
@@ -515,6 +568,10 @@ def main():
     backup = root / 'data' / 'pre_v3_predictions.json'
     if predictions and not backup.exists():
         save_json(backup, predictions)
+    migrated = regrade_archived_results(predictions)
+    if migrated:
+        save()  # Persist once, even if a later external provider request fails.
+        print(f"Kicktipp 8/6/4/0: {migrated} tarihi maç yeni standarda göre puanlandı.")
     apply_approved_policy(state, os.getenv('APPROVED_POLICY_FILE'))
     token, chat = os.getenv('TELEGRAM_BOT_TOKEN'), os.getenv('TELEGRAM_CHAT_ID')
     if not token or not chat:

@@ -1,7 +1,7 @@
 """User-approved, stage-independent scoring; regulation time includes stoppage time."""
 import re
 
-VERSION = "3:6-5-3-2-0:REGULAR"
+VERSION = "4:kicktipp-8-6-4-0:REGULAR"
 
 
 def outcome(home, away):
@@ -19,16 +19,16 @@ def score_prediction(score, home, away):
         return 0
     ph, pa = predicted
     if predicted == (home, away):
-        return 6
+        return 8
     if outcome(ph, pa) != outcome(home, away):
         return 0
-    if home == away:
-        return 3
-    return 5 if ph - pa == home - away else 2
+    # Every non-exact draw has goal difference zero, just as the actual draw.
+    return 6 if ph - pa == home - away else 4
 
 
 def outcome_points(predicted, actual):
-    return (3 if actual == "DRAW" else 2) if predicted == actual else 0
+    # Without an agreed score, goal difference cannot be awarded.
+    return 4 if predicted == actual else 0
 
 
 def regulation_score(match):

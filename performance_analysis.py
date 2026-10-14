@@ -7,6 +7,8 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
+from scoring import VERSION, score_prediction, outcome_points
+
 
 def parse_score(value):
     if not isinstance(value, str):
@@ -22,7 +24,7 @@ def outcome(score):
 
 
 def evaluate(records):
-    stats = defaultdict(lambda: {'eligible': 0, 'outcome_correct': 0, 'exact_correct': 0, 'missing': 0})
+    stats = defaultdict(lambda: {'eligible': 0, 'outcome_correct': 0, 'exact_correct': 0, 'missing': 0, 'goal_difference_correct': 0, 'points': 0})
     total = 0
     for match in records.values() if isinstance(records, dict) else records:
         if not isinstance(match, dict):
@@ -46,12 +48,18 @@ def evaluate(records):
             direction = prediction.get('outcome')
             if direction not in ('HOME', 'AWAY', 'DRAW') and score is not None:
                 direction = outcome(score)
-            if direction not in ('HOME', 'AWAY', 'DRAW'):
+            if direction not in ('HOME', 'AWAY', 'DRAW') or (score is None and name != 'Ortak karar'):
                 row['missing'] += 1
                 continue
             row['eligible'] += 1
             row['outcome_correct'] += int(direction == outcome(truth))
             row['exact_correct'] += int(score == truth)
+            if score is not None:
+                row['points'] += score_prediction(prediction['score'], h, a)
+                row['goal_difference_correct'] += int(score[0] - score[1] == h - a)
+            elif name == 'Ortak karar':
+                # Correct outcome without published common score earns at most 4.
+                row['points'] += outcome_points(direction, outcome(truth))
     return total, dict(sorted(stats.items()))
 
 
@@ -62,12 +70,14 @@ def main():
     with args.archive.open(encoding='utf-8') as f:
         records = json.load(f)
     total, stats = evaluate(records)
-    print(f'90 dakika sonucu doğrulanmış maç: {total}')
-    print(f'{"Model":<27} {"Geçerli":>7} {"Eksik":>6} {"1-X-2":>13} {"Doğru skor":>15}')
+    print(f'90 dakika sonucu arşivde doğrulanmış maç: {total}')
+    print(f'Puanlama standardı: {VERSION}')
+    print(f'{"Model":<27} {"Geçerli":>7} {"Eksik":>6} {"1-X-2":>13} {"Doğru skor":>15} {"Gol farkı":>12} {"Puan":>7} {"Ortalama":>9}')
     for name, row in stats.items():
         n = row['eligible']
         fmt = lambda count: f'{count}/{n} (%{100*count/n:.1f})' if n else 'Veri yok'
-        print(f'{name[:27]:<27} {n:>7} {row["missing"]:>6} {fmt(row["outcome_correct"]):>13} {fmt(row["exact_correct"]):>15}')
+        avg = f'{row["points"] / n:.2f}' if n else '—'
+        print(f'{name[:27]:<27} {n:>7} {row["missing"]:>6} {fmt(row["outcome_correct"]):>13} {fmt(row["exact_correct"]):>15} {row["goal_difference_correct"]:>12} {row["points"]:>7} {avg:>9}')
     print('Not: Geçerli tahmini olmayan maçlar başarısız tahmin olarak sayılmaz; kapsam dışında raporlanır.')
     print('Not: Tahminlerin maç başlamadan önce üretildiği bu analizde ayrıca doğrulanmaz.')
 

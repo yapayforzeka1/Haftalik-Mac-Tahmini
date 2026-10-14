@@ -83,7 +83,7 @@ def summarize(predictions):
         if r.get('prediction_kind') == 'STATISTICAL' and r.get('fallback_points') is not None:
             fallback['matches'] += 1
             fallback['points'] += r['fallback_points']
-            fallback['exact'] += r['fallback_points'] == 6
+            fallback['exact'] += r['fallback_points'] == 8
         review = r.get("post_match_analysis")
         if not review:
             continue

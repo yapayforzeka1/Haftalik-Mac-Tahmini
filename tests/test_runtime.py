@@ -59,9 +59,9 @@ class FakeTelegram:
 
 
 @pytest.mark.parametrize('score,actual,points', [
-    ('3-1',(3,1),6), ('2-0',(3,1),5), ('4-2',(3,1),5), ('2-1',(3,1),2),
-    ('1-1',(3,1),0), ('1-1',(2,2),3), ('2-2',(2,2),6), ('0-2',(1,3),5),
-    ('3-0',(0,3),0), ('bad',(0,0),0), (' 2 - 1 ',(2,1),6)])
+    ('3-1',(3,1),8), ('2-0',(3,1),6), ('4-2',(3,1),6), ('2-1',(3,1),4),
+    ('1-1',(3,1),0), ('1-1',(2,2),6), ('2-2',(2,2),8), ('0-2',(1,3),6),
+    ('3-0',(0,3),0), ('bad',(0,0),0), (' 2 - 1 ',(2,1),8)])
 def test_scoring(score, actual, points):
     assert score_prediction(score, *actual) == points
 
@@ -84,7 +84,7 @@ def test_single_model_and_denominator():
     assert 'bireysel tahmin' in prediction_message(r)
     r['actual'] = {'home':2, 'away':1}
     grade_record(r)
-    assert r['ai_votes'][0]['points'] == 6
+    assert r['ai_votes'][0]['points'] == 8
     assert r['consensus_points'] is None
 
 
