@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792007744.6049004,
+    "at": 1792008043.3981996,
     "data": {
       "filters": {
         "season": 2026
@@ -2026,7 +2026,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-14T19:54:33Z",
+          "lastUpdated": "2026-10-14T19:55:37Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2049,8 +2049,8 @@
               "away": 3
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 3
             }
           },
           "odds": {
