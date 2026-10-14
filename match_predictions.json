@@ -18729,7 +18729,7 @@
     "context_prepared_at": "2026-10-14T15:16:06.176616+00:00",
     "context_ready": true,
     "xi_window": "early",
-    "xi_checked_at": "2026-10-14T15:55:38.737190+00:00"
+    "xi_checked_at": "2026-10-14T16:00:47.792778+00:00"
   },
   "575351": {
     "schema_version": 3,
@@ -18952,6 +18952,6 @@
     "context_prepared_at": "2026-10-14T15:16:18.619738+00:00",
     "context_ready": true,
     "xi_window": "early",
-    "xi_checked_at": "2026-10-14T15:55:46.032198+00:00"
+    "xi_checked_at": "2026-10-14T16:00:54.525937+00:00"
   }
 }
