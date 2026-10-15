@@ -141,10 +141,7 @@ def test_api_football_partial_lineup(monkeypatch):
     assert len(result['home']) == 11 and result['away'] == []
 
 
-def test_actual_grounded_research_lineups_are_kept_together(monkeypatch):
-    from types import SimpleNamespace
-    import sys
-
+def test_source_predicted_xi_preserves_verified_official_side_without_ai_research(monkeypatch):
     monkeypatch.setattr(runner, 'now', lambda: CLOCK)
     monkeypatch.setenv('GEMINI_API_KEY', 'offline-mocked-key')
     monkeypatch.setattr(runner, 'prepare_context', lambda *a: {'home': {}, 'away': {}})
@@ -153,21 +150,14 @@ def test_actual_grounded_research_lineups_are_kept_together(monkeypatch):
     probable = [dict(name=f'Probable {i}', current_club_confirmed=True,
                      unavailable=False, source_url='https://example.org/team-preview')
                 for i in range(11)]
-    def research(*args):
-        # A researched claim to an official away XI must NOT supersede the
-        # verified official lineups returned by our trusted data providers.
-        return {'status': 'OK', 'official_xi': {'status': 'ANNOUNCED',
-                'away': eleven('fabricated')},
-                'predicted_xi': {'away': probable}, 'summary': 'Offline mock'}
-    monkeypatch.setattr(runner, 'research_match', research)
-    monkeypatch.setitem(sys.modules, 'google.genai',
-                        SimpleNamespace(Client=lambda **kwargs: object()))
+    monkeypatch.setattr(runner, 'source_predicted_xi', lambda *_: {'away': probable})
+    monkeypatch.setattr(runner, 'research_match', lambda *_: pytest.fail('No AI research should run'))
     monkeypatch.setattr(runner, 'run_ai_pool', lambda *args, **kwargs:
                         [AIVote('offline', False, None, 'OFFLINE')])
     m = fixture(CLOCK, 30)
     r = runner.new_record(m, new_state())
     assert runner.prepare_prediction(r, m, None, {}, new_state(), lambda: None, float('inf'))
     assert r['context']['lineup_availability'] == {'home': 'OFFICIAL', 'away': 'PREDICTED'}
-    assert r['research']['official_xi']['status'] == 'PARTIAL'
     assert r['context']['official_xi']['away'] == []
     assert r['context']['predicted_xi']['away'] == probable
+    assert r['research']['status'] == 'STRUCTURED_ONLY'

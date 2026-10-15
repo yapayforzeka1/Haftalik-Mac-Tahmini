@@ -98,6 +98,11 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
                 raise  # At most one additional generation for invalid/truncated JSON.
             if safe_error_detail(exc) == 'QUOTA_EXHAUSTED':
                 raise  # Waiting seconds cannot replenish a billing/daily quota.
+            if (name == 'Gemini 3.6 Flash' and error_http_status(exc) == 429
+                    and safe_error_detail(exc) == 'LIMIT_UNSPECIFIED'
+                    and retry_after_seconds(exc) is None):
+                # Unknown quota window: no blind extra paid/free-tier requests.
+                raise
             base = 20.0 if safe_error(exc) == 'QUOTA_OR_RATE_LIMIT' else _BASE_WAIT_SEC
             wait = max(base * (2 ** attempt) + random.uniform(0, 1), retry_after_seconds(exc) or 0)
             if name == 'Mistral Small Latest' and error_http_status(exc) == 429:
@@ -130,12 +135,22 @@ def _extract_json(text: str) -> dict[str, Any]:
     return parsed
 
 
+def _canonical_outcome(value: Any) -> str | None:
+    """Only unambiguous equivalents; never infer a result from the score."""
+    if not isinstance(value, str):
+        return None
+    label = value.strip().upper()
+    return {"HOME": "HOME", "AWAY": "AWAY", "DRAW": "DRAW",
+            "1": "HOME", "2": "AWAY", "X": "DRAW",
+            "HOME_WIN": "HOME", "AWAY_WIN": "AWAY"}.get(label)
+
+
 def _prediction_validation_reason(result: Any) -> str:
     """Safe, fixed labels only: never print raw model output or match context."""
     if not isinstance(result, dict):
         return 'NOT_OBJECT'
-    outcome = str(result.get('outcome', '')).upper().strip()
-    if outcome not in {'HOME', 'DRAW', 'AWAY'}:
+    outcome = _canonical_outcome(result.get('outcome'))
+    if outcome is None:
         return 'INVALID_OUTCOME'
     score = str(result.get('score', '')).strip()
     match = re.fullmatch(r'(\d+)\s*-\s*(\d+)', score)
@@ -158,9 +173,9 @@ def _prediction_validation_reason(result: Any) -> str:
 def _normalize(result: dict[str, Any], home: str, away: str) -> dict[str, Any]:
     if not isinstance(result, dict):
         raise ValueError('Prediction must be a JSON object.')
-    outcome = str(result.get("outcome", "")).upper().strip()
-    if outcome not in {"HOME", "DRAW", "AWAY"}:
-        raise ValueError(f"Geçersiz outcome: {outcome}")
+    outcome = _canonical_outcome(result.get("outcome"))
+    if outcome is None:
+        raise ValueError("Geçersiz outcome etiketi")
     score = str(result.get("score", "")).strip()
     match = re.fullmatch(r"(\d+)\s*-\s*(\d+)", score)
     if not match:
@@ -524,14 +539,17 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 except (ValueError, TypeError, OverflowError) as exc:
                     # Never rewrite a contradictory outcome/score or fabricate a vote.
                     # Retry GPT-OSS once; the second generation must pass strict validation.
-                    if name == 'Groq GPT-OSS 120B':
-                        reason = _prediction_validation_reason(parsed)
+                    reason = _prediction_validation_reason(parsed)
+                    if name in {'Groq GPT-OSS 120B', 'Cohere Command A+'}:
                         print(f'AI VALIDATION | {name} | neden={reason}', flush=True)
+                    if name == 'Groq GPT-OSS 120B':
                         raise OutputError('GPT_OSS_INVALID_PREDICTION') from None
                     raise
                 return result
             try:
-                result = _call_with_retry(name, request_and_validate, deadline=deadline)
+                result = _call_with_retry(name, request_and_validate,
+                                          max_retries=2 if name == 'Gemini 3.6 Flash' else _MAX_RETRIES,
+                                          deadline=deadline)
                 result['model_id'] = model_ids[name]
                 diagnostics[name] = ('COMPLETE', 'OK', None)
                 return AIVote(name, True, result)

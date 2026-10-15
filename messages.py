@@ -3,6 +3,8 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from experimental_scores import eligible_score_votes
+
 FORMAT_VERSION = 4
 MODEL_COUNT = 5
 
@@ -69,11 +71,12 @@ def prediction_tables(record):
     if record.get("prediction_kind") in {"UNAVAILABLE", "STATISTICAL"}:
         votes = []
     n = len(votes)
+    valid_score_count = len(eligible_score_votes(record.get("ai_votes")))
     total = max(MODEL_COUNT, len(record.get("ai_votes", [])), int(record.get("total_ai") or 0))
     match = f"{record['home_team']} – {record['away_team']}"
     clock = kickoff_text(record)
     if not n:
-        return {"mode": "UNAVAILABLE", "summary_headers": ["⚽ Maç", "🕒 Saat", "🤖 AI yanıtı", "📋 Durum"],
+        return {"mode": "UNAVAILABLE", "summary_headers": ["⚽ Maç", "🕒 Saat", "🤖 Başarılı Tahmin Üreten AL", "📋 Durum"],
                 "summary": [match, clock, f"0/{total}", "⚠️ Tahmin üretilemedi"],
                 "headers": [], "rows": [], "note": ""}
     counts = Counter(v['result']['score'] for v in votes)
@@ -86,9 +89,9 @@ def prediction_tables(record):
             'OUTCOME_COMMON_SCORE_SPLIT' if common_outcome else 'NO_COMMON')
     table = {"mode": mode, "summary_headers": ["⚽ Maç", "🕒 Saat", "📋 Durum"],
              "summary": [match, clock, lineup_text(record)], "headers": [], "rows": [], "note": ""}
+    table['summary_headers'] += ['🤖 Başarılı Tahmin Üreten AL']
+    table['summary'] += [f'{valid_score_count}/{total}']
     if n < 3:
-        table['summary_headers'] += ['🤖 AI yanıtı']
-        table['summary'] += [f'{n}/{total}']
         table['note'] = '⚠️ Üçten az AI yanıtladı; bireysel tahminler gösteriliyor.'
     else:
         table['summary_headers'] += ['🏆 Ortak tahmin', '🎯 Ortak skor']

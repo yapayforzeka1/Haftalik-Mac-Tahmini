@@ -17,6 +17,7 @@ from typing import Any
 from PIL import Image, ImageDraw, ImageFont
 
 from messages import kickoff_text, label, prediction_tables, short_model, short_reason
+from experimental_scores import eligible_score_votes
 
 REPORT_DIR = Path("reports")
 WIDTH = 1480
@@ -447,7 +448,14 @@ def _draw_consensus_cell(draw, y, record):
     namef = _font(16, True)
     _draw_center(draw, (cx, y + 81), _fit_text(draw, name, namef, x1 - x0 - 38), namef, color)
     _rounded(draw, (cx - 53, y + 137, cx + 53, y + 166), 10, BLUE_DIM)
-    _draw_center(draw, (cx, y + 140), f"{num}/{n} OY" if valid else f"{n}/{max(5, len(record.get('ai_votes') or []), int(record.get('total_ai') or 0))} AI", _font(16, True), BLUE)
+    # Outcome-majority votes are distinct from the number of valid model scores.
+    if valid:
+        _draw_center(draw, (cx, y + 107), f"Ortak oy: {num}/{n}", _font(12, True), BLUE)
+    valid_score_count = len(eligible_score_votes(record.get("ai_votes")))
+    total = max(5, len(record.get('ai_votes') or []), int(record.get('total_ai') or 0))
+    _rounded(draw, (x0 + 8, y + 133, x1 - 8, y + 174), 10, BLUE_DIM)
+    _draw_center(draw, (cx, y + 136), "Başarılı Tahmin", _font(12, True), BLUE)
+    _draw_center(draw, (cx, y + 152), f"Üreten AL: {valid_score_count}/{total}", _font(12, True), BLUE)
 
 
 def _draw_score_cell(draw, y, record):
@@ -526,8 +534,8 @@ def _draw_footer(draw, top):
         _draw_center(draw, (cursor + 16, top + 17), icon, _font(20, True), BG)
         draw.text((cursor + 41, top + 19), caption, font=f, fill=TEXT)
         cursor += 250
-    draw.text((left + 800, top + 16), "4/5 AI = Yanıt veren model sayısı", font=_font(15, True), fill=BLUE)
-    draw.text((left + 800, top + 44), "— = Yanıt veya güven oranı yok", font=_font(14), fill=MUTED)
+    draw.text((left + 800, top + 16), "Başarılı AL = Geçerli skor üreten; doğru bilen değil", font=_font(13, True), fill=BLUE)
+    draw.text((left + 800, top + 44), "Ortak oy = Aynı 1-X-2 seçimi  •  — = Veri yok", font=_font(13), fill=MUTED)
     note = "Güven yüzdeleri öznel model değerlendirmesidir, kazanma olasılığı değildir."
     _draw_center(draw, ((left + right)/2, top + 78), note, _font(14), MUTED)
 

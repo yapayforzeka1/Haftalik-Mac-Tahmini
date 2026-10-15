@@ -116,20 +116,16 @@ def test_respects_official_xi_on_prediction_after_prewarm(monkeypatch):
     assert r['research']['official_xi']['status'] == 'ANNOUNCED'
 
 
-def test_gemini_quota_failure_opens_gate_for_next_fixture(monkeypatch):
+def test_structured_research_never_spends_gemini_quota(monkeypatch):
+    # Research is now source-backed only; Gemini is reserved for prediction.
     monkeypatch.setattr(runner, 'now', lambda: NOW)
     monkeypatch.setenv('GEMINI_API_KEY', 'fake-test-key')
     monkeypatch.setattr(runner, 'official_xi', lambda *a: None)
     monkeypatch.setattr(runner, 'prepare_context', lambda *a: {'home': form(11), 'away': form(22)})
     monkeypatch.setattr(runner, 'run_ai_pool', lambda *a, **k: [AIVote('Offline', False, None, 'OFFLINE')])
     calls = []
-    def research(*args):
-        calls.append(1)
-        raise RuntimeError('429 test-quota')
-    monkeypatch.setattr(runner, 'research_match', research)
-    monkeypatch.setitem(sys.modules, 'google.genai', SimpleNamespace(Client=lambda **kwargs: object()))
-    gate = {}
-    changes = []
+    monkeypatch.setattr(runner, 'research_match', lambda *args: calls.append(1))
+    gate, changes = {}, []
     for match_id in (11, 12):
         m = match()
         m['id'] = match_id
@@ -139,10 +135,10 @@ def test_gemini_quota_failure_opens_gate_for_next_fixture(monkeypatch):
             research_gate=gate, save_research_gate=lambda: changes.append(gate.copy())
         )
         assert r['research']['status'] == 'STRUCTURED_ONLY'
-        assert r['research']['provider_warning'] in ('QUOTA_OR_RATE_LIMIT','PROVIDER_COOLDOWN')
-    assert len(calls) == 1
-    assert len(changes) == 1
-    assert 'until' in gate
+        assert r['research']['provider_warning'] == 'STRUCTURED_RESEARCH_ONLY'
+    assert calls == []
+    assert changes == []
+    assert 'until' not in gate
 
 
 def test_team_results_cached_and_sorted_without_second_api_request(monkeypatch):

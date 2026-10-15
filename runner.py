@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 
 from ai_pool import run_ai_pool, safe_error
 from consensus_engine import build_consensus
+from experimental_scores import freeze_prospective_experiments
 from data_provider import build_team_form, parse_utc
 from history_engine import grade_record
 from learning import POLICIES, audit, digest, learning_context, new_state, utcnow
@@ -421,37 +422,9 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
             fallback = structured_research(context, reason='RESEARCH_PENDING')
             r['research'] = fallback
             save()
-            if (os.getenv('GEMINI_API_KEY') and time.monotonic() < deadline - 60
-                    and research_gate_open(research_gate)):
-                try:
-                    from google import genai
-                    client = genai.Client(api_key=os.environ['GEMINI_API_KEY'],
-                        http_options={'timeout': 30000, 'retry_options': {'attempts': 1}})
-                    actual = research_match(client, r['home_team'], r['away_team'], context)
-                    if actual.get('status') == 'OK':
-                        # A search summary is not authority to announce XIs;
-                        # only the team-matched verified provider XI qualifies.
-                        actual['official_xi'] = context['official_xi']
-                        r['research'] = actual
-                    else:
-                        r['research_raw_unverified'] = {
-                            'status': actual.get('status', 'UNKNOWN'),
-                            'reason': 'UNVERIFIED_RESEARCH',
-                        }
-                        fallback['provider_warning'] = 'UNVERIFIED_RESEARCH'
-                except Exception as exc:
-                    reason = safe_error(exc)
-                    r['research_raw_unverified'] = {'status': 'UNAVAILABLE', 'reason': reason}
-                    fallback['provider_warning'] = reason
-                    if reason in {'QUOTA_OR_RATE_LIMIT', 'PROVIDER_UNAVAILABLE'} and research_gate is not None:
-                        # Avoid seven identical quota/503 searches in one batch
-                        # and repeated searches every five minutes.
-                        research_gate['until'] = (now() + timedelta(minutes=20)).isoformat()
-                        research_gate['reason'] = reason
-                        if save_research_gate:
-                            save_research_gate()
-            elif not research_gate_open(research_gate):
-                fallback['provider_warning'] = 'PROVIDER_COOLDOWN'
+            # Gemini's limited quota is reserved for the five-model match forecast.
+            # Research stays explicitly source-backed and never calls an AI API.
+            r['research']['provider_warning'] = 'STRUCTURED_RESEARCH_ONLY'
             # Important: STRUCTURED_ONLY is NOT falsely marked as researched OK.
             print(f"RESEARCH | {r['match_id']} | {r['research'].get('status')} | "
                   f"{r['research'].get('provider_warning', 'OK')}", flush=True)
@@ -517,6 +490,8 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         r['unavailable_details'] = [{'model': v.model, 'error': v.error} for v in votes]
         r['consensus'] = {'consensus_mode': 'NO_COMMON', 'winner_consensus': False, 'score_consensus': False}
     r['prediction_created_at'] = utcnow()
+    # One-way, pre-kickoff archive metadata. Never touch past records or consensus.
+    freeze_prospective_experiments(r, created_at=r['prediction_created_at'])
     r['minutes_before_match'] = round(minutes_left(match), 1)
     r['prediction_mode'] = r['consensus']['consensus_mode']
     r['published_consensus'] = copy.deepcopy(r['consensus'])
