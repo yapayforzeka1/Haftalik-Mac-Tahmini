@@ -26655,10 +26655,13 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "NOT_ANNOUNCED",
+        "home": [],
+        "away": []
       }
     },
     "context_prepared_at": "2026-10-20T15:15:42.987106+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-10-20T15:45:26.008050+00:00"
   }
 }
