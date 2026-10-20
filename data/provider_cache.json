@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792518926.5768385,
+    "at": 1792519229.3856072,
     "data": {
       "filters": {
         "season": 2026
@@ -2422,7 +2422,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T17:54:29Z",
+          "lastUpdated": "2026-10-20T17:59:49Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -2488,7 +2488,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T17:54:47Z",
+          "lastUpdated": "2026-10-20T17:59:49Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -18105,6 +18105,496 @@
               "nationality": "Spain"
             }
           ]
+        }
+      ]
+    }
+  },
+  "b4bedb594ccb71632aecb3a37a65da3036a7e3159482249cef043ab8699d43a6": {
+    "at": 1792519235.4167,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575361,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "awayTeam": {
+        "id": 1899,
+        "name": "PAE AEK",
+        "shortName": "PAE AEK",
+        "tla": "AEK",
+        "crest": "https://crests.football-data.org/1899.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 57042,
+          "name": "Willy Delajod",
+          "type": "REFEREE",
+          "nationality": "France"
+        }
+      ]
+    }
+  },
+  "60d0cfcbc00a1dcd779d89ceb273c17eb10f67f71f4f4f04abcb67e455a58cf7": {
+    "at": 1792519241.4849477,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575362,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 10,
+        "name": "VfB Stuttgart",
+        "shortName": "Stuttgart",
+        "tla": "VFB",
+        "crest": "https://crests.football-data.org/10.png"
+      },
+      "awayTeam": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crest": "https://crests.football-data.org/78.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 43858,
+          "name": "Serdar Gözübüyük",
+          "type": "REFEREE",
+          "nationality": "Netherlands"
+        }
+      ]
+    }
+  },
+  "121f19a96b5aeb0ee55d22ab13cd02f71a4176495a7ba2ad73b0ff06e1271529": {
+    "at": 1792519284.096497,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575363,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 64,
+        "name": "Liverpool FC",
+        "shortName": "Liverpool",
+        "tla": "LIV",
+        "crest": "https://crests.football-data.org/64.png"
+      },
+      "awayTeam": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crest": "https://crests.football-data.org/94.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 43888,
+          "name": "Szymon Marciniak",
+          "type": "REFEREE",
+          "nationality": "Poland"
+        }
+      ]
+    }
+  },
+  "653c08ab2eda2f6adfbde039aa1e94a69c1a08c9d52377834acc4660176b1761": {
+    "at": 1792519290.4526958,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575364,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 100,
+        "name": "AS Roma",
+        "shortName": "Roma",
+        "tla": "ROM",
+        "crest": "https://crests.football-data.org/100.png"
+      },
+      "awayTeam": {
+        "id": 7509,
+        "name": "ŠK Slovan Bratislava",
+        "shortName": "Sl. Bratislava",
+        "tla": "SBA",
+        "crest": "https://crests.football-data.org/7509.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 31823,
+          "name": "Sandro Schärer",
+          "type": "REFEREE",
+          "nationality": "Switzerland"
+        }
+      ]
+    }
+  },
+  "9b35bf29567c06a5305991563e72522256eb598551778f1a8cbd728c1dddba59": {
+    "at": 1792519296.49038,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575365,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 503,
+        "name": "FC Porto",
+        "shortName": "Porto",
+        "tla": "FCP",
+        "crest": "https://crests.football-data.org/503.png"
+      },
+      "awayTeam": {
+        "id": 674,
+        "name": "PSV",
+        "shortName": "PSV",
+        "tla": "PSV",
+        "crest": "https://crests.football-data.org/674.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 15408,
+          "name": "Daniel Siebert",
+          "type": "REFEREE",
+          "nationality": "Germany"
+        }
+      ]
+    }
+  },
+  "d25ce370b16e17a1fc6fbbe2261c53b57534be0601f49e8401284668260ee72e": {
+    "at": 1792519337.708153,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575366,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 113,
+        "name": "SSC Napoli",
+        "shortName": "Napoli",
+        "tla": "NAP",
+        "crest": "https://crests.football-data.org/113.png"
+      },
+      "awayTeam": {
+        "id": 5721,
+        "name": "FK Bodø/Glimt",
+        "shortName": "Bodø/Glimt",
+        "tla": "FK",
+        "crest": "https://crests.football-data.org/5721.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 207080,
+          "name": "José Sánchez Martínez",
+          "type": "REFEREE",
+          "nationality": "Spain"
+        }
+      ]
+    }
+  },
+  "5220c40c4f8e480298321b92aaff92a1f0685f6e30f797fbe17777e455cd79ae": {
+    "at": 1792519350.6681833,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575367,
+      "utcDate": "2026-10-20T19:00:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-20T00:20:28Z",
+      "homeTeam": {
+        "id": 524,
+        "name": "Paris Saint-Germain FC",
+        "shortName": "PSG",
+        "tla": "PSG",
+        "crest": "https://crests.football-data.org/524.png"
+      },
+      "awayTeam": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB",
+        "crest": "https://crests.football-data.org/81.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 11605,
+          "name": "Michael Oliver",
+          "type": "REFEREE",
+          "nationality": "England"
         }
       ]
     }
