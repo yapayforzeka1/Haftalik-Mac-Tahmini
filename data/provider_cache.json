@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792526726.1974618,
+    "at": 1792527028.7600083,
     "data": {
       "filters": {
         "season": 2026
@@ -2554,7 +2554,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:53:58Z",
+          "lastUpdated": "2026-10-20T20:09:58Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2620,7 +2620,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:51:18Z",
+          "lastUpdated": "2026-10-20T20:09:26Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -2636,11 +2636,11 @@
             "crest": "https://crests.football-data.org/78.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
               "home": 1,
-              "away": 0
+              "away": 1
             },
             "halfTime": {
               "home": 1,
@@ -2686,7 +2686,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:53:26Z",
+          "lastUpdated": "2026-10-20T20:09:26Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -2752,7 +2752,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:52:22Z",
+          "lastUpdated": "2026-10-20T20:09:26Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2818,7 +2818,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:52:22Z",
+          "lastUpdated": "2026-10-20T20:09:26Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
