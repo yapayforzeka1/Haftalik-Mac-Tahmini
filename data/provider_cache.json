@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792520124.9405618,
+    "at": 1792520431.8315027,
     "data": {
       "filters": {
         "season": 2026
@@ -2422,7 +2422,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T18:14:45Z",
+          "lastUpdated": "2026-10-20T18:19:01Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -2488,7 +2488,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T18:14:47Z",
+          "lastUpdated": "2026-10-20T18:19:02Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -18110,7 +18110,7 @@
     }
   },
   "b4bedb594ccb71632aecb3a37a65da3036a7e3159482249cef043ab8699d43a6": {
-    "at": 1792520130.9543283,
+    "at": 1792520438.1810591,
     "data": {
       "area": {
         "id": 2077,
@@ -18320,7 +18320,7 @@
     }
   },
   "653c08ab2eda2f6adfbde039aa1e94a69c1a08c9d52377834acc4660176b1761": {
-    "at": 1792520137.3837612,
+    "at": 1792520444.123126,
     "data": {
       "area": {
         "id": 2077,
