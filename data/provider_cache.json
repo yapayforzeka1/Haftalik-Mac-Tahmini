@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792539622.4445088,
+    "at": 1792539926.5507166,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 45
+        "played": 36
       },
       "competition": {
         "id": 2001,
@@ -2418,11 +2418,11 @@
           },
           "id": 575359,
           "utcDate": "2026-10-20T16:45:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -2438,15 +2438,15 @@
             "crest": "https://crests.football-data.org/4.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
-              "away": 2
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 1,
-              "away": 1
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2484,11 +2484,11 @@
           },
           "id": 575360,
           "utcDate": "2026-10-20T16:45:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -2504,15 +2504,15 @@
             "crest": "https://crests.football-data.org/930.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 2,
-              "away": 2
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 2,
-              "away": 1
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2550,11 +2550,11 @@
           },
           "id": 575361,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2570,15 +2570,15 @@
             "crest": "https://crests.football-data.org/1899.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 5,
-              "away": 1
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 2,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2616,11 +2616,11 @@
           },
           "id": 575362,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -2636,15 +2636,15 @@
             "crest": "https://crests.football-data.org/78.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
-              "away": 1
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 1,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2682,11 +2682,11 @@
           },
           "id": 575363,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -2702,15 +2702,15 @@
             "crest": "https://crests.football-data.org/94.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 4,
-              "away": 3
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 2,
-              "away": 2
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2748,11 +2748,11 @@
           },
           "id": 575364,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2768,15 +2768,15 @@
             "crest": "https://crests.football-data.org/7509.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 4,
-              "away": 0
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 2,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2814,11 +2814,11 @@
           },
           "id": 575365,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -2834,15 +2834,15 @@
             "crest": "https://crests.football-data.org/674.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
-              "away": 1
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 0,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2880,11 +2880,11 @@
           },
           "id": 575366,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:00Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
@@ -2900,15 +2900,15 @@
             "crest": "https://crests.football-data.org/5721.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 4,
-              "away": 3
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 2,
-              "away": 1
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -2946,11 +2946,11 @@
           },
           "id": 575367,
           "utcDate": "2026-10-20T19:00:00Z",
-          "status": "FINISHED",
+          "status": "TIMED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T22:25:01Z",
+          "lastUpdated": "2026-10-20T00:20:28Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -2966,15 +2966,15 @@
             "crest": "https://crests.football-data.org/81.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 4,
-              "away": 2
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 1,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
