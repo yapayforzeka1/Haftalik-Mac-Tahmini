@@ -26488,9 +26488,138 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "Borussia Dortmund",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 68,
+          "reasons": [
+            "Borussia Dortmund kadro kalitesi ve oyuncu profili bakımından rakibinin belirgin şekilde önündedir.",
+            "Dortmund son iki resmi maçında gol bulamamış olsa da Guirassy önderliğinde as kadrosuyla sahaya çıkmaktadır.",
+            "Sabah FK evinde Slavia Prag'ı mağlup ederek dirençli bir profil çizse de seviye farkı yüksek bir rakiple karşılaşacaktır.",
+            "Deplasman ekibinin fikstür yoğunluğuna rağmen kadro derinliği maçı kontrol etmesini sağlayacaktır."
+          ],
+          "short_reason": "Dortmund kadro kalitesiyle deplasmanda galibiyete yakın.",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-1"
+          ],
+          "change_vs_previous": "Önceki tahmin yok.",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "gemini-3.6-flash"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "Borussia Dortmund",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 65,
+          "reasons": [
+            "Dortmund'un kadro derinliği ve Guirassy/Silva gibi hücum silahları, Sabah FK'nın savunma zafiyetini (Son 2 maçta 4 gol yedi) cezalandırır.",
+            "Sabah FK deplasmanda Manchester United'a 0-4 yenilerek Avrupa seviyesindeki savunma kırılganlığını gösterdi.",
+            "Dortmund'un 3-4-2-1 dizilişi, Sabah FK'nın 4-2-3-1 yapısına karşı orta alanda baskı kurarak pozisyon üretme potansiyeli taşır.",
+            "Sabah FK'nın evinde Slavia'ya karşı 2-0 kazanması tek olumlu veri olsa da, rakip kalitesi ve Dortmund'un genel gücü bu avantajı dengelemez."
+          ],
+          "short_reason": "Dortmund kadro kalitesi ve hücum gücü üstün",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": false,
+        "result": null,
+        "error": "RESPONSE_TRUNCATED"
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "Borussia Dortmund",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi savunma zayıf",
+            "Deplasman gol ortalaması yüksek",
+            "Deplasman istirahat süresi kısa",
+            "İki takımın resmi 11'i açık"
+          ],
+          "short_reason": "deplasman daha formda",
+          "score_candidates": [
+            "1-2",
+            "0-1",
+            "1-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "Borussia Dortmund",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 85,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-3",
+            "0-2",
+            "0-1"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-20T15:15:24.477255+00:00",
@@ -26655,13 +26784,847 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED",
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 489507,
+            "name": "Stas Pokatilov",
+            "number": "92",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 542777,
+            "name": "Akim Zedadka",
+            "number": "80",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 764834,
+            "name": "Steve Solvet",
+            "number": "3",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1337091,
+            "name": "Aden McCarthy",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 823121,
+            "name": "Tymoteusz Puchacz",
+            "number": "27",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 906920,
+            "name": "Ivan Lepinjica",
+            "number": "13",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1429286,
+            "name": "Umarali Rakhmonaliev",
+            "number": "7",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 876149,
+            "name": "Kaheem Parris",
+            "number": "11",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1271367,
+            "name": "Du Queiroz",
+            "number": "37",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 458807,
+            "name": "Veljko Simić",
+            "number": "21",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 617465,
+            "name": "Joy-Lance Mickels",
+            "number": "20",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 764018,
+            "name": "Gregor Kobel",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1002058,
+            "name": "Nico Schlotterbeck",
+            "number": "4",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 664970,
+            "name": "Waldemar Anton",
+            "number": "3",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 559065,
+            "name": "Ramy Bensebaini",
+            "number": "5",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 659272,
+            "name": "Julian Ryerson",
+            "number": "26",
+            "pos": 62,
+            "grid": null
+          },
+          {
+            "id": 966019,
+            "name": "Felix Nmecha",
+            "number": "8",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 792429,
+            "name": "Joey Veerman",
+            "number": "25",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1209228,
+            "name": "Daniel Svensson",
+            "number": "24",
+            "pos": 68,
+            "grid": null
+          },
+          {
+            "id": 1089685,
+            "name": "Carney Chukwuemeka",
+            "number": "17",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 1050158,
+            "name": "Fábio Silva",
+            "number": "21",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 448540,
+            "name": "Serhou Guirassy",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-2-3-1",
+        "away_source": "FotMob",
+        "away_formation": "3-4-2-1",
+        "checked_at": "2026-10-20T15:50:31.140543+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
         "home": [],
         "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-10-20T15:15:42.987106+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-20T15:45:26.008050+00:00"
+    "xi_checked_at": "2026-10-20T15:50:24.400765+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 2 maçta 2-4 gol dengesi. Deplasman: son 5 maçta 6-3 gol dengesi.",
+      "home": {
+        "form": "Son 2 doğrulanmış maç: W-L.",
+        "goals_trend": "Son 2 maç: 2 gol attı, 4 gol yedi; maç başına 1.00 attı / 2.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-13 SK Slavia Praha: 2-0 (HOME)",
+          "2026-09-10 Manchester United FC: 0-4 (AWAY)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 1W-0D-0L; 2 gol attı, 0 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: D-L-D-W-W.",
+        "goals_trend": "Son 5 maç: 6 gol attı, 3 gol yedi; maç başına 1.20 attı / 0.60 yedi.",
+        "recent_fixtures": [
+          "2026-10-17 1. FC Union Berlin: 0-0 (AWAY)",
+          "2026-10-14 FK Bodø/Glimt: 0-1 (AWAY)",
+          "2026-10-09 SV Werder Bremen: 2-2 (HOME)",
+          "2026-09-19 VfB Stuttgart: 1-0 (AWAY)",
+          "2026-09-12 SC Paderborn 07: 3-0 (HOME)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 1W-1D-1L; 1 gol attı, 1 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 22,
+          "points": 3,
+          "played": 2
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 18,
+          "points": 3,
+          "played": 2
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 7.0 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 3.1 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 489507,
+            "name": "Stas Pokatilov",
+            "number": "92",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 542777,
+            "name": "Akim Zedadka",
+            "number": "80",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 764834,
+            "name": "Steve Solvet",
+            "number": "3",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1337091,
+            "name": "Aden McCarthy",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 823121,
+            "name": "Tymoteusz Puchacz",
+            "number": "27",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 906920,
+            "name": "Ivan Lepinjica",
+            "number": "13",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1429286,
+            "name": "Umarali Rakhmonaliev",
+            "number": "7",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 876149,
+            "name": "Kaheem Parris",
+            "number": "11",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1271367,
+            "name": "Du Queiroz",
+            "number": "37",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 458807,
+            "name": "Veljko Simić",
+            "number": "21",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 617465,
+            "name": "Joy-Lance Mickels",
+            "number": "20",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 764018,
+            "name": "Gregor Kobel",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1002058,
+            "name": "Nico Schlotterbeck",
+            "number": "4",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 664970,
+            "name": "Waldemar Anton",
+            "number": "3",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 559065,
+            "name": "Ramy Bensebaini",
+            "number": "5",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 659272,
+            "name": "Julian Ryerson",
+            "number": "26",
+            "pos": 62,
+            "grid": null
+          },
+          {
+            "id": 966019,
+            "name": "Felix Nmecha",
+            "number": "8",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 792429,
+            "name": "Joey Veerman",
+            "number": "25",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1209228,
+            "name": "Daniel Svensson",
+            "number": "24",
+            "pos": 68,
+            "grid": null
+          },
+          {
+            "id": 1089685,
+            "name": "Carney Chukwuemeka",
+            "number": "17",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 1050158,
+            "name": "Fábio Silva",
+            "number": "21",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 448540,
+            "name": "Serhou Guirassy",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-2-3-1",
+        "away_source": "FotMob",
+        "away_formation": "3-4-2-1",
+        "checked_at": "2026-10-20T15:50:31.140543+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-20T15:50:31.187931+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-10-20T15:50:31.187944+00:00",
+      "source_refs": [
+        {
+          "team_id": 10233,
+          "endpoint": "/v4/teams/10233/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 4,
+          "endpoint": "/v4/teams/4/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 2 maçta 2-4 gol dengesi.",
+        "Deplasman: son 5 maçta 6-3 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 30,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 30,
+          "available": 8,
+          "points": 24,
+          "exact": 3,
+          "outcome": 6,
+          "goal_error": 11,
+          "coverage_pct": 26.7,
+          "exact_pct": 37.5,
+          "outcome_pct": 75.0,
+          "avg_points": 3.0,
+          "mean_goal_error": 1.38
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 30,
+          "available": 24,
+          "points": 53,
+          "exact": 2,
+          "outcome": 16,
+          "goal_error": 51,
+          "coverage_pct": 80.0,
+          "exact_pct": 8.3,
+          "outcome_pct": 66.7,
+          "avg_points": 2.21,
+          "mean_goal_error": 2.12
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 30,
+          "available": 29,
+          "points": 57,
+          "exact": 2,
+          "outcome": 18,
+          "goal_error": 64,
+          "coverage_pct": 96.7,
+          "exact_pct": 6.9,
+          "outcome_pct": 62.1,
+          "avg_points": 1.97,
+          "mean_goal_error": 2.21
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 17,
+          "available": 17,
+          "points": 34,
+          "exact": 0,
+          "outcome": 10,
+          "goal_error": 45,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 58.8,
+          "avg_points": 2.0,
+          "mean_goal_error": 2.65
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 17,
+          "available": 17,
+          "points": 24,
+          "exact": 0,
+          "outcome": 7,
+          "goal_error": 51,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 41.2,
+          "avg_points": 1.41,
+          "mean_goal_error": 3.0
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 22,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 30,
+          "exact_matches": 4
+        },
+        "home_form=True": {
+          "matches": 28,
+          "exact_matches": 4
+        },
+        "away_form=True": {
+          "matches": 24,
+          "exact_matches": 2
+        },
+        "standings=True": {
+          "matches": 30,
+          "exact_matches": 4
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 8,
+          "exact_matches": 1
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 17,
+          "exact": 0,
+          "outcome_correct": 10,
+          "goal_error": 45
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 17,
+          "exact": 0,
+          "outcome_correct": 10,
+          "goal_error": 45
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 17,
+          "exact": 0,
+          "outcome_correct": 10,
+          "goal_error": 45
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 17,
+          "exact": 0,
+          "outcome_correct": 7,
+          "goal_error": 51
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 16,
+          "exact": 0,
+          "outcome_correct": 8,
+          "goal_error": 43
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 16,
+          "exact": 0,
+          "outcome_correct": 8,
+          "goal_error": 43
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 16,
+          "exact": 0,
+          "outcome_correct": 8,
+          "goal_error": 43
+        },
+        "Cohere Command A+:form": {
+          "used": 12,
+          "exact": 0,
+          "outcome_correct": 8,
+          "goal_error": 26
+        },
+        "Cohere Command A+:rest": {
+          "used": 7,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 17
+        },
+        "Cohere Command A+:standings": {
+          "used": 4,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 7
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "8e7af23981b3b556de2e02f73d2310c6dbcf60aea50411db54f7eae89c979693",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 54,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-2": 2,
+        "1-2": 1,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Borussia Dortmund kadro kalitesi ve oyuncu profili bakımından rakibinin belirgin şekilde önündedir.",
+          "Dortmund son iki resmi maçında gol bulamamış olsa da Guirassy önderliğinde as kadrosuyla sahaya çıkmaktadır.",
+          "Sabah FK evinde Slavia Prag'ı mağlup ederek dirençli bir profil çizse de seviye farkı yüksek bir rakiple karşılaşacaktır.",
+          "Deplasman ekibinin fikstür yoğunluğuna rağmen kadro derinliği maçı kontrol etmesini sağlayacaktır.",
+          "Dortmund'un kadro derinliği ve Guirassy/Silva gibi hücum silahları, Sabah FK'nın savunma zafiyetini (Son 2 maçta 4 gol yedi) cezalandırır."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Cohere Command A+",
+          "error": "RESPONSE_TRUNCATED"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-20T15:51:11.935330+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575359",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-2",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Gemini 3.6 Flash",
+              "model_id": "gemini-3.6-flash"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-20T15:51:11.935330+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "1dec853e955f9be7aa4a741ccc33ad7934080680fba092d693836154ac2016c1"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575359",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-2",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Gemini 3.6 Flash",
+              "model_id": "gemini-3.6-flash"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-20T15:51:11.935330+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "1dec853e955f9be7aa4a741ccc33ad7934080680fba092d693836154ac2016c1"
+        }
+      }
+    },
+    "minutes_before_match": 53.8,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 54,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-2": 2,
+        "1-2": 1,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Borussia Dortmund kadro kalitesi ve oyuncu profili bakımından rakibinin belirgin şekilde önündedir.",
+          "Dortmund son iki resmi maçında gol bulamamış olsa da Guirassy önderliğinde as kadrosuyla sahaya çıkmaktadır.",
+          "Sabah FK evinde Slavia Prag'ı mağlup ederek dirençli bir profil çizse de seviye farkı yüksek bir rakiple karşılaşacaktır.",
+          "Deplasman ekibinin fikstür yoğunluğuna rağmen kadro derinliği maçı kontrol etmesini sağlayacaktır.",
+          "Dortmund'un kadro derinliği ve Guirassy/Silva gibi hücum silahları, Sabah FK'nın savunma zafiyetini (Son 2 maçta 4 gol yedi) cezalandırır."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Cohere Command A+",
+          "error": "RESPONSE_TRUNCATED"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Sabah FK – Borussia Dortmund",
+        "19:45 TSİ",
+        "✅ Resmî 11",
+        "4/5",
+        "Borussia Dortmund · 4/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Gemini, Qwen",
+          "0–2",
+          "2/4"
+        ],
+        [
+          "GPT-OSS",
+          "1–2",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "0–3",
+          "1/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nSabah FK – Borussia Dortmund | 19:45 TSİ | ✅ Resmî 11 | 4/5 | Borussia Dortmund · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGemini, Qwen | 0–2 | 2/4\nGPT-OSS | 1–2 | 1/4\nClef | 0–3 | 1/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-20T16:45",
+      "group_size": 1
+    }
   }
 }
