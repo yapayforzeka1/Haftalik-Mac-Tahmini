@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792525225.7795243,
+    "at": 1792525526.6624615,
     "data": {
       "filters": {
         "season": 2026
@@ -2554,7 +2554,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:01Z",
+          "lastUpdated": "2026-10-20T19:44:21Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2573,7 +2573,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 0
             },
             "halfTime": {
@@ -2620,7 +2620,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -2636,10 +2636,10 @@
             "crest": "https://crests.football-data.org/78.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 0
             },
             "halfTime": {
@@ -2686,7 +2686,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -2705,7 +2705,7 @@
             "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 2
             },
             "halfTime": {
@@ -2752,7 +2752,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2818,7 +2818,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -2884,7 +2884,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
@@ -2950,7 +2950,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T19:39:34Z",
+          "lastUpdated": "2026-10-20T19:43:50Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
