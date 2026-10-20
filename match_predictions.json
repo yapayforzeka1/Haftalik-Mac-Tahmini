@@ -26519,7 +26519,10 @@
           ],
           "model_id": "gemini-3.6-flash"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -26551,7 +26554,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -26589,7 +26595,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -26615,7 +26624,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -27625,6 +27637,122 @@
       "transport": "photo",
       "group_key": "2026-10-20T16:45",
       "group_size": 1
+    },
+    "actual": {
+      "home": 1,
+      "away": 2,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-20T18:45:27.604720+00:00"
+    },
+    "consensus_points": 4,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": -1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Borussia Dortmund kadro kalitesi ve oyuncu profili bakımından rakibinin belirgin şekilde önündedir.",
+            "Dortmund son iki resmi maçında gol bulamamış olsa da Guirassy önderliğinde as kadrosuyla sahaya çıkmaktadır.",
+            "Sabah FK evinde Slavia Prag'ı mağlup ederek dirençli bir profil çizse de seviye farkı yüksek bir rakiple karşılaşacaktır.",
+            "Deplasman ekibinin fikstür yoğunluğuna rağmen kadro derinliği maçı kontrol etmesini sağlayacaktır."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": -1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Dortmund'un kadro derinliği ve Guirassy/Silva gibi hücum silahları, Sabah FK'nın savunma zafiyetini (Son 2 maçta 4 gol yedi) cezalandırır.",
+            "Sabah FK deplasmanda Manchester United'a 0-4 yenilerek Avrupa seviyesindeki savunma kırılganlığını gösterdi.",
+            "Dortmund'un 3-4-2-1 dizilişi, Sabah FK'nın 4-2-3-1 yapısına karşı orta alanda baskı kurarak pozisyon üretme potansiyeli taşır.",
+            "Sabah FK'nın evinde Slavia'ya karşı 2-0 kazanması tek olumlu veri olsa da, rakip kalitesi ve Dortmund'un genel gücü bu avantajı dengelemez."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": false
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi savunma zayıf",
+            "Deplasman gol ortalaması yüksek",
+            "Deplasman istirahat süresi kısa",
+            "İki takımın resmi 11'i açık"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "3f4452064bceac1904ee6d3c99009bd05b07fc5727a1e0a38a32015eb203a350",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575361": {
