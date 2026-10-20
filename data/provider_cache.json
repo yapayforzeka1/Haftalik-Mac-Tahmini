@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792519229.3856072,
+    "at": 1792519528.5688787,
     "data": {
       "filters": {
         "season": 2026
@@ -2422,7 +2422,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T17:59:49Z",
+          "lastUpdated": "2026-10-20T18:04:05Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -2438,11 +2438,11 @@
             "crest": "https://crests.football-data.org/4.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 1,
-              "away": 1
+              "away": 2
             },
             "halfTime": {
               "home": 1,
@@ -2488,7 +2488,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-20T17:59:49Z",
+          "lastUpdated": "2026-10-20T18:04:46Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -18110,7 +18110,7 @@
     }
   },
   "b4bedb594ccb71632aecb3a37a65da3036a7e3159482249cef043ab8699d43a6": {
-    "at": 1792519235.4167,
+    "at": 1792519534.5414298,
     "data": {
       "area": {
         "id": 2077,
@@ -18250,7 +18250,7 @@
     }
   },
   "121f19a96b5aeb0ee55d22ab13cd02f71a4176495a7ba2ad73b0ff06e1271529": {
-    "at": 1792519284.096497,
+    "at": 1792519540.7484016,
     "data": {
       "area": {
         "id": 2077,
@@ -18320,7 +18320,7 @@
     }
   },
   "653c08ab2eda2f6adfbde039aa1e94a69c1a08c9d52377834acc4660176b1761": {
-    "at": 1792519290.4526958,
+    "at": 1792519546.9432502,
     "data": {
       "area": {
         "id": 2077,
