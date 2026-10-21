@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792605939.9406824,
+    "at": 1792606234.7496023,
     "data": {
       "filters": {
         "season": 2026
@@ -3016,7 +3016,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T18:04:05Z",
+          "lastUpdated": "2026-10-21T18:09:25Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -3035,7 +3035,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 2,
+              "home": 3,
               "away": 0
             },
             "halfTime": {
@@ -3082,7 +3082,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T18:04:37Z",
+          "lastUpdated": "2026-10-21T18:09:26Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -3102,7 +3102,7 @@
             "duration": "REGULAR",
             "fullTime": {
               "home": 2,
-              "away": 3
+              "away": 4
             },
             "halfTime": {
               "home": 2,
@@ -9687,76 +9687,6 @@
       ]
     }
   },
-  "121f19a96b5aeb0ee55d22ab13cd02f71a4176495a7ba2ad73b0ff06e1271529": {
-    "at": 1792519841.6166224,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 3,
-        "winner": null
-      },
-      "id": 575363,
-      "utcDate": "2026-10-20T19:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 3,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-10-20T00:20:28Z",
-      "homeTeam": {
-        "id": 64,
-        "name": "Liverpool FC",
-        "shortName": "Liverpool",
-        "tla": "LIV",
-        "crest": "https://crests.football-data.org/64.png"
-      },
-      "awayTeam": {
-        "id": 94,
-        "name": "Villarreal CF",
-        "shortName": "Villarreal",
-        "tla": "VIL",
-        "crest": "https://crests.football-data.org/94.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 43888,
-          "name": "Szymon Marciniak",
-          "type": "REFEREE",
-          "nationality": "Poland"
-        }
-      ]
-    }
-  },
   "653c08ab2eda2f6adfbde039aa1e94a69c1a08c9d52377834acc4660176b1761": {
     "at": 1792521076.8471508,
     "data": {
@@ -9823,76 +9753,6 @@
           "name": "Sandro Schärer",
           "type": "REFEREE",
           "nationality": "Switzerland"
-        }
-      ]
-    }
-  },
-  "5220c40c4f8e480298321b92aaff92a1f0685f6e30f797fbe17777e455cd79ae": {
-    "at": 1792519866.3738198,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 3,
-        "winner": null
-      },
-      "id": 575367,
-      "utcDate": "2026-10-20T19:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 3,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-10-20T00:20:28Z",
-      "homeTeam": {
-        "id": 524,
-        "name": "Paris Saint-Germain FC",
-        "shortName": "PSG",
-        "tla": "PSG",
-        "crest": "https://crests.football-data.org/524.png"
-      },
-      "awayTeam": {
-        "id": 81,
-        "name": "FC Barcelona",
-        "shortName": "Barça",
-        "tla": "FCB",
-        "crest": "https://crests.football-data.org/81.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 11605,
-          "name": "Michael Oliver",
-          "type": "REFEREE",
-          "nationality": "England"
         }
       ]
     }
@@ -18419,7 +18279,7 @@
     }
   },
   "550042d2741af58159a1f3c11401bee9809e14fab94d3d3a8b1eef45dd1d8361": {
-    "at": 1792605945.9320972,
+    "at": 1792606240.9648993,
     "data": {
       "area": {
         "id": 2077,
@@ -18559,7 +18419,7 @@
     }
   },
   "7272923ea969fa2096b892234ef2f0f20d552aaae49fbd0bdd984ce59ba7e096": {
-    "at": 1792606018.3271787,
+    "at": 1792606260.5740569,
     "data": {
       "area": {
         "id": 2077,
@@ -18769,7 +18629,7 @@
     }
   },
   "4b2f0c360c90cedf0f3b966c4f9ef6d756696fccd9d4a6ba8ae2988c13378c6d": {
-    "at": 1792606024.5996413,
+    "at": 1792606285.146632,
     "data": {
       "area": {
         "id": 2077,

@@ -38674,9 +38674,137 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "FC Internazionale Milano",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Inter'in evindeki yüksek gol ortalaması (3.67) ve güçlü hücum hattı (Thuram, Bonny)",
+            "Shakhtar'ın deplasman savunma kırılganlığı ve düşük gol yeme oranına rağmen Inter'in baskısı",
+            "Inter'in 4 gün dinlenmesine karşın Shakhtar'ın 7 gün dinlenmesi, Inter'in taze kadrosuna avantaj sağlar",
+            "Inter'in Serie A'daki formu ve evindeki 2 galibiyetlik serisi, Shakhtar'ın Avrupa'daki istikrarsızlığına karşı üstünlük kurar"
+          ],
+          "short_reason": "Inter evinde gol atar, Shakhtar deplasmanda zorlanır",
+          "score_candidates": [
+            "2-1",
+            "3-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FC Internazionale Milano",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Inter strong home attack averaging 3.6 goals per home game",
+            "Shakhtar solid away defense conceding 1 goal per away game",
+            "Inter's official XI includes Thuram and Bonny providing finishing",
+            "Shakhtar has quality attackers capable of scoring at least one away goal"
+          ],
+          "short_reason": "Ev sahibi üstünlüğü ve gol potansiyeli",
+          "score_candidates": [
+            "2-1",
+            "3-1",
+            "1-1"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FC Internazionale Milano",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 0,
+          "reasons": [
+            "İnter son 5 maçta 3.2 ort. gol attı",
+            "Shakhtar son 2 maçta sadece 2 ort. gol yedi",
+            "İnter evinde 4.1 gün dinlenmiş",
+            "Şampiyonlar Ligi'nde İnter daha güçlü rakiplerle oynadı"
+          ],
+          "short_reason": "İnter hücumda üstün",
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "FC Internazionale Milano",
+          "away_team": "FK Shakhtar Donetsk",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 61,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-21T17:30:41.753248+00:00",
@@ -38841,14 +38969,839 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED",
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 772168,
+            "name": "Josep Martínez",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 521318,
+            "name": "Manuel Akanji",
+            "number": "25",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 805451,
+            "name": "Alessandro Bastoni",
+            "number": "95",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 940829,
+            "name": "Carlos Augusto",
+            "number": "30",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 894803,
+            "name": "Djed Spence",
+            "number": "99",
+            "pos": 71,
+            "grid": null
+          },
+          {
+            "id": 541820,
+            "name": "Nicolò Barella",
+            "number": "23",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 304733,
+            "name": "Hakan Çalhanoglu",
+            "number": "20",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1382000,
+            "name": "Petar Sučić",
+            "number": "8",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 605224,
+            "name": "Federico Dimarco",
+            "number": "32",
+            "pos": 79,
+            "grid": null
+          },
+          {
+            "id": 621562,
+            "name": "Marcus Thuram",
+            "number": "9",
+            "pos": 104,
+            "grid": null
+          },
+          {
+            "id": 1199383,
+            "name": "Ange-Yoan Bonny",
+            "number": "14",
+            "pos": 106,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 976428,
+            "name": "Dmytro Riznyk",
+            "number": "31",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1314657,
+            "name": "Vinícius Tobias",
+            "number": "17",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1024427,
+            "name": "Valeriy Bondar",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 656667,
+            "name": "Mykola Matviyenko",
+            "number": "22",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1259576,
+            "name": "Pedro Henrique",
+            "number": "13",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1396465,
+            "name": "Marlon Gomes",
+            "number": "6",
+            "pos": 65,
+            "grid": null
+          },
+          {
+            "id": 1503318,
+            "name": "Alisson Santana",
+            "number": "30",
+            "pos": 82,
+            "grid": null
+          },
+          {
+            "id": 1192419,
+            "name": "Oleg Ocheretko",
+            "number": "27",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 844186,
+            "name": "Pedrinho",
+            "number": "10",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 1460572,
+            "name": "Gleiker Mendoza",
+            "number": "77",
+            "pos": 88,
+            "grid": null
+          },
+          {
+            "id": 1483508,
+            "name": "Kauã Elias",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "3-5-2",
+        "away_source": "FotMob",
+        "away_formation": "4-1-4-1",
+        "checked_at": "2026-10-21T18:10:41.365619+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
         "home": [],
         "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-10-21T17:30:54.157143+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-21T18:05:40.020520+00:00"
+    "xi_checked_at": "2026-10-21T18:10:34.819079+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 16-10 gol dengesi. Deplasman: son 2 maçta 4-2 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: W-L-W-D-W.",
+        "goals_trend": "Son 5 maç: 16 gol attı, 10 gol yedi; maç başına 3.20 attı / 2.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-17 Bologna FC 1909: 3-1 (AWAY)",
+          "2026-10-13 Club Brugge KV: 3-4 (HOME)",
+          "2026-10-10 Parma Calcio 1913: 3-0 (HOME)",
+          "2026-09-19 AS Roma: 2-2 (AWAY)",
+          "2026-09-14 Udinese Calcio: 5-3 (HOME)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 2W-0D-1L; 11 gol attı, 7 gol yedi."
+      },
+      "away": {
+        "form": "Son 2 doğrulanmış maç: W-D.",
+        "goals_trend": "Son 2 maç: 4 gol attı, 2 gol yedi; maç başına 2.00 attı / 1.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-14 PAE AEK: 3-1 (HOME)",
+          "2026-09-10 PSV: 1-1 (AWAY)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 0W-1D-0L; 1 gol attı, 1 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 33,
+          "points": 0,
+          "played": 2
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 15,
+          "points": 4,
+          "played": 2
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 4.1 gün dinlenme. Son 14 günde 3 maç.",
+        "away": "Son maçtan itibaren 7.0 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 772168,
+            "name": "Josep Martínez",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 521318,
+            "name": "Manuel Akanji",
+            "number": "25",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 805451,
+            "name": "Alessandro Bastoni",
+            "number": "95",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 940829,
+            "name": "Carlos Augusto",
+            "number": "30",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 894803,
+            "name": "Djed Spence",
+            "number": "99",
+            "pos": 71,
+            "grid": null
+          },
+          {
+            "id": 541820,
+            "name": "Nicolò Barella",
+            "number": "23",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 304733,
+            "name": "Hakan Çalhanoglu",
+            "number": "20",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1382000,
+            "name": "Petar Sučić",
+            "number": "8",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 605224,
+            "name": "Federico Dimarco",
+            "number": "32",
+            "pos": 79,
+            "grid": null
+          },
+          {
+            "id": 621562,
+            "name": "Marcus Thuram",
+            "number": "9",
+            "pos": 104,
+            "grid": null
+          },
+          {
+            "id": 1199383,
+            "name": "Ange-Yoan Bonny",
+            "number": "14",
+            "pos": 106,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 976428,
+            "name": "Dmytro Riznyk",
+            "number": "31",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1314657,
+            "name": "Vinícius Tobias",
+            "number": "17",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1024427,
+            "name": "Valeriy Bondar",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 656667,
+            "name": "Mykola Matviyenko",
+            "number": "22",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1259576,
+            "name": "Pedro Henrique",
+            "number": "13",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1396465,
+            "name": "Marlon Gomes",
+            "number": "6",
+            "pos": 65,
+            "grid": null
+          },
+          {
+            "id": 1503318,
+            "name": "Alisson Santana",
+            "number": "30",
+            "pos": 82,
+            "grid": null
+          },
+          {
+            "id": 1192419,
+            "name": "Oleg Ocheretko",
+            "number": "27",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 844186,
+            "name": "Pedrinho",
+            "number": "10",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 1460572,
+            "name": "Gleiker Mendoza",
+            "number": "77",
+            "pos": 88,
+            "grid": null
+          },
+          {
+            "id": 1483508,
+            "name": "Kauã Elias",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "3-5-2",
+        "away_source": "FotMob",
+        "away_formation": "4-1-4-1",
+        "checked_at": "2026-10-21T18:10:41.365619+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-21T18:10:41.407665+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-10-21T18:10:41.407682+00:00",
+      "source_refs": [
+        {
+          "team_id": 108,
+          "endpoint": "/v4/teams/108/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 1887,
+          "endpoint": "/v4/teams/1887/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 16-10 gol dengesi.",
+        "Deplasman: son 2 maçta 4-2 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 38,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 38,
+          "available": 12,
+          "points": 42,
+          "exact": 3,
+          "outcome": 10,
+          "goal_error": 24,
+          "coverage_pct": 31.6,
+          "exact_pct": 25.0,
+          "outcome_pct": 83.3,
+          "avg_points": 3.5,
+          "mean_goal_error": 2.0
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 38,
+          "available": 30,
+          "points": 75,
+          "exact": 2,
+          "outcome": 21,
+          "goal_error": 70,
+          "coverage_pct": 78.9,
+          "exact_pct": 6.7,
+          "outcome_pct": 70.0,
+          "avg_points": 2.5,
+          "mean_goal_error": 2.33
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 38,
+          "available": 37,
+          "points": 81,
+          "exact": 3,
+          "outcome": 23,
+          "goal_error": 85,
+          "coverage_pct": 97.4,
+          "exact_pct": 8.1,
+          "outcome_pct": 62.2,
+          "avg_points": 2.19,
+          "mean_goal_error": 2.3
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 56,
+          "exact": 0,
+          "outcome": 15,
+          "goal_error": 66,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 60.0,
+          "avg_points": 2.24,
+          "mean_goal_error": 2.64
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 44,
+          "exact": 0,
+          "outcome": 12,
+          "goal_error": 68,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 48.0,
+          "avg_points": 1.76,
+          "mean_goal_error": 2.72
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 24,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "home_form=True": {
+          "matches": 36,
+          "exact_matches": 5
+        },
+        "away_form=True": {
+          "matches": 32,
+          "exact_matches": 3
+        },
+        "standings=True": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 14,
+          "exact_matches": 2
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 12,
+          "goal_error": 68
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Cohere Command A+:form": {
+          "used": 18,
+          "exact": 0,
+          "outcome_correct": 13,
+          "goal_error": 45
+        },
+        "Cohere Command A+:rest": {
+          "used": 10,
+          "exact": 0,
+          "outcome_correct": 6,
+          "goal_error": 24
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 25
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "2fdb6313a1cfcc1ba895f65ed721835e42f26bd525030966b634336b65c0b414",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 49,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 2,
+        "3-1": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Inter'in evindeki yüksek gol ortalaması (3.67) ve güçlü hücum hattı (Thuram, Bonny)",
+          "Shakhtar'ın deplasman savunma kırılganlığı ve düşük gol yeme oranına rağmen Inter'in baskısı",
+          "Inter'in 4 gün dinlenmesine karşın Shakhtar'ın 7 gün dinlenmesi, Inter'in taze kadrosuna avantaj sağlar",
+          "Inter'in Serie A'daki formu ve evindeki 2 galibiyetlik serisi, Shakhtar'ın Avrupa'daki istikrarsızlığına karşı üstünlük kurar",
+          "Inter strong home attack averaging 3.6 goals per home game"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-21T18:11:00.040690+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575371",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "3-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:11:00.040690+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "7e6998d17ab74e64bcde873a550ae7aab69570fae610f9aacf2c155541ce809b"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575371",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": null,
+          "predicted_outcome": null,
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:11:00.040690+00:00",
+          "failure_reason": "TIED_TOP_SCORES",
+          "source_votes_sha256": "7e6998d17ab74e64bcde873a550ae7aab69570fae610f9aacf2c155541ce809b"
+        }
+      }
+    },
+    "minutes_before_match": 49.0,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 49,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "2-1": 2,
+        "3-1": 2
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Inter'in evindeki yüksek gol ortalaması (3.67) ve güçlü hücum hattı (Thuram, Bonny)",
+          "Shakhtar'ın deplasman savunma kırılganlığı ve düşük gol yeme oranına rağmen Inter'in baskısı",
+          "Inter'in 4 gün dinlenmesine karşın Shakhtar'ın 7 gün dinlenmesi, Inter'in taze kadrosuna avantaj sağlar",
+          "Inter'in Serie A'daki formu ve evindeki 2 galibiyetlik serisi, Shakhtar'ın Avrupa'daki istikrarsızlığına karşı üstünlük kurar",
+          "Inter strong home attack averaging 3.6 goals per home game"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "FC Internazionale Milano – FK Shakhtar Donetsk",
+        "22:00 TSİ",
+        "✅ Resmî 11",
+        "4/5",
+        "FC Internazionale Milano · 4/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, Cohere",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "GPT-OSS, Clef",
+          "3–1",
+          "2/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nFC Internazionale Milano – FK Shakhtar Donetsk | 22:00 TSİ | ✅ Resmî 11 | 4/5 | FC Internazionale Milano · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Cohere | 2–1 | 2/4\nGPT-OSS, Clef | 3–1 | 2/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo"
+    }
   },
   "575372": {
     "schema_version": 3,
@@ -38996,7 +39949,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-21T17:30:54.183361+00:00",
@@ -40008,7 +40961,14 @@
     },
     "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nFC Bayern München – Arsenal FC | 22:00 TSİ | ✅ Resmî 11 | 4/5 | FC Bayern München · 4/4 | 3–1 · 3/4 | Qwen, GPT-OSS, Clef",
     "prediction_ready": true,
-    "image_required": true
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-21T19:00",
+      "group_size": 1
+    }
   },
   "575373": {
     "schema_version": 3,
@@ -40026,8 +40986,135 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Club Brugge KV",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Club Brugge, Inter karşısında 4 gol atarak yüksek gol potansiyelini ve hücum gücünü kanıtladı.",
+            "Lens, son 5 maçta 8 gol yiyerek savunma kırılganlığı gösterdi ve deplasman performansı istikrarsız.",
+            "Club Brugge 8 gün dinlenirken Lens sadece 4 gün dinlendi; fiziksel avantaj ev sahibinde.",
+            "Resmi kadrolarda Club Brugge'in Vanaken ve Forbs gibi etkili hücum oyuncuları sahada, Lens'in savunma hattı yorgun görünüyor."
+          ],
+          "short_reason": "Brugge'nin hücum gücü ve dinlenme avantajı",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest",
+            "standings"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Club Brugge KV",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Brugge son iki maçta 6 gol attı ve 6 gol yedi",
+            "Lens deplasmanında 2 gol ortalamasıyla skor üretir",
+            "Ev sahibi avantajıyla Brugge galibiyet ihtimali yüksek",
+            "Dinlenme süresi ve fikstür yükü ev sahibine avantaj sağlar"
+          ],
+          "short_reason": "Ev sahibi galibiyeti, skor 2-1",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Club Brugge KV",
+          "away_team": "Racing Club de Lens",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 78,
+          "reasons": [
+            "Ev sahibi son iki maçta yüksek gol ortalaması",
+            "Deplasman düşük ortalama gol üretimi",
+            "Ev sahibi 8 gün dinlenmiş, formda",
+            "Deplasman son 14 günde üç maç oynadı"
+          ],
+          "short_reason": "Ev sahibi gol yönünde üstün",
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Club Brugge KV",
+          "away_team": "Racing Club de Lens",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 73,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "1-1",
+            "0-0",
+            "2-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -40193,14 +41280,849 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED",
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 41618,
+            "name": "Yann Sommer",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1227590,
+            "name": "Kyriani Sabbe",
+            "number": "64",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1233418,
+            "name": "Jorne Spileers",
+            "number": "58",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 445873,
+            "name": "Brandon Mechele",
+            "number": "44",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1489449,
+            "name": "Joaquin Seys",
+            "number": "65",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1284071,
+            "name": "Félix Lemaréchal",
+            "number": "80",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 1206287,
+            "name": "Freddie Potts",
+            "number": "8",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 203666,
+            "name": "Hans Vanaken",
+            "number": "20",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1186529,
+            "name": "Carlos Forbs",
+            "number": "9",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 1334552,
+            "name": "Nicolò Tresoldi",
+            "number": "7",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1690093,
+            "name": "Jan Virgili",
+            "number": "11",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1390336,
+            "name": "Robin Risser",
+            "number": "40",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 561046,
+            "name": "Ruben Aguilar",
+            "number": "2",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 1276626,
+            "name": "Samson Baidoo",
+            "number": "6",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 660326,
+            "name": "Matthieu Udol",
+            "number": "14",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 1002617,
+            "name": "Saud Abdulhamid",
+            "number": "23",
+            "pos": 62,
+            "grid": null
+          },
+          {
+            "id": 688830,
+            "name": "Amadou Haidara",
+            "number": "21",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 861445,
+            "name": "Michaël Cuisance",
+            "number": "27",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 954190,
+            "name": "Michał Skóras",
+            "number": "22",
+            "pos": 68,
+            "grid": null
+          },
+          {
+            "id": 1334534,
+            "name": "Junior Kadile",
+            "number": "28",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 264190,
+            "name": "Thorgan Hazard",
+            "number": "9",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 1406419,
+            "name": "Franjo Ivanović",
+            "number": "29",
+            "pos": 105,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "3-4-2-1",
+        "checked_at": "2026-10-21T18:11:01.334570+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
         "home": [],
         "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-10-21T17:31:18.938691+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-21T18:06:57.798002+00:00"
+    "xi_checked_at": "2026-10-21T18:11:00.081506+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 2 maçta 6-6 gol dengesi. Deplasman: son 5 maçta 8-8 gol dengesi.",
+      "home": {
+        "form": "Son 2 doğrulanmış maç: W-L.",
+        "goals_trend": "Son 2 maç: 6 gol attı, 6 gol yedi; maç başına 3.00 attı / 3.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-13 FC Internazionale Milano: 4-3 (AWAY)",
+          "2026-09-08 Aston Villa FC: 2-3 (HOME)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 0W-0D-1L; 2 gol attı, 3 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-L-W-L-D.",
+        "goals_trend": "Son 5 maç: 8 gol attı, 8 gol yedi; maç başına 1.60 attı / 1.60 yedi.",
+        "recent_fixtures": [
+          "2026-10-17 ES Troyes AC: 3-1 (AWAY)",
+          "2026-10-13 Sporting Clube de Portugal: 0-2 (HOME)",
+          "2026-10-09 Olympique Lyonnais: 2-1 (HOME)",
+          "2026-09-18 AS Monaco FC: 1-2 (AWAY)",
+          "2026-09-13 Le Mans FC: 2-2 (AWAY)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 1W-1D-1L; 6 gol attı, 5 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 20,
+          "points": 3,
+          "played": 2
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 21,
+          "points": 3,
+          "played": 2
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 8.0 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 4.0 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 41618,
+            "name": "Yann Sommer",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1227590,
+            "name": "Kyriani Sabbe",
+            "number": "64",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1233418,
+            "name": "Jorne Spileers",
+            "number": "58",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 445873,
+            "name": "Brandon Mechele",
+            "number": "44",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1489449,
+            "name": "Joaquin Seys",
+            "number": "65",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1284071,
+            "name": "Félix Lemaréchal",
+            "number": "80",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 1206287,
+            "name": "Freddie Potts",
+            "number": "8",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 203666,
+            "name": "Hans Vanaken",
+            "number": "20",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1186529,
+            "name": "Carlos Forbs",
+            "number": "9",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 1334552,
+            "name": "Nicolò Tresoldi",
+            "number": "7",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1690093,
+            "name": "Jan Virgili",
+            "number": "11",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1390336,
+            "name": "Robin Risser",
+            "number": "40",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 561046,
+            "name": "Ruben Aguilar",
+            "number": "2",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 1276626,
+            "name": "Samson Baidoo",
+            "number": "6",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 660326,
+            "name": "Matthieu Udol",
+            "number": "14",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 1002617,
+            "name": "Saud Abdulhamid",
+            "number": "23",
+            "pos": 62,
+            "grid": null
+          },
+          {
+            "id": 688830,
+            "name": "Amadou Haidara",
+            "number": "21",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 861445,
+            "name": "Michaël Cuisance",
+            "number": "27",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 954190,
+            "name": "Michał Skóras",
+            "number": "22",
+            "pos": 68,
+            "grid": null
+          },
+          {
+            "id": 1334534,
+            "name": "Junior Kadile",
+            "number": "28",
+            "pos": 84,
+            "grid": null
+          },
+          {
+            "id": 264190,
+            "name": "Thorgan Hazard",
+            "number": "9",
+            "pos": 86,
+            "grid": null
+          },
+          {
+            "id": 1406419,
+            "name": "Franjo Ivanović",
+            "number": "29",
+            "pos": 105,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "3-4-2-1",
+        "checked_at": "2026-10-21T18:11:01.334570+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-21T18:11:01.379497+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-10-21T18:11:01.379515+00:00",
+      "source_refs": [
+        {
+          "team_id": 851,
+          "endpoint": "/v4/teams/851/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 546,
+          "endpoint": "/v4/teams/546/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 2 maçta 6-6 gol dengesi.",
+        "Deplasman: son 5 maçta 8-8 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 38,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 38,
+          "available": 12,
+          "points": 42,
+          "exact": 3,
+          "outcome": 10,
+          "goal_error": 24,
+          "coverage_pct": 31.6,
+          "exact_pct": 25.0,
+          "outcome_pct": 83.3,
+          "avg_points": 3.5,
+          "mean_goal_error": 2.0
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 38,
+          "available": 30,
+          "points": 75,
+          "exact": 2,
+          "outcome": 21,
+          "goal_error": 70,
+          "coverage_pct": 78.9,
+          "exact_pct": 6.7,
+          "outcome_pct": 70.0,
+          "avg_points": 2.5,
+          "mean_goal_error": 2.33
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 38,
+          "available": 37,
+          "points": 81,
+          "exact": 3,
+          "outcome": 23,
+          "goal_error": 85,
+          "coverage_pct": 97.4,
+          "exact_pct": 8.1,
+          "outcome_pct": 62.2,
+          "avg_points": 2.19,
+          "mean_goal_error": 2.3
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 56,
+          "exact": 0,
+          "outcome": 15,
+          "goal_error": 66,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 60.0,
+          "avg_points": 2.24,
+          "mean_goal_error": 2.64
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 44,
+          "exact": 0,
+          "outcome": 12,
+          "goal_error": 68,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 48.0,
+          "avg_points": 1.76,
+          "mean_goal_error": 2.72
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 24,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "home_form=True": {
+          "matches": 36,
+          "exact_matches": 5
+        },
+        "away_form=True": {
+          "matches": 32,
+          "exact_matches": 3
+        },
+        "standings=True": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 14,
+          "exact_matches": 2
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 12,
+          "goal_error": 68
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Cohere Command A+:form": {
+          "used": 18,
+          "exact": 0,
+          "outcome_correct": 13,
+          "goal_error": 45
+        },
+        "Cohere Command A+:rest": {
+          "used": 10,
+          "exact": 0,
+          "outcome_correct": 6,
+          "goal_error": 24
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 25
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "3410b9e1b5d082832930304f96ca8097ca844c1e2c949a7913633538e5f02cd6",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 54,
+      "all_outcomes": {
+        "HOME": 3,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "2-1": 2,
+        "3-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Club Brugge, Inter karşısında 4 gol atarak yüksek gol potansiyelini ve hücum gücünü kanıtladı.",
+          "Lens, son 5 maçta 8 gol yiyerek savunma kırılganlığı gösterdi ve deplasman performansı istikrarsız.",
+          "Club Brugge 8 gün dinlenirken Lens sadece 4 gün dinlendi; fiziksel avantaj ev sahibinde.",
+          "Resmi kadrolarda Club Brugge'in Vanaken ve Forbs gibi etkili hücum oyuncuları sahada, Lens'in savunma hattı yorgun görünüyor.",
+          "Brugge son iki maçta 6 gol attı ve 6 gol yedi"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-21T18:11:24.576166+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575373",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "2-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:11:24.576166+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "321135c824c34bad1b3d9604d1582f9322ee67fe900e1614c73b5e6b04621e84"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575373",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "2-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:11:24.576166+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "321135c824c34bad1b3d9604d1582f9322ee67fe900e1614c73b5e6b04621e84"
+        }
+      }
+    },
+    "minutes_before_match": 48.6,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 3,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 54,
+      "all_outcomes": {
+        "HOME": 3,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "2-1": 2,
+        "3-1": 1,
+        "1-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "Club Brugge, Inter karşısında 4 gol atarak yüksek gol potansiyelini ve hücum gücünü kanıtladı.",
+          "Lens, son 5 maçta 8 gol yiyerek savunma kırılganlığı gösterdi ve deplasman performansı istikrarsız.",
+          "Club Brugge 8 gün dinlenirken Lens sadece 4 gün dinlendi; fiziksel avantaj ev sahibinde.",
+          "Resmi kadrolarda Club Brugge'in Vanaken ve Forbs gibi etkili hücum oyuncuları sahada, Lens'in savunma hattı yorgun görünüyor.",
+          "Brugge son iki maçta 6 gol attı ve 6 gol yedi"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Club Brugge KV – Racing Club de Lens",
+        "22:00 TSİ",
+        "✅ Resmî 11",
+        "4/5",
+        "Club Brugge KV · 3/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, Cohere",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "GPT-OSS",
+          "3–1",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "1–1",
+          "1/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nClub Brugge KV – Racing Club de Lens | 22:00 TSİ | ✅ Resmî 11 | 4/5 | Club Brugge KV · 3/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Cohere | 2–1 | 2/4\nGPT-OSS | 3–1 | 1/4\nClef | 1–1 | 1/4",
+    "prediction_ready": true,
+    "image_required": true
   },
   "575374": {
     "schema_version": 3,
@@ -42713,6 +44635,6 @@
     },
     "context_prepared_at": "2026-10-21T17:31:56.552000+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-21T18:06:59.308914+00:00"
+    "xi_checked_at": "2026-10-21T18:11:24.617544+00:00"
   }
 }
