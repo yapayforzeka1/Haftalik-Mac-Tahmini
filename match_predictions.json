@@ -44438,9 +44438,135 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "AWAY",
+          "score": "1-3",
+          "confidence": 65,
+          "reasons": [
+            "Feyenoord son 5 maçta 21 gol atıp sadece 5 yedi, form grafiği çok yüksek.",
+            "Real Betis evinde Barcelona'ya 5-1 yenilerek savunma kırılganlığını gösterdi.",
+            "Feyenoord'un deplasman gol ortalaması (5.5) Betis'in ev gol ortalamasından (2.75) belirgin şekilde yüksek.",
+            "Her iki takım da 4 gün dinlenme ile eşit fiziksel koşullarda maça çıkıyor."
+          ],
+          "short_reason": "Feyenoord'un üstün formu ve gol gücü",
+          "score_candidates": [
+            "1-3",
+            "2-3",
+            "1-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 55,
+          "reasons": [
+            "Betis ev sahibi olarak maç başına 2.75 gol üretti",
+            "Feyenoord deplasmanında yüksek skor yapıyor ama savunması sağlam",
+            "Betis Şampiyonlar Ligi puan durumunda Feyenoord'dan üstte",
+            "Her iki takım da yeterli dinlenme süresine sahip"
+          ],
+          "short_reason": "Ev sahibi form ve üstünlük lehine",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "AWAY",
+          "score": "2-3",
+          "confidence": 78,
+          "reasons": [
+            "Feyenoord son 5 maçta 21 gol attı",
+            "Betis savunması son 5 maçta 10 gol yedi",
+            "Feyenoord evinde 2 galibiyet, gol ortalaması yüksek",
+            "Betis ev sahibi avantajı düşük"
+          ],
+          "short_reason": "Feyenoord'un hücum gücü üstün",
+          "score_candidates": [
+            "2-3",
+            "1-2",
+            "3-4"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Real Betis Balompié",
+          "away_team": "Feyenoord Rotterdam",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 72,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-3",
+            "1-3",
+            "0-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-21T17:31:43.712962+00:00",
@@ -44638,10 +44764,545 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-10-21T17:31:56.552000+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-21T18:25:23.276394+00:00"
+    "xi_checked_at": "2026-10-21T18:30:29.128398+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-10-21T18:30:35.887192+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 12-10 gol dengesi. Deplasman: son 5 maçta 21-5 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: L-W-W-D-W.",
+        "goals_trend": "Son 5 maç: 12 gol attı, 10 gol yedi; maç başına 2.40 attı / 2.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-17 FC Barcelona: 2-5 (HOME)",
+          "2026-10-14 FC Porto: 3-2 (HOME)",
+          "2026-10-11 CA Osasuna: 5-2 (HOME)",
+          "2026-09-20 RC Deportivo La Coruña: 1-1 (AWAY)",
+          "2026-09-17 Getafe CF: 1-0 (HOME)"
+        ],
+        "home_away": "Son 4 ilgili saha maçı: 3W-0D-1L; 11 gol attı, 9 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-W-W.",
+        "goals_trend": "Son 5 maç: 21 gol attı, 5 gol yedi; maç başına 4.20 attı / 1.00 yedi.",
+        "recent_fixtures": [
+          "2026-10-17 Telstar 1963: 4-3 (AWAY)",
+          "2026-10-14 Como 1907: 3-2 (HOME)",
+          "2026-10-10 AZ: 2-0 (HOME)",
+          "2026-09-20 FC Utrecht: 5-0 (HOME)",
+          "2026-09-13 PEC Zwolle: 7-0 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 11 gol attı, 3 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 11,
+          "points": 6,
+          "played": 2
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 24,
+          "points": 3,
+          "played": 2
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 4.1 gün dinlenme. Son 14 günde 3 maç.",
+        "away": "Son maçtan itibaren 4.0 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-21T18:30:36.242715+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-10-21T18:30:36.242735+00:00",
+      "source_refs": [
+        {
+          "team_id": 90,
+          "endpoint": "/v4/teams/90/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 675,
+          "endpoint": "/v4/teams/675/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 12-10 gol dengesi.",
+        "Deplasman: son 5 maçta 21-5 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 38,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 38,
+          "available": 12,
+          "points": 42,
+          "exact": 3,
+          "outcome": 10,
+          "goal_error": 24,
+          "coverage_pct": 31.6,
+          "exact_pct": 25.0,
+          "outcome_pct": 83.3,
+          "avg_points": 3.5,
+          "mean_goal_error": 2.0
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 38,
+          "available": 30,
+          "points": 75,
+          "exact": 2,
+          "outcome": 21,
+          "goal_error": 70,
+          "coverage_pct": 78.9,
+          "exact_pct": 6.7,
+          "outcome_pct": 70.0,
+          "avg_points": 2.5,
+          "mean_goal_error": 2.33
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 38,
+          "available": 37,
+          "points": 81,
+          "exact": 3,
+          "outcome": 23,
+          "goal_error": 85,
+          "coverage_pct": 97.4,
+          "exact_pct": 8.1,
+          "outcome_pct": 62.2,
+          "avg_points": 2.19,
+          "mean_goal_error": 2.3
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 56,
+          "exact": 0,
+          "outcome": 15,
+          "goal_error": 66,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 60.0,
+          "avg_points": 2.24,
+          "mean_goal_error": 2.64
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 44,
+          "exact": 0,
+          "outcome": 12,
+          "goal_error": 68,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 48.0,
+          "avg_points": 1.76,
+          "mean_goal_error": 2.72
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 24,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "home_form=True": {
+          "matches": 36,
+          "exact_matches": 5
+        },
+        "away_form=True": {
+          "matches": 32,
+          "exact_matches": 3
+        },
+        "standings=True": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 14,
+          "exact_matches": 2
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 12,
+          "goal_error": 68
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Cohere Command A+:form": {
+          "used": 18,
+          "exact": 0,
+          "outcome_correct": 13,
+          "goal_error": 45
+        },
+        "Cohere Command A+:rest": {
+          "used": 10,
+          "exact": 0,
+          "outcome_correct": 6,
+          "goal_error": 24
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 25
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "752419ea3ef3201749313f415fc2e4eb3e5666587c73544f0941c85c2b5f8c33",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "1-3",
+      "top_score_votes": 1,
+      "average_subjective_confidence": 68,
+      "all_outcomes": {
+        "AWAY": 3,
+        "HOME": 1
+      },
+      "all_scores": {
+        "1-3": 1,
+        "2-1": 1,
+        "2-3": 1,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Feyenoord son 5 maçta 21 gol atıp sadece 5 yedi, form grafiği çok yüksek.",
+          "Real Betis evinde Barcelona'ya 5-1 yenilerek savunma kırılganlığını gösterdi.",
+          "Feyenoord'un deplasman gol ortalaması (5.5) Betis'in ev gol ortalamasından (2.75) belirgin şekilde yüksek.",
+          "Her iki takım da 4 gün dinlenme ile eşit fiziksel koşullarda maça çıkıyor.",
+          "Feyenoord son 5 maçta 21 gol attı"
+        ],
+        "HOME": [
+          "Betis ev sahibi olarak maç başına 2.75 gol üretti",
+          "Feyenoord deplasmanında yüksek skor yapıyor ama savunması sağlam",
+          "Betis Şampiyonlar Ligi puan durumunda Feyenoord'dan üstte",
+          "Her iki takım da yeterli dinlenme süresine sahip"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-21T18:31:15.315127+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575376",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "1-3",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:31:15.315127+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "1a762bd70b0d87af6283a1654cdf5595b55acd76097e75c0065023d4d0c1a6d8"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575376",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": null,
+          "predicted_outcome": null,
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T18:31:15.315127+00:00",
+          "failure_reason": "NO_REPEATED_SCORE",
+          "source_votes_sha256": "1a762bd70b0d87af6283a1654cdf5595b55acd76097e75c0065023d4d0c1a6d8"
+        }
+      }
+    },
+    "minutes_before_match": 28.7,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "1-3",
+      "top_score_votes": 1,
+      "average_subjective_confidence": 68,
+      "all_outcomes": {
+        "AWAY": 3,
+        "HOME": 1
+      },
+      "all_scores": {
+        "1-3": 1,
+        "2-1": 1,
+        "2-3": 1,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Feyenoord son 5 maçta 21 gol atıp sadece 5 yedi, form grafiği çok yüksek.",
+          "Real Betis evinde Barcelona'ya 5-1 yenilerek savunma kırılganlığını gösterdi.",
+          "Feyenoord'un deplasman gol ortalaması (5.5) Betis'in ev gol ortalamasından (2.75) belirgin şekilde yüksek.",
+          "Her iki takım da 4 gün dinlenme ile eşit fiziksel koşullarda maça çıkıyor.",
+          "Feyenoord son 5 maçta 21 gol attı"
+        ],
+        "HOME": [
+          "Betis ev sahibi olarak maç başına 2.75 gol üretti",
+          "Feyenoord deplasmanında yüksek skor yapıyor ama savunması sağlam",
+          "Betis Şampiyonlar Ligi puan durumunda Feyenoord'dan üstte",
+          "Her iki takım da yeterli dinlenme süresine sahip"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Real Betis Balompié – Feyenoord Rotterdam",
+        "22:00 TSİ",
+        "⚠️ Kadro eksik",
+        "4/5",
+        "Feyenoord Rotterdam · 3/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen",
+          "1–3",
+          "1/4"
+        ],
+        [
+          "Cohere",
+          "2–1",
+          "1/4"
+        ],
+        [
+          "GPT-OSS",
+          "2–3",
+          "1/4"
+        ],
+        [
+          "Clef",
+          "0–3",
+          "1/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nReal Betis Balompié – Feyenoord Rotterdam | 22:00 TSİ | ⚠️ Kadro eksik | 4/5 | Feyenoord Rotterdam · 3/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen | 1–3 | 1/4\nCohere | 2–1 | 1/4\nGPT-OSS | 2–3 | 1/4\nClef | 0–3 | 1/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-21T19:00",
+      "group_size": 1
+    }
   }
 }
