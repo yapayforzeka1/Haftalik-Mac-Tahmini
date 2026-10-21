@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792602328.1143253,
+    "at": 1792602626.515508,
     "data": {
       "filters": {
         "season": 2026
@@ -3016,7 +3016,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T17:03:17Z",
+          "lastUpdated": "2026-10-21T17:09:41Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -3082,7 +3082,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T17:03:17Z",
+          "lastUpdated": "2026-10-21T17:09:41Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
