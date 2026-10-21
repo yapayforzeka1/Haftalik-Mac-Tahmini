@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792605630.5589497,
+    "at": 1792605939.9406824,
     "data": {
       "filters": {
         "season": 2026
@@ -3016,7 +3016,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T17:59:49Z",
+          "lastUpdated": "2026-10-21T18:04:05Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -3082,7 +3082,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T17:59:49Z",
+          "lastUpdated": "2026-10-21T18:04:37Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -3098,11 +3098,11 @@
             "crest": "https://crests.football-data.org/610.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 2,
-              "away": 2
+              "away": 3
             },
             "halfTime": {
               "home": 2,
@@ -9823,76 +9823,6 @@
           "name": "Sandro Schärer",
           "type": "REFEREE",
           "nationality": "Switzerland"
-        }
-      ]
-    }
-  },
-  "d25ce370b16e17a1fc6fbbe2261c53b57534be0601f49e8401284668260ee72e": {
-    "at": 1792519337.708153,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 3,
-        "winner": null
-      },
-      "id": 575366,
-      "utcDate": "2026-10-20T19:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 3,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-10-20T00:20:28Z",
-      "homeTeam": {
-        "id": 113,
-        "name": "SSC Napoli",
-        "shortName": "Napoli",
-        "tla": "NAP",
-        "crest": "https://crests.football-data.org/113.png"
-      },
-      "awayTeam": {
-        "id": 5721,
-        "name": "FK Bodø/Glimt",
-        "shortName": "Bodø/Glimt",
-        "tla": "FK",
-        "crest": "https://crests.football-data.org/5721.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 207080,
-          "name": "José Sánchez Martínez",
-          "type": "REFEREE",
-          "nationality": "Spain"
         }
       ]
     }
@@ -18489,7 +18419,7 @@
     }
   },
   "550042d2741af58159a1f3c11401bee9809e14fab94d3d3a8b1eef45dd1d8361": {
-    "at": 1792605653.9039767,
+    "at": 1792605945.9320972,
     "data": {
       "area": {
         "id": 2077,
@@ -18559,7 +18489,7 @@
     }
   },
   "ab806e1902d2521039b6850c1dcad743be58fdbc638aa0ef08ea05a13ac1c166": {
-    "at": 1792605660.1080492,
+    "at": 1792605952.1349509,
     "data": {
       "area": {
         "id": 2077,
@@ -18629,7 +18559,7 @@
     }
   },
   "7272923ea969fa2096b892234ef2f0f20d552aaae49fbd0bdd984ce59ba7e096": {
-    "at": 1792605666.4103086,
+    "at": 1792606018.3271787,
     "data": {
       "area": {
         "id": 2077,
@@ -18839,7 +18769,7 @@
     }
   },
   "4b2f0c360c90cedf0f3b966c4f9ef6d756696fccd9d4a6ba8ae2988c13378c6d": {
-    "at": 1792605720.0635443,
+    "at": 1792606024.5996413,
     "data": {
       "area": {
         "id": 2077,
