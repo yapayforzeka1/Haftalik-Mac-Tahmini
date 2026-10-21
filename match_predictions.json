@@ -41115,7 +41115,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-21T17:31:06.600365+00:00",
@@ -42122,7 +42122,14 @@
     },
     "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nClub Brugge KV – Racing Club de Lens | 22:00 TSİ | ✅ Resmî 11 | 4/5 | Club Brugge KV · 3/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Cohere | 2–1 | 2/4\nGPT-OSS | 3–1 | 1/4\nClef | 1–1 | 1/4",
     "prediction_ready": true,
-    "image_required": true
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-10-21T19:00",
+      "group_size": 1
+    }
   },
   "575374": {
     "schema_version": 3,
@@ -44635,6 +44642,6 @@
     },
     "context_prepared_at": "2026-10-21T17:31:56.552000+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-10-21T18:11:24.617544+00:00"
+    "xi_checked_at": "2026-10-21T18:15:30.385513+00:00"
   }
 }
