@@ -36314,7 +36314,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -36345,7 +36348,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -36377,7 +36383,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -36403,7 +36412,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -37470,6 +37482,121 @@
     "prediction_receipt": {
       "complete": true,
       "transport": "photo"
+    },
+    "actual": {
+      "home": 4,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-21T18:45:27.248548+00:00"
+    },
+    "consensus_points": null,
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 4,
+          "home_bias": -4,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Manchester United'ın kadro derinliği ve bireysel kalitesi (Bruno, Mbeumo, De Ligt) Como'dan belirgin şekilde üstün.",
+            "United'ın deplasman formu zayıf olsa da (0G-4Y), rakip Como'nun evinde gol yeme riski yüksek (1.4 gol/maç).",
+            "Como'nun son 5 maçta 7 gol atıp 7 gol yemesi, savunma dengesizliğini ve United'ın kontra atak tehdidine açık olduğunu gösteriyor.",
+            "Her iki takım da 3.2 gün dinlenme ile eşit koşullarda; bu nedenle taktik ve kalite farkı belirleyici olacak."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Como ev sahibi maçlarında sadece 1 gol yedi",
+            "United deplasmanında gol atma sıkıntısı yaşıyor",
+            "Douvikas ve Da Cunha gibi hücum oyuncuları formda",
+            "United savunma hattı hatalara açık, en az bir gol yemeye mahkum"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 5 maçta gol dengesi iyi",
+            "Deplasman savunma zayıf, gol yeme oranı yüksek",
+            "Her iki takım da 3.2 gün dinlenmiş",
+            "Ev sahibi sahada 1 galibiyet, 1 beraberlik var"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 5,
+          "home_bias": -4,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "7d625fc0ccfd9b5a8bdf7919dde9fc81c80e38c19416d3a270f7f8937059484d",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575370": {

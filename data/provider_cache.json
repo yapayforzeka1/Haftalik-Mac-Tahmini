@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792608029.4169447,
+    "at": 1792608327.2213168,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 45
+        "played": 47
       },
       "competition": {
         "id": 2001,
@@ -3012,11 +3012,11 @@
           },
           "id": 575368,
           "utcDate": "2026-10-21T16:45:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T18:38:13Z",
+          "lastUpdated": "2026-10-21T18:44:37Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -3036,7 +3036,7 @@
             "duration": "REGULAR",
             "fullTime": {
               "home": 4,
-              "away": 0
+              "away": 1
             },
             "halfTime": {
               "home": 1,
@@ -3078,11 +3078,11 @@
           },
           "id": 575369,
           "utcDate": "2026-10-21T16:45:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T18:39:49Z",
+          "lastUpdated": "2026-10-21T18:43:01Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
