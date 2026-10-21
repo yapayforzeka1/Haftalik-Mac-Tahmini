@@ -36277,9 +36277,137 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
-    "final_sent": false,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE"
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "Manchester United FC",
+          "outcome": "AWAY",
+          "score": "0-1",
+          "confidence": 45,
+          "reasons": [
+            "Manchester United'ın kadro derinliği ve bireysel kalitesi (Bruno, Mbeumo, De Ligt) Como'dan belirgin şekilde üstün.",
+            "United'ın deplasman formu zayıf olsa da (0G-4Y), rakip Como'nun evinde gol yeme riski yüksek (1.4 gol/maç).",
+            "Como'nun son 5 maçta 7 gol atıp 7 gol yemesi, savunma dengesizliğini ve United'ın kontra atak tehdidine açık olduğunu gösteriyor.",
+            "Her iki takım da 3.2 gün dinlenme ile eşit koşullarda; bu nedenle taktik ve kalite farkı belirleyici olacak."
+          ],
+          "short_reason": "United'ın kalite farkı ve kontra tehdidi",
+          "score_candidates": [
+            "0-1",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "Manchester United FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Como ev sahibi maçlarında sadece 1 gol yedi",
+            "United deplasmanında gol atma sıkıntısı yaşıyor",
+            "Douvikas ve Da Cunha gibi hücum oyuncuları formda",
+            "United savunma hattı hatalara açık, en az bir gol yemeye mahkum"
+          ],
+          "short_reason": "Como ev avantajıyla galibiyet hedefliyor",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "official_xi"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "Manchester United FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 78,
+          "reasons": [
+            "Ev sahibi son 5 maçta gol dengesi iyi",
+            "Deplasman savunma zayıf, gol yeme oranı yüksek",
+            "Her iki takım da 3.2 gün dinlenmiş",
+            "Ev sahibi sahada 1 galibiyet, 1 beraberlik var"
+          ],
+          "short_reason": "ev sahibi gol üretiminde üstün",
+          "score_candidates": [
+            "2-1",
+            "2-0",
+            "1-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Como 1907",
+          "away_team": "Manchester United FC",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 65,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-2",
+            "0-1",
+            "1-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null
+      }
+    ],
+    "pool_round": 1,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-10-21T15:15:31.244253+00:00",
@@ -36474,10 +36602,874 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 560939,
+            "name": "Jean Butez",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1109171,
+            "name": "Yan Couto",
+            "number": "27",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1413963,
+            "name": "Jacobo Ramón",
+            "number": "4",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 355356,
+            "name": "Marc-Oliver Kempf",
+            "number": "2",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1384881,
+            "name": "Álex Valle",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 638090,
+            "name": "Luis Milla",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1336582,
+            "name": "Máximo Perrone",
+            "number": "5",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1076647,
+            "name": "Lucas Da Cunha",
+            "number": "7",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1347574,
+            "name": "Nico Paz",
+            "number": "10",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 1215064,
+            "name": "Martin Baturina",
+            "number": "20",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 873270,
+            "name": "Anastasios Douvikas",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1178602,
+            "name": "Senne Lammens",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 751550,
+            "name": "Diogo Dalot",
+            "number": "2",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 255610,
+            "name": "Harry Maguire",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 769895,
+            "name": "Matthijs de Ligt",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 775539,
+            "name": "Noussair Mazraoui",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1372921,
+            "name": "Andrey Santos",
+            "number": "17",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 750032,
+            "name": "Mason Mount",
+            "number": "7",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 422685,
+            "name": "Bruno Fernandes",
+            "number": "8",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 465960,
+            "name": "Youri Tielemans",
+            "number": "18",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 863098,
+            "name": "Matheus Cunha",
+            "number": "10",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 923312,
+            "name": "Bryan Mbeumo",
+            "number": "19",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-2-3-1",
+        "away_source": "FotMob",
+        "away_formation": "4-2-3-1",
+        "checked_at": "2026-10-21T15:45:33.861242+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-10-21T15:15:49.713065+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-10-21T15:45:27.294568+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 7-7 gol dengesi. Deplasman: son 5 maçta 3-6 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: W-L-D-L-W.",
+        "goals_trend": "Son 5 maç: 7 gol attı, 7 gol yedi; maç başına 1.40 attı / 1.40 yedi.",
+        "recent_fixtures": [
+          "2026-10-18 ACF Fiorentina: 3-1 (AWAY)",
+          "2026-10-14 Feyenoord Rotterdam: 2-3 (AWAY)",
+          "2026-10-11 AS Roma: 0-0 (HOME)",
+          "2026-09-20 Frosinone Calcio: 0-2 (AWAY)",
+          "2026-09-14 Parma Calcio 1913: 2-1 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-1D-0L; 2 gol attı, 1 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: D-L-D-D-L.",
+        "goals_trend": "Son 5 maç: 3 gol attı, 6 gol yedi; maç başına 0.60 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-10-18 Leeds United FC: 1-1 (AWAY)",
+          "2026-10-13 Club Atlético de Madrid: 0-2 (AWAY)",
+          "2026-10-10 Tottenham Hotspur FC: 1-1 (HOME)",
+          "2026-09-20 Fulham FC: 1-1 (AWAY)",
+          "2026-09-13 Manchester City FC: 0-1 (HOME)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 0W-2D-1L; 2 gol attı, 4 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 17,
+          "points": 3,
+          "played": 2
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 18,
+          "points": 3,
+          "played": 2
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 3.2 gün dinlenme. Son 14 günde 3 maç.",
+        "away": "Son maçtan itibaren 3.2 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 560939,
+            "name": "Jean Butez",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1109171,
+            "name": "Yan Couto",
+            "number": "27",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 1413963,
+            "name": "Jacobo Ramón",
+            "number": "4",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 355356,
+            "name": "Marc-Oliver Kempf",
+            "number": "2",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1384881,
+            "name": "Álex Valle",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 638090,
+            "name": "Luis Milla",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1336582,
+            "name": "Máximo Perrone",
+            "number": "5",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 1076647,
+            "name": "Lucas Da Cunha",
+            "number": "7",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1347574,
+            "name": "Nico Paz",
+            "number": "10",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 1215064,
+            "name": "Martin Baturina",
+            "number": "20",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 873270,
+            "name": "Anastasios Douvikas",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1178602,
+            "name": "Senne Lammens",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 751550,
+            "name": "Diogo Dalot",
+            "number": "2",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 255610,
+            "name": "Harry Maguire",
+            "number": "5",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 769895,
+            "name": "Matthijs de Ligt",
+            "number": "4",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 775539,
+            "name": "Noussair Mazraoui",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1372921,
+            "name": "Andrey Santos",
+            "number": "17",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 750032,
+            "name": "Mason Mount",
+            "number": "7",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 422685,
+            "name": "Bruno Fernandes",
+            "number": "8",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 465960,
+            "name": "Youri Tielemans",
+            "number": "18",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 863098,
+            "name": "Matheus Cunha",
+            "number": "10",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 923312,
+            "name": "Bryan Mbeumo",
+            "number": "19",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-2-3-1",
+        "away_source": "FotMob",
+        "away_formation": "4-2-3-1",
+        "checked_at": "2026-10-21T15:45:33.861242+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-10-21T15:45:33.902958+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-10-21T15:45:33.902981+00:00",
+      "source_refs": [
+        {
+          "team_id": 7397,
+          "endpoint": "/v4/teams/7397/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 66,
+          "endpoint": "/v4/teams/66/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 7-7 gol dengesi.",
+        "Deplasman: son 5 maçta 3-6 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 38,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 38,
+          "available": 12,
+          "points": 42,
+          "exact": 3,
+          "outcome": 10,
+          "goal_error": 24,
+          "coverage_pct": 31.6,
+          "exact_pct": 25.0,
+          "outcome_pct": 83.3,
+          "avg_points": 3.5,
+          "mean_goal_error": 2.0
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 38,
+          "available": 30,
+          "points": 75,
+          "exact": 2,
+          "outcome": 21,
+          "goal_error": 70,
+          "coverage_pct": 78.9,
+          "exact_pct": 6.7,
+          "outcome_pct": 70.0,
+          "avg_points": 2.5,
+          "mean_goal_error": 2.33
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 38,
+          "available": 37,
+          "points": 81,
+          "exact": 3,
+          "outcome": 23,
+          "goal_error": 85,
+          "coverage_pct": 97.4,
+          "exact_pct": 8.1,
+          "outcome_pct": 62.2,
+          "avg_points": 2.19,
+          "mean_goal_error": 2.3
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 56,
+          "exact": 0,
+          "outcome": 15,
+          "goal_error": 66,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 60.0,
+          "avg_points": 2.24,
+          "mean_goal_error": 2.64
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 25,
+          "available": 25,
+          "points": 44,
+          "exact": 0,
+          "outcome": 12,
+          "goal_error": 68,
+          "coverage_pct": 100.0,
+          "exact_pct": 0.0,
+          "outcome_pct": 48.0,
+          "avg_points": 1.76,
+          "mean_goal_error": 2.72
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 24,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "home_form=True": {
+          "matches": 36,
+          "exact_matches": 5
+        },
+        "away_form=True": {
+          "matches": 32,
+          "exact_matches": 3
+        },
+        "standings=True": {
+          "matches": 38,
+          "exact_matches": 5
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 14,
+          "exact_matches": 2
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 15,
+          "goal_error": 66
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 25,
+          "exact": 0,
+          "outcome_correct": 12,
+          "goal_error": 68
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 24,
+          "exact": 1,
+          "outcome_correct": 13,
+          "goal_error": 64
+        },
+        "Cohere Command A+:form": {
+          "used": 18,
+          "exact": 0,
+          "outcome_correct": 13,
+          "goal_error": 45
+        },
+        "Cohere Command A+:rest": {
+          "used": 10,
+          "exact": 0,
+          "outcome_correct": 6,
+          "goal_error": 24
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 9,
+          "exact": 0,
+          "outcome_correct": 4,
+          "goal_error": 25
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "440cd83628157a8170b4cf4e78ad56432d889b4c0c0d80479748905ab8f692ce",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 47,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 2
+      },
+      "all_scores": {
+        "0-1": 1,
+        "2-1": 2,
+        "0-2": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Manchester United'ın kadro derinliği ve bireysel kalitesi (Bruno, Mbeumo, De Ligt) Como'dan belirgin şekilde üstün.",
+          "United'ın deplasman formu zayıf olsa da (0G-4Y), rakip Como'nun evinde gol yeme riski yüksek (1.4 gol/maç).",
+          "Como'nun son 5 maçta 7 gol atıp 7 gol yemesi, savunma dengesizliğini ve United'ın kontra atak tehdidine açık olduğunu gösteriyor.",
+          "Her iki takım da 3.2 gün dinlenme ile eşit koşullarda; bu nedenle taktik ve kalite farkı belirleyici olacak.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Como ev sahibi maçlarında sadece 1 gol yedi",
+          "United deplasmanında gol atma sıkıntısı yaşıyor",
+          "Douvikas ve Da Cunha gibi hücum oyuncuları formda",
+          "United savunma hattı hatalara açık, en az bir gol yemeye mahkum",
+          "Ev sahibi son 5 maçta gol dengesi iyi"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-10-21T15:45:50.698033+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575368",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "1-1",
+          "predicted_outcome": "DRAW",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T15:45:50.698033+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "649b055b133bf396a9c886ddd59c417bfc8160023e5e794e8279453c681c8435"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575368",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "2-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-10-21T15:45:50.698033+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "649b055b133bf396a9c886ddd59c417bfc8160023e5e794e8279453c681c8435"
+        }
+      }
+    },
+    "minutes_before_match": 59.2,
+    "prediction_mode": "NO_COMMON",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 2,
+      "top_score": "2-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 47,
+      "all_outcomes": {
+        "AWAY": 2,
+        "HOME": 2
+      },
+      "all_scores": {
+        "0-1": 1,
+        "2-1": 2,
+        "0-2": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Manchester United'ın kadro derinliği ve bireysel kalitesi (Bruno, Mbeumo, De Ligt) Como'dan belirgin şekilde üstün.",
+          "United'ın deplasman formu zayıf olsa da (0G-4Y), rakip Como'nun evinde gol yeme riski yüksek (1.4 gol/maç).",
+          "Como'nun son 5 maçta 7 gol atıp 7 gol yemesi, savunma dengesizliğini ve United'ın kontra atak tehdidine açık olduğunu gösteriyor.",
+          "Her iki takım da 3.2 gün dinlenme ile eşit koşullarda; bu nedenle taktik ve kalite farkı belirleyici olacak.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "HOME": [
+          "Como ev sahibi maçlarında sadece 1 gol yedi",
+          "United deplasmanında gol atma sıkıntısı yaşıyor",
+          "Douvikas ve Da Cunha gibi hücum oyuncuları formda",
+          "United savunma hattı hatalara açık, en az bir gol yemeye mahkum",
+          "Ev sahibi son 5 maçta gol dengesi iyi"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NO_COMMON",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Como 1907 – Manchester United FC",
+        "19:45 TSİ",
+        "✅ Resmî 11",
+        "4/5",
+        "Yok",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI",
+        "🏆 Kazanan ve kısa sebep",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen",
+          "Manchester United FC — United'ın kalite farkı ve kontra tehdidi",
+          "0–1",
+          "1/4"
+        ],
+        [
+          "Cohere",
+          "Como 1907 — Como ev avantajıyla galibiyet hedefliyor",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "GPT-OSS",
+          "Como 1907 — ev sahibi gol üretiminde üstün",
+          "2–1",
+          "2/4"
+        ],
+        [
+          "Clef",
+          "Manchester United FC — Clef-omni maç öncesi verileri değerlendirdi.",
+          "0–2",
+          "1/4"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nComo 1907 – Manchester United FC | 19:45 TSİ | ✅ Resmî 11 | 4/5 | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nQwen | Manchester United FC — United'ın kalite farkı ve kontra tehdidi | 0–1 | 1/4\nCohere | Como 1907 — Como ev avantajıyla galibiyet hedefliyor | 2–1 | 2/4\nGPT-OSS | Como 1907 — ev sahibi gol üretiminde üstün | 2–1 | 2/4\nClef | Manchester United FC — Clef-omni maç öncesi verileri değerlendirdi. | 0–2 | 1/4",
+    "prediction_ready": true,
+    "image_required": true,
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo"
+    }
   }
 }

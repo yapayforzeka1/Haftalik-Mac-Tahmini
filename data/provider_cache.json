@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792597226.2717516,
+    "at": 1792597527.221766,
     "data": {
       "filters": {
         "season": 2026
@@ -19137,6 +19137,76 @@
               "nationality": "England"
             }
           ]
+        }
+      ]
+    }
+  },
+  "160a07257aeaf6e70cca4c86a63d8bc4a2d04fa5f917847e3f09bb2348ce0f1c": {
+    "at": 1792597533.4199388,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 575368,
+      "utcDate": "2026-10-21T16:45:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 3,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-10-21T01:32:00Z",
+      "homeTeam": {
+        "id": 7397,
+        "name": "Como 1907",
+        "shortName": "Como 1907",
+        "tla": "COM",
+        "crest": "https://crests.football-data.org/7397.png"
+      },
+      "awayTeam": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 15824,
+          "name": "Sven Jablonski",
+          "type": "REFEREE",
+          "nationality": "Germany"
         }
       ]
     }
