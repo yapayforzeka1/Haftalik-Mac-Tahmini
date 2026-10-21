@@ -36260,5 +36260,224 @@
       "evidence_hash": "787027d80dcd14427e70967eae73f27fa6f02ce987c9f4cd9f31afab1ef378e3",
       "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
+  },
+  "575368": {
+    "schema_version": 3,
+    "season": "2026",
+    "stage": "LEAGUE_STAGE",
+    "matchday": 3,
+    "match_id": "575368",
+    "home_team": "Como 1907",
+    "away_team": "Manchester United FC",
+    "home_crest": "https://crests.football-data.org/7397.png",
+    "away_crest": "https://crests.football-data.org/66.png",
+    "match_utc": "2026-10-21T16:45:00+00:00",
+    "match_time": "21.10.2026 19:45",
+    "created_at": "2026-10-21T15:15:31.244245+00:00",
+    "score_scope": "REGULAR_90",
+    "learning_policy": "balanced_v1",
+    "policy_revision": 0,
+    "ai_votes": [],
+    "pool_round": 0,
+    "final_sent": false,
+    "result_sent": false,
+    "test_mode": false,
+    "context_prefetch_attempt_at": "2026-10-21T15:15:31.244253+00:00",
+    "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 3,
+      "match_utc": "2026-10-21T16:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 7397,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-18T13:00:00Z",
+              "competition": "Serie A",
+              "opponent": "ACF Fiorentina",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-14T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Feyenoord Rotterdam",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-11T10:30:00Z",
+              "competition": "Serie A",
+              "opponent": "AS Roma",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 0,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-20T13:00:00Z",
+              "competition": "Serie A",
+              "opponent": "Frosinone Calcio",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-09-14T16:30:00Z",
+              "competition": "Serie A",
+              "opponent": "Parma Calcio 1913",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-L-D-L-W",
+          "points_last_5": 7,
+          "goals_for_last_5": 7,
+          "goals_against_last_5": 7,
+          "avg_goals_for": 1.4,
+          "avg_goals_against": 1.4,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 2,
+            "goals_against": 1,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 0.5
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "1W-0D-2L",
+            "goals_for": 5,
+            "goals_against": 6,
+            "avg_goals_for": 1.67,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 3
+        },
+        "standings": {
+          "position": 17,
+          "points": 3,
+          "playedGames": 2,
+          "goalsFor": 6,
+          "goalsAgainst": 4
+        }
+      },
+      "away": {
+        "team_id": 66,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-18T13:00:00Z",
+              "competition": "Premier League",
+              "opponent": "Leeds United FC",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-10-13T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Club Atlético de Madrid",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-10T16:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Tottenham Hotspur FC",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-20T15:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Fulham FC",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-09-13T15:30:00Z",
+              "competition": "Premier League",
+              "opponent": "Manchester City FC",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "D-L-D-D-L",
+          "points_last_5": 3,
+          "goals_for_last_5": 3,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 0.6,
+          "avg_goals_against": 1.2,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "0W-1D-1L",
+            "goals_for": 1,
+            "goals_against": 2,
+            "avg_goals_for": 0.5,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "0W-2D-1L",
+            "goals_for": 2,
+            "goals_against": 4,
+            "avg_goals_for": 0.67,
+            "avg_goals_against": 1.33
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 3
+        },
+        "standings": {
+          "position": 18,
+          "points": 3,
+          "playedGames": 2,
+          "goalsFor": 4,
+          "goalsAgainst": 2
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      }
+    },
+    "context_prepared_at": "2026-10-21T15:15:49.713065+00:00",
+    "context_ready": true
   }
 }
