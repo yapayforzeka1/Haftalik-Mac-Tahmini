@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792616446.715457,
+    "at": 1792616728.599272,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 51
+        "played": 54
       },
       "competition": {
         "id": 2001,
@@ -3144,11 +3144,11 @@
           },
           "id": 575370,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:59:33Z",
+          "lastUpdated": "2026-10-21T21:00:37Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -3408,11 +3408,11 @@
           },
           "id": 575374,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T21:00:06Z",
+          "lastUpdated": "2026-10-21T21:01:09Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -3474,11 +3474,11 @@
           },
           "id": 575375,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T21:00:06Z",
+          "lastUpdated": "2026-10-21T21:04:22Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",

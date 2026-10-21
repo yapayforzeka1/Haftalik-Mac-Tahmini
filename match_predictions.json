@@ -37652,7 +37652,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -37682,7 +37685,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -37714,7 +37720,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -37740,7 +37749,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -38783,6 +38795,120 @@
       "transport": "photo",
       "group_key": "2026-10-21T19:00",
       "group_size": 3
+    },
+    "actual": {
+      "home": 4,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-21T21:05:28.623599+00:00"
+    },
+    "consensus_points": 4,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": -1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid'in evindeki 2.5 gol ortalaması ve Mbappé-Vinicius-Bellingham üçlüsünün hücum gücü",
+            "RB Leipzig'in deplasmandaki 4.0 gol yeme ortalaması ve Bayern karşısındaki 1-6'lık ağır yenilgi",
+            "Leipzig'in evinde 12 gol atıp 0 yemesi, deplasman savunma kırılganlığıyla çelişiyor",
+            "Real Madrid'in 3 gün dinlenme avantajı ve ev sahası faktörü"
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid son beş maçında 13 gol attı, güçlü hücum gösterdi.",
+            "Leipzig deplasmanında son iki maçta 8 gol yedi, savunma zayıf.",
+            "Real Madrid evinde son iki maçta sadece bir gol yedi, savunma sağlam.",
+            "Her iki takım da gol potansiyeline sahip, bir gol Leipzig'ten bekleniyor."
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 3,
+          "home_bias": -2,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid son 5 maçta evde 2 galibiyet",
+            "Leipzig son 5 deplasmanda 2 mağlubiyet",
+            "Real'in ligdeki konumu Leipzig'den daha iyi",
+            "Leipzig'in son maçta savunma zafiyeti"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": -1,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "aa7d31119b330c143935a173660362edf81f74fcc656d4ceb4924f692463f634",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575371": {
@@ -42691,7 +42817,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cohere Command A+",
@@ -42721,7 +42850,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -42753,7 +42885,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -42779,7 +42914,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       }
     ],
     "pool_round": 1,
@@ -43769,6 +43907,120 @@
       "transport": "photo",
       "group_key": "2026-10-21T19:00",
       "group_size": 3
+    },
+    "actual": {
+      "home": 3,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-21T21:05:28.624068+00:00"
+    },
+    "consensus_points": 8,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": true,
+    "outcome_correct": true,
+    "exact_score_correct": true,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Aston Villa, evinde Fenerbahçe'yi 6-0 yenerek yüksek gol potansiyelini ve ev avantajını kanıtladı.",
+            "Viking FK, Bayern Münih karşısında 3-3 berabere kalarak savunma zafiyetini ve deplasmandaki kırılganlığını gösterdi.",
+            "Villa'nın 3-4-2-1 dizilişi, Viking'in 4-3-3'üne karşı kanatlardan ve merkezden baskı kurma avantajı sağlar.",
+            "Viking'in 8 gün dinlenmesine rağmen, Villa'nın Premier League seviyesindeki fiziksel ve taktiksel üstünlüğü belirleyici olacaktır."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 5 maçta 13 gol attı ve sadece 6 gol yedi",
+            "Deplasman son 2 maçta 6 gol yedi ve sadece 4 gol attı",
+            "Ev sahibi evinde ortalama 3 gol atıyor, deplasman ise 3 gol yiyor"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Villa son 5 maçta 13 gol attı",
+            "Viking savunması son 2 maçta 6 gol yedi",
+            "Villa evinde ortalama 3.0 gol attı",
+            "Viking dinlenme süresi uzun, tempo düşük"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "fbb634b39b2bc5b26cc682370b87496a0529e5d045548db20176278ebcfb4b16",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575375": {
@@ -43818,7 +44070,10 @@
           ],
           "model_id": "gemini-3.6-flash"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -43850,7 +44105,10 @@
           ],
           "model_id": "qwen/qwen3.8-27b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -43881,7 +44139,10 @@
           ],
           "model_id": "command-a-plus-05-2026"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -43913,7 +44174,10 @@
           ],
           "model_id": "openai/gpt-oss-120b"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -43939,7 +44203,10 @@
           ],
           "model_id": "@cf/cloudflare/clef-omni"
         },
-        "error": null
+        "error": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -44927,6 +45194,139 @@
       "transport": "photo",
       "group_key": "2026-10-21T19:00",
       "group_size": 3
+    },
+    "actual": {
+      "home": 2,
+      "away": 3,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-10-21T21:05:28.624331+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": 1,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Sporting Şampiyonlar Ligi'nde ilk 2 maçını kazanarak formda bir grafik çizdi.",
+            "LASK Linz savunma zaafları nedeniyle kalesinde kolay gol görüyor.",
+            "Sporting iç saha maçlarında yüksek gol üretkenliğine sahip.",
+            "Açıklanan resmi kadrolar ev sahibinin kalite farkını net şekilde ortaya koyuyor."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": 1,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Sporting evinde Galatasaray ve Braga'yı yenerek yüksek gol potansiyeli gösterdi.",
+            "LASK deplasmanında AEK'ya gol atamadı ve Liverpool'a 6 gol yiyerek savunma zafiyeti sergiledi.",
+            "Sporting'in 4-2-3-1 dizilişi ve Luis Suárez'in varlığı LASK'in 3-4-1-2 bloğunu zorlayacak.",
+            "Sporting'in 8 gün dinlenmesi ve LASK'in 7 gün dinlenmesi arasında belirleyici bir fark yok, ancak Sporting'in formu çok daha üstün."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 0,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Sporting son beş maçta 11 gol atıp güçlü ev formunu sürdürüyor.",
+            "LASK Linz son iki maçta yedi gol yedi ve savunmasında sorunlar yaşıyor.",
+            "Ev sahibi takımın dinlenme süresi daha uzun, kadro tam ve Luis Suárez gibi tecrübeli oyunculara sahip.",
+            "Grubun dibinde olan deplasman takımının skor üretme ihtimali düşük, maçı kaybetme olasılığı yüksek."
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 0,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 5 maçta 11 gol attı",
+            "Deplasman son 2 maçta 7 gol yedi",
+            "Ev sahibi dinlenme süresi daha uzun",
+            "Ev sahibi sahasında 1W-1D performansı"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 3,
+          "home_bias": 1,
+          "away_bias": -2,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "dd1d628bb9429e701630422f43b733e4bd1618a40b2f120f0cadfd206ae4b1f5",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575376": {
