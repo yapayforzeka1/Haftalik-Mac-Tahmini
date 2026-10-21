@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792609229.8993142,
+    "at": 1792609531.1418245,
     "data": {
       "filters": {
         "season": 2026
@@ -3144,11 +3144,11 @@
           },
           "id": 575370,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:26Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -3164,11 +3164,11 @@
             "crest": "https://crests.football-data.org/721.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -3210,11 +3210,11 @@
           },
           "id": 575371,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:26Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -3230,11 +3230,11 @@
             "crest": "https://crests.football-data.org/1887.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -3276,11 +3276,11 @@
           },
           "id": 575372,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:25Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -3296,11 +3296,11 @@
             "crest": "https://crests.football-data.org/57.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -3408,11 +3408,11 @@
           },
           "id": 575374,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:26Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -3428,11 +3428,11 @@
             "crest": "https://crests.football-data.org/5720.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -3474,11 +3474,11 @@
           },
           "id": 575375,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:26Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -3494,11 +3494,11 @@
             "crest": "https://crests.football-data.org/2016.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -3540,11 +3540,11 @@
           },
           "id": 575376,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T01:32:00Z",
+          "lastUpdated": "2026-10-21T19:05:26Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -3560,11 +3560,11 @@
             "crest": "https://crests.football-data.org/675.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
