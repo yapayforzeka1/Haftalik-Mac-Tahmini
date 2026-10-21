@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1792616125.793337,
+    "at": 1792616446.715457,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 47
+        "played": 51
       },
       "competition": {
         "id": 2001,
@@ -3148,7 +3148,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:54:13Z",
+          "lastUpdated": "2026-10-21T20:59:33Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -3210,11 +3210,11 @@
           },
           "id": 575371,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:53:41Z",
+          "lastUpdated": "2026-10-21T21:00:05Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -3276,11 +3276,11 @@
           },
           "id": 575372,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:52:37Z",
+          "lastUpdated": "2026-10-21T20:59:02Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -3342,11 +3342,11 @@
           },
           "id": 575373,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:53:09Z",
+          "lastUpdated": "2026-10-21T20:57:57Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -3412,7 +3412,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:53:41Z",
+          "lastUpdated": "2026-10-21T21:00:06Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -3478,7 +3478,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:53:42Z",
+          "lastUpdated": "2026-10-21T21:00:06Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -3497,7 +3497,7 @@
             "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 3
             },
             "halfTime": {
@@ -3540,11 +3540,11 @@
           },
           "id": 575376,
           "utcDate": "2026-10-21T19:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-10-21T20:53:41Z",
+          "lastUpdated": "2026-10-21T20:59:02Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
