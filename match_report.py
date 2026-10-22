@@ -438,6 +438,9 @@ def _draw_consensus_cell(draw, y, record):
     outcomes = Counter(v.get("result", {}).get("outcome") for v in votes)
     outcome, num = outcomes.most_common(1)[0] if outcomes else (None, 0)
     valid = n >= 3 and num >= 3
+    complete = record.get('prediction_complete')
+    if complete is None:
+        complete = len({v.get('model') for v in votes if v.get('model')}) >= 5
     symbol = {"HOME": "1", "AWAY": "2", "DRAW": "X"}.get(outcome) if valid else "—"
     color = _outcome_color(outcome) if valid else MUTED
     cx = (x0 + x1) / 2
@@ -450,7 +453,10 @@ def _draw_consensus_cell(draw, y, record):
     _rounded(draw, (cx - 53, y + 137, cx + 53, y + 166), 10, BLUE_DIM)
     # Outcome-majority votes are distinct from the number of valid model scores.
     if valid:
-        _draw_center(draw, (cx, y + 107), f"Ortak oy: {num}/{n}", _font(12, True), BLUE)
+        status = f"Ortak oy: {num}/{n}" if complete else f"GEÇİCİ • ortak oy: {num}/{n}"
+        _draw_center(draw, (cx, y + 107), status, _font(12, True), BLUE if complete else WARN)
+    elif not complete:
+        _draw_center(draw, (cx, y + 107), f"KISMİ • {n}/5 AL", _font(12, True), WARN)
     valid_score_count = len(eligible_score_votes(record.get("ai_votes")))
     total = max(5, len(record.get('ai_votes') or []), int(record.get('total_ai') or 0))
     _rounded(draw, (x0 + 8, y + 133, x1 - 8, y + 174), 10, BLUE_DIM)

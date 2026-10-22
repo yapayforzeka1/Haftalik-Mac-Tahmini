@@ -65,6 +65,14 @@ def lineup_text(record):
     return "⚠️ Kadro eksik"
 
 
+def _is_prediction_complete(record):
+    if 'prediction_complete' in record:
+        return bool(record.get('prediction_complete'))
+    successful = {v.get('model') for v in record.get('ai_votes', [])
+                  if v.get('success') and isinstance(v.get('result'), dict) and v.get('model')}
+    return len(successful) >= MODEL_COUNT
+
+
 def prediction_tables(record):
     """JSON-safe presentation; individual AI records are never modified."""
     votes = [v for v in record.get("ai_votes", []) if v.get("success") and v.get("result")]
@@ -76,9 +84,11 @@ def prediction_tables(record):
     match = f"{record['home_team']} – {record['away_team']}"
     clock = kickoff_text(record)
     if not n:
+        complete = _is_prediction_complete(record)
+        note = '' if complete else f'⚠️ KISMİ DURUM: {valid_score_count}/{total} AL tahmin üretti; başarısız modeller kontrollü aralıklarla yeniden denenecek.'
         return {"mode": "UNAVAILABLE", "summary_headers": ["⚽ Maç", "🕒 Saat", "🤖 Başarılı Tahmin Üreten AL", "📋 Durum"],
                 "summary": [match, clock, f"0/{total}", "⚠️ Tahmin üretilemedi"],
-                "headers": [], "rows": [], "note": ""}
+                "headers": [], "rows": [], "note": note}
     counts = Counter(v['result']['score'] for v in votes)
     outcomes = Counter(v['result']['outcome'] for v in votes)
     outcome, ov = outcomes.most_common(1)[0]
@@ -91,6 +101,7 @@ def prediction_tables(record):
              "summary": [match, clock, lineup_text(record)], "headers": [], "rows": [], "note": ""}
     table['summary_headers'] += ['🤖 Başarılı Tahmin Üreten AL']
     table['summary'] += [f'{valid_score_count}/{total}']
+    complete = _is_prediction_complete(record)
     if n < 3:
         table['note'] = '⚠️ Üçten az AI yanıtladı; bireysel tahminler gösteriliyor.'
     else:
@@ -115,6 +126,12 @@ def prediction_tables(record):
             if n >= 3:
                 row += [f"{counts[result['score']]}/{n}"]
             table['rows'].append(row)
+    if not complete:
+        if common_outcome:
+            status_note = f'⚠️ GEÇİCİ ORTAK KARAR: {label(outcome, record)} ({ov}/{n} geçerli oy); toplam {valid_score_count}/{total} AL yanıtladı. Eksik AL tahminleri yeniden denenecek.'
+        else:
+            status_note = f'⚠️ KISMİ TAHMİN: {valid_score_count}/{total} AL yanıtladı; 5/5 tamamlanmadı.'
+        table['note'] = ' '.join(x for x in (table.get('note', ''), status_note) if x)
     return table
 
 

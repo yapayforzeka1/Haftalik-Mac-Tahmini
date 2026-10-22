@@ -7,7 +7,7 @@ import re
 import time
 import threading
 import math
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
@@ -19,6 +19,9 @@ class AIVote:
     success: bool
     result: dict[str, Any] | None = None
     error: str | None = None
+    retry_after: str | None = None
+    error_stage: str | None = None
+    http_status: int | None = None
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
@@ -52,6 +55,54 @@ def _is_rate_limit_error(exc: BaseException) -> bool:
     if status is not None:
         return status in {408, 429, 500, 502, 503, 504}
     return safe_error(exc) in {'QUOTA_OR_RATE_LIMIT', 'TIMEOUT', 'CONNECTION_ERROR'}
+
+
+def _retry_after_at(seconds: int) -> str:
+    return (datetime.now(timezone.utc) + timedelta(seconds=seconds)).isoformat()
+
+
+def _persistent_retry_after(error: BaseException | None, stage: str, category: str) -> str:
+    """Persist a bounded per-provider retry window so 5-minute runs do not burn quotas."""
+    if category == 'TIME_BUDGET':
+        delay = 300
+    elif error is None:
+        delay = 6 * 60 * 60
+    else:
+        status = error_http_status(error)
+        detail = safe_error_detail(error)
+        if detail == 'QUOTA_EXHAUSTED':
+            delay = 24 * 60 * 60
+        elif status == 429 or category == 'QUOTA_OR_RATE_LIMIT':
+            # Unknown 429 windows must not trigger another request on the next run.
+            delay = 60 * 60
+        elif status in {401, 403, 404} or category in {
+                'AUTH_ERROR', 'MODEL_UNAVAILABLE', 'MODEL_OR_ENDPOINT_NOT_FOUND',
+                'INVALID_REQUEST', 'SDK_IMPORT_ERROR', 'MISSING_API_KEY'}:
+            delay = 6 * 60 * 60
+        elif stage in {'PARSE', 'VALIDATE'} or category in {
+                'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED',
+                'RESPONSE_STOPPED', 'INVALID_PREDICTION'}:
+            delay = 15 * 60
+        else:
+            delay = 10 * 60
+    return _retry_after_at(delay)
+
+
+def _cached_vote(value: dict[str, Any]) -> AIVote:
+    fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status')
+    return AIVote(**{key: value.get(key) for key in fields if key in value})
+
+
+def _retry_is_due(value: str | None) -> bool:
+    if not value:
+        return True  # legacy failures had no retry metadata; allow recovery once.
+    try:
+        when = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=timezone.utc)
+        return datetime.now(timezone.utc) >= when.astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        return True
 
 
 def retry_after_seconds(error):
@@ -512,11 +563,15 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
     def execute(name, call, key_name):
         if not os.environ.get(key_name):
             diagnostics[name] = ('CONFIG', 'MISSING_API_KEY', None)
-            return AIVote(name, False, error=f"{key_name} eksik")
+            return AIVote(name, False, error='MISSING_API_KEY',
+                          retry_after=_persistent_retry_after(None, 'CONFIG', 'MISSING_API_KEY'),
+                          error_stage='CONFIG')
         def invoke():
             if deadline is not None and time.monotonic() >= deadline - 30:
                 diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
-                return AIVote(name, False, error="TIME_BUDGET")
+                return AIVote(name, False, error='TIME_BUDGET',
+                              retry_after=_persistent_retry_after(None, 'REQUEST', 'TIME_BUDGET'),
+                              error_stage='REQUEST')
             stage = 'REQUEST'
             validation_attempts = 0
             def request_and_validate():
@@ -560,8 +615,11 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 detail = safe_error_detail(error)
                 if detail != 'UNSPECIFIED':
                     print(f'AI DETAY | {name} | {detail}', flush=True)
-                diagnostics[name] = (stage, category, error_http_status(error))
-                return AIVote(name, False, error=category)
+                status = error_http_status(error)
+                diagnostics[name] = (stage, category, status)
+                return AIVote(name, False, error=category,
+                              retry_after=_persistent_retry_after(error, stage, category),
+                              error_stage=stage, http_status=status)
         # Two Groq models share a quota, so do not hit that provider simultaneously.
         if key_name == "GROQ_API_KEY":
             with groq_lock:
@@ -572,9 +630,14 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         jobs = {}
         for name, call, key_name in providers:
             if cached and name in cached:
-                votes[name] = AIVote(**cached[name])
-            else:
-                jobs[executor.submit(execute, name, call, key_name)] = name
+                cached_vote = _cached_vote(cached[name])
+                if cached_vote.success or not _retry_is_due(cached_vote.retry_after):
+                    votes[name] = cached_vote
+                    diagnostics[name] = ('CACHE', 'OK' if cached_vote.success else cached_vote.error,
+                                         cached_vote.http_status)
+                    continue
+                print(f'AI RETRY | {name} | kalici yeniden deneme zamani geldi', flush=True)
+            jobs[executor.submit(execute, name, call, key_name)] = name
         for future in as_completed(jobs):
             vote = future.result()
             votes[vote.model] = vote

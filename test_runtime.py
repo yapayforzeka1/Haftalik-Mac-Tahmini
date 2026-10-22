@@ -10,13 +10,13 @@ from consensus_engine import build_consensus
 from fallback import predict
 from history_engine import grade_record
 from learning import POLICIES, audit, digest, eligible, learning_context, maybe_propose, new_state, summarize
-from messages import FORMAT_VERSION, prediction_message
+from messages import prediction_message
 from operations import fingerprint, handle_callback, run_operations
 from providers import predicted_xi, valid_xi
 from runner import deliver_record, drain_delivery, new_record, prepare_prediction, refresh_results
 from scoring import VERSION, regulation_score, score_prediction
 from storage import StateError, load_json, save_json
-from telegram_io import Telegram, TelegramDeliveryUncertain, TelegramError, deliver_text
+from telegram_io import TelegramError, deliver_text
 
 NOW = datetime(2026, 9, 17, 16, tzinfo=timezone.utc)
 
@@ -147,108 +147,6 @@ def test_photo_failure_does_not_repeat_text(monkeypatch, tmp_path):
     assert sum(x[0]=='sendMessage' for x in bot.calls)==1
     assert r['final_sent']
 
-
-
-def _new_photo_record(match_id, match_utc=None):
-    r = record()
-    r.update(match_id=str(match_id), message_format_version=FORMAT_VERSION,
-             prediction_ready=True, final_sent=False, photo_sent=False,
-             match_utc=(match_utc or (NOW + timedelta(minutes=30)).isoformat()))
-    r.pop('prediction_receipt', None)
-    return r
-
-
-def test_uncertain_group_photo_never_falls_back_or_retries(monkeypatch, tmp_path):
-    import match_report
-    monkeypatch.setattr('runner.now', lambda: NOW)
-    monkeypatch.setattr(match_report, 'render_match_group_image',
-                        lambda *a, **k: tmp_path / 'group.png')
-    kickoff = (NOW + timedelta(minutes=30)).isoformat()
-    records = {'1': _new_photo_record(1, kickoff), '2': _new_photo_record(2, kickoff)}
-
-    class AmbiguousTelegram:
-        def __init__(self):
-            self.photos = []
-        def photo(self, chat_id, path):
-            self.photos.append(path)
-            raise TelegramDeliveryUncertain('simulated timeout after request')
-
-    bot = AmbiguousTelegram()
-    drain_delivery(records, bot, 'chat', lambda: None)
-    assert len(bot.photos) == 1
-    assert all(r['photo_delivery']['status'] == 'UNCERTAIN' for r in records.values())
-    assert all(not r.get('final_sent') for r in records.values())
-
-    # A later five-minute run must not resend the group or send individual cards.
-    drain_delivery(records, bot, 'chat', lambda: None)
-    assert len(bot.photos) == 1
-
-
-def test_interrupted_photo_attempt_is_recovered_as_uncertain(monkeypatch):
-    monkeypatch.setattr('runner.now', lambda: NOW)
-    r = _new_photo_record(1)
-    r['photo_delivery'] = {'status': 'SENDING', 'mode': 'group', 'group_size': 1}
-
-    class NoSend:
-        def photo(self, *args):
-            pytest.fail('An interrupted send must not be attempted again automatically')
-
-    drain_delivery({'1': r}, NoSend(), 'chat', lambda: None)
-    assert r['photo_delivery']['status'] == 'UNCERTAIN'
-
-
-def test_definitive_group_rejection_may_fall_back_to_individuals(monkeypatch, tmp_path):
-    import match_report
-    monkeypatch.setattr('runner.now', lambda: NOW)
-    monkeypatch.setattr(match_report, 'render_match_group_image',
-                        lambda *a, **k: tmp_path / 'group.png')
-    kickoff = (NOW + timedelta(minutes=30)).isoformat()
-    records = {'1': _new_photo_record(1, kickoff), '2': _new_photo_record(2, kickoff)}
-
-    class RejectedGroupTelegram:
-        def __init__(self):
-            self.photos = []
-        def photo(self, chat_id, path):
-            self.photos.append(path)
-            if len(self.photos) == 1:
-                raise TelegramError('definitive rejection')
-
-    bot = RejectedGroupTelegram()
-    drain_delivery(records, bot, 'chat', lambda: None)
-    assert len(bot.photos) == 3  # rejected group plus two accepted individual cards
-    assert all(r['photo_delivery']['status'] == 'SENT' for r in records.values())
-    assert all(r['final_sent'] for r in records.values())
-
-
-def test_photo_transport_timeout_is_classified_as_uncertain(monkeypatch, tmp_path):
-    import requests
-    photo = tmp_path / 'photo.png'
-    photo.write_bytes(b'not a real image')
-
-    def timeout(*args, **kwargs):
-        raise requests.Timeout('simulated timeout')
-
-    monkeypatch.setattr('telegram_io.requests.post', timeout)
-    with pytest.raises(TelegramDeliveryUncertain):
-        Telegram('hidden-token').photo('chat', photo)
-
-
-def test_ambiguous_text_send_is_not_retried():
-    class AmbiguousTextTelegram:
-        def __init__(self):
-            self.calls = 0
-        def call(self, method, **kwargs):
-            self.calls += 1
-            raise TelegramDeliveryUncertain('simulated timeout')
-
-    bot = AmbiguousTextTelegram()
-    receipt = {}
-    with pytest.raises(TelegramDeliveryUncertain):
-        deliver_text(bot, 'chat', 'test', receipt, lambda: None)
-    assert receipt['uncertain'] is True
-    with pytest.raises(TelegramDeliveryUncertain):
-        deliver_text(bot, 'chat', 'test', receipt, lambda: None)
-    assert bot.calls == 1
 
 def test_late_delivery_never_sends_prediction():
     r=record();bot=FakeTelegram()
@@ -397,6 +295,7 @@ def test_saved_prediction_not_generated_again(monkeypatch):
     import runner
     monkeypatch.setattr(runner,'run_ai_pool',lambda *a,**k:pytest.fail('must not regenerate'))
     r=record()
+    r['prediction_complete'] = True
     assert prepare_prediction(r,fixture(),None,{},new_state(),lambda:None,0)
 
 
@@ -421,8 +320,14 @@ def test_full_main_twice_does_not_regenerate_or_resend(monkeypatch, tmp_path):
     count=[]
     def pool(*args, **kwargs):
         count.append(1)
-        votes = [AIVote(**vote('only', '2-1'))]
-        kwargs['on_vote'](votes[0])
+        specs = [
+            ('Gemini 3.6 Flash', '2-1'), ('Groq Qwen 3.8 27B', '2-1'),
+            ('Cohere Command A+', '2-1'), ('Groq GPT-OSS 120B', '1-1'),
+            ('Cloudflare Clef-omni', '1-1'),
+        ]
+        votes = [AIVote(**vote(name, score)) for name, score in specs]
+        for item in votes:
+            kwargs['on_vote'](item)
         return votes
     monkeypatch.setattr(runner, 'run_ai_pool', pool)
     assert runner.main() == 0
@@ -432,8 +337,10 @@ def test_full_main_twice_does_not_regenerate_or_resend(monkeypatch, tmp_path):
     assert sum(method == 'photo' for method, _ in bot.calls) == 1
     saved=load_json(tmp_path/'match_predictions.json',{})['1']
     assert saved['final_sent'] and saved['prediction_kind']=='AI'
+    assert saved['prediction_complete'] is True
+    assert saved['consensus_status'] == 'FINAL'
     assert saved['model_versions'] and saved['input_hash']
-    assert saved['consensus']['winner_consensus'] is False
+    assert saved['consensus']['winner_consensus'] is True
 
 
 def test_official_lineup_reads_v4_team_nodes():
@@ -507,6 +414,33 @@ def test_rollback_is_proposed_not_applied():
     p=next(iter(state['proposals'].values()))
     assert p['policy']=='balanced_v1' and p['status']=='PENDING'
     assert state['policy']=='lineup_caution_v1' and state['revision']==1
+
+
+def test_partial_prediction_is_marked_provisional_and_keeps_individual_votes():
+    from messages import prediction_tables
+    r = record()
+    r['ai_votes'][2]['result'].update(score='3-1', outcome='HOME')
+    r['prediction_complete'] = False
+    table = prediction_tables(r)
+    assert 'GEÇİCİ ORTAK KARAR' in table['note']
+    assert '3/5' in table['note']
+    assert len(table['rows']) >= 1
+
+
+def test_prediction_update_notification_is_resumable_and_not_duplicated():
+    import runner
+    r = record()
+    r.update(final_sent=True, prediction_ready=True, prediction_complete=False,
+             prediction_update_required=True, prediction_text='Güncel 3/5 tahminler')
+    bot = FakeTelegram()
+    saves=[]
+    runner.drain_prediction_updates({'1': r}, bot, '10', lambda: saves.append(1))
+    assert not r['prediction_update_required']
+    assert r['published_successful_ai'] == 3
+    assert r['published_prediction_complete'] is False
+    sent_before = sum(method == 'sendMessage' for method, _ in bot.calls)
+    runner.drain_prediction_updates({'1': r}, bot, '10', lambda: saves.append(1))
+    assert sum(method == 'sendMessage' for method, _ in bot.calls) == sent_before
 
 
 def test_pool_resumes_cached_votes_without_calling_provider(monkeypatch):

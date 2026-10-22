@@ -391,6 +391,45 @@ def drain_delivery(predictions, bot, chat_id, save):
             print(f"Gönderim bekliyor: {r.get('match_id')} / {safe_error(exc)}")
 
 
+def _successful_ai_count(votes):
+    return sum(1 for v in votes if v.get('success') and isinstance(v.get('result'), dict))
+
+
+def _votes_complete(votes):
+    """Exactly five distinct, valid provider votes are required for completion."""
+    by_model = {v.get('model'): v for v in votes if v.get('model')}
+    return (len(by_model) == 5 and all(v.get('success') and isinstance(v.get('result'), dict)
+                                       for v in by_model.values()))
+
+
+def _vote_signature(votes):
+    return sorted((v.get('model'), bool(v.get('success')), v.get('result'), v.get('error'),
+                   v.get('retry_after'), v.get('error_stage'), v.get('http_status')) for v in votes)
+
+
+def drain_prediction_updates(predictions, bot, chat_id, save):
+    """Send resumable text updates when a previously delivered partial forecast gains votes."""
+    for record in predictions.values():
+        if not record.get('prediction_update_required') or not record.get('final_sent'):
+            continue
+        receipt = record.setdefault('prediction_update_receipt', {})
+        count = _successful_ai_count(record.get('ai_votes') or [])
+        complete = bool(record.get('prediction_complete'))
+        label = 'Nihai tahmin tamamlandı (5/5 AL)' if complete else f'Tahmin güncellendi ({count}/5 AL başarılı; kısmi)'
+        text = f"🔄 {label}\n{record.get('home_team', '—')} — {record.get('away_team', '—')}\n\n{record.get('prediction_text', '')}"
+        try:
+            deliver_text(bot, chat_id, text, receipt, save)
+        except (TelegramError, OSError) as exc:
+            print(f"Tahmin güncellemesi bekliyor: {record.get('match_id')} / {safe_error(exc)}")
+            continue
+        if receipt.get('complete'):
+            record['prediction_update_required'] = False
+            record['published_successful_ai'] = count
+            record['published_prediction_complete'] = complete
+            record['prediction_update_sent_at'] = utcnow()
+            save()
+
+
 def new_record(match, state, test_mode=False):
     kickoff = parse_utc(match['utcDate'])
     return {'schema_version': 3, 'season': str(match.get('season', {}).get('startDate', '2026'))[:4],
@@ -510,8 +549,22 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
     """Resumable stages: lineup -> context -> research -> votes -> durable message."""
     if excluded_fixture(match):
         return False
-    if r.get('prediction_ready'):
+    if r.get('prediction_ready') and _votes_complete(r.get('ai_votes') or []):
+        if r.get('prediction_complete') is not True:
+            r['prediction_complete'] = True
+            r['consensus_status'] = 'FINAL'
+            r['prediction_table'] = prediction_tables(r)
+            r['prediction_text'] = ('🧪 TEST\n' if r.get('test_mode') else '') + prediction_message(r)
+            if r.get('final_sent') and not r.get('published_prediction_complete'):
+                r['prediction_update_required'] = True
+                r['prediction_update_receipt'] = {}
+            save()
         return True
+    if r.get('prediction_ready') and r.get('prediction_complete') is True:
+        return True
+    previous_ready = bool(r.get('prediction_ready'))
+    previous_complete = bool(r.get('prediction_complete') or _votes_complete(r.get('ai_votes') or []))
+    previous_votes = copy.deepcopy(r.get('ai_votes') or [])
     remaining = minutes_left(match)
     if remaining <= 0:
         return False
@@ -589,7 +642,9 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
     if r['pool_round'] == 0:
         r['pool_round'] = 1
         save()
-    cached = {v['model']: {k: v.get(k) for k in ('model', 'success', 'result', 'error')} for v in r['ai_votes']}
+    cached = {v['model']: {k: v.get(k) for k in
+              ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status')}
+              for v in r['ai_votes']}
     def on_vote(vote):
         r['ai_votes'] = [v for v in r['ai_votes'] if v['model'] != vote.model] + [asdict(vote)]
         save()
@@ -598,6 +653,20 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
     # The pool retries each failed provider even when another model succeeds.
     # Do not start a second round that would bypass Retry-After or multiply calls.
     r['ai_votes'] = [asdict(v) for v in votes]
+    r['total_ai'] = len(votes)
+    complete = _votes_complete(r['ai_votes'])
+    successful_count = _successful_ai_count(r['ai_votes'])
+    if previous_ready and _vote_signature(previous_votes) == _vote_signature(r['ai_votes']):
+        r['prediction_complete'] = complete
+        save()
+        return True
+    published_count = int(r.get('published_successful_ai', _successful_ai_count(previous_votes)))
+    published_complete = bool(r.get('published_prediction_complete', previous_complete))
+    if r.get('final_sent') and (successful_count > published_count or (complete and not published_complete)):
+        if not r.get('prediction_update_required'):
+            r['prediction_update_receipt'] = {}
+        r['prediction_update_required'] = True
+    r['prediction_complete'] = complete
     if minutes_left(match) <= 0:
         r['late_generation'] = True
         save()
@@ -611,16 +680,19 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         r['prediction_kind'] = 'UNAVAILABLE'
         r['unavailable_details'] = [{'model': v.model, 'error': v.error} for v in votes]
         r['consensus'] = {'consensus_mode': 'NO_COMMON', 'winner_consensus': False, 'score_consensus': False}
-    r['prediction_created_at'] = utcnow()
-    # One-way, pre-kickoff archive metadata. Never touch past records or consensus.
-    freeze_prospective_experiments(r, created_at=r['prediction_created_at'])
-    r['minutes_before_match'] = round(minutes_left(match), 1)
+    if not previous_ready:
+        r['prediction_created_at'] = utcnow()
+        # One-way, pre-kickoff archive metadata is frozen only on first publication.
+        freeze_prospective_experiments(r, created_at=r['prediction_created_at'])
+        r['minutes_before_match'] = round(minutes_left(match), 1)
     r['prediction_mode'] = r['consensus']['consensus_mode']
     r['published_consensus'] = copy.deepcopy(r['consensus'])
     r['message_format_version'] = FORMAT_VERSION
     r['prediction_table'] = prediction_tables(r)
     r['prediction_text'] = ('🧪 TEST\n' if test_mode else '') + prediction_message(r)
     r['prediction_ready'] = True
+    r['prediction_complete'] = complete
+    r['consensus_status'] = 'FINAL' if complete else 'PROVISIONAL'
     r['image_required'] = True
     save()
     return True
@@ -670,6 +742,7 @@ def main():
         raise StateError('Tahmin botu TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID secret eksik.')
     telegram = Telegram(token)
     drain_delivery(predictions, telegram, chat, save)
+    drain_prediction_updates(predictions, telegram, chat, save)
     football = CachedFootball(cache, lambda: save_json(cache_path, cache))
     matches = football.get_matches()
     track_missed_fixtures(matches, predictions, state, telegram, chat, save_state)
@@ -726,7 +799,7 @@ def main():
             break
         key = str(match['id'])
         r = predictions.setdefault(key, new_record(match, state, test_mode))
-        if r.get('final_sent') or r.get('prediction_ready'):
+        if r.get('prediction_complete') is True or (r.get('prediction_ready') and _votes_complete(r.get('ai_votes') or [])):
             continue
         try:
             # Leave a safety margin to publish before kickoff, even after delayed Actions starts.
@@ -741,5 +814,6 @@ def main():
             print(f'Maç işlemi bekliyor: {key} / {safe_error(exc)}')
     # Publish after all candidates are prepared so same-kickoff matches share one image.
     drain_delivery(predictions, telegram, chat, save)
+    drain_prediction_updates(predictions, telegram, chat, save)
     save()
     return 0
