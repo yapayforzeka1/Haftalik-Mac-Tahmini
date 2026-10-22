@@ -23,7 +23,7 @@ from report_engine import build_result_message
 from research_engine import empty_research, research_match, structured_research
 from scoring import VERSION, regulation_score, score_prediction
 from storage import StateError, load_json, save_json
-from telegram_io import Telegram, TelegramError, deliver_text
+from telegram_io import Telegram, TelegramDeliveryUncertain, TelegramError, deliver_text
 from v2_context import enrich_team_context
 
 ROOT = Path(__file__).resolve().parent
@@ -172,6 +172,30 @@ def result_text(record):
             f"İstatistiksel yedek puanı: {record.get('fallback_points', '—')}/8 (AI sıralamasından ayrı)")
 
 
+def _photo_delivery_state(record):
+    state = record.get('photo_delivery')
+    return state if isinstance(state, dict) else {}
+
+
+def _mark_photo_attempt(records, mode, **details):
+    for record in records:
+        state = {'status': 'SENDING', 'mode': mode, 'attempted_at': utcnow()}
+        state.update(details)
+        record['photo_delivery'] = state
+
+
+def _mark_photo_failure(records, status, exc):
+    for record in records:
+        state = record.setdefault('photo_delivery', {})
+        state['status'] = status
+        state['error'] = safe_error(exc)
+        state['finished_at'] = utcnow()
+
+
+def _photo_is_blocked(record):
+    return _photo_delivery_state(record).get('status') in {'SENDING', 'UNCERTAIN'}
+
+
 def deliver_record(r, bot, chat_id, save, clock=None):
     """Resume each part independently; never regenerate an archived prediction."""
     if not r.get('prediction_ready') or r.get('final_sent'):
@@ -179,7 +203,21 @@ def deliver_record(r, bot, chat_id, save, clock=None):
     clock = clock or now
     kickoff = parse_utc(r['match_utc'])
     if r.get('message_format_version', 0) >= FORMAT_VERSION:
-        # A single table image, with a durable receipt and no duplicate text.
+        photo_state = _photo_delivery_state(r)
+        if photo_state.get('status') == 'SENT':
+            r['photo_sent'] = True
+            r['prediction_receipt'] = {
+                'complete': True, 'transport': 'photo',
+                'group_key': photo_state.get('group_key'),
+                'group_size': photo_state.get('group_size', 1),
+            }
+            r['final_sent'] = True
+            save()
+            return
+        # A timeout or interrupted run may have sent the photo already. Never
+        # switch an uncertain group send to an individual send automatically.
+        if _photo_is_blocked(r):
+            return
         if r.get('photo_sent') or r.get('prediction_receipt', {}).get('complete'):
             r['final_sent'] = True
             save()
@@ -188,9 +226,26 @@ def deliver_record(r, bot, chat_id, save, clock=None):
             from match_report import render_match_group_image
             path = render_match_group_image([r], test_mode=bool(r.get('test_mode')))
             if clock() < kickoff:
-                bot.photo(chat_id, path)
+                _mark_photo_attempt([r], 'single', group_key=None, group_size=1)
+                save()
+                try:
+                    bot.photo(chat_id, path)
+                except TelegramDeliveryUncertain as exc:
+                    _mark_photo_failure([r], 'UNCERTAIN', exc)
+                    save()
+                    raise
+                except (TelegramError, OSError) as exc:
+                    _mark_photo_failure([r], 'REJECTED', exc)
+                    save()
+                    raise
+                state = r['photo_delivery']
+                state['status'] = 'SENT'
+                state['finished_at'] = utcnow()
                 r['photo_sent'] = True
-                r['prediction_receipt'] = {'complete': True, 'transport': 'photo'}
+                r['prediction_receipt'] = {
+                    'complete': True, 'transport': 'photo',
+                    'group_key': None, 'group_size': 1,
+                }
                 r['final_sent'] = True
                 save()
                 return
@@ -208,13 +263,30 @@ def deliver_record(r, bot, chat_id, save, clock=None):
     if not r['prediction_receipt'].get('complete'):
         deliver_text(bot, chat_id, r['prediction_text'], r['prediction_receipt'], save)
     if r.get('image_required') and not r.get('photo_sent'):
-        # Text is already persisted; image failure must not discard the prediction.
-        if clock() >= kickoff:
+        photo_state = _photo_delivery_state(r)
+        if _photo_is_blocked(r):
+            return
+        if photo_state.get('status') == 'SENT':
+            r['photo_sent'] = True
+        elif clock() >= kickoff:
             r['photo_skipped_after_kickoff'] = True
         else:
             from match_report import render_match_group_image
             path = render_match_group_image([r], test_mode=bool(r.get('test_mode')))
-            bot.photo(chat_id, path)
+            _mark_photo_attempt([r], 'single', group_key=None, group_size=1)
+            save()
+            try:
+                bot.photo(chat_id, path)
+            except TelegramDeliveryUncertain as exc:
+                _mark_photo_failure([r], 'UNCERTAIN', exc)
+                save()
+                raise
+            except (TelegramError, OSError) as exc:
+                _mark_photo_failure([r], 'REJECTED', exc)
+                save()
+                raise
+            r['photo_delivery']['status'] = 'SENT'
+            r['photo_delivery']['finished_at'] = utcnow()
             r['photo_sent'] = True
             save()
     r['final_sent'] = True
@@ -226,9 +298,38 @@ def drain_delivery(predictions, bot, chat_id, save):
     from collections import defaultdict
     from match_report import kickoff_key, render_match_group_image
 
+    # Recover a process interruption conservatively: once a request was about
+    # to be sent, its outcome is unknown, so it must not be sent again blindly.
+    recovered = False
+    for r in predictions.values():
+        state = _photo_delivery_state(r)
+        if state.get('status') == 'SENDING':
+            state['status'] = 'UNCERTAIN'
+            state['error'] = 'Önceki çalıştırma gönderim sonucu alınmadan sonlandı.'
+            state['finished_at'] = utcnow()
+            recovered = True
+        elif state.get('status') == 'SENT' and not r.get('final_sent'):
+            r['photo_sent'] = True
+            r['prediction_receipt'] = {
+                'complete': True, 'transport': 'photo',
+                'group_key': state.get('group_key'),
+                'group_size': state.get('group_size', 1),
+            }
+            r['final_sent'] = True
+            recovered = True
+    if recovered:
+        save()
+
     groups = defaultdict(list)
     for r in predictions.values():
         if excluded_record(r):
+            continue
+        state = _photo_delivery_state(r)
+        if state.get('status') in {'SENDING', 'UNCERTAIN', 'SENT'}:
+            continue
+        # A definite single-photo rejection should retry as a single photo,
+        # not oscillate back into a group on every five-minute workflow run.
+        if state.get('status') == 'REJECTED' and state.get('mode') == 'single':
             continue
         if (r.get('prediction_ready') and not r.get('final_sent')
                 and r.get('message_format_version', 0) >= FORMAT_VERSION
@@ -239,7 +340,8 @@ def drain_delivery(predictions, bot, chat_id, save):
             except (KeyError, ValueError):
                 pass
 
-    for (_, is_test), records in sorted(groups.items()):
+    for (group_id, is_test), records in sorted(groups.items()):
+        ids = ','.join(str(r.get('match_id')) for r in records)
         try:
             kickoff = min(parse_utc(r['match_utc']) for r in records)
             if now() >= kickoff:
@@ -247,18 +349,38 @@ def drain_delivery(predictions, bot, chat_id, save):
             path = render_match_group_image(records, test_mode=is_test)
             if now() >= kickoff:
                 continue
+        except OSError as exc:
+            print(f"Grup görseli hazırlanamadı; tekli gönderim denenecek: {ids} / {safe_error(exc)}")
+            continue
+
+        _mark_photo_attempt(records, 'group', group_key=group_id, group_size=len(records))
+        save()
+        try:
             bot.photo(chat_id, path)
+        except TelegramDeliveryUncertain as exc:
+            # Telegram may already have accepted the photo. Keep every match
+            # blocked from single-photo fallback and future automatic retries.
+            _mark_photo_failure(records, 'UNCERTAIN', exc)
+            save()
+            print(f"Grup gönderimi belirsiz; tekrar engellendi: {ids} / {safe_error(exc)}")
+        except (TelegramError, OSError) as exc:
+            # A definitive rejection is safe to fall back from; no group photo
+            # was accepted, so individual sends cannot duplicate that group.
+            _mark_photo_failure(records, 'REJECTED', exc)
+            save()
+            print(f"Grup gönderimi reddedildi; tekli gönderim denenecek: {ids} / {safe_error(exc)}")
+        else:
             for r in records:
+                state = r['photo_delivery']
+                state['status'] = 'SENT'
+                state['finished_at'] = utcnow()
                 r['photo_sent'] = True
                 r['prediction_receipt'] = {
                     'complete': True, 'transport': 'photo',
-                    'group_key': kickoff_key(r), 'group_size': len(records),
+                    'group_key': group_id, 'group_size': len(records),
                 }
                 r['final_sent'] = True
             save()
-        except (TelegramError, OSError) as exc:
-            ids = ','.join(str(r.get('match_id')) for r in records)
-            print(f"Grup gönderimi bekliyor: {ids} / {safe_error(exc)}")
 
     for r in predictions.values():
         if excluded_record(r):
