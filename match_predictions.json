@@ -46387,7 +46387,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -46422,7 +46425,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -46456,7 +46462,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -46491,7 +46500,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -46520,7 +46532,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -47559,7 +47574,140 @@
     "prediction_update_required": false,
     "published_successful_ai": 5,
     "published_prediction_complete": true,
-    "prediction_update_sent_at": "2026-11-03T17:26:23.462484+00:00"
+    "prediction_update_sent_at": "2026-11-03T17:26:23.462484+00:00",
+    "actual": {
+      "home": 0,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-03T19:46:13.215399+00:00"
+    },
+    "consensus_points": 6,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest",
+            "standings"
+          ],
+          "pre_match_reasons": [
+            "Sporting son dönemdeki tüm deplasman maçlarını kazanarak yüksek dış saha performansı sergiledi.",
+            "Shakhtar uzun dinlenme süresine sahip olsa da kadro kalitesi olarak rakibinin gerisinde yer alıyor.",
+            "Sporting'in hücum hattındaki etkili isimler skora katkı verme konusunda öne çıkıyor.",
+            "Ev sahibi ekibin savunma hataları, Sporting'in geçiş hücumlarında fırsat bulmasını sağlayacaktır."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Sporting deplasman formu (3 maçta 3 galibiyet) ve yüksek gol ortalaması (2.33) ile üstün.",
+            "Shakhtar'ın evindeki tek maçlık verisi sınırlı ve son Inter deplasmanında gol atamaması hücum zayıflığını gösteriyor.",
+            "Sporting'in 4-3-3 dizilişi ve Luis Suárez gibi etkili forveti, Shakhtar'ın 4-1-4-1 savunma hattını zorlayacak.",
+            "Shakhtar'ın 12.9 gün dinlenmesine rağmen Sporting'in lig ritmi ve Avrupa'daki gol üretimi daha belirleyici."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi savunma üstünlüğü",
+            "Deplasman yüksek gol potansiyeli",
+            "Son 5 maç gol dengesi yakın",
+            "Dinlenme avantajı ev sahibinde"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Sporcular son 5 maçta daha fazla gol attı",
+            "Şut ve gol ortalamaları Sporting’de üstün",
+            "Shakhtar uzun dinlenme sonrası form düşüklüğü",
+            "Sporcular evinde 3 galibiyet, savunma sağlam"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 1,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "713a7b451667104737b0ba455b1ab5f1786bbacb1e5f5b5df5e2f6b965bc60e4",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    }
   },
   "575379": {
     "schema_version": 3,
