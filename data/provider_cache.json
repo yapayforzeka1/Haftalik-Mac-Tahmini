@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793729175.0485187,
+    "at": 1793729496.1481001,
     "data": {
       "filters": {
         "season": 2026
@@ -3610,7 +3610,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T18:05:39Z",
+          "lastUpdated": "2026-11-03T18:10:59Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -3676,7 +3676,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T18:06:11Z",
+          "lastUpdated": "2026-11-03T18:11:31Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -3695,7 +3695,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 0
             },
             "halfTime": {
