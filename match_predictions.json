@@ -50106,7 +50106,7 @@
         "success": false,
         "result": null,
         "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-03T19:18:10.724862+00:00",
+        "retry_after": "2026-11-03T19:37:00.320309+00:00",
         "error_stage": "REQUEST",
         "http_status": null
       },
@@ -51333,11 +51333,36 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-03T19:19:37.660144+00:00",
-        "error_stage": "REQUEST",
+        "success": true,
+        "result": {
+          "home_team": "Villarreal CF",
+          "away_team": "Paris Saint-Germain FC",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "PSG son 5 maçta ortalama 3.6 gol atıyor ve Villarreal ortalama 1.6 gol yiyor",
+            "Villarreal savunmasının tutarsızlığı ve PSG'nin üstün kalitesi grubu lider tamamladı",
+            "Her iki takım da benzer dinlenme süresine sahip, bu nedenle form ve kalite belirleyici faktörler",
+            "PSG'nin deplasman performansı güçlü, son 3 deplasman maçında 12 gol attı"
+          ],
+          "short_reason": "PSG üstün formu ve kalitesi",
+          "score_candidates": [
+            "1-2",
+            "2-1",
+            "0-2"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null
       },
       {
@@ -52237,15 +52262,15 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": null,
       "score_votes": 0,
@@ -52254,15 +52279,16 @@
       "score_consensus": false,
       "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "1-3",
       "top_score_votes": 2,
-      "average_subjective_confidence": 77,
+      "average_subjective_confidence": 62,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
         "1-3": 2,
+        "1-2": 1,
         "0-2": 1,
         "0-3": 1
       },
@@ -52276,12 +52302,7 @@
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-03T19:04:37.719971+00:00",
     "experimental_predictions": {
@@ -52354,10 +52375,10 @@
     "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": null,
       "score_votes": 0,
@@ -52366,15 +52387,16 @@
       "score_consensus": false,
       "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "1-3",
       "top_score_votes": 2,
-      "average_subjective_confidence": 77,
+      "average_subjective_confidence": 62,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
         "1-3": 2,
+        "1-2": 1,
         "0-2": 1,
         "0-3": 1
       },
@@ -52388,12 +52410,7 @@
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -52410,8 +52427,8 @@
         "Villarreal CF – Paris Saint-Germain FC",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Paris Saint-Germain FC · 4/4",
+        "5/5",
+        "Paris Saint-Germain FC · 5/5",
         "Yok"
       ],
       "headers": [
@@ -52423,24 +52440,29 @@
         [
           "Gemini, Qwen",
           "1–3",
-          "2/4"
+          "2/5"
+        ],
+        [
+          "Cohere",
+          "1–2",
+          "1/5"
         ],
         [
           "GPT-OSS",
           "0–2",
-          "1/4"
+          "1/5"
         ],
         [
           "Clef",
           "0–3",
-          "1/4"
+          "1/5"
         ]
       ],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Paris Saint-Germain FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nVillarreal CF – Paris Saint-Germain FC | 23:00 TSİ | ✅ Resmî 11 | 4/5 | Paris Saint-Germain FC · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGemini, Qwen | 1–3 | 2/4\nGPT-OSS | 0–2 | 1/4\nClef | 0–3 | 1/4\n\n⚠️ GEÇİCİ ORTAK KARAR: Paris Saint-Germain FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nVillarreal CF – Paris Saint-Germain FC | 23:00 TSİ | ✅ Resmî 11 | 5/5 | Paris Saint-Germain FC · 5/5 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGemini, Qwen | 1–3 | 2/5\nCohere | 1–2 | 1/5\nGPT-OSS | 0–2 | 1/5\nClef | 0–3 | 1/5",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -52458,7 +52480,18 @@
       "transport": "photo",
       "group_key": "2026-11-03T20:00",
       "group_size": 5
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        51
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-03T19:22:08.842360+00:00"
   },
   "575383": {
     "schema_version": 3,
@@ -52680,7 +52713,7 @@
     },
     "context_prepared_at": "2026-11-03T18:32:46.449300+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-03T19:12:41.920462+00:00"
+    "xi_checked_at": "2026-11-03T19:22:06.881584+00:00"
   },
   "575384": {
     "schema_version": 3,
