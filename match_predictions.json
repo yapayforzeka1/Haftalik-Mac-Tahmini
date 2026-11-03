@@ -46336,5 +46336,204 @@
       "evidence_hash": "4c840420b679fd0772a1a83f328f08a7b1a72885a5f8b5b5d323f0473d75c530",
       "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
+  },
+  "575377": {
+    "schema_version": 3,
+    "season": "2026",
+    "stage": "LEAGUE_STAGE",
+    "matchday": 4,
+    "match_id": "575377",
+    "home_team": "FK Shakhtar Donetsk",
+    "away_team": "Sporting Clube de Portugal",
+    "home_crest": "https://crests.football-data.org/1887.png",
+    "away_crest": "https://crests.football-data.org/498.png",
+    "match_utc": "2026-11-03T17:45:00+00:00",
+    "match_time": "03.11.2026 20:45",
+    "created_at": "2026-11-03T16:16:08.235739+00:00",
+    "score_scope": "REGULAR_90",
+    "learning_policy": "balanced_v1",
+    "policy_revision": 0,
+    "ai_votes": [],
+    "pool_round": 0,
+    "final_sent": false,
+    "result_sent": false,
+    "test_mode": false,
+    "context_prefetch_attempt_at": "2026-11-03T16:16:08.235745+00:00",
+    "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 4,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 4,
+      "match_utc": "2026-11-03T17:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 1887,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-21T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "FC Internazionale Milano",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-14T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "PAE AEK",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-10T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "PSV",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 1,
+              "result": "D",
+              "points": 1
+            }
+          ],
+          "last_5": "L-W-D",
+          "points_last_5": 4,
+          "goals_for_last_5": 4,
+          "goals_against_last_5": 3,
+          "avg_goals_for": 1.33,
+          "avg_goals_against": 1.0,
+          "home_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 3,
+            "goals_against": 1,
+            "avg_goals_for": 3.0,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-1D-1L",
+            "goals_for": 1,
+            "goals_against": 2,
+            "avg_goals_for": 0.5,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 12.9,
+          "matches_last_14_days": 1,
+          "matches_last_21_days": 2
+        },
+        "standings": {
+          "position": 17,
+          "points": 4,
+          "playedGames": 3,
+          "goalsFor": 4,
+          "goalsAgainst": 3
+        }
+      },
+      "away": {
+        "team_id": 498,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-10-30T20:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Casa Pia AC",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-25T20:30:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Académico de Viseu FC",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-21T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "LASK Linz",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-13T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Racing Club de Lens",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-09T19:15:00Z",
+              "competition": "Primeira Liga",
+              "opponent": "Sporting Clube de Braga",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "W-L-L-W-W",
+          "points_last_5": 9,
+          "goals_for_last_5": 10,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 2.0,
+          "avg_goals_against": 1.2,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "0W-0D-2L",
+            "goals_for": 3,
+            "goals_against": 5,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 2.5
+          },
+          "away_split_last_5": {
+            "matches": 3,
+            "record": "3W-0D-0L",
+            "goals_for": 7,
+            "goals_against": 1,
+            "avg_goals_for": 2.33,
+            "avg_goals_against": 0.33
+          },
+          "rest_days_before_match": 3.9,
+          "matches_last_14_days": 3,
+          "matches_last_21_days": 3
+        },
+        "standings": {
+          "position": 12,
+          "points": 6,
+          "playedGames": 3,
+          "goalsFor": 7,
+          "goalsAgainst": 4
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      }
+    },
+    "context_prepared_at": "2026-11-03T16:16:26.682076+00:00",
+    "context_ready": true
   }
 }
