@@ -46426,11 +46426,36 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-03T17:21:45.148070+00:00",
-        "error_stage": "REQUEST",
+        "success": true,
+        "result": {
+          "home_team": "FK Shakhtar Donetsk",
+          "away_team": "Sporting Clube de Portugal",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi savunma üstünlüğü",
+            "Deplasman yüksek gol potansiyeli",
+            "Son 5 maç gol dengesi yakın",
+            "Dinlenme avantajı ev sahibinde"
+          ],
+          "short_reason": "Ev sahibi savunma üstünlüğü ve gol potansiyeli",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null
       },
       {
@@ -47308,19 +47333,19 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 3,
-      "outcome_share": 75,
+      "outcome_share": 60,
       "score": "1-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
@@ -47328,13 +47353,15 @@
       "top_outcome_votes": 3,
       "top_score": "1-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 42,
+      "average_subjective_confidence": 33,
       "all_outcomes": {
         "AWAY": 3,
+        "HOME": 1,
         "DRAW": 1
       },
       "all_scores": {
         "1-2": 3,
+        "2-1": 1,
         "1-1": 1
       },
       "reasons_by_outcome": {
@@ -47345,17 +47372,18 @@
           "Ev sahibi ekibin savunma hataları, Sporting'in geçiş hücumlarında fırsat bulmasını sağlayacaktır.",
           "Sporting deplasman formu (3 maçta 3 galibiyet) ve yüksek gol ortalaması (2.33) ile üstün."
         ],
+        "HOME": [
+          "Ev sahibi savunma üstünlüğü",
+          "Deplasman yüksek gol potansiyeli",
+          "Son 5 maç gol dengesi yakın",
+          "Dinlenme avantajı ev sahibinde"
+        ],
         "DRAW": [
           "Cloudflare Clef-omni structured pre-match decision"
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-03T16:46:57.446805+00:00",
     "experimental_predictions": {
@@ -47428,14 +47456,14 @@
     "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 3,
-      "outcome_share": 75,
+      "outcome_share": 60,
       "score": "1-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
@@ -47443,13 +47471,15 @@
       "top_outcome_votes": 3,
       "top_score": "1-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 42,
+      "average_subjective_confidence": 33,
       "all_outcomes": {
         "AWAY": 3,
+        "HOME": 1,
         "DRAW": 1
       },
       "all_scores": {
         "1-2": 3,
+        "2-1": 1,
         "1-1": 1
       },
       "reasons_by_outcome": {
@@ -47460,17 +47490,18 @@
           "Ev sahibi ekibin savunma hataları, Sporting'in geçiş hücumlarında fırsat bulmasını sağlayacaktır.",
           "Sporting deplasman formu (3 maçta 3 galibiyet) ve yüksek gol ortalaması (2.33) ile üstün."
         ],
+        "HOME": [
+          "Ev sahibi savunma üstünlüğü",
+          "Deplasman yüksek gol potansiyeli",
+          "Son 5 maç gol dengesi yakın",
+          "Dinlenme avantajı ev sahibinde"
+        ],
         "DRAW": [
           "Cloudflare Clef-omni structured pre-match decision"
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -47488,18 +47519,18 @@
         "FK Shakhtar Donetsk – Sporting Clube de Portugal",
         "20:45 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Sporting Clube de Portugal · 3/4",
-        "1–2 · 3/4",
+        "5/5",
+        "Sporting Clube de Portugal · 3/5",
+        "1–2 · 3/5",
         "Gemini, Qwen, GPT-OSS"
       ],
       "headers": [],
       "rows": [],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Sporting Clube de Portugal (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nFK Shakhtar Donetsk – Sporting Clube de Portugal | 20:45 TSİ | ✅ Resmî 11 | 4/5 | Sporting Clube de Portugal · 3/4 | 1–2 · 3/4 | Gemini, Qwen, GPT-OSS\n\n⚠️ GEÇİCİ ORTAK KARAR: Sporting Clube de Portugal (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nFK Shakhtar Donetsk – Sporting Clube de Portugal | 20:45 TSİ | ✅ Resmî 11 | 5/5 | Sporting Clube de Portugal · 3/5 | 1–2 · 3/5 | Gemini, Qwen, GPT-OSS",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -47517,6 +47548,17 @@
       "transport": "photo",
       "group_key": "2026-11-03T17:45",
       "group_size": 1
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        48
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-03T17:26:23.462484+00:00"
   }
 }
