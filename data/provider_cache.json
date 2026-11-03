@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793728579.3093264,
+    "at": 1793729175.0485187,
     "data": {
       "filters": {
         "season": 2026
@@ -3610,7 +3610,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T17:56:03Z",
+          "lastUpdated": "2026-11-03T18:05:39Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -3676,7 +3676,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T17:55:31Z",
+          "lastUpdated": "2026-11-03T18:06:11Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -3692,10 +3692,10 @@
             "crest": "https://crests.football-data.org/10.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 0
             },
             "halfTime": {
@@ -3772,7 +3772,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 30960,
+              "name": "Glenn Nyberg",
+              "type": "REFEREE",
+              "nationality": "Sweden"
+            }
+          ]
         },
         {
           "area": {
@@ -3831,7 +3838,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 11029,
+              "name": "Davide Massa",
+              "type": "REFEREE",
+              "nationality": "Italy"
+            }
+          ]
         },
         {
           "area": {
@@ -3890,7 +3904,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43918,
+              "name": "François Letexier",
+              "type": "REFEREE",
+              "nationality": "France"
+            }
+          ]
         },
         {
           "area": {
@@ -3949,7 +3970,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43878,
+              "name": "Felix Zwayer",
+              "type": "REFEREE",
+              "nationality": "Germany"
+            }
+          ]
         },
         {
           "area": {
@@ -4008,7 +4036,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 206211,
+              "name": "Jesús Gil Manzano",
+              "type": "REFEREE",
+              "nationality": "Spain"
+            }
+          ]
         },
         {
           "area": {
@@ -4067,7 +4102,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 38806,
+              "name": "João Pinheiro",
+              "type": "REFEREE",
+              "nationality": "Portugal"
+            }
+          ]
         },
         {
           "area": {
@@ -4126,7 +4168,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43952,
+              "name": "Donatas Rumšas",
+              "type": "REFEREE",
+              "nationality": "Lithuania"
+            }
+          ]
         },
         {
           "area": {
