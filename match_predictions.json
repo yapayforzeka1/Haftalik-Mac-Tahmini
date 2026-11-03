@@ -52649,7 +52649,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-03T18:32:34.097549+00:00",
@@ -53343,11 +53343,19 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-03T19:32:15.944416+00:00",
       "first_attempt_at": "2026-11-03T19:32:15.944403+00:00",
       "attempt_count": 1,
+      "group_key": "2026-11-03T20:00",
+      "group_size": 1,
+      "finished_at": "2026-11-03T19:32:44.871830+00:00"
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
       "group_key": "2026-11-03T20:00",
       "group_size": 1
     }
@@ -54524,8 +54532,17 @@
       "group_key": "2026-11-03T20:00",
       "group_size": 1
     },
-    "prediction_update_receipt": {},
-    "prediction_update_required": true
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        53
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 4,
+    "published_prediction_complete": false,
+    "prediction_update_sent_at": "2026-11-03T19:32:45.490177+00:00"
   },
   "575385": {
     "schema_version": 3,
