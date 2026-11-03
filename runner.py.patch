@@ -1,0 +1,22 @@
+diff --git a/runner.py b/runner.py
+--- a/runner.py
++++ b/runner.py
+@@ -908,6 +908,17 @@ def track_missed_fixtures(matches, predictions, state, bot, chat, save_state):
+         if (_photo_delivery_state(record).get('review_notice') or {}).get('complete'):
+             continue
+         notice = tracked.setdefault(key, {'utcDate': match['utcDate']}).setdefault('missed_notice', {})
++        # A finished fixture without a pre-match prediction must never trigger
++        # a retroactive AI prediction or a late "prediction missed" Telegram alert.
++        # Keep an audit marker in operations.json; do not alter prediction history.
++        if notice.get('suppressed'):
++            continue
++        if match.get('status') == 'FINISHED' and not record.get('prediction_ready'):
++            notice.update({
++                'suppressed': True,
++                'suppressed_at': utcnow(),
++                'suppression_reason': 'FINISHED_WITHOUT_PREMATCH_PREDICTION',
++            })
++            continue
+         if notice.get('complete') or notice.get('uncertain'):
+             continue
+         if record.get('prediction_ready'):

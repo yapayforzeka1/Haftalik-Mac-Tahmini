@@ -1,0 +1,66 @@
+diff --git a/tests/test_runtime.py b/tests/test_runtime.py
+--- a/tests/test_runtime.py
++++ b/tests/test_runtime.py
+@@ -15,7 +15,7 @@ from learning import POLICIES, audit, digest, eligible, learning_context, maybe
+ from messages import prediction_message
+ from operations import fingerprint, handle_callback, run_operations
+ from providers import predicted_xi, valid_xi
+-from runner import deliver_record, drain_delivery, new_record, prepare_prediction, refresh_results
++from runner import deliver_record, drain_delivery, new_record, prepare_prediction, refresh_results, track_missed_fixtures
+ from scoring import VERSION, regulation_score, score_prediction
+ from storage import StateError, load_json, save_json
+ from telegram_io import TelegramError, deliver_text
+@@ -100,6 +100,47 @@ class FakeTelegram:
+         if method == 'getUpdates':
+             return self.updates
+         return {'message_id': len(self.calls)}
+
++
++def test_finished_fixture_without_prediction_is_silently_archived(monkeypatch):
++    import runner
++    monkeypatch.setattr(runner, 'now', lambda: NOW)
++    match = {
++        'id': 999, 'utcDate': (NOW - timedelta(days=56)).isoformat(),
++        'status': 'FINISHED',
++        'homeTeam': {'name': 'Club Brugge KV'},
++        'awayTeam': {'name': 'Aston Villa FC'},
++    }
++    state = {}
++    bot = FakeTelegram()
++    track_missed_fixtures([match], {}, state, bot, '10', lambda: None)
++    assert bot.calls == []
++    notice = state['tracked_fixtures']['999']['missed_notice']
++    assert notice['suppressed'] is True
++    assert notice['suppression_reason'] == 'FINISHED_WITHOUT_PREMATCH_PREDICTION'
++
++
++def test_live_fixture_without_prediction_still_sends_operational_notice(monkeypatch):
++    import runner
++    monkeypatch.setattr(runner, 'now', lambda: NOW)
++    match = {
++        'id': 1000, 'utcDate': (NOW - timedelta(minutes=5)).isoformat(),
++        'status': 'IN_PLAY',
++        'homeTeam': {'name': 'Home'},
++        'awayTeam': {'name': 'Away'},
++    }
++    bot = FakeTelegram()
++    track_missed_fixtures([match], {}, {}, bot, '10', lambda: None)
++    assert sum(method == 'sendMessage' for method, _ in bot.calls) > 0
++
++
++def test_finished_fixture_with_saved_prediction_keeps_delivery_warning(monkeypatch):
++    import runner
++    monkeypatch.setattr(runner, 'now', lambda: NOW)
++    match = {
++        'id': 1001, 'utcDate': (NOW - timedelta(hours=2)).isoformat(),
++        'status': 'FINISHED',
++        'homeTeam': {'name': 'Home'},
++        'awayTeam': {'name': 'Away'},
++    }
++    saved = {'prediction_ready': True, 'final_sent': False, 'prediction_text': 'saved'}
++    bot = FakeTelegram()
++    track_missed_fixtures([match], {'1001': saved}, {}, bot, '10', lambda: None)
++    assert sum(method == 'sendMessage' for method, _ in bot.calls) > 0
++
++
+ @pytest.mark.parametrize('score,actual,points', [
