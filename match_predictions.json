@@ -50105,9 +50105,9 @@
         "model": "Cohere Command A+",
         "success": false,
         "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-03T19:37:00.320309+00:00",
-        "error_stage": "REQUEST",
+        "error": "INVALID_PREDICTION",
+        "retry_after": "2026-11-03T19:56:27.443805+00:00",
+        "error_stage": "VALIDATE",
         "http_status": null
       },
       {
@@ -51056,7 +51056,7 @@
       "failed_ai": [
         {
           "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
+          "error": "INVALID_PREDICTION"
         }
       ]
     },
@@ -51175,7 +51175,7 @@
       "failed_ai": [
         {
           "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
+          "error": "INVALID_PREDICTION"
         }
       ]
     },
