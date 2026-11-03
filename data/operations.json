@@ -515,6 +515,30 @@
     },
     "575319": {
       "utcDate": "2027-01-27T20:00:00Z"
+    },
+    "575323": {
+      "utcDate": "2026-09-08T16:45:00Z",
+      "missed_notice": {
+        "parts_sent": 1,
+        "message_ids": [
+          45
+        ],
+        "complete": true
+      },
+      "missed_text": "⚠️ Club Brugge KV — Aston Villa FC: maç öncesi tahmin tamamlanamadı. Zamanlama/servis kayıtlarının incelenmesi gerekiyor.",
+      "missed_at": "2026-11-03T05:16:07.350763+00:00"
+    },
+    "575324": {
+      "utcDate": "2026-09-08T16:45:00Z",
+      "missed_notice": {
+        "parts_sent": 1,
+        "message_ids": [
+          46
+        ],
+        "complete": true
+      },
+      "missed_text": "⚠️ PAE AEK — LASK Linz: maç öncesi tahmin tamamlanamadı. Zamanlama/servis kayıtlarının incelenmesi gerekiyor.",
+      "missed_at": "2026-11-03T05:16:08.069816+00:00"
     }
   },
   "last_summary_hash": "604d9b879ba260dccb0dae0543422fa2e1b9a10b6c51c24f42a576a3997a1143",
