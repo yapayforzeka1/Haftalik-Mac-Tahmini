@@ -52509,8 +52509,146 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": false,
+        "result": null,
+        "error": "QUOTA_OR_RATE_LIMIT",
+        "retry_after": "2026-11-03T20:32:06.168635+00:00",
+        "error_stage": "REQUEST",
+        "http_status": 429
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "AS Roma",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 65,
+          "reasons": [
+            "Manchester United son 5 maçta 2 gol atıp 12 gol yiyerek ciddi bir hücum ve savunma krizi yaşıyor.",
+            "AS Roma son 5 maçta 18 gol atıp sadece 7 gol yiyerek yüksek formda ve hücum gücünde.",
+            "United'ın evindeki tek maçta 0-3 yenilmesi, deplasman avantajını Roma lehine çeviriyor.",
+            "Roma'nın Napoli ve Udinese gibi güçlü rakiplere karşı attığı goller, United'ın zayıf savunmasını zorlayacak kapasiteyi gösteriyor."
+          ],
+          "short_reason": "Roma formda, United savunması çökmüş",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "AS Roma",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 70,
+          "reasons": [
+            "Manchester United son 5 maçta sadece 1 gol attı",
+            "Roma son 5 maçta 18 gol attı, ortalama 1.4 gol yedi",
+            "Ev sahibi formsüz; deplasman ekibi yüksek tempolu oyunla baskı kuracak"
+          ],
+          "short_reason": "Roma'nın üstün formu ve savunma zaafları",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-3"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "AS Roma",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 78,
+          "reasons": [
+            "Roma son 5 maçta yüksek gol üretimi",
+            "United savunması zayıf ve gol yemiş",
+            "Roma evinde güçlü performans gösterdi",
+            "İki takım da dinlenme süresi benzer"
+          ],
+          "short_reason": "Roma formu üstün, United savunma zayıf",
+          "score_candidates": [
+            "0-2",
+            "0-3",
+            "1-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Manchester United FC",
+          "away_team": "AS Roma",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 84,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-3",
+            "0-2",
+            "0-1"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -52709,11 +52847,510 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-11-03T18:32:46.449300+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-03T19:26:10.490234+00:00"
+    "xi_checked_at": "2026-11-03T19:31:40.867254+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-11-03T19:31:47.895898+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 2-12 gol dengesi. Deplasman: son 5 maçta 18-7 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: L-L-L-D-L.",
+        "goals_trend": "Son 5 maç: 2 gol attı, 12 gol yedi; maç başına 0.40 attı / 2.40 yedi.",
+        "recent_fixtures": [
+          "2026-10-31 Chelsea FC: 0-2 (AWAY)",
+          "2026-10-25 AFC Bournemouth: 0-3 (HOME)",
+          "2026-10-21 Como 1907: 1-4 (AWAY)",
+          "2026-10-18 Leeds United FC: 1-1 (AWAY)",
+          "2026-10-13 Club Atlético de Madrid: 0-2 (AWAY)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 0W-0D-1L; 0 gol attı, 3 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-D-W-W.",
+        "goals_trend": "Son 5 maç: 18 gol attı, 7 gol yedi; maç başına 3.60 attı / 1.40 yedi.",
+        "recent_fixtures": [
+          "2026-10-31 Udinese Calcio: 5-2 (AWAY)",
+          "2026-10-27 Cagliari Calcio: 4-2 (HOME)",
+          "2026-10-24 SSC Napoli: 3-3 (AWAY)",
+          "2026-10-20 ŠK Slovan Bratislava: 4-0 (HOME)",
+          "2026-10-17 Genoa CFC: 2-0 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-1D-0L; 8 gol attı, 5 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 21,
+          "points": 3,
+          "played": 3
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 17,
+          "points": 4,
+          "played": 3
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 3.3 gün dinlenme. Son 14 günde 3 maç.",
+        "away": "Son maçtan itibaren 3.1 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-03T19:31:48.308372+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-03T19:31:48.308390+00:00",
+      "source_refs": [
+        {
+          "team_id": 66,
+          "endpoint": "/v4/teams/66/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 100,
+          "endpoint": "/v4/teams/100/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 2-12 gol dengesi.",
+        "Deplasman: son 5 maçta 18-7 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 46,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 46,
+          "available": 13,
+          "points": 42,
+          "exact": 3,
+          "outcome": 10,
+          "goal_error": 27,
+          "coverage_pct": 28.3,
+          "exact_pct": 23.1,
+          "outcome_pct": 76.9,
+          "avg_points": 3.23,
+          "mean_goal_error": 2.08
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 46,
+          "available": 38,
+          "points": 107,
+          "exact": 3,
+          "outcome": 27,
+          "goal_error": 83,
+          "coverage_pct": 82.6,
+          "exact_pct": 7.9,
+          "outcome_pct": 71.1,
+          "avg_points": 2.82,
+          "mean_goal_error": 2.18
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 46,
+          "available": 45,
+          "points": 103,
+          "exact": 3,
+          "outcome": 28,
+          "goal_error": 104,
+          "coverage_pct": 97.8,
+          "exact_pct": 6.7,
+          "outcome_pct": 62.2,
+          "avg_points": 2.29,
+          "mean_goal_error": 2.31
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 33,
+          "available": 33,
+          "points": 78,
+          "exact": 1,
+          "outcome": 19,
+          "goal_error": 83,
+          "coverage_pct": 100.0,
+          "exact_pct": 3.0,
+          "outcome_pct": 57.6,
+          "avg_points": 2.36,
+          "mean_goal_error": 2.52
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 33,
+          "available": 33,
+          "points": 60,
+          "exact": 1,
+          "outcome": 15,
+          "goal_error": 89,
+          "coverage_pct": 100.0,
+          "exact_pct": 3.0,
+          "outcome_pct": 45.5,
+          "avg_points": 1.82,
+          "mean_goal_error": 2.7
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 25,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 46,
+          "exact_matches": 6
+        },
+        "home_form=True": {
+          "matches": 44,
+          "exact_matches": 6
+        },
+        "away_form=True": {
+          "matches": 40,
+          "exact_matches": 4
+        },
+        "standings=True": {
+          "matches": 46,
+          "exact_matches": 6
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 21,
+          "exact_matches": 3
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 33,
+          "exact": 1,
+          "outcome_correct": 19,
+          "goal_error": 83
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 33,
+          "exact": 1,
+          "outcome_correct": 19,
+          "goal_error": 83
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 33,
+          "exact": 1,
+          "outcome_correct": 19,
+          "goal_error": 83
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 33,
+          "exact": 1,
+          "outcome_correct": 15,
+          "goal_error": 89
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 32,
+          "exact": 1,
+          "outcome_correct": 18,
+          "goal_error": 83
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 32,
+          "exact": 1,
+          "outcome_correct": 18,
+          "goal_error": 83
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 32,
+          "exact": 1,
+          "outcome_correct": 18,
+          "goal_error": 83
+        },
+        "Cohere Command A+:form": {
+          "used": 26,
+          "exact": 1,
+          "outcome_correct": 19,
+          "goal_error": 58
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 16,
+          "exact": 1,
+          "outcome_correct": 8,
+          "goal_error": 39
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 16,
+          "exact": 1,
+          "outcome_correct": 9,
+          "goal_error": 38
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "8822b893f10e5d9d3f11bed151f4854d05f4bc14519abae204301bb200fcd122",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": false,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "0-2",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-2",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 74,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-2": 3,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Manchester United son 5 maçta 2 gol atıp 12 gol yiyerek ciddi bir hücum ve savunma krizi yaşıyor.",
+          "AS Roma son 5 maçta 18 gol atıp sadece 7 gol yiyerek yüksek formda ve hücum gücünde.",
+          "United'ın evindeki tek maçta 0-3 yenilmesi, deplasman avantajını Roma lehine çeviriyor.",
+          "Roma'nın Napoli ve Udinese gibi güçlü rakiplere karşı attığı goller, United'ın zayıf savunmasını zorlayacak kapasiteyi gösteriyor.",
+          "Manchester United son 5 maçta sadece 1 gol attı"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "QUOTA_OR_RATE_LIMIT"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-11-03T19:32:06.225517+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575383",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-2",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-03T19:32:06.225517+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "8a6ca557251c0ac36b786f3a67350cee4847c3a8729e155e7709b022e38c6087"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575383",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-2",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-03T19:32:06.225517+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "8a6ca557251c0ac36b786f3a67350cee4847c3a8729e155e7709b022e38c6087"
+        }
+      }
+    },
+    "minutes_before_match": 27.9,
+    "prediction_mode": "NORMAL",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "0-2",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-2",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 74,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-2": 3,
+        "0-3": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Manchester United son 5 maçta 2 gol atıp 12 gol yiyerek ciddi bir hücum ve savunma krizi yaşıyor.",
+          "AS Roma son 5 maçta 18 gol atıp sadece 7 gol yiyerek yüksek formda ve hücum gücünde.",
+          "United'ın evindeki tek maçta 0-3 yenilmesi, deplasman avantajını Roma lehine çeviriyor.",
+          "Roma'nın Napoli ve Udinese gibi güçlü rakiplere karşı attığı goller, United'ın zayıf savunmasını zorlayacak kapasiteyi gösteriyor.",
+          "Manchester United son 5 maçta sadece 1 gol attı"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "error": "QUOTA_OR_RATE_LIMIT"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NORMAL",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
+      ],
+      "summary": [
+        "Manchester United FC – AS Roma",
+        "23:00 TSİ",
+        "⚠️ Kadro eksik",
+        "4/5",
+        "AS Roma · 4/4",
+        "0–2 · 3/4",
+        "Qwen, Cohere, GPT-OSS"
+      ],
+      "headers": [],
+      "rows": [],
+      "note": "⚠️ GEÇİCİ ORTAK KARAR: AS Roma (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nManchester United FC – AS Roma | 23:00 TSİ | ⚠️ Kadro eksik | 4/5 | AS Roma · 4/4 | 0–2 · 3/4 | Qwen, Cohere, GPT-OSS\n\n⚠️ GEÇİCİ ORTAK KARAR: AS Roma (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_ready": true,
+    "consensus_status": "PROVISIONAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-03T19:32:15.944416+00:00",
+      "first_attempt_at": "2026-11-03T19:32:15.944403+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-03T20:00",
+      "group_size": 1
+    }
   },
   "575384": {
     "schema_version": 3,
@@ -52778,11 +53415,36 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-03T19:28:28.335031+00:00",
-        "error_stage": "REQUEST",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "Lille OSC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi son üç maçta dört gol attı ve iki hafta dinlendi.",
+            "Deplasman takımı son beş maçta dokuz gol yedi ve yorgun.",
+            "Puan durumu: ev sahibi 3 puanla deplasman takımından üstün.",
+            "Her iki takım da gol atma eğilimi gösteriyor, bu nedenle düşük skor olası değil."
+          ],
+          "short_reason": "Ev sahibi üstün, savunma zayıf.",
+          "score_candidates": [
+            "2-1",
+            "3-2",
+            "1-1"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest",
+            "standings"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null
       },
       {
@@ -53665,28 +54327,28 @@
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 3,
+      "successful_ai": 4,
       "total_ai": 5,
-      "outcome": null,
-      "outcome_votes": 0,
-      "outcome_share": 0,
-      "score": null,
-      "score_votes": 0,
-      "score_share": 0,
-      "winner_consensus": false,
-      "score_consensus": false,
-      "consensus_mode": "NO_COMMON",
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
       "top_outcome": "HOME",
-      "top_outcome_votes": 2,
+      "top_outcome_votes": 3,
       "top_score": "2-1",
-      "top_score_votes": 2,
-      "average_subjective_confidence": 63,
+      "top_score_votes": 3,
+      "average_subjective_confidence": 47,
       "all_outcomes": {
-        "HOME": 2,
+        "HOME": 3,
         "DRAW": 1
       },
       "all_scores": {
-        "2-1": 2,
+        "2-1": 3,
         "0-0": 1
       },
       "reasons_by_outcome": {
@@ -53695,7 +54357,7 @@
           "Deplasman ekibi Lille, son 2 deplasman maçında galibiyet alamadı ve 4 gol yiyerek savunma zafiyeti gösterdi.",
           "Bodø/Glimt 14 gün dinlenme avantajına sahipken, Lille sadece 4 gün dinlenmiş ve fikstür yoğunluğu altında.",
           "Lille'in 4-2-3-1 dizilişi, Bodø'nun 4-3-3 ile hızlı geçiş oyununa karşı savunmada açıklar bırakabilir.",
-          "Ev sahibi son maçta gol attı"
+          "Ev sahibi son üç maçta dört gol attı ve iki hafta dinlendi."
         ],
         "DRAW": [
           "Cloudflare Clef-omni structured pre-match decision"
@@ -53706,10 +54368,6 @@
         {
           "model": "Gemini 3.6 Flash",
           "error": "QUOTA_OR_RATE_LIMIT"
-        },
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
         }
       ]
     },
@@ -53773,31 +54431,31 @@
       }
     },
     "minutes_before_match": 46.5,
-    "prediction_mode": "NO_COMMON",
+    "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 3,
+      "successful_ai": 4,
       "total_ai": 5,
-      "outcome": null,
-      "outcome_votes": 0,
-      "outcome_share": 0,
-      "score": null,
-      "score_votes": 0,
-      "score_share": 0,
-      "winner_consensus": false,
-      "score_consensus": false,
-      "consensus_mode": "NO_COMMON",
+      "outcome": "HOME",
+      "outcome_votes": 3,
+      "outcome_share": 75,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
       "top_outcome": "HOME",
-      "top_outcome_votes": 2,
+      "top_outcome_votes": 3,
       "top_score": "2-1",
-      "top_score_votes": 2,
-      "average_subjective_confidence": 63,
+      "top_score_votes": 3,
+      "average_subjective_confidence": 47,
       "all_outcomes": {
-        "HOME": 2,
+        "HOME": 3,
         "DRAW": 1
       },
       "all_scores": {
-        "2-1": 2,
+        "2-1": 3,
         "0-0": 1
       },
       "reasons_by_outcome": {
@@ -53806,7 +54464,7 @@
           "Deplasman ekibi Lille, son 2 deplasman maçında galibiyet alamadı ve 4 gol yiyerek savunma zafiyeti gösterdi.",
           "Bodø/Glimt 14 gün dinlenme avantajına sahipken, Lille sadece 4 gün dinlenmiş ve fikstür yoğunluğu altında.",
           "Lille'in 4-2-3-1 dizilişi, Bodø'nun 4-3-3 ile hızlı geçiş oyununa karşı savunmada açıklar bırakabilir.",
-          "Ev sahibi son maçta gol attı"
+          "Ev sahibi son üç maçta dört gol attı ve iki hafta dinlendi."
         ],
         "DRAW": [
           "Cloudflare Clef-omni structured pre-match decision"
@@ -53817,61 +54475,35 @@
         {
           "model": "Gemini 3.6 Flash",
           "error": "QUOTA_OR_RATE_LIMIT"
-        },
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
         }
       ]
     },
     "message_format_version": 4,
     "prediction_table": {
-      "mode": "NO_COMMON",
+      "mode": "NORMAL",
       "summary_headers": [
         "⚽ Maç",
         "🕒 Saat",
         "📋 Durum",
         "🤖 Başarılı Tahmin Üreten AL",
         "🏆 Ortak tahmin",
-        "🎯 Ortak skor"
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
       ],
       "summary": [
         "FK Bodø/Glimt – Lille OSC",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "3/5",
-        "Yok",
-        "Yok"
+        "4/5",
+        "FK Bodø/Glimt · 3/4",
+        "2–1 · 3/4",
+        "Qwen, Cohere, GPT-OSS"
       ],
-      "headers": [
-        "🤖 AI",
-        "🏆 Kazanan ve kısa sebep",
-        "🎯 Skor",
-        "Oy"
-      ],
-      "rows": [
-        [
-          "Qwen",
-          "FK Bodø/Glimt — Ev avantajı ve dinlenme farkı",
-          "2–1",
-          "2/3"
-        ],
-        [
-          "GPT-OSS",
-          "FK Bodø/Glimt — ev sahibi formda üstün",
-          "2–1",
-          "2/3"
-        ],
-        [
-          "Clef",
-          "Beraberlik — Clef-omni maç öncesi verileri değerlendirdi.",
-          "0–0",
-          "1/3"
-        ]
-      ],
-      "note": "⚠️ KISMİ TAHMİN: 3/5 AL yanıtladı; 5/5 tamamlanmadı."
+      "headers": [],
+      "rows": [],
+      "note": "⚠️ GEÇİCİ ORTAK KARAR: FK Bodø/Glimt (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nFK Bodø/Glimt – Lille OSC | 23:00 TSİ | ✅ Resmî 11 | 3/5 | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nQwen | FK Bodø/Glimt — Ev avantajı ve dinlenme farkı | 2–1 | 2/3\nGPT-OSS | FK Bodø/Glimt — ev sahibi formda üstün | 2–1 | 2/3\nClef | Beraberlik — Clef-omni maç öncesi verileri değerlendirdi. | 0–0 | 1/3\n\n⚠️ KISMİ TAHMİN: 3/5 AL yanıtladı; 5/5 tamamlanmadı.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nFK Bodø/Glimt – Lille OSC | 23:00 TSİ | ✅ Resmî 11 | 4/5 | FK Bodø/Glimt · 3/4 | 2–1 · 3/4 | Qwen, Cohere, GPT-OSS\n\n⚠️ GEÇİCİ ORTAK KARAR: FK Bodø/Glimt (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
     "prediction_ready": true,
     "consensus_status": "PROVISIONAL",
     "image_required": true,
@@ -53891,7 +54523,9 @@
       "transport": "photo",
       "group_key": "2026-11-03T20:00",
       "group_size": 1
-    }
+    },
+    "prediction_update_receipt": {},
+    "prediction_update_required": true
   },
   "575385": {
     "schema_version": 3,
