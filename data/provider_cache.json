@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793736670.5758934,
+    "at": 1793736997.5740025,
     "data": {
       "filters": {
         "season": 2026
@@ -3742,7 +3742,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -3758,11 +3758,11 @@
             "crest": "https://crests.football-data.org/108.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 0,
-              "away": 0
+              "away": 1
             },
             "halfTime": {
               "home": null,
@@ -3808,7 +3808,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 81,
             "name": "FC Barcelona",
@@ -3824,10 +3824,10 @@
             "crest": "https://crests.football-data.org/58.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 0
             },
             "halfTime": {
@@ -3874,7 +3874,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -3940,7 +3940,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:27Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
@@ -3956,11 +3956,11 @@
             "crest": "https://crests.football-data.org/524.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 0,
-              "away": 0
+              "away": 1
             },
             "halfTime": {
               "home": null,
@@ -4006,7 +4006,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 66,
             "name": "Manchester United FC",
@@ -4072,7 +4072,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -4138,7 +4138,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T20:10:59Z",
+          "lastUpdated": "2026-11-03T20:16:19Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
