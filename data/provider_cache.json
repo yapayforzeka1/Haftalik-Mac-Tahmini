@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793732499.999233,
+    "at": 1793733161.8095145,
     "data": {
       "filters": {
         "season": 2026
@@ -3606,11 +3606,11 @@
           },
           "id": 575377,
           "utcDate": "2026-11-03T17:45:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T00:20:28Z",
+          "lastUpdated": "2026-11-03T19:11:47Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -3626,15 +3626,15 @@
             "crest": "https://crests.football-data.org/498.png"
           },
           "score": {
-            "winner": null,
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             }
           },
           "odds": {
@@ -3672,11 +3672,11 @@
           },
           "id": 575378,
           "utcDate": "2026-11-03T17:45:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-03T00:20:28Z",
+          "lastUpdated": "2026-11-03T19:11:47Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -3692,15 +3692,15 @@
             "crest": "https://crests.football-data.org/10.png"
           },
           "score": {
-            "winner": null,
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 2,
+              "away": 0
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 2,
+              "away": 0
             }
           },
           "odds": {
@@ -21347,7 +21347,7 @@
     }
   },
   "d8c7b9d4fdaef58e503af8dd6bcf69965bfcd05215e5cc9b5188707a0ef08e5c": {
-    "at": 1793732678.2869747,
+    "at": 1793733167.9019392,
     "data": {
       "area": {
         "id": 2077,
@@ -21417,7 +21417,7 @@
     }
   },
   "dba78c1eeefe09cb9023ef5befec100c56125becca7087fd9382cccaab52db7a": {
-    "at": 1793732684.3723042,
+    "at": 1793733174.0845041,
     "data": {
       "area": {
         "id": 2077,
