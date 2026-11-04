@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793819468.4252293,
+    "at": 1793819767.1897354,
     "data": {
       "filters": {
         "season": 2026
@@ -4200,11 +4200,11 @@
           },
           "id": 575386,
           "utcDate": "2026-11-04T17:45:00Z",
-          "status": "IN_PLAY",
+          "status": "LIVE",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:10:41Z",
+          "lastUpdated": "2026-11-04T19:16:03Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4270,7 +4270,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:10:25Z",
+          "lastUpdated": "2026-11-04T19:15:31Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -9809,76 +9809,6 @@
           "name": "Jesús Gil Manzano",
           "type": "REFEREE",
           "nationality": "Spain"
-        }
-      ]
-    }
-  },
-  "dba78c1eeefe09cb9023ef5befec100c56125becca7087fd9382cccaab52db7a": {
-    "at": 1793733174.0845041,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 4,
-        "winner": null
-      },
-      "id": 575384,
-      "utcDate": "2026-11-03T20:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 4,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-03T00:20:28Z",
-      "homeTeam": {
-        "id": 5721,
-        "name": "FK Bodø/Glimt",
-        "shortName": "Bodø/Glimt",
-        "tla": "FK",
-        "crest": "https://crests.football-data.org/5721.png"
-      },
-      "awayTeam": {
-        "id": 521,
-        "name": "Lille OSC",
-        "shortName": "Lille",
-        "tla": "LIL",
-        "crest": "https://crests.football-data.org/521.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 38806,
-          "name": "João Pinheiro",
-          "type": "REFEREE",
-          "nationality": "Portugal"
         }
       ]
     }
@@ -20590,7 +20520,7 @@
     }
   },
   "917d41ad60bb04db88a6ff7ca2e84c60d36ade57da17ab10071e17c8ad1c270f": {
-    "at": 1793819474.5869775,
+    "at": 1793819773.03718,
     "data": {
       "area": {
         "id": 2077,
@@ -20730,7 +20660,7 @@
     }
   },
   "37688be91264be1af9bdb03da3afdcc07550efbdffa5f84504fd11b03860544d": {
-    "at": 1793819480.7218816,
+    "at": 1793819788.2951875,
     "data": {
       "area": {
         "id": 2077,
