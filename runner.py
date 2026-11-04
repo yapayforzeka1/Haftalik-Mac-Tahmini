@@ -312,6 +312,13 @@ def _persist_delivery_checkpoint(path):
         run_git(['pull', '--rebase', 'origin', branch])
         run_git(['push', 'origin', f'HEAD:refs/heads/{branch}'])
     except (subprocess.SubprocessError, OSError) as exc:
+        # A conflicted 'git pull --rebase' leaves .git/rebase-merge behind, which makes
+        # every later git command in this job fail. Always clean it up before giving up.
+        try:
+            subprocess.run(['git', 'rebase', '--abort'], cwd=ROOT, check=False,
+                           capture_output=True, text=True, timeout=60)
+        except (subprocess.SubprocessError, OSError):
+            pass
         raise StateError('Gönderim öncesi teslimat kaydı GitHub üzerinde kalıcılaştırılamadı.') from exc
 
 
