@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793816470.1277523,
+    "at": 1793816769.332173,
     "data": {
       "filters": {
         "season": 2026
@@ -4200,11 +4200,11 @@
           },
           "id": 575386,
           "utcDate": "2026-11-04T17:45:00Z",
-          "status": "IN_PLAY",
+          "status": "TIMED",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T18:20:35Z",
+          "lastUpdated": "2026-11-04T01:32:00Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4220,11 +4220,11 @@
             "crest": "https://crests.football-data.org/86.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
-              "away": 0
+              "home": null,
+              "away": null
             },
             "halfTime": {
               "home": null,
@@ -4266,11 +4266,11 @@
           },
           "id": 575387,
           "utcDate": "2026-11-04T17:45:00Z",
-          "status": "IN_PLAY",
+          "status": "TIMED",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T18:21:07Z",
+          "lastUpdated": "2026-11-04T01:32:00Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -4286,11 +4286,11 @@
             "crest": "https://crests.football-data.org/64.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
-              "away": 1
+              "home": null,
+              "away": null
             },
             "halfTime": {
               "home": null,
