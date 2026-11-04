@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793822472.558425,
+    "at": 1793822773.0377798,
     "data": {
       "filters": {
         "season": 2026
@@ -4332,11 +4332,11 @@
           },
           "id": 575388,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:39Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -4352,11 +4352,11 @@
             "crest": "https://crests.football-data.org/65.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4398,11 +4398,11 @@
           },
           "id": 575389,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:39Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -4418,11 +4418,11 @@
             "crest": "https://crests.football-data.org/57.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4464,11 +4464,11 @@
           },
           "id": 575390,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:39Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -4484,11 +4484,11 @@
             "crest": "https://crests.football-data.org/851.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4530,11 +4530,11 @@
           },
           "id": 575391,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:39Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -4550,11 +4550,11 @@
             "crest": "https://crests.football-data.org/90.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4596,11 +4596,11 @@
           },
           "id": 575392,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:07Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -4616,11 +4616,11 @@
             "crest": "https://crests.football-data.org/113.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4662,11 +4662,11 @@
           },
           "id": 575393,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T01:32:00Z",
+          "lastUpdated": "2026-11-04T20:05:07Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -4682,11 +4682,11 @@
             "crest": "https://crests.football-data.org/7397.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4728,11 +4728,11 @@
           },
           "id": 575394,
           "utcDate": "2026-11-04T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T00:20:28Z",
+          "lastUpdated": "2026-11-04T20:05:07Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -4748,11 +4748,11 @@
             "crest": "https://crests.football-data.org/10233.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
