@@ -349,7 +349,7 @@ def _display_team(name: str) -> str:
     return aliases.get(name, name)
 
 
-def _draw_header(canvas, draw, records, test_mode: bool) -> int:
+def _draw_header(canvas, draw, records, test_mode: bool, update_label=None) -> int:
     left, right = TABLE_X[0], TABLE_X[-1]
     _rounded(draw, (left, 12, right, HEADER_HEIGHT - 13), 23, PANEL, BORDER, 2)
     _draw_seal(draw, left + 85, 104, 70)
@@ -365,6 +365,10 @@ def _draw_header(canvas, draw, records, test_mode: bool) -> int:
     if test_mode:
         _rounded(draw, (1298, 142, 1412, 176), 12, "#33270d", WARN, 2)
         _draw_center(draw, (1355, 148), "TEST", _font(19, True), WARN)
+    if update_label:
+        right_edge = 1284 if test_mode else 1412
+        _rounded(draw, (right_edge - 200, 142, right_edge, 176), 12, "#10283a", BLUE, 2)
+        _draw_center(draw, (right_edge - 100, 148), str(update_label), _font(19, True), BLUE)
     return HEADER_HEIGHT
 
 
@@ -546,7 +550,7 @@ def _draw_footer(draw, top):
     _draw_center(draw, ((left + right)/2, top + 78), note, _font(14), MUTED)
 
 
-def render_match_group_image(records, test_mode=False):
+def render_match_group_image(records, test_mode=False, update_label=None):
     """Generate a concise seven-row-style image, with no new AI/API predictions."""
     if not records:
         raise ValueError("Görsel için en az bir maç gerekir.")
@@ -557,7 +561,7 @@ def render_match_group_image(records, test_mode=False):
     total_h = footer_y + FOOTER_H + 8
     canvas = Image.new("RGB", (WIDTH, total_h), BG)
     draw = ImageDraw.Draw(canvas)
-    _draw_header(canvas, draw, records, test_mode)
+    _draw_header(canvas, draw, records, test_mode, update_label)
     _draw_table_header(draw, header_y)
     y = rows_y
     for record in records:
@@ -567,6 +571,7 @@ def render_match_group_image(records, test_mode=False):
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     stamp = kickoff_key(records[0]).replace(":", "").replace("-", "")
     key = hashlib.sha256("|".join(str(r.get("match_id", r.get("home_team", ""))) for r in records).encode()).hexdigest()[:10]
-    path = REPORT_DIR / f"match_prediction_{stamp}_{key}.png"
+    suffix = "_update" if update_label else ""
+    path = REPORT_DIR / f"match_prediction_{stamp}_{key}{suffix}.png"
     canvas.save(path, optimize=True)
     return path
