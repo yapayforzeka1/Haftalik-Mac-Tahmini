@@ -57048,10 +57048,13 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "NOT_ANNOUNCED",
+        "home": [],
+        "away": []
       }
     },
     "context_prepared_at": "2026-11-04T16:16:28.898160+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-11-04T16:46:11.797326+00:00"
   }
 }
