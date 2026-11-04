@@ -59162,7 +59162,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-04T18:31:27.015864+00:00",
@@ -59832,11 +59832,19 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-04T19:41:03.973304+00:00",
       "first_attempt_at": "2026-11-04T19:32:20.676314+00:00",
       "attempt_count": 2,
+      "group_key": "2026-11-04T20:00",
+      "group_size": 2,
+      "finished_at": "2026-11-04T19:41:06.343811+00:00"
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
       "group_key": "2026-11-04T20:00",
       "group_size": 2
     }
@@ -61207,7 +61215,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-04T18:31:51.481210+00:00",
@@ -61945,11 +61953,19 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-04T19:41:03.973323+00:00",
       "first_attempt_at": "2026-11-04T19:32:20.676334+00:00",
       "attempt_count": 2,
+      "group_key": "2026-11-04T20:00",
+      "group_size": 2,
+      "finished_at": "2026-11-04T19:41:06.343832+00:00"
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
       "group_key": "2026-11-04T20:00",
       "group_size": 2
     }
