@@ -57835,11 +57835,35 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "INVALID_PREDICTION",
-        "retry_after": "2026-11-04T19:16:27.239602+00:00",
-        "error_stage": "VALIDATE",
+        "success": true,
+        "result": {
+          "home_team": "RB Leipzig",
+          "away_team": "Manchester City FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi son 5 maçta maç başına 1,8 gol ortalamasıyla oynuyor",
+            "Manchester City deplasmanında maç başına 2,2 gol atıyor ancak savunma açıklıkları gösteriyor",
+            "RB Leipzig son iki iç saha maçını gol vermeden kazandı",
+            "Her iki takım da benzer dinlenme süresine sahip ve önemli sakatlık bildirilmedi"
+          ],
+          "short_reason": "Ev sahibi kalitesi ve form avantajı",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "official_xi"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null
       },
       {
@@ -58739,16 +58763,16 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 4,
-      "outcome_share": 100,
+      "outcome_share": 80,
       "score": null,
       "score_votes": 0,
       "score_share": 0,
@@ -58759,12 +58783,14 @@
       "top_outcome_votes": 4,
       "top_score": "1-2",
       "top_score_votes": 2,
-      "average_subjective_confidence": 68,
+      "average_subjective_confidence": 54,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 4,
+        "HOME": 1
       },
       "all_scores": {
         "1-2": 2,
+        "2-1": 1,
         "0-2": 2
       },
       "reasons_by_outcome": {
@@ -58774,15 +58800,16 @@
           "Deplasman ekibinin kadro kalitesi ve hücum organizasyonları maçın belirleyicisi olacaktır.",
           "İki takımın da son maçlardaki performansları karşılıklı gol ihtimalini artırıyor.",
           "City'nin Haaland ve Foden liderliğindeki hücum gücü, Leipzig'in savunma açıklarını cezalandırır."
+        ],
+        "HOME": [
+          "Ev sahibi son 5 maçta maç başına 1,8 gol ortalamasıyla oynuyor",
+          "Manchester City deplasmanında maç başına 2,2 gol atıyor ancak savunma açıklıkları gösteriyor",
+          "RB Leipzig son iki iç saha maçını gol vermeden kazandı",
+          "Her iki takım da benzer dinlenme süresine sahip ve önemli sakatlık bildirilmedi"
         ]
       },
-      "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
-        }
-      ]
+      "disagreement": true,
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-04T19:02:13.021662+00:00",
     "experimental_predictions": {
@@ -58855,11 +58882,11 @@
     "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 4,
-      "outcome_share": 100,
+      "outcome_share": 80,
       "score": null,
       "score_votes": 0,
       "score_share": 0,
@@ -58870,12 +58897,14 @@
       "top_outcome_votes": 4,
       "top_score": "1-2",
       "top_score_votes": 2,
-      "average_subjective_confidence": 68,
+      "average_subjective_confidence": 54,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 4,
+        "HOME": 1
       },
       "all_scores": {
         "1-2": 2,
+        "2-1": 1,
         "0-2": 2
       },
       "reasons_by_outcome": {
@@ -58885,15 +58914,16 @@
           "Deplasman ekibinin kadro kalitesi ve hücum organizasyonları maçın belirleyicisi olacaktır.",
           "İki takımın da son maçlardaki performansları karşılıklı gol ihtimalini artırıyor.",
           "City'nin Haaland ve Foden liderliğindeki hücum gücü, Leipzig'in savunma açıklarını cezalandırır."
+        ],
+        "HOME": [
+          "Ev sahibi son 5 maçta maç başına 1,8 gol ortalamasıyla oynuyor",
+          "Manchester City deplasmanında maç başına 2,2 gol atıyor ancak savunma açıklıkları gösteriyor",
+          "RB Leipzig son iki iç saha maçını gol vermeden kazandı",
+          "Her iki takım da benzer dinlenme süresine sahip ve önemli sakatlık bildirilmedi"
         ]
       },
-      "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
-        }
-      ]
+      "disagreement": true,
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -58910,8 +58940,8 @@
         "RB Leipzig – Manchester City FC",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Manchester City FC · 4/4",
+        "5/5",
+        "Manchester City FC · 4/5",
         "Yok"
       ],
       "headers": [
@@ -58923,19 +58953,24 @@
         [
           "Gemini, Qwen",
           "1–2",
-          "2/4"
+          "2/5"
         ],
         [
           "GPT-OSS, Clef",
           "0–2",
-          "2/4"
+          "2/5"
+        ],
+        [
+          "Cohere",
+          "2–1",
+          "1/5"
         ]
       ],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Manchester City FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nRB Leipzig – Manchester City FC | 23:00 TSİ | ✅ Resmî 11 | 4/5 | Manchester City FC · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGemini, Qwen | 1–2 | 2/4\nGPT-OSS, Clef | 0–2 | 2/4\n\n⚠️ GEÇİCİ ORTAK KARAR: Manchester City FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nRB Leipzig – Manchester City FC | 23:00 TSİ | ✅ Resmî 11 | 5/5 | Manchester City FC · 4/5 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGemini, Qwen | 1–2 | 2/5\nGPT-OSS, Clef | 0–2 | 2/5\nCohere | 2–1 | 1/5",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -58953,7 +58988,18 @@
       "transport": "photo",
       "group_key": "2026-11-04T20:00",
       "group_size": 5
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        58
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-04T19:21:50.784855+00:00"
   },
   "575389": {
     "schema_version": 3,
@@ -59155,7 +59201,7 @@
     },
     "context_prepared_at": "2026-11-04T18:31:39.108048+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-04T19:16:07.364076+00:00"
+    "xi_checked_at": "2026-11-04T19:21:34.405430+00:00"
   },
   "575390": {
     "schema_version": 3,
@@ -60585,7 +60631,7 @@
     },
     "context_prepared_at": "2026-11-04T18:32:03.858030+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-04T19:16:27.830967+00:00"
+    "xi_checked_at": "2026-11-04T19:21:36.531343+00:00"
   },
   "575392": {
     "schema_version": 3,
@@ -61958,11 +62004,36 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "INVALID_PREDICTION",
-        "retry_after": "2026-11-04T19:18:30.167770+00:00",
-        "error_stage": "VALIDATE",
+        "success": true,
+        "result": {
+          "home_team": "Racing Club de Lens",
+          "away_team": "Como 1907",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 0,
+          "reasons": [
+            "Como son 5 maçta ortalama 2,6 gol attı",
+            "Lens evinde ortalama 1,0 gol attı",
+            "Como savunma ortalama 0,6 gol yedi",
+            "Lens evinde 2 maçta 3 gol yedi"
+          ],
+          "short_reason": "Como'nun formı ve savunması üstün",
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "2-1"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null
       },
       {
@@ -62862,32 +62933,32 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": "0-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "0-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 69,
+      "average_subjective_confidence": 55,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
-        "1-2": 1,
+        "1-2": 2,
         "0-2": 3
       },
       "reasons_by_outcome": {
@@ -62900,12 +62971,7 @@
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-04T19:04:13.796003+00:00",
     "experimental_predictions": {
@@ -62978,27 +63044,27 @@
     "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": "0-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "0-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 69,
+      "average_subjective_confidence": 55,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
-        "1-2": 1,
+        "1-2": 2,
         "0-2": 3
       },
       "reasons_by_outcome": {
@@ -63011,12 +63077,7 @@
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -63034,18 +63095,18 @@
         "Racing Club de Lens – Como 1907",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Como 1907 · 4/4",
-        "0–2 · 3/4",
+        "5/5",
+        "Como 1907 · 5/5",
+        "0–2 · 3/5",
         "Qwen, GPT-OSS, Clef"
       ],
       "headers": [],
       "rows": [],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Como 1907 (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nRacing Club de Lens – Como 1907 | 23:00 TSİ | ✅ Resmî 11 | 4/5 | Como 1907 · 4/4 | 0–2 · 3/4 | Qwen, GPT-OSS, Clef\n\n⚠️ GEÇİCİ ORTAK KARAR: Como 1907 (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nRacing Club de Lens – Como 1907 | 23:00 TSİ | ✅ Resmî 11 | 5/5 | Como 1907 · 5/5 | 0–2 · 3/5 | Qwen, GPT-OSS, Clef",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -63063,7 +63124,18 @@
       "transport": "photo",
       "group_key": "2026-11-04T20:00",
       "group_size": 5
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        59
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-04T19:21:51.405095+00:00"
   },
   "575394": {
     "schema_version": 3,
