@@ -56905,7 +56905,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -56940,7 +56943,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -56972,7 +56978,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -57006,7 +57015,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -57035,7 +57047,10 @@
         "error": null,
         "retry_after": null,
         "error_stage": null,
-        "http_status": null
+        "http_status": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -57744,6 +57759,136 @@
       "transport": "photo",
       "group_key": "2026-11-04T17:45",
       "group_size": 1
+    },
+    "actual": {
+      "home": 2,
+      "away": 3,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-04T19:46:03.658221+00:00"
+    },
+    "consensus_points": 4,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.6 Flash",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": -1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid son 5 maçının tamamını kazanarak çok formda bir dönemden geçiyor.",
+            "Real Madrid hücum hattı son 5 maçta 17 gol atarak yüksek skor üretme kapasitesi sergiledi.",
+            "AEK üst düzey rakiplere karşı savunmada zorlanıyor ve kalesinde çok gol görüyor.",
+            "AEK ev sahibi avantajıyla skor üretebilse de kalite farkı Real Madrid galibiyetini öne çıkarıyor."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid son 5 maçta 17 gol atıp sadece 6 gol yedi, formda zirvede.",
+            "AEK son 3 maçta 8 gol yedi ve Manchester City'ye 5-1 yenildi, savunma kırılgan.",
+            "Real Madrid'in deplasman performansı (3 maçta 9 gol) AEK'nin evdeki tek galibiyetini (1-0 LASK) gölgede bırakıyor.",
+            "AEK'nin 15 gün dinlenmesi, Real Madrid'in 3 gün dinlenmesine rağmen kadro derinliği farkını kapatmaya yetmez."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 3,
+          "home_bias": -2,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Real Madrid son 5 maçta güçlü hücum sergiledi",
+            "PAE AEK savunmasız, 8 gol yedi",
+            "Ev sahibi 14.9 gün dinlendi, Real 3.1 günlük rotasyona sahip"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 3,
+          "home_bias": -2,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 3 maçta savunma zayıf",
+            "Deplasman son 5 maçta gol üretimi yüksek",
+            "Deplasman dinlenme süresi kısa ama formda üstün",
+            "Real Madrid şampiyonluk hedefiyle motive"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -2,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "bc9fe28a9dd6f84391bc4a7a8bcb995963b272586930ee42b4271ce342930cac",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575388": {
@@ -59871,7 +60016,7 @@
         "success": false,
         "result": null,
         "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-04T19:41:38.765293+00:00",
+        "retry_after": "2026-11-04T19:56:16.620372+00:00",
         "error_stage": "REQUEST",
         "http_status": 503
       },
