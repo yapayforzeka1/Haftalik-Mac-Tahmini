@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793814968.7039206,
+    "at": 1793815274.7434635,
     "data": {
       "filters": {
         "season": 2026
@@ -4204,7 +4204,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T17:56:03Z",
+          "lastUpdated": "2026-11-04T18:00:19Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4270,7 +4270,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T17:55:31Z",
+          "lastUpdated": "2026-11-04T18:00:51Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -4366,7 +4366,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 11079,
+              "name": "Marco Guida",
+              "type": "REFEREE",
+              "nationality": "Italy"
+            }
+          ]
         },
         {
           "area": {
@@ -4425,7 +4432,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43943,
+              "name": "Tobias Stieler",
+              "type": "REFEREE",
+              "nationality": "Germany"
+            }
+          ]
         },
         {
           "area": {
@@ -4484,7 +4498,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 15680,
+              "name": "Irfan Peljto",
+              "type": "REFEREE",
+              "nationality": "Bosnia and Herzegovina"
+            }
+          ]
         },
         {
           "area": {
@@ -4543,7 +4564,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43858,
+              "name": "Serdar Gözübüyük",
+              "type": "REFEREE",
+              "nationality": "Netherlands"
+            }
+          ]
         },
         {
           "area": {
@@ -4602,7 +4630,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 11605,
+              "name": "Michael Oliver",
+              "type": "REFEREE",
+              "nationality": "England"
+            }
+          ]
         },
         {
           "area": {
@@ -4661,7 +4696,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 44921,
+              "name": "Rohit Saggi",
+              "type": "REFEREE",
+              "nationality": "Norway"
+            }
+          ]
         },
         {
           "area": {
@@ -4720,7 +4762,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 56923,
+              "name": "Sander Van der Eijk",
+              "type": "REFEREE",
+              "nationality": "Netherlands"
+            }
+          ]
         },
         {
           "area": {
