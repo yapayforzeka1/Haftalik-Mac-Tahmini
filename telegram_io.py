@@ -51,11 +51,14 @@ class Telegram:
             raise TelegramError(error)
         return data.get("result")
 
-    def photo(self, chat_id, path):
+    def photo(self, chat_id, path, caption=None):
+        payload = {"chat_id": chat_id}
+        if caption:
+            payload["caption"] = str(caption)[:1000]
         try:
             with path.open("rb") as file:
                 response = requests.post(f"https://api.telegram.org/bot{self.token}/sendPhoto",
-                    data={"chat_id": chat_id}, files={"photo": file}, timeout=30)
+                    data=payload, files={"photo": file}, timeout=30)
         except requests.RequestException:
             raise TelegramDeliveryUncertain(
                 "Telegram görsel bağlantısı belirsiz; otomatik tekrar engellendi.") from None
