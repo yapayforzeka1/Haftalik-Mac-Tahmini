@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793825468.4694264,
+    "at": 1793825768.9040375,
     "data": {
       "filters": {
         "season": 2026
@@ -4336,7 +4336,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:27Z",
+          "lastUpdated": "2026-11-04T20:54:43Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -4359,8 +4359,8 @@
               "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             }
           },
           "odds": {
@@ -4402,7 +4402,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:59Z",
+          "lastUpdated": "2026-11-04T20:53:07Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -4425,8 +4425,8 @@
               "away": 2
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 2
             }
           },
           "odds": {
@@ -4468,7 +4468,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:27Z",
+          "lastUpdated": "2026-11-04T20:55:47Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -4534,7 +4534,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:59Z",
+          "lastUpdated": "2026-11-04T20:55:15Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -4600,7 +4600,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:59Z",
+          "lastUpdated": "2026-11-04T20:55:15Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -4623,8 +4623,8 @@
               "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 1
             }
           },
           "odds": {
@@ -4666,7 +4666,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:59Z",
+          "lastUpdated": "2026-11-04T20:55:15Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -4732,7 +4732,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T20:50:59Z",
+          "lastUpdated": "2026-11-04T20:54:11Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -4755,8 +4755,8 @@
               "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 1
             }
           },
           "odds": {
