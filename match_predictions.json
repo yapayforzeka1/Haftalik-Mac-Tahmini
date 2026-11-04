@@ -59832,13 +59832,16 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "UNCERTAIN",
       "mode": "group",
       "attempted_at": "2026-11-04T19:32:20.676326+00:00",
       "first_attempt_at": "2026-11-04T19:32:20.676314+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-04T20:00",
-      "group_size": 2
+      "group_size": 2,
+      "error": "TelegramDeliveryUncertain",
+      "finished_at": "2026-11-04T19:32:52.698833+00:00",
+      "retry_after_at": "2026-11-04T19:37:52.698857+00:00"
     }
   },
   "575390": {
@@ -61945,13 +61948,16 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "UNCERTAIN",
       "mode": "group",
       "attempted_at": "2026-11-04T19:32:20.676336+00:00",
       "first_attempt_at": "2026-11-04T19:32:20.676334+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-04T20:00",
-      "group_size": 2
+      "group_size": 2,
+      "error": "TelegramDeliveryUncertain",
+      "finished_at": "2026-11-04T19:32:52.698877+00:00",
+      "retry_after_at": "2026-11-04T19:37:52.698884+00:00"
     }
   },
   "575392": {
