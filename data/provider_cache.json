@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793819167.2805374,
+    "at": 1793819468.4252293,
     "data": {
       "filters": {
         "season": 2026
@@ -4204,7 +4204,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:05:41Z",
+          "lastUpdated": "2026-11-04T19:10:41Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4270,7 +4270,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:05:55Z",
+          "lastUpdated": "2026-11-04T19:10:25Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -20590,7 +20590,7 @@
     }
   },
   "917d41ad60bb04db88a6ff7ca2e84c60d36ade57da17ab10071e17c8ad1c270f": {
-    "at": 1793818933.6622415,
+    "at": 1793819474.5869775,
     "data": {
       "area": {
         "id": 2077,
@@ -20730,7 +20730,7 @@
     }
   },
   "37688be91264be1af9bdb03da3afdcc07550efbdffa5f84504fd11b03860544d": {
-    "at": 1793818966.5926826,
+    "at": 1793819480.7218816,
     "data": {
       "area": {
         "id": 2077,
