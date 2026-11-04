@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793820065.52416,
+    "at": 1793820376.7470982,
     "data": {
       "filters": {
         "season": 2026
@@ -4204,7 +4204,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:20:41Z",
+          "lastUpdated": "2026-11-04T19:25:41Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4220,15 +4220,15 @@
             "crest": "https://crests.football-data.org/86.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 1
             },
             "halfTime": {
-              "home": 0,
-              "away": 0
+              "home": 1,
+              "away": 1
             }
           },
           "odds": {
@@ -4270,7 +4270,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T19:20:51Z",
+          "lastUpdated": "2026-11-04T19:26:11Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -4286,10 +4286,10 @@
             "crest": "https://crests.football-data.org/64.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 2
             },
             "halfTime": {
@@ -20520,7 +20520,7 @@
     }
   },
   "917d41ad60bb04db88a6ff7ca2e84c60d36ade57da17ab10071e17c8ad1c270f": {
-    "at": 1793820094.8181815,
+    "at": 1793820382.7248323,
     "data": {
       "area": {
         "id": 2077,
@@ -20660,7 +20660,7 @@
     }
   },
   "37688be91264be1af9bdb03da3afdcc07550efbdffa5f84504fd11b03860544d": {
-    "at": 1793820101.01224,
+    "at": 1793820388.9284394,
     "data": {
       "area": {
         "id": 2077,
