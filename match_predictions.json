@@ -56871,8 +56871,174 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.6 Flash",
+        "success": true,
+        "result": {
+          "home_team": "PAE AEK",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "1-3",
+          "confidence": 78,
+          "reasons": [
+            "Real Madrid son 5 maçının tamamını kazanarak çok formda bir dönemden geçiyor.",
+            "Real Madrid hücum hattı son 5 maçta 17 gol atarak yüksek skor üretme kapasitesi sergiledi.",
+            "AEK üst düzey rakiplere karşı savunmada zorlanıyor ve kalesinde çok gol görüyor.",
+            "AEK ev sahibi avantajıyla skor üretebilse de kalite farkı Real Madrid galibiyetini öne çıkarıyor."
+          ],
+          "short_reason": "Real Madrid form ve kalite farkıyla üstün.",
+          "score_candidates": [
+            "1-3",
+            "0-3",
+            "1-4"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "model_id": "gemini-3.6-flash"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "PAE AEK",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 75,
+          "reasons": [
+            "Real Madrid son 5 maçta 17 gol atıp sadece 6 gol yedi, formda zirvede.",
+            "AEK son 3 maçta 8 gol yedi ve Manchester City'ye 5-1 yenildi, savunma kırılgan.",
+            "Real Madrid'in deplasman performansı (3 maçta 9 gol) AEK'nin evdeki tek galibiyetini (1-0 LASK) gölgede bırakıyor.",
+            "AEK'nin 15 gün dinlenmesi, Real Madrid'in 3 gün dinlenmesine rağmen kadro derinliği farkını kapatmaya yetmez."
+          ],
+          "short_reason": "Real Madrid form ve kadro derinliği üstün",
+          "score_candidates": [
+            "0-3",
+            "1-3",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "PAE AEK",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 70,
+          "reasons": [
+            "Real Madrid son 5 maçta güçlü hücum sergiledi",
+            "PAE AEK savunmasız, 8 gol yedi",
+            "Ev sahibi 14.9 gün dinlendi, Real 3.1 günlük rotasyona sahip"
+          ],
+          "short_reason": "Real Madrid üstün, deplasman galibi",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-3"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "PAE AEK",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 68,
+          "reasons": [
+            "Ev sahibi son 3 maçta savunma zayıf",
+            "Deplasman son 5 maçta gol üretimi yüksek",
+            "Deplasman dinlenme süresi kısa ama formda üstün",
+            "Real Madrid şampiyonluk hedefiyle motive"
+          ],
+          "short_reason": "Deplasman formu çok üstün",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-3"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "PAE AEK",
+          "away_team": "Real Madrid CF",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 93,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-3",
+            "0-4",
+            "0-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -57051,10 +57217,525 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-11-04T16:16:28.898160+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-04T17:11:11.768786+00:00"
+    "xi_checked_at": "2026-11-04T17:16:09.058602+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-11-04T17:16:16.512802+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 3 maçta 3-8 gol dengesi. Deplasman: son 5 maçta 17-6 gol dengesi.",
+      "home": {
+        "form": "Son 3 doğrulanmış maç: L-L-W.",
+        "goals_trend": "Son 3 maç: 3 gol attı, 8 gol yedi; maç başına 1.00 attı / 2.67 yedi.",
+        "recent_fixtures": [
+          "2026-10-20 Manchester City FC: 1-5 (AWAY)",
+          "2026-10-14 FK Shakhtar Donetsk: 1-3 (AWAY)",
+          "2026-09-08 LASK Linz: 1-0 (HOME)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 1W-0D-0L; 1 gol attı, 0 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-W-W.",
+        "goals_trend": "Son 5 maç: 17 gol attı, 6 gol yedi; maç başına 3.40 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-11-01 Real Racing Club de Santander: 3-0 (AWAY)",
+          "2026-10-25 FC Barcelona: 2-1 (AWAY)",
+          "2026-10-21 RB Leipzig: 4-1 (HOME)",
+          "2026-10-18 Sevilla FC: 4-1 (HOME)",
+          "2026-10-14 AS Roma: 4-3 (AWAY)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 3W-0D-0L; 9 gol attı, 4 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 27,
+          "points": 3,
+          "played": 3
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 5,
+          "points": 9,
+          "played": 3
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 14.9 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 3.1 gün dinlenme. Son 14 günde 3 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-04T17:16:16.768627+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-04T17:16:16.768643+00:00",
+      "source_refs": [
+        {
+          "team_id": 1899,
+          "endpoint": "/v4/teams/1899/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 86,
+          "endpoint": "/v4/teams/86/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 3 maçta 3-8 gol dengesi.",
+        "Deplasman: son 5 maçta 17-6 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 54,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 54,
+          "available": 19,
+          "points": 64,
+          "exact": 3,
+          "outcome": 15,
+          "goal_error": 42,
+          "coverage_pct": 35.2,
+          "exact_pct": 15.8,
+          "outcome_pct": 78.9,
+          "avg_points": 3.37,
+          "mean_goal_error": 2.21
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 54,
+          "available": 45,
+          "points": 119,
+          "exact": 3,
+          "outcome": 30,
+          "goal_error": 105,
+          "coverage_pct": 83.3,
+          "exact_pct": 6.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.64,
+          "mean_goal_error": 2.33
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 54,
+          "available": 53,
+          "points": 133,
+          "exact": 4,
+          "outcome": 34,
+          "goal_error": 121,
+          "coverage_pct": 98.1,
+          "exact_pct": 7.5,
+          "outcome_pct": 64.2,
+          "avg_points": 2.51,
+          "mean_goal_error": 2.28
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 41,
+          "available": 41,
+          "points": 104,
+          "exact": 1,
+          "outcome": 25,
+          "goal_error": 102,
+          "coverage_pct": 100.0,
+          "exact_pct": 2.4,
+          "outcome_pct": 61.0,
+          "avg_points": 2.54,
+          "mean_goal_error": 2.49
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 41,
+          "available": 41,
+          "points": 92,
+          "exact": 3,
+          "outcome": 21,
+          "goal_error": 102,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.3,
+          "outcome_pct": 51.2,
+          "avg_points": 2.24,
+          "mean_goal_error": 2.49
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 26,
+          "exact_matches": 3
+        },
+        "research_available=False": {
+          "matches": 54,
+          "exact_matches": 8
+        },
+        "home_form=True": {
+          "matches": 52,
+          "exact_matches": 8
+        },
+        "away_form=True": {
+          "matches": 48,
+          "exact_matches": 6
+        },
+        "standings=True": {
+          "matches": 54,
+          "exact_matches": 8
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 28,
+          "exact_matches": 5
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 41,
+          "exact": 1,
+          "outcome_correct": 25,
+          "goal_error": 102
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 41,
+          "exact": 1,
+          "outcome_correct": 25,
+          "goal_error": 102
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 41,
+          "exact": 1,
+          "outcome_correct": 25,
+          "goal_error": 102
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 41,
+          "exact": 3,
+          "outcome_correct": 21,
+          "goal_error": 102
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 40,
+          "exact": 2,
+          "outcome_correct": 24,
+          "goal_error": 100
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 40,
+          "exact": 2,
+          "outcome_correct": 24,
+          "goal_error": 100
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 40,
+          "exact": 2,
+          "outcome_correct": 24,
+          "goal_error": 100
+        },
+        "Cohere Command A+:form": {
+          "used": 33,
+          "exact": 1,
+          "outcome_correct": 22,
+          "goal_error": 80
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 23,
+          "exact": 1,
+          "outcome_correct": 14,
+          "goal_error": 55
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 22,
+          "exact": 2,
+          "outcome_correct": 14,
+          "goal_error": 50
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "55032d93c0b5a174715f14a8bdf6a5df6b98068aa9f06269ffa687547b024cf8",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.6-flash",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": true,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 5,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 5,
+      "top_score": "0-3",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 77,
+      "all_outcomes": {
+        "AWAY": 5
+      },
+      "all_scores": {
+        "1-3": 1,
+        "0-3": 2,
+        "0-2": 2
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Real Madrid son 5 maçının tamamını kazanarak çok formda bir dönemden geçiyor.",
+          "Real Madrid hücum hattı son 5 maçta 17 gol atarak yüksek skor üretme kapasitesi sergiledi.",
+          "AEK üst düzey rakiplere karşı savunmada zorlanıyor ve kalesinde çok gol görüyor.",
+          "AEK ev sahibi avantajıyla skor üretebilse de kalite farkı Real Madrid galibiyetini öne çıkarıyor.",
+          "Real Madrid son 5 maçta 17 gol atıp sadece 6 gol yedi, formda zirvede."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": []
+    },
+    "prediction_created_at": "2026-11-04T17:16:30.767710+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575386",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-3",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.6 Flash",
+              "model_id": "gemini-3.6-flash"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-04T17:16:30.767710+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "5f09268bfd4118af774087dee2df4f11b32f3f6ebe7b64344541303def2fe7e9"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575386",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": null,
+          "predicted_outcome": null,
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.6 Flash",
+              "model_id": "gemini-3.6-flash"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-04T17:16:30.767710+00:00",
+          "failure_reason": "TIED_TOP_SCORES",
+          "source_votes_sha256": "5f09268bfd4118af774087dee2df4f11b32f3f6ebe7b64344541303def2fe7e9"
+        }
+      }
+    },
+    "minutes_before_match": 28.5,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 5,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 5,
+      "top_score": "0-3",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 77,
+      "all_outcomes": {
+        "AWAY": 5
+      },
+      "all_scores": {
+        "1-3": 1,
+        "0-3": 2,
+        "0-2": 2
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Real Madrid son 5 maçının tamamını kazanarak çok formda bir dönemden geçiyor.",
+          "Real Madrid hücum hattı son 5 maçta 17 gol atarak yüksek skor üretme kapasitesi sergiledi.",
+          "AEK üst düzey rakiplere karşı savunmada zorlanıyor ve kalesinde çok gol görüyor.",
+          "AEK ev sahibi avantajıyla skor üretebilse de kalite farkı Real Madrid galibiyetini öne çıkarıyor.",
+          "Real Madrid son 5 maçta 17 gol atıp sadece 6 gol yedi, formda zirvede."
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": []
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "PAE AEK – Real Madrid CF",
+        "20:45 TSİ",
+        "⚠️ Kadro eksik",
+        "5/5",
+        "Real Madrid CF · 5/5",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, Clef",
+          "0–3",
+          "2/5"
+        ],
+        [
+          "Cohere, GPT-OSS",
+          "0–2",
+          "2/5"
+        ],
+        [
+          "Gemini",
+          "1–3",
+          "1/5"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nPAE AEK – Real Madrid CF | 20:45 TSİ | ⚠️ Kadro eksik | 5/5 | Real Madrid CF · 5/5 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Clef | 0–3 | 2/5\nCohere, GPT-OSS | 0–2 | 2/5\nGemini | 1–3 | 1/5",
+    "prediction_ready": true,
+    "consensus_status": "FINAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-04T17:16:32.372273+00:00",
+      "first_attempt_at": "2026-11-04T17:16:32.372260+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-04T17:45",
+      "group_size": 1
+    }
   }
 }
