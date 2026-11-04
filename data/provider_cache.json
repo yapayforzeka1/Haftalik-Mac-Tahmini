@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793827866.7753713,
+    "at": 1793828169.1511343,
     "data": {
       "filters": {
         "season": 2026
@@ -4336,7 +4336,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:59Z",
+          "lastUpdated": "2026-11-04T21:35:15Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -4402,7 +4402,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:59Z",
+          "lastUpdated": "2026-11-04T21:35:15Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -4468,7 +4468,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:59Z",
+          "lastUpdated": "2026-11-04T21:35:15Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -4484,11 +4484,11 @@
             "crest": "https://crests.football-data.org/851.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
               "home": 1,
-              "away": 1
+              "away": 2
             },
             "halfTime": {
               "home": 0,
@@ -4534,7 +4534,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:27Z",
+          "lastUpdated": "2026-11-04T21:35:47Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -4550,11 +4550,11 @@
             "crest": "https://crests.football-data.org/90.png"
           },
           "score": {
-            "winner": "HOME_TEAM",
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
               "home": 1,
-              "away": 0
+              "away": 1
             },
             "halfTime": {
               "home": 0,
@@ -4600,7 +4600,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:27Z",
+          "lastUpdated": "2026-11-04T21:35:47Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -4666,7 +4666,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:27Z",
+          "lastUpdated": "2026-11-04T21:35:47Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -4685,7 +4685,7 @@
             "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 7
             },
             "halfTime": {
@@ -4732,7 +4732,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-04T21:30:27Z",
+          "lastUpdated": "2026-11-04T21:35:15Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -4748,10 +4748,10 @@
             "crest": "https://crests.football-data.org/10233.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 1
             },
             "halfTime": {
