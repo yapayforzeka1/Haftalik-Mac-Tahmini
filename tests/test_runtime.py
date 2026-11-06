@@ -295,6 +295,8 @@ def test_saved_prediction_not_generated_again(monkeypatch):
     import runner
     monkeypatch.setattr(runner,'run_ai_pool',lambda *a,**k:pytest.fail('must not regenerate'))
     r=record()
+    # Completed forecasts must not regenerate; partial forecasts remain retryable.
+    r['ai_votes'] = [vote(name, '2-1') for name in ('a', 'b', 'c', 'd', 'e')]
     assert prepare_prediction(r,fixture(),None,{},new_state(),lambda:None,0)
 
 
@@ -317,15 +319,25 @@ def test_full_main_twice_does_not_regenerate_or_resend(monkeypatch, tmp_path):
     monkeypatch.setattr(runner, 'CachedFootball', Football)
     monkeypatch.setattr(runner, 'official_xi', lambda *a: None)
     count=[]
+    checkpoints=[]
+    def checkpoint(path):
+        snapshot = load_json(path, {})
+        assert snapshot['1']['photo_delivery']['status'] == 'SENDING'
+        checkpoints.append(copy.deepcopy(snapshot))
+    monkeypatch.setattr(runner, '_persist_delivery_checkpoint', checkpoint)
     def pool(*args, **kwargs):
         count.append(1)
-        votes = [AIVote(**vote('only', '2-1'))]
-        kwargs['on_vote'](votes[0])
+        # Five valid votes, without a three-vote outcome majority.
+        votes = [AIVote(**vote(name, score)) for name, score in
+                 zip(('a', 'b', 'c', 'd', 'e'), ('2-1', '1-0', '0-1', '0-2', '1-1'))]
+        for item in votes:
+            kwargs['on_vote'](item)
         return votes
     monkeypatch.setattr(runner, 'run_ai_pool', pool)
     assert runner.main() == 0
     assert runner.main() == 0
     assert len(count) == 1
+    assert len(checkpoints) == 1
     assert sum(method == 'sendMessage' for method, _ in bot.calls) == 0
     assert sum(method == 'photo' for method, _ in bot.calls) == 1
     saved=load_json(tmp_path/'match_predictions.json',{})['1']

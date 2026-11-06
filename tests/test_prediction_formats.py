@@ -48,7 +48,8 @@ def test_five_formats_preserve_votes(scores,mode,rows):
     assert r==original
     if mode=='UNAVAILABLE':
         assert table['summary'][2:] == ['0/5','⚠️ Tahmin üretilemedi']
-        assert not table['note']
+        assert '0/5' in table['note']
+        assert 'yeniden denenecek' in table['note']
 
 
 def test_models_grouped_in_approved_column_order():

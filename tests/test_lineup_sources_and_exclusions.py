@@ -149,7 +149,7 @@ def test_main_exclusion_before_prewarm_and_candidates(monkeypatch, tmp_path):
         def get_matches(self): return [a, b, c]
     monkeypatch.setattr(runner, 'CachedFootball', Football)
     monkeypatch.setattr(runner, 'Telegram', lambda token: object())
-    monkeypatch.setattr(runner, 'drain_delivery', lambda *args: None)
+    monkeypatch.setattr(runner, 'drain_delivery', lambda *args, **kwargs: None)
     seen = []
     monkeypatch.setattr(runner, 'prewarm_context', lambda r, m, *args: seen.append(('prewarm', m['id'])))
     monkeypatch.setattr(runner, 'prepare_prediction', lambda r, m, *args, **kw:

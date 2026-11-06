@@ -161,7 +161,7 @@ def test_live_runner_saves_exactly_one_prematch_snapshot(monkeypatch):
         calls.append('prediction')
         return [AIVote(v['model'],v['success'],v.get('result'),v.get('error'))
                 for v in [vote('Gemini','2-1'),vote('Qwen','2-1'),vote('Cohere','1-0'),
-                          vote('GPT-OSS','0-1'),vote('Clef',None)]]
+                          vote('GPT-OSS','0-1'),vote('Clef', None if len(calls) == 1 else '2-1')]]
 
     monkeypatch.setattr(runner, 'run_ai_pool', pool)
     fixture = {'id': 876530, 'utcDate':START, 'status':'TIMED',
@@ -175,8 +175,16 @@ def test_live_runner_saves_exactly_one_prematch_snapshot(monkeypatch):
     archived = copy.deepcopy(record)
     assert runner.prepare_prediction(record, fixture, None, {}, new_state(), lambda:None,
                                      float('inf'))
-    assert record == archived and calls == ['prediction']
-    assert record['published_consensus'] == archived['published_consensus']
+    # A partial forecast may recover before kickoff, but its first experimental
+    # snapshot must never be overwritten by the later five-model vote set.
+    assert calls == ['prediction', 'prediction']
+    assert record['prediction_complete'] is True
+    assert record['experimental_predictions'] == archived['experimental_predictions']
+    assert record['prediction_created_at'] == archived['prediction_created_at']
+    completed = copy.deepcopy(record)
+    assert runner.prepare_prediction(record, fixture, None, {}, new_state(), lambda:None,
+                                     float('inf'))
+    assert record == completed and len(calls) == 2
     assert 'experimental_predictions' not in record.get('prediction_text', '')
 
 
