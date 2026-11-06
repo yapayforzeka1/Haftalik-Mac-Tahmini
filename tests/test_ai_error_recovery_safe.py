@@ -70,6 +70,7 @@ def test_ambiguous_or_contradictory_cohere_outcome_is_still_rejected(tag,score):
 
 
 def test_cohere_validation_records_fixed_diagnostic_not_model_text(monkeypatch,capsys):
+    monkeypatch.setattr(ai_pool.time, 'sleep', lambda *_: None)
     monkeypatch.setenv('COHERE_API_KEY', 'private-token')
     for key in ('GEMINI_API_KEY','GROQ_API_KEY','CLOUDFLARE_API_TOKEN'):
         monkeypatch.delenv(key, raising=False)
