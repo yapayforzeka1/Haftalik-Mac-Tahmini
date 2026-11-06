@@ -69,6 +69,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           CLEF_ENABLED: ${{ vars.CLEF_ENABLED || 'true' }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+          GEMINI_REQUESTS_PER_MINUTE: "5"
+          GEMINI_REQUESTS_PER_DAY: "20"
           GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.8-27b' }}
           GROQ_120B_MODEL: ${{ vars.GROQ_120B_MODEL || 'openai/gpt-oss-120b' }}
           COHERE_MODEL: ${{ vars.COHERE_MODEL || 'command-a-plus-05-2026' }}
@@ -76,13 +78,16 @@ jobs:
           TEST_MODE: ${{ inputs.test_mode || false }}
         run: python bot.py
       - name: Yarım kalan işlemler dâhil durumu kaydet
-        if: ${{ always() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' && !inputs.test_mode }}
+        if: ${{ always() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for file in match_predictions.json data/operations.json data/provider_cache.json data/pre_v3_predictions.json; do
-            if [ -f "$file" ]; then git add "$file"; fi
-          done
+          if [ "${{ inputs.test_mode }}" != "true" ]; then
+            for file in match_predictions.json data/operations.json data/provider_cache.json data/pre_v3_predictions.json; do
+              if [ -f "$file" ]; then git add "$file"; fi
+            done
+          fi
+          if [ -f data/gemini_usage.json ]; then git add data/gemini_usage.json; fi
           if ! git diff --cached --quiet; then
             git commit -m "Save prediction, learning and operations state"
             git pull --rebase origin "${GITHUB_REF_NAME}"
