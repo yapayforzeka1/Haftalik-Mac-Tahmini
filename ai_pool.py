@@ -27,6 +27,7 @@ class AIVote:
     error_detail: str | None = None
     request_attempts: int | None = None
     elapsed_seconds: float | None = None
+    queue_wait_seconds: float | None = None
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
@@ -120,7 +121,7 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
 
 def _cached_vote(value: dict[str, Any]) -> AIVote:
     fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail',
-              'request_attempts', 'elapsed_seconds')
+              'request_attempts', 'elapsed_seconds', 'queue_wait_seconds')
     return AIVote(**{key: value.get(key) for key in fields if key in value})
 
 
@@ -164,7 +165,8 @@ def retry_after_seconds(error):
 def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *, deadline=None):
     """One bounded retry layer; reserve a full request before the delivery deadline."""
     last_error: BaseException | None = None
-    cohere_output_retry = False
+    corrective_output_retry = False
+    separate_output_retry = name in {'Cohere Command A+', 'Groq GPT-OSS 120B'}
     for attempt in range(max_retries):
         if deadline is not None and time.monotonic() + 30 >= deadline:
             if last_error is not None:
@@ -175,14 +177,14 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
         except Exception as exc:
             last_error = exc
             output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION', 'COHERE_INVALID_PREDICTION'}
-            if name == 'Cohere Command A+' and cohere_output_retry:
+            if separate_output_retry and corrective_output_retry:
                 raise  # The single corrective request failed; do not generate a third output.
             if (not _is_rate_limit_error(exc) and not output_retry) or attempt >= max_retries - 1:
                 raise
-            if output_retry and attempt >= 1 and name != 'Cohere Command A+':
+            if output_retry and attempt >= 1 and not separate_output_retry:
                 raise  # At most one additional generation for invalid/truncated JSON.
-            if name == 'Cohere Command A+' and output_retry:
-                cohere_output_retry = True
+            if separate_output_retry and output_retry:
+                corrective_output_retry = True
             if safe_error_detail(exc) == 'QUOTA_EXHAUSTED':
                 raise  # Waiting seconds cannot replenish a billing/daily quota.
             if (_is_gemini(name) and error_http_status(exc) == 429
@@ -343,7 +345,7 @@ def safe_error(error):
     if isinstance(error, TimeBudgetError):
         return 'TIME_BUDGET'
     if isinstance(error, OutputError):
-        if str(error) == 'COHERE_INVALID_PREDICTION':
+        if str(error) in {'COHERE_INVALID_PREDICTION', 'GPT_OSS_INVALID_PREDICTION'}:
             return 'INVALID_PREDICTION'
         return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'} else 'INVALID_JSON'
     text = str(error).lower()
@@ -501,7 +503,20 @@ def _groq(prompt: str, model: str) -> str:
         messages=[{"role":"user","content":prompt}], temperature=0.1,
         max_completion_tokens=1100, response_format={"type":"json_object"},
         reasoning_effort="low" if model == GROQ_120B_MODEL else "none")
-    return response.choices[0].message.content or ""
+    choices = getattr(response, 'choices', None) or []
+    if not choices:
+        raise OutputError('EMPTY_RESPONSE')
+    choice = choices[0]
+    if model == GROQ_120B_MODEL:
+        finish = str(getattr(choice, 'finish_reason', '') or '').lower()
+        if finish == 'length':
+            raise OutputError('RESPONSE_TRUNCATED')
+        if finish in {'content_filter', 'error', 'tool_calls', 'function_call'}:
+            raise OutputError('RESPONSE_STOPPED')
+    result = getattr(getattr(choice, 'message', None), 'content', None)
+    if not isinstance(result, str) or not result.strip():
+        raise OutputError('EMPTY_RESPONSE')
+    return result
 
 
 def _cohere(prompt: str) -> str:
@@ -612,13 +627,23 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
             return AIVote(name, False, error='MISSING_API_KEY',
                           retry_after=_persistent_retry_after(None, 'CONFIG', 'MISSING_API_KEY'),
                           error_stage='CONFIG')
+        queued_at = time.monotonic()
+        queue_wait_seconds = 0.0
         def invoke():
             started = time.monotonic()
+            def metrics(attempts):
+                if name not in {'Cohere Command A+', 'Groq GPT-OSS 120B'}:
+                    return {}
+                data = {'request_attempts': attempts,
+                        'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
+                if name == 'Groq GPT-OSS 120B':
+                    data['queue_wait_seconds'] = round(queue_wait_seconds, 3)
+                return data
             if deadline is not None and time.monotonic() >= deadline - 30:
                 diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
                 return AIVote(name, False, error='TIME_BUDGET',
                               retry_after=_persistent_retry_after(None, 'REQUEST', 'TIME_BUDGET'),
-                              error_stage='REQUEST')
+                              error_stage='REQUEST', **metrics(0))
             stage = 'REQUEST'
             validation_attempts = 0
             validation_reason = None
@@ -662,33 +687,30 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                                           deadline=deadline)
                 result['model_id'] = model_ids[name]
                 diagnostics[name] = ('COMPLETE', 'OK', None)
-                metrics = ({'request_attempts': validation_attempts,
-                            'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
-                           if name == 'Cohere Command A+' else {})
-                return AIVote(name, True, result, **metrics)
+                return AIVote(name, True, result, **metrics(validation_attempts))
             except Exception as error:
                 category = (safe_error(error) if isinstance(error, (OutputError, TimeBudgetError)) else
                             'INVALID_JSON' if stage == 'PARSE' else
                             'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
                 detail = safe_error_detail(error)
-                if name == 'Cohere Command A+' and stage == 'VALIDATE' and validation_reason:
+                if name in {'Cohere Command A+', 'Groq GPT-OSS 120B'} and stage == 'VALIDATE' and validation_reason:
                     detail = validation_reason
+                elif name == 'Groq GPT-OSS 120B' and category == 'RESPONSE_TRUNCATED':
+                    detail = 'OUTPUT_TOKEN_LIMIT'
                 if detail != 'UNSPECIFIED':
                     print(f'AI DETAY | {name} | {detail}', flush=True)
                 status = error_http_status(error)
                 diagnostics[name] = (stage, category, status)
-                metrics = ({'request_attempts': validation_attempts,
-                            'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
-                           if name == 'Cohere Command A+' else {})
                 return AIVote(name, False, error=category,
                               retry_after=(error.retry_after if isinstance(error, BudgetDeferred) else
                                            _persistent_retry_after(error, stage, category, provider=name)),
                               error_stage=stage, http_status=status,
                               error_detail=detail if detail != 'UNSPECIFIED' else None,
-                              **metrics)
+                              **metrics(validation_attempts))
         # Two Groq models share a quota, so do not hit that provider simultaneously.
         if key_name == "GROQ_API_KEY":
             with groq_lock:
+                queue_wait_seconds = max(0, time.monotonic() - queued_at)
                 return invoke()
         return invoke()
 
@@ -724,9 +746,11 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         category = category if category in allowed else 'SDK_ERROR'
         state = 'BASARILI' if vote.success else 'BASARISIZ'
         print(f'AI | {name} | {state} | asama={stage} | neden={category} | HTTP={status or "-"}', flush=True)
-        if name == 'Cohere Command A+' and vote.request_attempts is not None:
+        if name in {'Cohere Command A+', 'Groq GPT-OSS 120B'} and vote.request_attempts is not None:
             attempts = 0 if stage == 'CACHE' else vote.request_attempts
             elapsed = 0 if stage == 'CACHE' else vote.elapsed_seconds
-            print(f'AI TIMING | Cohere Command A+ | current_attempts={attempts} | seconds={elapsed}', flush=True)
+            queue = (f' | queue_seconds={0 if stage == "CACHE" else vote.queue_wait_seconds}'
+                     if name == 'Groq GPT-OSS 120B' else '')
+            print(f'AI TIMING | {name} | current_attempts={attempts} | seconds={elapsed}{queue}', flush=True)
     print(f'AI TOPLAM | {sum(v.success for v in votes.values())}/{len(providers)} basarili', flush=True)
     return [votes[name] for name, _, _ in providers]
