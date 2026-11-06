@@ -12,6 +12,7 @@ from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from typing import Any, Callable
+from gemini_budget import BudgetDeferred
 
 @dataclass
 class AIVote:
@@ -22,6 +23,7 @@ class AIVote:
     retry_after: str | None = None
     error_stage: str | None = None
     http_status: int | None = None
+    error_detail: str | None = None
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
@@ -61,7 +63,7 @@ def _retry_after_at(seconds: int) -> str:
     return (datetime.now(timezone.utc) + timedelta(seconds=seconds)).isoformat()
 
 
-def _persistent_retry_after(error: BaseException | None, stage: str, category: str) -> str:
+def _persistent_retry_after(error: BaseException | None, stage: str, category: str, *, provider=None) -> str:
     """Persist a bounded per-provider retry window so 5-minute runs do not burn quotas."""
     if category == 'TIME_BUDGET':
         delay = 300
@@ -72,6 +74,16 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
         detail = safe_error_detail(error)
         if detail == 'QUOTA_EXHAUSTED':
             delay = 24 * 60 * 60
+        elif (provider == 'Gemini 3.6 Flash' and status == 429
+              and (retry_after_seconds(error) is not None or detail in {
+                  'TOKEN_RATE_LIMIT', 'REQUEST_RATE_LIMIT'})):
+            delay = max(300, math.ceil(retry_after_seconds(error) or 0))
+        elif provider == 'Gemini 3.6 Flash' and category in {
+                'PROVIDER_UNAVAILABLE', 'TIMEOUT', 'CONNECTION_ERROR',
+                'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'INVALID_PREDICTION'}:
+            # Resume on the next five-minute trigger. Never shorten a server
+            # cooldown, and keep unknown 429/quota failures conservative.
+            delay = max(300, math.ceil(retry_after_seconds(error) or 0))
         elif status == 429 or category == 'QUOTA_OR_RATE_LIMIT':
             # Unknown 429 windows must not trigger another request on the next run.
             delay = 60 * 60
@@ -89,7 +101,7 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
 
 
 def _cached_vote(value: dict[str, Any]) -> AIVote:
-    fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status')
+    fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail')
     return AIVote(**{key: value.get(key) for key in fields if key in value})
 
 
@@ -280,11 +292,12 @@ def safe_error_detail(error):
     if status == 429:
         if any(x in text for x in ('insufficient_quota', 'billing hard limit',
                                   'daily quota exceeded', 'monthly quota exceeded',
-                                  'credit balance exhausted')):
+                                  'credit balance exhausted', 'requestsperday',
+                                  'tokensperday', 'requests_per_day', 'tokens_per_day')):
             return 'QUOTA_EXHAUSTED'
-        if any(x in text for x in ('tokens per minute', 'tokens_per_minute', 'token rate limit')):
+        if any(x in text for x in ('tokens per minute', 'tokens_per_minute', 'token rate limit', 'tokensperminute')):
             return 'TOKEN_RATE_LIMIT'
-        if any(x in text for x in ('requests per second', 'requests per minute', 'request rate limit')):
+        if any(x in text for x in ('requests per second', 'requests per minute', 'request rate limit', 'requestsperminute')):
             return 'REQUEST_RATE_LIMIT'
         return 'LIMIT_UNSPECIFIED'
     if status in {400, 422}:
@@ -297,6 +310,8 @@ def safe_error_detail(error):
 
 def safe_error(error):
     # SDK exceptions may contain URLs/headers. Persist only a category.
+    if isinstance(error, BudgetDeferred):
+        return error.category
     if isinstance(error, TimeBudgetError):
         return 'TIME_BUDGET'
     if isinstance(error, OutputError):
@@ -537,7 +552,7 @@ def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dic
             'factors_used': ['form']}
 
 
-def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None) -> list[AIVote]:
+def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None, gemini_budget=None) -> list[AIVote]:
     prompt = build_prompt(home, away, match_context, research, history)
     providers: list[tuple[str, Callable[[str], str], str]] = [
         ("Gemini 3.6 Flash", _gemini, "GEMINI_API_KEY"),
@@ -585,6 +600,10 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                                        'HOME icin ev golleri fazla, AWAY icin deplasman fazla, '
                                        'DRAW icin esit olmali; confidence 0-100 tam sayi olmali. '
                                        'Yalnizca gecerli JSON dondur.')
+                if name == 'Gemini 3.6 Flash' and gemini_budget is not None:
+                    stage = 'BUDGET'
+                    gemini_budget.reserve(deadline=deadline)
+                    stage = 'REQUEST'
                 raw = call(request_prompt)
                 stage = 'PARSE'
                 parsed = raw if name == "Cloudflare Clef-omni" else _extract_json(raw)
@@ -618,8 +637,10 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 status = error_http_status(error)
                 diagnostics[name] = (stage, category, status)
                 return AIVote(name, False, error=category,
-                              retry_after=_persistent_retry_after(error, stage, category),
-                              error_stage=stage, http_status=status)
+                              retry_after=(error.retry_after if isinstance(error, BudgetDeferred) else
+                                           _persistent_retry_after(error, stage, category, provider=name)),
+                              error_stage=stage, http_status=status,
+                              error_detail=detail if detail != 'UNSPECIFIED' else None)
         # Two Groq models share a quota, so do not hit that provider simultaneously.
         if key_name == "GROQ_API_KEY":
             with groq_lock:
@@ -650,7 +671,8 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                'QUOTA_OR_RATE_LIMIT', 'TIMEOUT', 'AUTH_ERROR', 'MODEL_UNAVAILABLE',
                'MODEL_OR_ENDPOINT_NOT_FOUND', 'PROVIDER_UNAVAILABLE', 'INVALID_REQUEST',
                'SDK_IMPORT_ERROR', 'SDK_ARGUMENT_ERROR', 'SDK_RESPONSE_ERROR', 'CONNECTION_ERROR',
-               'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'}
+               'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED',
+               'LOCAL_DAILY_BUDGET', 'LOCAL_MINUTE_BUDGET', 'LOCAL_REQUEST_WINDOW'}
     for name, _, _ in providers:
         vote = votes[name]
         stage, category, status = diagnostics.get(name, ('CACHE', 'OK' if vote.success else vote.error, None))

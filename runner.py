@@ -10,6 +10,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from ai_pool import run_ai_pool, safe_error
+from gemini_budget import GeminiRequestBudget
 from consensus_engine import build_consensus
 from experimental_scores import freeze_prospective_experiments
 from data_provider import build_team_form, parse_utc
@@ -294,7 +295,8 @@ def _persist_delivery_checkpoint(path):
 
     state_paths = [relative]
     for candidate in ('match_predictions.json', 'data/operations.json',
-                      'data/provider_cache.json', 'data/pre_v3_predictions.json'):
+                      'data/provider_cache.json', 'data/pre_v3_predictions.json',
+                      'data/gemini_usage.json'):
         if (ROOT / candidate).is_file():
             state_paths.append(candidate)
     state_paths = sorted(set(state_paths))
@@ -751,7 +753,7 @@ def lineup_availability(context):
 
 
 def prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode=False,
-                       research_gate=None, save_research_gate=None):
+                       research_gate=None, save_research_gate=None, gemini_budget=None):
     """Resumable stages: lineup -> context -> research -> votes -> durable message."""
     if excluded_fixture(match):
         return False
@@ -849,13 +851,14 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         r['pool_round'] = 1
         save()
     cached = {v['model']: {k: v.get(k) for k in
-              ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status')}
+              ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail')}
               for v in r['ai_votes']}
     def on_vote(vote):
         r['ai_votes'] = [v for v in r['ai_votes'] if v['model'] != vote.model] + [asdict(vote)]
         save()
     votes = run_ai_pool(r['home_team'], r['away_team'], context, r['research'], r['history'],
-                        cached=cached, on_vote=on_vote, deadline=deadline)
+                        cached=cached, on_vote=on_vote, deadline=deadline,
+                        gemini_budget=gemini_budget)
     # The pool retries each failed provider even when another model succeeds.
     # Do not start a second round that would bypass Retry-After or multiply calls.
     r['ai_votes'] = [asdict(v) for v in votes]
@@ -945,6 +948,14 @@ def track_missed_fixtures(matches, predictions, state, bot, chat, save_state):
 
 def main():
     test_mode = os.getenv('TEST_MODE', 'false').lower() == 'true'
+    # TEST requests consume the same Google project quota, so the ledger is
+    # shared with production while prediction archives remain isolated.
+    from ai_pool import GEMINI_MODEL
+    gemini_budget = GeminiRequestBudget(
+        ROOT / 'data' / 'gemini_usage.json', GEMINI_MODEL,
+        rpm=int(os.getenv('GEMINI_REQUESTS_PER_MINUTE', '5')),
+        rpd=int(os.getenv('GEMINI_REQUESTS_PER_DAY', '20')),
+    )
     root = ROOT / 'test_runtime' if test_mode else ROOT
     predictions_path = root / 'match_predictions.json'
     state_path = root / 'data' / 'operations.json'
@@ -1033,7 +1044,8 @@ def main():
             # Leave a safety margin to publish before kickoff, even after delayed Actions starts.
             deadline = min(end, time.monotonic() + max(0, minutes_left(match)*60 - 45))
             prepare_prediction(r, match, football, predictions, state, save, deadline, test_mode,
-                               research_gate=research_gate, save_research_gate=save_gate)
+                               research_gate=research_gate, save_research_gate=save_gate,
+                               gemini_budget=gemini_budget)
         except StateError:
             raise
         except Exception as exc:
