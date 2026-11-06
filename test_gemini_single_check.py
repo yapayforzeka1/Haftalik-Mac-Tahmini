@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from pathlib import Path
+import json
 import pytest
 
 import ai_pool
@@ -84,3 +85,74 @@ def test_diagnostic_workflow_is_manual_and_saves_only_usage_ledger():
     assert 'TELEGRAM_BOT_TOKEN' not in text
     assert 'GROQ_API_KEY' not in text and 'COHERE_API_KEY' not in text
     assert 'python gemini_single_check.py' in text
+
+
+def archived_record(tmp_path):
+    record = {'match_id': '575394', 'home_team': 'Viking FK', 'away_team': 'Sabah FK',
+              'context': {'home': {'form': 'pre-match data'}},
+              'research': {'status': 'STRUCTURED_ONLY'}, 'history': {},
+              'actual': {'secret_result': 'REAL_RESULT_MUST_NOT_BE_SENT'},
+              'post_match_analysis': {'secret': 'POST_MATCH_MUST_NOT_BE_SENT'},
+              'ai_votes': [{'secret': 'OLD_VOTE_MUST_NOT_BE_SENT'}]}
+    path = tmp_path / 'predictions.json'
+    path.write_text(json.dumps({'575394': record}), encoding='utf-8')
+    return path, record
+
+
+def test_archived_prediction_uses_real_template_without_current_result(enabled, tmp_path, capsys):
+    path, record = archived_record(tmp_path); before = path.read_bytes()
+    budget = Budget(); calls = []
+    def request(prompt):
+        calls.append(prompt)
+        assert prompt == ai_pool.build_prompt(record['home_team'], record['away_team'],
+                                               record['context'], record['research'], record['history'])
+        assert 'MUST_NOT_BE_SENT' not in prompt
+        return '{"outcome":"HOME","score":"2-1","confidence":60}'
+    assert check.run(budget=budget, request=request, mode='archived_prediction',
+                     match_id='575394', archive_path=path) == 0
+    assert budget.count == 1 and len(calls) == 1
+    assert path.read_bytes() == before
+    assert 'PREDICTION_JSON_OK' in capsys.readouterr().out
+
+
+@pytest.mark.parametrize('raw', ['not JSON', '{"ok":true}',
+                               '{"outcome":"AWAY","score":"2-1","confidence":60}'])
+def test_archived_output_requires_valid_score_and_outcome(enabled, tmp_path, raw):
+    path, _ = archived_record(tmp_path); before = path.read_bytes()
+    budget = Budget(); calls = []
+    def request(prompt): calls.append(1); return raw
+    assert check.run(budget=budget, request=request, mode='archived_prediction',
+                     match_id='575394', archive_path=path) == 1
+    assert budget.count == 1 and len(calls) == 1 and path.read_bytes() == before
+
+
+@pytest.mark.parametrize('match_id', ['missing', '999', 'private-key'])
+def test_missing_or_invalid_match_never_calls_ai(enabled, tmp_path, match_id):
+    path, _ = archived_record(tmp_path); budget = Budget()
+    assert check.run(budget=budget, request=lambda *_: pytest.fail('No record'),
+                     mode='archived_prediction', match_id=match_id, archive_path=path) == 2
+    assert budget.count == 0
+
+
+def test_excluded_club_is_not_analysed(enabled, tmp_path):
+    path, record = archived_record(tmp_path); record['home_team'] = 'Fenerbahçe SK'
+    path.write_text(json.dumps({'575394': record}), encoding='utf-8')
+    budget = Budget()
+    assert check.run(budget=budget, request=lambda *_: pytest.fail('Excluded'),
+                     mode='archived_prediction', match_id='575394', archive_path=path) == 2
+    assert budget.count == 0
+
+
+def test_invalid_mode_never_calls_ai(enabled):
+    budget = Budget()
+    assert check.run(budget=budget, request=lambda *_: pytest.fail('Invalid mode'), mode='unknown') == 2
+    assert budget.count == 0
+
+
+def test_empty_archived_context_is_rejected_when_not_an_object(enabled, tmp_path):
+    path, record = archived_record(tmp_path); record['context'] = None
+    path.write_text(json.dumps({'575394': record}), encoding='utf-8')
+    budget = Budget()
+    assert check.run(budget=budget, request=lambda *_: pytest.fail('Invalid inputs'),
+                     mode='archived_prediction', match_id='575394', archive_path=path) == 2
+    assert budget.count == 0

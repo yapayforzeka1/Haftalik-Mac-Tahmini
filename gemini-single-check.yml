@@ -2,6 +2,20 @@ name: Gemini Tek Istek Kontrolu
 
 on:
   workflow_dispatch:
+    inputs:
+      check_type:
+        description: "basic: kısa bağlantı; archived_prediction: kayıtlı maç istemi"
+        type: choice
+        options:
+          - basic
+          - archived_prediction
+        default: basic
+        required: true
+      match_id:
+        description: "Arşiv maç kimliği (yalnız archived_prediction için)"
+        type: string
+        default: "575394"
+        required: true
 
 permissions:
   contents: write
@@ -31,6 +45,8 @@ jobs:
           PYTHONUNBUFFERED: "1"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+          GEMINI_CHECK_MODE: ${{ inputs.check_type }}
+          GEMINI_CHECK_MATCH_ID: ${{ inputs.match_id }}
         run: python gemini_single_check.py
       - name: Save request ledger even after a failed request
         if: ${{ always() && steps.gemini.outcome != '' && steps.gemini.outcome != 'skipped' }}
