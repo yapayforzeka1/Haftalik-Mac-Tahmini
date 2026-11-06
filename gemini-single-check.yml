@@ -1,0 +1,53 @@
+name: Gemini Tek Istek Kontrolu
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: haftalik-mac-tahmini
+  cancel-in-progress: false
+
+jobs:
+  check-gemini:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Single Gemini request
+        id: gemini
+        env:
+          PYTHONUNBUFFERED: "1"
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+        run: python gemini_single_check.py
+      - name: Save request ledger even after a failed request
+        if: ${{ always() && steps.gemini.outcome != '' && steps.gemini.outcome != 'skipped' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -f data/gemini_usage.json ]; then git add data/gemini_usage.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Save single Gemini check request count"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+      - name: Save recovery ledger
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-check-recovery-${{ github.run_id }}
+          path: data/gemini_usage.json
+          if-no-files-found: ignore
+          retention-days: 7
