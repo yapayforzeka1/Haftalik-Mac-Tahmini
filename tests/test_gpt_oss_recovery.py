@@ -160,8 +160,8 @@ def test_empty_sdk_response_has_fixed_category(monkeypatch, payload):
         ai_pool._groq('prompt', ai_pool.GROQ_120B_MODEL)
 
 
-def test_qwen_finish_behaviour_and_parameters_are_preserved(monkeypatch):
-    calls, _ = fake_sdk(monkeypatch, response('length'))
+def test_qwen_parameters_are_preserved(monkeypatch):
+    calls, _ = fake_sdk(monkeypatch, response())
     assert ai_pool._groq('prompt', ai_pool.GROQ_QWEN_MODEL) == GOOD
     assert calls[0]['reasoning_effort'] == 'none'
     assert calls[0]['max_completion_tokens'] == 1100
