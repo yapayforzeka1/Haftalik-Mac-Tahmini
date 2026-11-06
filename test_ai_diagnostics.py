@@ -51,10 +51,9 @@ def test_missing_keys_logged_without_calling_providers(monkeypatch,capsys):
 
 
 def test_cached_error_text_is_not_printed(capsys):
-    from datetime import datetime, timedelta, timezone
     names=['Gemini 3.6 Flash',ai_pool.QWEN_LABEL,'Cohere Command A+','Groq GPT-OSS 120B','Cloudflare Clef-omni']
-    retry_after=(datetime.now(timezone.utc)+timedelta(hours=1)).isoformat()
-    cached={name:{'model':name,'success':False,'error':'private-token','retry_after':retry_after} for name in names}
+    cached={name:{'model':name,'success':False,'error':'private-token',
+                  'retry_after':'2999-01-01T00:00:00+00:00'} for name in names}
     ai_pool.run_ai_pool('h','a',{}, {}, {},cached=cached)
     output=capsys.readouterr().out
     assert 'private-token' not in output

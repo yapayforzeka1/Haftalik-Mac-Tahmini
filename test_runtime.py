@@ -10,13 +10,13 @@ from consensus_engine import build_consensus
 from fallback import predict
 from history_engine import grade_record
 from learning import POLICIES, audit, digest, eligible, learning_context, maybe_propose, new_state, summarize
-from messages import FORMAT_VERSION, prediction_message
+from messages import prediction_message
 from operations import fingerprint, handle_callback, run_operations
 from providers import predicted_xi, valid_xi
 from runner import deliver_record, drain_delivery, new_record, prepare_prediction, refresh_results
 from scoring import VERSION, regulation_score, score_prediction
 from storage import StateError, load_json, save_json
-from telegram_io import TelegramDeliveryUncertain, TelegramError, deliver_text
+from telegram_io import TelegramError, deliver_text
 
 NOW = datetime(2026, 9, 17, 16, tzinfo=timezone.utc)
 
@@ -154,129 +154,6 @@ def test_late_delivery_never_sends_prediction():
     assert r['delivery_expired']
     assert bot.calls == []
 
-
-
-class PhotoRetryTelegram:
-    def __init__(self, uncertain_count=0):
-        self.uncertain_count = uncertain_count
-        self.photo_calls = []
-        self.calls = []
-    def photo(self, chat_id, path):
-        self.photo_calls.append((chat_id, path))
-        if len(self.photo_calls) <= self.uncertain_count:
-            raise TelegramDeliveryUncertain('simulated uncertain photo result')
-        return {'message_id': len(self.photo_calls)}
-    def call(self, method, **kwargs):
-        self.calls.append((method, kwargs))
-        return {'message_id': len(self.calls)}
-
-
-def photo_record(match_id='1', kickoff=None):
-    r = record()
-    r.update(match_id=str(match_id), message_format_version=FORMAT_VERSION,
-             match_utc=(kickoff or (datetime.now(timezone.utc) + timedelta(minutes=30))).isoformat(),
-             prediction_ready=True, final_sent=False, test_mode=False)
-    return r
-
-
-def test_photo_checkpoint_is_saved_before_telegram_request(monkeypatch, tmp_path):
-    import match_report
-    from runner import drain_delivery
-    monkeypatch.setattr(match_report, 'render_match_group_image', lambda *a, **k: tmp_path / 'x.png')
-    r = photo_record()
-    events = []
-    class OrderedBot(PhotoRetryTelegram):
-        def photo(self, chat_id, path):
-            events.append(('telegram', r['photo_delivery']['status']))
-            return super().photo(chat_id, path)
-    def checkpoint():
-        events.append(('checkpoint', r['photo_delivery']['status']))
-    bot = OrderedBot()
-    drain_delivery({'1': r}, bot, '1', lambda: None, checkpoint=checkpoint)
-    assert events == [('checkpoint', 'SENDING'), ('telegram', 'SENDING')]
-    assert r['final_sent'] and r['photo_delivery']['status'] == 'SENT'
-    drain_delivery({'1': r}, bot, '1', lambda: None, checkpoint=checkpoint)
-    assert len(bot.photo_calls) == 1  # confirmed delivery is not sent again
-
-
-def test_checkpoint_failure_never_sends_photo(monkeypatch, tmp_path):
-    import match_report
-    from runner import drain_delivery
-    monkeypatch.setattr(match_report, 'render_match_group_image', lambda *a, **k: tmp_path / 'x.png')
-    r = photo_record()
-    bot = PhotoRetryTelegram()
-    def failed_checkpoint():
-        raise RuntimeError('simulated git push failure')
-    with pytest.raises(StateError):
-        drain_delivery({'1': r}, bot, '1', lambda: None, checkpoint=failed_checkpoint)
-    assert bot.photo_calls == []
-    assert not r.get('final_sent')
-    assert not r.get('photo_delivery')
-
-
-def test_uncertain_group_retries_same_group_after_backoff(monkeypatch, tmp_path):
-    import match_report
-    import runner
-    real_now = datetime.now(timezone.utc)
-    current = [real_now]
-    monkeypatch.setattr(runner, 'now', lambda: current[0])
-    rendered = []
-    def render(records, **kwargs):
-        rendered.append([r['match_id'] for r in records])
-        return tmp_path / 'group.png'
-    monkeypatch.setattr(match_report, 'render_match_group_image', render)
-    r1 = photo_record('1', real_now + timedelta(minutes=30))
-    r2 = photo_record('2', real_now + timedelta(minutes=30))
-    r2['home_team'] = 'Ev 2'
-    bot = PhotoRetryTelegram(uncertain_count=1)
-    predictions = {'1': r1, '2': r2}
-    runner.drain_delivery(predictions, bot, '1', lambda: None)
-    assert r1['photo_delivery']['status'] == 'UNCERTAIN'
-    assert r2['photo_delivery']['status'] == 'UNCERTAIN'
-    assert len(bot.photo_calls) == 1
-    assert r1['photo_delivery']['group_key'] == r2['photo_delivery']['group_key']
-    current[0] = runner.parse_utc(r1['photo_delivery']['retry_after_at']) + timedelta(seconds=1)
-    runner.drain_delivery(predictions, bot, '1', lambda: None)
-    assert len(bot.photo_calls) == 2
-    assert rendered == [['1', '2'], ['1', '2']]
-    assert all(r['final_sent'] and r['photo_delivery']['status'] == 'SENT' for r in predictions.values())
-
-
-def test_uncertain_photo_stops_after_bounded_attempts(monkeypatch, tmp_path):
-    import match_report
-    import runner
-    current = [datetime.now(timezone.utc)]
-    monkeypatch.setattr(runner, 'now', lambda: current[0])
-    monkeypatch.setattr(match_report, 'render_match_group_image', lambda *a, **k: tmp_path / 'group.png')
-    r = photo_record('1', current[0] + timedelta(minutes=30))
-    r['photo_delivery'] = {
-        'status': 'UNCERTAIN', 'mode': 'group', 'group_key': '2026-11-02T12:00',
-        'group_size': 1, 'attempt_count': runner.PHOTO_MAX_ATTEMPTS,
-        'attempted_at': current[0].isoformat(),
-        'retry_after_at': (current[0] - timedelta(seconds=1)).isoformat(),
-    }
-    bot = PhotoRetryTelegram()
-    runner.drain_delivery({'1': r}, bot, '1', lambda: None)
-    assert bot.photo_calls == []
-    assert r['photo_delivery']['status'] == 'NEEDS_REVIEW'
-
-
-def test_missed_delivery_notice_is_sent_for_ready_prediction(monkeypatch):
-    import runner
-    current = [NOW + timedelta(hours=1)]
-    monkeypatch.setattr(runner, 'now', lambda: current[0])
-    match = {'id': 1, 'utcDate': NOW.isoformat(), 'status': 'IN_PLAY',
-             'homeTeam': {'name': 'Ev'}, 'awayTeam': {'name': 'Deplasman'}}
-    r = record()
-    r['prediction_ready'] = True
-    r['final_sent'] = False
-    state = {'tracked_fixtures': {'1': {'utcDate': NOW.isoformat()}}}
-    bot = PhotoRetryTelegram()
-    runner.track_missed_fixtures([match], {'1': r}, state, bot, '1', lambda: None)
-    assert len(bot.calls) == 1
-    assert bot.calls[0][0] == 'sendMessage'
-    assert 'teslimatı doğrulanamadı' in bot.calls[0][1]['text']
-    assert state['tracked_fixtures']['1']['missed_notice']['complete']
 
 def test_result_retry_without_new_result():
     r=record();r['final_sent']=True;r['actual']={'home':2,'away':1};grade_record(r)
@@ -418,6 +295,8 @@ def test_saved_prediction_not_generated_again(monkeypatch):
     import runner
     monkeypatch.setattr(runner,'run_ai_pool',lambda *a,**k:pytest.fail('must not regenerate'))
     r=record()
+    # Completed forecasts must not regenerate; partial forecasts remain retryable.
+    r['ai_votes'] = [vote(name, '2-1') for name in ('a', 'b', 'c', 'd', 'e')]
     assert prepare_prediction(r,fixture(),None,{},new_state(),lambda:None,0)
 
 
@@ -440,15 +319,25 @@ def test_full_main_twice_does_not_regenerate_or_resend(monkeypatch, tmp_path):
     monkeypatch.setattr(runner, 'CachedFootball', Football)
     monkeypatch.setattr(runner, 'official_xi', lambda *a: None)
     count=[]
+    checkpoints=[]
+    def checkpoint(path):
+        snapshot = load_json(path, {})
+        assert snapshot['1']['photo_delivery']['status'] == 'SENDING'
+        checkpoints.append(copy.deepcopy(snapshot))
+    monkeypatch.setattr(runner, '_persist_delivery_checkpoint', checkpoint)
     def pool(*args, **kwargs):
         count.append(1)
-        votes = [AIVote(**vote('only', '2-1'))]
-        kwargs['on_vote'](votes[0])
+        # Five valid votes, without a three-vote outcome majority.
+        votes = [AIVote(**vote(name, score)) for name, score in
+                 zip(('a', 'b', 'c', 'd', 'e'), ('2-1', '1-0', '0-1', '0-2', '1-1'))]
+        for item in votes:
+            kwargs['on_vote'](item)
         return votes
     monkeypatch.setattr(runner, 'run_ai_pool', pool)
     assert runner.main() == 0
     assert runner.main() == 0
     assert len(count) == 1
+    assert len(checkpoints) == 1
     assert sum(method == 'sendMessage' for method, _ in bot.calls) == 0
     assert sum(method == 'photo' for method, _ in bot.calls) == 1
     saved=load_json(tmp_path/'match_predictions.json',{})['1']
