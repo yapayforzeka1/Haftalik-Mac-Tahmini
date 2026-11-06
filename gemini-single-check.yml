@@ -3,6 +3,14 @@ name: Gemini Tek Istek Kontrolu
 on:
   workflow_dispatch:
     inputs:
+      diagnostic_model:
+        description: "Yalnız bu kontrolün modeli; ana bot ayarını değiştirmez"
+        type: choice
+        options:
+          - gemini-3.6-flash
+          - gemini-3.5-flash-lite
+        default: gemini-3.6-flash
+        required: true
       check_type:
         description: "basic: kısa bağlantı; archived_prediction: kayıtlı maç istemi"
         type: choice
@@ -44,7 +52,7 @@ jobs:
         env:
           PYTHONUNBUFFERED: "1"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+          GEMINI_MODEL: ${{ inputs.diagnostic_model || vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
           GEMINI_CHECK_MODE: ${{ inputs.check_type }}
           GEMINI_CHECK_MATCH_ID: ${{ inputs.match_id }}
         run: python gemini_single_check.py

@@ -41,6 +41,7 @@ def run(*, budget=None, request=None, mode='basic', match_id='', archive_path=No
             ai_pool.GEMINI_MODEL, rpm=5, rpd=20,
         )
     request = request or ai_pool._gemini
+    print(f'GEMINI CHECK | model={ai_pool.GEMINI_MODEL}', flush=True)
     stage = 'INPUT'
     try:
         if mode == 'basic':

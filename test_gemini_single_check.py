@@ -156,3 +156,30 @@ def test_empty_archived_context_is_rejected_when_not_an_object(enabled, tmp_path
     assert check.run(budget=budget, request=lambda *_: pytest.fail('Invalid inputs'),
                      mode='archived_prediction', match_id='575394', archive_path=path) == 2
     assert budget.count == 0
+
+
+def test_alternate_model_ledger_does_not_reset_original_model(enabled, tmp_path, monkeypatch, capsys):
+    from storage import save_json
+    ledger = tmp_path / 'data/gemini_usage.json'
+    original = {'day': '2026-11-06', 'attempts': 4, 'recent': []}
+    save_json(ledger, {'schema': 1, 'models': {'gemini-3.6-flash': original}})
+    monkeypatch.setattr(check, '__file__', str(tmp_path / 'gemini_single_check.py'))
+    monkeypatch.setattr(ai_pool, 'GEMINI_MODEL', 'gemini-3.5-flash-lite')
+    calls = []
+    def request(prompt): calls.append(1); return '{"ok":true}'
+    assert check.run(request=request) == 0
+    models = load_json(ledger, {})['models']
+    assert len(calls) == 1
+    assert models['gemini-3.6-flash'] == original
+    assert models['gemini-3.5-flash-lite']['attempts'] == 1
+    assert 'model=gemini-3.5-flash-lite' in capsys.readouterr().out
+
+
+def test_diagnostic_model_choice_is_not_a_production_setting():
+    root = Path(check.__file__).parent
+    diagnostic = (root / '.github/workflows/gemini-single-check.yml').read_text(encoding='utf-8')
+    production = (root / '.github/workflows/main.yml').read_text(encoding='utf-8')
+    assert 'gemini-3.5-flash-lite' in diagnostic
+    assert "GEMINI_MODEL: ${{ inputs.diagnostic_model || vars.GEMINI_MODEL || 'gemini-3.6-flash' }}" in diagnostic
+    assert 'inputs.diagnostic_model' not in production
+    assert "GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}" in production
