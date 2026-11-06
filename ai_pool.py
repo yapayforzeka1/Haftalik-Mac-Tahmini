@@ -89,6 +89,16 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
         detail = safe_error_detail(error)
         if detail == 'QUOTA_EXHAUSTED':
             delay = 24 * 60 * 60
+        elif provider == QWEN_LABEL and status == 429 and (
+                retry_after_seconds(error) is not None or detail in {
+                    'TOKEN_RATE_LIMIT', 'REQUEST_RATE_LIMIT'}):
+            # Known transient window: recover on the next trigger, without
+            # shortening a server cooldown. Unknown quota windows stay conservative.
+            delay = max(300, math.ceil(retry_after_seconds(error) or 0))
+        elif provider == QWEN_LABEL and category in {
+                'PROVIDER_UNAVAILABLE', 'TIMEOUT', 'CONNECTION_ERROR',
+                'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'INVALID_PREDICTION'}:
+            delay = max(300, math.ceil(retry_after_seconds(error) or 0))
         elif (_is_gemini(provider) and status == 429
               and (retry_after_seconds(error) is not None or detail in {
                   'TOKEN_RATE_LIMIT', 'REQUEST_RATE_LIMIT'})):
@@ -166,7 +176,7 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
     """One bounded retry layer; reserve a full request before the delivery deadline."""
     last_error: BaseException | None = None
     corrective_output_retry = False
-    separate_output_retry = name in {'Cohere Command A+', 'Groq GPT-OSS 120B'}
+    separate_output_retry = name in {'Cohere Command A+', 'Groq GPT-OSS 120B', QWEN_LABEL}
     for attempt in range(max_retries):
         if deadline is not None and time.monotonic() + 30 >= deadline:
             if last_error is not None:
@@ -176,7 +186,7 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
             return fn()
         except Exception as exc:
             last_error = exc
-            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION', 'COHERE_INVALID_PREDICTION'}
+            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION', 'COHERE_INVALID_PREDICTION', 'QWEN_INVALID_PREDICTION'}
             if separate_output_retry and corrective_output_retry:
                 raise  # The single corrective request failed; do not generate a third output.
             if (not _is_rate_limit_error(exc) and not output_retry) or attempt >= max_retries - 1:
@@ -323,7 +333,8 @@ def safe_error_detail(error):
         if any(x in text for x in ('insufficient_quota', 'billing hard limit',
                                   'daily quota exceeded', 'monthly quota exceeded',
                                   'credit balance exhausted', 'requestsperday',
-                                  'tokensperday', 'requests_per_day', 'tokens_per_day')):
+                                  'tokensperday', 'requests_per_day', 'tokens_per_day',
+                                  'requests per day', 'tokens per day')):
             return 'QUOTA_EXHAUSTED'
         if any(x in text for x in ('tokens per minute', 'tokens_per_minute', 'token rate limit', 'tokensperminute')):
             return 'TOKEN_RATE_LIMIT'
@@ -345,7 +356,7 @@ def safe_error(error):
     if isinstance(error, TimeBudgetError):
         return 'TIME_BUDGET'
     if isinstance(error, OutputError):
-        if str(error) in {'COHERE_INVALID_PREDICTION', 'GPT_OSS_INVALID_PREDICTION'}:
+        if str(error) in {'COHERE_INVALID_PREDICTION', 'GPT_OSS_INVALID_PREDICTION', 'QWEN_INVALID_PREDICTION'}:
             return 'INVALID_PREDICTION'
         return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'} else 'INVALID_JSON'
     text = str(error).lower()
@@ -507,7 +518,7 @@ def _groq(prompt: str, model: str) -> str:
     if not choices:
         raise OutputError('EMPTY_RESPONSE')
     choice = choices[0]
-    if model == GROQ_120B_MODEL:
+    if model in {GROQ_120B_MODEL, GROQ_QWEN_MODEL}:
         finish = str(getattr(choice, 'finish_reason', '') or '').lower()
         if finish == 'length':
             raise OutputError('RESPONSE_TRUNCATED')
@@ -632,11 +643,11 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         def invoke():
             started = time.monotonic()
             def metrics(attempts):
-                if name not in {'Cohere Command A+', 'Groq GPT-OSS 120B'}:
+                if name not in {'Cohere Command A+', 'Groq GPT-OSS 120B', QWEN_LABEL}:
                     return {}
                 data = {'request_attempts': attempts,
                         'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
-                if name == 'Groq GPT-OSS 120B':
+                if name in {'Groq GPT-OSS 120B', QWEN_LABEL}:
                     data['queue_wait_seconds'] = round(queue_wait_seconds, 3)
                 return data
             if deadline is not None and time.monotonic() >= deadline - 30:
@@ -652,7 +663,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 stage = 'REQUEST'
                 validation_attempts += 1
                 request_prompt = prompt
-                if name in {'Groq GPT-OSS 120B', 'Cohere Command A+'} and validation_attempts > 1:
+                if name in {'Groq GPT-OSS 120B', 'Cohere Command A+', QWEN_LABEL} and validation_attempts > 1:
                     request_prompt += ('\nZORUNLU SON KONTROL: outcome HOME/DRAW/AWAY olmali; '
                                        'score ev-deplasman sirasinda 0-0 gibi yazilmali; '
                                        'HOME icin ev golleri fazla, AWAY icin deplasman fazla, '
@@ -670,15 +681,17 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                     result = _normalize(parsed, home, away)
                 except (ValueError, TypeError, OverflowError) as exc:
                     # Never rewrite a contradictory outcome/score or fabricate a vote.
-                    # Retry GPT-OSS once; the second generation must pass strict validation.
+                    # A corrective generation must independently pass strict validation.
                     reason = _prediction_validation_reason(parsed)
                     validation_reason = reason
-                    if name in {'Groq GPT-OSS 120B', 'Cohere Command A+'}:
+                    if name in {'Groq GPT-OSS 120B', 'Cohere Command A+', QWEN_LABEL}:
                         print(f'AI VALIDATION | {name} | neden={reason}', flush=True)
                     if name == 'Groq GPT-OSS 120B':
                         raise OutputError('GPT_OSS_INVALID_PREDICTION') from None
                     if name == 'Cohere Command A+':
                         raise OutputError('COHERE_INVALID_PREDICTION') from None
+                    if name == QWEN_LABEL:
+                        raise OutputError('QWEN_INVALID_PREDICTION') from None
                     raise
                 return result
             try:
@@ -693,9 +706,9 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                             'INVALID_JSON' if stage == 'PARSE' else
                             'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
                 detail = safe_error_detail(error)
-                if name in {'Cohere Command A+', 'Groq GPT-OSS 120B'} and stage == 'VALIDATE' and validation_reason:
+                if name in {'Cohere Command A+', 'Groq GPT-OSS 120B', QWEN_LABEL} and stage == 'VALIDATE' and validation_reason:
                     detail = validation_reason
-                elif name == 'Groq GPT-OSS 120B' and category == 'RESPONSE_TRUNCATED':
+                elif name in {'Groq GPT-OSS 120B', QWEN_LABEL} and category == 'RESPONSE_TRUNCATED':
                     detail = 'OUTPUT_TOKEN_LIMIT'
                 if detail != 'UNSPECIFIED':
                     print(f'AI DETAY | {name} | {detail}', flush=True)
@@ -746,11 +759,11 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         category = category if category in allowed else 'SDK_ERROR'
         state = 'BASARILI' if vote.success else 'BASARISIZ'
         print(f'AI | {name} | {state} | asama={stage} | neden={category} | HTTP={status or "-"}', flush=True)
-        if name in {'Cohere Command A+', 'Groq GPT-OSS 120B'} and vote.request_attempts is not None:
+        if name in {'Cohere Command A+', 'Groq GPT-OSS 120B', QWEN_LABEL} and vote.request_attempts is not None:
             attempts = 0 if stage == 'CACHE' else vote.request_attempts
             elapsed = 0 if stage == 'CACHE' else vote.elapsed_seconds
             queue = (f' | queue_seconds={0 if stage == "CACHE" else vote.queue_wait_seconds}'
-                     if name == 'Groq GPT-OSS 120B' else '')
+                     if name in {'Groq GPT-OSS 120B', QWEN_LABEL} else '')
             print(f'AI TIMING | {name} | current_attempts={attempts} | seconds={elapsed}{queue}', flush=True)
     print(f'AI TOPLAM | {sum(v.success for v in votes.values())}/{len(providers)} basarili', flush=True)
     return [votes[name] for name, _, _ in providers]
