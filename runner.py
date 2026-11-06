@@ -970,7 +970,10 @@ def main():
     drain_prediction_updates(predictions, telegram, chat, save)
     football = CachedFootball(cache, lambda: save_json(cache_path, cache))
     matches = football.get_matches()
-    track_missed_fixtures(matches, predictions, state, telegram, chat, save_state)
+    # The isolated test archive has no production delivery receipts. Checking
+    # historical fixtures against it would send false missed-match notices.
+    if not test_mode:
+        track_missed_fixtures(matches, predictions, state, telegram, chat, save_state)
     refresh_results(predictions, matches)
     save()
     drain_delivery(predictions, telegram, chat, save, checkpoint=checkpoint_delivery)
