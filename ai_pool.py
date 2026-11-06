@@ -358,7 +358,7 @@ def safe_error(error):
     if isinstance(error, OutputError):
         if str(error) in {'COHERE_INVALID_PREDICTION', 'GPT_OSS_INVALID_PREDICTION', 'QWEN_INVALID_PREDICTION'}:
             return 'INVALID_PREDICTION'
-        return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'} else 'INVALID_JSON'
+        return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED', 'PROVIDER_UNAVAILABLE', 'MISSING_API_KEY', 'INVALID_PREDICTION'} else 'INVALID_JSON'
     text = str(error).lower()
     status = error_http_status(error)
     if status == 429 or any(x in text for x in ("429", "quota", "resource_exhausted", "rate limit")):
@@ -563,9 +563,8 @@ def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dic
     if not token or not account:
         raise OutputError('MISSING_API_KEY')
     # Only explicit pre-match inputs. Exclude history, final results, and prior AI votes.
-    state = json.dumps({'home_team': home, 'away_team': away,
-                        'prematch_context': context, 'prematch_research': research},
-                       ensure_ascii=False, default=str)[:14000]
+    state = compact_json({'home_team': home, 'away_team': away,
+                          'prematch_context': context, 'prematch_research': research}, 14000)
     scores = {f'{h}_{a}': f'{h}-{a}' for h in range(5) for a in range(5)}
     payload = {'model': 'clef-omni', 'state': state, 'questions': {
         'result': {'type': 'choice', 'instructions': 'Predict regulation-time match outcome.',
@@ -575,8 +574,23 @@ def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dic
     url = f'https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/@cf/cloudflare/clef-omni'
     request = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'),
         headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(request, timeout=25) as response:
-        data = json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=25) as response:
+            try:
+                data = json.load(response)
+            except (ValueError, UnicodeError):
+                raise OutputError('INVALID_JSON') from None
+    except urllib.error.HTTPError:
+        # Preserve HTTP status and Retry-After for the common retry layer.
+        raise
+    except urllib.error.URLError as error:
+        # urllib wraps socket errors; do not lose retryable failures behind
+        # the generic URLError label or persist exception text/URLs.
+        if isinstance(error.reason, TimeoutError):
+            raise TimeoutError('TIMEOUT') from None
+        raise ConnectionError('CONNECTION_ERROR') from None
+    if not isinstance(data, dict):
+        raise OutputError('INVALID_JSON')
     if not data.get('success'):
         raise OutputError('PROVIDER_UNAVAILABLE')
     answers = (data.get('result') or {}).get('answers') or {}
