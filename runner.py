@@ -851,7 +851,8 @@ def prepare_prediction(r, match, football, predictions, state, save, deadline, t
         r['pool_round'] = 1
         save()
     cached = {v['model']: {k: v.get(k) for k in
-              ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail')}
+              ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail',
+               'request_attempts', 'elapsed_seconds')}
               for v in r['ai_votes']}
     def on_vote(vote):
         r['ai_votes'] = [v for v in r['ai_votes'] if v['model'] != vote.model] + [asdict(vote)]

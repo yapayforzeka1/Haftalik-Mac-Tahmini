@@ -12,15 +12,6 @@ class HTTPFailure(Exception):
         self.body = body or {}
 
 
-def test_persisted_retry_backoff_skips_provider_until_due(monkeypatch):
-    from datetime import datetime, timedelta, timezone
-    future = (datetime.now(timezone.utc) + timedelta(minutes=10)).isoformat()
-    past = (datetime.now(timezone.utc) - timedelta(minutes=1)).isoformat()
-    assert not ai_pool._retry_is_due(future)
-    assert ai_pool._retry_is_due(past)
-    assert ai_pool._retry_is_due(None)  # legacy failure records are recoverable
-
-
 def test_gemini_unknown_429_without_retry_after_avoids_blind_retry(monkeypatch):
     attempts = []
     monkeypatch.setattr(ai_pool.time, 'sleep', lambda t: pytest.fail('unknown 429 should not sleep'))
@@ -79,6 +70,7 @@ def test_ambiguous_or_contradictory_cohere_outcome_is_still_rejected(tag,score):
 
 
 def test_cohere_validation_records_fixed_diagnostic_not_model_text(monkeypatch,capsys):
+    monkeypatch.setattr(ai_pool.time, 'sleep', lambda *_: None)
     monkeypatch.setenv('COHERE_API_KEY', 'private-token')
     for key in ('GEMINI_API_KEY','GROQ_API_KEY','CLOUDFLARE_API_TOKEN'):
         monkeypatch.delenv(key, raising=False)

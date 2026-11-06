@@ -7,6 +7,7 @@ import re
 import time
 import threading
 import math
+import unicodedata
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -24,6 +25,8 @@ class AIVote:
     error_stage: str | None = None
     http_status: int | None = None
     error_detail: str | None = None
+    request_attempts: int | None = None
+    elapsed_seconds: float | None = None
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
@@ -95,6 +98,10 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
             # Resume on the next five-minute trigger. Never shorten a server
             # cooldown, and keep unknown 429/quota failures conservative.
             delay = max(300, math.ceil(retry_after_seconds(error) or 0))
+        elif provider == 'Cohere Command A+' and category in {
+                'PROVIDER_UNAVAILABLE', 'TIMEOUT', 'CONNECTION_ERROR',
+                'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'INVALID_PREDICTION'}:
+            delay = max(300, math.ceil(retry_after_seconds(error) or 0))
         elif status == 429 or category == 'QUOTA_OR_RATE_LIMIT':
             # Unknown 429 windows must not trigger another request on the next run.
             delay = 60 * 60
@@ -112,7 +119,8 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
 
 
 def _cached_vote(value: dict[str, Any]) -> AIVote:
-    fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail')
+    fields = ('model', 'success', 'result', 'error', 'retry_after', 'error_stage', 'http_status', 'error_detail',
+              'request_attempts', 'elapsed_seconds')
     return AIVote(**{key: value.get(key) for key in fields if key in value})
 
 
@@ -156,6 +164,7 @@ def retry_after_seconds(error):
 def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *, deadline=None):
     """One bounded retry layer; reserve a full request before the delivery deadline."""
     last_error: BaseException | None = None
+    cohere_output_retry = False
     for attempt in range(max_retries):
         if deadline is not None and time.monotonic() + 30 >= deadline:
             if last_error is not None:
@@ -165,11 +174,15 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
             return fn()
         except Exception as exc:
             last_error = exc
-            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION'}
+            output_retry = isinstance(exc, OutputError) and str(exc) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'GPT_OSS_INVALID_PREDICTION', 'COHERE_INVALID_PREDICTION'}
+            if name == 'Cohere Command A+' and cohere_output_retry:
+                raise  # The single corrective request failed; do not generate a third output.
             if (not _is_rate_limit_error(exc) and not output_retry) or attempt >= max_retries - 1:
                 raise
-            if output_retry and attempt >= 1:
+            if output_retry and attempt >= 1 and name != 'Cohere Command A+':
                 raise  # At most one additional generation for invalid/truncated JSON.
+            if name == 'Cohere Command A+' and output_retry:
+                cohere_output_retry = True
             if safe_error_detail(exc) == 'QUOTA_EXHAUSTED':
                 raise  # Waiting seconds cannot replenish a billing/daily quota.
             if (_is_gemini(name) and error_http_status(exc) == 429
@@ -214,6 +227,10 @@ def _canonical_outcome(value: Any) -> str | None:
     if not isinstance(value, str):
         return None
     label = value.strip().upper()
+    turkish = ''.join(c for c in unicodedata.normalize('NFKD', label)
+                      if not unicodedata.combining(c)).replace(' ', '').replace('_', '')
+    if turkish in {'EVSAHIBI', 'DEPLASMAN', 'BERABERLIK'}:
+        return {'EVSAHIBI': 'HOME', 'DEPLASMAN': 'AWAY', 'BERABERLIK': 'DRAW'}[turkish]
     return {"HOME": "HOME", "AWAY": "AWAY", "DRAW": "DRAW",
             "1": "HOME", "2": "AWAY", "X": "DRAW",
             "HOME_WIN": "HOME", "AWAY_WIN": "AWAY"}.get(label)
@@ -326,12 +343,15 @@ def safe_error(error):
     if isinstance(error, TimeBudgetError):
         return 'TIME_BUDGET'
     if isinstance(error, OutputError):
+        if str(error) == 'COHERE_INVALID_PREDICTION':
+            return 'INVALID_PREDICTION'
         return str(error) if str(error) in {'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'RESPONSE_STOPPED'} else 'INVALID_JSON'
     text = str(error).lower()
     status = error_http_status(error)
     if status == 429 or any(x in text for x in ("429", "quota", "resource_exhausted", "rate limit")):
         return "QUOTA_OR_RATE_LIMIT"
-    if any(x in text for x in ("timeout", "timed out", "deadline")):
+    if (isinstance(error, TimeoutError) or 'timeout' in type(error).__name__.lower()
+            or any(x in text for x in ("timeout", "timed out", "deadline"))):
         return "TIMEOUT"
     if status in {401, 403} or any(x in text for x in ("401", "403", "unauthorized")):
         return "AUTH_ERROR"
@@ -593,6 +613,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                           retry_after=_persistent_retry_after(None, 'CONFIG', 'MISSING_API_KEY'),
                           error_stage='CONFIG')
         def invoke():
+            started = time.monotonic()
             if deadline is not None and time.monotonic() >= deadline - 30:
                 diagnostics[name] = ('REQUEST', 'TIME_BUDGET', None)
                 return AIVote(name, False, error='TIME_BUDGET',
@@ -600,12 +621,13 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                               error_stage='REQUEST')
             stage = 'REQUEST'
             validation_attempts = 0
+            validation_reason = None
             def request_and_validate():
-                nonlocal stage, validation_attempts
+                nonlocal stage, validation_attempts, validation_reason
                 stage = 'REQUEST'
                 validation_attempts += 1
                 request_prompt = prompt
-                if name == 'Groq GPT-OSS 120B' and validation_attempts > 1:
+                if name in {'Groq GPT-OSS 120B', 'Cohere Command A+'} and validation_attempts > 1:
                     request_prompt += ('\nZORUNLU SON KONTROL: outcome HOME/DRAW/AWAY olmali; '
                                        'score ev-deplasman sirasinda 0-0 gibi yazilmali; '
                                        'HOME icin ev golleri fazla, AWAY icin deplasman fazla, '
@@ -625,10 +647,13 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                     # Never rewrite a contradictory outcome/score or fabricate a vote.
                     # Retry GPT-OSS once; the second generation must pass strict validation.
                     reason = _prediction_validation_reason(parsed)
+                    validation_reason = reason
                     if name in {'Groq GPT-OSS 120B', 'Cohere Command A+'}:
                         print(f'AI VALIDATION | {name} | neden={reason}', flush=True)
                     if name == 'Groq GPT-OSS 120B':
                         raise OutputError('GPT_OSS_INVALID_PREDICTION') from None
+                    if name == 'Cohere Command A+':
+                        raise OutputError('COHERE_INVALID_PREDICTION') from None
                     raise
                 return result
             try:
@@ -637,21 +662,30 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                                           deadline=deadline)
                 result['model_id'] = model_ids[name]
                 diagnostics[name] = ('COMPLETE', 'OK', None)
-                return AIVote(name, True, result)
+                metrics = ({'request_attempts': validation_attempts,
+                            'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
+                           if name == 'Cohere Command A+' else {})
+                return AIVote(name, True, result, **metrics)
             except Exception as error:
                 category = (safe_error(error) if isinstance(error, (OutputError, TimeBudgetError)) else
                             'INVALID_JSON' if stage == 'PARSE' else
                             'INVALID_PREDICTION' if stage == 'VALIDATE' else safe_error(error))
                 detail = safe_error_detail(error)
+                if name == 'Cohere Command A+' and stage == 'VALIDATE' and validation_reason:
+                    detail = validation_reason
                 if detail != 'UNSPECIFIED':
                     print(f'AI DETAY | {name} | {detail}', flush=True)
                 status = error_http_status(error)
                 diagnostics[name] = (stage, category, status)
+                metrics = ({'request_attempts': validation_attempts,
+                            'elapsed_seconds': round(max(0, time.monotonic() - started), 3)}
+                           if name == 'Cohere Command A+' else {})
                 return AIVote(name, False, error=category,
                               retry_after=(error.retry_after if isinstance(error, BudgetDeferred) else
                                            _persistent_retry_after(error, stage, category, provider=name)),
                               error_stage=stage, http_status=status,
-                              error_detail=detail if detail != 'UNSPECIFIED' else None)
+                              error_detail=detail if detail != 'UNSPECIFIED' else None,
+                              **metrics)
         # Two Groq models share a quota, so do not hit that provider simultaneously.
         if key_name == "GROQ_API_KEY":
             with groq_lock:
@@ -690,5 +724,9 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
         category = category if category in allowed else 'SDK_ERROR'
         state = 'BASARILI' if vote.success else 'BASARISIZ'
         print(f'AI | {name} | {state} | asama={stage} | neden={category} | HTTP={status or "-"}', flush=True)
+        if name == 'Cohere Command A+' and vote.request_attempts is not None:
+            attempts = 0 if stage == 'CACHE' else vote.request_attempts
+            elapsed = 0 if stage == 'CACHE' else vote.elapsed_seconds
+            print(f'AI TIMING | Cohere Command A+ | current_attempts={attempts} | seconds={elapsed}', flush=True)
     print(f'AI TOPLAM | {sum(v.success for v in votes.values())}/{len(providers)} basarili', flush=True)
     return [votes[name] for name, _, _ in providers]
