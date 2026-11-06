@@ -238,11 +238,40 @@ def _mark_photo_failure(records, status, exc, clock=None):
         state = record.setdefault('photo_delivery', {})
         state['status'] = status
         state['error'] = safe_error(exc)
+        state['reason'] = getattr(exc, 'reason', 'UNKNOWN') if isinstance(exc, TelegramError) else 'LOCAL_FILE_ERROR'
+        state['http_status'] = getattr(exc, 'http_status', None) if isinstance(exc, TelegramError) else None
         state['finished_at'] = utcnow()
         if status in {'UNCERTAIN', 'REJECTED'}:
             retry_clock = clock or now
             delay = 0 if status == 'REJECTED' else _photo_retry_delay(max(1, _photo_attempt_count(state)))
+            delay = max(delay, (getattr(exc, 'retry_after', None) or 0)
+                        if isinstance(exc, TelegramError) else 0)
             state['retry_after_at'] = (retry_clock() + timedelta(seconds=delay)).isoformat()
+        print(f'TELEGRAM PHOTO | match_id={record.get("match_id")} | status={status}'
+              f' | reason={state["reason"]} | HTTP={state["http_status"] or "-"}'
+              f' | attempt={_photo_attempt_count(state)}', flush=True)
+
+
+def _photo_receipt(state):
+    receipt = {'complete': True, 'transport': 'photo',
+               'group_key': state.get('group_key'), 'group_size': state.get('group_size', 1)}
+    message_id = state.get('message_id')
+    if type(message_id) is int and message_id > 0:
+        receipt['message_id'] = message_id
+    return receipt
+
+
+def _mark_photo_success(record, result, *, photo_receipt=True):
+    state = record['photo_delivery']
+    state['status'] = 'SENT'
+    state['finished_at'] = utcnow()
+    # The production Telegram transport requires a real Message ID. Old state
+    # and injected legacy transports may not supply one; never invent an ID.
+    if isinstance(result, dict) and type(result.get('message_id')) is int and result['message_id'] > 0:
+        state['message_id'] = result['message_id']
+    record['photo_sent'] = True
+    if photo_receipt:
+        record['prediction_receipt'] = _photo_receipt(state)
 
 
 def _checkpoint_photo_attempt(records, mode, save, checkpoint=None, **details):
@@ -343,7 +372,7 @@ def _photo_is_blocked(record, clock=None):
         # Group retries are only performed by drain_delivery, preserving the
         # original group boundary and never falling back to individual photos.
         return state.get('mode') == 'group' or not _photo_retry_due(state, clock) or attempts >= PHOTO_MAX_ATTEMPTS
-    if status == 'REJECTED' and state.get('mode') == 'single':
+    if status == 'REJECTED':
         return not _photo_retry_due(state, clock) or attempts >= PHOTO_MAX_ATTEMPTS
     return False
 
@@ -358,11 +387,7 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
         photo_state = _photo_delivery_state(r)
         if photo_state.get('status') == 'SENT':
             r['photo_sent'] = True
-            r['prediction_receipt'] = {
-                'complete': True, 'transport': 'photo',
-                'group_key': photo_state.get('group_key'),
-                'group_size': photo_state.get('group_size', 1),
-            }
+            r['prediction_receipt'] = _photo_receipt(photo_state)
             r['final_sent'] = True
             save()
             return
@@ -383,7 +408,7 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
                 _checkpoint_photo_attempt([r], 'single', save, checkpoint,
                                           group_key=None, group_size=1)
                 try:
-                    bot.photo(chat_id, path)
+                    result = bot.photo(chat_id, path)
                 except TelegramDeliveryUncertain as exc:
                     _mark_photo_failure([r], 'UNCERTAIN', exc, clock=clock)
                     save()
@@ -392,14 +417,7 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
                     _mark_photo_failure([r], 'REJECTED', exc, clock=clock)
                     save()
                     raise
-                state = r['photo_delivery']
-                state['status'] = 'SENT'
-                state['finished_at'] = utcnow()
-                r['photo_sent'] = True
-                r['prediction_receipt'] = {
-                    'complete': True, 'transport': 'photo',
-                    'group_key': None, 'group_size': 1,
-                }
+                _mark_photo_success(r, result)
                 r['final_sent'] = True
                 save()
                 return
@@ -434,7 +452,7 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
             _checkpoint_photo_attempt([r], 'single', save, checkpoint,
                                       group_key=None, group_size=1)
             try:
-                bot.photo(chat_id, path)
+                result = bot.photo(chat_id, path)
             except TelegramDeliveryUncertain as exc:
                 _mark_photo_failure([r], 'UNCERTAIN', exc, clock=clock)
                 save()
@@ -443,9 +461,7 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
                 _mark_photo_failure([r], 'REJECTED', exc, clock=clock)
                 save()
                 raise
-            r['photo_delivery']['status'] = 'SENT'
-            r['photo_delivery']['finished_at'] = utcnow()
-            r['photo_sent'] = True
+            _mark_photo_success(r, result, photo_receipt=False)
             save()
     r['final_sent'] = True
     save()
@@ -478,11 +494,7 @@ def drain_delivery(predictions, bot, chat_id, save, checkpoint=None):
             recovered = True
         elif state.get('status') == 'SENT' and not r.get('final_sent'):
             r['photo_sent'] = True
-            r['prediction_receipt'] = {
-                'complete': True, 'transport': 'photo',
-                'group_key': state.get('group_key'),
-                'group_size': state.get('group_size', 1),
-            }
+            r['prediction_receipt'] = _photo_receipt(state)
             r['final_sent'] = True
             recovered = True
     if recovered:
@@ -504,6 +516,8 @@ def drain_delivery(predictions, bot, chat_id, save, checkpoint=None):
             group_identity = ('retry', str(state['group_key']), bool(r.get('test_mode')))
         elif status == 'REJECTED' and state.get('mode') == 'single':
             continue  # deliver_record applies the same retry delay to single sends.
+        elif status == 'REJECTED' and not _photo_retry_due(state):
+            continue
         else:
             try:
                 if not (r.get('prediction_ready')
@@ -547,7 +561,7 @@ def drain_delivery(predictions, bot, chat_id, save, checkpoint=None):
             print(f"Gönderim öncesi kayıt başarısız; mesaj gönderilmedi: {ids} / {safe_error(exc)}", flush=True)
             raise
         try:
-            bot.photo(chat_id, path)
+            result = bot.photo(chat_id, path)
         except TelegramDeliveryUncertain as exc:
             _mark_photo_failure(records, 'UNCERTAIN', exc)
             save()
@@ -558,14 +572,7 @@ def drain_delivery(predictions, bot, chat_id, save, checkpoint=None):
             print(f"Grup gönderimi reddedildi; tekli gönderim denenecek: {ids} / {safe_error(exc)}")
         else:
             for r in records:
-                state = r['photo_delivery']
-                state['status'] = 'SENT'
-                state['finished_at'] = utcnow()
-                r['photo_sent'] = True
-                r['prediction_receipt'] = {
-                    'complete': True, 'transport': 'photo',
-                    'group_key': original_key, 'group_size': len(records),
-                }
+                _mark_photo_success(r, result)
                 r['final_sent'] = True
             save()
 

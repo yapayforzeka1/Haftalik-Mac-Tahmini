@@ -49,11 +49,13 @@ def record(mid, home, away, kickoff, score="2-1"):
 def send_photo(path: Path, caption: str):
     token, chat = os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
     if not token or not chat:
-        return
-    import requests
-    with path.open("rb") as fh:
-        r = requests.post(f"https://api.telegram.org/bot{token}/sendPhoto", data={"chat_id":chat,"caption":caption}, files={"photo":fh}, timeout=60)
-        r.raise_for_status()
+        raise SystemExit('Telegram gorsel testi icin bot token ve chat ID gerekli.')
+    from telegram_io import Telegram, TelegramError
+    try:
+        Telegram(token).photo(chat, path, caption=caption)
+    except TelegramError as exc:
+        print(f'TELEGRAM PHOTO CHECK | reason={exc.reason} | HTTP={exc.http_status or "-"}', flush=True)
+        raise SystemExit('Telegram gorsel testi basarisiz; sabit tani kodunu kontrol edin.') from None
 
 
 def main():

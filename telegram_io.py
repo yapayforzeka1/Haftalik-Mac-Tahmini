@@ -5,6 +5,17 @@ import requests
 class TelegramError(RuntimeError):
     """A Telegram operation failed."""
 
+    def __init__(self, message, *, reason='UNKNOWN', http_status=None, retry_after=None):
+        super().__init__(message)
+        allowed = {'UNKNOWN', 'CONNECT_TIMEOUT', 'READ_TIMEOUT', 'TIMEOUT',
+                   'CONNECTION_ERROR', 'REQUEST_ERROR', 'SERVER_ERROR', 'INVALID_JSON',
+                   'INVALID_RESPONSE', 'HTTP_ERROR', 'API_REJECTED', 'MISSING_OK',
+                   'MISSING_MESSAGE_ID'}
+        self.reason = reason if reason in allowed else 'UNKNOWN'
+        self.http_status = (http_status if type(http_status) is int and
+                            100 <= http_status <= 599 else None)
+        self.retry_after = retry_after if type(retry_after) is int and retry_after >= 0 else None
+
 
 class TelegramDeliveryUncertain(TelegramError):
     """The request may have reached Telegram, but no reliable response arrived."""
@@ -58,31 +69,53 @@ class Telegram:
         try:
             with path.open("rb") as file:
                 response = requests.post(f"https://api.telegram.org/bot{self.token}/sendPhoto",
-                    data=payload, files={"photo": file}, timeout=30)
-        except requests.RequestException:
+                    data=payload, files={"photo": file}, timeout=(10, 60))
+        except requests.RequestException as exc:
+            reason = ('CONNECT_TIMEOUT' if isinstance(exc, requests.ConnectTimeout) else
+                      'READ_TIMEOUT' if isinstance(exc, requests.ReadTimeout) else
+                      'TIMEOUT' if isinstance(exc, requests.Timeout) else
+                      'CONNECTION_ERROR' if isinstance(exc, requests.ConnectionError) else
+                      'REQUEST_ERROR')
             raise TelegramDeliveryUncertain(
-                "Telegram görsel bağlantısı belirsiz; otomatik tekrar engellendi.") from None
+                "Telegram görsel bağlantısı belirsiz; teslimat doğrulanamadı.",
+                reason=reason) from None
         if response.status_code >= 500:
             raise TelegramDeliveryUncertain(
-                f"Telegram görsel yanıtı belirsiz ({response.status_code}); otomatik tekrar engellendi.")
+                "Telegram görsel sunucu yanıtı belirsiz; teslimat doğrulanamadı.",
+                reason='SERVER_ERROR', http_status=response.status_code)
         try:
             data = response.json()
         except ValueError:
             if response.ok:
                 raise TelegramDeliveryUncertain(
-                    "Telegram görsel yanıtı okunamadı; otomatik tekrar engellendi.") from None
-            raise TelegramError("Telegram görsel gönderimi başarısız.") from None
+                    "Telegram görsel yanıtı okunamadı; teslimat doğrulanamadı.",
+                    reason='INVALID_JSON', http_status=response.status_code) from None
+            raise TelegramError("Telegram görsel gönderimi başarısız.",
+                                reason='HTTP_ERROR', http_status=response.status_code) from None
         if not isinstance(data, dict):
             if response.ok:
                 raise TelegramDeliveryUncertain(
-                    "Telegram görsel yanıtı beklenen biçimde değil; otomatik tekrar engellendi.")
-            raise TelegramError("Telegram görsel gönderimi başarısız.")
+                    "Telegram görsel yanıtı beklenen biçimde değil; teslimat doğrulanamadı.",
+                    reason='INVALID_RESPONSE', http_status=response.status_code)
+            raise TelegramError("Telegram görsel gönderimi başarısız.",
+                                reason='HTTP_ERROR', http_status=response.status_code)
         if not response.ok or data.get("ok") is False:
-            raise TelegramError("Telegram görsel gönderimi başarısız.")
+            parameters = data.get('parameters')
+            retry_after = parameters.get('retry_after') if isinstance(parameters, dict) else None
+            raise TelegramError("Telegram görsel gönderimi başarısız.", reason='API_REJECTED',
+                                http_status=response.status_code, retry_after=retry_after)
         if data.get("ok") is not True:
             raise TelegramDeliveryUncertain(
-                "Telegram görsel yanıtı belirsiz; otomatik tekrar engellendi.")
-        return data.get("result")
+                "Telegram görsel yanıtı belirsiz; teslimat doğrulanamadı.",
+                reason='MISSING_OK', http_status=response.status_code)
+        result = data.get('result')
+        if (not isinstance(result, dict) or type(result.get('message_id')) is not int
+                or result['message_id'] <= 0):
+            raise TelegramDeliveryUncertain(
+                "Telegram görsel mesaj kimliği eksik; teslimat doğrulanamadı.",
+                reason='MISSING_MESSAGE_ID', http_status=response.status_code)
+        print(f'TELEGRAM PHOTO | status=SENT | message_id={result["message_id"]} | HTTP={response.status_code}', flush=True)
+        return result
 
 
 def chunks(text, limit=1800):
