@@ -1,0 +1,105 @@
+name: Haftalık Maç Tahmini
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "En yakın maç için TEST mesajı gönder (AI token kullanır, üretim arşivini değiştirmez)"
+        required: true
+        default: false
+        type: boolean
+      visual_test:
+        description: "Sadece görsel TESTİ gönder (AI/API token kullanmaz)"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: haftalik-mac-tahmini
+  cancel-in-progress: false
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Bağımlılıkları kur
+        run: python -m pip install -r requirements.txt
+      - name: Tokensız görsel testi
+        if: ${{ inputs.visual_test }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python render_preview.py
+      - name: Read approved Operations configuration
+        if: ${{ vars.OPERATIONS_REPO != '' && !inputs.visual_test }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.OPERATIONS_REPO }}
+          ref: ${{ vars.OPERATIONS_BRANCH || 'main' }}
+          token: ${{ secrets.OPERATIONS_REPO_TOKEN }}
+          path: operations-source
+          persist-credentials: false
+      - name: Botu çalıştır
+        if: ${{ !inputs.visual_test }}
+        id: run_bot
+        timeout-minutes: 14
+        env:
+          PYTHONUNBUFFERED: "1"
+          APPROVED_POLICY_FILE: ${{ vars.OPERATIONS_REPO != '' && 'operations-source/data/approved_policy.json' || '' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLEF_ENABLED: ${{ vars.CLEF_ENABLED || 'true' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
+          GEMINI_REQUESTS_PER_MINUTE: "5"
+          GEMINI_REQUESTS_PER_DAY: "20"
+          GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.8-27b' }}
+          GROQ_120B_MODEL: ${{ vars.GROQ_120B_MODEL || 'openai/gpt-oss-120b' }}
+          COHERE_MODEL: ${{ vars.COHERE_MODEL || 'command-a-plus-05-2026' }}
+          SEASON_START: "2026"
+          TEST_MODE: ${{ inputs.test_mode || false }}
+        run: python bot.py
+      - name: Yarım kalan işlemler dâhil durumu kaydet
+        if: ${{ always() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${{ inputs.test_mode }}" != "true" ]; then
+            for file in match_predictions.json data/operations.json data/provider_cache.json data/pre_v3_predictions.json; do
+              if [ -f "$file" ]; then git add "$file"; fi
+            done
+          fi
+          if [ -f data/gemini_usage.json ]; then git add data/gemini_usage.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Save prediction, learning and operations state"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+      - name: Hata durumunda kurtarma arşivi
+        if: ${{ failure() && steps.run_bot.outcome != 'skipped' && steps.run_bot.outcome != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: prediction-recovery-${{ github.run_id }}
+          path: |
+            match_predictions.json
+            data/
+            test_runtime/
+          retention-days: 7

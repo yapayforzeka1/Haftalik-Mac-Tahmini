@@ -25,7 +25,18 @@ class AIVote:
     http_status: int | None = None
     error_detail: str | None = None
 
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
+
+
+def gemini_label(model=None):
+    return {"gemini-3.6-flash": "Gemini 3.6 Flash",
+            "gemini-3.5-flash-lite": "Gemini 3.5 Flash-Lite"}.get(
+                GEMINI_MODEL if model is None else model, "Gemini (custom)")
+
+
+def _is_gemini(name):
+    return name in {"Gemini 3.6 Flash", "Gemini 3.5 Flash-Lite", "Gemini (custom)"}
+
 MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
 def resolve_qwen_model(value):
     # Migrate only the confirmed obsolete setting; preserve other explicit overrides.
@@ -74,11 +85,11 @@ def _persistent_retry_after(error: BaseException | None, stage: str, category: s
         detail = safe_error_detail(error)
         if detail == 'QUOTA_EXHAUSTED':
             delay = 24 * 60 * 60
-        elif (provider == 'Gemini 3.6 Flash' and status == 429
+        elif (_is_gemini(provider) and status == 429
               and (retry_after_seconds(error) is not None or detail in {
                   'TOKEN_RATE_LIMIT', 'REQUEST_RATE_LIMIT'})):
             delay = max(300, math.ceil(retry_after_seconds(error) or 0))
-        elif provider == 'Gemini 3.6 Flash' and category in {
+        elif _is_gemini(provider) and category in {
                 'PROVIDER_UNAVAILABLE', 'TIMEOUT', 'CONNECTION_ERROR',
                 'INVALID_JSON', 'EMPTY_RESPONSE', 'RESPONSE_TRUNCATED', 'INVALID_PREDICTION'}:
             # Resume on the next five-minute trigger. Never shorten a server
@@ -161,7 +172,7 @@ def _call_with_retry(name: str, fn: Callable, max_retries: int = _MAX_RETRIES, *
                 raise  # At most one additional generation for invalid/truncated JSON.
             if safe_error_detail(exc) == 'QUOTA_EXHAUSTED':
                 raise  # Waiting seconds cannot replenish a billing/daily quota.
-            if (name == 'Gemini 3.6 Flash' and error_http_status(exc) == 429
+            if (_is_gemini(name) and error_http_status(exc) == 429
                     and safe_error_detail(exc) == 'LIMIT_UNSPECIFIED'
                     and retry_after_seconds(exc) is None):
                 # Unknown quota window: no blind extra paid/free-tier requests.
@@ -555,7 +566,7 @@ def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dic
 def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None, gemini_budget=None) -> list[AIVote]:
     prompt = build_prompt(home, away, match_context, research, history)
     providers: list[tuple[str, Callable[[str], str], str]] = [
-        ("Gemini 3.6 Flash", _gemini, "GEMINI_API_KEY"),
+        (gemini_label(), _gemini, "GEMINI_API_KEY"),
         (QWEN_LABEL, lambda p: _groq(p, GROQ_QWEN_MODEL), "GROQ_API_KEY"),
         ("Cohere Command A+", _cohere, "COHERE_API_KEY"),
         ("Groq GPT-OSS 120B", lambda p: _groq(p, GROQ_120B_MODEL), "GROQ_API_KEY"),
@@ -565,7 +576,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
     votes = {}
     diagnostics = {}
     model_ids = {
-        "Gemini 3.6 Flash": GEMINI_MODEL,
+        gemini_label(): GEMINI_MODEL,
         QWEN_LABEL: GROQ_QWEN_MODEL,
         "Cohere Command A+": COHERE_MODEL,
         "Groq GPT-OSS 120B": GROQ_120B_MODEL,
@@ -600,7 +611,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                                        'HOME icin ev golleri fazla, AWAY icin deplasman fazla, '
                                        'DRAW icin esit olmali; confidence 0-100 tam sayi olmali. '
                                        'Yalnizca gecerli JSON dondur.')
-                if name == 'Gemini 3.6 Flash' and gemini_budget is not None:
+                if _is_gemini(name) and gemini_budget is not None:
                     stage = 'BUDGET'
                     gemini_budget.reserve(deadline=deadline)
                     stage = 'REQUEST'
@@ -622,7 +633,7 @@ def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: d
                 return result
             try:
                 result = _call_with_retry(name, request_and_validate,
-                                          max_retries=2 if name == 'Gemini 3.6 Flash' else _MAX_RETRIES,
+                                          max_retries=2 if _is_gemini(name) else _MAX_RETRIES,
                                           deadline=deadline)
                 result['model_id'] = model_ids[name]
                 diagnostics[name] = ('COMPLETE', 'OK', None)

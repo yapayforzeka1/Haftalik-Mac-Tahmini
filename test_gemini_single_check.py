@@ -182,4 +182,4 @@ def test_diagnostic_model_choice_is_not_a_production_setting():
     assert 'gemini-3.5-flash-lite' in diagnostic
     assert "GEMINI_MODEL: ${{ inputs.diagnostic_model || vars.GEMINI_MODEL || 'gemini-3.6-flash' }}" in diagnostic
     assert 'inputs.diagnostic_model' not in production
-    assert "GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}" in production
+    assert "GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}" in production

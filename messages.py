@@ -15,6 +15,8 @@ def label(value, record):
 
 def short_model(name):
     name = str(name)
+    if name == 'Gemini 3.5 Flash-Lite':
+        return 'Gem 3.5L'
     for token, short in (("gemini", "Gemini"), ("mistral", "Mistral"), ("qwen", "Qwen"),
                          ("cohere", "Cohere"), ("gpt-oss", "GPT-OSS"), ("clef", "Clef")):
         if token in name.lower():
