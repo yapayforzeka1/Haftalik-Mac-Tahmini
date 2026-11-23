@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1793967042.120005,
+    "at": 1795411674.109883,
     "data": {
       "filters": {
         "season": 2026
@@ -37,7 +37,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575323,
@@ -46,7 +46,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -103,7 +103,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575324,
@@ -112,7 +112,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -169,7 +169,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575325,
@@ -178,7 +178,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -235,7 +235,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575326,
@@ -244,7 +244,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -301,7 +301,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575327,
@@ -310,7 +310,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -367,7 +367,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575328,
@@ -376,7 +376,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -433,7 +433,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575329,
@@ -442,7 +442,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 81,
             "name": "FC Barcelona",
@@ -499,7 +499,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575330,
@@ -508,7 +508,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -565,7 +565,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575331,
@@ -574,7 +574,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -631,7 +631,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575332,
@@ -640,7 +640,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -697,7 +697,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575333,
@@ -706,7 +706,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
@@ -763,7 +763,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575334,
@@ -772,7 +772,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -829,7 +829,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575335,
@@ -838,7 +838,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -895,7 +895,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575336,
@@ -904,7 +904,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -961,7 +961,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575337,
@@ -970,7 +970,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -1027,7 +1027,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575338,
@@ -1036,7 +1036,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 66,
             "name": "Manchester United FC",
@@ -1093,7 +1093,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575339,
@@ -1102,7 +1102,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -1159,7 +1159,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575340,
@@ -1168,7 +1168,7 @@
           "matchday": 1,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -1225,7 +1225,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575341,
@@ -1234,7 +1234,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -1291,7 +1291,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575342,
@@ -1300,7 +1300,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -1357,7 +1357,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575343,
@@ -1366,7 +1366,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -1423,7 +1423,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575344,
@@ -1432,7 +1432,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -1489,7 +1489,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575345,
@@ -1498,7 +1498,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -1555,7 +1555,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575346,
@@ -1564,7 +1564,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -1621,7 +1621,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575347,
@@ -1630,7 +1630,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -1687,7 +1687,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575348,
@@ -1696,7 +1696,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -1753,7 +1753,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575349,
@@ -1762,7 +1762,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
@@ -1819,7 +1819,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575350,
@@ -1828,7 +1828,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -1885,7 +1885,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575351,
@@ -1894,7 +1894,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -1951,7 +1951,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575352,
@@ -1960,7 +1960,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2017,7 +2017,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575353,
@@ -2026,7 +2026,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2083,7 +2083,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575354,
@@ -2092,7 +2092,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -2149,7 +2149,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575355,
@@ -2158,7 +2158,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -2215,7 +2215,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575356,
@@ -2224,7 +2224,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -2281,7 +2281,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575357,
@@ -2290,7 +2290,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -2347,7 +2347,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575358,
@@ -2356,7 +2356,7 @@
           "matchday": 2,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -2413,7 +2413,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575359,
@@ -2422,7 +2422,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -2479,7 +2479,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575360,
@@ -2488,7 +2488,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -2545,7 +2545,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575361,
@@ -2554,7 +2554,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -2611,7 +2611,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575362,
@@ -2620,7 +2620,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -2677,7 +2677,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575363,
@@ -2686,7 +2686,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -2743,7 +2743,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575364,
@@ -2752,7 +2752,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -2809,7 +2809,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575365,
@@ -2818,7 +2818,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -2875,7 +2875,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575366,
@@ -2884,7 +2884,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
@@ -2941,7 +2941,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575367,
@@ -2950,7 +2950,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -3007,7 +3007,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575368,
@@ -3016,7 +3016,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -3073,7 +3073,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575369,
@@ -3082,7 +3082,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -3139,7 +3139,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575370,
@@ -3148,7 +3148,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -3205,7 +3205,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575371,
@@ -3214,7 +3214,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -3271,7 +3271,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575372,
@@ -3280,7 +3280,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -3337,7 +3337,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575373,
@@ -3346,7 +3346,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -3403,7 +3403,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575374,
@@ -3412,7 +3412,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -3469,7 +3469,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575375,
@@ -3478,7 +3478,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -3535,7 +3535,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575376,
@@ -3544,7 +3544,7 @@
           "matchday": 3,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -3601,7 +3601,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575377,
@@ -3610,7 +3610,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -3667,7 +3667,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575378,
@@ -3676,7 +3676,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -3733,7 +3733,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575379,
@@ -3742,7 +3742,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -3799,7 +3799,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575380,
@@ -3808,7 +3808,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 81,
             "name": "FC Barcelona",
@@ -3865,7 +3865,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575381,
@@ -3874,7 +3874,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -3931,7 +3931,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575382,
@@ -3940,7 +3940,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
@@ -3997,7 +3997,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575383,
@@ -4006,7 +4006,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 66,
             "name": "Manchester United FC",
@@ -4063,7 +4063,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575384,
@@ -4072,7 +4072,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -4129,7 +4129,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575385,
@@ -4138,7 +4138,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -4195,7 +4195,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575386,
@@ -4204,7 +4204,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -4261,7 +4261,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575387,
@@ -4270,7 +4270,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -4327,7 +4327,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575388,
@@ -4336,7 +4336,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -4393,7 +4393,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575389,
@@ -4402,7 +4402,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -4459,7 +4459,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575390,
@@ -4468,7 +4468,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -4525,7 +4525,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575391,
@@ -4534,7 +4534,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -4591,7 +4591,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575392,
@@ -4600,7 +4600,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -4657,7 +4657,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575393,
@@ -4666,7 +4666,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -4723,7 +4723,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575394,
@@ -4732,7 +4732,7 @@
           "matchday": 4,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -4789,7 +4789,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575395,
@@ -4798,7 +4798,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -4848,7 +4848,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575396,
@@ -4857,7 +4857,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -4907,7 +4907,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575397,
@@ -4916,7 +4916,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -4966,7 +4966,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575398,
@@ -4975,7 +4975,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -5025,7 +5025,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575399,
@@ -5034,7 +5034,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -5084,7 +5084,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575400,
@@ -5093,7 +5093,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -5143,7 +5143,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575401,
@@ -5152,7 +5152,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -5202,7 +5202,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575402,
@@ -5211,7 +5211,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -5261,7 +5261,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575403,
@@ -5270,7 +5270,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -5320,7 +5320,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575404,
@@ -5329,7 +5329,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5379,7 +5379,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575405,
@@ -5388,7 +5388,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -5438,7 +5438,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575406,
@@ -5447,7 +5447,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -5497,7 +5497,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575407,
@@ -5506,7 +5506,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -5556,7 +5556,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575408,
@@ -5565,7 +5565,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -5615,7 +5615,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575409,
@@ -5624,7 +5624,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -5674,7 +5674,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575410,
@@ -5683,7 +5683,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -5733,7 +5733,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575411,
@@ -5742,7 +5742,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -5792,7 +5792,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575412,
@@ -5801,7 +5801,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -5851,7 +5851,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575413,
@@ -5860,7 +5860,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
@@ -5910,7 +5910,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575414,
@@ -5919,7 +5919,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -5969,7 +5969,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575415,
@@ -5978,7 +5978,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 81,
             "name": "FC Barcelona",
@@ -6028,7 +6028,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575416,
@@ -6037,7 +6037,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -6087,7 +6087,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575417,
@@ -6096,7 +6096,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -6146,7 +6146,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575418,
@@ -6155,7 +6155,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
@@ -6205,7 +6205,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575419,
@@ -6214,7 +6214,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -6264,7 +6264,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575420,
@@ -6273,7 +6273,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 66,
             "name": "Manchester United FC",
@@ -6323,7 +6323,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575421,
@@ -6332,7 +6332,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -6382,7 +6382,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575422,
@@ -6391,7 +6391,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -6441,7 +6441,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575423,
@@ -6450,7 +6450,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -6500,7 +6500,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575280,
@@ -6509,7 +6509,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -6559,7 +6559,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575286,
@@ -6568,7 +6568,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -6618,7 +6618,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575290,
@@ -6627,7 +6627,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -6677,7 +6677,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575295,
@@ -6686,7 +6686,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -6736,7 +6736,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575315,
@@ -6745,7 +6745,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -6795,7 +6795,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575317,
@@ -6804,7 +6804,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -6854,7 +6854,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575322,
@@ -6863,7 +6863,7 @@
           "matchday": 6,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -6913,7 +6913,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575292,
@@ -6922,7 +6922,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -6972,7 +6972,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575318,
@@ -6981,7 +6981,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -7031,7 +7031,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575282,
@@ -7040,7 +7040,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -7090,7 +7090,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575285,
@@ -7099,7 +7099,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -7149,7 +7149,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575302,
@@ -7158,7 +7158,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10,
             "name": "VfB Stuttgart",
@@ -7208,7 +7208,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575303,
@@ -7217,7 +7217,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 58,
             "name": "Aston Villa FC",
@@ -7267,7 +7267,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575307,
@@ -7276,7 +7276,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1899,
             "name": "PAE AEK",
@@ -7326,7 +7326,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575308,
@@ -7335,7 +7335,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 503,
             "name": "FC Porto",
@@ -7385,7 +7385,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575321,
@@ -7394,7 +7394,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -7444,7 +7444,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575314,
@@ -7453,7 +7453,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 613,
             "name": "Fenerbahçe SK",
@@ -7503,7 +7503,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575320,
@@ -7512,7 +7512,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -7562,7 +7562,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575284,
@@ -7571,7 +7571,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 546,
             "name": "Racing Club de Lens",
@@ -7621,7 +7621,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575288,
@@ -7630,7 +7630,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -7680,7 +7680,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575294,
@@ -7689,7 +7689,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -7739,7 +7739,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575297,
@@ -7748,7 +7748,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 90,
             "name": "Real Betis Balompié",
@@ -7798,7 +7798,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575300,
@@ -7807,7 +7807,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 66,
             "name": "Manchester United FC",
@@ -7857,7 +7857,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575312,
@@ -7866,7 +7866,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5720,
             "name": "Viking FK",
@@ -7916,7 +7916,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575313,
@@ -7925,7 +7925,7 @@
           "matchday": 7,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -7975,7 +7975,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575281,
@@ -7984,7 +7984,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
@@ -8034,7 +8034,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575283,
@@ -8043,7 +8043,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -8093,7 +8093,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575287,
@@ -8102,7 +8102,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -8152,7 +8152,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575289,
@@ -8161,7 +8161,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 81,
             "name": "FC Barcelona",
@@ -8211,7 +8211,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575291,
@@ -8220,7 +8220,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -8270,7 +8270,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575293,
@@ -8279,7 +8279,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -8329,7 +8329,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575296,
@@ -8338,7 +8338,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 64,
             "name": "Liverpool FC",
@@ -8388,7 +8388,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575298,
@@ -8397,7 +8397,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -8447,7 +8447,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575299,
@@ -8456,7 +8456,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 5,
             "name": "FC Bayern München",
@@ -8506,7 +8506,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575301,
@@ -8515,7 +8515,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -8565,7 +8565,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575304,
@@ -8574,7 +8574,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 4,
             "name": "Borussia Dortmund",
@@ -8624,7 +8624,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575305,
@@ -8633,7 +8633,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -8683,7 +8683,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575306,
@@ -8692,7 +8692,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 100,
             "name": "AS Roma",
@@ -8742,7 +8742,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575309,
@@ -8751,7 +8751,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 2016,
             "name": "LASK Linz",
@@ -8801,7 +8801,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575310,
@@ -8810,7 +8810,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 94,
             "name": "Villarreal CF",
@@ -8860,7 +8860,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575311,
@@ -8869,7 +8869,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 674,
             "name": "PSV",
@@ -8919,7 +8919,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575316,
@@ -8928,7 +8928,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -8978,7 +8978,7 @@
             "id": 2557,
             "startDate": "2026-09-08",
             "endDate": "2027-01-27",
-            "currentMatchday": 4,
+            "currentMatchday": 5,
             "winner": null
           },
           "id": 575319,
@@ -8987,7 +8987,7 @@
           "matchday": 8,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-06T00:20:27Z",
+          "lastUpdated": "2026-11-23T00:20:25Z",
           "homeTeam": {
             "id": 113,
             "name": "SSC Napoli",
