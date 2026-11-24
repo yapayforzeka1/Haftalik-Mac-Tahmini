@@ -66840,7 +66840,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -66878,7 +66881,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 3.412,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -66916,7 +66922,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 13.576,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -66953,7 +66962,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 1.009,
-        "queue_wait_seconds": 3.412
+        "queue_wait_seconds": 3.412,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -66986,7 +66998,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -68039,6 +68054,137 @@
       "group_key": "2026-11-24T17:45",
       "group_size": 1,
       "message_id": 136
+    },
+    "actual": {
+      "home": 1,
+      "away": 0,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-24T19:46:15.507712+00:00"
+    },
+    "consensus_points": null,
+    "consensus_winner_applicable": false,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": false
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibinin son maçlarındaki skor dengesi düşük gollü bir maça işaret ediyor.",
+            "Deplasman takımının hücum etkinliği yüksek ancak dış sahada zorlanıyor.",
+            "İki takımın resmi 11'leri dengeli bir mücadele vadediyor.",
+            "Maç öncesi uzun dinlenme süreleri takımların fiziksel durumunu eşitlemiş durumda."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 0,
+          "away_bias": 2,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "LASK Linz, Bodø/Glimt'e kıyasla daha yüksek gol ortalamasına (2.5 vs 1.0) ve daha iyi genel forma sahip.",
+            "Bodø/Glimt evinde savunma istikrarı gösterse de (0 gol yediği 2 maç), deplasman performansları zayıf ve gol yeme oranı yüksek.",
+            "LASK'ın 5-3-2 dizilişi, Bodø'nun 4-3-3'üne karşı deplasmanda kontrollü bir oyun ve kontra atak fırsatları sunabilir.",
+            "Her iki takımın da 20 gün dinlenme süresi olması, fiziksel dezavantajı dengelese de LASK'ın hücum gücü belirleyici olabilir."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi, son iki ev maçında kalesini korudu ve maç başına 0,5 gol ortalaması yakaladı.",
+            "Deplasman takımı, maç başına 1,5 gol ortalaması yakaladı ve dört deplasman maçının üçünde gol attı.",
+            "Her iki takım da aynı dinlenme süresine sahip ve açıklanan kadrolarında önemli bir sakatlık sorunu yok.",
+            "LASK deplasmanlarda gol atma yeteneği gösterirken Bodø/Glimt'in ev savunması sınırlı gollere izin veriyor, bu da düşük skorlu bir ev sahibi galibiyetini destekliyor."
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son maçta gol attı",
+            "Deplasman savunma zayıf",
+            "Her iki takım da dinlenmiş",
+            "Ev sahibi evinde daha kontrollü"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "0202f4dbd4b460d0a19c300259ea775e9299037cbe5b9309efd3e8fa61affdd6",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575397": {
