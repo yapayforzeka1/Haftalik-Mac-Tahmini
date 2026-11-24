@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795545675.0045905,
+    "at": 1795545969.514148,
     "data": {
       "filters": {
         "season": 2026
@@ -4794,7 +4794,7 @@
           },
           "id": 575395,
           "utcDate": "2026-11-24T17:45:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -4860,7 +4860,7 @@
           },
           "id": 575396,
           "utcDate": "2026-11-24T17:45:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
