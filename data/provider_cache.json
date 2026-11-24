@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795555876.7836099,
+    "at": 1795556169.6943326,
     "data": {
       "filters": {
         "season": 2026
@@ -4930,7 +4930,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:30:19Z",
+          "lastUpdated": "2026-11-24T21:34:35Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -4996,7 +4996,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:30:19Z",
+          "lastUpdated": "2026-11-24T21:34:35Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -5062,7 +5062,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:30:19Z",
+          "lastUpdated": "2026-11-24T21:34:35Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -5128,7 +5128,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:29:47Z",
+          "lastUpdated": "2026-11-24T21:35:07Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -5194,7 +5194,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:29:47Z",
+          "lastUpdated": "2026-11-24T21:35:07Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -5260,7 +5260,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:30:19Z",
+          "lastUpdated": "2026-11-24T21:34:35Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -5326,7 +5326,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:29:47Z",
+          "lastUpdated": "2026-11-24T21:35:07Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
