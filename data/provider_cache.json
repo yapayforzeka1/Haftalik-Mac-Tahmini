@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795557381.3704875,
+    "at": 1795557677.3552983,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 77
+        "played": 80
       },
       "competition": {
         "id": 2001,
@@ -4926,11 +4926,11 @@
           },
           "id": 575397,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:55:55Z",
+          "lastUpdated": "2026-11-24T21:58:03Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -5128,7 +5128,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:54:19Z",
+          "lastUpdated": "2026-11-24T22:00:43Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -5256,11 +5256,11 @@
           },
           "id": 575402,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:55:55Z",
+          "lastUpdated": "2026-11-24T21:56:59Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -5322,11 +5322,11 @@
           },
           "id": 575403,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:55:23Z",
+          "lastUpdated": "2026-11-24T22:00:10Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
