@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795557075.6404254,
+    "at": 1795557381.3704875,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 74
+        "played": 77
       },
       "competition": {
         "id": 2001,
@@ -4930,7 +4930,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:49:31Z",
+          "lastUpdated": "2026-11-24T21:55:55Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -4949,7 +4949,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 4,
+              "home": 5,
               "away": 1
             },
             "halfTime": {
@@ -4992,11 +4992,11 @@
           },
           "id": 575398,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:49:31Z",
+          "lastUpdated": "2026-11-24T21:55:54Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -5058,11 +5058,11 @@
           },
           "id": 575399,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:49:31Z",
+          "lastUpdated": "2026-11-24T21:55:55Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -5128,7 +5128,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:50:03Z",
+          "lastUpdated": "2026-11-24T21:54:19Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -5144,10 +5144,10 @@
             "crest": "https://crests.football-data.org/503.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 1
             },
             "halfTime": {
@@ -5190,11 +5190,11 @@
           },
           "id": 575401,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:50:03Z",
+          "lastUpdated": "2026-11-24T21:55:23Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -5260,7 +5260,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:49:31Z",
+          "lastUpdated": "2026-11-24T21:55:55Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -5279,7 +5279,7 @@
             "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 2,
+              "home": 3,
               "away": 1
             },
             "halfTime": {
@@ -5326,7 +5326,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T21:50:03Z",
+          "lastUpdated": "2026-11-24T21:55:23Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",

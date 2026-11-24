@@ -69490,7 +69490,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -69529,7 +69532,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 2.046,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -69567,7 +69573,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 7.277,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -69606,7 +69615,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 1.172,
-        "queue_wait_seconds": 2.047
+        "queue_wait_seconds": 2.047,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -69639,7 +69651,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -70694,7 +70709,141 @@
     "prediction_update_required": false,
     "published_successful_ai": 5,
     "published_prediction_complete": true,
-    "prediction_update_sent_at": "2026-11-24T19:16:44.218070+00:00"
+    "prediction_update_sent_at": "2026-11-24T19:16:44.218070+00:00",
+    "actual": {
+      "home": 2,
+      "away": 2,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-24T21:56:21.391412+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Manchester City evinde galibiyete yakın.",
+            "Napoli deplasmanda zorlanıyor.",
+            "Puan durumu ev sahibinin üstünlüğünü gösteriyor.",
+            "Kadro kalitesi ve resmi 11 dengesi ev sahibini destekliyor."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "City'nin evindeki zayıf formuna rağmen Haaland ve Enzo Fernández'in varlığı gol potansiyelini artırıyor.",
+            "De Bruyne ve Højlund'un Napoli'de olması deplasman takımına ciddi bir hücum gücü ve yaratıcılık katıyor.",
+            "İki takımın da son maçlarda gol yeme eğilimi yüksek olduğu için karşılıklı goller bekleniyor.",
+            "City'nin Şampiyonlar Ligi'ndeki genel derinliği ve Napoli'nin deplasman kırılganlığı ev sahibine hafif üstünlük veriyor."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Manchester City evinde son iki maçta sadece 1 gol attı ve bir beraberlik, bir yenilgi yaşadı; gol üretimi sınırlı.",
+            "Napoli deplasmanında gol bulabiliyor; son üç deplasman maçında 5 gol attı ve savunma istikrarsızlığı gösterdi.",
+            "City'nin resmi kadrosunda Haaland ve De Bruyne gibi gol tehditleri bulunuyor; galibiyet için baskı yapacaklar.",
+            "Napoli'nin deplasman savunması son üç maçta 7 gol yedi; City'nin gol atma olasılığı yüksek."
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Her iki takım da son 5 maçta savunma zaafı gösterdi",
+            "Manchester City evinde gol üretiminde düşük verim",
+            "Napoli deplasmanda gol yeme oranı yüksek",
+            "İki takım da dinlenme süresi benzer ve rotasyon riski düşük"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "e0d50c4602f4582a878a6c2d6475c46b732e6ef06fabd45a70efc164ff5c7bc7",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    }
   },
   "575399": {
     "schema_version": 3,
@@ -70763,7 +70912,10 @@
         "error_detail": null,
         "request_attempts": 3,
         "elapsed_seconds": 62.807,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -70801,7 +70953,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 6.403,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -70840,7 +70995,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 0.979,
-        "queue_wait_seconds": 62.806
+        "queue_wait_seconds": 62.806,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -70873,7 +71031,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -71911,6 +72072,121 @@
       "group_key": "2026-11-24T20:00",
       "group_size": 2,
       "message_id": 138
+    },
+    "actual": {
+      "home": 1,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-24T21:56:21.391862+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Arsenal'in evindeki gol yememe serisi ve güçlü savunma performansı",
+            "Dortmund'un deplasman gol üretiminin düşük olması (maç başına 1.5)",
+            "Resmi kadrolarda Arsenal'in daha derin ve formda hücum hattı (Gyökeres, Ødegaard)",
+            "Her iki takımın da benzer formda olması ancak ev avantajının belirleyici olması"
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Arsenal evde güçlü savunma sergiliyor",
+            "Dortmund deplasmanında gol atabiliyor ancak fazla gol yemiyor",
+            "Arsenal ev avantajıyla iki gol bulma ihtimali yüksek",
+            "Dortmund bir golle yetinebilir ve maç sonucu 2-1 olabilir"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 1,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "official_xi",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Arsenal son 5 maçta 8 gol attı, savunma güçlü",
+            "Dortmund savunma hataları artıyor",
+            "Arsenal evinde 2 galibiyet, Dortmund deplasmanda 1 galibiyet",
+            "Her iki takım da dinlenmiş, tempo yüksek"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "eec1c0159153ba9ac411f7f47a009a4651f36c6ba08cce8b6ae185afa292254c",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575400": {
@@ -73223,7 +73499,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 2.568,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cohere Command A+",
@@ -73261,7 +73540,10 @@
         "error_detail": null,
         "request_attempts": 2,
         "elapsed_seconds": 25.001,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -73299,7 +73581,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 1.188,
-        "queue_wait_seconds": 2.568
+        "queue_wait_seconds": 2.568,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -73332,7 +73617,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       }
     ],
     "pool_round": 1,
@@ -74039,7 +74327,120 @@
     "prediction_update_required": false,
     "published_successful_ai": 4,
     "published_prediction_complete": false,
-    "prediction_update_sent_at": "2026-11-24T19:41:37.923064+00:00"
+    "prediction_update_sent_at": "2026-11-24T19:41:37.923064+00:00",
+    "actual": {
+      "home": 0,
+      "away": 2,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-24T21:56:21.392110+00:00"
+    },
+    "consensus_points": 8,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": true,
+    "outcome_correct": true,
+    "exact_score_correct": true,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": false
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Slovan Bratislava son 4 maçta 17 gol yiyerek savunma çöküşü yaşıyor",
+            "Real Betis son 5 maçta 6 gol atıp sadece 4 gol yiyerek dengeli performans sergiliyor",
+            "Betis'in 3 gün dinlenme avantajı, Slovan'ın 21 günlük boşluğuna karşı taktiksel esneklik sağlıyor",
+            "Slovan'ın evinde bile gol atamaması (0 gol) ve Betis'in deplasman istikrarı (1W-2D-1L) deplasman galibiyetini destekliyor"
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 4 maçta sadece 1 gol attı ve savunma çok zayıf",
+            "Deplasman son 5 maçta 6 gol attı ve daha iyi formda",
+            "Ev sahibi uzun dinlenme süresiyle ritim kaybı yaşıyor",
+            "Betis kaliteli forvetlerle gol bulma ihtimali yüksek"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 4 maçta 1-17 gol dengesi",
+            "Deplasman son 5 maçta 6-4 gol dengesi",
+            "Deplasman dinlenme süresi kısa, formda avantaj",
+            "Deplasman lig kalitesi ve puan durumu daha iyi"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "57fcb6fe2f56e46b013d6ae6b57c7b84188a43c35f71d05d66b1be9f1d8363be",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    }
   },
   "575402": {
     "schema_version": 3,
