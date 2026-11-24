@@ -69387,15 +69387,40 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-24T19:11:48.753939+00:00",
-        "error_stage": "REQUEST",
+        "success": true,
+        "result": {
+          "home_team": "Manchester City FC",
+          "away_team": "SSC Napoli",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 65,
+          "reasons": [
+            "Manchester City evinde son iki maçta sadece 1 gol attı ve bir beraberlik, bir yenilgi yaşadı; gol üretimi sınırlı.",
+            "Napoli deplasmanında gol bulabiliyor; son üç deplasman maçında 5 gol attı ve savunma istikrarsızlığı gösterdi.",
+            "City'nin resmi kadrosunda Haaland ve De Bruyne gibi gol tehditleri bulunuyor; galibiyet için baskı yapacaklar.",
+            "Napoli'nin deplasman savunması son üç maçta 7 gol yedi; City'nin gol atma olasılığı yüksek."
+          ],
+          "short_reason": "City üstün; galibiyet ve 2-1 skor",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "none",
+          "factors_used": [
+            "form",
+            "standings",
+            "official_xi"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null,
         "error_detail": null,
-        "request_attempts": 2,
-        "elapsed_seconds": 30.135,
+        "request_attempts": 1,
+        "elapsed_seconds": 7.277,
         "queue_wait_seconds": null
       },
       {
@@ -70303,33 +70328,33 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "HOME",
-      "outcome_votes": 3,
-      "outcome_share": 75,
-      "score": null,
-      "score_votes": 0,
-      "score_share": 0,
+      "outcome_votes": 4,
+      "outcome_share": 80,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 60,
       "winner_consensus": true,
-      "score_consensus": false,
-      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
       "top_outcome": "HOME",
-      "top_outcome_votes": 3,
+      "top_outcome_votes": 4,
       "top_score": "2-1",
-      "top_score_votes": 2,
-      "average_subjective_confidence": 44,
+      "top_score_votes": 3,
+      "average_subjective_confidence": 48,
       "all_outcomes": {
-        "HOME": 3,
+        "HOME": 4,
         "DRAW": 1
       },
       "all_scores": {
-        "2-1": 2,
+        "2-1": 3,
         "1-1": 1,
         "3-1": 1
       },
@@ -70349,12 +70374,7 @@
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-24T19:06:48.822752+00:00",
     "experimental_predictions": {
@@ -70424,31 +70444,31 @@
       }
     },
     "minutes_before_match": 53.2,
-    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "HOME",
-      "outcome_votes": 3,
-      "outcome_share": 75,
-      "score": null,
-      "score_votes": 0,
-      "score_share": 0,
+      "outcome_votes": 4,
+      "outcome_share": 80,
+      "score": "2-1",
+      "score_votes": 3,
+      "score_share": 60,
       "winner_consensus": true,
-      "score_consensus": false,
-      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
       "top_outcome": "HOME",
-      "top_outcome_votes": 3,
+      "top_outcome_votes": 4,
       "top_score": "2-1",
-      "top_score_votes": 2,
-      "average_subjective_confidence": 44,
+      "top_score_votes": 3,
+      "average_subjective_confidence": 48,
       "all_outcomes": {
-        "HOME": 3,
+        "HOME": 4,
         "DRAW": 1
       },
       "all_scores": {
-        "2-1": 2,
+        "2-1": 3,
         "1-1": 1,
         "3-1": 1
       },
@@ -70468,59 +70488,36 @@
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
-      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "mode": "NORMAL",
       "summary_headers": [
         "⚽ Maç",
         "🕒 Saat",
         "📋 Durum",
         "🤖 Başarılı Tahmin Üreten AL",
         "🏆 Ortak tahmin",
-        "🎯 Ortak skor"
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
       ],
       "summary": [
         "Manchester City FC – SSC Napoli",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Manchester City FC · 3/4",
-        "Yok"
+        "5/5",
+        "Manchester City FC · 4/5",
+        "2–1 · 3/5",
+        "Gem 3.5L, Qwen, Cohere"
       ],
-      "headers": [
-        "🤖 AI Modelleri",
-        "🎯 Skor",
-        "Oy"
-      ],
-      "rows": [
-        [
-          "Gem 3.5L, Qwen",
-          "2–1",
-          "2/4"
-        ],
-        [
-          "GPT-OSS",
-          "1–1",
-          "1/4"
-        ],
-        [
-          "Clef",
-          "3–1",
-          "1/4"
-        ]
-      ],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Manchester City FC (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "headers": [],
+      "rows": [],
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nManchester City FC – SSC Napoli | 23:00 TSİ | ✅ Resmî 11 | 4/5 | Manchester City FC · 3/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGem 3.5L, Qwen | 2–1 | 2/4\nGPT-OSS | 1–1 | 1/4\nClef | 3–1 | 1/4\n\n⚠️ GEÇİCİ ORTAK KARAR: Manchester City FC (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nManchester City FC – SSC Napoli | 23:00 TSİ | ✅ Resmî 11 | 5/5 | Manchester City FC · 4/5 | 2–1 · 3/5 | Gem 3.5L, Qwen, Cohere",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -70540,7 +70537,18 @@
       "group_key": "2026-11-24T20:00",
       "group_size": 2,
       "message_id": 138
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        142
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-24T19:16:44.218070+00:00"
   },
   "575399": {
     "schema_version": 3,
@@ -70564,7 +70572,7 @@
         "success": false,
         "result": null,
         "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-24T19:12:04.246978+00:00",
+        "retry_after": "2026-11-24T19:21:35.967224+00:00",
         "error_stage": "REQUEST",
         "http_status": 503,
         "error_detail": null,
@@ -73213,7 +73221,7 @@
     },
     "context_prepared_at": "2026-11-24T18:32:21.474250+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-24T19:08:07.850278+00:00"
+    "xi_checked_at": "2026-11-24T19:16:36.122846+00:00"
   },
   "575402": {
     "schema_version": 3,
@@ -74665,6 +74673,6 @@
     },
     "context_prepared_at": "2026-11-24T18:32:46.105931+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-24T19:08:10.810309+00:00"
+    "xi_checked_at": "2026-11-24T19:16:37.555986+00:00"
   }
 }
