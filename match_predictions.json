@@ -66990,7 +66990,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-24T16:16:17.029299+00:00",
@@ -68022,13 +68022,23 @@
     "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-24T16:46:35.948836+00:00",
       "first_attempt_at": "2026-11-24T16:46:35.948824+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-24T17:45",
-      "group_size": 1
+      "group_size": 1,
+      "finished_at": "2026-11-24T16:46:38.623830+00:00",
+      "message_id": 136
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-24T17:45",
+      "group_size": 1,
+      "message_id": 136
     }
   }
 }
