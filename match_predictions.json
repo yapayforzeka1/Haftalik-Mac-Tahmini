@@ -73729,6 +73729,16 @@
       "policy": "balanced_v1",
       "evidence_hash": "cf8ce83435b599bf90f71a5903f92f1fd8897ce790e1b5b896651dac69047d58",
       "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    },
+    "result_correction_pending_review": {
+      "proposed_actual": {
+        "home": 0,
+        "away": 1,
+        "status": "FINISHED",
+        "scope": "REGULAR_90"
+      },
+      "observed_at": "2026-11-24T22:16:10.346512+00:00",
+      "reason": "Official result differs from stored result; manual review required."
     }
   },
   "575401": {
