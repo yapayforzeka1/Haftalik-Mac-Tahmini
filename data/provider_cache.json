@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795536671.394518,
+    "at": 1795536976.9426048,
     "data": {
       "filters": {
         "season": 2026
@@ -9032,6 +9032,586 @@
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
           "referees": []
+        }
+      ]
+    }
+  },
+  "ca4865cab774908c9988eb20da19c9c2068b8f87ed9e190dee14883e96bb8496": {
+    "at": 1795536983.0388482,
+    "data": {
+      "filters": {
+        "dateFrom": "2026-08-26",
+        "dateTo": "2026-11-24",
+        "permission": "TIER_ONE",
+        "status": [
+          "FINISHED"
+        ],
+        "limit": 20
+      },
+      "resultSet": {
+        "count": 4,
+        "competitions": "CL",
+        "first": "2026-09-10",
+        "last": "2026-11-03",
+        "played": 4,
+        "wins": 3,
+        "draws": 1,
+        "losses": 2
+      },
+      "matches": [
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575337,
+          "utcDate": "2026-09-10T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 5,
+            "name": "FC Bayern München",
+            "shortName": "Bayern",
+            "tla": "FCB",
+            "crest": "https://crests.football-data.org/5.png"
+          },
+          "awayTeam": {
+            "id": 5721,
+            "name": "FK Bodø/Glimt",
+            "shortName": "Bodø/Glimt",
+            "tla": "FK",
+            "crest": "https://crests.football-data.org/5721.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 5,
+              "away": 0
+            },
+            "halfTime": {
+              "home": 0,
+              "away": 0
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 43936,
+              "name": "Rade Obrenović",
+              "type": "REFEREE",
+              "nationality": "Slovenia"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575354,
+          "utcDate": "2026-10-14T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 2,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 5721,
+            "name": "FK Bodø/Glimt",
+            "shortName": "Bodø/Glimt",
+            "tla": "FK",
+            "crest": "https://crests.football-data.org/5721.png"
+          },
+          "awayTeam": {
+            "id": 4,
+            "name": "Borussia Dortmund",
+            "shortName": "Dortmund",
+            "tla": "BVB",
+            "crest": "https://crests.football-data.org/4.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 1,
+              "away": 0
+            },
+            "halfTime": {
+              "home": 0,
+              "away": 0
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 15721,
+              "name": "Urs Schnyder",
+              "type": "REFEREE",
+              "nationality": "Switzerland"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575366,
+          "utcDate": "2026-10-20T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 113,
+            "name": "SSC Napoli",
+            "shortName": "Napoli",
+            "tla": "NAP",
+            "crest": "https://crests.football-data.org/113.png"
+          },
+          "awayTeam": {
+            "id": 5721,
+            "name": "FK Bodø/Glimt",
+            "shortName": "Bodø/Glimt",
+            "tla": "FK",
+            "crest": "https://crests.football-data.org/5721.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 4,
+              "away": 3
+            },
+            "halfTime": {
+              "home": 2,
+              "away": 1
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 207080,
+              "name": "José Sánchez Martínez",
+              "type": "REFEREE",
+              "nationality": "Spain"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575384,
+          "utcDate": "2026-11-03T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 4,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 5721,
+            "name": "FK Bodø/Glimt",
+            "shortName": "Bodø/Glimt",
+            "tla": "FK",
+            "crest": "https://crests.football-data.org/5721.png"
+          },
+          "awayTeam": {
+            "id": 521,
+            "name": "Lille OSC",
+            "shortName": "Lille",
+            "tla": "LIL",
+            "crest": "https://crests.football-data.org/521.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 0,
+              "away": 0
+            },
+            "halfTime": {
+              "home": 0,
+              "away": 0
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 38806,
+              "name": "João Pinheiro",
+              "type": "REFEREE",
+              "nationality": "Portugal"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "0ff06bd59b735a5f05e249d2cfb544afe48c5d8b37c7d85f805422bdfd5e6e37": {
+    "at": 1795536989.192066,
+    "data": {
+      "filters": {
+        "dateFrom": "2026-08-26",
+        "dateTo": "2026-11-24",
+        "permission": "TIER_ONE",
+        "status": [
+          "FINISHED"
+        ],
+        "limit": 20
+      },
+      "resultSet": {
+        "count": 4,
+        "competitions": "CL",
+        "first": "2026-09-08",
+        "last": "2026-11-03",
+        "played": 4,
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "matches": [
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575324,
+          "utcDate": "2026-09-08T16:45:00Z",
+          "status": "FINISHED",
+          "matchday": 1,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 1899,
+            "name": "PAE AEK",
+            "shortName": "PAE AEK",
+            "tla": "AEK",
+            "crest": "https://crests.football-data.org/1899.png"
+          },
+          "awayTeam": {
+            "id": 2016,
+            "name": "LASK Linz",
+            "shortName": "LASK",
+            "tla": "LIN",
+            "crest": "https://crests.football-data.org/2016.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 1,
+              "away": 0
+            },
+            "halfTime": {
+              "home": 1,
+              "away": 0
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 37629,
+              "name": "Luís Godinho",
+              "type": "REFEREE",
+              "nationality": "Portugal"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575350,
+          "utcDate": "2026-10-14T16:45:00Z",
+          "status": "FINISHED",
+          "matchday": 2,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 2016,
+            "name": "LASK Linz",
+            "shortName": "LASK",
+            "tla": "LIN",
+            "crest": "https://crests.football-data.org/2016.png"
+          },
+          "awayTeam": {
+            "id": 64,
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 3,
+              "away": 6
+            },
+            "halfTime": {
+              "home": 0,
+              "away": 3
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 43943,
+              "name": "Tobias Stieler",
+              "type": "REFEREE",
+              "nationality": "Germany"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575375,
+          "utcDate": "2026-10-21T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 3,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 498,
+            "name": "Sporting Clube de Portugal",
+            "shortName": "Sporting CP",
+            "tla": "SPO",
+            "crest": "https://crests.football-data.org/498.png"
+          },
+          "awayTeam": {
+            "id": 2016,
+            "name": "LASK Linz",
+            "shortName": "LASK",
+            "tla": "LIN",
+            "crest": "https://crests.football-data.org/2016.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 2,
+              "away": 3
+            },
+            "halfTime": {
+              "home": 1,
+              "away": 1
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 15510,
+              "name": "Nick Walsh",
+              "type": "REFEREE",
+              "nationality": "Scotland"
+            }
+          ]
+        },
+        {
+          "area": {
+            "id": 2077,
+            "name": "Europe",
+            "code": "EUR",
+            "flag": "https://crests.football-data.org/EUR.svg"
+          },
+          "competition": {
+            "id": 2001,
+            "name": "UEFA Champions League",
+            "code": "CL",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CL.png"
+          },
+          "season": {
+            "id": 2557,
+            "startDate": "2026-09-08",
+            "endDate": "2027-01-27",
+            "currentMatchday": 5,
+            "winner": null
+          },
+          "id": 575385,
+          "utcDate": "2026-11-03T20:00:00Z",
+          "status": "FINISHED",
+          "matchday": 4,
+          "stage": "LEAGUE_STAGE",
+          "group": null,
+          "lastUpdated": "2026-11-24T15:20:32Z",
+          "homeTeam": {
+            "id": 2016,
+            "name": "LASK Linz",
+            "shortName": "LASK",
+            "tla": "LIN",
+            "crest": "https://crests.football-data.org/2016.png"
+          },
+          "awayTeam": {
+            "id": 7509,
+            "name": "ŠK Slovan Bratislava",
+            "shortName": "Sl. Bratislava",
+            "tla": "SBA",
+            "crest": "https://crests.football-data.org/7509.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": 4,
+              "away": 0
+            },
+            "halfTime": {
+              "home": 3,
+              "away": 0
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": [
+            {
+              "id": 43952,
+              "name": "Donatas Rumšas",
+              "type": "REFEREE",
+              "nationality": "Lithuania"
+            }
+          ]
         }
       ]
     }

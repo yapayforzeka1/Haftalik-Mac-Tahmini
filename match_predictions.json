@@ -66784,5 +66784,190 @@
       "evidence_hash": "94f67519d82a65cf6066dd9d01c02ef62024795fdf083449cf60255d6f86ec27",
       "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
+  },
+  "575396": {
+    "schema_version": 3,
+    "season": "2026",
+    "stage": "LEAGUE_STAGE",
+    "matchday": 5,
+    "match_id": "575396",
+    "home_team": "FK Bodø/Glimt",
+    "away_team": "LASK Linz",
+    "home_crest": "https://crests.football-data.org/5721.png",
+    "away_crest": "https://crests.football-data.org/2016.png",
+    "match_utc": "2026-11-24T17:45:00+00:00",
+    "match_time": "24.11.2026 20:45",
+    "created_at": "2026-11-24T16:16:17.029292+00:00",
+    "score_scope": "REGULAR_90",
+    "learning_policy": "balanced_v1",
+    "policy_revision": 0,
+    "ai_votes": [],
+    "pool_round": 0,
+    "final_sent": false,
+    "result_sent": false,
+    "test_mode": false,
+    "context_prefetch_attempt_at": "2026-11-24T16:16:17.029299+00:00",
+    "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 5,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 5,
+      "match_utc": "2026-11-24T17:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 5721,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-03T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Lille OSC",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 0,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-10-20T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "SSC Napoli",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 4,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-14T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Borussia Dortmund",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "FC Bayern München",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 5,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "D-L-W-L",
+          "points_last_5": 4,
+          "goals_for_last_5": 4,
+          "goals_against_last_5": 9,
+          "avg_goals_for": 1.0,
+          "avg_goals_against": 2.25,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-1D-0L",
+            "goals_for": 1,
+            "goals_against": 0,
+            "avg_goals_for": 0.5,
+            "avg_goals_against": 0.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-0D-2L",
+            "goals_for": 3,
+            "goals_against": 9,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 4.5
+          },
+          "rest_days_before_match": 20.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 1
+        }
+      },
+      "away": {
+        "team_id": 2016,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-03T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "ŠK Slovan Bratislava",
+              "venue": "HOME",
+              "goals_for": 4,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-21T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Sporting Clube de Portugal",
+              "venue": "AWAY",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-14T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Liverpool FC",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 6,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-09-08T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "PAE AEK",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "W-W-L-L",
+          "points_last_5": 6,
+          "goals_for_last_5": 10,
+          "goals_against_last_5": 9,
+          "avg_goals_for": 2.5,
+          "avg_goals_against": 2.25,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 7,
+            "goals_against": 6,
+            "avg_goals_for": 3.5,
+            "avg_goals_against": 3.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 3,
+            "goals_against": 3,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 1.5
+          },
+          "rest_days_before_match": 20.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 1
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      }
+    },
+    "context_prepared_at": "2026-11-24T16:16:35.402978+00:00",
+    "context_ready": true
   }
 }
