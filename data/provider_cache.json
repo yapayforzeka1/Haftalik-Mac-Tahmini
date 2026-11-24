@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795534576.7894268,
+    "at": 1795535477.7040446,
     "data": {
       "filters": {
         "season": 2026
@@ -4828,7 +4828,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 15408,
+              "name": "Daniel Siebert",
+              "type": "REFEREE",
+              "nationality": "Germany"
+            }
+          ]
         },
         {
           "area": {
@@ -4887,7 +4894,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 214424,
+              "name": "Halil Meler",
+              "type": "REFEREE",
+              "nationality": "Turkey"
+            }
+          ]
         },
         {
           "area": {
