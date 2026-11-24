@@ -73081,15 +73081,40 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "INVALID_PREDICTION",
-        "retry_after": "2026-11-24T19:36:46.867819+00:00",
-        "error_stage": "VALIDATE",
+        "success": true,
+        "result": {
+          "home_team": "ŠK Slovan Bratislava",
+          "away_team": "Real Betis Balompié",
+          "outcome": "AWAY",
+          "score": "0-1",
+          "confidence": 65,
+          "reasons": [
+            "Ev sahibi son 4 maçta sadece 1 gol attı ve savunma çok zayıf",
+            "Deplasman son 5 maçta 6 gol attı ve daha iyi formda",
+            "Ev sahibi uzun dinlenme süresiyle ritim kaybı yaşıyor",
+            "Betis kaliteli forvetlerle gol bulma ihtimali yüksek"
+          ],
+          "short_reason": "Deplasman daha güçlü ve gol atabilir",
+          "score_candidates": [
+            "0-1",
+            "1-2",
+            "0-2"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null,
-        "error_detail": "OUTCOME_SCORE_CONFLICT",
+        "error_detail": null,
         "request_attempts": 2,
-        "elapsed_seconds": 26.436,
+        "elapsed_seconds": 25.001,
         "queue_wait_seconds": null
       },
       {
@@ -73667,27 +73692,28 @@
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 3,
+      "successful_ai": 4,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 3,
+      "outcome_votes": 4,
       "outcome_share": 100,
       "score": "0-2",
       "score_votes": 3,
-      "score_share": 100,
+      "score_share": 75,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 3,
+      "top_outcome_votes": 4,
       "top_score": "0-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 50,
+      "average_subjective_confidence": 54,
       "all_outcomes": {
-        "AWAY": 3
+        "AWAY": 4
       },
       "all_scores": {
-        "0-2": 3
+        "0-2": 3,
+        "0-1": 1
       },
       "reasons_by_outcome": {
         "AWAY": [
@@ -73695,7 +73721,7 @@
           "Real Betis son 5 maçta 6 gol atıp sadece 4 gol yiyerek dengeli performans sergiliyor",
           "Betis'in 3 gün dinlenme avantajı, Slovan'ın 21 günlük boşluğuna karşı taktiksel esneklik sağlıyor",
           "Slovan'ın evinde bile gol atamaması (0 gol) ve Betis'in deplasman istikrarı (1W-2D-1L) deplasman galibiyetini destekliyor",
-          "Ev sahibi son 4 maçta 1-17 gol dengesi"
+          "Ev sahibi son 4 maçta sadece 1 gol attı ve savunma çok zayıf"
         ]
       },
       "disagreement": false,
@@ -73703,10 +73729,6 @@
         {
           "model": "Gemini 3.5 Flash-Lite",
           "error": "LOCAL_DAILY_BUDGET"
-        },
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
         }
       ]
     },
@@ -73773,27 +73795,28 @@
     "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 3,
+      "successful_ai": 4,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 3,
+      "outcome_votes": 4,
       "outcome_share": 100,
       "score": "0-2",
       "score_votes": 3,
-      "score_share": 100,
+      "score_share": 75,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 3,
+      "top_outcome_votes": 4,
       "top_score": "0-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 50,
+      "average_subjective_confidence": 54,
       "all_outcomes": {
-        "AWAY": 3
+        "AWAY": 4
       },
       "all_scores": {
-        "0-2": 3
+        "0-2": 3,
+        "0-1": 1
       },
       "reasons_by_outcome": {
         "AWAY": [
@@ -73801,7 +73824,7 @@
           "Real Betis son 5 maçta 6 gol atıp sadece 4 gol yiyerek dengeli performans sergiliyor",
           "Betis'in 3 gün dinlenme avantajı, Slovan'ın 21 günlük boşluğuna karşı taktiksel esneklik sağlıyor",
           "Slovan'ın evinde bile gol atamaması (0 gol) ve Betis'in deplasman istikrarı (1W-2D-1L) deplasman galibiyetini destekliyor",
-          "Ev sahibi son 4 maçta 1-17 gol dengesi"
+          "Ev sahibi son 4 maçta sadece 1 gol attı ve savunma çok zayıf"
         ]
       },
       "disagreement": false,
@@ -73809,10 +73832,6 @@
         {
           "model": "Gemini 3.5 Flash-Lite",
           "error": "LOCAL_DAILY_BUDGET"
-        },
-        {
-          "model": "Cohere Command A+",
-          "error": "INVALID_PREDICTION"
         }
       ]
     },
@@ -73832,16 +73851,16 @@
         "ŠK Slovan Bratislava – Real Betis Balompié",
         "23:00 TSİ",
         "⚠️ Kadro eksik",
-        "3/5",
-        "Real Betis Balompié · 3/3",
-        "0–2 · 3/3",
+        "4/5",
+        "Real Betis Balompié · 4/4",
+        "0–2 · 3/4",
         "Qwen, GPT-OSS, Clef"
       ],
       "headers": [],
       "rows": [],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Real Betis Balompié (3/3 geçerli oy); toplam 3/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": "⚠️ GEÇİCİ ORTAK KARAR: Real Betis Balompié (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nŠK Slovan Bratislava – Real Betis Balompié | 23:00 TSİ | ⚠️ Kadro eksik | 3/5 | Real Betis Balompié · 3/3 | 0–2 · 3/3 | Qwen, GPT-OSS, Clef\n\n⚠️ GEÇİCİ ORTAK KARAR: Real Betis Balompié (3/3 geçerli oy); toplam 3/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nŠK Slovan Bratislava – Real Betis Balompié | 23:00 TSİ | ⚠️ Kadro eksik | 4/5 | Real Betis Balompié · 4/4 | 0–2 · 3/4 | Qwen, GPT-OSS, Clef\n\n⚠️ GEÇİCİ ORTAK KARAR: Real Betis Balompié (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
     "prediction_ready": true,
     "consensus_status": "PROVISIONAL",
     "image_required": true,
@@ -73863,7 +73882,18 @@
       "group_key": "2026-11-24T20:00",
       "group_size": 2,
       "message_id": 143
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        144
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 4,
+    "published_prediction_complete": false,
+    "prediction_update_sent_at": "2026-11-24T19:41:37.923064+00:00"
   },
   "575402": {
     "schema_version": 3,
