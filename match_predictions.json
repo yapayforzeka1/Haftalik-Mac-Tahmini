@@ -66801,8 +66801,195 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.5 Flash-Lite",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "LASK Linz",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 45,
+          "reasons": [
+            "Ev sahibinin son maçlarındaki skor dengesi düşük gollü bir maça işaret ediyor.",
+            "Deplasman takımının hücum etkinliği yüksek ancak dış sahada zorlanıyor.",
+            "İki takımın resmi 11'leri dengeli bir mücadele vadediyor.",
+            "Maç öncesi uzun dinlenme süreleri takımların fiziksel durumunu eşitlemiş durumda."
+          ],
+          "short_reason": "Dengeli kadrolar ve benzer form seviyesi",
+          "score_candidates": [
+            "1-1",
+            "2-1",
+            "1-2"
+          ],
+          "change_vs_previous": "İlk analiz",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "model_id": "gemini-3.5-flash-lite"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "LASK Linz",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 65,
+          "reasons": [
+            "LASK Linz, Bodø/Glimt'e kıyasla daha yüksek gol ortalamasına (2.5 vs 1.0) ve daha iyi genel forma sahip.",
+            "Bodø/Glimt evinde savunma istikrarı gösterse de (0 gol yediği 2 maç), deplasman performansları zayıf ve gol yeme oranı yüksek.",
+            "LASK'ın 5-3-2 dizilişi, Bodø'nun 4-3-3'üne karşı deplasmanda kontrollü bir oyun ve kontra atak fırsatları sunabilir.",
+            "Her iki takımın da 20 gün dinlenme süresi olması, fiziksel dezavantajı dengelese de LASK'ın hücum gücü belirleyici olabilir."
+          ],
+          "short_reason": "LASK'ın hücum gücü ve form üstünlüğü",
+          "score_candidates": [
+            "1-2",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 3.412,
+        "queue_wait_seconds": 0.0
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "LASK Linz",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Ev sahibi, son iki ev maçında kalesini korudu ve maç başına 0,5 gol ortalaması yakaladı.",
+            "Deplasman takımı, maç başına 1,5 gol ortalaması yakaladı ve dört deplasman maçının üçünde gol attı.",
+            "Her iki takım da aynı dinlenme süresine sahip ve açıklanan kadrolarında önemli bir sakatlık sorunu yok.",
+            "LASK deplasmanlarda gol atma yeteneği gösterirken Bodø/Glimt'in ev savunması sınırlı gollere izin veriyor, bu da düşük skorlu bir ev sahibi galibiyetini destekliyor."
+          ],
+          "short_reason": "Ev savunması sağlam, LASK deplasman golü atıyor",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 13.576,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "LASK Linz",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 70,
+          "reasons": [
+            "Ev sahibi son maçta gol attı",
+            "Deplasman savunma zayıf",
+            "Her iki takım da dinlenmiş",
+            "Ev sahibi evinde daha kontrollü"
+          ],
+          "short_reason": "ev sahibi formda üstün",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 1.009,
+        "queue_wait_seconds": 3.412
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "FK Bodø/Glimt",
+          "away_team": "LASK Linz",
+          "outcome": "DRAW",
+          "score": "1-1",
+          "confidence": 48,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "1-1",
+            "0-0",
+            "2-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -66964,10 +67151,884 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 625360,
+            "name": "Nikita Haikin",
+            "number": "12",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1281021,
+            "name": "Fredrik Sjøvold",
+            "number": "20",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 917774,
+            "name": "Odin Lurås Bjørtuft",
+            "number": "4",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 540929,
+            "name": "Jostein Gundersen",
+            "number": "6",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 630228,
+            "name": "Fredrik André Bjørkan",
+            "number": "15",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1160076,
+            "name": "Sondre Auklend",
+            "number": "8",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 530635,
+            "name": "Patrick Berg",
+            "number": "7",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 540975,
+            "name": "Sondre Brunstad Fet",
+            "number": "19",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1086551,
+            "name": "Ole Blomberg",
+            "number": "11",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 837066,
+            "name": "Ola Brynhildsen",
+            "number": "17",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 741397,
+            "name": "Jens Petter Hauge",
+            "number": "10",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1156883,
+            "name": "Lukas Jungwirth",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 979963,
+            "name": "Xavier Mbuyamba",
+            "number": "4",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 1437941,
+            "name": "Alemão",
+            "number": "43",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 1420822,
+            "name": "Miguel Freckleton",
+            "number": "3",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 1029360,
+            "name": "Kasper Jørgensen",
+            "number": "20",
+            "pos": 51,
+            "grid": null
+          },
+          {
+            "id": 1254266,
+            "name": "Yvan Dibango",
+            "number": "25",
+            "pos": 59,
+            "grid": null
+          },
+          {
+            "id": 1118147,
+            "name": "Kryštof Daněk",
+            "number": "9",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 939430,
+            "name": "Robert Ljubičić",
+            "number": "10",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 461357,
+            "name": "Alessandro Schöpf",
+            "number": "18",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1188855,
+            "name": "Samuel Adeniran",
+            "number": "7",
+            "pos": 104,
+            "grid": null
+          },
+          {
+            "id": 1232205,
+            "name": "Christoph Lang",
+            "number": "27",
+            "pos": 106,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "5-3-2",
+        "checked_at": "2026-11-24T16:46:20.855309+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-11-24T16:16:35.402978+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-11-24T16:46:14.251258+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 4 maçta 4-9 gol dengesi. Deplasman: son 4 maçta 10-9 gol dengesi.",
+      "home": {
+        "form": "Son 4 doğrulanmış maç: D-L-W-L.",
+        "goals_trend": "Son 4 maç: 4 gol attı, 9 gol yedi; maç başına 1.00 attı / 2.25 yedi.",
+        "recent_fixtures": [
+          "2026-11-03 Lille OSC: 0-0 (HOME)",
+          "2026-10-20 SSC Napoli: 3-4 (AWAY)",
+          "2026-10-14 Borussia Dortmund: 1-0 (HOME)",
+          "2026-09-10 FC Bayern München: 0-5 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-1D-0L; 1 gol attı, 0 gol yedi."
+      },
+      "away": {
+        "form": "Son 4 doğrulanmış maç: W-W-L-L.",
+        "goals_trend": "Son 4 maç: 10 gol attı, 9 gol yedi; maç başına 2.50 attı / 2.25 yedi.",
+        "recent_fixtures": [
+          "2026-11-03 ŠK Slovan Bratislava: 4-0 (HOME)",
+          "2026-10-21 Sporting Clube de Portugal: 3-2 (AWAY)",
+          "2026-10-14 Liverpool FC: 3-6 (HOME)",
+          "2026-09-08 PAE AEK: 0-1 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-0D-1L; 3 gol attı, 3 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {},
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 20.9 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 20.9 gün dinlenme. Son 14 günde 0 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 625360,
+            "name": "Nikita Haikin",
+            "number": "12",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 1281021,
+            "name": "Fredrik Sjøvold",
+            "number": "20",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 917774,
+            "name": "Odin Lurås Bjørtuft",
+            "number": "4",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 540929,
+            "name": "Jostein Gundersen",
+            "number": "6",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 630228,
+            "name": "Fredrik André Bjørkan",
+            "number": "15",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1160076,
+            "name": "Sondre Auklend",
+            "number": "8",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 530635,
+            "name": "Patrick Berg",
+            "number": "7",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 540975,
+            "name": "Sondre Brunstad Fet",
+            "number": "19",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1086551,
+            "name": "Ole Blomberg",
+            "number": "11",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 837066,
+            "name": "Ola Brynhildsen",
+            "number": "17",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 741397,
+            "name": "Jens Petter Hauge",
+            "number": "10",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1156883,
+            "name": "Lukas Jungwirth",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 979963,
+            "name": "Xavier Mbuyamba",
+            "number": "4",
+            "pos": 33,
+            "grid": null
+          },
+          {
+            "id": 1437941,
+            "name": "Alemão",
+            "number": "43",
+            "pos": 35,
+            "grid": null
+          },
+          {
+            "id": 1420822,
+            "name": "Miguel Freckleton",
+            "number": "3",
+            "pos": 37,
+            "grid": null
+          },
+          {
+            "id": 1029360,
+            "name": "Kasper Jørgensen",
+            "number": "20",
+            "pos": 51,
+            "grid": null
+          },
+          {
+            "id": 1254266,
+            "name": "Yvan Dibango",
+            "number": "25",
+            "pos": 59,
+            "grid": null
+          },
+          {
+            "id": 1118147,
+            "name": "Kryštof Daněk",
+            "number": "9",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 939430,
+            "name": "Robert Ljubičić",
+            "number": "10",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 461357,
+            "name": "Alessandro Schöpf",
+            "number": "18",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1188855,
+            "name": "Samuel Adeniran",
+            "number": "7",
+            "pos": 104,
+            "grid": null
+          },
+          {
+            "id": 1232205,
+            "name": "Christoph Lang",
+            "number": "27",
+            "pos": 106,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "5-3-2",
+        "checked_at": "2026-11-24T16:46:20.855309+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-24T16:46:20.899626+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-24T16:46:20.899633+00:00",
+      "source_refs": [
+        {
+          "team_id": 5721,
+          "endpoint": "/v4/teams/5721/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 2016,
+          "endpoint": "/v4/teams/2016/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 4 maçta 4-9 gol dengesi.",
+        "Deplasman: son 4 maçta 10-9 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 62,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 62,
+          "available": 25,
+          "points": 90,
+          "exact": 3,
+          "outcome": 21,
+          "goal_error": 57,
+          "coverage_pct": 40.3,
+          "exact_pct": 12.0,
+          "outcome_pct": 84.0,
+          "avg_points": 3.6,
+          "mean_goal_error": 2.28
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 62,
+          "available": 52,
+          "points": 143,
+          "exact": 4,
+          "outcome": 35,
+          "goal_error": 123,
+          "coverage_pct": 83.9,
+          "exact_pct": 7.7,
+          "outcome_pct": 67.3,
+          "avg_points": 2.75,
+          "mean_goal_error": 2.37
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 62,
+          "available": 61,
+          "points": 157,
+          "exact": 5,
+          "outcome": 39,
+          "goal_error": 144,
+          "coverage_pct": 98.4,
+          "exact_pct": 8.2,
+          "outcome_pct": 63.9,
+          "avg_points": 2.57,
+          "mean_goal_error": 2.36
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 49,
+          "available": 49,
+          "points": 134,
+          "exact": 2,
+          "outcome": 31,
+          "goal_error": 123,
+          "coverage_pct": 100.0,
+          "exact_pct": 4.1,
+          "outcome_pct": 63.3,
+          "avg_points": 2.73,
+          "mean_goal_error": 2.51
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 49,
+          "available": 49,
+          "points": 108,
+          "exact": 3,
+          "outcome": 25,
+          "goal_error": 128,
+          "coverage_pct": 100.0,
+          "exact_pct": 6.1,
+          "outcome_pct": 51.0,
+          "avg_points": 2.2,
+          "mean_goal_error": 2.61
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 29,
+          "exact_matches": 4
+        },
+        "research_available=False": {
+          "matches": 62,
+          "exact_matches": 10
+        },
+        "home_form=True": {
+          "matches": 60,
+          "exact_matches": 10
+        },
+        "away_form=True": {
+          "matches": 56,
+          "exact_matches": 8
+        },
+        "standings=True": {
+          "matches": 62,
+          "exact_matches": 10
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 33,
+          "exact_matches": 6
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 49,
+          "exact": 2,
+          "outcome_correct": 31,
+          "goal_error": 123
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 49,
+          "exact": 2,
+          "outcome_correct": 31,
+          "goal_error": 123
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 49,
+          "exact": 2,
+          "outcome_correct": 31,
+          "goal_error": 123
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 49,
+          "exact": 3,
+          "outcome_correct": 25,
+          "goal_error": 128
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 48,
+          "exact": 3,
+          "outcome_correct": 29,
+          "goal_error": 123
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 48,
+          "exact": 3,
+          "outcome_correct": 29,
+          "goal_error": 123
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 48,
+          "exact": 3,
+          "outcome_correct": 29,
+          "goal_error": 123
+        },
+        "Cohere Command A+:form": {
+          "used": 40,
+          "exact": 2,
+          "outcome_correct": 27,
+          "goal_error": 98
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 28,
+          "exact": 1,
+          "outcome_correct": 17,
+          "goal_error": 73
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 27,
+          "exact": 3,
+          "outcome_correct": 17,
+          "goal_error": 68
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "da7f558042398df01d9ba676c96009f2091b6a3dabb6d89c7ce6f92987690537",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.5-flash-lite",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": true,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "DRAW",
+      "top_outcome_votes": 2,
+      "top_score": "1-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 60,
+      "all_outcomes": {
+        "DRAW": 2,
+        "AWAY": 1,
+        "HOME": 2
+      },
+      "all_scores": {
+        "1-1": 2,
+        "1-2": 1,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "DRAW": [
+          "Ev sahibinin son maçlarındaki skor dengesi düşük gollü bir maça işaret ediyor.",
+          "Deplasman takımının hücum etkinliği yüksek ancak dış sahada zorlanıyor.",
+          "İki takımın resmi 11'leri dengeli bir mücadele vadediyor.",
+          "Maç öncesi uzun dinlenme süreleri takımların fiziksel durumunu eşitlemiş durumda.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "AWAY": [
+          "LASK Linz, Bodø/Glimt'e kıyasla daha yüksek gol ortalamasına (2.5 vs 1.0) ve daha iyi genel forma sahip.",
+          "Bodø/Glimt evinde savunma istikrarı gösterse de (0 gol yediği 2 maç), deplasman performansları zayıf ve gol yeme oranı yüksek.",
+          "LASK'ın 5-3-2 dizilişi, Bodø'nun 4-3-3'üne karşı deplasmanda kontrollü bir oyun ve kontra atak fırsatları sunabilir.",
+          "Her iki takımın da 20 gün dinlenme süresi olması, fiziksel dezavantajı dengelese de LASK'ın hücum gücü belirleyici olabilir."
+        ],
+        "HOME": [
+          "Ev sahibi, son iki ev maçında kalesini korudu ve maç başına 0,5 gol ortalaması yakaladı.",
+          "Deplasman takımı, maç başına 1,5 gol ortalaması yakaladı ve dört deplasman maçının üçünde gol attı.",
+          "Her iki takım da aynı dinlenme süresine sahip ve açıklanan kadrolarında önemli bir sakatlık sorunu yok.",
+          "LASK deplasmanlarda gol atma yeteneği gösterirken Bodø/Glimt'in ev savunması sınırlı gollere izin veriyor, bu da düşük skorlu bir ev sahibi galibiyetini destekliyor.",
+          "Ev sahibi son maçta gol attı"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": []
+    },
+    "prediction_created_at": "2026-11-24T16:46:34.699545+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575396",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "1-1",
+          "predicted_outcome": "DRAW",
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.5 Flash-Lite",
+              "model_id": "gemini-3.5-flash-lite"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-24T16:46:34.699545+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "28014baaf447193093faf4afd8336ab83dbbed761a38179f1a4331f96fd86df0"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575396",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": null,
+          "predicted_outcome": null,
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.5 Flash-Lite",
+              "model_id": "gemini-3.5-flash-lite"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-24T16:46:34.699545+00:00",
+          "failure_reason": "TIED_TOP_SCORES",
+          "source_votes_sha256": "28014baaf447193093faf4afd8336ab83dbbed761a38179f1a4331f96fd86df0"
+        }
+      }
+    },
+    "minutes_before_match": 58.4,
+    "prediction_mode": "NO_COMMON",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": null,
+      "outcome_votes": 0,
+      "outcome_share": 0,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": false,
+      "score_consensus": false,
+      "consensus_mode": "NO_COMMON",
+      "top_outcome": "DRAW",
+      "top_outcome_votes": 2,
+      "top_score": "1-1",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 60,
+      "all_outcomes": {
+        "DRAW": 2,
+        "AWAY": 1,
+        "HOME": 2
+      },
+      "all_scores": {
+        "1-1": 2,
+        "1-2": 1,
+        "2-1": 2
+      },
+      "reasons_by_outcome": {
+        "DRAW": [
+          "Ev sahibinin son maçlarındaki skor dengesi düşük gollü bir maça işaret ediyor.",
+          "Deplasman takımının hücum etkinliği yüksek ancak dış sahada zorlanıyor.",
+          "İki takımın resmi 11'leri dengeli bir mücadele vadediyor.",
+          "Maç öncesi uzun dinlenme süreleri takımların fiziksel durumunu eşitlemiş durumda.",
+          "Cloudflare Clef-omni structured pre-match decision"
+        ],
+        "AWAY": [
+          "LASK Linz, Bodø/Glimt'e kıyasla daha yüksek gol ortalamasına (2.5 vs 1.0) ve daha iyi genel forma sahip.",
+          "Bodø/Glimt evinde savunma istikrarı gösterse de (0 gol yediği 2 maç), deplasman performansları zayıf ve gol yeme oranı yüksek.",
+          "LASK'ın 5-3-2 dizilişi, Bodø'nun 4-3-3'üne karşı deplasmanda kontrollü bir oyun ve kontra atak fırsatları sunabilir.",
+          "Her iki takımın da 20 gün dinlenme süresi olması, fiziksel dezavantajı dengelese de LASK'ın hücum gücü belirleyici olabilir."
+        ],
+        "HOME": [
+          "Ev sahibi, son iki ev maçında kalesini korudu ve maç başına 0,5 gol ortalaması yakaladı.",
+          "Deplasman takımı, maç başına 1,5 gol ortalaması yakaladı ve dört deplasman maçının üçünde gol attı.",
+          "Her iki takım da aynı dinlenme süresine sahip ve açıklanan kadrolarında önemli bir sakatlık sorunu yok.",
+          "LASK deplasmanlarda gol atma yeteneği gösterirken Bodø/Glimt'in ev savunması sınırlı gollere izin veriyor, bu da düşük skorlu bir ev sahibi galibiyetini destekliyor.",
+          "Ev sahibi son maçta gol attı"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": []
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NO_COMMON",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "FK Bodø/Glimt – LASK Linz",
+        "20:45 TSİ",
+        "✅ Resmî 11",
+        "5/5",
+        "Yok",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI",
+        "🏆 Kazanan ve kısa sebep",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Gem 3.5L",
+          "Beraberlik — Dengeli kadrolar ve benzer form seviyesi",
+          "1–1",
+          "2/5"
+        ],
+        [
+          "Qwen",
+          "LASK Linz — LASK'ın hücum gücü ve form üstünlüğü",
+          "1–2",
+          "1/5"
+        ],
+        [
+          "Cohere",
+          "FK Bodø/Glimt — Ev savunması sağlam, LASK deplasman golü atıyor",
+          "2–1",
+          "2/5"
+        ],
+        [
+          "GPT-OSS",
+          "FK Bodø/Glimt — ev sahibi formda üstün",
+          "2–1",
+          "2/5"
+        ],
+        [
+          "Clef",
+          "Beraberlik — Clef-omni maç öncesi verileri değerlendirdi.",
+          "1–1",
+          "2/5"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nFK Bodø/Glimt – LASK Linz | 20:45 TSİ | ✅ Resmî 11 | 5/5 | Yok | Yok\n\n🤖 AI | 🏆 Kazanan ve kısa sebep | 🎯 Skor | Oy\nGem 3.5L | Beraberlik — Dengeli kadrolar ve benzer form seviyesi | 1–1 | 2/5\nQwen | LASK Linz — LASK'ın hücum gücü ve form üstünlüğü | 1–2 | 1/5\nCohere | FK Bodø/Glimt — Ev savunması sağlam, LASK deplasman golü atıyor | 2–1 | 2/5\nGPT-OSS | FK Bodø/Glimt — ev sahibi formda üstün | 2–1 | 2/5\nClef | Beraberlik — Clef-omni maç öncesi verileri değerlendirdi. | 1–1 | 2/5",
+    "prediction_ready": true,
+    "consensus_status": "FINAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-24T16:46:35.948836+00:00",
+      "first_attempt_at": "2026-11-24T16:46:35.948824+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-24T17:45",
+      "group_size": 1
+    }
   }
 }
