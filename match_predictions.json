@@ -70572,7 +70572,7 @@
         "success": false,
         "result": null,
         "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-24T19:21:35.967224+00:00",
+        "retry_after": "2026-11-24T19:31:27.455466+00:00",
         "error_stage": "REQUEST",
         "http_status": 503,
         "error_detail": null,
@@ -73221,7 +73221,7 @@
     },
     "context_prepared_at": "2026-11-24T18:32:21.474250+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-24T19:21:13.451475+00:00"
+    "xi_checked_at": "2026-11-24T19:26:27.613037+00:00"
   },
   "575402": {
     "schema_version": 3,
@@ -74673,6 +74673,6 @@
     },
     "context_prepared_at": "2026-11-24T18:32:46.105931+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-24T19:21:20.138717+00:00"
+    "xi_checked_at": "2026-11-24T19:26:28.993573+00:00"
   }
 }

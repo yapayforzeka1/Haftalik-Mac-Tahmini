@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795548073.2858365,
+    "at": 1795548374.0440018,
     "data": {
       "filters": {
         "season": 2026
@@ -4798,7 +4798,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T19:20:11Z",
+          "lastUpdated": "2026-11-24T19:24:27Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -4814,10 +4814,10 @@
             "crest": "https://crests.football-data.org/58.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
+              "home": 1,
               "away": 0
             },
             "halfTime": {
@@ -4864,7 +4864,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T19:19:38Z",
+          "lastUpdated": "2026-11-24T19:24:59Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -22901,7 +22901,7 @@
     }
   },
   "c2563198202b41b489e69304e8ac0d9256fc51c0fa273d924f8f725ea7080c61": {
-    "at": 1795548079.4926622,
+    "at": 1795548388.170285,
     "data": {
       "area": {
         "id": 2077,
@@ -23041,7 +23041,7 @@
     }
   },
   "4554faf9e95faf09050a58102905335f771061132ae1003514eb8979758cf146": {
-    "at": 1795548085.6435525,
+    "at": 1795548394.3724709,
     "data": {
       "area": {
         "id": 2077,
