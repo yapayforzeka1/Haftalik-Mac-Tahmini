@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795543872.6981118,
+    "at": 1795544172.5367203,
     "data": {
       "filters": {
         "season": 2026
@@ -4798,7 +4798,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T18:10:50Z",
+          "lastUpdated": "2026-11-24T18:16:10Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -4864,7 +4864,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T18:10:50Z",
+          "lastUpdated": "2026-11-24T18:16:10Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
