@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795551072.3116298,
+    "at": 1795551367.9854758,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 72
+        "played": 74
       },
       "competition": {
         "id": 2001,
@@ -4794,11 +4794,11 @@
           },
           "id": 575395,
           "utcDate": "2026-11-24T17:45:00Z",
-          "status": "TIMED",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T19:45:47Z",
           "homeTeam": {
             "id": 610,
             "name": "Galatasaray SK",
@@ -4814,15 +4814,15 @@
             "crest": "https://crests.football-data.org/58.png"
           },
           "score": {
-            "winner": null,
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 0
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             }
           },
           "odds": {
@@ -4860,11 +4860,11 @@
           },
           "id": 575396,
           "utcDate": "2026-11-24T17:45:00Z",
-          "status": "TIMED",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T19:41:31Z",
           "homeTeam": {
             "id": 5721,
             "name": "FK Bodø/Glimt",
@@ -4880,15 +4880,15 @@
             "crest": "https://crests.football-data.org/2016.png"
           },
           "score": {
-            "winner": null,
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 0
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             }
           },
           "odds": {
@@ -4926,11 +4926,11 @@
           },
           "id": 575397,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:35Z",
           "homeTeam": {
             "id": 86,
             "name": "Real Madrid CF",
@@ -4946,11 +4946,11 @@
             "crest": "https://crests.football-data.org/674.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -4992,11 +4992,11 @@
           },
           "id": 575398,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:35Z",
           "homeTeam": {
             "id": 65,
             "name": "Manchester City FC",
@@ -5012,11 +5012,11 @@
             "crest": "https://crests.football-data.org/113.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -5058,11 +5058,11 @@
           },
           "id": 575399,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:35Z",
           "homeTeam": {
             "id": 57,
             "name": "Arsenal FC",
@@ -5078,11 +5078,11 @@
             "crest": "https://crests.football-data.org/4.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -5124,11 +5124,11 @@
           },
           "id": 575400,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:03Z",
           "homeTeam": {
             "id": 675,
             "name": "Feyenoord Rotterdam",
@@ -5144,11 +5144,11 @@
             "crest": "https://crests.football-data.org/503.png"
           },
           "score": {
-            "winner": null,
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             },
             "halfTime": {
               "home": null,
@@ -5190,11 +5190,11 @@
           },
           "id": 575401,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:35Z",
           "homeTeam": {
             "id": 7509,
             "name": "ŠK Slovan Bratislava",
@@ -5210,11 +5210,11 @@
             "crest": "https://crests.football-data.org/90.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -5256,11 +5256,11 @@
           },
           "id": 575402,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:35Z",
           "homeTeam": {
             "id": 721,
             "name": "RB Leipzig",
@@ -5276,11 +5276,11 @@
             "crest": "https://crests.football-data.org/546.png"
           },
           "score": {
-            "winner": null,
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 0
             },
             "halfTime": {
               "home": null,
@@ -5322,11 +5322,11 @@
           },
           "id": 575403,
           "utcDate": "2026-11-24T20:00:00Z",
-          "status": "TIMED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-24T00:20:26Z",
+          "lastUpdated": "2026-11-24T20:14:03Z",
           "homeTeam": {
             "id": 7397,
             "name": "Como 1907",
@@ -5342,11 +5342,11 @@
             "crest": "https://crests.football-data.org/1899.png"
           },
           "score": {
-            "winner": null,
+            "winner": "DRAW",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             },
             "halfTime": {
               "home": null,
