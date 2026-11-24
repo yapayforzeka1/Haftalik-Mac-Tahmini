@@ -70571,10 +70571,10 @@
         "model": "Gemini 3.5 Flash-Lite",
         "success": false,
         "result": null,
-        "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-24T19:31:27.455466+00:00",
-        "error_stage": "REQUEST",
-        "http_status": 503,
+        "error": "LOCAL_DAILY_BUDGET",
+        "retry_after": "2026-11-25T08:00:00+00:00",
+        "error_stage": "BUDGET",
+        "http_status": null,
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
@@ -71603,7 +71603,7 @@
       "failed_ai": [
         {
           "model": "Gemini 3.5 Flash-Lite",
-          "error": "PROVIDER_UNAVAILABLE"
+          "error": "LOCAL_DAILY_BUDGET"
         }
       ]
     },
@@ -71714,7 +71714,7 @@
       "failed_ai": [
         {
           "model": "Gemini 3.5 Flash-Lite",
-          "error": "PROVIDER_UNAVAILABLE"
+          "error": "LOCAL_DAILY_BUDGET"
         }
       ]
     },
