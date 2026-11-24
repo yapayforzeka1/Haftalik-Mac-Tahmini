@@ -72394,7 +72394,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -72433,7 +72436,10 @@
         "error_detail": null,
         "request_attempts": 2,
         "elapsed_seconds": 21.666,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -72470,7 +72476,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 5.358,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -72509,7 +72518,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 1.061,
-        "queue_wait_seconds": 21.666
+        "queue_wait_seconds": 21.666,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -72542,7 +72554,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -73581,7 +73596,140 @@
     "prediction_update_required": false,
     "published_successful_ai": 5,
     "published_prediction_complete": true,
-    "prediction_update_sent_at": "2026-11-24T19:08:21.434116+00:00"
+    "prediction_update_sent_at": "2026-11-24T19:08:21.434116+00:00",
+    "actual": {
+      "home": 1,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-24T22:11:14.165581+00:00"
+    },
+    "consensus_points": 0,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": true,
+    "consensus_outcome_correct": false,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": false,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Porto son beş maçında dört galibiyet aldı.",
+            "Feyenoord son dönemde savunmada zafiyet yaşıyor.",
+            "Porto deplasmanda etkili form grafiğine sahip.",
+            "Feyenoord Şampiyonlar Ligi'nde zorlanıyor."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Porto son 5 maçta 11 gol atıp sadece 3 yedi, formda çok üstün.",
+            "Feyenoord son 5 maçta 13 gol yedi ve 3 maçtır kazanamıyor, savunma çökmüş durumda.",
+            "Porto 16 gün dinlenirken Feyenoord sadece 3 gün dinlenmiş, fiziksel avantaj deplasmanda.",
+            "Porto'nun Napoli'yi 4-1 yenmesi ve Estoril'e 4-0 atması hücum gücünü kanıtlıyor."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Porto son 5 maçta ortalama 2.2 gol attı.",
+            "Feyenoord savunma performansı zayıf, son 5 maçta 13 gol yedi.",
+            "Porto deplasmanında da güçlü, son 2 deplasman maçında galip geldi.",
+            "Her iki takım da tam kadro, taktik dengeyi Porto lehine çeviriyor."
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Porto son 5 maçta 11-3 gol dengesi",
+            "Feyenoord savunma zayıf, 2.6 yediği gol",
+            "Porto dinlenme süresi uzun, 16 gün",
+            "Porto ev sahibi maçlarda 2.67 ort. gol attı"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": 1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "cf8ce83435b599bf90f71a5903f92f1fd8897ce790e1b5b896651dac69047d58",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    }
   },
   "575401": {
     "schema_version": 3,
