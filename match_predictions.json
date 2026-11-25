@@ -77205,7 +77205,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -77244,7 +77247,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 3.631,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -77282,7 +77288,10 @@
         "error_detail": null,
         "request_attempts": 2,
         "elapsed_seconds": 32.293,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -77321,7 +77330,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 1.227,
-        "queue_wait_seconds": 3.631
+        "queue_wait_seconds": 3.631,
+        "points": 4,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -77354,7 +77366,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -78426,7 +78441,141 @@
     "prediction_update_required": false,
     "published_successful_ai": 5,
     "published_prediction_complete": true,
-    "prediction_update_sent_at": "2026-11-25T17:17:07.996399+00:00"
+    "prediction_update_sent_at": "2026-11-25T17:17:07.996399+00:00",
+    "actual": {
+      "home": 1,
+      "away": 4,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-25T19:46:09.360444+00:00"
+    },
+    "consensus_points": 4,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": true,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "pre_match_reasons": [
+            "Barcelona'nın son maçlardaki hücum gücü oldukça yüksek.",
+            "Sabah FK Şampiyonlar Ligi'nde savunmada zorlanıyor.",
+            "Kadro kalitesi ve tecrübe olarak Barcelona net üstün.",
+            "Konuk ekibin galibiyet serisi form durumunu gösteriyor."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
+            "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
+            "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
+            "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 0,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Sabah son 4 maçta zayıf hücum ve savunma gösterdi",
+            "Barcelona son 5 maçta yüksek gol üretimi sergiledi",
+            "Barcelona kalitesi ve deneyimi sabahın genç kadrosundan üstün",
+            "Sabahın ev avantajına rağmen Barcelona'nın teknik üstünlüğü maçı belirleyecek"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 4,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 3,
+          "home_bias": -1,
+          "away_bias": -2,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi düşük gol ortalaması",
+            "Deplasman yüksek gol üretimi",
+            "Barajı aşan deplasman formu",
+            "Deplasman dinlenme avantajı"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": -1,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "1e3e9b468f40ec1cf483dc79d09d420f7a8a322c503155646ab37aff60c33dcd",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
+    }
   },
   "575405": {
     "schema_version": 3,
@@ -78481,7 +78630,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Groq Qwen 3.8 27B",
@@ -78519,7 +78671,10 @@
         "error_detail": null,
         "request_attempts": 2,
         "elapsed_seconds": 22.189,
-        "queue_wait_seconds": 0.0
+        "queue_wait_seconds": 0.0,
+        "points": 6,
+        "outcome_correct": true,
+        "exact_score_correct": false
       },
       {
         "model": "Cohere Command A+",
@@ -78556,7 +78711,10 @@
         "error_detail": null,
         "request_attempts": 2,
         "elapsed_seconds": 34.046,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       },
       {
         "model": "Groq GPT-OSS 120B",
@@ -78594,7 +78752,10 @@
         "error_detail": null,
         "request_attempts": 1,
         "elapsed_seconds": 0.849,
-        "queue_wait_seconds": 22.189
+        "queue_wait_seconds": 22.189,
+        "points": 8,
+        "outcome_correct": true,
+        "exact_score_correct": true
       },
       {
         "model": "Cloudflare Clef-omni",
@@ -78627,7 +78788,10 @@
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
-        "queue_wait_seconds": null
+        "queue_wait_seconds": null,
+        "points": 0,
+        "outcome_correct": false,
+        "exact_score_correct": false
       }
     ],
     "pool_round": 1,
@@ -79395,6 +79559,135 @@
       "group_key": "2026-11-25T17:45",
       "group_size": 1,
       "message_id": 146
+    },
+    "actual": {
+      "home": 0,
+      "away": 1,
+      "status": "FINISHED",
+      "scope": "REGULAR_90",
+      "updated_at": "2026-11-25T19:46:09.360882+00:00"
+    },
+    "consensus_points": 4,
+    "consensus_winner_applicable": true,
+    "consensus_score_applicable": false,
+    "consensus_outcome_correct": true,
+    "consensus_exact_score_correct": false,
+    "outcome_correct": true,
+    "exact_score_correct": false,
+    "grading_version": "4:kicktipp-8-6-4-0:REGULAR",
+    "post_match_analysis": {
+      "version": "4:kicktipp-8-6-4-0:REGULAR",
+      "features": {
+        "official_xi": false,
+        "research_available": false,
+        "home_form": true,
+        "away_form": true,
+        "standings": true
+      },
+      "models": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Villarreal deplasmanda daha tecrübeli ve formda.",
+            "Slavia Praha savunması son maçlarda zayıf.",
+            "Puan tablosunda Villarreal biraz daha önde.",
+            "Ev sahibinin dinlenme süresi uzun ancak formsuz."
+          ]
+        },
+        {
+          "model": "Groq Qwen 3.8 27B",
+          "available": true,
+          "points": 6,
+          "exact": false,
+          "outcome_correct": true,
+          "goal_error": 2,
+          "home_bias": 1,
+          "away_bias": 1,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Villarreal'in deplasman gol ortalaması (2.0) Slavia'nın ev gol ortalamasından (1.5) yüksek.",
+            "Slavia evinde son 2 maçta yenildi ve kalesinde 5 gol gördü.",
+            "Villarreal'in PSG'ye 6-1 yenilmesi istisnai bir durum, genel lig formu daha dengeli.",
+            "Slavia'nın 21 günlük dinlenme avantajı, Villarreal'in 3 günlük dinlenme dezavantajını kısmen dengelese de kalite farkı belirleyici."
+          ]
+        },
+        {
+          "model": "Cohere Command A+",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 2,
+          "home_bias": 2,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son iki maçta yenildi",
+            "Deplasman iki maçta iki gol attı",
+            "Maçlarda üç gol civarında",
+            "Dinlenme avantajı ev sahibine"
+          ]
+        },
+        {
+          "model": "Groq GPT-OSS 120B",
+          "available": true,
+          "points": 8,
+          "exact": true,
+          "outcome_correct": true,
+          "goal_error": 0,
+          "home_bias": 0,
+          "away_bias": 0,
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "pre_match_reasons": [
+            "Ev sahibi son 4 maçta savunma zayıf",
+            "Deplasman son 5 maçta gol bulma şansı daha yüksek",
+            "Villarreal daha az dinlenmiş ancak savunma iyileşti",
+            "Her iki takım da düşük ortalama gol üretimi"
+          ]
+        },
+        {
+          "model": "Cloudflare Clef-omni",
+          "available": true,
+          "points": 0,
+          "exact": false,
+          "outcome_correct": false,
+          "goal_error": 1,
+          "home_bias": 0,
+          "away_bias": -1,
+          "factors_used": [
+            "form"
+          ],
+          "pre_match_reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ]
+        }
+      ],
+      "policy": "balanced_v1",
+      "evidence_hash": "6af302d455f96f282ee425d10b521e8a2868c77a6f707d312a7d3fbcf3fc0ebf",
+      "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
   },
   "575406": {

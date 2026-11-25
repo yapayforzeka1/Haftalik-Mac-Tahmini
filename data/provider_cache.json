@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795635674.5628679,
+    "at": 1795635969.3320765,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 81
+        "played": 83
       },
       "competition": {
         "id": 2001,
@@ -5388,11 +5388,11 @@
           },
           "id": 575404,
           "utcDate": "2026-11-25T17:45:00Z",
-          "status": "TIMED",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T01:32:00Z",
+          "lastUpdated": "2026-11-25T19:41:31Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5408,15 +5408,15 @@
             "crest": "https://crests.football-data.org/81.png"
           },
           "score": {
-            "winner": null,
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 1,
+              "away": 4
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             }
           },
           "odds": {
@@ -5454,11 +5454,11 @@
           },
           "id": 575405,
           "utcDate": "2026-11-25T17:45:00Z",
-          "status": "TIMED",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T01:32:00Z",
+          "lastUpdated": "2026-11-25T19:44:42Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -5474,15 +5474,15 @@
             "crest": "https://crests.football-data.org/94.png"
           },
           "score": {
-            "winner": null,
+            "winner": "AWAY_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 0
             }
           },
           "odds": {
