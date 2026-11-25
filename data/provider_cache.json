@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795633569.0396378,
+    "at": 1795633872.6194715,
     "data": {
       "filters": {
         "season": 2026
@@ -5392,7 +5392,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T19:05:15Z",
+          "lastUpdated": "2026-11-25T19:10:35Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5412,7 +5412,7 @@
             "duration": "REGULAR",
             "fullTime": {
               "home": 0,
-              "away": 3
+              "away": 4
             },
             "halfTime": {
               "home": 0,
@@ -5458,7 +5458,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T19:05:15Z",
+          "lastUpdated": "2026-11-25T19:10:34Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -9865,146 +9865,6 @@
               "goalDifference": -18
             }
           ]
-        }
-      ]
-    }
-  },
-  "44b2f933c76ba39a3955c931905f0148883bbaebf402d584cb9d40be47c0a30f": {
-    "at": 1795547177.8888187,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 5,
-        "winner": null
-      },
-      "id": 575398,
-      "utcDate": "2026-11-24T20:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 5,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-24T00:20:26Z",
-      "homeTeam": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "shortName": "Man City",
-        "tla": "MCI",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "awayTeam": {
-        "id": 113,
-        "name": "SSC Napoli",
-        "shortName": "Napoli",
-        "tla": "NAP",
-        "crest": "https://crests.football-data.org/113.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 37278,
-          "name": "István Kovács",
-          "type": "REFEREE",
-          "nationality": "Romania"
-        }
-      ]
-    }
-  },
-  "76ec32bf65883bb8b8c1c03f0c80dcbb4fc296cf0cec3dbac2e2a57aa27f3692": {
-    "at": 1795547209.4449592,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 5,
-        "winner": null
-      },
-      "id": 575399,
-      "utcDate": "2026-11-24T20:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 5,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-24T00:20:26Z",
-      "homeTeam": {
-        "id": 57,
-        "name": "Arsenal FC",
-        "shortName": "Arsenal",
-        "tla": "ARS",
-        "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 4,
-        "name": "Borussia Dortmund",
-        "shortName": "Dortmund",
-        "tla": "BVB",
-        "crest": "https://crests.football-data.org/4.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 11043,
-          "name": "Maurizio Mariani",
-          "type": "REFEREE",
-          "nationality": "Italy"
         }
       ]
     }
@@ -23226,7 +23086,7 @@
     }
   },
   "6b4d3d16628b3fc5243eca5d91fcf9d0a87b1ae8d7d64f6bfcb5626a76f41f05": {
-    "at": 1795633342.8551488,
+    "at": 1795633878.6576552,
     "data": {
       "area": {
         "id": 2077,
@@ -23296,7 +23156,7 @@
     }
   },
   "abbedcd288ba09f67ce85b0c5dc32415f1ee0b210ff1ee1e9fd5ab24abd006b2": {
-    "at": 1795633349.059766,
+    "at": 1795633884.8914502,
     "data": {
       "area": {
         "id": 2077,
