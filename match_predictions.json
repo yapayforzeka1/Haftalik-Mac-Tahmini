@@ -80645,8 +80645,17 @@
       "group_size": 4,
       "message_id": 148
     },
-    "prediction_update_receipt": {},
-    "prediction_update_required": true
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        150
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-25T19:12:53.011151+00:00"
   },
   "575407": {
     "schema_version": 3,
@@ -81928,8 +81937,17 @@
       "group_size": 4,
       "message_id": 148
     },
-    "prediction_update_receipt": {},
-    "prediction_update_required": true
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        151
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-25T19:12:53.622479+00:00"
   },
   "575408": {
     "schema_version": 3,
@@ -82336,7 +82354,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T18:32:06.351148+00:00",
@@ -83373,13 +83391,23 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T19:12:49.172866+00:00",
       "first_attempt_at": "2026-11-25T19:12:49.172852+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T20:00",
-      "group_size": 1
+      "group_size": 1,
+      "finished_at": "2026-11-25T19:12:52.392457+00:00",
+      "message_id": 149
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T20:00",
+      "group_size": 1,
+      "message_id": 149
     }
   },
   "575410": {
