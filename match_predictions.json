@@ -79578,7 +79578,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T18:31:22.951820+00:00",
@@ -80610,13 +80610,23 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T19:05:05.638620+00:00",
       "first_attempt_at": "2026-11-25T19:05:05.638612+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T20:00",
-      "group_size": 4
+      "group_size": 4,
+      "finished_at": "2026-11-25T19:05:09.296265+00:00",
+      "message_id": 148
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T20:00",
+      "group_size": 4,
+      "message_id": 148
     }
   },
   "575407": {
@@ -80800,7 +80810,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T18:31:41.332426+00:00",
@@ -81857,13 +81867,23 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T19:05:05.638626+00:00",
       "first_attempt_at": "2026-11-25T19:05:05.638625+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T20:00",
-      "group_size": 4
+      "group_size": 4,
+      "finished_at": "2026-11-25T19:05:09.296281+00:00",
+      "message_id": 148
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T20:00",
+      "group_size": 4,
+      "message_id": 148
     }
   },
   "575408": {
@@ -82457,7 +82477,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T18:32:18.668674+00:00",
@@ -83489,13 +83509,23 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T19:05:05.638630+00:00",
       "first_attempt_at": "2026-11-25T19:05:05.638629+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T20:00",
-      "group_size": 4
+      "group_size": 4,
+      "finished_at": "2026-11-25T19:05:09.296285+00:00",
+      "message_id": 148
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T20:00",
+      "group_size": 4,
+      "message_id": 148
     }
   },
   "575411": {
@@ -83679,7 +83709,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T18:32:30.988159+00:00",
@@ -84741,13 +84771,23 @@
     "consensus_status": "PROVISIONAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T19:05:05.638632+00:00",
       "first_attempt_at": "2026-11-25T19:05:05.638631+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T20:00",
-      "group_size": 4
+      "group_size": 4,
+      "finished_at": "2026-11-25T19:05:09.296288+00:00",
+      "message_id": 148
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T20:00",
+      "group_size": 4,
+      "message_id": 148
     }
   }
 }
