@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795635070.2494502,
+    "at": 1795635368.4955738,
     "data": {
       "filters": {
         "season": 2026
@@ -5388,11 +5388,11 @@
           },
           "id": 575404,
           "utcDate": "2026-11-25T17:45:00Z",
-          "status": "IN_PLAY",
+          "status": "TIMED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T19:29:46Z",
+          "lastUpdated": "2026-11-25T01:32:00Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5408,15 +5408,15 @@
             "crest": "https://crests.football-data.org/81.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
-              "away": 4
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 0,
-              "away": 1
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -5454,11 +5454,11 @@
           },
           "id": 575405,
           "utcDate": "2026-11-25T17:45:00Z",
-          "status": "IN_PLAY",
+          "status": "TIMED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T19:29:46Z",
+          "lastUpdated": "2026-11-25T01:32:00Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -5474,15 +5474,15 @@
             "crest": "https://crests.football-data.org/94.png"
           },
           "score": {
-            "winner": "AWAY_TEAM",
+            "winner": null,
             "duration": "REGULAR",
             "fullTime": {
-              "home": 0,
-              "away": 1
+              "home": null,
+              "away": null
             },
             "halfTime": {
-              "home": 0,
-              "away": 0
+              "home": null,
+              "away": null
             }
           },
           "odds": {
@@ -9865,146 +9865,6 @@
               "goalDifference": -18
             }
           ]
-        }
-      ]
-    }
-  },
-  "c2563198202b41b489e69304e8ac0d9256fc51c0fa273d924f8f725ea7080c61": {
-    "at": 1795548678.8601937,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 5,
-        "winner": null
-      },
-      "id": 575401,
-      "utcDate": "2026-11-24T20:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 5,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-24T00:20:26Z",
-      "homeTeam": {
-        "id": 7509,
-        "name": "ŠK Slovan Bratislava",
-        "shortName": "Sl. Bratislava",
-        "tla": "SBA",
-        "crest": "https://crests.football-data.org/7509.png"
-      },
-      "awayTeam": {
-        "id": 90,
-        "name": "Real Betis Balompié",
-        "shortName": "Real Betis",
-        "tla": "BET",
-        "crest": "https://crests.football-data.org/90.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 15548,
-          "name": "Jérôme Brisard",
-          "type": "REFEREE",
-          "nationality": "France"
-        }
-      ]
-    }
-  },
-  "4554faf9e95faf09050a58102905335f771061132ae1003514eb8979758cf146": {
-    "at": 1795548707.4924304,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 5,
-        "winner": null
-      },
-      "id": 575403,
-      "utcDate": "2026-11-24T20:00:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 5,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-24T00:20:26Z",
-      "homeTeam": {
-        "id": 7397,
-        "name": "Como 1907",
-        "shortName": "Como 1907",
-        "tla": "COM",
-        "crest": "https://crests.football-data.org/7397.png"
-      },
-      "awayTeam": {
-        "id": 1899,
-        "name": "PAE AEK",
-        "shortName": "PAE AEK",
-        "tla": "AEK",
-        "crest": "https://crests.football-data.org/1899.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 80747,
-          "name": "Javier Alberola Rojas",
-          "type": "REFEREE",
-          "nationality": null
         }
       ]
     }
