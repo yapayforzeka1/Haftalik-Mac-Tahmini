@@ -77149,5 +77149,423 @@
       "evidence_hash": "d2005c2267a74b4bec32b0842c54eeba6444d57497bf33b91f24ed2759f00fb3",
       "interpretation": "Birlikte görülme ölçümüdür; veri etkisinin nedensel kanıtı değildir."
     }
+  },
+  "575404": {
+    "schema_version": 3,
+    "season": "2026",
+    "stage": "LEAGUE_STAGE",
+    "matchday": 5,
+    "match_id": "575404",
+    "home_team": "Sabah FK",
+    "away_team": "FC Barcelona",
+    "home_crest": "https://crests.football-data.org/10233.png",
+    "away_crest": "https://crests.football-data.org/81.png",
+    "match_utc": "2026-11-25T17:45:00+00:00",
+    "match_time": "25.11.2026 20:45",
+    "created_at": "2026-11-25T16:16:12.167595+00:00",
+    "score_scope": "REGULAR_90",
+    "learning_policy": "balanced_v1",
+    "policy_revision": 0,
+    "ai_votes": [],
+    "pool_round": 0,
+    "final_sent": false,
+    "result_sent": false,
+    "test_mode": false,
+    "context_prefetch_attempt_at": "2026-11-25T16:16:12.167602+00:00",
+    "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 5,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 5,
+      "match_utc": "2026-11-25T17:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 10233,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-04T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Viking FK",
+              "venue": "AWAY",
+              "goals_for": 1,
+              "goals_against": 4,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-20T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Borussia Dortmund",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-13T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "SK Slavia Praha",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Manchester United FC",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 4,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "L-L-W-L",
+          "points_last_5": 3,
+          "goals_for_last_5": 4,
+          "goals_against_last_5": 10,
+          "avg_goals_for": 1.0,
+          "avg_goals_against": 2.5,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 3,
+            "goals_against": 2,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 1.0
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-0D-2L",
+            "goals_for": 1,
+            "goals_against": 8,
+            "avg_goals_for": 0.5,
+            "avg_goals_against": 4.0
+          },
+          "rest_days_before_match": 20.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 1
+        },
+        "standings": {
+          "position": 30,
+          "points": 3,
+          "playedGames": 4,
+          "goalsFor": 4,
+          "goalsAgainst": 10
+        }
+      },
+      "away": {
+        "team_id": 81,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-22T13:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Villarreal CF",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 2,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-11-08T20:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Club Atlético de Madrid",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-11-03T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Aston Villa FC",
+              "venue": "HOME",
+              "goals_for": 3,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-31T20:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Deportivo Alavés",
+              "venue": "HOME",
+              "goals_for": 6,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-10-25T20:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "Real Madrid CF",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "W-W-W-W-L",
+          "points_last_5": 12,
+          "goals_for_last_5": 15,
+          "goals_against_last_5": 6,
+          "avg_goals_for": 3.0,
+          "avg_goals_against": 1.2,
+          "home_split_last_5": {
+            "matches": 4,
+            "record": "3W-0D-1L",
+            "goals_for": 13,
+            "goals_against": 5,
+            "avg_goals_for": 3.25,
+            "avg_goals_against": 1.25
+          },
+          "away_split_last_5": {
+            "matches": 1,
+            "record": "1W-0D-0L",
+            "goals_for": 2,
+            "goals_against": 1,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 1.0
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 1,
+          "matches_last_21_days": 2
+        },
+        "standings": {
+          "position": 8,
+          "points": 9,
+          "playedGames": 4,
+          "goalsFor": 14,
+          "goalsAgainst": 6
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      }
+    },
+    "context_prepared_at": "2026-11-25T16:16:30.633555+00:00",
+    "context_ready": true
+  },
+  "575405": {
+    "schema_version": 3,
+    "season": "2026",
+    "stage": "LEAGUE_STAGE",
+    "matchday": 5,
+    "match_id": "575405",
+    "home_team": "SK Slavia Praha",
+    "away_team": "Villarreal CF",
+    "home_crest": "https://crests.football-data.org/930.png",
+    "away_crest": "https://crests.football-data.org/94.png",
+    "match_utc": "2026-11-25T17:45:00+00:00",
+    "match_time": "25.11.2026 20:45",
+    "created_at": "2026-11-25T16:16:30.710833+00:00",
+    "score_scope": "REGULAR_90",
+    "learning_policy": "balanced_v1",
+    "policy_revision": 0,
+    "ai_votes": [],
+    "pool_round": 0,
+    "final_sent": false,
+    "result_sent": false,
+    "test_mode": false,
+    "context_prefetch_attempt_at": "2026-11-25T16:16:30.710840+00:00",
+    "context": {
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 5,
+        "winner": null
+      },
+      "stage": "LEAGUE_STAGE",
+      "matchday": 5,
+      "match_utc": "2026-11-25T17:45:00Z",
+      "score_scope": "REGULAR_90",
+      "home": {
+        "team_id": 930,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-04T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Arsenal FC",
+              "venue": "HOME",
+              "goals_for": 1,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-20T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Fenerbahçe SK",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 2,
+              "result": "D",
+              "points": 1
+            },
+            {
+              "date": "2026-10-13T16:45:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Sabah FK",
+              "venue": "AWAY",
+              "goals_for": 0,
+              "goals_against": 2,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-09-10T19:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Racing Club de Lens",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            }
+          ],
+          "last_5": "L-D-L-L",
+          "points_last_5": 1,
+          "goals_for_last_5": 5,
+          "goals_against_last_5": 9,
+          "avg_goals_for": 1.25,
+          "avg_goals_against": 2.25,
+          "home_split_last_5": {
+            "matches": 2,
+            "record": "0W-0D-2L",
+            "goals_for": 3,
+            "goals_against": 5,
+            "avg_goals_for": 1.5,
+            "avg_goals_against": 2.5
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "0W-1D-1L",
+            "goals_for": 2,
+            "goals_against": 4,
+            "avg_goals_for": 1.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 20.9,
+          "matches_last_14_days": 0,
+          "matches_last_21_days": 1
+        },
+        "standings": {
+          "position": 34,
+          "points": 1,
+          "playedGames": 4,
+          "goalsFor": 5,
+          "goalsAgainst": 9
+        }
+      },
+      "away": {
+        "team_id": 94,
+        "last_5": {
+          "matches": [
+            {
+              "date": "2026-11-22T13:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "FC Barcelona",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 3,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-11-08T17:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Getafe CF",
+              "venue": "HOME",
+              "goals_for": 2,
+              "goals_against": 0,
+              "result": "W",
+              "points": 3
+            },
+            {
+              "date": "2026-11-03T20:00:00Z",
+              "competition": "UEFA Champions League",
+              "opponent": "Paris Saint-Germain FC",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 6,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-30T20:00:00Z",
+              "competition": "Primera Division",
+              "opponent": "RCD Espanyol de Barcelona",
+              "venue": "HOME",
+              "goals_for": 0,
+              "goals_against": 1,
+              "result": "L",
+              "points": 0
+            },
+            {
+              "date": "2026-10-24T16:30:00Z",
+              "competition": "Primera Division",
+              "opponent": "Valencia CF",
+              "venue": "AWAY",
+              "goals_for": 2,
+              "goals_against": 1,
+              "result": "W",
+              "points": 3
+            }
+          ],
+          "last_5": "L-W-L-L-W",
+          "points_last_5": 6,
+          "goals_for_last_5": 6,
+          "goals_against_last_5": 11,
+          "avg_goals_for": 1.2,
+          "avg_goals_against": 2.2,
+          "home_split_last_5": {
+            "matches": 3,
+            "record": "1W-0D-2L",
+            "goals_for": 2,
+            "goals_against": 7,
+            "avg_goals_for": 0.67,
+            "avg_goals_against": 2.33
+          },
+          "away_split_last_5": {
+            "matches": 2,
+            "record": "1W-0D-1L",
+            "goals_for": 4,
+            "goals_against": 4,
+            "avg_goals_for": 2.0,
+            "avg_goals_against": 2.0
+          },
+          "rest_days_before_match": 3.2,
+          "matches_last_14_days": 1,
+          "matches_last_21_days": 2
+        },
+        "standings": {
+          "position": 29,
+          "points": 3,
+          "playedGames": 4,
+          "goalsFor": 8,
+          "goalsAgainst": 14
+        }
+      },
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      }
+    },
+    "context_prepared_at": "2026-11-25T16:16:42.929285+00:00",
+    "context_ready": true
   }
 }
