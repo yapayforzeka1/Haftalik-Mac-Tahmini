@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795640177.348427,
+    "at": 1795640470.579133,
     "data": {
       "filters": {
         "season": 2026
@@ -5520,7 +5520,7 @@
           },
           "id": 575406,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -5586,7 +5586,7 @@
           },
           "id": 575407,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -5652,7 +5652,7 @@
           },
           "id": 575408,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -5722,7 +5722,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T20:54:35Z",
+          "lastUpdated": "2026-11-25T20:56:42Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -5745,8 +5745,8 @@
               "away": 1
             },
             "halfTime": {
-              "home": null,
-              "away": null
+              "home": 0,
+              "away": 1
             }
           },
           "odds": {
@@ -5784,7 +5784,7 @@
           },
           "id": 575410,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -5850,7 +5850,7 @@
           },
           "id": 575411,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
@@ -5916,7 +5916,7 @@
           },
           "id": 575412,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "PAUSED",
+          "status": "IN_PLAY",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
