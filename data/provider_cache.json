@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795632671.2511842,
+    "at": 1795632973.2611935,
     "data": {
       "filters": {
         "season": 2026
@@ -5392,7 +5392,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T18:36:26Z",
+          "lastUpdated": "2026-11-25T18:54:34Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5458,7 +5458,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T18:38:34Z",
+          "lastUpdated": "2026-11-25T18:54:35Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
