@@ -83248,15 +83248,40 @@
       },
       {
         "model": "Cohere Command A+",
-        "success": false,
-        "result": null,
-        "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-25T19:46:47.003457+00:00",
-        "error_stage": "REQUEST",
+        "success": true,
+        "result": {
+          "home_team": "Club Brugge KV",
+          "away_team": "Liverpool FC",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 60,
+          "reasons": [
+            "Club Brugge son 4 maçta 2.75 g/f, Liverpool deplasman 2.5 g/f ortalaması",
+            "Brugge 21 gün dinlenme avantajı, Liverpool sadece 3 gün arayla oynadı",
+            "Ev sahibi kadro tam, Liverpool önemli oyuncularla ancak yorgun",
+            "Her iki takım da galibiyet için saldıracak, 2-1 olası skor"
+          ],
+          "short_reason": "Ev sahibi form ve dinlenme avantajı",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest",
+            "official_xi"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
         "http_status": null,
         "error_detail": null,
         "request_attempts": 2,
-        "elapsed_seconds": 32.226,
+        "elapsed_seconds": 32.248,
         "queue_wait_seconds": null
       },
       {
@@ -84170,19 +84195,19 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 3,
-      "outcome_share": 75,
+      "outcome_share": 60,
       "score": "1-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
@@ -84190,14 +84215,14 @@
       "top_outcome_votes": 3,
       "top_score": "1-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 46,
+      "average_subjective_confidence": 49,
       "all_outcomes": {
         "AWAY": 3,
-        "HOME": 1
+        "HOME": 2
       },
       "all_scores": {
         "1-2": 3,
-        "2-1": 1
+        "2-1": 2
       },
       "reasons_by_outcome": {
         "AWAY": [
@@ -84208,19 +84233,15 @@
           "Liverpool'un kadro derinliği ve hücum gücü (Isak, Wirtz, Barcola) Club Brugge'den belirgin şekilde üstün."
         ],
         "HOME": [
-          "Ev sahibi son 4 maçta gol üretimi yüksek",
-          "Deplasman savunması son maçta 0 yedi",
-          "Ev sahibi 21 gün dinlenmiş, formda",
-          "İki takım da resmi 11'de mevcut"
+          "Club Brugge son 4 maçta 2.75 g/f, Liverpool deplasman 2.5 g/f ortalaması",
+          "Brugge 21 gün dinlenme avantajı, Liverpool sadece 3 gün arayla oynadı",
+          "Ev sahibi kadro tam, Liverpool önemli oyuncularla ancak yorgun",
+          "Her iki takım da galibiyet için saldıracak, 2-1 olası skor",
+          "Ev sahibi son 4 maçta gol üretimi yüksek"
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-25T19:12:01.279828+00:00",
     "experimental_predictions": {
@@ -84293,14 +84314,14 @@
     "prediction_mode": "NORMAL",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
       "outcome_votes": 3,
-      "outcome_share": 75,
+      "outcome_share": 60,
       "score": "1-2",
       "score_votes": 3,
-      "score_share": 75,
+      "score_share": 60,
       "winner_consensus": true,
       "score_consensus": true,
       "consensus_mode": "NORMAL",
@@ -84308,14 +84329,14 @@
       "top_outcome_votes": 3,
       "top_score": "1-2",
       "top_score_votes": 3,
-      "average_subjective_confidence": 46,
+      "average_subjective_confidence": 49,
       "all_outcomes": {
         "AWAY": 3,
-        "HOME": 1
+        "HOME": 2
       },
       "all_scores": {
         "1-2": 3,
-        "2-1": 1
+        "2-1": 2
       },
       "reasons_by_outcome": {
         "AWAY": [
@@ -84326,19 +84347,15 @@
           "Liverpool'un kadro derinliği ve hücum gücü (Isak, Wirtz, Barcola) Club Brugge'den belirgin şekilde üstün."
         ],
         "HOME": [
-          "Ev sahibi son 4 maçta gol üretimi yüksek",
-          "Deplasman savunması son maçta 0 yedi",
-          "Ev sahibi 21 gün dinlenmiş, formda",
-          "İki takım da resmi 11'de mevcut"
+          "Club Brugge son 4 maçta 2.75 g/f, Liverpool deplasman 2.5 g/f ortalaması",
+          "Brugge 21 gün dinlenme avantajı, Liverpool sadece 3 gün arayla oynadı",
+          "Ev sahibi kadro tam, Liverpool önemli oyuncularla ancak yorgun",
+          "Her iki takım da galibiyet için saldıracak, 2-1 olası skor",
+          "Ev sahibi son 4 maçta gol üretimi yüksek"
         ]
       },
       "disagreement": true,
-      "failed_ai": [
-        {
-          "model": "Cohere Command A+",
-          "error": "RESPONSE_TRUNCATED"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -84356,18 +84373,18 @@
         "Club Brugge KV – Liverpool FC",
         "23:00 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "Liverpool FC · 3/4",
-        "1–2 · 3/4",
+        "5/5",
+        "Liverpool FC · 3/5",
+        "1–2 · 3/5",
         "Gem 3.5L, Qwen, Clef"
       ],
       "headers": [],
       "rows": [],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: Liverpool FC (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nClub Brugge KV – Liverpool FC | 23:00 TSİ | ✅ Resmî 11 | 4/5 | Liverpool FC · 3/4 | 1–2 · 3/4 | Gem 3.5L, Qwen, Clef\n\n⚠️ GEÇİCİ ORTAK KARAR: Liverpool FC (3/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nClub Brugge KV – Liverpool FC | 23:00 TSİ | ✅ Resmî 11 | 5/5 | Liverpool FC · 3/5 | 1–2 · 3/5 | Gem 3.5L, Qwen, Clef",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -84387,7 +84404,18 @@
       "group_key": "2026-11-25T20:00",
       "group_size": 1,
       "message_id": 149
-    }
+    },
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        154
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-25T19:51:45.891000+00:00"
   },
   "575410": {
     "schema_version": 3,
