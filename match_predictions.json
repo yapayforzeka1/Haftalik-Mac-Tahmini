@@ -77169,12 +77169,39 @@
     "ai_votes": [
       {
         "model": "Gemini 3.5 Flash-Lite",
-        "success": false,
-        "result": null,
-        "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-25T17:11:26.692287+00:00",
-        "error_stage": "REQUEST",
-        "http_status": 503,
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "FC Barcelona",
+          "outcome": "AWAY",
+          "score": "1-3",
+          "confidence": 75,
+          "reasons": [
+            "Barcelona'nın son maçlardaki hücum gücü oldukça yüksek.",
+            "Sabah FK Şampiyonlar Ligi'nde savunmada zorlanıyor.",
+            "Kadro kalitesi ve tecrübe olarak Barcelona net üstün.",
+            "Konuk ekibin galibiyet serisi form durumunu gösteriyor."
+          ],
+          "short_reason": "Barcelona deplasmanda rahat kazanır.",
+          "score_candidates": [
+            "1-3",
+            "0-2",
+            "1-4"
+          ],
+          "change_vs_previous": "İlk tahmin",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest",
+            "research"
+          ],
+          "model_id": "gemini-3.5-flash-lite"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
         "error_detail": null,
         "request_attempts": null,
         "elapsed_seconds": null,
@@ -78168,15 +78195,15 @@
     },
     "prompt_version": 4,
     "total_ai": 5,
-    "prediction_complete": false,
+    "prediction_complete": true,
     "consensus_min_successful": 3,
     "prediction_kind": "AI",
     "consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": null,
       "score_votes": 0,
@@ -78185,34 +78212,30 @@
       "score_consensus": false,
       "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "0-3",
       "top_score_votes": 2,
-      "average_subjective_confidence": 60,
+      "average_subjective_confidence": 63,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
+        "1-3": 1,
         "0-3": 2,
         "1-2": 1,
         "0-2": 1
       },
       "reasons_by_outcome": {
         "AWAY": [
-          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
-          "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
-          "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
-          "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz.",
-          "Sabah son 4 maçta zayıf hücum ve savunma gösterdi"
+          "Barcelona'nın son maçlardaki hücum gücü oldukça yüksek.",
+          "Sabah FK Şampiyonlar Ligi'nde savunmada zorlanıyor.",
+          "Kadro kalitesi ve tecrübe olarak Barcelona net üstün.",
+          "Konuk ekibin galibiyet serisi form durumunu gösteriyor.",
+          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede."
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Gemini 3.5 Flash-Lite",
-          "error": "PROVIDER_UNAVAILABLE"
-        }
-      ]
+      "failed_ai": []
     },
     "prediction_created_at": "2026-11-25T16:46:49.529555+00:00",
     "experimental_predictions": {
@@ -78285,10 +78308,10 @@
     "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
     "published_consensus": {
       "min_successful": 3,
-      "successful_ai": 4,
+      "successful_ai": 5,
       "total_ai": 5,
       "outcome": "AWAY",
-      "outcome_votes": 4,
+      "outcome_votes": 5,
       "outcome_share": 100,
       "score": null,
       "score_votes": 0,
@@ -78297,34 +78320,30 @@
       "score_consensus": false,
       "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
       "top_outcome": "AWAY",
-      "top_outcome_votes": 4,
+      "top_outcome_votes": 5,
       "top_score": "0-3",
       "top_score_votes": 2,
-      "average_subjective_confidence": 60,
+      "average_subjective_confidence": 63,
       "all_outcomes": {
-        "AWAY": 4
+        "AWAY": 5
       },
       "all_scores": {
+        "1-3": 1,
         "0-3": 2,
         "1-2": 1,
         "0-2": 1
       },
       "reasons_by_outcome": {
         "AWAY": [
-          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
-          "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
-          "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
-          "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz.",
-          "Sabah son 4 maçta zayıf hücum ve savunma gösterdi"
+          "Barcelona'nın son maçlardaki hücum gücü oldukça yüksek.",
+          "Sabah FK Şampiyonlar Ligi'nde savunmada zorlanıyor.",
+          "Kadro kalitesi ve tecrübe olarak Barcelona net üstün.",
+          "Konuk ekibin galibiyet serisi form durumunu gösteriyor.",
+          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede."
         ]
       },
       "disagreement": false,
-      "failed_ai": [
-        {
-          "model": "Gemini 3.5 Flash-Lite",
-          "error": "PROVIDER_UNAVAILABLE"
-        }
-      ]
+      "failed_ai": []
     },
     "message_format_version": 4,
     "prediction_table": {
@@ -78341,8 +78360,8 @@
         "Sabah FK – FC Barcelona",
         "20:45 TSİ",
         "✅ Resmî 11",
-        "4/5",
-        "FC Barcelona · 4/4",
+        "5/5",
+        "FC Barcelona · 5/5",
         "Yok"
       ],
       "headers": [
@@ -78354,24 +78373,29 @@
         [
           "Qwen, Clef",
           "0–3",
-          "2/4"
+          "2/5"
+        ],
+        [
+          "Gem 3.5L",
+          "1–3",
+          "1/5"
         ],
         [
           "Cohere",
           "1–2",
-          "1/4"
+          "1/5"
         ],
         [
           "GPT-OSS",
           "0–2",
-          "1/4"
+          "1/5"
         ]
       ],
-      "note": "⚠️ GEÇİCİ ORTAK KARAR: FC Barcelona (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+      "note": ""
     },
-    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nSabah FK – FC Barcelona | 20:45 TSİ | ✅ Resmî 11 | 4/5 | FC Barcelona · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Clef | 0–3 | 2/4\nCohere | 1–2 | 1/4\nGPT-OSS | 0–2 | 1/4\n\n⚠️ GEÇİCİ ORTAK KARAR: FC Barcelona (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nSabah FK – FC Barcelona | 20:45 TSİ | ✅ Resmî 11 | 5/5 | FC Barcelona · 5/5 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Clef | 0–3 | 2/5\nGem 3.5L | 1–3 | 1/5\nCohere | 1–2 | 1/5\nGPT-OSS | 0–2 | 1/5",
     "prediction_ready": true,
-    "consensus_status": "PROVISIONAL",
+    "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
       "status": "SENT",
@@ -78391,7 +78415,9 @@
       "group_key": "2026-11-25T17:45",
       "group_size": 1,
       "message_id": 145
-    }
+    },
+    "prediction_update_receipt": {},
+    "prediction_update_required": true
   },
   "575405": {
     "schema_version": 3,
@@ -78409,8 +78435,193 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.5 Flash-Lite",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Villarreal CF",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 55,
+          "reasons": [
+            "Villarreal deplasmanda daha tecrübeli ve formda.",
+            "Slavia Praha savunması son maçlarda zayıf.",
+            "Puan tablosunda Villarreal biraz daha önde.",
+            "Ev sahibinin dinlenme süresi uzun ancak formsuz."
+          ],
+          "short_reason": "Villarreal deplasmanda skoru bulmayı başarıyor.",
+          "score_candidates": [
+            "1-2",
+            "0-1",
+            "1-1"
+          ],
+          "change_vs_previous": "İlk analiz",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "gemini-3.5-flash-lite"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Villarreal CF",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 55,
+          "reasons": [
+            "Villarreal'in deplasman gol ortalaması (2.0) Slavia'nın ev gol ortalamasından (1.5) yüksek.",
+            "Slavia evinde son 2 maçta yenildi ve kalesinde 5 gol gördü.",
+            "Villarreal'in PSG'ye 6-1 yenilmesi istisnai bir durum, genel lig formu daha dengeli.",
+            "Slavia'nın 21 günlük dinlenme avantajı, Villarreal'in 3 günlük dinlenme dezavantajını kısmen dengelese de kalite farkı belirleyici."
+          ],
+          "short_reason": "Villarreal deplasman gol gücü üstün",
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "1-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 2,
+        "elapsed_seconds": 22.189,
+        "queue_wait_seconds": 0.0
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Villarreal CF",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 55,
+          "reasons": [
+            "Ev sahibi son iki maçta yenildi",
+            "Deplasman iki maçta iki gol attı",
+            "Maçlarda üç gol civarında",
+            "Dinlenme avantajı ev sahibine"
+          ],
+          "short_reason": "Ev sahibi formsuz, deplasman etkili",
+          "score_candidates": [
+            "2-1",
+            "1-1",
+            "2-0"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 2,
+        "elapsed_seconds": 34.046,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Villarreal CF",
+          "outcome": "AWAY",
+          "score": "0-1",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi son 4 maçta savunma zayıf",
+            "Deplasman son 5 maçta gol bulma şansı daha yüksek",
+            "Villarreal daha az dinlenmiş ancak savunma iyileşti",
+            "Her iki takım da düşük ortalama gol üretimi"
+          ],
+          "short_reason": "deplasman daha formda",
+          "score_candidates": [
+            "0-1",
+            "1-1",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 0.849,
+        "queue_wait_seconds": 22.189
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "SK Slavia Praha",
+          "away_team": "Villarreal CF",
+          "outcome": "DRAW",
+          "score": "0-0",
+          "confidence": 66,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-0",
+            "1-1",
+            "2-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -78599,10 +78810,572 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-11-25T16:16:42.929285+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-25T17:11:09.559642+00:00"
+    "xi_checked_at": "2026-11-25T17:16:21.367072+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-11-25T17:16:26.956240+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 4 maçta 5-9 gol dengesi. Deplasman: son 5 maçta 6-11 gol dengesi.",
+      "home": {
+        "form": "Son 4 doğrulanmış maç: L-D-L-L.",
+        "goals_trend": "Son 4 maç: 5 gol attı, 9 gol yedi; maç başına 1.25 attı / 2.25 yedi.",
+        "recent_fixtures": [
+          "2026-11-04 Arsenal FC: 1-2 (HOME)",
+          "2026-10-20 Fenerbahçe SK: 2-2 (AWAY)",
+          "2026-10-13 Sabah FK: 0-2 (AWAY)",
+          "2026-09-10 Racing Club de Lens: 2-3 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 0W-0D-2L; 3 gol attı, 5 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: L-W-L-L-W.",
+        "goals_trend": "Son 5 maç: 6 gol attı, 11 gol yedi; maç başına 1.20 attı / 2.20 yedi.",
+        "recent_fixtures": [
+          "2026-11-22 FC Barcelona: 2-3 (AWAY)",
+          "2026-11-08 Getafe CF: 2-0 (HOME)",
+          "2026-11-03 Paris Saint-Germain FC: 0-6 (HOME)",
+          "2026-10-30 RCD Espanyol de Barcelona: 0-1 (HOME)",
+          "2026-10-24 Valencia CF: 2-1 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-0D-1L; 4 gol attı, 4 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 34,
+          "points": 1,
+          "played": 4
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 29,
+          "points": 3,
+          "played": 4
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 20.9 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 3.2 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-25T17:16:27.465453+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-25T17:16:27.465471+00:00",
+      "source_refs": [
+        {
+          "team_id": 930,
+          "endpoint": "/v4/teams/930/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 94,
+          "endpoint": "/v4/teams/94/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 4 maçta 5-9 gol dengesi.",
+        "Deplasman: son 5 maçta 6-11 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 70,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 62,
+          "available": 25,
+          "points": 90,
+          "exact": 3,
+          "outcome": 21,
+          "goal_error": 57,
+          "coverage_pct": 40.3,
+          "exact_pct": 12.0,
+          "outcome_pct": 84.0,
+          "avg_points": 3.6,
+          "mean_goal_error": 2.28
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 70,
+          "available": 60,
+          "points": 165,
+          "exact": 4,
+          "outcome": 40,
+          "goal_error": 134,
+          "coverage_pct": 85.7,
+          "exact_pct": 6.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.75,
+          "mean_goal_error": 2.23
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 70,
+          "available": 68,
+          "points": 185,
+          "exact": 6,
+          "outcome": 44,
+          "goal_error": 157,
+          "coverage_pct": 97.1,
+          "exact_pct": 8.8,
+          "outcome_pct": 64.7,
+          "avg_points": 2.72,
+          "mean_goal_error": 2.31
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 160,
+          "exact": 4,
+          "outcome": 35,
+          "goal_error": 133,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 61.4,
+          "avg_points": 2.81,
+          "mean_goal_error": 2.33
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 128,
+          "exact": 4,
+          "outcome": 29,
+          "goal_error": 141,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 50.9,
+          "avg_points": 2.25,
+          "mean_goal_error": 2.47
+        },
+        "Gemini 3.5 Flash-Lite": {
+          "opportunities": 8,
+          "available": 5,
+          "points": 12,
+          "exact": 1,
+          "outcome": 2,
+          "goal_error": 5,
+          "coverage_pct": 62.5,
+          "exact_pct": 20.0,
+          "outcome_pct": 40.0,
+          "avg_points": 2.4,
+          "mean_goal_error": 1.0
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 31,
+          "exact_matches": 5
+        },
+        "research_available=False": {
+          "matches": 70,
+          "exact_matches": 12
+        },
+        "home_form=True": {
+          "matches": 68,
+          "exact_matches": 12
+        },
+        "away_form=True": {
+          "matches": 64,
+          "exact_matches": 10
+        },
+        "standings=True": {
+          "matches": 69,
+          "exact_matches": 12
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 39,
+          "exact_matches": 7
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        },
+        "standings=False": {
+          "matches": 1,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 29,
+          "goal_error": 141
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 56,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 131
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 55,
+          "exact": 4,
+          "outcome_correct": 34,
+          "goal_error": 136
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Cohere Command A+:form": {
+          "used": 48,
+          "exact": 2,
+          "outcome_correct": 32,
+          "goal_error": 109
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 34,
+          "exact": 2,
+          "outcome_correct": 19,
+          "goal_error": 81
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 32,
+          "exact": 3,
+          "outcome_correct": 20,
+          "goal_error": 78
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "c224587f3a011cc386ea85d58b0d32a1a1d63520abb7611708f22f84e7ec803c",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.5-flash-lite",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": true,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 60,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 46,
+      "all_outcomes": {
+        "AWAY": 3,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 1,
+        "0-1": 1,
+        "0-0": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Villarreal deplasmanda daha tecrübeli ve formda.",
+          "Slavia Praha savunması son maçlarda zayıf.",
+          "Puan tablosunda Villarreal biraz daha önde.",
+          "Ev sahibinin dinlenme süresi uzun ancak formsuz.",
+          "Villarreal'in deplasman gol ortalaması (2.0) Slavia'nın ev gol ortalamasından (1.5) yüksek."
+        ],
+        "HOME": [
+          "Ev sahibi son iki maçta yenildi",
+          "Deplasman iki maçta iki gol attı",
+          "Maçlarda üç gol civarında",
+          "Dinlenme avantajı ev sahibine"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": []
+    },
+    "prediction_created_at": "2026-11-25T17:17:02.225895+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575405",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "1-1",
+          "predicted_outcome": "DRAW",
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.5 Flash-Lite",
+              "model_id": "gemini-3.5-flash-lite"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T17:17:02.225895+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "c2c2d055ddf2ba8a198d158be651c515c74d37b325e9cbeaf39e775b9e162d64"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575405",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "1-2",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 5,
+          "models_used": [
+            {
+              "model": "Gemini 3.5 Flash-Lite",
+              "model_id": "gemini-3.5-flash-lite"
+            },
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T17:17:02.225895+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "c2c2d055ddf2ba8a198d158be651c515c74d37b325e9cbeaf39e775b9e162d64"
+        }
+      }
+    },
+    "minutes_before_match": 28.0,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 5,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 3,
+      "outcome_share": 60,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 3,
+      "top_score": "1-2",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 46,
+      "all_outcomes": {
+        "AWAY": 3,
+        "HOME": 1,
+        "DRAW": 1
+      },
+      "all_scores": {
+        "1-2": 2,
+        "2-1": 1,
+        "0-1": 1,
+        "0-0": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Villarreal deplasmanda daha tecrübeli ve formda.",
+          "Slavia Praha savunması son maçlarda zayıf.",
+          "Puan tablosunda Villarreal biraz daha önde.",
+          "Ev sahibinin dinlenme süresi uzun ancak formsuz.",
+          "Villarreal'in deplasman gol ortalaması (2.0) Slavia'nın ev gol ortalamasından (1.5) yüksek."
+        ],
+        "HOME": [
+          "Ev sahibi son iki maçta yenildi",
+          "Deplasman iki maçta iki gol attı",
+          "Maçlarda üç gol civarında",
+          "Dinlenme avantajı ev sahibine"
+        ],
+        "DRAW": [
+          "Cloudflare Clef-omni structured pre-match decision"
+        ]
+      },
+      "disagreement": true,
+      "failed_ai": []
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "SK Slavia Praha – Villarreal CF",
+        "20:45 TSİ",
+        "⚠️ Kadro eksik",
+        "5/5",
+        "Villarreal CF · 3/5",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Gem 3.5L, Qwen",
+          "1–2",
+          "2/5"
+        ],
+        [
+          "Cohere",
+          "2–1",
+          "1/5"
+        ],
+        [
+          "GPT-OSS",
+          "0–1",
+          "1/5"
+        ],
+        [
+          "Clef",
+          "0–0",
+          "1/5"
+        ]
+      ],
+      "note": ""
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nSK Slavia Praha – Villarreal CF | 20:45 TSİ | ⚠️ Kadro eksik | 5/5 | Villarreal CF · 3/5 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nGem 3.5L, Qwen | 1–2 | 2/5\nCohere | 2–1 | 1/5\nGPT-OSS | 0–1 | 1/5\nClef | 0–0 | 1/5",
+    "prediction_ready": true,
+    "consensus_status": "FINAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-25T17:17:03.838517+00:00",
+      "first_attempt_at": "2026-11-25T17:17:03.838504+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-25T17:45",
+      "group_size": 1
+    }
   }
 }
