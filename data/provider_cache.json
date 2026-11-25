@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795629675.9020612,
+    "at": 1795629975.777714,
     "data": {
       "filters": {
         "season": 2026
@@ -5392,7 +5392,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T17:59:06Z",
+          "lastUpdated": "2026-11-25T18:05:30Z",
           "homeTeam": {
             "id": 10233,
             "name": "Sabah FK",
@@ -5458,7 +5458,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T17:59:06Z",
+          "lastUpdated": "2026-11-25T18:05:30Z",
           "homeTeam": {
             "id": 930,
             "name": "SK Slavia Praha",
@@ -5554,7 +5554,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43918,
+              "name": "François Letexier",
+              "type": "REFEREE",
+              "nationality": "France"
+            }
+          ]
         },
         {
           "area": {
@@ -5613,7 +5620,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 17631,
+              "name": "Erik Lambrechts",
+              "type": "REFEREE",
+              "nationality": "Belgium"
+            }
+          ]
         },
         {
           "area": {
@@ -5672,7 +5686,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 30960,
+              "name": "Glenn Nyberg",
+              "type": "REFEREE",
+              "nationality": "Sweden"
+            }
+          ]
         },
         {
           "area": {
@@ -5731,7 +5752,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 206208,
+              "name": "Alejandro Hernández Hernández",
+              "type": "REFEREE",
+              "nationality": "Spain"
+            }
+          ]
         },
         {
           "area": {
@@ -5790,7 +5818,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 11079,
+              "name": "Marco Guida",
+              "type": "REFEREE",
+              "nationality": "Italy"
+            }
+          ]
         },
         {
           "area": {
@@ -5849,7 +5884,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 43888,
+              "name": "Szymon Marciniak",
+              "type": "REFEREE",
+              "nationality": "Poland"
+            }
+          ]
         },
         {
           "area": {
@@ -5908,7 +5950,14 @@
           "odds": {
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
-          "referees": []
+          "referees": [
+            {
+              "id": 11605,
+              "name": "Michael Oliver",
+              "type": "REFEREE",
+              "nationality": "England"
+            }
+          ]
         },
         {
           "area": {
