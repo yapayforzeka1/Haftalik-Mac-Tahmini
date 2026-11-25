@@ -77166,8 +77166,171 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.5 Flash-Lite",
+        "success": false,
+        "result": null,
+        "error": "PROVIDER_UNAVAILABLE",
+        "retry_after": "2026-11-25T16:51:32.749276+00:00",
+        "error_stage": "REQUEST",
+        "http_status": 503,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "FC Barcelona",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 75,
+          "reasons": [
+            "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
+            "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
+            "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
+            "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz."
+          ],
+          "short_reason": "Barcelona kalite ve form farkıyla açık favori",
+          "score_candidates": [
+            "0-3",
+            "1-3",
+            "0-2"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "official_xi",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 3.631,
+        "queue_wait_seconds": 0.0
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "FC Barcelona",
+          "outcome": "AWAY",
+          "score": "1-2",
+          "confidence": 70,
+          "reasons": [
+            "Sabah son 4 maçta zayıf hücum ve savunma gösterdi",
+            "Barcelona son 5 maçta yüksek gol üretimi sergiledi",
+            "Barcelona kalitesi ve deneyimi sabahın genç kadrosundan üstün",
+            "Sabahın ev avantajına rağmen Barcelona'nın teknik üstünlüğü maçı belirleyecek"
+          ],
+          "short_reason": "Barcelona üstün kalitesi ve formda",
+          "score_candidates": [
+            "1-2",
+            "0-2",
+            "2-1"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 2,
+        "elapsed_seconds": 32.293,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "FC Barcelona",
+          "outcome": "AWAY",
+          "score": "0-2",
+          "confidence": 0,
+          "reasons": [
+            "Ev sahibi düşük gol ortalaması",
+            "Deplasman yüksek gol üretimi",
+            "Barajı aşan deplasman formu",
+            "Deplasman dinlenme avantajı"
+          ],
+          "short_reason": "Deplasman üstünlüğü açık",
+          "score_candidates": [
+            "0-2",
+            "1-2",
+            "0-3"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest",
+            "official_xi"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 1.227,
+        "queue_wait_seconds": 3.631
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Sabah FK",
+          "away_team": "FC Barcelona",
+          "outcome": "AWAY",
+          "score": "0-3",
+          "confidence": 94,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "0-3",
+            "0-4",
+            "0-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -77353,11 +77516,872 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 489507,
+            "name": "Stas Pokatilov",
+            "number": "92",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 542777,
+            "name": "Akim Zedadka",
+            "number": "80",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 764834,
+            "name": "Steve Solvet",
+            "number": "3",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1489096,
+            "name": "Almeida",
+            "number": "33",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 823121,
+            "name": "Tymoteusz Puchacz",
+            "number": "27",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1429286,
+            "name": "Umarali Rakhmonaliev",
+            "number": "7",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 906920,
+            "name": "Ivan Lepinjica",
+            "number": "13",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1271367,
+            "name": "Du Queiroz",
+            "number": "37",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1239800,
+            "name": "Xander Severina",
+            "number": "34",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 1661503,
+            "name": "Xayal Əliyev",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1624072,
+            "name": "Christian Nwachukwu",
+            "number": "8",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1167220,
+            "name": "Joan García",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 705450,
+            "name": "Jules Koundé",
+            "number": "23",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 638622,
+            "name": "Frenkie de Jong",
+            "number": "21",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1598982,
+            "name": "Gerard Martín",
+            "number": "18",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1254166,
+            "name": "Alejandro Balde",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1279040,
+            "name": "Gavi",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1083323,
+            "name": "Pedri",
+            "number": "8",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 959594,
+            "name": "Karim Adeyemi",
+            "number": "14",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1404415,
+            "name": "Fermín López",
+            "number": "7",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 906937,
+            "name": "Anthony Gordon",
+            "number": "17",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 576165,
+            "name": "Gabriel Jesus",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "4-2-3-1",
+        "checked_at": "2026-11-25T16:46:16.770208+00:00",
+        "source": "FotMob"
+      },
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "OFFICIAL",
+        "away": "OFFICIAL"
       }
     },
     "context_prepared_at": "2026-11-25T16:16:30.633555+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-11-25T16:46:09.979581+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 4 maçta 4-10 gol dengesi. Deplasman: son 5 maçta 15-6 gol dengesi.",
+      "home": {
+        "form": "Son 4 doğrulanmış maç: L-L-W-L.",
+        "goals_trend": "Son 4 maç: 4 gol attı, 10 gol yedi; maç başına 1.00 attı / 2.50 yedi.",
+        "recent_fixtures": [
+          "2026-11-04 Viking FK: 1-4 (AWAY)",
+          "2026-10-20 Borussia Dortmund: 1-2 (HOME)",
+          "2026-10-13 SK Slavia Praha: 2-0 (HOME)",
+          "2026-09-10 Manchester United FC: 0-4 (AWAY)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 1W-0D-1L; 3 gol attı, 2 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-W-L.",
+        "goals_trend": "Son 5 maç: 15 gol attı, 6 gol yedi; maç başına 3.00 attı / 1.20 yedi.",
+        "recent_fixtures": [
+          "2026-11-22 Villarreal CF: 3-2 (HOME)",
+          "2026-11-08 Club Atlético de Madrid: 2-1 (AWAY)",
+          "2026-11-03 Aston Villa FC: 3-0 (HOME)",
+          "2026-10-31 Deportivo Alavés: 6-1 (HOME)",
+          "2026-10-25 Real Madrid CF: 1-2 (HOME)"
+        ],
+        "home_away": "Son 1 ilgili saha maçı: 1W-0D-0L; 2 gol attı, 1 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 30,
+          "points": 3,
+          "played": 4
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 8,
+          "points": 9,
+          "played": 4
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 20.9 gün dinlenme. Son 14 günde 0 maç.",
+        "away": "Son maçtan itibaren 3.2 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "ANNOUNCED",
+        "home": [
+          {
+            "id": 489507,
+            "name": "Stas Pokatilov",
+            "number": "92",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 542777,
+            "name": "Akim Zedadka",
+            "number": "80",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 764834,
+            "name": "Steve Solvet",
+            "number": "3",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1489096,
+            "name": "Almeida",
+            "number": "33",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 823121,
+            "name": "Tymoteusz Puchacz",
+            "number": "27",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1429286,
+            "name": "Umarali Rakhmonaliev",
+            "number": "7",
+            "pos": 73,
+            "grid": null
+          },
+          {
+            "id": 906920,
+            "name": "Ivan Lepinjica",
+            "number": "13",
+            "pos": 75,
+            "grid": null
+          },
+          {
+            "id": 1271367,
+            "name": "Du Queiroz",
+            "number": "37",
+            "pos": 77,
+            "grid": null
+          },
+          {
+            "id": 1239800,
+            "name": "Xander Severina",
+            "number": "34",
+            "pos": 103,
+            "grid": null
+          },
+          {
+            "id": 1661503,
+            "name": "Xayal Əliyev",
+            "number": "9",
+            "pos": 105,
+            "grid": null
+          },
+          {
+            "id": 1624072,
+            "name": "Christian Nwachukwu",
+            "number": "8",
+            "pos": 107,
+            "grid": null
+          }
+        ],
+        "away": [
+          {
+            "id": 1167220,
+            "name": "Joan García",
+            "number": "1",
+            "pos": 11,
+            "grid": null
+          },
+          {
+            "id": 705450,
+            "name": "Jules Koundé",
+            "number": "23",
+            "pos": 32,
+            "grid": null
+          },
+          {
+            "id": 638622,
+            "name": "Frenkie de Jong",
+            "number": "21",
+            "pos": 34,
+            "grid": null
+          },
+          {
+            "id": 1598982,
+            "name": "Gerard Martín",
+            "number": "18",
+            "pos": 36,
+            "grid": null
+          },
+          {
+            "id": 1254166,
+            "name": "Alejandro Balde",
+            "number": "3",
+            "pos": 38,
+            "grid": null
+          },
+          {
+            "id": 1279040,
+            "name": "Gavi",
+            "number": "6",
+            "pos": 64,
+            "grid": null
+          },
+          {
+            "id": 1083323,
+            "name": "Pedri",
+            "number": "8",
+            "pos": 66,
+            "grid": null
+          },
+          {
+            "id": 959594,
+            "name": "Karim Adeyemi",
+            "number": "14",
+            "pos": 83,
+            "grid": null
+          },
+          {
+            "id": 1404415,
+            "name": "Fermín López",
+            "number": "7",
+            "pos": 85,
+            "grid": null
+          },
+          {
+            "id": 906937,
+            "name": "Anthony Gordon",
+            "number": "17",
+            "pos": 87,
+            "grid": null
+          },
+          {
+            "id": 576165,
+            "name": "Gabriel Jesus",
+            "number": "9",
+            "pos": 115,
+            "grid": null
+          }
+        ],
+        "home_source": "FotMob",
+        "home_formation": "4-3-3",
+        "away_source": "FotMob",
+        "away_formation": "4-2-3-1",
+        "checked_at": "2026-11-25T16:46:16.770208+00:00",
+        "source": "FotMob"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-25T16:46:16.842348+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-25T16:46:16.842367+00:00",
+      "source_refs": [
+        {
+          "team_id": 10233,
+          "endpoint": "/v4/teams/10233/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 81,
+          "endpoint": "/v4/teams/81/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 4 maçta 4-10 gol dengesi.",
+        "Deplasman: son 5 maçta 15-6 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 70,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 62,
+          "available": 25,
+          "points": 90,
+          "exact": 3,
+          "outcome": 21,
+          "goal_error": 57,
+          "coverage_pct": 40.3,
+          "exact_pct": 12.0,
+          "outcome_pct": 84.0,
+          "avg_points": 3.6,
+          "mean_goal_error": 2.28
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 70,
+          "available": 60,
+          "points": 165,
+          "exact": 4,
+          "outcome": 40,
+          "goal_error": 134,
+          "coverage_pct": 85.7,
+          "exact_pct": 6.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.75,
+          "mean_goal_error": 2.23
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 70,
+          "available": 68,
+          "points": 185,
+          "exact": 6,
+          "outcome": 44,
+          "goal_error": 157,
+          "coverage_pct": 97.1,
+          "exact_pct": 8.8,
+          "outcome_pct": 64.7,
+          "avg_points": 2.72,
+          "mean_goal_error": 2.31
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 160,
+          "exact": 4,
+          "outcome": 35,
+          "goal_error": 133,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 61.4,
+          "avg_points": 2.81,
+          "mean_goal_error": 2.33
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 128,
+          "exact": 4,
+          "outcome": 29,
+          "goal_error": 141,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 50.9,
+          "avg_points": 2.25,
+          "mean_goal_error": 2.47
+        },
+        "Gemini 3.5 Flash-Lite": {
+          "opportunities": 8,
+          "available": 5,
+          "points": 12,
+          "exact": 1,
+          "outcome": 2,
+          "goal_error": 5,
+          "coverage_pct": 62.5,
+          "exact_pct": 20.0,
+          "outcome_pct": 40.0,
+          "avg_points": 2.4,
+          "mean_goal_error": 1.0
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 31,
+          "exact_matches": 5
+        },
+        "research_available=False": {
+          "matches": 70,
+          "exact_matches": 12
+        },
+        "home_form=True": {
+          "matches": 68,
+          "exact_matches": 12
+        },
+        "away_form=True": {
+          "matches": 64,
+          "exact_matches": 10
+        },
+        "standings=True": {
+          "matches": 69,
+          "exact_matches": 12
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 39,
+          "exact_matches": 7
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        },
+        "standings=False": {
+          "matches": 1,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 29,
+          "goal_error": 141
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 56,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 131
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 55,
+          "exact": 4,
+          "outcome_correct": 34,
+          "goal_error": 136
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Cohere Command A+:form": {
+          "used": 48,
+          "exact": 2,
+          "outcome_correct": 32,
+          "goal_error": 109
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 34,
+          "exact": 2,
+          "outcome_correct": 19,
+          "goal_error": 81
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 32,
+          "exact": 3,
+          "outcome_correct": 20,
+          "goal_error": 78
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "46f7d7b886726b81b8eb74d1a106a9b3baed91978fa27340f32289bd8057d2a9",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.5-flash-lite",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": false,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-3",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 60,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-3": 2,
+        "1-2": 1,
+        "0-2": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
+          "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
+          "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
+          "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz.",
+          "Sabah son 4 maçta zayıf hücum ve savunma gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-11-25T16:46:49.529555+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575404",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-3",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T16:46:49.529555+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "36f0addf2ad8cfa9789fb55b57f796f6027c7da91c8f2104ecceeed4ec68beab"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575404",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "0-3",
+          "predicted_outcome": "AWAY",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T16:46:49.529555+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "36f0addf2ad8cfa9789fb55b57f796f6027c7da91c8f2104ecceeed4ec68beab"
+        }
+      }
+    },
+    "minutes_before_match": 58.2,
+    "prediction_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "AWAY",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": null,
+      "score_votes": 0,
+      "score_share": 0,
+      "winner_consensus": true,
+      "score_consensus": false,
+      "consensus_mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "top_outcome": "AWAY",
+      "top_outcome_votes": 4,
+      "top_score": "0-3",
+      "top_score_votes": 2,
+      "average_subjective_confidence": 60,
+      "all_outcomes": {
+        "AWAY": 4
+      },
+      "all_scores": {
+        "0-3": 2,
+        "1-2": 1,
+        "0-2": 1
+      },
+      "reasons_by_outcome": {
+        "AWAY": [
+          "Barcelona son 5 maçta 15 gol atıp sadece 6 yedi, formda zirvede.",
+          "Sabah FK son 4 maçta 10 gol yedi, savunması çok zayıf.",
+          "Barcelona'nın kadrosu (Gavi, Pedri, De Jong) rakipten kat kat üstün.",
+          "Sabah FK'nın 21 gün dinlenmesi, Barcelona'nın 3 gün dinlenmesine rağmen kalite farkını kapatmaz.",
+          "Sabah son 4 maçta zayıf hücum ve savunma gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "error": "PROVIDER_UNAVAILABLE"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "OUTCOME_COMMON_SCORE_SPLIT",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor"
+      ],
+      "summary": [
+        "Sabah FK – FC Barcelona",
+        "20:45 TSİ",
+        "✅ Resmî 11",
+        "4/5",
+        "FC Barcelona · 4/4",
+        "Yok"
+      ],
+      "headers": [
+        "🤖 AI Modelleri",
+        "🎯 Skor",
+        "Oy"
+      ],
+      "rows": [
+        [
+          "Qwen, Clef",
+          "0–3",
+          "2/4"
+        ],
+        [
+          "Cohere",
+          "1–2",
+          "1/4"
+        ],
+        [
+          "GPT-OSS",
+          "0–2",
+          "1/4"
+        ]
+      ],
+      "note": "⚠️ GEÇİCİ ORTAK KARAR: FC Barcelona (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor\nSabah FK – FC Barcelona | 20:45 TSİ | ✅ Resmî 11 | 4/5 | FC Barcelona · 4/4 | Yok\n\n🤖 AI Modelleri | 🎯 Skor | Oy\nQwen, Clef | 0–3 | 2/4\nCohere | 1–2 | 1/4\nGPT-OSS | 0–2 | 1/4\n\n⚠️ GEÇİCİ ORTAK KARAR: FC Barcelona (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_ready": true,
+    "consensus_status": "PROVISIONAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-25T16:46:52.475552+00:00",
+      "first_attempt_at": "2026-11-25T16:46:52.475540+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-25T17:45",
+      "group_size": 1
+    }
   },
   "575405": {
     "schema_version": 3,
@@ -77562,10 +78586,13 @@
         }
       },
       "official_xi": {
-        "status": "NOT_ANNOUNCED"
+        "status": "NOT_ANNOUNCED",
+        "home": [],
+        "away": []
       }
     },
     "context_prepared_at": "2026-11-25T16:16:42.929285+00:00",
-    "context_ready": true
+    "context_ready": true,
+    "xi_checked_at": "2026-11-25T16:46:49.607942+00:00"
   }
 }

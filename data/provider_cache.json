@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795624875.1834803,
+    "at": 1795625169.8655052,
     "data": {
       "filters": {
         "season": 2026
@@ -9095,76 +9095,6 @@
             "msg": "Activate Odds-Package in User-Panel to retrieve odds."
           },
           "referees": []
-        }
-      ]
-    }
-  },
-  "3c913a86bafa93c1be436e3df328867748d1da04627f576f600ad64b4ef2321f": {
-    "at": 1795538780.1485026,
-    "data": {
-      "area": {
-        "id": 2077,
-        "name": "Europe",
-        "code": "EUR",
-        "flag": "https://crests.football-data.org/EUR.svg"
-      },
-      "competition": {
-        "id": 2001,
-        "name": "UEFA Champions League",
-        "code": "CL",
-        "type": "CUP",
-        "emblem": "https://crests.football-data.org/CL.png"
-      },
-      "season": {
-        "id": 2557,
-        "startDate": "2026-09-08",
-        "endDate": "2027-01-27",
-        "currentMatchday": 5,
-        "winner": null
-      },
-      "id": 575396,
-      "utcDate": "2026-11-24T17:45:00Z",
-      "status": "TIMED",
-      "venue": null,
-      "matchday": 5,
-      "stage": "LEAGUE_STAGE",
-      "group": null,
-      "lastUpdated": "2026-11-24T00:20:26Z",
-      "homeTeam": {
-        "id": 5721,
-        "name": "FK Bodø/Glimt",
-        "shortName": "Bodø/Glimt",
-        "tla": "FK",
-        "crest": "https://crests.football-data.org/5721.png"
-      },
-      "awayTeam": {
-        "id": 2016,
-        "name": "LASK Linz",
-        "shortName": "LASK",
-        "tla": "LIN",
-        "crest": "https://crests.football-data.org/2016.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": [
-        {
-          "id": 214424,
-          "name": "Halil Meler",
-          "type": "REFEREE",
-          "nationality": "Turkey"
         }
       ]
     }
@@ -25197,6 +25127,146 @@
               "nationality": "Spain"
             }
           ]
+        }
+      ]
+    }
+  },
+  "9432cbeb91cd7af7c6578b7370f3de155988efb9c8488d32538b85958d3fe314": {
+    "at": 1795625176.296811,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 5,
+        "winner": null
+      },
+      "id": 575404,
+      "utcDate": "2026-11-25T17:45:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 5,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-11-25T01:32:00Z",
+      "homeTeam": {
+        "id": 10233,
+        "name": "Sabah FK",
+        "shortName": "Sabah FK",
+        "tla": "SAB",
+        "crest": "https://crests.football-data.org/10233.png"
+      },
+      "awayTeam": {
+        "id": 81,
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB",
+        "crest": "https://crests.football-data.org/81.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 15510,
+          "name": "Nick Walsh",
+          "type": "REFEREE",
+          "nationality": "Scotland"
+        }
+      ]
+    }
+  },
+  "91660b5e25a1285e7c117c328871de046f8e5a3c54bfed3a635afd5a983d70a8": {
+    "at": 1795625210.0188084,
+    "data": {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2557,
+        "startDate": "2026-09-08",
+        "endDate": "2027-01-27",
+        "currentMatchday": 5,
+        "winner": null
+      },
+      "id": 575405,
+      "utcDate": "2026-11-25T17:45:00Z",
+      "status": "TIMED",
+      "venue": null,
+      "matchday": 5,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2026-11-25T01:32:00Z",
+      "homeTeam": {
+        "id": 930,
+        "name": "SK Slavia Praha",
+        "shortName": "Slavia Praha",
+        "tla": "SLP",
+        "crest": "https://crests.football-data.org/930.png"
+      },
+      "awayTeam": {
+        "id": 94,
+        "name": "Villarreal CF",
+        "shortName": "Villarreal",
+        "tla": "VIL",
+        "crest": "https://crests.football-data.org/94.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 43936,
+          "name": "Rade Obrenović",
+          "type": "REFEREE",
+          "nationality": "Slovenia"
         }
       ]
     }
