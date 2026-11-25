@@ -78416,8 +78416,17 @@
       "group_size": 1,
       "message_id": 145
     },
-    "prediction_update_receipt": {},
-    "prediction_update_required": true
+    "prediction_update_receipt": {
+      "parts_sent": 1,
+      "message_ids": [
+        147
+      ],
+      "complete": true
+    },
+    "prediction_update_required": false,
+    "published_successful_ai": 5,
+    "published_prediction_complete": true,
+    "prediction_update_sent_at": "2026-11-25T17:17:07.996399+00:00"
   },
   "575405": {
     "schema_version": 3,
@@ -78622,7 +78631,7 @@
       }
     ],
     "pool_round": 1,
-    "final_sent": false,
+    "final_sent": true,
     "result_sent": false,
     "test_mode": false,
     "context_prefetch_attempt_at": "2026-11-25T16:16:30.710840+00:00",
@@ -79369,13 +79378,23 @@
     "consensus_status": "FINAL",
     "image_required": true,
     "photo_delivery": {
-      "status": "SENDING",
+      "status": "SENT",
       "mode": "group",
       "attempted_at": "2026-11-25T17:17:03.838517+00:00",
       "first_attempt_at": "2026-11-25T17:17:03.838504+00:00",
       "attempt_count": 1,
       "group_key": "2026-11-25T17:45",
-      "group_size": 1
+      "group_size": 1,
+      "finished_at": "2026-11-25T17:17:07.314326+00:00",
+      "message_id": 146
+    },
+    "photo_sent": true,
+    "prediction_receipt": {
+      "complete": true,
+      "transport": "photo",
+      "group_key": "2026-11-25T17:45",
+      "group_size": 1,
+      "message_id": 146
     }
   }
 }
