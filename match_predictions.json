@@ -77172,7 +77172,7 @@
         "success": false,
         "result": null,
         "error": "PROVIDER_UNAVAILABLE",
-        "retry_after": "2026-11-25T17:01:25.684888+00:00",
+        "retry_after": "2026-11-25T17:11:26.692287+00:00",
         "error_stage": "REQUEST",
         "http_status": 503,
         "error_detail": null,
@@ -78603,6 +78603,6 @@
     },
     "context_prepared_at": "2026-11-25T16:16:42.929285+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-25T17:01:14.627350+00:00"
+    "xi_checked_at": "2026-11-25T17:06:26.859532+00:00"
   }
 }
