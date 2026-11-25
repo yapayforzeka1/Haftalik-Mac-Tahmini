@@ -81965,8 +81965,168 @@
     "score_scope": "REGULAR_90",
     "learning_policy": "balanced_v1",
     "policy_revision": 0,
-    "ai_votes": [],
-    "pool_round": 0,
+    "ai_votes": [
+      {
+        "model": "Gemini 3.5 Flash-Lite",
+        "success": false,
+        "result": null,
+        "error": "LOCAL_DAILY_BUDGET",
+        "retry_after": "2026-11-26T08:00:00+00:00",
+        "error_stage": "BUDGET",
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq Qwen 3.8 27B",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 72,
+          "reasons": [
+            "PSG evinde son 2 maçta 3 gol atıp 0 gol yedi, Roma deplasmanda 2 gol yiyor",
+            "PSG'nin 17-3 gol dengesi Roma'nın 19-8 dengesine karşı daha sağlam savunma avantajı sağlıyor",
+            "Roma'nın Manchester United deplasmanındaki 2-3 yenilgisi Avrupa'da savunma kırılganlığını gösteriyor",
+            "PSG'nin Villarreal'e 6-0'lık galibiyeti yüksek tempolu hücum gücünü kanıtlıyor"
+          ],
+          "short_reason": "PSG evinde Roma'dan daha sağlam",
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "3-0"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "qwen/qwen3.8-27b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 2.438,
+        "queue_wait_seconds": 0.0
+      },
+      {
+        "model": "Cohere Command A+",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "2-1",
+          "confidence": 0,
+          "reasons": [
+            "PSG son 5 maçta güçlü hücum gösterdi",
+            "Roma deplasmanda yüksek skor yapıyor",
+            "PSG evinde savunma sağlam",
+            "PSG grup liderliği için motive"
+          ],
+          "short_reason": "PSG evinde Roma'yı yeniyor",
+          "score_candidates": [
+            "2-1",
+            "3-1",
+            "2-2"
+          ],
+          "change_vs_previous": "None",
+          "factors_used": [
+            "form",
+            "standings"
+          ],
+          "model_id": "command-a-plus-05-2026"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 7.064,
+        "queue_wait_seconds": null
+      },
+      {
+        "model": "Groq GPT-OSS 120B",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 78,
+          "reasons": [
+            "PSG son 5 maçta 17-3 gol dengesi",
+            "Roma savunma zayıf, 8 gol yedi",
+            "PSG ev sahibi avantajı ve dinlenme süresi",
+            "Roma düşük lig sıralaması ve düşük puan"
+          ],
+          "short_reason": "PSG formu üstün",
+          "score_candidates": [
+            "3-1",
+            "2-1",
+            "4-1"
+          ],
+          "change_vs_previous": "yok",
+          "factors_used": [
+            "form",
+            "standings",
+            "rest"
+          ],
+          "model_id": "openai/gpt-oss-120b"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": 1,
+        "elapsed_seconds": 0.972,
+        "queue_wait_seconds": 2.437
+      },
+      {
+        "model": "Cloudflare Clef-omni",
+        "success": true,
+        "result": {
+          "home_team": "Paris Saint-Germain FC",
+          "away_team": "AS Roma",
+          "outcome": "HOME",
+          "score": "3-1",
+          "confidence": 81,
+          "reasons": [
+            "Cloudflare Clef-omni structured pre-match decision"
+          ],
+          "short_reason": "Clef-omni maç öncesi verileri değerlendirdi.",
+          "score_candidates": [
+            "3-1",
+            "4-1",
+            "4-2"
+          ],
+          "change_vs_previous": "",
+          "factors_used": [
+            "form"
+          ],
+          "model_id": "@cf/cloudflare/clef-omni"
+        },
+        "error": null,
+        "retry_after": null,
+        "error_stage": null,
+        "http_status": null,
+        "error_detail": null,
+        "request_attempts": null,
+        "elapsed_seconds": null,
+        "queue_wait_seconds": null
+      }
+    ],
+    "pool_round": 1,
     "final_sent": false,
     "result_sent": false,
     "test_mode": false,
@@ -82165,11 +82325,527 @@
         "status": "NOT_ANNOUNCED",
         "home": [],
         "away": []
+      },
+      "source_predicted_xi": {},
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "lineup_availability": {
+        "home": "MISSING",
+        "away": "MISSING"
       }
     },
     "context_prepared_at": "2026-11-25T18:32:06.293785+00:00",
     "context_ready": true,
-    "xi_checked_at": "2026-11-25T19:26:13.910656+00:00"
+    "xi_checked_at": "2026-11-25T19:31:10.367547+00:00",
+    "xi_final_checked": true,
+    "probable_xi_checked_at": "2026-11-25T19:31:17.538926+00:00",
+    "research": {
+      "status": "STRUCTURED_ONLY",
+      "summary": "Yalnızca football-data.org API'den alınmış tamamlanan maç sonuçları ve kayıtlı puan durumuna dayalı yapılandırılmış karşılaştırma. Sakatlık/ceza, oyuncu uygunluğu ve güncel haberler doğrulanmış DEĞİL. Ev sahibi: son 5 maçta 17-3 gol dengesi. Deplasman: son 5 maçta 19-8 gol dengesi.",
+      "home": {
+        "form": "Son 5 doğrulanmış maç: W-W-W-W-W.",
+        "goals_trend": "Son 5 maç: 17 gol attı, 3 gol yedi; maç başına 3.40 attı / 0.60 yedi.",
+        "recent_fixtures": [
+          "2026-11-21 OGC Nice: 3-2 (AWAY)",
+          "2026-11-07 ES Troyes AC: 1-0 (HOME)",
+          "2026-11-03 Villarreal CF: 6-0 (AWAY)",
+          "2026-10-30 Le Havre AC: 5-1 (AWAY)",
+          "2026-10-26 Olympique Lyonnais: 2-0 (HOME)"
+        ],
+        "home_away": "Son 2 ilgili saha maçı: 2W-0D-0L; 3 gol attı, 0 gol yedi."
+      },
+      "away": {
+        "form": "Son 5 doğrulanmış maç: W-W-L-W-W.",
+        "goals_trend": "Son 5 maç: 19 gol attı, 8 gol yedi; maç başına 3.80 attı / 1.60 yedi.",
+        "recent_fixtures": [
+          "2026-11-21 Parma Calcio 1913: 5-1 (AWAY)",
+          "2026-11-07 US Sassuolo Calcio: 3-0 (HOME)",
+          "2026-11-03 Manchester United FC: 2-3 (AWAY)",
+          "2026-10-31 Udinese Calcio: 5-2 (AWAY)",
+          "2026-10-27 Cagliari Calcio: 4-2 (HOME)"
+        ],
+        "home_away": "Son 3 ilgili saha maçı: 2W-0D-1L; 12 gol attı, 6 gol yedi."
+      },
+      "comparison": "",
+      "league_context": {
+        "home": {
+          "scope": "Champions League standings",
+          "position": 2,
+          "points": 12,
+          "played": 4
+        },
+        "away": {
+          "scope": "Champions League standings",
+          "position": 23,
+          "points": 4,
+          "played": 4
+        }
+      },
+      "opponent_quality": {},
+      "fixture_congestion": {
+        "home": "Son maçtan itibaren 4.2 gün dinlenme. Son 14 günde 1 maç.",
+        "away": "Son maçtan itibaren 4.1 gün dinlenme. Son 14 günde 1 maç."
+      },
+      "motivation": {},
+      "rotation_risk": {},
+      "official_squad": {},
+      "official_xi": {
+        "status": "NOT_ANNOUNCED"
+      },
+      "news": [],
+      "conflicts": [
+        "Harici güncel haberler doğrulanamadı."
+      ],
+      "sources": [
+        "football-data.org API: tamamlanan maç sonuçları ve turnuva puan durumu"
+      ],
+      "research_confidence": "LOW",
+      "researched_at": "2026-11-25T19:31:17.774828+00:00",
+      "source_kind": "FOOTBALL_DATA_API",
+      "provider_warning": "STRUCTURED_RESEARCH_ONLY",
+      "verified_at": "2026-11-25T19:31:17.774850+00:00",
+      "source_refs": [
+        {
+          "team_id": 524,
+          "endpoint": "/v4/teams/524/matches",
+          "source": "football-data.org"
+        },
+        {
+          "team_id": 100,
+          "endpoint": "/v4/teams/100/matches",
+          "source": "football-data.org"
+        }
+      ],
+      "predicted_xi": {
+        "status": "PREDICTED",
+        "home": [],
+        "away": []
+      },
+      "score_drivers": [
+        "Ev sahibi: son 5 maçta 17-3 gol dengesi.",
+        "Deplasman: son 5 maçta 19-8 gol dengesi."
+      ]
+    },
+    "history": {
+      "policy": "balanced_v1",
+      "instruction": "Tam skor önceliklidir. Verileri dengeli tart; eksik veriyi uydurma.",
+      "historical_matches": 70,
+      "models": {
+        "Gemini 3.6 Flash": {
+          "opportunities": 62,
+          "available": 25,
+          "points": 90,
+          "exact": 3,
+          "outcome": 21,
+          "goal_error": 57,
+          "coverage_pct": 40.3,
+          "exact_pct": 12.0,
+          "outcome_pct": 84.0,
+          "avg_points": 3.6,
+          "mean_goal_error": 2.28
+        },
+        "Mistral Small Latest": {
+          "opportunities": 13,
+          "available": 0,
+          "points": 0,
+          "exact": 0,
+          "outcome": 0,
+          "goal_error": 0,
+          "coverage_pct": 0.0,
+          "exact_pct": null,
+          "outcome_pct": null,
+          "avg_points": null,
+          "mean_goal_error": null
+        },
+        "Groq Qwen 3.6 27B": {
+          "opportunities": 13,
+          "available": 13,
+          "points": 33,
+          "exact": 3,
+          "outcome": 9,
+          "goal_error": 20,
+          "coverage_pct": 100.0,
+          "exact_pct": 23.1,
+          "outcome_pct": 69.2,
+          "avg_points": 2.54,
+          "mean_goal_error": 1.54
+        },
+        "Cohere Command A+": {
+          "opportunities": 70,
+          "available": 60,
+          "points": 165,
+          "exact": 4,
+          "outcome": 40,
+          "goal_error": 134,
+          "coverage_pct": 85.7,
+          "exact_pct": 6.7,
+          "outcome_pct": 66.7,
+          "avg_points": 2.75,
+          "mean_goal_error": 2.23
+        },
+        "Groq GPT-OSS 120B": {
+          "opportunities": 70,
+          "available": 68,
+          "points": 185,
+          "exact": 6,
+          "outcome": 44,
+          "goal_error": 157,
+          "coverage_pct": 97.1,
+          "exact_pct": 8.8,
+          "outcome_pct": 64.7,
+          "avg_points": 2.72,
+          "mean_goal_error": 2.31
+        },
+        "Groq Qwen 3.8 27B": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 160,
+          "exact": 4,
+          "outcome": 35,
+          "goal_error": 133,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 61.4,
+          "avg_points": 2.81,
+          "mean_goal_error": 2.33
+        },
+        "Cloudflare Clef-omni": {
+          "opportunities": 57,
+          "available": 57,
+          "points": 128,
+          "exact": 4,
+          "outcome": 29,
+          "goal_error": 141,
+          "coverage_pct": 100.0,
+          "exact_pct": 7.0,
+          "outcome_pct": 50.9,
+          "avg_points": 2.25,
+          "mean_goal_error": 2.47
+        },
+        "Gemini 3.5 Flash-Lite": {
+          "opportunities": 8,
+          "available": 5,
+          "points": 12,
+          "exact": 1,
+          "outcome": 2,
+          "goal_error": 5,
+          "coverage_pct": 62.5,
+          "exact_pct": 20.0,
+          "outcome_pct": 40.0,
+          "avg_points": 2.4,
+          "mean_goal_error": 1.0
+        }
+      },
+      "feature_associations": {
+        "official_xi=False": {
+          "matches": 31,
+          "exact_matches": 5
+        },
+        "research_available=False": {
+          "matches": 70,
+          "exact_matches": 12
+        },
+        "home_form=True": {
+          "matches": 68,
+          "exact_matches": 12
+        },
+        "away_form=True": {
+          "matches": 64,
+          "exact_matches": 10
+        },
+        "standings=True": {
+          "matches": 69,
+          "exact_matches": 12
+        },
+        "away_form=False": {
+          "matches": 6,
+          "exact_matches": 2
+        },
+        "official_xi=True": {
+          "matches": 39,
+          "exact_matches": 7
+        },
+        "home_form=False": {
+          "matches": 2,
+          "exact_matches": 0
+        },
+        "standings=False": {
+          "matches": 1,
+          "exact_matches": 0
+        }
+      },
+      "declared_factor_associations": {
+        "Groq Qwen 3.8 27B:rest": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Groq Qwen 3.8 27B:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 133
+        },
+        "Cloudflare Clef-omni:form": {
+          "used": 57,
+          "exact": 4,
+          "outcome_correct": 29,
+          "goal_error": 141
+        },
+        "Groq Qwen 3.8 27B:standings": {
+          "used": 56,
+          "exact": 4,
+          "outcome_correct": 35,
+          "goal_error": 131
+        },
+        "Groq GPT-OSS 120B:form": {
+          "used": 55,
+          "exact": 4,
+          "outcome_correct": 34,
+          "goal_error": 136
+        },
+        "Groq GPT-OSS 120B:standings": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Groq GPT-OSS 120B:rest": {
+          "used": 54,
+          "exact": 4,
+          "outcome_correct": 33,
+          "goal_error": 134
+        },
+        "Cohere Command A+:form": {
+          "used": 48,
+          "exact": 2,
+          "outcome_correct": 32,
+          "goal_error": 109
+        },
+        "Groq Qwen 3.8 27B:official_xi": {
+          "used": 34,
+          "exact": 2,
+          "outcome_correct": 19,
+          "goal_error": 81
+        },
+        "Groq GPT-OSS 120B:official_xi": {
+          "used": 32,
+          "exact": 3,
+          "outcome_correct": 20,
+          "goal_error": 78
+        }
+      },
+      "warning": "Örneklem küçük olabilir. Korelasyon neden değildir; geçmiş sonuçları kopyalama."
+    },
+    "input_hash": "e1ff3c774e029b686c8513ddc6e35588de28ce73ecf598b617ca0a5c09e812f8",
+    "inputs_frozen": true,
+    "model_versions": {
+      "GEMINI_MODEL": "gemini-3.5-flash-lite",
+      "MISTRAL_MODEL": "mistral-small-latest",
+      "GROQ_QWEN_MODEL": "qwen/qwen3.8-27b",
+      "GROQ_120B_MODEL": "openai/gpt-oss-120b",
+      "COHERE_MODEL": "command-a-plus-05-2026"
+    },
+    "prompt_version": 4,
+    "total_ai": 5,
+    "prediction_complete": false,
+    "consensus_min_successful": 3,
+    "prediction_kind": "AI",
+    "consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "3-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "3-1",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 58,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "3-1": 3,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "PSG evinde son 2 maçta 3 gol atıp 0 gol yedi, Roma deplasmanda 2 gol yiyor",
+          "PSG'nin 17-3 gol dengesi Roma'nın 19-8 dengesine karşı daha sağlam savunma avantajı sağlıyor",
+          "Roma'nın Manchester United deplasmanındaki 2-3 yenilgisi Avrupa'da savunma kırılganlığını gösteriyor",
+          "PSG'nin Villarreal'e 6-0'lık galibiyeti yüksek tempolu hücum gücünü kanıtlıyor",
+          "PSG son 5 maçta güçlü hücum gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "error": "LOCAL_DAILY_BUDGET"
+        }
+      ]
+    },
+    "prediction_created_at": "2026-11-25T19:31:25.298223+00:00",
+    "experimental_predictions": {
+      "schema_version": 1,
+      "classification": "PROSPECTIVE",
+      "methods": {
+        "al_score_average_v1": {
+          "match_id": "575408",
+          "method": "al_score_average_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "3-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T19:31:25.298223+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "84b0bdeeb06cd8cd34ce1e78f200df228547839389f774155d71eb8d8e6e545c"
+        },
+        "al_most_frequent_score_v1": {
+          "match_id": "575408",
+          "method": "al_most_frequent_score_v1",
+          "version": 1,
+          "classification": "PROSPECTIVE",
+          "predicted_score": "3-1",
+          "predicted_outcome": "HOME",
+          "valid_ai_count": 4,
+          "models_used": [
+            {
+              "model": "Groq Qwen 3.8 27B",
+              "model_id": "qwen/qwen3.8-27b"
+            },
+            {
+              "model": "Cohere Command A+",
+              "model_id": "command-a-plus-05-2026"
+            },
+            {
+              "model": "Groq GPT-OSS 120B",
+              "model_id": "openai/gpt-oss-120b"
+            },
+            {
+              "model": "Cloudflare Clef-omni",
+              "model_id": "@cf/cloudflare/clef-omni"
+            }
+          ],
+          "created_at": "2026-11-25T19:31:25.298223+00:00",
+          "failure_reason": null,
+          "source_votes_sha256": "84b0bdeeb06cd8cd34ce1e78f200df228547839389f774155d71eb8d8e6e545c"
+        }
+      }
+    },
+    "minutes_before_match": 28.6,
+    "prediction_mode": "NORMAL",
+    "published_consensus": {
+      "min_successful": 3,
+      "successful_ai": 4,
+      "total_ai": 5,
+      "outcome": "HOME",
+      "outcome_votes": 4,
+      "outcome_share": 100,
+      "score": "3-1",
+      "score_votes": 3,
+      "score_share": 75,
+      "winner_consensus": true,
+      "score_consensus": true,
+      "consensus_mode": "NORMAL",
+      "top_outcome": "HOME",
+      "top_outcome_votes": 4,
+      "top_score": "3-1",
+      "top_score_votes": 3,
+      "average_subjective_confidence": 58,
+      "all_outcomes": {
+        "HOME": 4
+      },
+      "all_scores": {
+        "3-1": 3,
+        "2-1": 1
+      },
+      "reasons_by_outcome": {
+        "HOME": [
+          "PSG evinde son 2 maçta 3 gol atıp 0 gol yedi, Roma deplasmanda 2 gol yiyor",
+          "PSG'nin 17-3 gol dengesi Roma'nın 19-8 dengesine karşı daha sağlam savunma avantajı sağlıyor",
+          "Roma'nın Manchester United deplasmanındaki 2-3 yenilgisi Avrupa'da savunma kırılganlığını gösteriyor",
+          "PSG'nin Villarreal'e 6-0'lık galibiyeti yüksek tempolu hücum gücünü kanıtlıyor",
+          "PSG son 5 maçta güçlü hücum gösterdi"
+        ]
+      },
+      "disagreement": false,
+      "failed_ai": [
+        {
+          "model": "Gemini 3.5 Flash-Lite",
+          "error": "LOCAL_DAILY_BUDGET"
+        }
+      ]
+    },
+    "message_format_version": 4,
+    "prediction_table": {
+      "mode": "NORMAL",
+      "summary_headers": [
+        "⚽ Maç",
+        "🕒 Saat",
+        "📋 Durum",
+        "🤖 Başarılı Tahmin Üreten AL",
+        "🏆 Ortak tahmin",
+        "🎯 Ortak skor",
+        "🤖 Skoru seçen AI’lar"
+      ],
+      "summary": [
+        "Paris Saint-Germain FC – AS Roma",
+        "23:00 TSİ",
+        "⚠️ Kadro eksik",
+        "4/5",
+        "Paris Saint-Germain FC · 4/4",
+        "3–1 · 3/4",
+        "Qwen, GPT-OSS, Clef"
+      ],
+      "headers": [],
+      "rows": [],
+      "note": "⚠️ GEÇİCİ ORTAK KARAR: Paris Saint-Germain FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek."
+    },
+    "prediction_text": "⚽ Maç | 🕒 Saat | 📋 Durum | 🤖 Başarılı Tahmin Üreten AL | 🏆 Ortak tahmin | 🎯 Ortak skor | 🤖 Skoru seçen AI’lar\nParis Saint-Germain FC – AS Roma | 23:00 TSİ | ⚠️ Kadro eksik | 4/5 | Paris Saint-Germain FC · 4/4 | 3–1 · 3/4 | Qwen, GPT-OSS, Clef\n\n⚠️ GEÇİCİ ORTAK KARAR: Paris Saint-Germain FC (4/4 geçerli oy); toplam 4/5 AL yanıtladı. Eksik AL tahminleri yeniden denenecek.",
+    "prediction_ready": true,
+    "consensus_status": "PROVISIONAL",
+    "image_required": true,
+    "photo_delivery": {
+      "status": "SENDING",
+      "mode": "group",
+      "attempted_at": "2026-11-25T19:31:57.932494+00:00",
+      "first_attempt_at": "2026-11-25T19:31:57.932482+00:00",
+      "attempt_count": 1,
+      "group_key": "2026-11-25T20:00",
+      "group_size": 1
+    }
   },
   "575409": {
     "schema_version": 3,
@@ -82272,12 +82948,12 @@
         "success": false,
         "result": null,
         "error": "RESPONSE_TRUNCATED",
-        "retry_after": "2026-11-25T19:26:54.242394+00:00",
+        "retry_after": "2026-11-25T19:36:56.146415+00:00",
         "error_stage": "REQUEST",
         "http_status": null,
         "error_detail": null,
         "request_attempts": 2,
-        "elapsed_seconds": 35.672,
+        "elapsed_seconds": 30.758,
         "queue_wait_seconds": null
       },
       {
