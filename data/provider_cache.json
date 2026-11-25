@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795643771.8352838,
+    "at": 1795644074.0288382,
     "data": {
       "filters": {
         "season": 2026
@@ -9,7 +9,7 @@
         "count": 144,
         "first": "2026-09-08",
         "last": "2027-01-27",
-        "played": 83
+        "played": 87
       },
       "competition": {
         "id": 2001,
@@ -5520,11 +5520,11 @@
           },
           "id": 575406,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:54:51Z",
+          "lastUpdated": "2026-11-25T21:59:07Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -5586,11 +5586,11 @@
           },
           "id": 575407,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:55:23Z",
+          "lastUpdated": "2026-11-25T21:57:31Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -5656,7 +5656,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:55:23Z",
+          "lastUpdated": "2026-11-25T21:59:39Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -5722,7 +5722,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:55:23Z",
+          "lastUpdated": "2026-11-25T21:59:39Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -5784,11 +5784,11 @@
           },
           "id": 575410,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:55:23Z",
+          "lastUpdated": "2026-11-25T21:58:35Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -5854,7 +5854,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:55:23Z",
+          "lastUpdated": "2026-11-25T21:59:39Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -5916,11 +5916,11 @@
           },
           "id": 575412,
           "utcDate": "2026-11-25T20:00:00Z",
-          "status": "IN_PLAY",
+          "status": "FINISHED",
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:53:47Z",
+          "lastUpdated": "2026-11-25T22:00:11Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
