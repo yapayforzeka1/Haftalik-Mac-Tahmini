@@ -1,6 +1,6 @@
 {
   "dd6ff7728762bbe657e40b58720464c11c0adb0393f7ca7fbe786b98b2dbba20": {
-    "at": 1795641968.992667,
+    "at": 1795642272.3289433,
     "data": {
       "filters": {
         "season": 2026
@@ -5524,7 +5524,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:58Z",
+          "lastUpdated": "2026-11-25T21:30:19Z",
           "homeTeam": {
             "id": 108,
             "name": "FC Internazionale Milano",
@@ -5590,7 +5590,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:26Z",
+          "lastUpdated": "2026-11-25T21:29:47Z",
           "homeTeam": {
             "id": 78,
             "name": "Club Atlético de Madrid",
@@ -5656,7 +5656,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:27Z",
+          "lastUpdated": "2026-11-25T21:29:47Z",
           "homeTeam": {
             "id": 524,
             "name": "Paris Saint-Germain FC",
@@ -5672,10 +5672,10 @@
             "crest": "https://crests.football-data.org/100.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 1
             },
             "halfTime": {
@@ -5722,7 +5722,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:27Z",
+          "lastUpdated": "2026-11-25T21:29:46Z",
           "homeTeam": {
             "id": 851,
             "name": "Club Brugge KV",
@@ -5788,7 +5788,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:27Z",
+          "lastUpdated": "2026-11-25T21:29:46Z",
           "homeTeam": {
             "id": 521,
             "name": "Lille OSC",
@@ -5804,10 +5804,10 @@
             "crest": "https://crests.football-data.org/5.png"
           },
           "score": {
-            "winner": "DRAW",
+            "winner": "HOME_TEAM",
             "duration": "REGULAR",
             "fullTime": {
-              "home": 1,
+              "home": 2,
               "away": 1
             },
             "halfTime": {
@@ -5854,7 +5854,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:27Z",
+          "lastUpdated": "2026-11-25T21:29:47Z",
           "homeTeam": {
             "id": 498,
             "name": "Sporting Clube de Portugal",
@@ -5920,7 +5920,7 @@
           "matchday": 5,
           "stage": "LEAGUE_STAGE",
           "group": null,
-          "lastUpdated": "2026-11-25T21:24:58Z",
+          "lastUpdated": "2026-11-25T21:30:19Z",
           "homeTeam": {
             "id": 1887,
             "name": "FK Shakhtar Donetsk",
