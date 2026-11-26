@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from typing import Any, Callable
 from gemini_budget import BudgetDeferred
+from v2_context import safe_model_inputs
 
 @dataclass
 class AIVote:
@@ -404,6 +405,7 @@ def compact_json(value, max_chars):
     return json.dumps({"warning": "Bağlam bütçesi aşıldı; ayrıntı çıkarıldı."}, ensure_ascii=False)
 
 def build_prompt(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None) -> str:
+    match_context, research = safe_model_inputs(match_context, research)
     context_text = compact_json(match_context, 10000)
     research_text = compact_json(research, 6500)
     history_text = compact_json(history or {}, 5500)
@@ -445,6 +447,7 @@ KARAR PROTOKOLÜ — ATLANMAYACAK:
 9) Önce her takımın beklenen gol seviyesini zihinsel olarak belirle; sonra en olası birkaç skor arasından TEK nihai skor seç.
 10) Nihai skor ile outcome mutlaka aynı yönde olmalı: ilk sayı EV SAHİBİ, ikinci sayı DEPLASMAN.
 11) Tek bir faktöre aşırı ağırlık verme. Çelişkili verileri tart ve en güçlü ortak sinyali seç.
+12) HOME, DRAW ve AWAY olasılıklarını tarafsızca değerlendir; ev sahibi veya herhangi bir skoru varsayılan kabul etme. Veri bir seçimi desteklemiyorsa bunu uydurma.
 
 SKOR ÖNCELİĞİ:
 - Öncelik exact score'dur.
@@ -453,8 +456,9 @@ SKOR ÖNCELİĞİ:
 - Geçmiş puan sistemi tahmini zorlayamaz; geçmiş AI performansı yalnızca yardımcı bağlamdır.
 
 SADECE JSON:
-{{"outcome":"HOME|DRAW|AWAY","score":"2-1","confidence":0,
-"score_candidates":["2-1","1-1","2-0"],"factors_used":["form"],
+Skor alanında ev ve deplasman gollerini, aralarında tire olan iki negatif olmayan tam sayı olarak yaz. Aşağıdaki alanlar şemadır; yer tutucuları nihai tahmininle değiştir.
+{{"outcome":"HOME|DRAW|AWAY","score":"EV_GOL-DEPLASMAN_GOL","confidence":0,
+"score_candidates":["EV_GOL-DEPLASMAN_GOL"],"factors_used":["form"],
 "reasons":["skoru etkileyen neden 1","neden 2","neden 3","neden 4"],
 "short_reason":"tercihin çok kısa sebebi",
 "change_vs_previous":"önceki tahmin yoksa yok; değiştiyse neden"}}
@@ -624,6 +628,7 @@ def _cloudflare_clef(home: str, away: str, context: dict, research: dict) -> dic
 
 
 def run_ai_pool(home: str, away: str, match_context: dict[str, Any], research: dict[str, Any], history: dict[str, Any] | None, *, on_vote=None, cached=None, deadline=None, gemini_budget=None) -> list[AIVote]:
+    match_context, research = safe_model_inputs(match_context, research)
     prompt = build_prompt(home, away, match_context, research, history)
     providers: list[tuple[str, Callable[[str], str], str]] = [
         (gemini_label(), _gemini, "GEMINI_API_KEY"),

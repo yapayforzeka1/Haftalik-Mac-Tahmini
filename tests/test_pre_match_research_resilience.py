@@ -58,7 +58,7 @@ def test_structured_fallback_has_provenance_but_never_claims_grounded_news():
     assert 'Son 2 doğrulanmış maç: W-D' in result['home']['form']
     assert '3 gol attı, 2 gol yedi' in result['away']['goals_trend']
     assert result['league_context']['home']['points'] == 3
-    assert result['fixture_congestion']['away'].startswith('Son maçtan itibaren 3.0 gün')
+    assert 'bilinmiyor' in result['fixture_congestion']['away']
     assert result['source_refs'][0]['team_id'] == 11
     assert result['predicted_xi'] == {'home': [], 'away': []}
     assert result['news'] == []

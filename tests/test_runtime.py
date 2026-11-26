@@ -139,11 +139,12 @@ def test_photo_failure_does_not_repeat_text(monkeypatch, tmp_path):
     monkeypatch.setattr(match_report,'render_match_group_image',lambda *a,**k:tmp_path/'x.png')
     r=record();r['image_required']=True
     bot=FakeTelegram(fail_at=99)
+    delivery_time = NOW + timedelta(minutes=20)  # within the partial-delivery window
     with pytest.raises(TelegramError):
-        deliver_record(r,bot,'1',lambda:None,clock=lambda:NOW)
+        deliver_record(r,bot,'1',lambda:None,clock=lambda:delivery_time)
     assert r['prediction_receipt']['complete']
     bot.fail_at=0
-    deliver_record(r,bot,'1',lambda:None,clock=lambda:NOW)
+    deliver_record(r,bot,'1',lambda:None,clock=lambda:delivery_time)
     assert sum(x[0]=='sendMessage' for x in bot.calls)==1
     assert r['final_sent']
 

@@ -123,14 +123,17 @@ def chunks(text, limit=1800):
     return [text[i:i+limit] for i in range(0, len(text), limit)]
 
 
-def deliver_text(bot, chat_id, text, receipt, save):
+def deliver_text(bot, chat_id, text, receipt, save, *, parse_mode=None):
     if receipt.get("uncertain"):
         raise TelegramDeliveryUncertain(
             "Telegram metin gönderimi sonucu belirsiz; tekrar gönderim engellendi.")
     parts = chunks(text)
     for i in range(receipt.get("parts_sent", 0), len(parts)):
         try:
-            result = bot.call("sendMessage", chat_id=chat_id, text=parts[i])
+            payload = {"chat_id": chat_id, "text": parts[i]}
+            if parse_mode:
+                payload["parse_mode"] = parse_mode
+            result = bot.call("sendMessage", **payload)
         except TelegramDeliveryUncertain:
             receipt["uncertain"] = True
             receipt["uncertain_part"] = i + 1

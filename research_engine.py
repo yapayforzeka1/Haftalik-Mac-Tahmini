@@ -129,13 +129,19 @@ def structured_research(context: dict[str, Any], reason: str = "") -> dict[str, 
             }
         rest = form.get("rest_days_before_match")
         congestion = form.get("matches_last_14_days")
-        if isinstance(rest, (int, float)) and not isinstance(rest, bool):
+        coverage_verified = form.get('match_history_coverage') == 'COMPLETE'
+        if coverage_verified and isinstance(rest, (int, float)) and not isinstance(rest, bool):
             result["fixture_congestion"][side] = f"Son maçtan itibaren {rest:.1f} gün dinlenme."
-        if isinstance(congestion, int) and not isinstance(congestion, bool):
+        if coverage_verified and isinstance(congestion, int) and not isinstance(congestion, bool):
             result["fixture_congestion"][side] = (
                 result["fixture_congestion"].get(side, "")
                 + f" Son 14 günde {congestion} maç."
             ).strip()
+        if not coverage_verified:
+            result['fixture_congestion'][side] = (
+                'Maç geçmişinin tüm turnuvaları kapsadığı doğrulanmadı; '
+                'dinlenme süresi ve maç yoğunluğu bilinmiyor.'
+            )
         lines.append(f"{label}: son {count} maçta {goals_for}-{goals_against} gol dengesi.")
 
     if source_count:

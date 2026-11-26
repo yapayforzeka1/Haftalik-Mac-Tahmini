@@ -38,7 +38,7 @@ def run(*, budget=None, request=None, mode='basic', match_id='', archive_path=No
     if budget is None:
         budget = GeminiRequestBudget(
             Path(__file__).resolve().parent / 'data/gemini_usage.json',
-            ai_pool.GEMINI_MODEL, rpm=5, rpd=20,
+            ai_pool.GEMINI_MODEL, rpm=5, rpd=50,
         )
     request = request or ai_pool._gemini
     print(f'GEMINI CHECK | model={ai_pool.GEMINI_MODEL}', flush=True)

@@ -270,6 +270,11 @@ def _mark_photo_success(record, result, *, photo_receipt=True):
     if isinstance(result, dict) and type(result.get('message_id')) is int and result['message_id'] > 0:
         state['message_id'] = result['message_id']
     record['photo_sent'] = True
+    record['delivered_consensus'] = copy.deepcopy(record.get('consensus') or {})
+    record['delivered_models'] = [v.get('model') for v in record.get('ai_votes', [])
+                                  if v.get('success') and isinstance(v.get('result'), dict)]
+    record['published_successful_ai'] = len(record['delivered_models'])
+    record['published_prediction_complete'] = bool(record.get('prediction_complete'))
     if photo_receipt:
         record['prediction_receipt'] = _photo_receipt(state)
 
@@ -383,6 +388,8 @@ def deliver_record(r, bot, chat_id, save, clock=None, checkpoint=None):
         return
     clock = clock or now
     kickoff = parse_utc(r['match_utc'])
+    if not _prediction_photo_due(r, clock):
+        return
     if r.get('message_format_version', 0) >= FORMAT_VERSION:
         photo_state = _photo_delivery_state(r)
         if photo_state.get('status') == 'SENT':
@@ -524,6 +531,7 @@ def drain_delivery(predictions, bot, chat_id, save, checkpoint=None):
                         and r.get('message_format_version', 0) >= FORMAT_VERSION
                         and not r.get('photo_sent')
                         and not r.get('prediction_receipt', {}).get('complete')
+                        and _prediction_photo_due(r, now)
                         and now() < parse_utc(r['match_utc'])):
                     continue
                 group_identity = ('new', kickoff_key(r), bool(r.get('test_mode')))
@@ -610,6 +618,13 @@ def _successful_ai_count(votes):
     return sum(1 for v in votes if v.get('success') and isinstance(v.get('result'), dict))
 
 
+def _prediction_photo_due(record, clock):
+    """Keep test previews immediate; production partials wait until T-15."""
+    if record.get('test_mode') or record.get('prediction_complete') or _votes_complete(record.get('ai_votes') or []):
+        return True
+    return clock() >= parse_utc(record['match_utc']) - timedelta(minutes=15)
+
+
 def _votes_complete(votes):
     """Exactly five distinct, valid provider votes are required for completion."""
     by_model = {v.get('model'): v for v in votes if v.get('model')}
@@ -624,16 +639,45 @@ def _vote_signature(votes):
 
 def drain_prediction_updates(predictions, bot, chat_id, save):
     """Send resumable text updates when a previously delivered partial forecast gains votes."""
+    from html import escape
     for record in predictions.values():
         if not record.get('prediction_update_required') or not record.get('final_sent'):
             continue
         receipt = record.setdefault('prediction_update_receipt', {})
         count = _successful_ai_count(record.get('ai_votes') or [])
         complete = bool(record.get('prediction_complete'))
-        label = 'Nihai tahmin tamamlandı (5/5 AL)' if complete else f'Tahmin güncellendi ({count}/5 AL başarılı; kısmi)'
-        text = f"🔄 {label}\n{record.get('home_team', '—')} — {record.get('away_team', '—')}\n\n{record.get('prediction_text', '')}"
         try:
-            deliver_text(bot, chat_id, text, receipt, save)
+            if not record.get('test_mode') and now() >= parse_utc(record['match_utc']):
+                continue
+        except (KeyError, ValueError):
+            continue
+        old = record.get('delivered_consensus')
+        current = record.get('consensus') or {}
+        def decision(consensus):
+            if not consensus or not consensus.get('winner_consensus'):
+                return 'Uzlaşı yok'
+            return {'HOME': record.get('home_team', 'Ev sahibi'),
+                    'AWAY': record.get('away_team', 'Deplasman'),
+                    'DRAW': 'Beraberlik'}.get(consensus.get('outcome'), 'Uzlaşı yok')
+        def score(consensus):
+            return str(consensus.get('score') or 'Uzlaşı yok') if consensus else 'Uzlaşı yok'
+        def comparison(label, before, after):
+            before, after = escape(str(before)), escape(str(after))
+            if old is None:
+                return f'ℹ️ {label}: {after} (önceki durum kayıtlı değil)'
+            if before == after:
+                return f'✅ <b>{label} DEĞİŞMEDİ</b>\n{after}'
+            return f'🚨 <b>{label} DEĞİŞTİ</b>\nÖnceki: {before} II 🆕 Yeni: <b>{after}</b>'
+        known = set(record.get('delivered_models') or [])
+        additions = [v for v in record.get('ai_votes', []) if v.get('success')
+                     and isinstance(v.get('result'), dict) and v.get('model') not in known]
+        added = '\n'.join(f"🤖 {escape(str(v.get('model', 'Model')))}: {escape(str(v['result'].get('score', '—')))}" for v in additions)
+        text = (f"🔄 <b>TAHMİN GÜNCELLENDİ · {count}/5 AL</b>\n\n"
+                f"⚽ {escape(str(record.get('home_team', '—')))} — {escape(str(record.get('away_team', '—')))}\n{added}\n\n"
+                f"{comparison('ORTAK KARAR', decision(old), decision(current))}\n\n"
+                f"{comparison('ORTAK SKOR', score(old), score(current))}")
+        try:
+            deliver_text(bot, chat_id, text, receipt, save, parse_mode='HTML')
         except (TelegramError, OSError) as exc:
             print(f"Tahmin güncellemesi bekliyor: {record.get('match_id')} / {safe_error(exc)}")
             continue
@@ -641,6 +685,9 @@ def drain_prediction_updates(predictions, bot, chat_id, save):
             record['prediction_update_required'] = False
             record['published_successful_ai'] = count
             record['published_prediction_complete'] = complete
+            record['delivered_consensus'] = copy.deepcopy(record.get('consensus') or {})
+            record['delivered_models'] = [v.get('model') for v in record.get('ai_votes', [])
+                                          if v.get('success') and isinstance(v.get('result'), dict)]
             record['prediction_update_sent_at'] = utcnow()
             save()
 
@@ -962,7 +1009,7 @@ def main():
     gemini_budget = GeminiRequestBudget(
         ROOT / 'data' / 'gemini_usage.json', GEMINI_MODEL,
         rpm=int(os.getenv('GEMINI_REQUESTS_PER_MINUTE', '5')),
-        rpd=int(os.getenv('GEMINI_REQUESTS_PER_DAY', '20')),
+        rpd=int(os.getenv('GEMINI_REQUESTS_PER_DAY', '50')),
     )
     root = ROOT / 'test_runtime' if test_mode else ROOT
     predictions_path = root / 'match_predictions.json'

@@ -47,14 +47,14 @@ def test_minute_history_survives_new_instance(tmp_path):
 
 
 def test_daily_cap_survives_new_instance_and_does_not_wait(tmp_path):
-    c = Clock(); a = budget(tmp_path, c, rpm=30)
-    for _ in range(20): a.reserve()
+    c = Clock(); a = budget(tmp_path, c, rpm=100)
+    for _ in range(50): a.reserve()
     with pytest.raises(BudgetDeferred) as err:
         budget(tmp_path, c).reserve()
     assert err.value.category == 'LOCAL_DAILY_BUDGET'
     assert err.value.retry_after == '2026-11-07T08:00:00+00:00'
     assert not c.waits
-    assert load_json(a.path, {})['models']['model']['attempts'] == 20
+    assert load_json(a.path, {})['models']['model']['attempts'] == 50
 
 
 def test_pacific_midnight_resets_daily_count(tmp_path):

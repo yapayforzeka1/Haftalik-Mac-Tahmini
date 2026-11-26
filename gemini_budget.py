@@ -20,7 +20,7 @@ class BudgetDeferred(Exception):
 
 
 class GeminiRequestBudget:
-    def __init__(self, path, model, *, rpm=5, rpd=20, clock=None,
+    def __init__(self, path, model, *, rpm=5, rpd=50, clock=None,
                  monotonic=None, sleep=None):
         if type(rpm) is not int or type(rpd) is not int or min(rpm, rpd) < 1:
             raise ValueError('Gemini budget limits must be positive integers')
