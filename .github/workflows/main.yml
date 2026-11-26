@@ -70,7 +70,7 @@ jobs:
           CLEF_ENABLED: ${{ vars.CLEF_ENABLED || 'true' }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.5-flash-lite' }}
           GEMINI_REQUESTS_PER_MINUTE: "5"
-          GEMINI_REQUESTS_PER_DAY: "20"
+          GEMINI_REQUESTS_PER_DAY: "50"
           GROQ_QWEN_MODEL: ${{ vars.GROQ_QWEN_MODEL || 'qwen/qwen3.8-27b' }}
           GROQ_120B_MODEL: ${{ vars.GROQ_120B_MODEL || 'openai/gpt-oss-120b' }}
           COHERE_MODEL: ${{ vars.COHERE_MODEL || 'command-a-plus-05-2026' }}
